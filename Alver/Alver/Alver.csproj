@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props" Condition="Exists('packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" />
+  <Import Project="packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props')" />
+  <Import Project="packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props')" />
+  <Import Project="packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props" Condition="Exists('packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FCCDF7C-21C5-4B10-A744-AF95B705E891}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Alver</RootNamespace>
+    <AssemblyName>Alver</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>F:\SimpleEx\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SimpleEx\SimpleEx\bin\Debug\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dmf, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.Dmf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.RegSvrEnum, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.RegSvrEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ServiceBrokerEnum, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.SmoExtended.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.SqlEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ToggleSwitch, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SimpleEx\SimpleEx\bin\Debug\ToggleSwitch.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\Account.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AccountFund.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AccountGroup.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AppSetting.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Bill.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\BillLine.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Currency.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CurrencyBulletin.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CurrencyExchange.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CurrencyExchangeOperation.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Exchange.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ExchangeFund.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Expense.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ExpenseCategory.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Fund.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\FundTransaction.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Item.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ItemCategory.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ItemFund.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ItemTransaction.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Payment.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Receipt.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ReceiptLine.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Role.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SP_ClientGrand_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SP_FundsMovements_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SP_ItemGrand_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Transaction.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Transfer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Unit.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\User.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Withdraw.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\BillsOperations.cs" />
+    <Compile Include="Misc\CalendarColumn.cs" />
+    <Compile Include="Misc\CurrencyExchangeOperations.cs" />
+    <Compile Include="Misc\DatabaseOperations.cs" />
+    <Compile Include="Misc\DateTimeCompare.cs" />
+    <Compile Include="Misc\Exporter.cs" />
+    <Compile Include="Misc\Extensions.cs" />
+    <Compile Include="Misc\MSGs.cs" />
+    <Compile Include="Misc\TransactionsOperations.cs" />
+    <Compile Include="Misc\Utilities.cs" />
+    <Compile Include="ObservableListSource.cs" />
+    <Compile Include="UI\Accounts\AccountsPayments\frmPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\AccountsPayments\frmPayment.Designer.cs">
+      <DependentUpon>frmPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\AccountsPayments\frmPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\AccountsPayments\frmPayments.Designer.cs">
+      <DependentUpon>frmPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\AccountReports\frmAccountConformity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\AccountReports\frmAccountConformity.Designer.cs">
+      <DependentUpon>frmAccountConformity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\frmClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\frmClient.Designer.cs">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\frmAccountsGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\frmAccountsGroups.Designer.cs">
+      <DependentUpon>frmAccountsGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\frmClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\frmClients.Designer.cs">
+      <DependentUpon>frmClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\Transactions\frmTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\Transactions\frmTransaction.Designer.cs">
+      <DependentUpon>frmTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\Transactions\frmTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\Transactions\frmTransactions.Designer.cs">
+      <DependentUpon>frmTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\Transfers\frmTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\Transfers\frmTransfer.Designer.cs">
+      <DependentUpon>frmTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\Transfers\frmTransferFunds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\Transfers\frmTransferFunds.Designer.cs">
+      <DependentUpon>frmTransferFunds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\Transfers\frmTransfers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\Transfers\frmTransfers.Designer.cs">
+      <DependentUpon>frmTransfers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\Withdraws\frmWithdraw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\Withdraws\frmWithdraw.Designer.cs">
+      <DependentUpon>frmWithdraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\Withdraws\frmWithdraws.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\Withdraws\frmWithdraws.Designer.cs">
+      <DependentUpon>frmWithdraws.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Bills\frmBuy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Bills\frmBuy.Designer.cs">
+      <DependentUpon>frmBuy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Bills\frmBuyBills.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Bills\frmBuyBills.Designer.cs">
+      <DependentUpon>frmBuyBills.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Exchange\frmCurrenciesBulletin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Exchange\frmCurrenciesBulletin.Designer.cs">
+      <DependentUpon>frmCurrenciesBulletin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Exchange\frmExchange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Exchange\frmExchange.Designer.cs">
+      <DependentUpon>frmExchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Funds\frmFloatingFunds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Funds\frmFloatingFunds.Designer.cs">
+      <DependentUpon>frmFloatingFunds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Funds\frmFund.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Funds\frmFund.Designer.cs">
+      <DependentUpon>frmFund.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Funds\frmRefund.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Funds\frmRefund.Designer.cs">
+      <DependentUpon>frmRefund.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Funds\frmRefunds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Funds\frmRefunds.Designer.cs">
+      <DependentUpon>frmRefunds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Funds\Transactions\frmFundTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Funds\Transactions\frmFundTransaction.Designer.cs">
+      <DependentUpon>frmFundTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Funds\Transactions\frmFundTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Funds\Transactions\frmFundTransactions.Designer.cs">
+      <DependentUpon>frmFundTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Items\frmItemEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Items\frmItemEdit.Designer.cs">
+      <DependentUpon>frmItemEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Items\frmItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Items\frmItems.Designer.cs">
+      <DependentUpon>frmItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Items\frmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Items\frmItem.Designer.cs">
+      <DependentUpon>frmItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Items\ItemCategories\frmItemCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Items\ItemCategories\frmItemCategory.Designer.cs">
+      <DependentUpon>frmItemCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Items\ItemUnits\frmItemUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Items\ItemUnits\frmItemUnit.Designer.cs">
+      <DependentUpon>frmItemUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Items\Transactions\frmItemTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Items\Transactions\frmItemTransactions.Designer.cs">
+      <DependentUpon>frmItemTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Payments\Deposites\frmDeposite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Payments\Deposites\frmDeposite.Designer.cs">
+      <DependentUpon>frmDeposite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Payments\Deposites\frmDeposites.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Payments\Deposites\frmDeposites.Designer.cs">
+      <DependentUpon>frmDeposites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Payments\Expenses\frmExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Payments\Expenses\frmExpense.Designer.cs">
+      <DependentUpon>frmExpense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Payments\Expenses\frmExpensessCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Payments\Expenses\frmExpensessCategory.Designer.cs">
+      <DependentUpon>frmExpensessCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Payments\Expenses\frmExpenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Payments\Expenses\frmExpenses.Designer.cs">
+      <DependentUpon>frmExpenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Payments\Loans\frmLoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Payments\Loans\frmLoan.Designer.cs">
+      <DependentUpon>frmLoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Payments\Loans\frmLoans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Payments\Loans\frmLoans.Designer.cs">
+      <DependentUpon>frmLoans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Users\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Users\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Users\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Users\frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Users\frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Users\frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Utilities\frmConfirmPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Utilities\frmConfirmPassword.Designer.cs">
+      <DependentUpon>frmConfirmPassword.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Accounts\AccountsPayments\frmPayment.resx">
+      <DependentUpon>frmPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\AccountsPayments\frmPayments.resx">
+      <DependentUpon>frmPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\AccountReports\ClientConformity.rdlc" />
+    <EmbeddedResource Include="UI\Accounts\AccountReports\frmAccountConformity.resx">
+      <DependentUpon>frmAccountConformity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\frmClient.resx">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\frmAccountsGroups.resx">
+      <DependentUpon>frmAccountsGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\frmClients.resx">
+      <DependentUpon>frmClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\Transactions\frmTransaction.resx">
+      <DependentUpon>frmTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\Transactions\frmTransactions.resx">
+      <DependentUpon>frmTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\Transfers\frmTransfer.resx">
+      <DependentUpon>frmTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\Transfers\frmTransferFunds.resx">
+      <DependentUpon>frmTransferFunds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\Transfers\frmTransfers.resx">
+      <DependentUpon>frmTransfers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\Withdraws\frmWithdraw.resx">
+      <DependentUpon>frmWithdraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\Withdraws\frmWithdraws.resx">
+      <DependentUpon>frmWithdraws.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Bills\frmBuy.resx">
+      <DependentUpon>frmBuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Bills\frmBuyBills.resx">
+      <DependentUpon>frmBuyBills.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Exchange\frmCurrenciesBulletin.resx">
+      <DependentUpon>frmCurrenciesBulletin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Exchange\frmExchange.resx">
+      <DependentUpon>frmExchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\Funds\frmFloatingFunds.resx">
+      <DependentUpon>frmFloatingFunds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Funds\frmFund.resx">
+      <DependentUpon>frmFund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Funds\frmRefund.resx">
+      <DependentUpon>frmRefund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Funds\frmRefunds.resx">
+      <DependentUpon>frmRefunds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Funds\Transactions\frmFundTransaction.resx">
+      <DependentUpon>frmFundTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Funds\Transactions\frmFundTransactions.resx">
+      <DependentUpon>frmFundTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Items\frmItemEdit.resx">
+      <DependentUpon>frmItemEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Items\frmItems.resx">
+      <DependentUpon>frmItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Items\frmItem.resx">
+      <DependentUpon>frmItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Items\ItemCategories\frmItemCategory.resx">
+      <DependentUpon>frmItemCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Items\ItemUnits\frmItemUnit.resx">
+      <DependentUpon>frmItemUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Items\Transactions\frmItemTransactions.resx">
+      <DependentUpon>frmItemTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Payments\Deposites\frmDeposite.resx">
+      <DependentUpon>frmDeposite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Payments\Deposites\frmDeposites.resx">
+      <DependentUpon>frmDeposites.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Payments\Expenses\frmExpense.resx">
+      <DependentUpon>frmExpense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Payments\Expenses\frmExpensessCategory.resx">
+      <DependentUpon>frmExpensessCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Payments\Expenses\frmExpenses.resx">
+      <DependentUpon>frmExpenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Payments\Loans\frmLoan.resx">
+      <DependentUpon>frmLoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Payments\Loans\frmLoans.resx">
+      <DependentUpon>frmLoans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Users\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Users\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Users\frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Utilities\frmConfirmPassword.resx">
+      <DependentUpon>frmConfirmPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="DAL\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include=".editorconfig" />
+    <None Include="DAL\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Alver.DAL.Account.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Account1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.AccountFund.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.AccountFund1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.AccountGroup.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.AccountGroup1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.AppSetting.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.AppSetting1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Bill.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Bill1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.BillLine.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.BillLine1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Currency.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Currency1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.dbEntities.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.dbEntities1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Exchange.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Exchange1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ExchangeFund.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ExchangeFund1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Expense.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Expense1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ExpenseCategory.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ExpenseCategory1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Fund.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Fund1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.FundTransaction.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.FundTransaction1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Item.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Item1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ItemCategory.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ItemCategory1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ItemTransaction.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ItemTransaction1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Payment.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Payment1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Role.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Role1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.SP_ClientGrand_Result.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.SP_ClientGrand_Result1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.SP_ItemGrand_Result.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Transaction.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Transaction1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Unit.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Unit1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.User.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.User1.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\DB\Database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DAL\DB\Database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
+    <Content Include="DAL\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Logo.ico" />
+    <Content Include="Media\Button Faces\Add.png" />
+    <Content Include="Media\Button Faces\Delete.png" />
+    <Content Include="Media\Button Faces\Plus.png" />
+    <Content Include="Media\Icons\icoMain.ico" />
+    <None Include="Resources\Lizard Logo white.png" />
+    <None Include="Media\Icons\icons8_keepass_100px.png" />
+    <None Include="Resources\Lizard Logo.png" />
+    <None Include="Media\Icons\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\Microsoft.CodeAnalysis.VersionCheckAnalyzer.dll" />
+    <Analyzer Include="packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Humanizer.dll" />
+    <Analyzer Include="packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.NetCore.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetCore.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.NetCore.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UC\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
