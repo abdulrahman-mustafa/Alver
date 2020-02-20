@@ -1,4 +1,5 @@
 ﻿using Alver.DAL;
+using Alver.Misc;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -45,26 +46,28 @@ namespace Alver.UI.Funds
             decimal _USD = 0, _SYP = 0, _TL = 0, _EURO = 0, _SAR = 0;
             try
             {
-                //using (dbEntities db = new dbEntities())
-                //{
-                //    _USD = 1;
-                //    _SYP = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 2).Rate.Value;
-                //    _TL = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 3).Rate.Value;
-                //    _EURO = db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 4).Rate.Value;
-                //    _SAR = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 5).Rate.Value;
+                using (dbEntities db = new dbEntities())
+                {
+                    _USD = 1;
+                    _SYP = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 2).Rate.Value;
+                    _TL = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 3).Rate.Value;
+                    _EURO = db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 4).Rate.Value;
+                    _SAR = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 5).Rate.Value;
 
-                //    _USD = _USD * GetValue(1);
-                //    _SYP = _SYP * GetValue(2);
-                //    _TL = _TL * GetValue(3);
-                //    _EURO = _EURO * GetValue(4);
-                //    _SAR = _SAR * GetValue(5);
+                    _USD = _USD * GetValue(1);
+                    _SYP = _SYP * GetValue(2);
+                    _TL = _TL * GetValue(3);
+                    _EURO = _EURO * GetValue(4);
+                    _SAR = _SAR * GetValue(5);
 
-                //    _grand = _USD + _SYP + _TL + _EURO + _SAR;
-                //    this.Text = "حركات الصناديق - ( " + decimal.Round(_grand, 2).ToString() + " )";
-                //}
+                    _grand = _USD + _SYP + _TL + _EURO + _SAR;
+                    this.Text = "حركات الصناديق - ( " + decimal.Round(_grand, 2).ToString() + " )";
+                }
             }
             catch (Exception ex)
-            { }
+            {
+                MSGs.ErrorMessage(ex);
+            }
         }
         private void fundsMovements_ResultDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {

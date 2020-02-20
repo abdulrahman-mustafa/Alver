@@ -342,11 +342,20 @@ namespace Alver.UI.Accounts
 
         private void تعديلالوكيلToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int _itemId = (itemsBS.Current as Item).Id;
-            frmItemEdit frm = new frmItemEdit(_itemId);
-            frm.ShowDialog();
-            LoadData();
-
+            try
+            {
+                if (itemsBS.Count>0)
+                {
+                    int _itemId = (itemsBS.Current as Item).Id;
+                    frmItemEdit frm = new frmItemEdit(_itemId);
+                    frm.ShowDialog();
+                    LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
         }
 
         private void refreshbtn_Click(object sender, EventArgs e)

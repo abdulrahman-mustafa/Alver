@@ -31,7 +31,6 @@ namespace Alver.DAL
         public virtual DbSet<AccountFund> AccountFunds { get; set; }
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AppSetting> AppSettings { get; set; }
-        public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<BillLine> BillLines { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
         public virtual DbSet<CurrencyBulletin> CurrencyBulletins { get; set; }
@@ -56,6 +55,7 @@ namespace Alver.DAL
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Withdraw> Withdraws { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
     
         public virtual int CreateClientFunds(Nullable<int> clientId)
         {

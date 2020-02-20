@@ -25,11 +25,12 @@ namespace Alver.DAL
     
         public int Id { get; set; }
         public string ItemName { get; set; }
+        public string Barcode { get; set; }
         public Nullable<int> UnitId { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public Nullable<int> CurrencyId { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public string Barcode { get; set; }
+        public Nullable<decimal> SalePrice { get; set; }
+        public Nullable<decimal> PurchasePrice { get; set; }
         public string Declaration { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<bool> Hidden { get; set; }

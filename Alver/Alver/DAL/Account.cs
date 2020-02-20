@@ -18,7 +18,6 @@ namespace Alver.DAL
         public Account()
         {
             this.AccountFunds = new ObservableListSource<AccountFund>();
-            this.Bills = new ObservableListSource<Bill>();
             this.ExchangeFunds = new ObservableListSource<ExchangeFund>();
             this.ExchangeFunds1 = new ObservableListSource<ExchangeFund>();
             this.Payments = new ObservableListSource<Payment>();
@@ -27,6 +26,7 @@ namespace Alver.DAL
             this.Transfers = new ObservableListSource<Transfer>();
             this.Transfers1 = new ObservableListSource<Transfer>();
             this.Withdraws = new ObservableListSource<Withdraw>();
+            this.Bills = new ObservableListSource<Bill>();
         }
     
         public int Id { get; set; }
@@ -53,8 +53,6 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<AccountFund> AccountFunds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Bill> Bills { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<ExchangeFund> ExchangeFunds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<ExchangeFund> ExchangeFunds1 { get; set; }
@@ -70,5 +68,7 @@ namespace Alver.DAL
         public virtual ObservableListSource<Transfer> Transfers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Withdraw> Withdraws { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<Bill> Bills { get; set; }
     }
 }

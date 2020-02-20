@@ -29,10 +29,10 @@ namespace Alver.DAL
         public Nullable<System.DateTime> LUD { get; set; }
         public Nullable<bool> PROTECTED { get; set; }
     
-        public virtual Bill Bill { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual Item Item { get; set; }
         public virtual Unit Unit { get; set; }
         public virtual User User { get; set; }
+        public virtual Bill Bill { get; set; }
     }
 }

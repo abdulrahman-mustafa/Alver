@@ -171,7 +171,7 @@ namespace Alver.Forms
 
         private void sellbillbtn_Click(object sender, EventArgs e)
         {
-            frmBuyBills frm = new frmBuyBills();
+            frmPurchase frm = new frmPurchase();
             frm.Show();
         }
 

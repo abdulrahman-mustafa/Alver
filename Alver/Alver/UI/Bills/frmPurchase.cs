@@ -12,12 +12,12 @@ using static Alver.Misc.Utilities;
 
 namespace Alver.UI.Bills
 {
-    public partial class frmBuyBills : Form
+    public partial class frmPurchase : Form
     {
         dbEntities db;
 
         #region Init
-        public frmBuyBills()
+        public frmPurchase()
         {
             InitializeComponent();
         }
@@ -75,7 +75,7 @@ namespace Alver.UI.Bills
             addbillbtn.Enabled = !_enable;
             chechprintbillbtn.Enabled = _enable;
             checkbillbtn.Enabled = _enable;
-            savebtn.Enabled = _enable;
+            editbillbtn.Enabled = _enable;
             sumtotalsnud.Value = sumtotalsnud.Minimum;
             totalnud.Value = totalnud.Minimum;
             discountnud.Value = discountnud.Minimum;
@@ -249,33 +249,6 @@ namespace Alver.UI.Bills
                 MessageBox.Show("الرجاء التأكد من القيم المدخلة ومن عدم إدخال  قيم فارغة");
             }
         }
-        //private void EnableControls()
-        //{
-        //    bool _enable;
-        //    if (BillBS.Count == 0)
-        //    {
-        //        _enable = false;
-        //    }
-        //    else
-        //    {
-        //        _enable = true;
-        //        //dcebtn.Enabled = true;
-        //        //addcebtn.Enabled = true;
-        //        if (billLinesBS.Count == 0)
-        //        {
-        //            //addceobtn.Enabled = true;
-        //            deletebilllinebtn.Enabled = false;
-        //        }
-        //        else
-        //        {
-        //            //addceobtn.Enabled = true;
-        //            deletebilllinebtn.Enabled = true;
-        //        }
-        //    }
-        //    deletebillbtn.Enabled = _enable;
-        //    tabControl1.Enabled = _enable;
-        //    panel1.Enabled = _enable;
-        //}
         private void calcSumTotals()
         {
             try
@@ -299,6 +272,7 @@ namespace Alver.UI.Bills
                 _discount = discountnud.Value;
                 _total = _sumtotals - _discount;
                 totalnud.Value = _total;
+                syrTotalnud.Value = _total * ratenud.Value;
             }
             catch (Exception ex)
             {
@@ -314,7 +288,7 @@ namespace Alver.UI.Bills
         {
             ColorizeCells();
         }
-        
+
         private void addcebtn_Click(object sender, EventArgs e)
         {
             //ControlsEnable(false);
@@ -323,13 +297,34 @@ namespace Alver.UI.Bills
                 discountnud.Value = discountnud.Minimum;
                 accountcb.SelectedValue = 1;
                 InsertBill();
+                ExchangeRate();
             }
             catch (Exception ex)
             {
                 MSGs.ErrorMessage(ex);
             }
-           
         }
+
+        private void ExchangeRate()
+        {
+            decimal _SYP = 0;
+            try
+            {
+                using (dbEntities db = new dbEntities())
+                {
+                    _SYP = db.CurrencyBulletins
+                        .OrderByDescending(x => x.RateDate)
+                        .First(x => x.CurrencyId == 2)
+                        .Rate.Value;
+                }
+                ratenud.Value = _SYP;
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+
         private void currencyBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             try
@@ -528,59 +523,97 @@ namespace Alver.UI.Bills
                         {
                             Bill bill = db.Bills.Find(_billId);
                             //TODO: CONVERT CURRENCY TO USD VIA CURRENCY BULLETIN
+                            bill.BillType = BillType.بيع.ToString();
                             bill.CurrencyId = 1;
+                            bill.ForeginCurrencyId = 2;
                             bill.BillAmount = sumtotalsnud.Value;
                             bill.DiscountAmount = discountnud.Value;
                             bill.TotalAmount = totalnud.Value;
-                            bill.AccountId = (int)accountcb.SelectedValue;
                             bill.BillDate = billdatedtp.Value;
                             bill.Declaration = declarationtb.Text.Trim();
-                            db.SaveChanges();
-                            string _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1}",
-                        accountcb.Text.Trim(),
-                        _bill.Id.ToString());
-                            foreach (BillLine _billLine in bill.BillLines)
+                            if (payedchkbox.Checked)
                             {
-                                Guid _guid = _billLine.GUID.Value;
-                                TransactionsOperations.DeleteTransactions(_guid);
-                                if (bill.BillType == BillType.بيع.ToString())
-                                {
-                                    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
-                                    TransactionsOperations.InsertFundTransaction(_billLine.CurrencyId.Value, _billLine.TotalPrice.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
-                                    TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, _billLine.CurrencyId.Value, _billLine.TotalPrice.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
-                                }
-                                else if (bill.BillType == BillType.شراء.ToString())
-                                {
-                                    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLS, _billLine.LUD.Value, _guid, _declaration);
-                                    TransactionsOperations.InsertFundTransaction(_billLine.CurrencyId.Value, _billLine.Price.Value, TransactionsOperations.TT.BLS, _billLine.LUD.Value, _guid, _declaration);
-                                    TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, _billLine.CurrencyId.Value, _billLine.TotalPrice.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
-                                }
-                                db.SaveChanges();
+                                bill.AccountId = 0;
+                                bill.Cashout = true;
                             }
-                            _declaration = string.Format("حسم على فاتورة بيع - الزبون {0} - رقم الفاتورة {1}",
+                            else
+                            {
+                                bill.AccountId = (int)accountcb.SelectedValue;
+                                bill.Cashout = false;
+                            }
+                            if (exchangebillchkbox.Checked)
+                            {
+                                bill.Exchanged = true;
+                            }
+                            else
+                            {
+                                bill.Exchanged = false;
+                            }
+                            bill.Rate = ratenud.Value;
+                            bill.ExchangedAmount = syrTotalnud.Value;
+
+                            db.SaveChanges();
+                            string _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم }2{",
                         accountcb.Text.Trim(),
-                        _bill.Id.ToString());
+                        _bill.Id.ToString(),
+                        discountnud.Value.ToString());
+
+                            Guid _guid = bill.GUID.Value;
+                            TransactionsOperations.DeleteTransactions(_guid);
                             if (bill.BillType == BillType.بيع.ToString())
                             {
-                                Guid _guid = bill.GUID.Value;
-                                TransactionsOperations.DeleteTransactions(_guid);
-                                if (discountnud.Value > 0)
+                                foreach (BillLine _billLine in bill.BillLines)
                                 {
-                                    TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.DiscountAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
-                                    TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.DiscountAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
+                                    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
+                                }
+                                if (exchangebillchkbox.Checked)
+                                {
+                                    TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                }
+                                else
+                                {
+                                    TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                }
+                                if (!payedchkbox.Checked)
+                                {
+                                    if (exchangebillchkbox.Checked)
+                                    {
+                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                    }
+                                    else
+                                    {
+                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                    }
                                 }
                             }
                             else if (bill.BillType == BillType.شراء.ToString())
                             {
-                                Guid _guid = _bill.GUID.Value;
-                                TransactionsOperations.DeleteTransactions(_guid);
-                                if (discountnud.Value > 0)
+                                foreach (BillLine _billLine in bill.BillLines)
                                 {
-                                    TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.DiscountAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
-                                    TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.DiscountAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
+                                    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLS, _billLine.LUD.Value, _guid, _declaration);
+                                }
+                                if (exchangebillchkbox.Checked)
+                                {
+                                    TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
+                                }
+                                else
+                                {
+                                    TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
+                                }
+                                if (!payedchkbox.Checked)
+                                {
+                                    if (exchangebillchkbox.Checked)
+                                    {
+                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
+                                    }
+                                    else
+                                    {
+                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
+                                    }
                                 }
                             }
-                                MSGs.SaveMessage("رقم الفاتورة: " + bill.Id.ToString());
+                            db.SaveChanges();
+                            MSGs.SaveMessage("رقم الفاتورة: " + bill.Id.ToString());
                         }
                     }
                     catch (Exception ex)
@@ -596,7 +629,7 @@ namespace Alver.UI.Bills
 
             try
             {
-                if (accountcb.SelectedValue==null)
+                if (!payedchkbox.Checked && accountcb.SelectedValue==null)
                 {
                     MessageBox.Show("لا يمكن إضافة فاتورة بدون اسم الزبون، الرجاء اختيار زبون اولاً");
                     accountcb.Focus();
@@ -618,6 +651,54 @@ namespace Alver.UI.Bills
         private void billLinesBS_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
             calcSumTotals();
+        }
+
+        private void itemcb_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int _itemId = 0;
+                if(itemcb.SelectedValue!=null)
+                _ = int.TryParse(itemcb.SelectedValue.ToString(), out _itemId);
+                if (_itemId!=0)
+                {
+                    using (dbEntities db=new dbEntities())
+                    {
+                        if (barcodecb.Text==string.Empty&& db.Items.Find(_itemId).Barcode!=null)
+                        {
+                            barcodecb.Text = db.Items.Find(_itemId).Barcode;
+                        }
+                        decimal _salePrice = db.Items.Find(_itemId).SalePrice.Value!=null? db.Items.Find(_itemId).SalePrice.Value:0;
+                        pricenud.Value = _salePrice;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+
+        private void payedchkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                accountcb.Enabled = !payedchkbox.Checked;
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+
+        private void exchangebillchkbox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ratenud_ValueChanged(object sender, EventArgs e)
+        {
+            syrTotalnud.Value = ratenud.Value * totalnud.Value;
         }
     }
 }

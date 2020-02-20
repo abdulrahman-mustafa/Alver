@@ -18,7 +18,6 @@ namespace Alver.DAL
         public User()
         {
             this.Accounts = new ObservableListSource<Account>();
-            this.Bills = new ObservableListSource<Bill>();
             this.BillLines = new ObservableListSource<BillLine>();
             this.Currencies = new ObservableListSource<Currency>();
             this.CurrencyExchanges = new ObservableListSource<CurrencyExchange>();
@@ -38,6 +37,7 @@ namespace Alver.DAL
             this.Transfers = new ObservableListSource<Transfer>();
             this.Units = new ObservableListSource<Unit>();
             this.Withdraws = new ObservableListSource<Withdraw>();
+            this.Bills = new ObservableListSource<Bill>();
         }
     
         public int Id { get; set; }
@@ -59,8 +59,6 @@ namespace Alver.DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Account> Accounts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Bill> Bills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<BillLine> BillLines { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -100,5 +98,7 @@ namespace Alver.DAL
         public virtual ObservableListSource<Unit> Units { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Withdraw> Withdraws { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<Bill> Bills { get; set; }
     }
 }

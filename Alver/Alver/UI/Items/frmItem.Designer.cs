@@ -35,12 +35,17 @@
             System.Windows.Forms.Label motherLabel;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItem));
             this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
             this.addbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.savebtn = new System.Windows.Forms.ToolStripButton();
             this.infogroupBox = new System.Windows.Forms.GroupBox();
+            this.salepricenud = new System.Windows.Forms.NumericUpDown();
+            this.purchasepricenud = new System.Windows.Forms.NumericUpDown();
+            this.fundBalancenud = new System.Windows.Forms.NumericUpDown();
             this.itemCategorycb = new System.Windows.Forms.ComboBox();
             this.itemCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemcb = new System.Windows.Forms.ComboBox();
@@ -48,19 +53,22 @@
             this.barcodecb = new System.Windows.Forms.TextBox();
             this.unitcb = new System.Windows.Forms.ComboBox();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fundBalancenud = new System.Windows.Forms.NumericUpDown();
             idNumberLabel = new System.Windows.Forms.Label();
             senderIdLabel = new System.Windows.Forms.Label();
             fatherLabel = new System.Windows.Forms.Label();
             motherLabel = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
             this.infogroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.salepricenud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchasepricenud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fundBalancenud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemCategoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fundBalancenud)).BeginInit();
             this.SuspendLayout();
             // 
             // idNumberLabel
@@ -113,6 +121,39 @@
             label2.TabIndex = 46;
             label2.Text = "الصنف:";
             // 
+            // label1
+            // 
+            label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(272, 238);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(73, 15);
+            label1.TabIndex = 48;
+            label1.Text = "الكمية الاولية:";
+            label1.Visible = false;
+            // 
+            // label3
+            // 
+            label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(272, 183);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(63, 15);
+            label3.TabIndex = 50;
+            label3.Text = "سعر الشراء:";
+            label3.Visible = false;
+            // 
+            // label4
+            // 
+            label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(272, 212);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(64, 15);
+            label4.TabIndex = 52;
+            label4.Text = "سعر المبيع:";
+            label4.Visible = false;
+            // 
             // bindingNavigator2
             // 
             this.bindingNavigator2.AddNewItem = null;
@@ -126,7 +167,7 @@
             this.addbtn,
             this.toolStripSeparator3,
             this.savebtn});
-            this.bindingNavigator2.Location = new System.Drawing.Point(0, 221);
+            this.bindingNavigator2.Location = new System.Drawing.Point(0, 267);
             this.bindingNavigator2.MoveFirstItem = null;
             this.bindingNavigator2.MoveLastItem = null;
             this.bindingNavigator2.MoveNextItem = null;
@@ -160,6 +201,10 @@
             // 
             // infogroupBox
             // 
+            this.infogroupBox.Controls.Add(this.salepricenud);
+            this.infogroupBox.Controls.Add(label4);
+            this.infogroupBox.Controls.Add(this.purchasepricenud);
+            this.infogroupBox.Controls.Add(label3);
             this.infogroupBox.Controls.Add(this.fundBalancenud);
             this.infogroupBox.Controls.Add(label1);
             this.infogroupBox.Controls.Add(label2);
@@ -177,10 +222,51 @@
             this.infogroupBox.Location = new System.Drawing.Point(0, 0);
             this.infogroupBox.Name = "infogroupBox";
             this.infogroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.infogroupBox.Size = new System.Drawing.Size(358, 216);
+            this.infogroupBox.Size = new System.Drawing.Size(358, 264);
             this.infogroupBox.TabIndex = 37;
             this.infogroupBox.TabStop = false;
             this.infogroupBox.Text = "بيانات المادة";
+            // 
+            // salepricenud
+            // 
+            this.salepricenud.Enabled = false;
+            this.salepricenud.Location = new System.Drawing.Point(12, 209);
+            this.salepricenud.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.salepricenud.Name = "salepricenud";
+            this.salepricenud.Size = new System.Drawing.Size(254, 23);
+            this.salepricenud.TabIndex = 53;
+            this.salepricenud.Visible = false;
+            // 
+            // purchasepricenud
+            // 
+            this.purchasepricenud.Enabled = false;
+            this.purchasepricenud.Location = new System.Drawing.Point(12, 180);
+            this.purchasepricenud.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.purchasepricenud.Name = "purchasepricenud";
+            this.purchasepricenud.Size = new System.Drawing.Size(254, 23);
+            this.purchasepricenud.TabIndex = 51;
+            this.purchasepricenud.Visible = false;
+            // 
+            // fundBalancenud
+            // 
+            this.fundBalancenud.Location = new System.Drawing.Point(12, 235);
+            this.fundBalancenud.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.fundBalancenud.Name = "fundBalancenud";
+            this.fundBalancenud.Size = new System.Drawing.Size(254, 23);
+            this.fundBalancenud.TabIndex = 49;
+            this.fundBalancenud.Visible = false;
             // 
             // itemCategorycb
             // 
@@ -241,34 +327,12 @@
             // 
             this.unitBindingSource.DataSource = typeof(Alver.DAL.Unit);
             // 
-            // label1
-            // 
-            label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(272, 183);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(73, 15);
-            label1.TabIndex = 48;
-            label1.Text = "الكمية الاولية:";
-            // 
-            // fundBalancenud
-            // 
-            this.fundBalancenud.Location = new System.Drawing.Point(12, 180);
-            this.fundBalancenud.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.fundBalancenud.Name = "fundBalancenud";
-            this.fundBalancenud.Size = new System.Drawing.Size(254, 23);
-            this.fundBalancenud.TabIndex = 49;
-            // 
             // frmItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(358, 246);
+            this.ClientSize = new System.Drawing.Size(358, 292);
             this.Controls.Add(this.infogroupBox);
             this.Controls.Add(this.bindingNavigator2);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -286,9 +350,11 @@
             this.bindingNavigator2.PerformLayout();
             this.infogroupBox.ResumeLayout(false);
             this.infogroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.salepricenud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchasepricenud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fundBalancenud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemCategoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fundBalancenud)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,5 +374,7 @@
         private System.Windows.Forms.BindingSource itemCategoryBindingSource;
         private System.Windows.Forms.BindingSource unitBindingSource;
         private System.Windows.Forms.NumericUpDown fundBalancenud;
+        private System.Windows.Forms.NumericUpDown salepricenud;
+        private System.Windows.Forms.NumericUpDown purchasepricenud;
     }
 }

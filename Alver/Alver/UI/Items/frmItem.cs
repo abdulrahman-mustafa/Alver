@@ -77,6 +77,9 @@ namespace Alver.UI.Items
                         //Navigation properties
                         CategoryId = _categoryId,
                         UnitId = _unitId,
+                        CurrencyId = 1,
+                        PurchasePrice=purchasepricenud.Value,
+                        SalePrice=salepricenud.Value,
                         ItemCategory = _category,
                         Unit = _unit,
                         Hidden = false,
@@ -92,28 +95,6 @@ namespace Alver.UI.Items
                 MSGs.ErrorMessage(ex);
             }
         }
-        //private void GetValuesFromForm()
-        //{
-
-        //    _item.AccountGroupId = 1;// Misc.Utilities.AccountGroup.وكيل_حوالات.ToString();
-        //    _item.FullName = itemcb.Text.Trim();
-        //    _item.Father = fatherTextBox.Text.Trim();
-        //    _item.Mother = barcodecb.Text.Trim();
-        //    _item.IdNumber = declarationcb.Text.Trim();
-        //    _item.CountryId = 0;// (int)countryNameComboBox.SelectedValue;
-        //    _item.CityId = 0;// (int)cityNameComboBox.SelectedValue;
-        //    _item.Phone = phoneMaskedTextBox.Text.Trim();
-        //    _item.Address = addressTextBox.Text.Trim();
-        //    _item.LUD = DateTime.Now;
-        //    _item.GUID = Guid.NewGuid();
-        //    _item.Flag = string.Empty;
-        //    _item.UserId = Properties.Settings.Default.LoggedInUser.Id;
-        //    //_client.Users_User = Properties.Settings.Default.LoggedInUser;
-        //    _item.Hidden = false;
-        //    _item.Deactivated = isActiveCheckBox.Checked;
-        //    _item.Declaration = notestextBox.Text.Trim();
-        //    //Navigation properties
-        //}
         private void ControlsEnable(bool _enable)
         {
             savebtn.Enabled = _enable;

@@ -338,11 +338,11 @@
     <Compile Include="UI\Bills\frmBuy.Designer.cs">
       <DependentUpon>frmBuy.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Bills\frmBuyBills.cs">
+    <Compile Include="UI\Bills\frmPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Bills\frmBuyBills.Designer.cs">
-      <DependentUpon>frmBuyBills.cs</DependentUpon>
+    <Compile Include="UI\Bills\frmPurchase.Designer.cs">
+      <DependentUpon>frmPurchase.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Exchange\frmCurrenciesBulletin.cs">
       <SubType>Form</SubType>
@@ -551,8 +551,8 @@
     <EmbeddedResource Include="UI\Bills\frmBuy.resx">
       <DependentUpon>frmBuy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Bills\frmBuyBills.resx">
-      <DependentUpon>frmBuyBills.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Bills\frmPurchase.resx">
+      <DependentUpon>frmPurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Exchange\frmCurrenciesBulletin.resx">
       <DependentUpon>frmCurrenciesBulletin.cs</DependentUpon>

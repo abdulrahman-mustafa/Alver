@@ -30,9 +30,11 @@ namespace Alver.UI.Items
             using (dbEntities db = new dbEntities())
             {
                 db.Units.AsNoTracking().Load();
+                db.Currencies.AsNoTracking().Load();
                 db.ItemCategories.AsNoTracking().Load();
                 unitBindingSource.DataSource = db.Units.AsNoTracking().ToList().AsQueryable();
                 itemCategoryBindingSource.DataSource = db.ItemCategories.AsNoTracking().ToList().AsQueryable();
+                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
                 Misc.Utilities.SearchableComboBox(itemcb);
                 Item _item = db.Items.Find(_itemId);
                 if (_item!=null)
@@ -40,7 +42,11 @@ namespace Alver.UI.Items
                     itemcb.Text = _item.ItemName;
                     barcodecb.Text = _item.Barcode;
                     itemCategorycb.SelectedValue = _item.CategoryId.Value;
+                    itemCategorycb.SelectedValue = _item.CategoryId.Value;
                     unitcb.SelectedValue = _item.UnitId.Value;
+                    currencycb.SelectedValue = _item.CurrencyId.Value;
+                    purchasepricenud.Value = _item.PurchasePrice.Value;
+                    salepricenud.Value = _item.SalePrice.Value;
                     declarationcb.Text = _item.Declaration;
                     ItemFund _fund = db.ItemFunds.FirstOrDefault(x => x.ItemId == _itemId);
                     if (_fund!=null)
@@ -50,68 +56,6 @@ namespace Alver.UI.Items
                 }
             }
         }
-        //private void PrepareItem()
-        //{
-        //    try
-        //    {
-        //        int _categoryId = 0;
-        //        int _unitId = 0;
-        //        Item _item;
-        //        using (dbEntities db = new dbEntities())
-        //        {
-        //            if (itemCategorycb.SelectedValue != null)
-        //            {
-        //                _categoryId = (int)itemCategorycb.SelectedValue;
-        //            }
-        //            if (unitcb.SelectedValue != null)
-        //            {
-        //                _unitId = (int)unitcb.SelectedValue;
-        //            }
-        //            _item = db.Items.Find(_itemId);
-
-        //            _item.ItemName = itemcb.Text.Trim();
-        //            _item.Declaration = declarationcb.Text.Trim();
-        //            _item.UserId = Properties.Settings.Default.LoggedInUser.Id;
-        //            //Users_User = Properties.Settings.Default.LoggedInUser;
-        //            //Navigation properties
-        //            _item.CategoryId = _categoryId;
-        //            _item.UnitId = _unitId;
-        //            _item.Hidden = false;
-        //            _item.LUD = DateTime.Now;
-        //            _item.GUID = Guid.NewGuid();
-        //            _item.Flag = string.Empty;
-        //            _item.PROTECTED = false;
-
-        //            db.SaveChanges();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MSGs.ErrorMessage(ex);
-        //    }
-        //}
-        //private void GetValuesFromForm()
-        //{
-
-        //    _item.AccountGroupId = 1;// Misc.Utilities.AccountGroup.وكيل_حوالات.ToString();
-        //    _item.FullName = itemcb.Text.Trim();
-        //    _item.Father = fatherTextBox.Text.Trim();
-        //    _item.Mother = barcodecb.Text.Trim();
-        //    _item.IdNumber = declarationcb.Text.Trim();
-        //    _item.CountryId = 0;// (int)countryNameComboBox.SelectedValue;
-        //    _item.CityId = 0;// (int)cityNameComboBox.SelectedValue;
-        //    _item.Phone = phoneMaskedTextBox.Text.Trim();
-        //    _item.Address = addressTextBox.Text.Trim();
-        //    _item.LUD = DateTime.Now;
-        //    _item.GUID = Guid.NewGuid();
-        //    _item.Flag = string.Empty;
-        //    _item.UserId = Properties.Settings.Default.LoggedInUser.Id;
-        //    //_client.Users_User = Properties.Settings.Default.LoggedInUser;
-        //    _item.Hidden = false;
-        //    _item.Deactivated = isActiveCheckBox.Checked;
-        //    _item.Declaration = notestextBox.Text.Trim();
-        //    //Navigation properties
-        //}
         private bool CheckValues()
         {
             bool _result = true;
@@ -184,6 +128,8 @@ namespace Alver.UI.Items
                             _item.CategoryId = _categoryId;
                             _item.UnitId = _unitId;
                             _item.Hidden = false;
+                            _item.PurchasePrice = purchasepricenud.Value;
+                            _item.SalePrice = salepricenud.Value;
                             _item.LUD = DateTime.Now;
                             _item.GUID = Guid.NewGuid();
                             _item.Flag = string.Empty;
