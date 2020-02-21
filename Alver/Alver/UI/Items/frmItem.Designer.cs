@@ -229,6 +229,7 @@
             // 
             // salepricenud
             // 
+            this.salepricenud.DecimalPlaces = 2;
             this.salepricenud.Enabled = false;
             this.salepricenud.Location = new System.Drawing.Point(12, 209);
             this.salepricenud.Maximum = new decimal(new int[] {
@@ -236,13 +237,24 @@
             0,
             0,
             0});
+            this.salepricenud.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.salepricenud.Name = "salepricenud";
             this.salepricenud.Size = new System.Drawing.Size(254, 23);
             this.salepricenud.TabIndex = 53;
+            this.salepricenud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.salepricenud.Visible = false;
             // 
             // purchasepricenud
             // 
+            this.purchasepricenud.DecimalPlaces = 2;
             this.purchasepricenud.Enabled = false;
             this.purchasepricenud.Location = new System.Drawing.Point(12, 180);
             this.purchasepricenud.Maximum = new decimal(new int[] {
@@ -250,13 +262,24 @@
             0,
             0,
             0});
+            this.purchasepricenud.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.purchasepricenud.Name = "purchasepricenud";
             this.purchasepricenud.Size = new System.Drawing.Size(254, 23);
             this.purchasepricenud.TabIndex = 51;
+            this.purchasepricenud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.purchasepricenud.Visible = false;
             // 
             // fundBalancenud
             // 
+            this.fundBalancenud.DecimalPlaces = 2;
             this.fundBalancenud.Location = new System.Drawing.Point(12, 235);
             this.fundBalancenud.Maximum = new decimal(new int[] {
             9999999,

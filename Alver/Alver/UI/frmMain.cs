@@ -171,7 +171,7 @@ namespace Alver.Forms
 
         private void sellbillbtn_Click(object sender, EventArgs e)
         {
-            frmPurchase frm = new frmPurchase();
+            frmSell frm = new frmSell();
             frm.Show();
         }
 
@@ -264,6 +264,18 @@ namespace Alver.Forms
             System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(OpenLoginForm));
             this.Close();
             t.Start();
+        }
+
+        private void buybillbtn_Click(object sender, EventArgs e)
+        {
+            frmPurchase frm = new frmPurchase();
+            frm.Show();
+        }
+
+        private void تصنيفاتالوكلاءToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAccountsGroups frm = new frmAccountsGroups();
+            frm.Show();
         }
     }
 }

@@ -33,6 +33,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutbtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.أخذنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.استرجاعنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إغلاقToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addclientbtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,8 +89,7 @@
             this.نشرةالأسعارToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BodysplitContainer = new System.Windows.Forms.SplitContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.أخذنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.استرجاعنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.تصنيفاتالوكلاءToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HeadersplitContainer)).BeginInit();
             this.HeadersplitContainer.Panel1.SuspendLayout();
             this.HeadersplitContainer.Panel2.SuspendLayout();
@@ -156,6 +157,20 @@
             this.logoutbtn.Text = "تسجيل الخروج";
             this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click_1);
             // 
+            // أخذنسخةاحتياطيةToolStripMenuItem
+            // 
+            this.أخذنسخةاحتياطيةToolStripMenuItem.Name = "أخذنسخةاحتياطيةToolStripMenuItem";
+            this.أخذنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.أخذنسخةاحتياطيةToolStripMenuItem.Text = "أخذ نسخة احتياطية";
+            this.أخذنسخةاحتياطيةToolStripMenuItem.Click += new System.EventHandler(this.أخذنسخةاحتياطيةToolStripMenuItem_Click);
+            // 
+            // استرجاعنسخةاحتياطيةToolStripMenuItem
+            // 
+            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Name = "استرجاعنسخةاحتياطيةToolStripMenuItem";
+            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Text = "استرجاع نسخة احتياطية";
+            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Click += new System.EventHandler(this.استرجاعنسخةاحتياطيةToolStripMenuItem_Click);
+            // 
             // إغلاقToolStripMenuItem
             // 
             this.إغلاقToolStripMenuItem.Name = "إغلاقToolStripMenuItem";
@@ -174,7 +189,8 @@
             this.toolStripSeparator3,
             this.withdrawbtn,
             this.toolStripSeparator4,
-            this.قصوتحويلالرصيدToolStripMenuItem});
+            this.قصوتحويلالرصيدToolStripMenuItem,
+            this.تصنيفاتالوكلاءToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.testToolStripMenuItem.Text = "الوكلاء";
@@ -464,20 +480,21 @@
             this.buybillbtn,
             this.sellbillbtn});
             this.billsbtn.Name = "billsbtn";
-            this.billsbtn.Size = new System.Drawing.Size(60, 20);
-            this.billsbtn.Text = "السندات";
+            this.billsbtn.Size = new System.Drawing.Size(54, 20);
+            this.billsbtn.Text = "الفواتير";
             // 
             // buybillbtn
             // 
             this.buybillbtn.Name = "buybillbtn";
-            this.buybillbtn.Size = new System.Drawing.Size(118, 22);
-            this.buybillbtn.Text = "سند شراء";
+            this.buybillbtn.Size = new System.Drawing.Size(127, 22);
+            this.buybillbtn.Text = "فاتورة شراء";
+            this.buybillbtn.Click += new System.EventHandler(this.buybillbtn_Click);
             // 
             // sellbillbtn
             // 
             this.sellbillbtn.Name = "sellbillbtn";
-            this.sellbillbtn.Size = new System.Drawing.Size(118, 22);
-            this.sellbillbtn.Text = "سند بيع";
+            this.sellbillbtn.Size = new System.Drawing.Size(127, 22);
+            this.sellbillbtn.Text = "فاتورة بيع";
             this.sellbillbtn.Click += new System.EventHandler(this.sellbillbtn_Click);
             // 
             // الموادToolStripMenuItem
@@ -578,19 +595,12 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // أخذنسخةاحتياطيةToolStripMenuItem
+            // تصنيفاتالوكلاءToolStripMenuItem
             // 
-            this.أخذنسخةاحتياطيةToolStripMenuItem.Name = "أخذنسخةاحتياطيةToolStripMenuItem";
-            this.أخذنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.أخذنسخةاحتياطيةToolStripMenuItem.Text = "أخذ نسخة احتياطية";
-            this.أخذنسخةاحتياطيةToolStripMenuItem.Click += new System.EventHandler(this.أخذنسخةاحتياطيةToolStripMenuItem_Click);
-            // 
-            // استرجاعنسخةاحتياطيةToolStripMenuItem
-            // 
-            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Name = "استرجاعنسخةاحتياطيةToolStripMenuItem";
-            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Text = "استرجاع نسخة احتياطية";
-            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Click += new System.EventHandler(this.استرجاعنسخةاحتياطيةToolStripMenuItem_Click);
+            this.تصنيفاتالوكلاءToolStripMenuItem.Name = "تصنيفاتالوكلاءToolStripMenuItem";
+            this.تصنيفاتالوكلاءToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.تصنيفاتالوكلاءToolStripMenuItem.Text = "تصنيفات الوكلاء";
+            this.تصنيفاتالوكلاءToolStripMenuItem.Click += new System.EventHandler(this.تصنيفاتالوكلاءToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -685,5 +695,6 @@
         private System.Windows.Forms.ToolStripMenuItem كشفحسابمادةToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem أخذنسخةاحتياطيةToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem استرجاعنسخةاحتياطيةToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem تصنيفاتالوكلاءToolStripMenuItem;
     }
 }

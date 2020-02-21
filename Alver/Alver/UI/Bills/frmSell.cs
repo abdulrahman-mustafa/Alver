@@ -12,12 +12,12 @@ using static Alver.Misc.Utilities;
 
 namespace Alver.UI.Bills
 {
-    public partial class frmPurchase : Form
+    public partial class frmSell : Form
     {
         dbEntities db;
 
         #region Init
-        public frmPurchase()
+        public frmSell()
         {
             InitializeComponent();
         }
@@ -44,7 +44,7 @@ namespace Alver.UI.Bills
             itemBindingSource.DataSource = db.Items.ToList();
             itemBS.DataSource = db.Items.ToList();
             accountBS.DataSource = db.Accounts.ToList();
-            BillBS.DataSource = db.Bills.Where(x=>x.BillType==BillType.شراء.ToString()).ToList();
+            BillBS.DataSource = db.Bills.Where(x=>x.BillType==BillType.بيع.ToString()).ToList();
             billLinesBS.DataSource = BillBS;
             currencyBS.DataSource = db.Currencies.ToList();
             currencyBindingSource.DataSource = db.Currencies.ToList();
@@ -127,7 +127,7 @@ namespace Alver.UI.Bills
             {
                 //ControlsEnable(true);
 
-                string _billType = BillType.شراء.ToString();
+                string _billType = BillType.بيع.ToString();
                 int userid = Properties.Settings.Default.LoggedInUser.Id;
 
                 var bill = (Bill)BillBS.AddNew();
@@ -169,7 +169,7 @@ namespace Alver.UI.Bills
 
                 _currencyId = (int)currencycb.SelectedValue;
                 DateTime _billDate = DateTime.Now;
-                string _billType = BillType.شراء.ToString();
+                string _billType = BillType.بيع.ToString();
                 _itemId= (int)itemcb.SelectedValue;
                 _unitId = (int)unitcb.SelectedValue;
                 _quantity = quantitynud.Value;
@@ -213,6 +213,23 @@ namespace Alver.UI.Bills
                     db.Entry(_bill).State = EntityState.Unchanged;
                     db.Entry(_billLine).State = EntityState.Added;
                     db.SaveChanges();
+                    
+                    //_declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1}",
+                    //    accountcb.Text.Trim(),
+                    //    _bill.Id.ToString());
+                    //if (_bill.BillType== BillType.بيع.ToString())
+                    //{
+                    //    TransactionsOperations.InsertFundTransaction(_billLine.CurrencyId.Value, _billLine.TotalPrice.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
+                    //    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
+                    //    TransactionsOperations.InsertClientTransaction(_bill.AccountId.Value, _billLine.CurrencyId.Value, _billLine.TotalPrice.Value, TransactionsOperations.TT.BLB,_billLine.LUD.Value, _guid, _declaration);
+                    //}
+                    //else if (_bill.BillType == BillType.شراء.ToString())
+                    //{
+                    //    TransactionsOperations.InsertFundTransaction(_billLine.CurrencyId.Value, _billLine.Price.Value, TransactionsOperations.TT.BLS, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
+                    //    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLS, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
+                    //    TransactionsOperations.InsertClientTransaction(_bill.AccountId.Value, _billLine.CurrencyId.Value, _billLine.TotalPrice.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
+                    //}
+                    //db.SaveChanges();
                 }
                 else
                 {
@@ -362,7 +379,7 @@ namespace Alver.UI.Bills
                 {
                     BillLine _billLine = billLinesBS.Current as BillLine;
                     Bill _bill = BillBS.Current as Bill;
-                    BillsOperations.DeleteBillLine(_billLine);
+                 BillsOperations.DeleteBillLine(_billLine);
                     _bill.BillLines.Remove(_billLine);
                     db.BillLines.Remove(_billLine);
                     db.SaveChanges();
@@ -507,7 +524,7 @@ namespace Alver.UI.Bills
                         {
                             Bill bill = db.Bills.Find(_billId);
                             //TODO: CONVERT CURRENCY TO USD VIA CURRENCY BULLETIN
-                            bill.BillType = BillType.شراء.ToString();
+                            bill.BillType = BillType.بيع.ToString();
                             bill.CurrencyId = 1;
                             bill.ForeginCurrencyId = 2;
                             bill.BillAmount = sumtotalsnud.Value;
@@ -550,6 +567,14 @@ namespace Alver.UI.Bills
                                 {
                                     TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
                                 }
+                                if (exchangebillchkbox.Checked)
+                                {
+                                    TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                }
+                                else
+                                {
+                                    TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                }
                                 if (!payedchkbox.Checked)
                                 {
                                     if (exchangebillchkbox.Checked)
@@ -561,24 +586,20 @@ namespace Alver.UI.Bills
                                         TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
                                     }
                                 }
-                                else
-                                {
-                                    if (exchangebillchkbox.Checked)
-                                    {
-                                        TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                    else
-                                    {
-                                        TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                }
                             }
                             else if (bill.BillType == BillType.شراء.ToString())
                             {
                                 foreach (BillLine _billLine in bill.BillLines)
                                 {
                                     TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLS, _billLine.LUD.Value, _guid, _declaration);
-                                    db.Items.Find(_billLine.ItemId.Value).PurchasePrice = _billLine.Price.Value;
+                                }
+                                if (exchangebillchkbox.Checked)
+                                {
+                                    TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
+                                }
+                                else
+                                {
+                                    TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
                                 }
                                 if (!payedchkbox.Checked)
                                 {
@@ -589,17 +610,6 @@ namespace Alver.UI.Bills
                                     else
                                     {
                                         TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                }
-                                else
-                                {
-                                    if (exchangebillchkbox.Checked)
-                                    {
-                                        TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                    else
-                                    {
-                                        TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLS, bill.LUD.Value, _guid, _declaration);
                                     }
                                 }
                             }
@@ -617,6 +627,7 @@ namespace Alver.UI.Bills
         private bool CheckAttributes()
         {
             bool _result = true;
+
             try
             {
                 if (!payedchkbox.Checked && accountcb.SelectedValue==null)
@@ -627,7 +638,7 @@ namespace Alver.UI.Bills
                 }
                 else if (billLinesBS.Count<1)
                 {
-                    MessageBox.Show("لا يمكن إضافة فاتورة بدون بدون اقلام شراء، الرجاء إضافة عمليات بيع اولاً");
+                    MessageBox.Show("لا يمكن إضافة فاتورة بدون بدون اقلام بيع، الرجاء إضافة عمليات بيع اولاً");
                     itemcb.Focus();
                     _result = false;
                 }
@@ -642,6 +653,7 @@ namespace Alver.UI.Bills
         {
             calcSumTotals();
         }
+
         private void itemcb_SelectedValueChanged(object sender, EventArgs e)
         {
             try
@@ -657,8 +669,8 @@ namespace Alver.UI.Bills
                         {
                             barcodecb.Text = db.Items.Find(_itemId).Barcode;
                         }
-                        decimal _purchasePrice = db.Items.Find(_itemId).PurchasePrice.Value!=null? db.Items.Find(_itemId).PurchasePrice.Value:0;
-                        pricenud.Value = _purchasePrice;
+                        decimal _salePrice = db.Items.Find(_itemId).SalePrice.Value!=null? db.Items.Find(_itemId).SalePrice.Value:0;
+                        pricenud.Value = _salePrice;
                     }
                 }
             }
@@ -667,6 +679,7 @@ namespace Alver.UI.Bills
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void payedchkbox_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -678,10 +691,12 @@ namespace Alver.UI.Bills
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void exchangebillchkbox_CheckedChanged(object sender, EventArgs e)
         {
 
         }
+
         private void ratenud_ValueChanged(object sender, EventArgs e)
         {
             syrTotalnud.Value = ratenud.Value * totalnud.Value;

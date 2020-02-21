@@ -27,33 +27,40 @@ namespace Alver.UI.Items
         }
         private void frmOut_Load(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities())
+            try
             {
-                db.Units.AsNoTracking().Load();
-                db.Currencies.AsNoTracking().Load();
-                db.ItemCategories.AsNoTracking().Load();
-                unitBindingSource.DataSource = db.Units.AsNoTracking().ToList().AsQueryable();
-                itemCategoryBindingSource.DataSource = db.ItemCategories.AsNoTracking().ToList().AsQueryable();
-                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
-                Misc.Utilities.SearchableComboBox(itemcb);
-                Item _item = db.Items.Find(_itemId);
-                if (_item!=null)
+                using (dbEntities db = new dbEntities())
                 {
-                    itemcb.Text = _item.ItemName;
-                    barcodecb.Text = _item.Barcode;
-                    itemCategorycb.SelectedValue = _item.CategoryId.Value;
-                    itemCategorycb.SelectedValue = _item.CategoryId.Value;
-                    unitcb.SelectedValue = _item.UnitId.Value;
-                    currencycb.SelectedValue = _item.CurrencyId.Value;
-                    purchasepricenud.Value = _item.PurchasePrice.Value;
-                    salepricenud.Value = _item.SalePrice.Value;
-                    declarationcb.Text = _item.Declaration;
-                    ItemFund _fund = db.ItemFunds.FirstOrDefault(x => x.ItemId == _itemId);
-                    if (_fund!=null)
+                    db.Units.AsNoTracking().Load();
+                    db.Currencies.AsNoTracking().Load();
+                    db.ItemCategories.AsNoTracking().Load();
+                    unitBindingSource.DataSource = db.Units.AsNoTracking().ToList().AsQueryable();
+                    itemCategoryBindingSource.DataSource = db.ItemCategories.AsNoTracking().ToList().AsQueryable();
+                    currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
+                    Misc.Utilities.SearchableComboBox(itemcb);
+                    Item _item = db.Items.Find(_itemId);
+                    if (_item != null)
                     {
-                        fundBalancenud.Value = _fund.Balance.Value;
+                        itemcb.Text = _item.ItemName;
+                        barcodecb.Text = _item.Barcode;
+                        itemCategorycb.SelectedValue = _item.CategoryId.Value;
+                        itemCategorycb.SelectedValue = _item.CategoryId.Value;
+                        unitcb.SelectedValue = _item.UnitId.Value;
+                        currencycb.SelectedValue = _item.CurrencyId.Value;
+                        purchasepricenud.Value = _item.PurchasePrice.Value;
+                        salepricenud.Value = _item.SalePrice.Value;
+                        declarationcb.Text = _item.Declaration;
+                        ItemFund _fund = db.ItemFunds.FirstOrDefault(x => x.ItemId == _itemId);
+                        if (_fund != null)
+                        {
+                            fundBalancenud.Value = _fund.Balance.Value;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
             }
         }
         private bool CheckValues()

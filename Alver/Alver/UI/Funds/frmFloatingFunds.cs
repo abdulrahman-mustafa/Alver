@@ -66,7 +66,7 @@ namespace Alver.UI.Funds
             }
             catch (Exception ex)
             {
-                MSGs.ErrorMessage(ex);
+                //MSGs.ErrorMessage(ex);
             }
         }
         private void fundsMovements_ResultDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)

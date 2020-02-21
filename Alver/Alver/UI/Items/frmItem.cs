@@ -71,6 +71,7 @@ namespace Alver.UI.Items
                     {
 
                         ItemName = itemcb.Text.Trim(),
+                        Barcode=barcodecb.Text.Trim(),
                         Declaration = declarationcb.Text.Trim(),
                         UserId = Properties.Settings.Default.LoggedInUser.Id,
                         //Users_User = Properties.Settings.Default.LoggedInUser,
