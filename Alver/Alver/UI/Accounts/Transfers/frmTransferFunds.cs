@@ -205,12 +205,12 @@ namespace Alver.UI.Accounts.Transfers
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
-            frmClient frm = new frmClient();
+            frmAddAccount frm = new frmAddAccount();
             frm.Show();
         }
         private void button9_Click(object sender, EventArgs e)
         {
-            frmClient frm = new frmClient();
+            frmAddAccount frm = new frmAddAccount();
             frm.Show();
         }
         private void frmTransferFunds_KeyDown(object sender, KeyEventArgs e)

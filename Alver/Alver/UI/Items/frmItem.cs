@@ -25,6 +25,7 @@ namespace Alver.UI.Items
             db = new dbEntities();
             db.Configuration.ProxyCreationEnabled = false;
             ControlsEnable(false);
+            barcodecb.Focus();
         }
         private void LoadData()
         {

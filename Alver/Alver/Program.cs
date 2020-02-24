@@ -53,7 +53,6 @@ namespace Alver
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmLogin());
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
             if (PriorProcess() != null)
             {

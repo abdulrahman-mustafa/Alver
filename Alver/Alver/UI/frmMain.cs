@@ -5,6 +5,7 @@ using Alver.UI.Accounts.Transactions;
 using Alver.UI.Accounts.Transfers;
 using Alver.UI.Accounts.Withdraws;
 using Alver.UI.Bills;
+using Alver.UI.Configuration;
 using Alver.UI.Exchange;
 using Alver.UI.Funds;
 using Alver.UI.Funds.Transactions;
@@ -86,13 +87,13 @@ namespace Alver.Forms
 
         private void addclientbtn_Click(object sender, EventArgs e)
         {
-            frmClient frm = new frmClient();
+            frmAddAccount frm = new frmAddAccount();
             frm.Show();
         }
 
         private void clientsbtn_Click(object sender, EventArgs e)
         {
-            frmClients frm = new frmClients(null);
+            frmAccounts frm = new frmAccounts(null);
             frm.Show();
         }
 
@@ -275,6 +276,35 @@ namespace Alver.Forms
         private void تصنيفاتالوكلاءToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAccountsGroups frm = new frmAccountsGroups();
+            frm.Show();
+        }
+
+        private void تسعيرالموادToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPricingItems frm = new frmPricingItems();
+            frm.Show();
+        }
+
+        private void BodysplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void مطابقاتالوكلاءToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAccountsOverview frm = new frmAccountsOverview();
+            frm.Show();
+        }
+
+        private void كمياتالموادToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmItemsOverview frm = new frmItemsOverview();
+            frm.Show();
+        }
+
+        private void إعدادتالبرنامجToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSettings frm = new frmSettings();
             frm.Show();
         }
     }

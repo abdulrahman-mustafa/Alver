@@ -28,13 +28,12 @@ namespace Alver.DAL
             this.Expenses = new ObservableListSource<Expense>();
             this.Funds = new ObservableListSource<Fund>();
             this.FundTransactions = new ObservableListSource<FundTransaction>();
-            this.Items = new ObservableListSource<Item>();
             this.Payments = new ObservableListSource<Payment>();
             this.Transactions = new ObservableListSource<Transaction>();
             this.Transfers = new ObservableListSource<Transfer>();
             this.Withdraws = new ObservableListSource<Withdraw>();
             this.Bills = new ObservableListSource<Bill>();
-            this.Bills1 = new ObservableListSource<Bill>();
+            this.Items = new ObservableListSource<Item>();
         }
     
         public int Id { get; set; }
@@ -75,8 +74,6 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<FundTransaction> FundTransactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Item> Items { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Payment> Payments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Transaction> Transactions { get; set; }
@@ -87,6 +84,6 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Bill> Bills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Bill> Bills1 { get; set; }
+        public virtual ObservableListSource<Item> Items { get; set; }
     }
 }

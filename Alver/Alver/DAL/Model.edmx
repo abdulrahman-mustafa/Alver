@@ -62,6 +62,20 @@
           <Property Name="LUD" Type="datetime" />
           <Property Name="PROTECTED" Type="bit" />
         </EntityType>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AlbumTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Declaration" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="LUD" Type="datetime" />
+          <Property Name="GUID" Type="uniqueidentifier" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hidden" Type="bit" />
+          <Property Name="PROTECTED" Type="bit" />
+        </EntityType>
         <EntityType Name="AppSettings">
           <Key>
             <PropertyRef Name="Id" />
@@ -88,6 +102,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CheckedOut" Type="bit" />
           <Property Name="BillType" Type="nvarchar" MaxLength="10" />
           <Property Name="AccountId" Type="int" />
           <Property Name="BillDate" Type="datetime" />
@@ -124,6 +139,28 @@
           <Property Name="Hidden" Type="bit" />
           <Property Name="Flag" Type="nvarchar" MaxLength="50" />
           <Property Name="GUID" Type="uniqueidentifier" />
+          <Property Name="LUD" Type="datetime" />
+          <Property Name="PROTECTED" Type="bit" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Motto" Type="nvarchar" MaxLength="150" />
+          <Property Name="Manager" Type="nvarchar" MaxLength="100" />
+          <Property Name="ManagerPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Accountant" Type="nvarchar" MaxLength="100" />
+          <Property Name="AccountantPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="LogoId" Type="int" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="GUID" Type="uniqueidentifier" />
+          <Property Name="Hidden" Type="bit" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="50" />
           <Property Name="LUD" Type="datetime" />
           <Property Name="PROTECTED" Type="bit" />
         </EntityType>
@@ -303,18 +340,33 @@
           <Property Name="Declaration" Type="nvarchar" MaxLength="1000" />
           <Property Name="GUID" Type="uniqueidentifier" />
         </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AlbumId" Type="int" />
+          <Property Name="ImageData" Type="varbinary(max)" />
+          <Property Name="ImageTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" />
+          <Property Name="Hidden" Type="bit" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="50" />
+          <Property Name="LUD" Type="datetime" />
+          <Property Name="PROTECTED" Type="bit" />
+        </EntityType>
         <EntityType Name="Item">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
           <Property Name="UnitId" Type="int" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="CurrencyId" Type="int" />
           <Property Name="SalePrice" Type="money" />
           <Property Name="PurchasePrice" Type="money" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
           <Property Name="Declaration" Type="nvarchar" MaxLength="500" />
           <Property Name="UserId" Type="int" />
           <Property Name="Hidden" Type="bit" />
@@ -532,6 +584,38 @@
           <Property Name="LUD" Type="datetime" />
           <Property Name="PROTECTED" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Alver.dbo.V_CLIENTS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_CLIENTS">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" MaxLength="100" />
+          <Property Name="USDAmount" Type="money" />
+          <Property Name="SYPAmount" Type="money" />
+          <Property Name="TLAmount" Type="money" />
+          <Property Name="EUROAmount" Type="money" />
+          <Property Name="SARAmount" Type="money" />
+          <Property Name="GRAND" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_STOCK">
+          <Key>
+            <PropertyRef Name="رقم_المادة" />
+          </Key>
+          <Property Name="رقم_المادة" Type="int" Nullable="false" />
+          <Property Name="اسم_المادة" Type="nvarchar" MaxLength="50" />
+          <Property Name="عدد_الكروزات_المتوفرة" Type="money" />
+          <Property Name="العملة" Type="int" />
+          <Property Name="سعر_شراء_الواحدة" Type="money" />
+          <Property Name="تكلفة الشراء" Type="money" />
+          <Property Name="سعر_مبيع_الواحدة" Type="money" />
+          <Property Name="مجموع المبيعات" Type="money" />
+          <Property Name="هامش_الربح_في_القطعة_الواحدة" Type="money" />
+          <Property Name="الربح_المتوقع" Type="money" />
+        </EntityType>
         <Association Name="FK_Account_AccountGroup">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
@@ -604,18 +688,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Bill_Currency1">
-          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
-          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Bill">
-              <PropertyRef Name="ForeginCurrencyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Bill_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
@@ -685,6 +757,18 @@
             </Principal>
             <Dependent Role="BillLines">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Images">
+          <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="LogoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -985,6 +1069,18 @@
             </Principal>
             <Dependent Role="FundTransaction">
               <PropertyRef Name="FundId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Album">
+          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="AlbumId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1386,9 +1482,11 @@
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountFund" EntityType="Self.AccountFund" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountGroup" EntityType="Self.AccountGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AppSettings" EntityType="Self.AppSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BillLines" EntityType="Self.BillLines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CurrencyBulletin" EntityType="Self.CurrencyBulletin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CurrencyExchange" EntityType="Self.CurrencyExchange" Schema="dbo" store:Type="Tables" />
@@ -1399,6 +1497,7 @@
           <EntitySet Name="ExpenseCategory" EntityType="Self.ExpenseCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fund" EntityType="Self.Fund" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FundTransaction" EntityType="Self.FundTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemCategory" EntityType="Self.ItemCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemFund" EntityType="Self.ItemFund" Schema="dbo" store:Type="Tables" />
@@ -1412,6 +1511,32 @@
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Withdraw" EntityType="Self.Withdraw" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_CLIENTS" EntityType="Self.V_CLIENTS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_CLIENTS].[AccountId] AS [AccountId], 
+    [V_CLIENTS].[Account] AS [Account], 
+    [V_CLIENTS].[USDAmount] AS [USDAmount], 
+    [V_CLIENTS].[SYPAmount] AS [SYPAmount], 
+    [V_CLIENTS].[TLAmount] AS [TLAmount], 
+    [V_CLIENTS].[EUROAmount] AS [EUROAmount], 
+    [V_CLIENTS].[SARAmount] AS [SARAmount], 
+    [V_CLIENTS].[GRAND] AS [GRAND]
+    FROM [dbo].[V_CLIENTS] AS [V_CLIENTS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_STOCK" EntityType="Self.V_STOCK" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_STOCK].[رقم_المادة] AS [رقم_المادة], 
+    [V_STOCK].[اسم_المادة] AS [اسم_المادة], 
+    [V_STOCK].[عدد_الكروزات_المتوفرة] AS [عدد_الكروزات_المتوفرة], 
+    [V_STOCK].[العملة] AS [العملة], 
+    [V_STOCK].[سعر_شراء_الواحدة] AS [سعر_شراء_الواحدة], 
+    [V_STOCK].[تكلفة الشراء] AS [تكلفة الشراء], 
+    [V_STOCK].[سعر_مبيع_الواحدة] AS [سعر_مبيع_الواحدة], 
+    [V_STOCK].[مجموع المبيعات] AS [مجموع المبيعات], 
+    [V_STOCK].[هامش_الربح_في_القطعة_الواحدة] AS [هامش_الربح_في_القطعة_الواحدة], 
+    [V_STOCK].[الربح_المتوقع] AS [الربح_المتوقع]
+    FROM [dbo].[V_STOCK] AS [V_STOCK]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Account_AccountGroup" Association="Self.FK_Account_AccountGroup">
             <End Role="AccountGroup" EntitySet="AccountGroup" />
             <End Role="Account" EntitySet="Account" />
@@ -1433,10 +1558,6 @@
             <End Role="Bill" EntitySet="Bill" />
           </AssociationSet>
           <AssociationSet Name="FK_Bill_Currency" Association="Self.FK_Bill_Currency">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="Bill" EntitySet="Bill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Bill_Currency1" Association="Self.FK_Bill_Currency1">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Bill" EntitySet="Bill" />
           </AssociationSet>
@@ -1463,6 +1584,10 @@
           <AssociationSet Name="FK_BillLines_User" Association="Self.FK_BillLines_User">
             <End Role="User" EntitySet="User" />
             <End Role="BillLines" EntitySet="BillLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Images" Association="Self.FK_Company_Images">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="Company" EntitySet="Company" />
           </AssociationSet>
           <AssociationSet Name="FK_Currency_User" Association="Self.FK_Currency_User">
             <End Role="User" EntitySet="User" />
@@ -1563,6 +1688,10 @@
           <AssociationSet Name="FK_FundTransaction_Fund" Association="Self.FK_FundTransaction_Fund">
             <End Role="Fund" EntitySet="Fund" />
             <End Role="FundTransaction" EntitySet="FundTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Album" Association="Self.FK_Images_Album">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Images" EntitySet="Images" />
           </AssociationSet>
           <AssociationSet Name="FK_Item_Currency" Association="Self.FK_Item_Currency">
             <End Role="Currency" EntitySet="Currency" />
@@ -1723,7 +1852,6 @@
           <EntitySet Name="ExpenseCategories" EntityType="AlverModel.ExpenseCategory" />
           <EntitySet Name="Funds" EntityType="AlverModel.Fund" />
           <EntitySet Name="FundTransactions" EntityType="AlverModel.FundTransaction" />
-          <EntitySet Name="Items" EntityType="AlverModel.Item" />
           <EntitySet Name="ItemCategories" EntityType="AlverModel.ItemCategory" />
           <EntitySet Name="ItemFunds" EntityType="AlverModel.ItemFund" />
           <EntitySet Name="ItemTransactions" EntityType="AlverModel.ItemTransaction" />
@@ -1804,10 +1932,6 @@
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="BillLine" EntitySet="BillLines" />
           </AssociationSet>
-          <AssociationSet Name="FK_BillLines_Item" Association="AlverModel.FK_BillLines_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="BillLine" EntitySet="BillLines" />
-          </AssociationSet>
           <AssociationSet Name="FK_BillLines_Unit" Association="AlverModel.FK_BillLines_Unit">
             <End Role="Unit" EntitySet="Units" />
             <End Role="BillLine" EntitySet="BillLines" />
@@ -1855,10 +1979,6 @@
           <AssociationSet Name="FK_FundTransaction_Currency" Association="AlverModel.FK_FundTransaction_Currency">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="FundTransaction" EntitySet="FundTransactions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_Currency" Association="AlverModel.FK_Item_Currency">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="Item" EntitySet="Items" />
           </AssociationSet>
           <AssociationSet Name="FK_Payment_Currency" Association="AlverModel.FK_Payment_Currency">
             <End Role="Currency" EntitySet="Currencies" />
@@ -1920,30 +2040,6 @@
             <End Role="Fund" EntitySet="Funds" />
             <End Role="FundTransaction" EntitySet="FundTransactions" />
           </AssociationSet>
-          <AssociationSet Name="FK_Item_ItemCategory" Association="AlverModel.FK_Item_ItemCategory">
-            <End Role="ItemCategory" EntitySet="ItemCategories" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_Unit" Association="AlverModel.FK_Item_Unit">
-            <End Role="Unit" EntitySet="Units" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_User" Association="AlverModel.FK_Item_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemFund_Item" Association="AlverModel.FK_ItemFund_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="ItemFund" EntitySet="ItemFunds" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemTransaction_Item" Association="AlverModel.FK_ItemTransaction_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="ItemTransaction" EntitySet="ItemTransactions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReceiptLines_Item" Association="AlverModel.FK_ReceiptLines_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="ReceiptLine" EntitySet="ReceiptLines" />
-          </AssociationSet>
           <AssociationSet Name="FK_ItemCategory_User" Association="AlverModel.FK_ItemCategory_User">
             <End Role="User" EntitySet="Users" />
             <End Role="ItemCategory" EntitySet="ItemCategories" />
@@ -1996,16 +2092,24 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Withdraw" EntitySet="Withdraws" />
           </AssociationSet>
+          <EntitySet Name="Albums" EntityType="AlverModel.Album" />
+          <EntitySet Name="Images" EntityType="AlverModel.Image" />
+          <AssociationSet Name="FK_Images_Album" Association="AlverModel.FK_Images_Album">
+            <End Role="Album" EntitySet="Albums" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <EntitySet Name="Companies" EntityType="AlverModel.Company" />
+          <AssociationSet Name="FK_Company_Images" Association="AlverModel.FK_Company_Images">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
           <EntitySet Name="Bills" EntityType="AlverModel.Bill" />
+          <EntitySet Name="Items" EntityType="AlverModel.Item" />
           <AssociationSet Name="FK_Bill_Account" Association="AlverModel.FK_Bill_Account">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Bill" EntitySet="Bills" />
           </AssociationSet>
           <AssociationSet Name="FK_Bill_Currency" Association="AlverModel.FK_Bill_Currency">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="Bill" EntitySet="Bills" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Bill_Currency1" Association="AlverModel.FK_Bill_Currency1">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Bill" EntitySet="Bills" />
           </AssociationSet>
@@ -2017,6 +2121,40 @@
             <End Role="Bill" EntitySet="Bills" />
             <End Role="BillLine" EntitySet="BillLines" />
           </AssociationSet>
+          <AssociationSet Name="FK_BillLines_Item" Association="AlverModel.FK_BillLines_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="BillLine" EntitySet="BillLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Currency" Association="AlverModel.FK_Item_Currency">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemCategory" Association="AlverModel.FK_Item_ItemCategory">
+            <End Role="ItemCategory" EntitySet="ItemCategories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Unit" Association="AlverModel.FK_Item_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_User" Association="AlverModel.FK_Item_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFund_Item" Association="AlverModel.FK_ItemFund_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemFund" EntitySet="ItemFunds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemTransaction_Item" Association="AlverModel.FK_ItemTransaction_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemTransaction" EntitySet="ItemTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptLines_Item" Association="AlverModel.FK_ReceiptLines_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ReceiptLine" EntitySet="ReceiptLines" />
+          </AssociationSet>
+          <EntitySet Name="V_CLIENTS" EntityType="AlverModel.V_CLIENTS" />
+          <EntitySet Name="V_STOCK" EntityType="AlverModel.V_STOCK" />
           </EntityContainer>
         <ComplexType Name="SP_ClientGrand_Result">
           <Property Type="String" Name="الصندوق" Nullable="true" MaxLength="50" />
@@ -2157,10 +2295,10 @@
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
           <NavigationProperty Name="Currency" Relationship="AlverModel.FK_BillLines_Currency" FromRole="BillLine" ToRole="Currency" />
-          <NavigationProperty Name="Item" Relationship="AlverModel.FK_BillLines_Item" FromRole="BillLine" ToRole="Item" />
           <NavigationProperty Name="Unit" Relationship="AlverModel.FK_BillLines_Unit" FromRole="BillLine" ToRole="Unit" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_BillLines_User" FromRole="BillLine" ToRole="User" />
           <NavigationProperty Name="Bill" Relationship="AlverModel.FK_BillLines_Bill" FromRole="BillLine" ToRole="Bill" />
+          <NavigationProperty Name="Item" Relationship="AlverModel.FK_BillLines_Item" FromRole="BillLine" ToRole="Item" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -2191,13 +2329,12 @@
           <NavigationProperty Name="Expenses" Relationship="AlverModel.FK_Expense_Currency" FromRole="Currency" ToRole="Expense" />
           <NavigationProperty Name="Funds" Relationship="AlverModel.FK_Fund_Currency" FromRole="Currency" ToRole="Fund" />
           <NavigationProperty Name="FundTransactions" Relationship="AlverModel.FK_FundTransaction_Currency" FromRole="Currency" ToRole="FundTransaction" />
-          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_Currency" FromRole="Currency" ToRole="Item" />
           <NavigationProperty Name="Payments" Relationship="AlverModel.FK_Payment_Currency" FromRole="Currency" ToRole="Payment" />
           <NavigationProperty Name="Transactions" Relationship="AlverModel.FK_Transaction_Currency" FromRole="Currency" ToRole="Transaction" />
           <NavigationProperty Name="Transfers" Relationship="AlverModel.FK_Transfer_Currency" FromRole="Currency" ToRole="Transfer" />
           <NavigationProperty Name="Withdraws" Relationship="AlverModel.FK_Withdraw_Currency" FromRole="Currency" ToRole="Withdraw" />
           <NavigationProperty Name="Bills" Relationship="AlverModel.FK_Bill_Currency" FromRole="Currency" ToRole="Bill" />
-          <NavigationProperty Name="Bills1" Relationship="AlverModel.FK_Bill_Currency1" FromRole="Currency" ToRole="Bill" />
+          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_Currency" FromRole="Currency" ToRole="Item" />
         </EntityType>
         <EntityType Name="CurrencyBulletin">
           <Key>
@@ -2384,34 +2521,6 @@
           <NavigationProperty Name="Currency" Relationship="AlverModel.FK_FundTransaction_Currency" FromRole="FundTransaction" ToRole="Currency" />
           <NavigationProperty Name="Fund" Relationship="AlverModel.FK_FundTransaction_Fund" FromRole="FundTransaction" ToRole="Fund" />
         </EntityType>
-        <EntityType Name="Item">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UnitId" Type="Int32" />
-          <Property Name="CategoryId" Type="Int32" />
-          <Property Name="CurrencyId" Type="Int32" />
-          <Property Name="SalePrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PurchasePrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Declaration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="Hidden" Type="Boolean" />
-          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GUID" Type="Guid" />
-          <Property Name="LUD" Type="DateTime" Precision="3" />
-          <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Item" FromRole="Item" ToRole="BillLine" />
-          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_Item_Currency" FromRole="Item" ToRole="Currency" />
-          <NavigationProperty Name="ItemCategory" Relationship="AlverModel.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
-          <NavigationProperty Name="Unit" Relationship="AlverModel.FK_Item_Unit" FromRole="Item" ToRole="Unit" />
-          <NavigationProperty Name="User" Relationship="AlverModel.FK_Item_User" FromRole="Item" ToRole="User" />
-          <NavigationProperty Name="ItemFunds" Relationship="AlverModel.FK_ItemFund_Item" FromRole="Item" ToRole="ItemFund" />
-          <NavigationProperty Name="ItemTransactions" Relationship="AlverModel.FK_ItemTransaction_Item" FromRole="Item" ToRole="ItemTransaction" />
-          <NavigationProperty Name="ReceiptLines" Relationship="AlverModel.FK_ReceiptLines_Item" FromRole="Item" ToRole="ReceiptLine" />
-        </EntityType>
         <EntityType Name="ItemCategory">
           <Key>
             <PropertyRef Name="Id" />
@@ -2425,8 +2534,8 @@
           <Property Name="GUID" Type="Guid" />
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_ItemCategory_User" FromRole="ItemCategory" ToRole="User" />
+          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
         </EntityType>
         <EntityType Name="ItemFund">
           <Key>
@@ -2445,9 +2554,9 @@
           <Property Name="GUID" Type="Guid" />
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ItemFund_Item" FromRole="ItemFund" ToRole="Item" />
           <NavigationProperty Name="Unit" Relationship="AlverModel.FK_ItemFund_Unit" FromRole="ItemFund" ToRole="Unit" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_ItemFund_User" FromRole="ItemFund" ToRole="User" />
+          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ItemFund_Item" FromRole="ItemFund" ToRole="Item" />
         </EntityType>
         <EntityType Name="ItemTransaction">
           <Key>
@@ -2462,8 +2571,8 @@
           <Property Name="RunningTotal" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Declaration" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="GUID" Type="Guid" />
-          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ItemTransaction_Item" FromRole="ItemTransaction" ToRole="Item" />
           <NavigationProperty Name="Unit" Relationship="AlverModel.FK_ItemTransaction_Unit" FromRole="ItemTransaction" ToRole="Unit" />
+          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ItemTransaction_Item" FromRole="ItemTransaction" ToRole="Item" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -2526,10 +2635,10 @@
           <Property Name="GUID" Type="Guid" />
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ReceiptLines_Item" FromRole="ReceiptLine" ToRole="Item" />
           <NavigationProperty Name="Receipt" Relationship="AlverModel.FK_ReceiptLines_Receipt" FromRole="ReceiptLine" ToRole="Receipt" />
           <NavigationProperty Name="Unit" Relationship="AlverModel.FK_ReceiptLines_Unit" FromRole="ReceiptLine" ToRole="Unit" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_ReceiptLines_User" FromRole="ReceiptLine" ToRole="User" />
+          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ReceiptLines_Item" FromRole="ReceiptLine" ToRole="Item" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -2606,11 +2715,11 @@
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
           <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Unit" FromRole="Unit" ToRole="BillLine" />
-          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_Unit" FromRole="Unit" ToRole="Item" />
           <NavigationProperty Name="ItemFunds" Relationship="AlverModel.FK_ItemFund_Unit" FromRole="Unit" ToRole="ItemFund" />
           <NavigationProperty Name="ItemTransactions" Relationship="AlverModel.FK_ItemTransaction_Unit" FromRole="Unit" ToRole="ItemTransaction" />
           <NavigationProperty Name="ReceiptLines" Relationship="AlverModel.FK_ReceiptLines_Unit" FromRole="Unit" ToRole="ReceiptLine" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_Unit_User" FromRole="Unit" ToRole="User" />
+          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_Unit" FromRole="Unit" ToRole="Item" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -2643,7 +2752,6 @@
           <NavigationProperty Name="Expenses" Relationship="AlverModel.FK_Expense_User" FromRole="User" ToRole="Expense" />
           <NavigationProperty Name="ExpenseCategories" Relationship="AlverModel.FK_ExpenseCategory_User" FromRole="User" ToRole="ExpenseCategory" />
           <NavigationProperty Name="Funds" Relationship="AlverModel.FK_Fund_User" FromRole="User" ToRole="Fund" />
-          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_User" FromRole="User" ToRole="Item" />
           <NavigationProperty Name="ItemCategories" Relationship="AlverModel.FK_ItemCategory_User" FromRole="User" ToRole="ItemCategory" />
           <NavigationProperty Name="ItemFunds" Relationship="AlverModel.FK_ItemFund_User" FromRole="User" ToRole="ItemFund" />
           <NavigationProperty Name="Payments" Relationship="AlverModel.FK_Payment_User" FromRole="User" ToRole="Payment" />
@@ -2654,6 +2762,7 @@
           <NavigationProperty Name="Units" Relationship="AlverModel.FK_Unit_User" FromRole="User" ToRole="Unit" />
           <NavigationProperty Name="Withdraws" Relationship="AlverModel.FK_Withdraw_User" FromRole="User" ToRole="Withdraw" />
           <NavigationProperty Name="Bills" Relationship="AlverModel.FK_Bill_User" FromRole="User" ToRole="Bill" />
+          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_User" FromRole="User" ToRole="Item" />
         </EntityType>
         <EntityType Name="Withdraw">
           <Key>
@@ -2882,18 +2991,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BillLines_Item">
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
-          <End Type="AlverModel.BillLine" Role="BillLine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BillLine">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BillLines_Unit">
           <End Type="AlverModel.Unit" Role="Unit" Multiplicity="0..1" />
           <End Type="AlverModel.BillLine" Role="BillLine" Multiplicity="*" />
@@ -3034,18 +3131,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FundTransaction">
-              <PropertyRef Name="CurrencyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_Currency">
-          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Item">
               <PropertyRef Name="CurrencyId" />
             </Dependent>
           </ReferentialConstraint>
@@ -3230,78 +3315,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Item_ItemCategory">
-          <End Type="AlverModel.ItemCategory" Role="ItemCategory" Multiplicity="0..1" />
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ItemCategory">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_Unit">
-          <End Type="AlverModel.Unit" Role="Unit" Multiplicity="0..1" />
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="UnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_User">
-          <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ItemFund_Item">
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
-          <End Type="AlverModel.ItemFund" Role="ItemFund" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ItemFund">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ItemTransaction_Item">
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
-          <End Type="AlverModel.ItemTransaction" Role="ItemTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ItemTransaction">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReceiptLines_Item">
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
-          <End Type="AlverModel.ReceiptLine" Role="ReceiptLine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ReceiptLine">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ItemCategory_User">
           <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
           <End Type="AlverModel.ItemCategory" Role="ItemCategory" Multiplicity="*" />
@@ -3458,11 +3471,91 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlbumTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Declaration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Images" Relationship="AlverModel.FK_Images_Album" FromRole="Album" ToRole="Image" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlbumId" Type="Int32" />
+          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Album" Relationship="AlverModel.FK_Images_Album" FromRole="Image" ToRole="Album" />
+          <NavigationProperty Name="Companies" Relationship="AlverModel.FK_Company_Images" FromRole="Image" ToRole="Company" />
+        </EntityType>
+        <Association Name="FK_Images_Album">
+          <End Type="AlverModel.Album" Role="Album" Multiplicity="0..1" />
+          <End Type="AlverModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="AlbumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Motto" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Manager" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Accountant" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AccountantPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogoId" Type="Int32" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Image" Relationship="AlverModel.FK_Company_Images" FromRole="Company" ToRole="Image" />
+        </EntityType>
+        <Association Name="FK_Company_Images">
+          <End Type="AlverModel.Image" Role="Image" Multiplicity="0..1" />
+          <End Type="AlverModel.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="LogoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Bill">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CheckedOut" Type="Boolean" />
           <Property Name="BillType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="AccountId" Type="Int32" />
           <Property Name="BillDate" Type="DateTime" Precision="3" />
@@ -3484,9 +3577,36 @@
           <Property Name="PROTECTED" Type="Boolean" />
           <NavigationProperty Name="Account" Relationship="AlverModel.FK_Bill_Account" FromRole="Bill" ToRole="Account" />
           <NavigationProperty Name="Currency" Relationship="AlverModel.FK_Bill_Currency" FromRole="Bill" ToRole="Currency" />
-          <NavigationProperty Name="Currency1" Relationship="AlverModel.FK_Bill_Currency1" FromRole="Bill" ToRole="Currency" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_Bill_User" FromRole="Bill" ToRole="User" />
           <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Bill" FromRole="Bill" ToRole="BillLine" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="SalePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Declaration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Item" FromRole="Item" ToRole="BillLine" />
+          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_Item_Currency" FromRole="Item" ToRole="Currency" />
+          <NavigationProperty Name="ItemCategory" Relationship="AlverModel.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
+          <NavigationProperty Name="Unit" Relationship="AlverModel.FK_Item_Unit" FromRole="Item" ToRole="Unit" />
+          <NavigationProperty Name="User" Relationship="AlverModel.FK_Item_User" FromRole="Item" ToRole="User" />
+          <NavigationProperty Name="ItemFunds" Relationship="AlverModel.FK_ItemFund_Item" FromRole="Item" ToRole="ItemFund" />
+          <NavigationProperty Name="ItemTransactions" Relationship="AlverModel.FK_ItemTransaction_Item" FromRole="Item" ToRole="ItemTransaction" />
+          <NavigationProperty Name="ReceiptLines" Relationship="AlverModel.FK_ReceiptLines_Item" FromRole="Item" ToRole="ReceiptLine" />
         </EntityType>
         <Association Name="FK_Bill_Account">
           <End Type="AlverModel.Account" Role="Account" Multiplicity="0..1" />
@@ -3509,18 +3629,6 @@
             </Principal>
             <Dependent Role="Bill">
               <PropertyRef Name="CurrencyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Bill_Currency1">
-          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="AlverModel.Bill" Role="Bill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Bill">
-              <PropertyRef Name="ForeginCurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3548,6 +3656,130 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BillLines_Item">
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="AlverModel.BillLine" Role="BillLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BillLine">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Currency">
+          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemCategory">
+          <End Type="AlverModel.ItemCategory" Role="ItemCategory" Multiplicity="0..1" />
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Unit">
+          <End Type="AlverModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_User">
+          <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFund_Item">
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="AlverModel.ItemFund" Role="ItemFund" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemFund">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemTransaction_Item">
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="AlverModel.ItemTransaction" Role="ItemTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemTransaction">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptLines_Item">
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="AlverModel.ReceiptLine" Role="ReceiptLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceiptLine">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="V_CLIENTS">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="USDAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SYPAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TLAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EUROAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SARAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GRAND" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="V_STOCK">
+          <Key>
+            <PropertyRef Name="رقم_المادة" />
+          </Key>
+          <Property Name="رقم_المادة" Type="Int32" Nullable="false" />
+          <Property Name="اسم_المادة" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="عدد_الكروزات_المتوفرة" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="العملة" Type="Int32" />
+          <Property Name="سعر_شراء_الواحدة" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="تكلفة_الشراء" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="سعر_مبيع_الواحدة" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="مجموع_المبيعات" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="هامش_الربح_في_القطعة_الواحدة" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="الربح_المتوقع" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3878,27 +4110,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="AlverModel.Item">
-              <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
-                <ScalarProperty Name="LUD" ColumnName="LUD" />
-                <ScalarProperty Name="GUID" ColumnName="GUID" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
-                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
-                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
-                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ItemCategories">
             <EntityTypeMapping TypeName="AlverModel.ItemCategory">
               <MappingFragment StoreEntitySet="ItemCategory">
@@ -4120,6 +4331,60 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Albums">
+            <EntityTypeMapping TypeName="AlverModel.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+                <ScalarProperty Name="AlbumTitle" ColumnName="AlbumTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="AlverModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ImageTitle" ColumnName="ImageTitle" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="AlverModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LogoId" ColumnName="LogoId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AccountantPhone" ColumnName="AccountantPhone" />
+                <ScalarProperty Name="Accountant" ColumnName="Accountant" />
+                <ScalarProperty Name="ManagerPhone" ColumnName="ManagerPhone" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="Motto" ColumnName="Motto" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Bills">
             <EntityTypeMapping TypeName="AlverModel.Bill">
               <MappingFragment StoreEntitySet="Bill">
@@ -4142,7 +4407,59 @@
                 <ScalarProperty Name="BillDate" ColumnName="BillDate" />
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="CheckedOut" ColumnName="CheckedOut" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="AlverModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_CLIENTS">
+            <EntityTypeMapping TypeName="AlverModel.V_CLIENTS">
+              <MappingFragment StoreEntitySet="V_CLIENTS">
+                <ScalarProperty Name="GRAND" ColumnName="GRAND" />
+                <ScalarProperty Name="SARAmount" ColumnName="SARAmount" />
+                <ScalarProperty Name="EUROAmount" ColumnName="EUROAmount" />
+                <ScalarProperty Name="TLAmount" ColumnName="TLAmount" />
+                <ScalarProperty Name="SYPAmount" ColumnName="SYPAmount" />
+                <ScalarProperty Name="USDAmount" ColumnName="USDAmount" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_STOCK">
+            <EntityTypeMapping TypeName="AlverModel.V_STOCK">
+              <MappingFragment StoreEntitySet="V_STOCK">
+                <ScalarProperty Name="الربح_المتوقع" ColumnName="الربح_المتوقع" />
+                <ScalarProperty Name="هامش_الربح_في_القطعة_الواحدة" ColumnName="هامش_الربح_في_القطعة_الواحدة" />
+                <ScalarProperty Name="مجموع_المبيعات" ColumnName="مجموع المبيعات" />
+                <ScalarProperty Name="سعر_مبيع_الواحدة" ColumnName="سعر_مبيع_الواحدة" />
+                <ScalarProperty Name="تكلفة_الشراء" ColumnName="تكلفة الشراء" />
+                <ScalarProperty Name="سعر_شراء_الواحدة" ColumnName="سعر_شراء_الواحدة" />
+                <ScalarProperty Name="العملة" ColumnName="العملة" />
+                <ScalarProperty Name="عدد_الكروزات_المتوفرة" ColumnName="عدد_الكروزات_المتوفرة" />
+                <ScalarProperty Name="اسم_المادة" ColumnName="اسم_المادة" />
+                <ScalarProperty Name="رقم_المادة" ColumnName="رقم_المادة" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

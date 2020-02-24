@@ -42,7 +42,6 @@ namespace Alver.DAL
         public virtual DbSet<ExpenseCategory> ExpenseCategories { get; set; }
         public virtual DbSet<Fund> Funds { get; set; }
         public virtual DbSet<FundTransaction> FundTransactions { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemCategory> ItemCategories { get; set; }
         public virtual DbSet<ItemFund> ItemFunds { get; set; }
         public virtual DbSet<ItemTransaction> ItemTransactions { get; set; }
@@ -55,7 +54,13 @@ namespace Alver.DAL
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Withdraw> Withdraws { get; set; }
+        public virtual DbSet<Album> Albums { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<V_CLIENTS> V_CLIENTS { get; set; }
+        public virtual DbSet<V_STOCK> V_STOCK { get; set; }
     
         public virtual int CreateClientFunds(Nullable<int> clientId)
         {

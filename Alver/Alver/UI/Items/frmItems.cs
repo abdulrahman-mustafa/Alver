@@ -23,24 +23,19 @@ namespace Alver.UI.Accounts
             InitializeComponent();
             _item = item == null ? (new Item()) : item;
         }
-        private void accounts_InfoBindingNavigatorSaveItem_Click(object sender, System.EventArgs e)
+        private void AccountBindingNavigatorSaveItem_Click(object sender, System.EventArgs e)
         {
         }
         private void frmClients_Load(object sender, System.EventArgs e)
         {
-            //db = new dbEntities();
-            //db.Configuration.ProxyCreationEnabled = false;
             LoadData();
-            //clearForm();
             SearchBox.Focus();
         }
-
         private void LoadData()
         {
             load();
             ColorizeDgv();
         }
-
         private void load()
         {
             using (dbEntities db = new dbEntities())
@@ -49,6 +44,8 @@ namespace Alver.UI.Accounts
                 db.ItemFunds.AsNoTracking().Load();
                 db.ItemCategories.AsNoTracking().Load();
                 db.Units.AsNoTracking().Load();
+                db.Currencies.AsNoTracking().Load();
+                currencyBS.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
                 itemsBS.DataSource = db.Items.AsNoTracking().AsQueryable().ToList();
                 unitsBS.DataSource = db.Units.AsNoTracking().AsQueryable().ToList();
                 ItemCategoriesBS.DataSource = db.ItemCategories.AsNoTracking().AsQueryable().ToList();
@@ -67,14 +64,14 @@ namespace Alver.UI.Accounts
         {
             Misc.Utilities.ComboBoxBlackBGFix((DataGridView)sender, e);
         }
-        private void accounts_InfoBindingSource_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+        private void AccountBindingSource_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
         }
-        private void accounts_InfoBindingSource_CurrentChanged(object sender, EventArgs e)
+        private void AccountBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             try
             {
-                //Account _client = accounts_InfoBindingSource.Current as Account;
+                //Account _client = AccountBindingSource.Current as Account;
                 //if (_client != null)
                 //{
                 //    //remittancesWageBindingSource.DataSource = db.Remittances_Wage.Where(
@@ -95,20 +92,14 @@ namespace Alver.UI.Accounts
 
             }
         }
-
         private void accounts_FundDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            //int _index = dataGridViewTextBoxColumn5.Index;
-            //Misc.Utilities.ColorizeDecimalDGV(_dgv, _index);
             ColorizeDgv();
         }
-
         private void balancesDgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ColorizeDgv();
-
         }
-
         private void Search(string _keyword)
         {
             using (dbEntities db = new dbEntities())
@@ -129,20 +120,17 @@ namespace Alver.UI.Accounts
         {
             Search(SearchBox.Text);
         }
-
         private void toolStripTextBox4_Click(object sender, EventArgs e)
         {
 
         }
-
         private void bindingNavigator3_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void toolStripTextBox4_TextChanged(object sender, EventArgs e)
         {
-            //Account _client = accounts_InfoBindingSource.Current as Account;
+            //Account _client = AccountBindingSource.Current as Account;
             //string Keyword = toolStripTextBox4.Text;
             //if (string.IsNullOrEmpty(Keyword) || _client.Id == 0)
             //{
@@ -156,11 +144,10 @@ namespace Alver.UI.Accounts
             //    x.ClientId == _client.Id).ToList();
             //}
         }
-        private void accounts_InfoDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void AccountDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ColorizeDgv();
         }
-
         private void ColorizeDgv()
         {
             //int _index = DeactivatedColumn.Index;
@@ -169,12 +156,11 @@ namespace Alver.UI.Accounts
             //_index = balanceDirectionDataGridViewTextBoxColumn.Index;
             //Misc.Utilities.ColorizeStringDGV(accounts_FundDataGridView, _index, "لكم");
         }
-
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             //this.Cursor = Cursors.WaitCursor;
             //int _clientPosition, _fundPosition;
-            //_clientPosition = accounts_InfoBindingSource.Position;
+            //_clientPosition = AccountBindingSource.Position;
             //_fundPosition = accounts_FundBindingSource.Position;
             //db.Configuration.LazyLoadingEnabled = false;
             //LoadData();
@@ -184,28 +170,24 @@ namespace Alver.UI.Accounts
             //}
             //db.Configuration.LazyLoadingEnabled = true;
             //ColorizeDgv();
-            //accounts_InfoBindingSource.Position = _clientPosition;
+            //AccountBindingSource.Position = _clientPosition;
             //accounts_FundBindingSource.Position = _fundPosition;
             //accountsdgv.DoubleBuffered(true);
             //this.Cursor = Cursors.Default;
         }
-
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
 
         }
-
         private void frmClients_FormClosing(object sender, FormClosingEventArgs e)
         {
             itemsBS.DataSource = null;
             itemsdgv.DataSource = null;
         }
-
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
 
         }
-
         private void accounts_FundDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -217,7 +199,6 @@ namespace Alver.UI.Accounts
             }
             catch (Exception ex) { }
         }
-
         private void frmClients_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.R && e.Control)
@@ -226,25 +207,22 @@ namespace Alver.UI.Accounts
             }
             else if (e.KeyCode == Keys.S && e.Control)
             {
-                //accounts_InfoBindingNavigatorSaveItem_Click_1(null, null);
+                //AccountBindingNavigatorSaveItem_Click_1(null, null);
             }
             else if (e.KeyCode == Keys.P && e.Control)
             {
                 //toolStripButton7_Click(null, null);
             }
         }
-
         private void SearchBox_Click(object sender, EventArgs e)
         {
 
         }
-
         private void اكسلToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (itemsdgv.Rows.Count > 0)
                 itemsdgv.ExportToExcel();
         }
-
         private void itemsBS_CurrentChanged(object sender, EventArgs e)
         {
             try
@@ -263,11 +241,11 @@ namespace Alver.UI.Accounts
 
             }
         }
-
         private void addbtn_Click(object sender, EventArgs e)
         {
             frmItem frm = new frmItem();
             frm.ShowDialog();
+            LoadData();
 
         }
         private void DeleteItem()
@@ -333,13 +311,11 @@ namespace Alver.UI.Accounts
             }
             deletebtn.Enabled = true;
         }
-
         private void deletebtn_Click(object sender, EventArgs e)
         {
             DeleteItem();
             LoadData();
         }
-
         private void تعديلالوكيلToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -357,10 +333,19 @@ namespace Alver.UI.Accounts
                 MSGs.ErrorMessage(ex);
             }
         }
-
         private void refreshbtn_Click(object sender, EventArgs e)
         {
             LoadData();
+
+        }
+
+        private void itemsdgv_DoubleClick(object sender, EventArgs e)
+        {
+            تعديلالوكيلToolStripMenuItem_Click(null,null);
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
 
         }
     }

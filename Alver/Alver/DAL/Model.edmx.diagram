@@ -4,35 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="eec0443478b44d53ac7b4049cdfd60d1" Name="Diagram1">
-        <EntityTypeShape EntityType="AlverModel.Account" Width="1.5" PointX="8.25" PointY="45.875" />
-        <EntityTypeShape EntityType="AlverModel.AccountFund" Width="1.5" PointX="16.5" PointY="48" />
-        <EntityTypeShape EntityType="AlverModel.AccountGroup" Width="1.5" PointX="6" PointY="32.625" />
+      <Diagram DiagramId="eec0443478b44d53ac7b4049cdfd60d1" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="AlverModel.Account" Width="1.5" PointX="8.25" PointY="46" />
+        <EntityTypeShape EntityType="AlverModel.AccountFund" Width="1.5" PointX="13.5" PointY="44.25" />
+        <EntityTypeShape EntityType="AlverModel.AccountGroup" Width="1.5" PointX="6" PointY="45.75" />
         <EntityTypeShape EntityType="AlverModel.AppSetting" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="AlverModel.BillLine" Width="1.5" PointX="18.75" PointY="47.625" />
-        <EntityTypeShape EntityType="AlverModel.Currency" Width="1.5" PointX="5.25" PointY="61.625" />
-        <EntityTypeShape EntityType="AlverModel.CurrencyBulletin" Width="1.5" PointX="7.5" PointY="91.25" />
-        <EntityTypeShape EntityType="AlverModel.CurrencyExchange" Width="1.5" PointX="5.25" PointY="42.25" />
-        <EntityTypeShape EntityType="AlverModel.CurrencyExchangeOperation" Width="1.5" PointX="7.5" PointY="53.875" />
-        <EntityTypeShape EntityType="AlverModel.Exchange" Width="1.5" PointX="10.5" PointY="57.375" />
-        <EntityTypeShape EntityType="AlverModel.ExchangeFund" Width="1.5" PointX="18.75" PointY="54" />
-        <EntityTypeShape EntityType="AlverModel.Expense" Width="1.5" PointX="13.5" PointY="53" />
-        <EntityTypeShape EntityType="AlverModel.ExpenseCategory" Width="1.5" PointX="5.25" PointY="46.375" />
-        <EntityTypeShape EntityType="AlverModel.Fund" Width="1.5" PointX="7.5" PointY="60" />
-        <EntityTypeShape EntityType="AlverModel.FundTransaction" Width="1.5" PointX="9.75" PointY="63.875" />
-        <EntityTypeShape EntityType="AlverModel.Item" Width="1.5" PointX="10.5" PointY="50.25" />
-        <EntityTypeShape EntityType="AlverModel.ItemCategory" Width="1.5" PointX="5.25" PointY="57.75" />
-        <EntityTypeShape EntityType="AlverModel.ItemFund" Width="1.5" PointX="15.75" PointY="42.375" />
-        <EntityTypeShape EntityType="AlverModel.ItemTransaction" Width="1.5" PointX="12.75" PointY="44.875" />
-        <EntityTypeShape EntityType="AlverModel.Payment" Width="1.5" PointX="16.5" PointY="59.75" />
-        <EntityTypeShape EntityType="AlverModel.Receipt" Width="1.5" PointX="10.5" PointY="45.125" />
-        <EntityTypeShape EntityType="AlverModel.ReceiptLine" Width="1.5" PointX="12.75" PointY="39.375" />
-        <EntityTypeShape EntityType="AlverModel.Role" Width="1.5" PointX="0.75" PointY="47.875" />
-        <EntityTypeShape EntityType="AlverModel.Transaction" Width="1.5" PointX="13.5" PointY="48.75" />
-        <EntityTypeShape EntityType="AlverModel.Transfer" Width="1.5" PointX="21.75" PointY="52.125" />
-        <EntityTypeShape EntityType="AlverModel.Unit" Width="1.5" PointX="5.25" PointY="37.25" />
-        <EntityTypeShape EntityType="AlverModel.User" Width="1.5" PointX="3" PointY="45.125" />
-        <EntityTypeShape EntityType="AlverModel.Withdraw" Width="1.5" PointX="16.5" PointY="53.75" />
+        <EntityTypeShape EntityType="AlverModel.BillLine" Width="1.5" PointX="21.75" PointY="45" />
+        <EntityTypeShape EntityType="AlverModel.Currency" Width="1.5" PointX="5.25" PointY="50" />
+        <EntityTypeShape EntityType="AlverModel.CurrencyBulletin" Width="1.5" PointX="7.5" PointY="67.375" />
+        <EntityTypeShape EntityType="AlverModel.CurrencyExchange" Width="1.5" PointX="5.25" PointY="61.75" />
+        <EntityTypeShape EntityType="AlverModel.CurrencyExchangeOperation" Width="1.5" PointX="13.5" PointY="57.625" />
+        <EntityTypeShape EntityType="AlverModel.Exchange" Width="1.5" PointX="10.5" PointY="48.75" />
+        <EntityTypeShape EntityType="AlverModel.ExchangeFund" Width="1.5" PointX="18.75" PointY="54.75" />
+        <EntityTypeShape EntityType="AlverModel.Expense" Width="1.5" PointX="10.5" PointY="55.25" />
+        <EntityTypeShape EntityType="AlverModel.ExpenseCategory" Width="1.5" PointX="5.25" PointY="57.875" />
+        <EntityTypeShape EntityType="AlverModel.Fund" Width="1.5" PointX="7.5" PointY="54.25" />
+        <EntityTypeShape EntityType="AlverModel.FundTransaction" Width="1.5" PointX="15.75" PointY="59.5" />
+        <EntityTypeShape EntityType="AlverModel.ItemCategory" Width="1.5" PointX="5.25" PointY="65.875" />
+        <EntityTypeShape EntityType="AlverModel.ItemFund" Width="1.5" PointX="18.75" PointY="39.625" />
+        <EntityTypeShape EntityType="AlverModel.ItemTransaction" Width="1.5" PointX="18.75" PointY="45.125" />
+        <EntityTypeShape EntityType="AlverModel.Payment" Width="1.5" PointX="16.5" PointY="49" />
+        <EntityTypeShape EntityType="AlverModel.Receipt" Width="1.5" PointX="16.5" PointY="54.375" />
+        <EntityTypeShape EntityType="AlverModel.ReceiptLine" Width="1.5" PointX="21.75" PointY="39.75" />
+        <EntityTypeShape EntityType="AlverModel.Role" Width="1.5" PointX="0.75" PointY="48.125" />
+        <EntityTypeShape EntityType="AlverModel.Transaction" Width="1.5" PointX="10.5" PointY="44" />
+        <EntityTypeShape EntityType="AlverModel.Transfer" Width="1.5" PointX="21.75" PointY="50.875" />
+        <EntityTypeShape EntityType="AlverModel.Unit" Width="1.5" PointX="5.25" PointY="37.375" />
+        <EntityTypeShape EntityType="AlverModel.User" Width="1.5" PointX="3" PointY="45.25" />
+        <EntityTypeShape EntityType="AlverModel.Withdraw" Width="1.5" PointX="19.5" PointY="49" />
         <AssociationConnector Association="AlverModel.FK_Account_AccountGroup" />
         <AssociationConnector Association="AlverModel.FK_Account_User" />
         <AssociationConnector Association="AlverModel.FK_AccountFund_Account" />
@@ -50,7 +49,6 @@
         <AssociationConnector Association="AlverModel.FK_Transfer_AccountFund" />
         <AssociationConnector Association="AlverModel.FK_Transfer_AccountFund1" />
         <AssociationConnector Association="AlverModel.FK_BillLines_Currency" />
-        <AssociationConnector Association="AlverModel.FK_BillLines_Item" />
         <AssociationConnector Association="AlverModel.FK_BillLines_Unit" />
         <AssociationConnector Association="AlverModel.FK_BillLines_User" />
         <AssociationConnector Association="AlverModel.FK_Currency_User" />
@@ -63,7 +61,6 @@
         <AssociationConnector Association="AlverModel.FK_Expense_Currency" />
         <AssociationConnector Association="AlverModel.FK_Fund_Currency" />
         <AssociationConnector Association="AlverModel.FK_FundTransaction_Currency" />
-        <AssociationConnector Association="AlverModel.FK_Item_Currency" />
         <AssociationConnector Association="AlverModel.FK_Payment_Currency" />
         <AssociationConnector Association="AlverModel.FK_Transaction_Currency" />
         <AssociationConnector Association="AlverModel.FK_Transfer_Currency" />
@@ -79,12 +76,6 @@
         <AssociationConnector Association="AlverModel.FK_ExpenseCategory_User" />
         <AssociationConnector Association="AlverModel.FK_Fund_User" />
         <AssociationConnector Association="AlverModel.FK_FundTransaction_Fund" />
-        <AssociationConnector Association="AlverModel.FK_Item_ItemCategory" />
-        <AssociationConnector Association="AlverModel.FK_Item_Unit" />
-        <AssociationConnector Association="AlverModel.FK_Item_User" />
-        <AssociationConnector Association="AlverModel.FK_ItemFund_Item" />
-        <AssociationConnector Association="AlverModel.FK_ItemTransaction_Item" />
-        <AssociationConnector Association="AlverModel.FK_ReceiptLines_Item" />
         <AssociationConnector Association="AlverModel.FK_ItemCategory_User" />
         <AssociationConnector Association="AlverModel.FK_ItemFund_Unit" />
         <AssociationConnector Association="AlverModel.FK_ItemFund_User" />
@@ -98,12 +89,27 @@
         <AssociationConnector Association="AlverModel.FK_Transfer_User" />
         <AssociationConnector Association="AlverModel.FK_Unit_User" />
         <AssociationConnector Association="AlverModel.FK_Withdraw_User" />
-        <EntityTypeShape EntityType="AlverModel.Bill" Width="1.5" PointX="13.5" PointY="58" />
+        <EntityTypeShape EntityType="AlverModel.Album" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="AlverModel.Image" Width="1.5" PointX="5.625" PointY="5.5" />
+        <AssociationConnector Association="AlverModel.FK_Images_Album" />
+        <EntityTypeShape EntityType="AlverModel.Company" Width="1.5" PointX="7.875" PointY="4.875" />
+        <AssociationConnector Association="AlverModel.FK_Company_Images" />
+        <EntityTypeShape EntityType="AlverModel.Bill" Width="1.5" PointX="13.5" PointY="50.25" />
+        <EntityTypeShape EntityType="AlverModel.Item" Width="1.5" PointX="7.5" PointY="59.5" />
         <AssociationConnector Association="AlverModel.FK_Bill_Account" />
         <AssociationConnector Association="AlverModel.FK_Bill_Currency" />
-        <AssociationConnector Association="AlverModel.FK_Bill_Currency1" />
         <AssociationConnector Association="AlverModel.FK_Bill_User" />
         <AssociationConnector Association="AlverModel.FK_BillLines_Bill" />
+        <AssociationConnector Association="AlverModel.FK_BillLines_Item" />
+        <AssociationConnector Association="AlverModel.FK_Item_Currency" />
+        <AssociationConnector Association="AlverModel.FK_Item_ItemCategory" />
+        <AssociationConnector Association="AlverModel.FK_Item_Unit" />
+        <AssociationConnector Association="AlverModel.FK_Item_User" />
+        <AssociationConnector Association="AlverModel.FK_ItemFund_Item" />
+        <AssociationConnector Association="AlverModel.FK_ItemTransaction_Item" />
+        <AssociationConnector Association="AlverModel.FK_ReceiptLines_Item" />
+        <EntityTypeShape EntityType="AlverModel.V_CLIENTS" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AlverModel.V_STOCK" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

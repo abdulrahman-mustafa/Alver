@@ -308,7 +308,7 @@ namespace Alver.UI.Funds
         }
         private void addClientpb_Click(object sender, EventArgs e)
         {
-            (new frmClients(null)).ShowDialog();
+            (new frmAccounts(null)).ShowDialog();
             LoadData();
         }
         private void currencyIdComboBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -279,7 +279,7 @@ namespace Alver.UI.Accounts.AccountsPayments
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            Exporter.ExportToExcel(dgv, "دفعات الوكلاء");
+            
         }
 
         private void اكسلToolStripMenuItem_Click(object sender, EventArgs e)

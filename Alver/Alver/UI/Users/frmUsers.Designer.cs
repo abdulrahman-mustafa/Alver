@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsers));
             this.users_UserBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.users_UserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -58,11 +57,12 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.users_UserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingNavigator)).BeginInit();
             this.users_UserBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // users_UserBindingNavigator
@@ -95,19 +95,14 @@
             this.users_UserBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.users_UserBindingNavigator.Name = "users_UserBindingNavigator";
             this.users_UserBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.users_UserBindingNavigator.Size = new System.Drawing.Size(907, 27);
+            this.users_UserBindingNavigator.Size = new System.Drawing.Size(814, 27);
             this.users_UserBindingNavigator.TabIndex = 0;
             this.users_UserBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // users_UserBindingSource
-            // 
-            this.users_UserBindingSource.DataSource = typeof(Alver.DAL.User);
-            this.users_UserBindingSource.CurrentChanged += new System.EventHandler(this.UserBindingSource_CurrentChanged);
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(87, 24);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(68, 24);
             this.bindingNavigatorCountItem.Text = " من أصل {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -138,6 +133,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 27);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -173,33 +169,37 @@
             // 
             // adduserbtn
             // 
+            this.adduserbtn.Image = global::Alver.Properties.Resources.adduser;
             this.adduserbtn.Name = "adduserbtn";
             this.adduserbtn.RightToLeftAutoMirrorImage = true;
-            this.adduserbtn.Size = new System.Drawing.Size(109, 24);
+            this.adduserbtn.Size = new System.Drawing.Size(105, 24);
             this.adduserbtn.Text = "إضافة مستخدم";
             this.adduserbtn.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // changepasswordbtn
             // 
+            this.changepasswordbtn.Image = global::Alver.Properties.Resources.changepassword;
             this.changepasswordbtn.Name = "changepasswordbtn";
             this.changepasswordbtn.RightToLeftAutoMirrorImage = true;
-            this.changepasswordbtn.Size = new System.Drawing.Size(118, 24);
+            this.changepasswordbtn.Size = new System.Drawing.Size(113, 24);
             this.changepasswordbtn.Text = "تغيير كلمة المرور";
             this.changepasswordbtn.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // deleteuserbtn
             // 
+            this.deleteuserbtn.Image = global::Alver.Properties.Resources.deleteuser;
             this.deleteuserbtn.Name = "deleteuserbtn";
             this.deleteuserbtn.RightToLeftAutoMirrorImage = true;
-            this.deleteuserbtn.Size = new System.Drawing.Size(111, 24);
+            this.deleteuserbtn.Size = new System.Drawing.Size(107, 24);
             this.deleteuserbtn.Text = "حذف المستخدم";
             this.deleteuserbtn.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // savebtn
             // 
+            this.savebtn.Image = global::Alver.Properties.Resources.edituser;
             this.savebtn.Name = "savebtn";
-            this.savebtn.Size = new System.Drawing.Size(106, 24);
-            this.savebtn.Text = "حفظ التعديلات";
+            this.savebtn.Size = new System.Drawing.Size(111, 24);
+            this.savebtn.Text = "تعديل المستخدم";
             this.savebtn.Click += new System.EventHandler(this.UserBindingNavigatorSaveItem_Click);
             // 
             // exportbtn
@@ -207,28 +207,30 @@
             this.exportbtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.اكسلToolStripMenuItem,
             this.pDFToolStripMenuItem});
+            this.exportbtn.Image = global::Alver.Properties.Resources.export;
             this.exportbtn.Name = "exportbtn";
-            this.exportbtn.Size = new System.Drawing.Size(62, 24);
+            this.exportbtn.Size = new System.Drawing.Size(71, 24);
             this.exportbtn.Text = "تصدير";
             // 
             // اكسلToolStripMenuItem
             // 
+            this.اكسلToolStripMenuItem.Image = global::Alver.Properties.Resources.xls;
             this.اكسلToolStripMenuItem.Name = "اكسلToolStripMenuItem";
-            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
+            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.اكسلToolStripMenuItem.Text = "اكسل";
             this.اكسلToolStripMenuItem.Click += new System.EventHandler(this.اكسلToolStripMenuItem_Click);
             // 
             // pDFToolStripMenuItem
             // 
+            this.pDFToolStripMenuItem.Image = global::Alver.Properties.Resources.pdf;
             this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.pDFToolStripMenuItem.Text = "PDF";
             // 
             // dgv
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
-            this.dgv.AllowUserToOrderColumns = true;
             this.dgv.AutoGenerateColumns = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -250,10 +252,12 @@
             this.dgv.Location = new System.Drawing.Point(0, 27);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
             this.dgv.RowTemplate.Height = 26;
-            this.dgv.Size = new System.Drawing.Size(907, 450);
+            this.dgv.Size = new System.Drawing.Size(814, 450);
             this.dgv.TabIndex = 1;
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
+            this.dgv.DoubleClick += new System.EventHandler(this.UserBindingNavigatorSaveItem_Click);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -265,6 +269,7 @@
             this.dataGridViewTextBoxColumn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dataGridViewTextBoxColumn2.HeaderText = "نوع المستخدم";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewTextBoxColumn2.ValueMember = "Id";
@@ -278,18 +283,21 @@
             this.dataGridViewTextBoxColumn5.DataPropertyName = "FullName";
             this.dataGridViewTextBoxColumn5.HeaderText = "الاسم";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // usernameColumn
             // 
             this.usernameColumn.DataPropertyName = "UserName";
             this.usernameColumn.HeaderText = "اسم المستخدم";
             this.usernameColumn.Name = "usernameColumn";
+            this.usernameColumn.ReadOnly = true;
             // 
             // passwordColumn
             // 
             this.passwordColumn.DataPropertyName = "Password";
             this.passwordColumn.HeaderText = "كلمة المرور";
             this.passwordColumn.Name = "passwordColumn";
+            this.passwordColumn.ReadOnly = true;
             this.passwordColumn.Visible = false;
             // 
             // dataGridViewTextBoxColumn6
@@ -297,6 +305,7 @@
             this.dataGridViewTextBoxColumn6.DataPropertyName = "LoginAttempts";
             this.dataGridViewTextBoxColumn6.HeaderText = "LoginAttempts";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Visible = false;
             // 
             // dataGridViewTextBoxColumn7
@@ -304,6 +313,7 @@
             this.dataGridViewTextBoxColumn7.DataPropertyName = "Locked";
             this.dataGridViewTextBoxColumn7.HeaderText = "Locked";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Visible = false;
             // 
             // dataGridViewTextBoxColumn10
@@ -311,6 +321,7 @@
             this.dataGridViewTextBoxColumn10.DataPropertyName = "CD";
             this.dataGridViewTextBoxColumn10.HeaderText = "CD";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Visible = false;
             // 
             // dataGridViewTextBoxColumn11
@@ -320,11 +331,16 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
+            // users_UserBindingSource
+            // 
+            this.users_UserBindingSource.DataSource = typeof(Alver.DAL.User);
+            this.users_UserBindingSource.CurrentChanged += new System.EventHandler(this.UserBindingSource_CurrentChanged);
+            // 
             // frmUsers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 477);
+            this.ClientSize = new System.Drawing.Size(814, 477);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.users_UserBindingNavigator);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -339,9 +355,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingNavigator)).EndInit();
             this.users_UserBindingNavigator.ResumeLayout(false);
             this.users_UserBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

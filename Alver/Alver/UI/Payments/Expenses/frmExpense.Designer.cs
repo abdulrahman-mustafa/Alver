@@ -71,7 +71,7 @@
             notesLabel.AutoSize = true;
             notesLabel.Location = new System.Drawing.Point(325, 156);
             notesLabel.Name = "notesLabel";
-            notesLabel.Size = new System.Drawing.Size(45, 20);
+            notesLabel.Size = new System.Drawing.Size(36, 15);
             notesLabel.TabIndex = 23;
             notesLabel.Text = "البيان:";
             // 
@@ -80,7 +80,7 @@
             expenseDateLabel.AutoSize = true;
             expenseDateLabel.Location = new System.Drawing.Point(325, 32);
             expenseDateLabel.Name = "expenseDateLabel";
-            expenseDateLabel.Size = new System.Drawing.Size(51, 20);
+            expenseDateLabel.Size = new System.Drawing.Size(41, 15);
             expenseDateLabel.TabIndex = 13;
             expenseDateLabel.Text = "التاريخ:";
             // 
@@ -89,7 +89,7 @@
             categoryIdLabel.AutoSize = true;
             categoryIdLabel.Location = new System.Drawing.Point(325, 122);
             categoryIdLabel.Name = "categoryIdLabel";
-            categoryIdLabel.Size = new System.Drawing.Size(56, 20);
+            categoryIdLabel.Size = new System.Drawing.Size(45, 15);
             categoryIdLabel.TabIndex = 21;
             categoryIdLabel.Text = "الصنف:";
             // 
@@ -98,7 +98,7 @@
             amountLabel.AutoSize = true;
             amountLabel.Location = new System.Drawing.Point(324, 86);
             amountLabel.Name = "amountLabel";
-            amountLabel.Size = new System.Drawing.Size(49, 20);
+            amountLabel.Size = new System.Drawing.Size(39, 15);
             amountLabel.TabIndex = 19;
             amountLabel.Text = "المبلغ:";
             // 
@@ -107,17 +107,17 @@
             currencyIdLabel.AutoSize = true;
             currencyIdLabel.Location = new System.Drawing.Point(325, 60);
             currencyIdLabel.Name = "currencyIdLabel";
-            currencyIdLabel.Size = new System.Drawing.Size(52, 20);
+            currencyIdLabel.Size = new System.Drawing.Size(41, 15);
             currencyIdLabel.TabIndex = 17;
             currencyIdLabel.Text = "العملة:";
             // 
             // currencyBindingSource
             // 
-            this.currencyBindingSource.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // paymentsExpenseCategoryBindingSource
             // 
-            this.paymentsExpenseCategoryBindingSource.DataSource = typeof(DAL.ExpenseCategory);
+            this.paymentsExpenseCategoryBindingSource.DataSource = typeof(Alver.DAL.ExpenseCategory);
             // 
             // tabControl1
             // 
@@ -134,10 +134,10 @@
             // 
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.bindingNavigator2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(398, 314);
+            this.tabPage1.Size = new System.Drawing.Size(398, 319);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "بيانات المصروف";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -157,7 +157,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(392, 281);
+            this.groupBox1.Size = new System.Drawing.Size(392, 286);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             // 
@@ -167,7 +167,7 @@
             this.expenseDateDateTimePicker.Location = new System.Drawing.Point(6, 26);
             this.expenseDateDateTimePicker.Name = "expenseDateDateTimePicker";
             this.expenseDateDateTimePicker.RightToLeftLayout = true;
-            this.expenseDateDateTimePicker.Size = new System.Drawing.Size(313, 27);
+            this.expenseDateDateTimePicker.Size = new System.Drawing.Size(313, 23);
             this.expenseDateDateTimePicker.TabIndex = 14;
             // 
             // notesTextBox
@@ -186,7 +186,7 @@
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(6, 117);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(313, 28);
+            this.categoryComboBox.Size = new System.Drawing.Size(313, 23);
             this.categoryComboBox.TabIndex = 22;
             this.categoryComboBox.ValueMember = "Id";
             // 
@@ -197,7 +197,7 @@
             this.currencyIdComboBox.FormattingEnabled = true;
             this.currencyIdComboBox.Location = new System.Drawing.Point(6, 55);
             this.currencyIdComboBox.Name = "currencyIdComboBox";
-            this.currencyIdComboBox.Size = new System.Drawing.Size(313, 28);
+            this.currencyIdComboBox.Size = new System.Drawing.Size(313, 23);
             this.currencyIdComboBox.TabIndex = 18;
             this.currencyIdComboBox.ValueMember = "Id";
             // 
@@ -211,7 +211,7 @@
             0,
             0});
             this.amountNumericUpDown.Name = "amountNumericUpDown";
-            this.amountNumericUpDown.Size = new System.Drawing.Size(313, 27);
+            this.amountNumericUpDown.Size = new System.Drawing.Size(313, 23);
             this.amountNumericUpDown.TabIndex = 20;
             // 
             // bindingNavigator2
@@ -229,7 +229,7 @@
             this.toolStripSeparator2,
             this.savebtn,
             this.toolStripSeparator3});
-            this.bindingNavigator2.Location = new System.Drawing.Point(3, 284);
+            this.bindingNavigator2.Location = new System.Drawing.Point(3, 289);
             this.bindingNavigator2.MoveFirstItem = null;
             this.bindingNavigator2.MoveLastItem = null;
             this.bindingNavigator2.MoveNextItem = null;
@@ -241,9 +241,10 @@
             // 
             // addbtn
             // 
+            this.addbtn.Image = global::Alver.Properties.Resources.Add;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(72, 24);
+            this.addbtn.Size = new System.Drawing.Size(61, 24);
             this.addbtn.Text = "إضافة";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -260,9 +261,10 @@
             // savebtn
             // 
             this.savebtn.Enabled = false;
+            this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(63, 24);
+            this.savebtn.Size = new System.Drawing.Size(54, 24);
             this.savebtn.Text = "حفظ";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
@@ -271,9 +273,9 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
-            // frmExpensess
+            // frmExpense
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(406, 347);
@@ -282,7 +284,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.Name = "frmExpensess";
+            this.Name = "frmExpense";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

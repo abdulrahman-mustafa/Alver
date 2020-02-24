@@ -178,26 +178,27 @@
             this.bindingNavigator2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator3,
             this.savebtn});
-            this.bindingNavigator2.Location = new System.Drawing.Point(0, 320);
+            this.bindingNavigator2.Location = new System.Drawing.Point(0, 318);
             this.bindingNavigator2.MoveFirstItem = null;
             this.bindingNavigator2.MoveLastItem = null;
             this.bindingNavigator2.MoveNextItem = null;
             this.bindingNavigator2.MovePreviousItem = null;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = null;
-            this.bindingNavigator2.Size = new System.Drawing.Size(358, 25);
+            this.bindingNavigator2.Size = new System.Drawing.Size(358, 27);
             this.bindingNavigator2.TabIndex = 36;
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // savebtn
             // 
+            this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(34, 22);
+            this.savebtn.Size = new System.Drawing.Size(54, 24);
             this.savebtn.Text = "حفظ";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 

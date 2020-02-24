@@ -78,7 +78,7 @@
             senderIdLabel.AutoSize = true;
             senderIdLabel.Location = new System.Drawing.Point(366, 25);
             senderIdLabel.Name = "senderIdLabel";
-            senderIdLabel.Size = new System.Drawing.Size(47, 20);
+            senderIdLabel.Size = new System.Drawing.Size(37, 15);
             senderIdLabel.TabIndex = 17;
             senderIdLabel.Text = "الاسم:";
             // 
@@ -87,7 +87,7 @@
             label14.AutoSize = true;
             label14.Location = new System.Drawing.Point(366, 25);
             label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(47, 20);
+            label14.Size = new System.Drawing.Size(37, 15);
             label14.TabIndex = 37;
             label14.Text = "الاسم:";
             // 
@@ -97,7 +97,7 @@
             amountLabel.AutoSize = true;
             amountLabel.Location = new System.Drawing.Point(89, 23);
             amountLabel.Name = "amountLabel";
-            amountLabel.Size = new System.Drawing.Size(49, 20);
+            amountLabel.Size = new System.Drawing.Size(39, 15);
             amountLabel.TabIndex = 9;
             amountLabel.Text = "المبلع:";
             // 
@@ -107,7 +107,7 @@
             operationDateLabel.AutoSize = true;
             operationDateLabel.Location = new System.Drawing.Point(362, 23);
             operationDateLabel.Name = "operationDateLabel";
-            operationDateLabel.Size = new System.Drawing.Size(51, 20);
+            operationDateLabel.Size = new System.Drawing.Size(41, 15);
             operationDateLabel.TabIndex = 1;
             operationDateLabel.Text = "التاريخ:";
             // 
@@ -117,7 +117,7 @@
             declarationLabel.AutoSize = true;
             declarationLabel.Location = new System.Drawing.Point(368, 71);
             declarationLabel.Name = "declarationLabel";
-            declarationLabel.Size = new System.Drawing.Size(45, 20);
+            declarationLabel.Size = new System.Drawing.Size(36, 15);
             declarationLabel.TabIndex = 13;
             declarationLabel.Text = "البيان:";
             // 
@@ -127,7 +127,7 @@
             currencyIdLabel.AutoSize = true;
             currencyIdLabel.Location = new System.Drawing.Point(214, 23);
             currencyIdLabel.Name = "currencyIdLabel";
-            currencyIdLabel.Size = new System.Drawing.Size(52, 20);
+            currencyIdLabel.Size = new System.Drawing.Size(41, 15);
             currencyIdLabel.TabIndex = 15;
             currencyIdLabel.Text = "العملة:";
             // 
@@ -163,14 +163,14 @@
             this.fromclientComboBox.FormattingEnabled = true;
             this.fromclientComboBox.Location = new System.Drawing.Point(37, 22);
             this.fromclientComboBox.Name = "fromclientComboBox";
-            this.fromclientComboBox.Size = new System.Drawing.Size(308, 28);
+            this.fromclientComboBox.Size = new System.Drawing.Size(308, 23);
             this.fromclientComboBox.TabIndex = 18;
             this.fromclientComboBox.ValueMember = "Id";
             this.fromclientComboBox.SelectedIndexChanged += new System.EventHandler(this.fromclientComboBox_SelectedIndexChanged);
             // 
             // accountsInfoBindingSource
             // 
-            this.accountsInfoBindingSource.DataSource = typeof(DAL.Account);
+            this.accountsInfoBindingSource.DataSource = typeof(Alver.DAL.Account);
             // 
             // groupBox3
             // 
@@ -204,13 +204,13 @@
             this.toclientcomboBox.FormattingEnabled = true;
             this.toclientcomboBox.Location = new System.Drawing.Point(37, 22);
             this.toclientcomboBox.Name = "toclientcomboBox";
-            this.toclientcomboBox.Size = new System.Drawing.Size(307, 28);
+            this.toclientcomboBox.Size = new System.Drawing.Size(307, 23);
             this.toclientcomboBox.TabIndex = 38;
             this.toclientcomboBox.ValueMember = "Id";
             // 
             // accountsInfoBindingSource1
             // 
-            this.accountsInfoBindingSource1.DataSource = typeof(DAL.Account);
+            this.accountsInfoBindingSource1.DataSource = typeof(Alver.DAL.Account);
             // 
             // groupBox2
             // 
@@ -237,13 +237,13 @@
             this.currencyIdComboBox.FormattingEnabled = true;
             this.currencyIdComboBox.Location = new System.Drawing.Point(134, 40);
             this.currencyIdComboBox.Name = "currencyIdComboBox";
-            this.currencyIdComboBox.Size = new System.Drawing.Size(121, 28);
+            this.currencyIdComboBox.Size = new System.Drawing.Size(121, 23);
             this.currencyIdComboBox.TabIndex = 16;
             this.currencyIdComboBox.ValueMember = "Id";
             // 
             // currencyBindingSource
             // 
-            this.currencyBindingSource.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // amountNumericUpDown
             // 
@@ -256,7 +256,7 @@
             0,
             0});
             this.amountNumericUpDown.Name = "amountNumericUpDown";
-            this.amountNumericUpDown.Size = new System.Drawing.Size(120, 27);
+            this.amountNumericUpDown.Size = new System.Drawing.Size(120, 23);
             this.amountNumericUpDown.TabIndex = 10;
             this.amountNumericUpDown.ValueChanged += new System.EventHandler(this.amountNumericUpDown_ValueChanged);
             // 
@@ -267,7 +267,7 @@
             this.operationDateDateTimePicker.Location = new System.Drawing.Point(261, 41);
             this.operationDateDateTimePicker.Name = "operationDateDateTimePicker";
             this.operationDateDateTimePicker.RightToLeftLayout = true;
-            this.operationDateDateTimePicker.Size = new System.Drawing.Size(142, 27);
+            this.operationDateDateTimePicker.Size = new System.Drawing.Size(142, 23);
             this.operationDateDateTimePicker.TabIndex = 2;
             // 
             // declarationTextBox
@@ -275,7 +275,7 @@
             this.declarationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.declarationTextBox.Location = new System.Drawing.Point(7, 90);
             this.declarationTextBox.Name = "declarationTextBox";
-            this.declarationTextBox.Size = new System.Drawing.Size(396, 27);
+            this.declarationTextBox.Size = new System.Drawing.Size(396, 23);
             this.declarationTextBox.TabIndex = 14;
             // 
             // bindingNavigator2
@@ -293,21 +293,22 @@
             this.toolStripSeparator2,
             this.savebtn,
             this.toolStripSeparator3});
-            this.bindingNavigator2.Location = new System.Drawing.Point(0, 283);
+            this.bindingNavigator2.Location = new System.Drawing.Point(0, 291);
             this.bindingNavigator2.MoveFirstItem = null;
             this.bindingNavigator2.MoveLastItem = null;
             this.bindingNavigator2.MoveNextItem = null;
             this.bindingNavigator2.MovePreviousItem = null;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = null;
-            this.bindingNavigator2.Size = new System.Drawing.Size(442, 27);
+            this.bindingNavigator2.Size = new System.Drawing.Size(444, 27);
             this.bindingNavigator2.TabIndex = 50;
             // 
             // addbtn
             // 
+            this.addbtn.Image = global::Alver.Properties.Resources.Add;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(72, 24);
+            this.addbtn.Size = new System.Drawing.Size(61, 24);
             this.addbtn.Text = "إضافة";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -324,9 +325,10 @@
             // savebtn
             // 
             this.savebtn.Enabled = false;
+            this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(63, 24);
+            this.savebtn.Size = new System.Drawing.Size(54, 24);
             this.savebtn.Text = "حفظ";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
@@ -337,10 +339,10 @@
             // 
             // frmTransferFunds
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(442, 310);
+            this.ClientSize = new System.Drawing.Size(444, 318);
             this.Controls.Add(this.bindingNavigator2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);

@@ -565,25 +565,25 @@ namespace Alver.UI.Bills
                             {
                                 foreach (BillLine _billLine in bill.BillLines)
                                 {
-                                    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
+                                    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLP, _billLine.LUD.Value, _guid, _declaration);
                                 }
                                 if (exchangebillchkbox.Checked)
                                 {
-                                    TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                    TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                 }
                                 else
                                 {
-                                    TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                    TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                 }
                                 if (!payedchkbox.Checked)
                                 {
                                     if (exchangebillchkbox.Checked)
                                     {
-                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                     }
                                     else
                                     {
-                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                     }
                                 }
                             }
@@ -699,7 +699,14 @@ namespace Alver.UI.Bills
 
         private void ratenud_ValueChanged(object sender, EventArgs e)
         {
-            syrTotalnud.Value = ratenud.Value * totalnud.Value;
+            try
+            {
+                syrTotalnud.Value = ratenud.Value * totalnud.Value;
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
         }
     }
 }

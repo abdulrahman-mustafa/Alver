@@ -48,19 +48,26 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.ItemIdcolumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.itemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tTSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitIdcolumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.unitBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.runningTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeclarationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemstransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvTotals = new System.Windows.Forms.DataGridView();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.firstbtn = new System.Windows.Forms.ToolStripButton();
+            this.prevbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.nextbtn = new System.Windows.Forms.ToolStripButton();
+            this.lastbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.editobjectbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -71,27 +78,10 @@
             this.اكسلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.onlyWithdraw = new JCS.ToggleSwitch();
-            this.label7 = new System.Windows.Forms.Label();
-            this.onlytransfers = new JCS.ToggleSwitch();
-            this.label8 = new System.Windows.Forms.Label();
-            this.onlycuts = new JCS.ToggleSwitch();
-            this.label5 = new System.Windows.Forms.Label();
-            this.onlydeposites = new JCS.ToggleSwitch();
             this.label6 = new System.Windows.Forms.Label();
-            this.onlyloans = new JCS.ToggleSwitch();
-            this.label4 = new System.Windows.Forms.Label();
-            this.onlypayments = new JCS.ToggleSwitch();
+            this.onlysales = new JCS.ToggleSwitch();
             this.label3 = new System.Windows.Forms.Label();
-            this.onlyremittances = new JCS.ToggleSwitch();
-            this.ItemIdcolumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.tTSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitIdcolumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.runningTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeclarationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.onlypurchases = new JCS.ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -214,6 +204,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::Alver.Properties.Resources.export;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.Location = new System.Drawing.Point(11, 511);
             this.button1.Name = "button1";
@@ -315,22 +306,92 @@
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgv.GridColor = System.Drawing.SystemColors.Control;
-            this.dgv.Location = new System.Drawing.Point(3, 106);
+            this.dgv.Location = new System.Drawing.Point(3, 84);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowTemplate.Height = 32;
-            this.dgv.Size = new System.Drawing.Size(716, 356);
+            this.dgv.Size = new System.Drawing.Size(716, 378);
             this.dgv.TabIndex = 35;
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             this.dgv.DoubleClick += new System.EventHandler(this.editobjectbtn_Click);
+            // 
+            // ItemIdcolumn
+            // 
+            this.ItemIdcolumn.DataPropertyName = "ItemId";
+            this.ItemIdcolumn.DataSource = this.itemBindingSource1;
+            this.ItemIdcolumn.DisplayMember = "ItemName";
+            this.ItemIdcolumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ItemIdcolumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemIdcolumn.HeaderText = "المادة";
+            this.ItemIdcolumn.Name = "ItemIdcolumn";
+            this.ItemIdcolumn.ReadOnly = true;
+            this.ItemIdcolumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemIdcolumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ItemIdcolumn.ValueMember = "Id";
+            this.ItemIdcolumn.Width = 61;
             // 
             // itemBindingSource1
             // 
             this.itemBindingSource1.DataSource = typeof(Alver.DAL.Item);
             // 
+            // tTSDataGridViewTextBoxColumn
+            // 
+            this.tTSDataGridViewTextBoxColumn.DataPropertyName = "TTS";
+            this.tTSDataGridViewTextBoxColumn.HeaderText = "التاريخ";
+            this.tTSDataGridViewTextBoxColumn.Name = "tTSDataGridViewTextBoxColumn";
+            this.tTSDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tTSDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // tTDataGridViewTextBoxColumn
+            // 
+            this.tTDataGridViewTextBoxColumn.DataPropertyName = "TT";
+            this.tTDataGridViewTextBoxColumn.HeaderText = "الحركة";
+            this.tTDataGridViewTextBoxColumn.Name = "tTDataGridViewTextBoxColumn";
+            this.tTDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tTDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // UnitIdcolumn
+            // 
+            this.UnitIdcolumn.DataPropertyName = "UnitId";
+            this.UnitIdcolumn.DataSource = this.unitBindingSource1;
+            this.UnitIdcolumn.DisplayMember = "Title";
+            this.UnitIdcolumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.UnitIdcolumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UnitIdcolumn.HeaderText = "الواحدة";
+            this.UnitIdcolumn.Name = "UnitIdcolumn";
+            this.UnitIdcolumn.ReadOnly = true;
+            this.UnitIdcolumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.UnitIdcolumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.UnitIdcolumn.ValueMember = "Id";
+            this.UnitIdcolumn.Width = 67;
+            // 
             // unitBindingSource1
             // 
             this.unitBindingSource1.DataSource = typeof(Alver.DAL.Unit);
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            this.amountDataGridViewTextBoxColumn.HeaderText = "الكمية";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.amountDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // runningTotalDataGridViewTextBoxColumn
+            // 
+            this.runningTotalDataGridViewTextBoxColumn.DataPropertyName = "RunningTotal";
+            this.runningTotalDataGridViewTextBoxColumn.HeaderText = "الكمية المتبقية";
+            this.runningTotalDataGridViewTextBoxColumn.Name = "runningTotalDataGridViewTextBoxColumn";
+            this.runningTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            this.runningTotalDataGridViewTextBoxColumn.Width = 103;
+            // 
+            // DeclarationColumn
+            // 
+            this.DeclarationColumn.DataPropertyName = "Declaration";
+            this.DeclarationColumn.HeaderText = "البيان";
+            this.DeclarationColumn.Name = "DeclarationColumn";
+            this.DeclarationColumn.ReadOnly = true;
+            this.DeclarationColumn.Width = 58;
             // 
             // ItemstransactionBindingSource
             // 
@@ -384,14 +445,14 @@
             this.bindingNavigator1.DeleteItem = null;
             this.bindingNavigator1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
+            this.firstbtn,
+            this.prevbtn,
             this.toolStripSeparator1,
             this.toolStripTextBox1,
             this.toolStripLabel1,
             this.toolStripSeparator2,
-            this.toolStripButton3,
-            this.toolStripButton4,
+            this.nextbtn,
+            this.lastbtn,
             this.toolStripSeparator3,
             this.editobjectbtn,
             this.toolStripSeparator4,
@@ -399,44 +460,46 @@
             this.toolStripSeparator5,
             this.savebtn,
             this.toolStripButton8});
-            this.bindingNavigator1.Location = new System.Drawing.Point(3, 81);
-            this.bindingNavigator1.MoveFirstItem = this.toolStripButton1;
-            this.bindingNavigator1.MoveLastItem = this.toolStripButton4;
-            this.bindingNavigator1.MoveNextItem = this.toolStripButton3;
-            this.bindingNavigator1.MovePreviousItem = this.toolStripButton2;
+            this.bindingNavigator1.Location = new System.Drawing.Point(3, 57);
+            this.bindingNavigator1.MoveFirstItem = this.firstbtn;
+            this.bindingNavigator1.MoveLastItem = this.lastbtn;
+            this.bindingNavigator1.MoveNextItem = this.nextbtn;
+            this.bindingNavigator1.MovePreviousItem = this.prevbtn;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.toolStripTextBox1;
-            this.bindingNavigator1.Size = new System.Drawing.Size(716, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(716, 27);
             this.bindingNavigator1.TabIndex = 34;
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(66, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(66, 24);
             this.toolStripLabel1.Text = "من أصل {0}";
             this.toolStripLabel1.ToolTipText = "Total number of items";
             // 
-            // toolStripButton1
+            // firstbtn
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "Move first";
+            this.firstbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.firstbtn.Image = ((System.Drawing.Image)(resources.GetObject("firstbtn.Image")));
+            this.firstbtn.Name = "firstbtn";
+            this.firstbtn.RightToLeftAutoMirrorImage = true;
+            this.firstbtn.Size = new System.Drawing.Size(24, 24);
+            this.firstbtn.Text = "Move first";
             // 
-            // toolStripButton2
+            // prevbtn
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "Move previous";
+            this.prevbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.prevbtn.Image = ((System.Drawing.Image)(resources.GetObject("prevbtn.Image")));
+            this.prevbtn.Name = "prevbtn";
+            this.prevbtn.RightToLeftAutoMirrorImage = true;
+            this.prevbtn.Size = new System.Drawing.Size(24, 24);
+            this.prevbtn.Text = "Move previous";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripTextBox1
             // 
@@ -451,61 +514,65 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
-            // toolStripButton3
+            // nextbtn
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "Move next";
+            this.nextbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nextbtn.Image = ((System.Drawing.Image)(resources.GetObject("nextbtn.Image")));
+            this.nextbtn.Name = "nextbtn";
+            this.nextbtn.RightToLeftAutoMirrorImage = true;
+            this.nextbtn.Size = new System.Drawing.Size(24, 24);
+            this.nextbtn.Text = "Move next";
             // 
-            // toolStripButton4
+            // lastbtn
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "Move last";
+            this.lastbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.lastbtn.Image = ((System.Drawing.Image)(resources.GetObject("lastbtn.Image")));
+            this.lastbtn.Name = "lastbtn";
+            this.lastbtn.RightToLeftAutoMirrorImage = true;
+            this.lastbtn.Size = new System.Drawing.Size(24, 24);
+            this.lastbtn.Text = "Move last";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // editobjectbtn
             // 
+            this.editobjectbtn.Image = global::Alver.Properties.Resources.edit;
             this.editobjectbtn.Name = "editobjectbtn";
             this.editobjectbtn.RightToLeftAutoMirrorImage = true;
-            this.editobjectbtn.Size = new System.Drawing.Size(40, 22);
+            this.editobjectbtn.Size = new System.Drawing.Size(60, 24);
             this.editobjectbtn.Text = "تعديل";
             this.editobjectbtn.Click += new System.EventHandler(this.editobjectbtn_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             this.toolStripSeparator4.Visible = false;
             // 
             // deletebtn
             // 
+            this.deletebtn.Image = global::Alver.Properties.Resources.deleterow;
             this.deletebtn.Name = "deletebtn";
             this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(69, 22);
+            this.deletebtn.Size = new System.Drawing.Size(89, 24);
             this.deletebtn.Text = "حذف الحركة";
             this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
             // 
             // savebtn
             // 
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(111, 22);
+            this.savebtn.Size = new System.Drawing.Size(111, 24);
             this.savebtn.Text = "طباعة إشعار مطابقة";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
@@ -514,277 +581,86 @@
             this.toolStripButton8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.اكسلToolStripMenuItem,
             this.pDFToolStripMenuItem});
+            this.toolStripButton8.Image = global::Alver.Properties.Resources.export;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(51, 22);
+            this.toolStripButton8.Size = new System.Drawing.Size(71, 24);
             this.toolStripButton8.Text = "تصدير";
             // 
             // اكسلToolStripMenuItem
             // 
+            this.اكسلToolStripMenuItem.Image = global::Alver.Properties.Resources.xls;
             this.اكسلToolStripMenuItem.Name = "اكسلToolStripMenuItem";
-            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.اكسلToolStripMenuItem.Text = "اكسل";
             this.اكسلToolStripMenuItem.Click += new System.EventHandler(this.اكسلToolStripMenuItem_Click);
             // 
             // pDFToolStripMenuItem
             // 
+            this.pDFToolStripMenuItem.Image = global::Alver.Properties.Resources.pdf;
             this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.pDFToolStripMenuItem.Text = "PDF";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.onlyWithdraw);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.onlytransfers);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.onlycuts);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.onlydeposites);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.onlyloans);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.onlypayments);
+            this.groupBox1.Controls.Add(this.onlysales);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.onlyremittances);
+            this.groupBox1.Controls.Add(this.onlypurchases);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(716, 78);
+            this.groupBox1.Size = new System.Drawing.Size(716, 54);
             this.groupBox1.TabIndex = 57;
             this.groupBox1.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(-4, 24);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(119, 15);
-            this.label9.TabIndex = 34;
-            this.label9.Text = "سحب/إيداع الأرباح فقط";
-            // 
-            // onlyWithdraw
-            // 
-            this.onlyWithdraw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.onlyWithdraw.AnimationInterval = 2;
-            this.onlyWithdraw.AnimationStep = 15;
-            this.onlyWithdraw.Location = new System.Drawing.Point(121, 21);
-            this.onlyWithdraw.Name = "onlyWithdraw";
-            this.onlyWithdraw.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlyWithdraw.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlyWithdraw.Size = new System.Drawing.Size(50, 19);
-            this.onlyWithdraw.TabIndex = 33;
-            this.onlyWithdraw.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(211, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 15);
-            this.label7.TabIndex = 32;
-            this.label7.Text = "تحويل الرصيد فقط";
-            // 
-            // onlytransfers
-            // 
-            this.onlytransfers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.onlytransfers.AnimationInterval = 2;
-            this.onlytransfers.AnimationStep = 15;
-            this.onlytransfers.Location = new System.Drawing.Point(317, 46);
-            this.onlytransfers.Name = "onlytransfers";
-            this.onlytransfers.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlytransfers.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlytransfers.Size = new System.Drawing.Size(50, 19);
-            this.onlytransfers.TabIndex = 31;
-            this.onlytransfers.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(219, 24);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 15);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "قص الرصيد فقط";
-            // 
-            // onlycuts
-            // 
-            this.onlycuts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.onlycuts.AnimationInterval = 2;
-            this.onlycuts.AnimationStep = 15;
-            this.onlycuts.Location = new System.Drawing.Point(317, 21);
-            this.onlycuts.Name = "onlycuts";
-            this.onlycuts.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlycuts.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlycuts.Size = new System.Drawing.Size(50, 19);
-            this.onlycuts.TabIndex = 29;
-            this.onlycuts.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(394, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 15);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "الامانات فقط";
-            // 
-            // onlydeposites
-            // 
-            this.onlydeposites.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.onlydeposites.AnimationInterval = 2;
-            this.onlydeposites.AnimationStep = 15;
-            this.onlydeposites.Location = new System.Drawing.Point(472, 46);
-            this.onlydeposites.Name = "onlydeposites";
-            this.onlydeposites.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlydeposites.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlydeposites.Size = new System.Drawing.Size(50, 19);
-            this.onlydeposites.TabIndex = 27;
-            this.onlydeposites.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
+            this.groupBox1.Text = "تصفية النتائج";
             // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(401, 24);
+            this.label6.Location = new System.Drawing.Point(379, 24);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 15);
+            this.label6.Size = new System.Drawing.Size(85, 15);
             this.label6.TabIndex = 26;
-            this.label6.Text = "الديون فقط";
+            this.label6.Text = "فواتير البيع فقط";
             // 
-            // onlyloans
+            // onlysales
             // 
-            this.onlyloans.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.onlyloans.AnimationInterval = 2;
-            this.onlyloans.AnimationStep = 15;
-            this.onlyloans.Location = new System.Drawing.Point(472, 21);
-            this.onlyloans.Name = "onlyloans";
-            this.onlyloans.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlyloans.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlyloans.Size = new System.Drawing.Size(50, 19);
-            this.onlyloans.TabIndex = 25;
-            this.onlyloans.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(572, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 15);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "الدفعات فقط";
-            // 
-            // onlypayments
-            // 
-            this.onlypayments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.onlypayments.AnimationInterval = 2;
-            this.onlypayments.AnimationStep = 15;
-            this.onlypayments.Location = new System.Drawing.Point(650, 46);
-            this.onlypayments.Name = "onlypayments";
-            this.onlypayments.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlypayments.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlypayments.Size = new System.Drawing.Size(50, 19);
-            this.onlypayments.TabIndex = 23;
-            this.onlypayments.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
+            this.onlysales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.onlysales.AnimationInterval = 2;
+            this.onlysales.AnimationStep = 15;
+            this.onlysales.Location = new System.Drawing.Point(472, 21);
+            this.onlysales.Name = "onlysales";
+            this.onlysales.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onlysales.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onlysales.Size = new System.Drawing.Size(50, 19);
+            this.onlysales.TabIndex = 25;
+            this.onlysales.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(571, 24);
+            this.label3.Location = new System.Drawing.Point(551, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 15);
+            this.label3.Size = new System.Drawing.Size(91, 15);
             this.label3.TabIndex = 22;
-            this.label3.Text = "الحوالات فقط";
+            this.label3.Text = "فواتير الشراء فقط";
             // 
-            // onlyremittances
+            // onlypurchases
             // 
-            this.onlyremittances.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.onlyremittances.AnimationInterval = 2;
-            this.onlyremittances.AnimationStep = 15;
-            this.onlyremittances.Location = new System.Drawing.Point(650, 21);
-            this.onlyremittances.Name = "onlyremittances";
-            this.onlyremittances.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlyremittances.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onlyremittances.Size = new System.Drawing.Size(50, 19);
-            this.onlyremittances.TabIndex = 3;
-            this.onlyremittances.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
-            // 
-            // ItemIdcolumn
-            // 
-            this.ItemIdcolumn.DataPropertyName = "ItemId";
-            this.ItemIdcolumn.DataSource = this.itemBindingSource1;
-            this.ItemIdcolumn.DisplayMember = "ItemName";
-            this.ItemIdcolumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ItemIdcolumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ItemIdcolumn.HeaderText = "المادة";
-            this.ItemIdcolumn.Name = "ItemIdcolumn";
-            this.ItemIdcolumn.ReadOnly = true;
-            this.ItemIdcolumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemIdcolumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ItemIdcolumn.ValueMember = "Id";
-            this.ItemIdcolumn.Width = 61;
-            // 
-            // tTSDataGridViewTextBoxColumn
-            // 
-            this.tTSDataGridViewTextBoxColumn.DataPropertyName = "TTS";
-            this.tTSDataGridViewTextBoxColumn.HeaderText = "التاريخ";
-            this.tTSDataGridViewTextBoxColumn.Name = "tTSDataGridViewTextBoxColumn";
-            this.tTSDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tTSDataGridViewTextBoxColumn.Width = 63;
-            // 
-            // tTDataGridViewTextBoxColumn
-            // 
-            this.tTDataGridViewTextBoxColumn.DataPropertyName = "TT";
-            this.tTDataGridViewTextBoxColumn.HeaderText = "الحركة";
-            this.tTDataGridViewTextBoxColumn.Name = "tTDataGridViewTextBoxColumn";
-            this.tTDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tTDataGridViewTextBoxColumn.Width = 62;
-            // 
-            // UnitIdcolumn
-            // 
-            this.UnitIdcolumn.DataPropertyName = "UnitId";
-            this.UnitIdcolumn.DataSource = this.unitBindingSource1;
-            this.UnitIdcolumn.DisplayMember = "Title";
-            this.UnitIdcolumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.UnitIdcolumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UnitIdcolumn.HeaderText = "الواحدة";
-            this.UnitIdcolumn.Name = "UnitIdcolumn";
-            this.UnitIdcolumn.ReadOnly = true;
-            this.UnitIdcolumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UnitIdcolumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.UnitIdcolumn.ValueMember = "Id";
-            this.UnitIdcolumn.Width = 67;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.HeaderText = "الكمية";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.amountDataGridViewTextBoxColumn.Width = 62;
-            // 
-            // runningTotalDataGridViewTextBoxColumn
-            // 
-            this.runningTotalDataGridViewTextBoxColumn.DataPropertyName = "RunningTotal";
-            this.runningTotalDataGridViewTextBoxColumn.HeaderText = "الكمية المتبقية";
-            this.runningTotalDataGridViewTextBoxColumn.Name = "runningTotalDataGridViewTextBoxColumn";
-            this.runningTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.runningTotalDataGridViewTextBoxColumn.Width = 103;
-            // 
-            // DeclarationColumn
-            // 
-            this.DeclarationColumn.DataPropertyName = "Declaration";
-            this.DeclarationColumn.HeaderText = "البيان";
-            this.DeclarationColumn.Name = "DeclarationColumn";
-            this.DeclarationColumn.ReadOnly = true;
-            this.DeclarationColumn.Width = 58;
+            this.onlypurchases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.onlypurchases.AnimationInterval = 2;
+            this.onlypurchases.AnimationStep = 15;
+            this.onlypurchases.Location = new System.Drawing.Point(650, 21);
+            this.onlypurchases.Name = "onlypurchases";
+            this.onlypurchases.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onlypurchases.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onlypurchases.Size = new System.Drawing.Size(50, 19);
+            this.onlypurchases.TabIndex = 3;
+            this.onlypurchases.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
             // 
             // frmItemTransactions
             // 
@@ -837,13 +713,9 @@
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton deletebtn;
@@ -856,25 +728,15 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label7;
-        private JCS.ToggleSwitch onlytransfers;
-        private System.Windows.Forms.Label label8;
-        private JCS.ToggleSwitch onlycuts;
-        private System.Windows.Forms.Label label5;
-        private JCS.ToggleSwitch onlydeposites;
         private System.Windows.Forms.Label label6;
-        private JCS.ToggleSwitch onlyloans;
-        private System.Windows.Forms.Label label4;
-        private JCS.ToggleSwitch onlypayments;
+        private JCS.ToggleSwitch onlysales;
         private System.Windows.Forms.Label label3;
-        private JCS.ToggleSwitch onlyremittances;
+        private JCS.ToggleSwitch onlypurchases;
         private System.Windows.Forms.DataGridView dgvTotals;
         private System.Windows.Forms.ToolStripDropDownButton toolStripButton8;
         private System.Windows.Forms.ToolStripMenuItem اكسلToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pDFToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton editobjectbtn;
-        private System.Windows.Forms.Label label9;
-        private JCS.ToggleSwitch onlyWithdraw;
         private System.Windows.Forms.BindingSource ItemstransactionBindingSource;
         private System.Windows.Forms.BindingSource itemBindingSource;
         private System.Windows.Forms.BindingSource unitBindingSource;
@@ -887,5 +749,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn runningTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeclarationColumn;
+        private System.Windows.Forms.ToolStripButton firstbtn;
+        private System.Windows.Forms.ToolStripButton prevbtn;
+        private System.Windows.Forms.ToolStripButton nextbtn;
+        private System.Windows.Forms.ToolStripButton lastbtn;
     }
 }

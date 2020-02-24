@@ -71,9 +71,26 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>F:\SimpleEx\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\SimpleEx\SimpleEx\bin\Debug\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.DataVisualization.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Design.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebDesign.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WinForms.DLL</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -107,9 +124,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.SqlEnum.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.Types.dll</HintPath>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.11.0.1\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -141,6 +157,9 @@
     <Compile Include="DAL\AccountGroup.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Album.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\AppSetting.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -148,6 +167,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\BillLine.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Company.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Currency.cs">
@@ -178,6 +200,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\FundTransaction.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Image.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Item.cs">
@@ -240,6 +265,12 @@
     <Compile Include="DAL\User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\V_CLIENTS.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_STOCK.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Withdraw.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -254,6 +285,7 @@
     <Compile Include="Misc\TransactionsOperations.cs" />
     <Compile Include="Misc\Utilities.cs" />
     <Compile Include="ObservableListSource.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UI\Accounts\AccountsPayments\frmPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,11 +304,23 @@
     <Compile Include="UI\Accounts\AccountReports\frmAccountConformity.Designer.cs">
       <DependentUpon>frmAccountConformity.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Accounts\frmClient.cs">
+    <Compile Include="UI\Accounts\frmAccountsOverview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Accounts\frmClient.Designer.cs">
-      <DependentUpon>frmClient.cs</DependentUpon>
+    <Compile Include="UI\Accounts\frmAccountsOverview.Designer.cs">
+      <DependentUpon>frmAccountsOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\frmEditAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\frmEditAccount.Designer.cs">
+      <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accounts\frmAddAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accounts\frmAddAccount.Designer.cs">
+      <DependentUpon>frmAddAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Accounts\frmAccountsGroups.cs">
       <SubType>Form</SubType>
@@ -284,11 +328,11 @@
     <Compile Include="UI\Accounts\frmAccountsGroups.Designer.cs">
       <DependentUpon>frmAccountsGroups.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Accounts\frmClients.cs">
+    <Compile Include="UI\Accounts\frmAccounts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Accounts\frmClients.Designer.cs">
-      <DependentUpon>frmClients.cs</DependentUpon>
+    <Compile Include="UI\Accounts\frmAccounts.Designer.cs">
+      <DependentUpon>frmAccounts.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Accounts\Transactions\frmTransaction.cs">
       <SubType>Form</SubType>
@@ -343,6 +387,12 @@
     </Compile>
     <Compile Include="UI\Bills\frmSell.Designer.cs">
       <DependentUpon>frmSell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Configurations\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Configurations\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Exchange\frmCurrenciesBulletin.cs">
       <SubType>Form</SubType>
@@ -405,6 +455,18 @@
     </Compile>
     <Compile Include="UI\Funds\Transactions\frmFundTransactions.Designer.cs">
       <DependentUpon>frmFundTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Items\frmItemsOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Items\frmItemsOverview.Designer.cs">
+      <DependentUpon>frmItemsOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Items\frmPricingItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Items\frmPricingItems.Designer.cs">
+      <DependentUpon>frmPricingItems.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Items\frmItemEdit.cs">
       <SubType>Form</SubType>
@@ -490,6 +552,12 @@
     <Compile Include="UI\Users\frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Users\frmEditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Users\frmEditUser.Designer.cs">
+      <DependentUpon>frmEditUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Users\frmUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -518,14 +586,20 @@
     <EmbeddedResource Include="UI\Accounts\AccountReports\frmAccountConformity.resx">
       <DependentUpon>frmAccountConformity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Accounts\frmClient.resx">
-      <DependentUpon>frmClient.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Accounts\frmAccountsOverview.resx">
+      <DependentUpon>frmAccountsOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\frmEditAccount.resx">
+      <DependentUpon>frmEditAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accounts\frmAddAccount.resx">
+      <DependentUpon>frmAddAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Accounts\frmAccountsGroups.resx">
       <DependentUpon>frmAccountsGroups.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Accounts\frmClients.resx">
-      <DependentUpon>frmClients.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Accounts\frmAccounts.resx">
+      <DependentUpon>frmAccounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Accounts\Transactions\frmTransaction.resx">
       <DependentUpon>frmTransaction.cs</DependentUpon>
@@ -553,6 +627,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Bills\frmSell.resx">
       <DependentUpon>frmSell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Configurations\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Exchange\frmCurrenciesBulletin.resx">
       <DependentUpon>frmCurrenciesBulletin.cs</DependentUpon>
@@ -593,6 +670,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Funds\Transactions\frmFundTransactions.resx">
       <DependentUpon>frmFundTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Items\frmItemsOverview.resx">
+      <DependentUpon>frmItemsOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Items\frmPricingItems.resx">
+      <DependentUpon>frmPricingItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Items\frmItemEdit.resx">
       <DependentUpon>frmItemEdit.cs</DependentUpon>
@@ -635,6 +718,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Users\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Users\frmEditUser.resx">
+      <DependentUpon>frmEditUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Users\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
@@ -701,6 +787,7 @@
     <None Include="Properties\DataSources\Alver.DAL.Unit1.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.User.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.User1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.V_STOCK.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -745,8 +832,86 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="Logo.ico" />
+    <None Include="Media\Button Faces\MISC\icons8_file_25px.png" />
+    <None Include="Media\Button Faces\Database\icons8_database_export_25px.png" />
+    <None Include="Media\Button Faces\Database\icons8_database_restore_25px.png" />
+    <None Include="Media\Button Faces\MISC\icons8_shutdown_25px.png" />
+    <None Include="Media\Button Faces\MISC\icons8_exit_sign_25px.png" />
+    <None Include="Media\Button Faces\Accounts\icons8_management_25px.png" />
+    <None Include="Media\Button Faces\Accounts\icons8_user_account_skin_type_7_25px.png" />
+    <None Include="Media\Button Faces\Accounts\icons8_find_user_male_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_cash_in_hand_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_debt_25px_1.png" />
+    <None Include="Media\Button Faces\Money\icons8_tax_25px.png" />
+    <None Include="Media\Button Faces\MISC\icons8_categorize_25px.png" />
+    <None Include="Media\Button Faces\MISC\icons8_control_panel_25px.png" />
+    <None Include="Media\Button Faces\Accounts\icons8_guardian_25px.png" />
+    <None Include="Media\Button Faces\Items\icons8_layers_25px.png" />
+    <None Include="Media\Button Faces\Items\icons8_add_shopping_cart_25px.png" />
+    <None Include="Media\Button Faces\Items\icons8_product_25px.png" />
+    <None Include="Media\Button Faces\Items\icons8_sell_stock_25px.png" />
+    <None Include="Media\Button Faces\Items\icons8_descending_sorting_25px.png" />
+    <None Include="Media\Button Faces\Items\icons8_unit_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_cash_25px.png" />
+    <None Include="Media\Button Faces\Items\icons8_shop_25px.png" />
+    <None Include="Media\Button Faces\Bills\icons8_bill_25px.png" />
+    <None Include="Media\Button Faces\Bills\icons8_purchase_order_25px.png" />
+    <None Include="Media\Button Faces\Bills\icons8_invoice_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_withdrawal_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_crowdfunding_25px.png" />
+    <None Include="Media\Button Faces\Reports\icons8_combo_chart_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_exchange_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_currency_exchange_25px.png" />
+    <None Include="Media\Button Faces\MISC\icons8_list_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_donate_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_no_cash_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_paper_money_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_request_money_25px.png" />
+    <None Include="Media\Button Faces\Money\icons8_initiate_money_transfer_25px.png" />
+    <None Include="Media\Button Faces\Accounts\icons8_exchange_skin_type_7_25px.png" />
+    <None Include="Media\Button Faces\MISC\settings.png" />
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x64\msvcr100.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x64\SqlServerSpatial110.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x86\msvcr100.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x86\SqlServerSpatial110.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <None Include="Media\Button Faces\Accounts\icons8_admin_settings_male_25px.png" />
+    <None Include="Media\Button Faces\Accounts\addgroup.png" />
+    <None Include="Media\Button Faces\Accounts\icons8_add_user_male_25px.png" />
+    <None Include="Media\Button Faces\Accounts\icons8_apply_25px.png" />
+    <None Include="Media\Button Faces\Accounts\icons8_denied_25px.png" />
+    <None Include="Media\Button Faces\Accounts\icons8_registration_25px.png" />
     <Content Include="Media\Button Faces\Add.png" />
+    <None Include="Media\Button Faces\addw.png" />
+    <None Include="Media\Button Faces\CRUD\Add.png" />
+    <None Include="Media\Button Faces\CRUD\icons8_save_25px.png" />
+    <None Include="Media\Button Faces\CRUD\Delete.png" />
+    <None Include="Media\Button Faces\CRUD\icons8_available_updates_25px.png" />
+    <None Include="Media\Button Faces\CRUD\icons8_edit_25px.png" />
+    <None Include="Media\Button Faces\CRUD\refresh.png" />
+    <None Include="Media\Button Faces\CRUD\icons8_delete_bin_25px.png" />
+    <None Include="Media\Button Faces\Bills\icons8_add_list_25px.png" />
+    <None Include="Media\Button Faces\Bills\icons8_delete_document_25px_2.png" />
+    <None Include="Media\Button Faces\Bills\icons8_add_row_25px.png" />
+    <None Include="Media\Button Faces\Bills\icons8_delete_row_25px_1.png" />
+    <None Include="Media\Button Faces\Bills\icons8_check_file_25px.png" />
+    <None Include="Media\Button Faces\Bills\icons8_receipt_25px.png" />
     <Content Include="Media\Button Faces\Delete.png" />
+    <None Include="Media\Button Faces\Export\icons8_output_25px.png" />
+    <None Include="Media\Button Faces\Export\icons8_xls_25px.png" />
+    <None Include="Media\Button Faces\Export\icons8_pdf_25px.png" />
+    <None Include="Media\Button Faces\MISC\print.png" />
+    <None Include="Media\Button Faces\Money\icons8_safe_25px.png" />
+    <None Include="Media\Button Faces\MISC\icons8_services_25px.png" />
+    <None Include="Media\Button Faces\MISC\icons8_password_1_25px.png" />
     <Content Include="Media\Button Faces\Plus.png" />
     <Content Include="Media\Icons\icoMain.ico" />
     <None Include="Resources\Lizard Logo white.png" />
@@ -769,6 +934,8 @@
     <Analyzer Include="packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="SqlServerTypes\x64\" />
+    <Folder Include="SqlServerTypes\x86\" />
     <Folder Include="UC\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

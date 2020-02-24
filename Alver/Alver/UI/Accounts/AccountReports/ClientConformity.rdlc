@@ -589,7 +589,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>العنوان: عفرين - طريق راجو - مقابل مخبر الرازي</Value>
+                  <Value>العنوان: عفرين - طريق راجو - جانب مطعم تشيكن ناغيت</Value>
                   <Style>
                     <FontFamily>segoe ui</FontFamily>
                     <FontSize>9pt</FontSize>
@@ -791,8 +791,8 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DAL</rd:DataSetName>
-        <rd:TableName>Accounts_Info</rd:TableName>
-        <rd:ObjectDataSourceType>DAL.Accounts_Info, DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>Account</rd:TableName>
+        <rd:ObjectDataSourceType>DAL.Account, DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
     <DataSet Name="DataSet2">

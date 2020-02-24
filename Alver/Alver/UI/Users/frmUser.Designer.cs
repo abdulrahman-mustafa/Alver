@@ -41,13 +41,13 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.savebtn = new System.Windows.Forms.ToolStripButton();
             this.infogroupBox = new System.Windows.Forms.GroupBox();
+            this.passwordconfirmtb = new System.Windows.Forms.TextBox();
             this.rolescb = new System.Windows.Forms.ComboBox();
+            this.roleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notestextBox = new System.Windows.Forms.TextBox();
             this.fullnametb = new System.Windows.Forms.ComboBox();
             this.usernametb = new System.Windows.Forms.TextBox();
             this.passwordtb = new System.Windows.Forms.TextBox();
-            this.passwordconfirmtb = new System.Windows.Forms.TextBox();
-            this.roleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             senderIdLabel = new System.Windows.Forms.Label();
@@ -59,6 +59,66 @@
             this.infogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roleBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label2
+            // 
+            label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(311, 63);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(78, 15);
+            label2.TabIndex = 46;
+            label2.Text = "نوع المستخدم:";
+            // 
+            // label1
+            // 
+            label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(350, 196);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(62, 15);
+            label1.TabIndex = 44;
+            label1.Text = "الملاحظات:";
+            // 
+            // senderIdLabel
+            // 
+            senderIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            senderIdLabel.AutoSize = true;
+            senderIdLabel.Location = new System.Drawing.Point(331, 29);
+            senderIdLabel.Name = "senderIdLabel";
+            senderIdLabel.Size = new System.Drawing.Size(37, 15);
+            senderIdLabel.TabIndex = 17;
+            senderIdLabel.Text = "الاسم:";
+            // 
+            // fatherLabel
+            // 
+            fatherLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            fatherLabel.AutoSize = true;
+            fatherLabel.Location = new System.Drawing.Point(311, 97);
+            fatherLabel.Name = "fatherLabel";
+            fatherLabel.Size = new System.Drawing.Size(81, 15);
+            fatherLabel.TabIndex = 38;
+            fatherLabel.Text = "اسم المستخدم:";
+            // 
+            // motherLabel
+            // 
+            motherLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            motherLabel.AutoSize = true;
+            motherLabel.Location = new System.Drawing.Point(311, 130);
+            motherLabel.Name = "motherLabel";
+            motherLabel.Size = new System.Drawing.Size(65, 15);
+            motherLabel.TabIndex = 39;
+            motherLabel.Text = "كلمة المرور:";
+            // 
+            // label3
+            // 
+            label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(311, 163);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(91, 15);
+            label3.TabIndex = 48;
+            label3.Text = "تأكيد كلمة المرور:";
             // 
             // bindingNavigator2
             // 
@@ -85,9 +145,10 @@
             // 
             // addbtn
             // 
+            this.addbtn.Image = global::Alver.Properties.Resources.Add;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(72, 24);
+            this.addbtn.Size = new System.Drawing.Size(61, 24);
             this.addbtn.Text = "إضافة";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -99,9 +160,10 @@
             // savebtn
             // 
             this.savebtn.Enabled = false;
+            this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(63, 24);
+            this.savebtn.Size = new System.Drawing.Size(54, 24);
             this.savebtn.Text = "حفظ";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
@@ -129,15 +191,14 @@
             this.infogroupBox.TabStop = false;
             this.infogroupBox.Text = "بيانات المستخدم";
             // 
-            // label2
+            // passwordconfirmtb
             // 
-            label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(311, 63);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(100, 20);
-            label2.TabIndex = 46;
-            label2.Text = "نوع المستخدم:";
+            this.passwordconfirmtb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.passwordconfirmtb.Location = new System.Drawing.Point(134, 160);
+            this.passwordconfirmtb.Name = "passwordconfirmtb";
+            this.passwordconfirmtb.PasswordChar = '*';
+            this.passwordconfirmtb.Size = new System.Drawing.Size(171, 23);
+            this.passwordconfirmtb.TabIndex = 47;
             // 
             // rolescb
             // 
@@ -147,26 +208,20 @@
             this.rolescb.FormattingEnabled = true;
             this.rolescb.Location = new System.Drawing.Point(134, 60);
             this.rolescb.Name = "rolescb";
-            this.rolescb.Size = new System.Drawing.Size(171, 28);
+            this.rolescb.Size = new System.Drawing.Size(171, 23);
             this.rolescb.TabIndex = 45;
             this.rolescb.ValueMember = "Id";
             // 
-            // label1
+            // roleBindingSource
             // 
-            label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(350, 196);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(79, 20);
-            label1.TabIndex = 44;
-            label1.Text = "الملاحظات:";
+            this.roleBindingSource.DataSource = typeof(Alver.DAL.Role);
             // 
             // notestextBox
             // 
             this.notestextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.notestextBox.Location = new System.Drawing.Point(13, 193);
             this.notestextBox.Name = "notestextBox";
-            this.notestextBox.Size = new System.Drawing.Size(292, 27);
+            this.notestextBox.Size = new System.Drawing.Size(292, 23);
             this.notestextBox.TabIndex = 9;
             // 
             // fullnametb
@@ -177,36 +232,16 @@
             this.fullnametb.FormattingEnabled = true;
             this.fullnametb.Location = new System.Drawing.Point(13, 26);
             this.fullnametb.Name = "fullnametb";
-            this.fullnametb.Size = new System.Drawing.Size(292, 28);
+            this.fullnametb.Size = new System.Drawing.Size(292, 23);
             this.fullnametb.TabIndex = 0;
-            // 
-            // senderIdLabel
-            // 
-            senderIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            senderIdLabel.AutoSize = true;
-            senderIdLabel.Location = new System.Drawing.Point(331, 29);
-            senderIdLabel.Name = "senderIdLabel";
-            senderIdLabel.Size = new System.Drawing.Size(47, 20);
-            senderIdLabel.TabIndex = 17;
-            senderIdLabel.Text = "الاسم:";
             // 
             // usernametb
             // 
             this.usernametb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.usernametb.Location = new System.Drawing.Point(134, 94);
             this.usernametb.Name = "usernametb";
-            this.usernametb.Size = new System.Drawing.Size(171, 27);
+            this.usernametb.Size = new System.Drawing.Size(171, 23);
             this.usernametb.TabIndex = 1;
-            // 
-            // fatherLabel
-            // 
-            fatherLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            fatherLabel.AutoSize = true;
-            fatherLabel.Location = new System.Drawing.Point(311, 97);
-            fatherLabel.Name = "fatherLabel";
-            fatherLabel.Size = new System.Drawing.Size(104, 20);
-            fatherLabel.TabIndex = 38;
-            fatherLabel.Text = "اسم المستخدم:";
             // 
             // passwordtb
             // 
@@ -214,45 +249,12 @@
             this.passwordtb.Location = new System.Drawing.Point(134, 127);
             this.passwordtb.Name = "passwordtb";
             this.passwordtb.PasswordChar = '*';
-            this.passwordtb.Size = new System.Drawing.Size(171, 27);
+            this.passwordtb.Size = new System.Drawing.Size(171, 23);
             this.passwordtb.TabIndex = 2;
-            // 
-            // motherLabel
-            // 
-            motherLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            motherLabel.AutoSize = true;
-            motherLabel.Location = new System.Drawing.Point(311, 130);
-            motherLabel.Name = "motherLabel";
-            motherLabel.Size = new System.Drawing.Size(83, 20);
-            motherLabel.TabIndex = 39;
-            motherLabel.Text = "كلمة المرور:";
-            // 
-            // passwordconfirmtb
-            // 
-            this.passwordconfirmtb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordconfirmtb.Location = new System.Drawing.Point(134, 160);
-            this.passwordconfirmtb.Name = "passwordconfirmtb";
-            this.passwordconfirmtb.PasswordChar = '*';
-            this.passwordconfirmtb.Size = new System.Drawing.Size(171, 27);
-            this.passwordconfirmtb.TabIndex = 47;
-            // 
-            // label3
-            // 
-            label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(311, 163);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(117, 20);
-            label3.TabIndex = 48;
-            label3.Text = "تأكيد كلمة المرور:";
-            // 
-            // roleBindingSource
-            // 
-            this.roleBindingSource.DataSource = typeof(DAL.Role);
             // 
             // frmUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(435, 297);

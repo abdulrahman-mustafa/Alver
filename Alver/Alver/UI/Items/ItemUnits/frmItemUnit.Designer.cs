@@ -31,8 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemUnit));
             this.payments_ExpenseCategoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.symbolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.addbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -48,13 +52,9 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.savebtn = new System.Windows.Forms.ToolStripButton();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.symbolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
@@ -82,13 +82,42 @@
             this.payments_ExpenseCategoryDataGridView.TabIndex = 1;
             this.payments_ExpenseCategoryDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.payments_ExpenseCategoryDataGridView_DataError);
             // 
-            // unitBindingSource
+            // titleDataGridViewTextBoxColumn
             // 
-            this.unitBindingSource.DataSource = typeof(Alver.DAL.Unit);
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "الاسم";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            // 
+            // symbolDataGridViewTextBoxColumn
+            // 
+            this.symbolDataGridViewTextBoxColumn.DataPropertyName = "Symbol";
+            this.symbolDataGridViewTextBoxColumn.HeaderText = "الرمز";
+            this.symbolDataGridViewTextBoxColumn.Name = "symbolDataGridViewTextBoxColumn";
+            // 
+            // declarationDataGridViewTextBoxColumn
+            // 
+            this.declarationDataGridViewTextBoxColumn.DataPropertyName = "Declaration";
+            this.declarationDataGridViewTextBoxColumn.HeaderText = "البيان";
+            this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
+            // 
+            // userIdDataGridViewTextBoxColumn
+            // 
+            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
+            this.userIdDataGridViewTextBoxColumn.DataSource = this.userBindingSource;
+            this.userIdDataGridViewTextBoxColumn.DisplayMember = "FullName";
+            this.userIdDataGridViewTextBoxColumn.HeaderText = "المستخدم";
+            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
+            this.userIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.userIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.userIdDataGridViewTextBoxColumn.ValueMember = "Id";
             // 
             // userBindingSource
             // 
             this.userBindingSource.DataSource = typeof(Alver.DAL.User);
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(Alver.DAL.Unit);
             // 
             // bindingNavigator1
             // 
@@ -126,24 +155,26 @@
             // 
             // addbtn
             // 
+            this.addbtn.Image = global::Alver.Properties.Resources.addrow;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(52, 24);
+            this.addbtn.Size = new System.Drawing.Size(61, 24);
             this.addbtn.Text = "إضافة";
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(86, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(66, 24);
             this.toolStripLabel1.Text = "من أصل {0}";
             this.toolStripLabel1.ToolTipText = "Total number of items";
             // 
             // deletebtn
             // 
+            this.deletebtn.Image = global::Alver.Properties.Resources.deleterow;
             this.deletebtn.Name = "deletebtn";
             this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(45, 24);
+            this.deletebtn.Size = new System.Drawing.Size(56, 24);
             this.deletebtn.Text = "حذف";
             // 
             // toolStripButton1
@@ -215,44 +246,16 @@
             // 
             // savebtn
             // 
+            this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(106, 24);
+            this.savebtn.Size = new System.Drawing.Size(103, 24);
             this.savebtn.Text = "حفظ التعديلات";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "الاسم";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            // 
-            // symbolDataGridViewTextBoxColumn
-            // 
-            this.symbolDataGridViewTextBoxColumn.DataPropertyName = "Symbol";
-            this.symbolDataGridViewTextBoxColumn.HeaderText = "الرمز";
-            this.symbolDataGridViewTextBoxColumn.Name = "symbolDataGridViewTextBoxColumn";
-            // 
-            // declarationDataGridViewTextBoxColumn
-            // 
-            this.declarationDataGridViewTextBoxColumn.DataPropertyName = "Declaration";
-            this.declarationDataGridViewTextBoxColumn.HeaderText = "البيان";
-            this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
-            // 
-            // userIdDataGridViewTextBoxColumn
-            // 
-            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
-            this.userIdDataGridViewTextBoxColumn.DataSource = this.userBindingSource;
-            this.userIdDataGridViewTextBoxColumn.DisplayMember = "FullName";
-            this.userIdDataGridViewTextBoxColumn.HeaderText = "المستخدم";
-            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
-            this.userIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.userIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.userIdDataGridViewTextBoxColumn.ValueMember = "Id";
-            // 
             // frmItemUnit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 417);
             this.Controls.Add(this.payments_ExpenseCategoryDataGridView);
@@ -266,8 +269,8 @@
             this.Text = "الواحدات";
             this.Load += new System.EventHandler(this.frmExpensessCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();

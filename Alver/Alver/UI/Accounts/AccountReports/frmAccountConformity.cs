@@ -21,8 +21,8 @@ namespace Alver.UI.Accounts.AccountReports
             using (dbEntities db = new dbEntities())
             {
                 db.Accounts.Load();
-                Accounts_InfoBindingSource.DataSource = db.Accounts.FirstOrDefault(x => x.Id == _client.Id);
-                ClientGrand_ResultBindingSource.DataSource = db.SP_ClientGrand(_client.Id).ToList();
+                AccountBindingSource.DataSource = db.Accounts.FirstOrDefault(x => x.Id == _client.Id);
+                SP_ClientGrand_ResultBindingSource.DataSource = db.SP_ClientGrand(_client.Id).ToList();
                 this.reportViewer1.RefreshReport();
             }
         }

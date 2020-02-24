@@ -119,7 +119,7 @@
             this.payments_OperationBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.payments_OperationBindingNavigator.Name = "payments_OperationBindingNavigator";
             this.payments_OperationBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.payments_OperationBindingNavigator.Size = new System.Drawing.Size(867, 27);
+            this.payments_OperationBindingNavigator.Size = new System.Drawing.Size(651, 27);
             this.payments_OperationBindingNavigator.TabIndex = 0;
             this.payments_OperationBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -131,7 +131,7 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(83, 24);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(65, 24);
             this.bindingNavigatorCountItem.Text = "من أصل {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -162,6 +162,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -199,7 +200,7 @@
             // 
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(45, 24);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(36, 24);
             this.bindingNavigatorDeleteItem.Text = "حذف";
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
@@ -207,14 +208,14 @@
             // 
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(62, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(49, 24);
             this.toolStripButton1.Text = "رد الدين";
             this.toolStripButton1.Visible = false;
             // 
             // payments_OperationBindingNavigatorSaveItem
             // 
             this.payments_OperationBindingNavigatorSaveItem.Name = "payments_OperationBindingNavigatorSaveItem";
-            this.payments_OperationBindingNavigatorSaveItem.Size = new System.Drawing.Size(106, 24);
+            this.payments_OperationBindingNavigatorSaveItem.Size = new System.Drawing.Size(83, 24);
             this.payments_OperationBindingNavigatorSaveItem.Text = "حفظ التعديلات";
             this.payments_OperationBindingNavigatorSaveItem.Click += new System.EventHandler(this.payments_OperationBindingNavigatorSaveItem_Click);
             // 
@@ -224,20 +225,20 @@
             this.اكسلToolStripMenuItem,
             this.pDFToolStripMenuItem});
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(62, 24);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(51, 24);
             this.toolStripDropDownButton1.Text = "تصدير";
             // 
             // اكسلToolStripMenuItem
             // 
             this.اكسلToolStripMenuItem.Name = "اكسلToolStripMenuItem";
-            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
+            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.اكسلToolStripMenuItem.Text = "اكسل";
             this.اكسلToolStripMenuItem.Click += new System.EventHandler(this.اكسلToolStripMenuItem_Click);
             // 
             // pDFToolStripMenuItem
             // 
             this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.pDFToolStripMenuItem.Text = "PDF";
             // 
             // dgv
@@ -266,7 +267,7 @@
             this.dgv.Location = new System.Drawing.Point(0, 27);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
-            this.dgv.Size = new System.Drawing.Size(867, 423);
+            this.dgv.Size = new System.Drawing.Size(651, 435);
             this.dgv.TabIndex = 1;
             this.dgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.payments_OperationDataGridView_DataBindingComplete);
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.payments_OperationDataGridView_DataError);
@@ -278,7 +279,7 @@
             this.Direction.Name = "Direction";
             this.Direction.ReadOnly = true;
             this.Direction.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Direction.Width = 103;
+            this.Direction.Width = 82;
             // 
             // currencyIdDataGridViewTextBoxColumn
             // 
@@ -294,7 +295,7 @@
             this.currencyIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.currencyIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.currencyIdDataGridViewTextBoxColumn.ValueMember = "Id";
-            this.currencyIdDataGridViewTextBoxColumn.Width = 78;
+            this.currencyIdDataGridViewTextBoxColumn.Width = 63;
             // 
             // currencyBindingSource
             // 
@@ -306,7 +307,7 @@
             this.amountDataGridViewTextBoxColumn.HeaderText = "المبلغ";
             this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
             this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.amountDataGridViewTextBoxColumn.Width = 75;
+            this.amountDataGridViewTextBoxColumn.Width = 61;
             // 
             // declarationDataGridViewTextBoxColumn
             // 
@@ -314,7 +315,7 @@
             this.declarationDataGridViewTextBoxColumn.HeaderText = "البيان";
             this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
             this.declarationDataGridViewTextBoxColumn.ReadOnly = true;
-            this.declarationDataGridViewTextBoxColumn.Width = 71;
+            this.declarationDataGridViewTextBoxColumn.Width = 58;
             // 
             // lockedDataGridViewTextBoxColumn
             // 
@@ -337,7 +338,7 @@
             this.payedDataGridViewTextBoxColumn.ReadOnly = true;
             this.payedDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.payedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.payedDataGridViewTextBoxColumn.Width = 105;
+            this.payedDataGridViewTextBoxColumn.Width = 84;
             // 
             // PayDate
             // 
@@ -345,7 +346,7 @@
             this.PayDate.HeaderText = "تاريخ رد الدين";
             this.PayDate.Name = "PayDate";
             this.PayDate.ReadOnly = true;
-            this.PayDate.Width = 121;
+            this.PayDate.Width = 97;
             // 
             // UserId
             // 
@@ -360,7 +361,7 @@
             this.UserId.ReadOnly = true;
             this.UserId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.UserId.ValueMember = "Id";
-            this.UserId.Width = 77;
+            this.UserId.Width = 61;
             // 
             // usersUserBindingSource
             // 
@@ -396,8 +397,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.dgvTotals);
             this.splitContainer1.Panel2.Controls.Add(this.payments_OperationBindingNavigator);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainer1.Size = new System.Drawing.Size(1110, 500);
-            this.splitContainer1.SplitterDistance = 233;
+            this.splitContainer1.Size = new System.Drawing.Size(836, 512);
+            this.splitContainer1.SplitterDistance = 175;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 7;
             // 
@@ -407,9 +408,9 @@
             this.outloancb.AutoSize = true;
             this.outloancb.Checked = true;
             this.outloancb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.outloancb.Location = new System.Drawing.Point(60, 135);
+            this.outloancb.Location = new System.Drawing.Point(37, 135);
             this.outloancb.Name = "outloancb";
-            this.outloancb.Size = new System.Drawing.Size(161, 24);
+            this.outloancb.Size = new System.Drawing.Size(126, 19);
             this.outloancb.TabIndex = 33;
             this.outloancb.Text = "الديون المسلمّة فقط";
             this.outloancb.UseVisualStyleBackColor = true;
@@ -420,9 +421,9 @@
             this.inLoancb.AutoSize = true;
             this.inLoancb.Checked = true;
             this.inLoancb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.inLoancb.Location = new System.Drawing.Point(51, 165);
+            this.inLoancb.Location = new System.Drawing.Point(30, 165);
             this.inLoancb.Name = "inLoancb";
-            this.inLoancb.Size = new System.Drawing.Size(170, 24);
+            this.inLoancb.Size = new System.Drawing.Size(133, 19);
             this.inLoancb.TabIndex = 32;
             this.inLoancb.Text = "الديون المقبوضة فقط";
             this.inLoancb.UseVisualStyleBackColor = true;
@@ -431,9 +432,9 @@
             // 
             this.clientcb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.clientcb.AutoSize = true;
-            this.clientcb.Location = new System.Drawing.Point(110, 224);
+            this.clientcb.Location = new System.Drawing.Point(75, 224);
             this.clientcb.Name = "clientcb";
-            this.clientcb.Size = new System.Drawing.Size(111, 24);
+            this.clientcb.Size = new System.Drawing.Size(88, 19);
             this.clientcb.TabIndex = 31;
             this.clientcb.Text = "حسب الوكيل";
             this.clientcb.UseVisualStyleBackColor = true;
@@ -450,7 +451,7 @@
             this.clientComboBox.FormattingEnabled = true;
             this.clientComboBox.Location = new System.Drawing.Point(13, 254);
             this.clientComboBox.Name = "clientComboBox";
-            this.clientComboBox.Size = new System.Drawing.Size(208, 28);
+            this.clientComboBox.Size = new System.Drawing.Size(150, 23);
             this.clientComboBox.TabIndex = 30;
             this.clientComboBox.ValueMember = "Id";
             // 
@@ -464,9 +465,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(13, 458);
+            this.button1.Location = new System.Drawing.Point(13, 470);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 30);
+            this.button1.Size = new System.Drawing.Size(146, 30);
             this.button1.TabIndex = 27;
             this.button1.Text = "جلب";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -477,9 +478,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 63);
+            this.label2.Location = new System.Drawing.Point(95, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(54, 15);
             this.label2.TabIndex = 21;
             this.label2.Text = "إلى تاريخ:";
             // 
@@ -487,9 +488,9 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(156, 9);
+            this.label1.Location = new System.Drawing.Point(98, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.Size = new System.Drawing.Size(52, 15);
             this.label1.TabIndex = 20;
             this.label1.Text = "من تاريخ:";
             // 
@@ -502,7 +503,7 @@
             this.FromDateTimePicker.Name = "FromDateTimePicker";
             this.FromDateTimePicker.RightToLeftLayout = true;
             this.FromDateTimePicker.ShowCheckBox = true;
-            this.FromDateTimePicker.Size = new System.Drawing.Size(208, 27);
+            this.FromDateTimePicker.Size = new System.Drawing.Size(150, 23);
             this.FromDateTimePicker.TabIndex = 18;
             // 
             // ToDateTimePicker
@@ -513,7 +514,7 @@
             this.ToDateTimePicker.Location = new System.Drawing.Point(13, 86);
             this.ToDateTimePicker.Name = "ToDateTimePicker";
             this.ToDateTimePicker.RightToLeftLayout = true;
-            this.ToDateTimePicker.Size = new System.Drawing.Size(208, 27);
+            this.ToDateTimePicker.Size = new System.Drawing.Size(150, 23);
             this.ToDateTimePicker.TabIndex = 19;
             // 
             // dgvTotals
@@ -547,17 +548,17 @@
             this.dgvTotals.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvTotals.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvTotals.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvTotals.Location = new System.Drawing.Point(0, 450);
+            this.dgvTotals.Location = new System.Drawing.Point(0, 462);
             this.dgvTotals.Name = "dgvTotals";
             this.dgvTotals.ReadOnly = true;
-            this.dgvTotals.Size = new System.Drawing.Size(867, 50);
+            this.dgvTotals.Size = new System.Drawing.Size(651, 50);
             this.dgvTotals.TabIndex = 3;
             // 
             // frmLoans
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 500);
+            this.ClientSize = new System.Drawing.Size(836, 512);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

@@ -217,7 +217,7 @@ namespace Alver.UI.Payments.Loans
         }
         private void addClientpb_Click(object sender, EventArgs e)
         {
-            (new frmClient()).ShowDialog();
+            (new frmAddAccount()).ShowDialog();
             LoadData();
         }
         private void frmClientLoan_KeyDown(object sender, KeyEventArgs e)

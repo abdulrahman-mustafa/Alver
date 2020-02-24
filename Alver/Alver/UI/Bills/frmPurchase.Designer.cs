@@ -262,7 +262,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(869, 165);
+            this.tabPage1.Size = new System.Drawing.Size(869, 169);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "الاقلام";
             // 
@@ -292,7 +292,7 @@
             this.billLinesDgv.MultiSelect = false;
             this.billLinesDgv.Name = "billLinesDgv";
             this.billLinesDgv.ReadOnly = true;
-            this.billLinesDgv.Size = new System.Drawing.Size(863, 132);
+            this.billLinesDgv.Size = new System.Drawing.Size(863, 136);
             this.billLinesDgv.TabIndex = 8;
             this.billLinesDgv.VirtualMode = true;
             this.billLinesDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.adddgv_DataBindingComplete);
@@ -507,9 +507,10 @@
             // 
             // deletebilllinebtn
             // 
+            this.deletebilllinebtn.Image = global::Alver.Properties.Resources.deleterow;
             this.deletebilllinebtn.Name = "deletebilllinebtn";
             this.deletebilllinebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebilllinebtn.Size = new System.Drawing.Size(69, 24);
+            this.deletebilllinebtn.Size = new System.Drawing.Size(89, 24);
             this.deletebilllinebtn.Text = "حذف الحركة";
             this.deletebilllinebtn.Click += new System.EventHandler(this.dceobtn_Click);
             // 
@@ -518,11 +519,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ItemSize = new System.Drawing.Size(257, 25);
-            this.tabControl1.Location = new System.Drawing.Point(0, 180);
+            this.tabControl1.Location = new System.Drawing.Point(0, 174);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(877, 198);
+            this.tabControl1.Size = new System.Drawing.Size(877, 202);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 2;
             // 
@@ -535,7 +536,7 @@
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.RightToLeftLayout = true;
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(877, 180);
+            this.tabControl2.Size = new System.Drawing.Size(877, 174);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 4;
             // 
@@ -548,9 +549,9 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(869, 147);
+            this.tabPage2.Size = new System.Drawing.Size(869, 141);
             this.tabPage2.TabIndex = 0;
-            this.tabPage2.Text = "فواتير البيع";
+            this.tabPage2.Text = "فواتير الشراء";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -564,7 +565,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.barcodecb);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.currencycb);
@@ -579,7 +580,7 @@
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.ForeColor = System.Drawing.Color.Snow;
+            this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(863, 60);
@@ -641,14 +642,17 @@
             // 
             // addbilllinebtn
             // 
-            this.addbilllinebtn.BackColor = System.Drawing.Color.Coral;
+            this.addbilllinebtn.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.addbilllinebtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.addbilllinebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addbilllinebtn.Image = global::Alver.Properties.Resources.addrow;
+            this.addbilllinebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.addbilllinebtn.Location = new System.Drawing.Point(0, 0);
             this.addbilllinebtn.Name = "addbilllinebtn";
             this.addbilllinebtn.Size = new System.Drawing.Size(84, 60);
             this.addbilllinebtn.TabIndex = 48;
             this.addbilllinebtn.Text = "إضافة";
+            this.addbilllinebtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addbilllinebtn.UseVisualStyleBackColor = false;
             this.addbilllinebtn.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -800,6 +804,8 @@
             this.payedchkbox.AutoSize = true;
             this.payedchkbox.BackColor = System.Drawing.Color.Aquamarine;
             this.payedchkbox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.payedchkbox.Checked = true;
+            this.payedchkbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.payedchkbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.BillBS, "Cashout", true));
             this.payedchkbox.Dock = System.Windows.Forms.DockStyle.Right;
             this.payedchkbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -971,9 +977,10 @@
             // 
             // addbillbtn
             // 
+            this.addbillbtn.Image = global::Alver.Properties.Resources.addbill;
             this.addbillbtn.Name = "addbillbtn";
             this.addbillbtn.RightToLeftAutoMirrorImage = true;
-            this.addbillbtn.Size = new System.Drawing.Size(105, 24);
+            this.addbillbtn.Size = new System.Drawing.Size(125, 24);
             this.addbillbtn.Text = "إضافة فاتورة جديدة";
             this.addbillbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.addbillbtn.Click += new System.EventHandler(this.addcebtn_Click);
@@ -985,9 +992,10 @@
             // 
             // deletebillbtn
             // 
+            this.deletebillbtn.Image = global::Alver.Properties.Resources.deletebill;
             this.deletebillbtn.Name = "deletebillbtn";
             this.deletebillbtn.RightToLeftAutoMirrorImage = true;
-            this.deletebillbtn.Size = new System.Drawing.Size(203, 24);
+            this.deletebillbtn.Size = new System.Drawing.Size(223, 24);
             this.deletebillbtn.Text = "حذف الفاتورة مع جميع الاقلام التابعة لها";
             this.deletebillbtn.Click += new System.EventHandler(this.dcebtn_Click);
             // 
@@ -1048,7 +1056,7 @@
             this.groupBox1.Controls.Add(this.discountnud);
             this.groupBox1.Controls.Add(amountLabel);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 378);
+            this.groupBox1.Location = new System.Drawing.Point(0, 376);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(877, 70);
             this.groupBox1.TabIndex = 40;
@@ -1178,21 +1186,21 @@
             this.toolStripSeparator6,
             this.chechprintbillbtn,
             this.toolStripSeparator10});
-            this.bindingNavigator2.Location = new System.Drawing.Point(0, 448);
+            this.bindingNavigator2.Location = new System.Drawing.Point(0, 446);
             this.bindingNavigator2.MoveFirstItem = null;
             this.bindingNavigator2.MoveLastItem = null;
             this.bindingNavigator2.MoveNextItem = null;
             this.bindingNavigator2.MovePreviousItem = null;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = null;
-            this.bindingNavigator2.Size = new System.Drawing.Size(877, 25);
+            this.bindingNavigator2.Size = new System.Drawing.Size(877, 27);
             this.bindingNavigator2.TabIndex = 41;
             // 
             // editbillbtn
             // 
             this.editbillbtn.Name = "editbillbtn";
             this.editbillbtn.RightToLeftAutoMirrorImage = true;
-            this.editbillbtn.Size = new System.Drawing.Size(111, 22);
+            this.editbillbtn.Size = new System.Drawing.Size(111, 24);
             this.editbillbtn.Text = "تعديل بيانات الفاتورة";
             this.editbillbtn.Visible = false;
             this.editbillbtn.Click += new System.EventHandler(this.addbtn_Click);
@@ -1200,42 +1208,45 @@
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 27);
             // 
             // checkbillbtn
             // 
+            this.checkbillbtn.Image = global::Alver.Properties.Resources.savebill;
             this.checkbillbtn.Name = "checkbillbtn";
             this.checkbillbtn.RightToLeftAutoMirrorImage = true;
-            this.checkbillbtn.Size = new System.Drawing.Size(78, 22);
+            this.checkbillbtn.Size = new System.Drawing.Size(98, 24);
             this.checkbillbtn.Text = "ترحيل الفاتورة";
             this.checkbillbtn.Click += new System.EventHandler(this.checkbillbtn_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
             // 
             // chechprintbillbtn
             // 
+            this.chechprintbillbtn.Image = global::Alver.Properties.Resources.saveandprintbill;
             this.chechprintbillbtn.Name = "chechprintbillbtn";
             this.chechprintbillbtn.RightToLeftAutoMirrorImage = true;
-            this.chechprintbillbtn.Size = new System.Drawing.Size(117, 22);
+            this.chechprintbillbtn.Size = new System.Drawing.Size(137, 24);
             this.chechprintbillbtn.Text = "ترحيل وطباعة الفاتورة";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 27);
             // 
             // frmPurchase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(877, 473);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);

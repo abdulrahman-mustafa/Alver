@@ -21,10 +21,35 @@ namespace Alver.UI.Bills
         {
             InitializeComponent();
         }
+        private bool CheckRecords()
+        {
+            bool _result = true;
+            using (dbEntities db = new dbEntities())
+            {
+                if (db.Items.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة مواد بعد، لا يمكنك إضافة فاتورة");
+                    _result = false;
+                }
+                else if (db.CurrencyBulletins.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة اسعار الصرف بعد، لا يمكنك إضافة فاتورة");
+                    _result = false;
+               }
+            }
+            return _result;
+        }
         private void frmExchange_Load(object sender, EventArgs e)
         {
-            LoadData();
-            barcodecb.Focus();
+            if (CheckRecords())
+            {
+                LoadData();
+                barcodecb.Focus();
+            }
+            else
+            {
+                this.Close();
+            }
         }
         private void LoadData()
         {
@@ -125,16 +150,19 @@ namespace Alver.UI.Bills
         {
             try
             {
-                //ControlsEnable(true);
-
                 string _billType = BillType.شراء.ToString();
                 int userid = Properties.Settings.Default.LoggedInUser.Id;
-
                 var bill = (Bill)BillBS.AddNew();
                 bill.BillType = _billType;
+                bill.Cashout = false;
+                bill.CheckedOut = false;
                 bill.CurrencyId = 0;
+                bill.ForeginCurrencyId = 0;
                 bill.DiscountAmount = 0;
                 bill.TotalAmount = 0;
+                bill.ExchangedAmount = 0;
+                bill.Exchanged = false;
+                bill.Rate = 0;
                 bill.AccountId = 0;
                 bill.BillAmount = 0;
                 bill.BillDate = billdatedtp.Value;
@@ -503,6 +531,7 @@ namespace Alver.UI.Bills
                         //ControlsEnable(false);
                         Bill _bill = BillBS.Current as Bill;
                         int _billId = _bill.Id;
+                        string _declaration = string.Empty;
                         using (dbEntities db = new dbEntities())
                         {
                             Bill bill = db.Bills.Find(_billId);
@@ -519,11 +548,19 @@ namespace Alver.UI.Bills
                             {
                                 bill.AccountId = 0;
                                 bill.Cashout = true;
+                                _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
+                        "نقدي  ",
+                        _bill.Id.ToString(),
+                        discountnud.Value.ToString());
                             }
                             else
                             {
                                 bill.AccountId = (int)accountcb.SelectedValue;
                                 bill.Cashout = false;
+                                _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
+                        accountcb.Text.Trim(),
+                        _bill.Id.ToString(),
+                        discountnud.Value.ToString());
                             }
                             if (exchangebillchkbox.Checked)
                             {
@@ -537,10 +574,6 @@ namespace Alver.UI.Bills
                             bill.ExchangedAmount = syrTotalnud.Value;
 
                             db.SaveChanges();
-                            string _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
-                        accountcb.Text.Trim(),
-                        _bill.Id.ToString(),
-                        discountnud.Value.ToString());
 
                             Guid _guid = bill.GUID.Value;
                             TransactionsOperations.DeleteTransactions(_guid);
@@ -548,28 +581,28 @@ namespace Alver.UI.Bills
                             {
                                 foreach (BillLine _billLine in bill.BillLines)
                                 {
-                                    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLB, _billLine.LUD.Value, _guid, _declaration);
+                                    TransactionsOperations.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsOperations.TT.BLP, _billLine.LUD.Value, _guid, _declaration);
                                 }
                                 if (!payedchkbox.Checked)
                                 {
                                     if (exchangebillchkbox.Checked)
                                     {
-                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                     }
                                     else
                                     {
-                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                        TransactionsOperations.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                     }
                                 }
                                 else
                                 {
                                     if (exchangebillchkbox.Checked)
                                     {
-                                        TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                        TransactionsOperations.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsOperations.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                     }
                                     else
                                     {
-                                        TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLB, bill.LUD.Value, _guid, _declaration);
+                                        TransactionsOperations.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsOperations.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                     }
                                 }
                             }
@@ -672,6 +705,7 @@ namespace Alver.UI.Bills
             try
             {
                 accountcb.Enabled = !payedchkbox.Checked;
+                calcSumTotals();
             }
             catch (Exception ex)
             {
@@ -680,11 +714,19 @@ namespace Alver.UI.Bills
         }
         private void exchangebillchkbox_CheckedChanged(object sender, EventArgs e)
         {
-
+            calcSumTotals();
         }
         private void ratenud_ValueChanged(object sender, EventArgs e)
         {
-            syrTotalnud.Value = ratenud.Value * totalnud.Value;
+            try
+            {
+                syrTotalnud.Value = ratenud.Value * totalnud.Value;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("لم يتم إضافة سعر تصريف ....");
+                //MSGs.ErrorMessage(ex);
+            }
         }
     }
 }

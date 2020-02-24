@@ -96,7 +96,7 @@
             senderIdLabel.AutoSize = true;
             senderIdLabel.Location = new System.Drawing.Point(389, 27);
             senderIdLabel.Name = "senderIdLabel";
-            senderIdLabel.Size = new System.Drawing.Size(47, 20);
+            senderIdLabel.Size = new System.Drawing.Size(37, 15);
             senderIdLabel.TabIndex = 17;
             senderIdLabel.Text = "الاسم:";
             // 
@@ -106,7 +106,7 @@
             label12.AutoSize = true;
             label12.Location = new System.Drawing.Point(159, 29);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(68, 20);
+            label12.Size = new System.Drawing.Size(54, 15);
             label12.TabIndex = 40;
             label12.Text = "الصندوق:";
             // 
@@ -116,7 +116,7 @@
             label4.AutoSize = true;
             label4.Location = new System.Drawing.Point(369, 24);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(87, 20);
+            label4.Size = new System.Drawing.Size(69, 15);
             label4.TabIndex = 36;
             label4.Text = "سعر الصرف:";
             // 
@@ -126,7 +126,7 @@
             amountLabel.AutoSize = true;
             amountLabel.Location = new System.Drawing.Point(91, 21);
             amountLabel.Name = "amountLabel";
-            amountLabel.Size = new System.Drawing.Size(49, 20);
+            amountLabel.Size = new System.Drawing.Size(39, 15);
             amountLabel.TabIndex = 9;
             amountLabel.Text = "المبلع:";
             // 
@@ -136,7 +136,7 @@
             operationDateLabel.AutoSize = true;
             operationDateLabel.Location = new System.Drawing.Point(397, 21);
             operationDateLabel.Name = "operationDateLabel";
-            operationDateLabel.Size = new System.Drawing.Size(51, 20);
+            operationDateLabel.Size = new System.Drawing.Size(41, 15);
             operationDateLabel.TabIndex = 1;
             operationDateLabel.Text = "التاريخ:";
             // 
@@ -146,7 +146,7 @@
             declarationLabel.AutoSize = true;
             declarationLabel.Location = new System.Drawing.Point(402, 71);
             declarationLabel.Name = "declarationLabel";
-            declarationLabel.Size = new System.Drawing.Size(45, 20);
+            declarationLabel.Size = new System.Drawing.Size(36, 15);
             declarationLabel.TabIndex = 13;
             declarationLabel.Text = "البيان:";
             // 
@@ -156,7 +156,7 @@
             label5.AutoSize = true;
             label5.Location = new System.Drawing.Point(159, 29);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(68, 20);
+            label5.Size = new System.Drawing.Size(54, 15);
             label5.TabIndex = 40;
             label5.Text = "الصندوق:";
             // 
@@ -166,7 +166,7 @@
             currencyIdLabel.AutoSize = true;
             currencyIdLabel.Location = new System.Drawing.Point(239, 21);
             currencyIdLabel.Name = "currencyIdLabel";
-            currencyIdLabel.Size = new System.Drawing.Size(52, 20);
+            currencyIdLabel.Size = new System.Drawing.Size(41, 15);
             currencyIdLabel.TabIndex = 15;
             currencyIdLabel.Text = "العملة:";
             // 
@@ -190,7 +190,7 @@
             this.clientComboBox.FormattingEnabled = true;
             this.clientComboBox.Location = new System.Drawing.Point(10, 22);
             this.clientComboBox.Name = "clientComboBox";
-            this.clientComboBox.Size = new System.Drawing.Size(374, 28);
+            this.clientComboBox.Size = new System.Drawing.Size(374, 23);
             this.clientComboBox.TabIndex = 18;
             this.clientComboBox.ValueMember = "Id";
             // 
@@ -218,7 +218,7 @@
             this.FromFundcomboBox.FormattingEnabled = true;
             this.FromFundcomboBox.Location = new System.Drawing.Point(10, 47);
             this.FromFundcomboBox.Name = "FromFundcomboBox";
-            this.FromFundcomboBox.Size = new System.Drawing.Size(203, 28);
+            this.FromFundcomboBox.Size = new System.Drawing.Size(203, 23);
             this.FromFundcomboBox.TabIndex = 43;
             this.FromFundcomboBox.ValueMember = "Id";
             this.FromFundcomboBox.SelectedIndexChanged += new System.EventHandler(this.FromFundcomboBox_SelectedIndexChanged);
@@ -247,17 +247,17 @@
             this.displayer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.displayer.DecimalPlaces = 3;
             this.displayer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.displayer.Font = new System.Drawing.Font("Arvo", 32F);
+            this.displayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F);
             this.displayer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.displayer.InterceptArrowKeys = false;
-            this.displayer.Location = new System.Drawing.Point(3, 56);
+            this.displayer.Location = new System.Drawing.Point(3, 73);
             this.displayer.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             0});
             this.displayer.Name = "displayer";
-            this.displayer.Size = new System.Drawing.Size(438, 69);
+            this.displayer.Size = new System.Drawing.Size(438, 52);
             this.displayer.TabIndex = 50;
             this.displayer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.displayer.ThousandsSeparator = true;
@@ -270,9 +270,9 @@
             this.radioButton1.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton1.Checked = true;
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton1.Location = new System.Drawing.Point(10, 20);
+            this.radioButton1.Location = new System.Drawing.Point(13, 20);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(39, 25);
+            this.radioButton1.Size = new System.Drawing.Size(36, 20);
             this.radioButton1.TabIndex = 39;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "/";
@@ -285,9 +285,9 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton2.Location = new System.Drawing.Point(59, 20);
+            this.radioButton2.Location = new System.Drawing.Point(62, 20);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(39, 25);
+            this.radioButton2.Size = new System.Drawing.Size(36, 20);
             this.radioButton2.TabIndex = 38;
             this.radioButton2.Text = "*";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -309,7 +309,7 @@
             0,
             0});
             this.ratenud.Name = "ratenud";
-            this.ratenud.Size = new System.Drawing.Size(204, 27);
+            this.ratenud.Size = new System.Drawing.Size(204, 23);
             this.ratenud.TabIndex = 37;
             this.ratenud.Value = new decimal(new int[] {
             1,
@@ -343,7 +343,7 @@
             this.currencyIdComboBox.FormattingEnabled = true;
             this.currencyIdComboBox.Location = new System.Drawing.Point(159, 38);
             this.currencyIdComboBox.Name = "currencyIdComboBox";
-            this.currencyIdComboBox.Size = new System.Drawing.Size(121, 28);
+            this.currencyIdComboBox.Size = new System.Drawing.Size(121, 23);
             this.currencyIdComboBox.TabIndex = 16;
             this.currencyIdComboBox.ValueMember = "Id";
             this.currencyIdComboBox.SelectedIndexChanged += new System.EventHandler(this.currencyIdComboBox_SelectedIndexChanged);
@@ -363,7 +363,7 @@
             0,
             0});
             this.amountNumericUpDown.Name = "amountNumericUpDown";
-            this.amountNumericUpDown.Size = new System.Drawing.Size(120, 27);
+            this.amountNumericUpDown.Size = new System.Drawing.Size(120, 23);
             this.amountNumericUpDown.TabIndex = 10;
             this.amountNumericUpDown.ValueChanged += new System.EventHandler(this.amountNumericUpDown_ValueChanged);
             // 
@@ -375,7 +375,7 @@
             this.operationDateDateTimePicker.Location = new System.Drawing.Point(296, 39);
             this.operationDateDateTimePicker.Name = "operationDateDateTimePicker";
             this.operationDateDateTimePicker.RightToLeftLayout = true;
-            this.operationDateDateTimePicker.Size = new System.Drawing.Size(142, 27);
+            this.operationDateDateTimePicker.Size = new System.Drawing.Size(142, 23);
             this.operationDateDateTimePicker.TabIndex = 2;
             // 
             // transferClientFundBindingSource
@@ -388,7 +388,7 @@
             this.declarationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.declarationTextBox.Location = new System.Drawing.Point(10, 89);
             this.declarationTextBox.Name = "declarationTextBox";
-            this.declarationTextBox.Size = new System.Drawing.Size(428, 27);
+            this.declarationTextBox.Size = new System.Drawing.Size(428, 23);
             this.declarationTextBox.TabIndex = 14;
             // 
             // groupBox1
@@ -410,7 +410,7 @@
             this.ToFundcomboBox.FormattingEnabled = true;
             this.ToFundcomboBox.Location = new System.Drawing.Point(10, 47);
             this.ToFundcomboBox.Name = "ToFundcomboBox";
-            this.ToFundcomboBox.Size = new System.Drawing.Size(203, 28);
+            this.ToFundcomboBox.Size = new System.Drawing.Size(203, 23);
             this.ToFundcomboBox.TabIndex = 43;
             this.ToFundcomboBox.ValueMember = "Id";
             // 
@@ -442,14 +442,15 @@
             this.bindingNavigator2.MovePreviousItem = null;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = null;
-            this.bindingNavigator2.Size = new System.Drawing.Size(468, 27);
+            this.bindingNavigator2.Size = new System.Drawing.Size(470, 27);
             this.bindingNavigator2.TabIndex = 49;
             // 
             // addbtn
             // 
+            this.addbtn.Image = global::Alver.Properties.Resources.Add;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(52, 24);
+            this.addbtn.Size = new System.Drawing.Size(61, 24);
             this.addbtn.Text = "إضافة";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -466,9 +467,10 @@
             // savebtn
             // 
             this.savebtn.Enabled = false;
+            this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(43, 24);
+            this.savebtn.Size = new System.Drawing.Size(54, 24);
             this.savebtn.Text = "حفظ";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
@@ -479,10 +481,10 @@
             // 
             // frmTransfer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(468, 457);
+            this.ClientSize = new System.Drawing.Size(470, 457);
             this.Controls.Add(this.bindingNavigator2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);

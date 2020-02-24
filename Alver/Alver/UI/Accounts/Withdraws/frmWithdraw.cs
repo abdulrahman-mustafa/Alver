@@ -207,7 +207,7 @@ namespace Alver.UI.Accounts.Withdraws
         }
         private void addClientpb_Click(object sender, EventArgs e)
         {
-            (new frmClient()).ShowDialog();
+            (new frmAddAccount()).ShowDialog();
             LoadData();
         }
     }

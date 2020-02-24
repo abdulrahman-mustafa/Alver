@@ -60,9 +60,9 @@
             // 
             label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(253, 126);
+            label1.Location = new System.Drawing.Point(240, 126);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(79, 20);
+            label1.Size = new System.Drawing.Size(62, 15);
             label1.TabIndex = 44;
             label1.Text = "الملاحظات:";
             // 
@@ -70,9 +70,9 @@
             // 
             senderIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             senderIdLabel.AutoSize = true;
-            senderIdLabel.Location = new System.Drawing.Point(253, 25);
+            senderIdLabel.Location = new System.Drawing.Point(240, 25);
             senderIdLabel.Name = "senderIdLabel";
-            senderIdLabel.Size = new System.Drawing.Size(68, 20);
+            senderIdLabel.Size = new System.Drawing.Size(54, 15);
             senderIdLabel.TabIndex = 17;
             senderIdLabel.Text = "الصندوق:";
             // 
@@ -80,9 +80,9 @@
             // 
             fatherLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             fatherLabel.AutoSize = true;
-            fatherLabel.Location = new System.Drawing.Point(253, 93);
+            fatherLabel.Location = new System.Drawing.Point(240, 93);
             fatherLabel.Name = "fatherLabel";
-            fatherLabel.Size = new System.Drawing.Size(54, 20);
+            fatherLabel.Size = new System.Drawing.Size(43, 15);
             fatherLabel.TabIndex = 38;
             fatherLabel.Text = "الرصيد:";
             // 
@@ -90,16 +90,16 @@
             // 
             countryNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             countryNameLabel.AutoSize = true;
-            countryNameLabel.Location = new System.Drawing.Point(253, 59);
+            countryNameLabel.Location = new System.Drawing.Point(240, 59);
             countryNameLabel.Name = "countryNameLabel";
-            countryNameLabel.Size = new System.Drawing.Size(52, 20);
+            countryNameLabel.Size = new System.Drawing.Size(41, 15);
             countryNameLabel.TabIndex = 35;
             countryNameLabel.Text = "العملة:";
             // 
             // bindingNavigator2
             // 
             this.bindingNavigator2.AddNewItem = null;
-            this.bindingNavigator2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.bindingNavigator2.BackColor = System.Drawing.SystemColors.Control;
             this.bindingNavigator2.CountItem = null;
             this.bindingNavigator2.CountItemFormat = "من أصل {0}";
             this.bindingNavigator2.DeleteItem = null;
@@ -117,14 +117,15 @@
             this.bindingNavigator2.MovePreviousItem = null;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = null;
-            this.bindingNavigator2.Size = new System.Drawing.Size(338, 27);
+            this.bindingNavigator2.Size = new System.Drawing.Size(325, 27);
             this.bindingNavigator2.TabIndex = 36;
             // 
             // addbtn
             // 
+            this.addbtn.Image = global::Alver.Properties.Resources.Add;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(72, 24);
+            this.addbtn.Size = new System.Drawing.Size(61, 24);
             this.addbtn.Text = "إضافة";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -141,9 +142,10 @@
             // savebtn
             // 
             this.savebtn.Enabled = false;
+            this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(63, 24);
+            this.savebtn.Size = new System.Drawing.Size(54, 24);
             this.savebtn.Text = "حفظ";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
@@ -162,23 +164,26 @@
             this.infogroupBox.Location = new System.Drawing.Point(0, 0);
             this.infogroupBox.Name = "infogroupBox";
             this.infogroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.infogroupBox.Size = new System.Drawing.Size(338, 195);
+            this.infogroupBox.Size = new System.Drawing.Size(325, 195);
             this.infogroupBox.TabIndex = 37;
             this.infogroupBox.TabStop = false;
             this.infogroupBox.Text = "بيانات الصندوق";
             // 
             // balancenud
             // 
+            this.balancenud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.balancenud.BackColor = System.Drawing.SystemColors.Control;
             this.balancenud.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.balancenud.DecimalPlaces = 4;
-            this.balancenud.Location = new System.Drawing.Point(27, 91);
+            this.balancenud.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.balancenud.Location = new System.Drawing.Point(14, 91);
             this.balancenud.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             0});
             this.balancenud.Name = "balancenud";
-            this.balancenud.Size = new System.Drawing.Size(220, 27);
+            this.balancenud.Size = new System.Drawing.Size(220, 23);
             this.balancenud.TabIndex = 2;
             this.balancenud.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.balancenud.ThousandsSeparator = true;
@@ -186,7 +191,9 @@
             // notestextBox
             // 
             this.notestextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.notestextBox.Location = new System.Drawing.Point(27, 123);
+            this.notestextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.notestextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.notestextBox.Location = new System.Drawing.Point(14, 123);
             this.notestextBox.Multiline = true;
             this.notestextBox.Name = "notestextBox";
             this.notestextBox.Size = new System.Drawing.Size(220, 66);
@@ -198,36 +205,40 @@
             this.fundComboBox.BackColor = System.Drawing.Color.Honeydew;
             this.fundComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fundComboBox.FormattingEnabled = true;
-            this.fundComboBox.Location = new System.Drawing.Point(27, 22);
+            this.fundComboBox.Location = new System.Drawing.Point(14, 22);
             this.fundComboBox.Name = "fundComboBox";
-            this.fundComboBox.Size = new System.Drawing.Size(220, 28);
+            this.fundComboBox.Size = new System.Drawing.Size(220, 23);
             this.fundComboBox.TabIndex = 0;
             // 
             // currencyComboBox
             // 
             this.currencyComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.currencyComboBox.BackColor = System.Drawing.SystemColors.Control;
             this.currencyComboBox.DataSource = this.currencyBindingSource;
             this.currencyComboBox.DisplayMember = "CurrencyName";
+            this.currencyComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.currencyComboBox.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.currencyComboBox.FormattingEnabled = true;
-            this.currencyComboBox.Location = new System.Drawing.Point(27, 56);
+            this.currencyComboBox.Location = new System.Drawing.Point(14, 56);
             this.currencyComboBox.Name = "currencyComboBox";
-            this.currencyComboBox.Size = new System.Drawing.Size(220, 28);
+            this.currencyComboBox.Size = new System.Drawing.Size(220, 23);
             this.currencyComboBox.TabIndex = 1;
             this.currencyComboBox.ValueMember = "Id";
             // 
             // currencyBindingSource
             // 
-            this.currencyBindingSource.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // frmFund
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(338, 261);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(325, 261);
             this.Controls.Add(this.infogroupBox);
             this.Controls.Add(this.bindingNavigator2);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;

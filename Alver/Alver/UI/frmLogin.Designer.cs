@@ -67,17 +67,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label3.Location = new System.Drawing.Point(123, 117);
+            this.label3.Location = new System.Drawing.Point(144, 117);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 15);
+            this.label3.Size = new System.Drawing.Size(158, 12);
             this.label3.TabIndex = 6;
             this.label3.Text = "جميع الحقوق محفوظة لصالح المبرمج";
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::Alver.Properties.Resources.Lizard_Logo_white;
-            this.pictureBox2.Location = new System.Drawing.Point(181, 18);
+            this.pictureBox2.Image = global::Alver.Properties.Resources.bw_logo;
+            this.pictureBox2.Location = new System.Drawing.Point(181, 13);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(70, 70);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -88,9 +88,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label2.Location = new System.Drawing.Point(125, 91);
+            this.label2.Location = new System.Drawing.Point(146, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(183, 15);
+            this.label2.Size = new System.Drawing.Size(152, 12);
             this.label2.TabIndex = 4;
             this.label2.Text = "برمجة وتصميم: عبدالرحمن مصطفى";
             // 
@@ -137,9 +137,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label1.Location = new System.Drawing.Point(58, 121);
+            this.label1.Location = new System.Drawing.Point(75, 115);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 41);
+            this.label1.Size = new System.Drawing.Size(156, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "تسجيل الدخول";
             // 
@@ -150,7 +150,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label4.Location = new System.Drawing.Point(185, 457);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 45);
+            this.label4.Size = new System.Drawing.Size(94, 36);
             this.label4.TabIndex = 7;
             this.label4.Text = "البيانات الافتراضية:\r\nاسم المستخدم: المدير\r\nكلمة المرور: 12345";
             // 
@@ -169,7 +169,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Alver.Properties.Resources.icons8_keepass_100px;
+            this.pictureBox1.Image = global::Alver.Properties.Resources.loginlock;
             this.pictureBox1.Location = new System.Drawing.Point(111, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);
@@ -201,10 +201,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Montserrat Light", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label5.Location = new System.Drawing.Point(526, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 58);
+            this.label5.Size = new System.Drawing.Size(130, 39);
             this.label5.TabIndex = 8;
             this.label5.Text = "ALVER";
             // 
@@ -214,14 +214,14 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label6.Location = new System.Drawing.Point(529, 88);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 41);
+            this.label6.Size = new System.Drawing.Size(120, 32);
             this.label6.TabIndex = 9;
             this.label6.Text = "لنقاط البيع";
             // 
             // frmLogin
             // 
             this.AcceptButton = this.loginbtn;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.cancelbtn;

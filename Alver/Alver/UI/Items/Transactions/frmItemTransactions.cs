@@ -45,13 +45,8 @@ namespace Alver.UI.Items.Transactions
             }
             Misc.Utilities.SearchableComboBox(itemcb);
             Misc.Utilities.SearchableComboBox(unitcb);
-            _toggles.Add(onlyremittances);
-            _toggles.Add(onlypayments);
-            _toggles.Add(onlyloans);
-            _toggles.Add(onlydeposites);
-            _toggles.Add(onlycuts);
-            _toggles.Add(onlytransfers);
-            _toggles.Add(onlyWithdraw);
+            _toggles.Add(onlypurchases);
+            _toggles.Add(onlysales);
         }
         private void DGVTotals()
         {
@@ -129,70 +124,19 @@ namespace Alver.UI.Items.Transactions
                 {
                     _query = _query.Where(x => x.UnitId == _unitId);
                 }
-                if (onlyremittances.Checked)
+                if (onlypurchases.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.INC.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNINC.ToString()
-                        || x.TT == TransactionsOperations.TT.OTD.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNOTD.ToString()
-                        || x.TT == TransactionsOperations.TT.ORF.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNORF.ToString()
-                        || x.TT == TransactionsOperations.TT.ORT.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNORT.ToString()
-                        || x.TT == TransactionsOperations.TT.WEI.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNWEI.ToString()
-                        || x.TT == TransactionsOperations.TT.WEO.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNWEO.ToString()
+                        x.TT == TransactionsOperations.TT.BLS.ToString()
                         );
                 }
-                else if (onlypayments.Checked)
+                
+                else if (onlysales.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.PAY.ToString()
-                        || x.TT == TransactionsOperations.TT.PID.ToString()
-                        );
-                }
-                else if (onlyloans.Checked)
-                {
-                    _query = _query.Where(
-                        x =>
-                        x.TT == TransactionsOperations.TT.LNF.ToString()
-                        || x.TT == TransactionsOperations.TT.LNT.ToString()
-                        );
-                }
-                else if (onlydeposites.Checked)
-                {
-                    _query = _query.Where(
-                        x =>
-                        x.TT == TransactionsOperations.TT.DTF.ToString()
-                        || x.TT == TransactionsOperations.TT.DTT.ToString()
-                        );
-                }
-                else if (onlycuts.Checked)
-                {
-                    _query = _query.Where(
-                        x =>
-                        x.TT == TransactionsOperations.TT.CTF.ToString()
-                        || x.TT == TransactionsOperations.TT.CTT.ToString()
-                        );
-                }
-                else if (onlytransfers.Checked)
-                {
-                    _query = _query.Where(
-                        x =>
-                        x.TT == TransactionsOperations.TT.TRF.ToString()
-                        || x.TT == TransactionsOperations.TT.TRT.ToString()
-                        );
-                }
-                else if (onlyWithdraw.Checked)
-                {
-                    _query = _query.Where(
-                        x =>
-                        x.TT == TransactionsOperations.TT.GIN.ToString()
-                        || x.TT == TransactionsOperations.TT.LOS.ToString()
+                        x.TT == TransactionsOperations.TT.BLP.ToString()
                         );
                 }
                 _query = _query.OrderBy(x => x.TTS);
@@ -254,7 +198,7 @@ namespace Alver.UI.Items.Transactions
                 _query.Where(x => x.TT == TransactionsOperations.TT.LNT.ToString()).ToList().ForEach(x => x.TT = "دين الى");
                 _query.Where(x => x.TT == TransactionsOperations.TT.LNF.ToString()).ToList().ForEach(x => x.TT = "دين من");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.BLB.ToString()).ToList().ForEach(x => x.TT = "فاتورة بيع");
+                _query.Where(x => x.TT == TransactionsOperations.TT.BLP.ToString()).ToList().ForEach(x => x.TT = "فاتورة بيع");
                 _query.Where(x => x.TT == TransactionsOperations.TT.BLS.ToString()).ToList().ForEach(x => x.TT = "فاتورة شراء");
 
                 ItemstransactionBindingSource.DataSource = _query.ToList();

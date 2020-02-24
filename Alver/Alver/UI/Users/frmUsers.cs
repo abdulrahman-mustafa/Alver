@@ -41,23 +41,18 @@ namespace Alver.UI.Users
 
         private void UserBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            //PrepareList();
-            db.SaveChanges();
-        }
-
-        private void PrepareList()
-        {
-            foreach (User item in users_UserBindingSource.List)
+            try
             {
-                //item.Password = Utilities.MD5(item.Password);
-
-                if (db.Entry(item).State == EntityState.Detached)
-                {
-                    db.Entry(item).State = EntityState.Added;
-                }
+                int _userId=(users_UserBindingSource.Current as User).Id;
+                frmEditUser frm = new frmEditUser(_userId);
+                frm.ShowDialog();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
             }
         }
-
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             //User newUser = UserBindingSource.AddNew() as User;

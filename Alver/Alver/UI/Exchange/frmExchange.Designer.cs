@@ -55,7 +55,6 @@
             this.currencyExchangeOperationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.currencyExchangeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.currencyExchangeOperationBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.addceobtn = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -69,7 +68,6 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.dceobtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -139,7 +137,7 @@
             declarationLabel.AutoSize = true;
             declarationLabel.Location = new System.Drawing.Point(659, 9);
             declarationLabel.Name = "declarationLabel";
-            declarationLabel.Size = new System.Drawing.Size(79, 20);
+            declarationLabel.Size = new System.Drawing.Size(62, 15);
             declarationLabel.TabIndex = 4;
             declarationLabel.Text = "الملاحظات:";
             // 
@@ -149,7 +147,7 @@
             exchangeDateLabel.AutoSize = true;
             exchangeDateLabel.Location = new System.Drawing.Point(893, 9);
             exchangeDateLabel.Name = "exchangeDateLabel";
-            exchangeDateLabel.Size = new System.Drawing.Size(51, 20);
+            exchangeDateLabel.Size = new System.Drawing.Size(41, 15);
             exchangeDateLabel.TabIndex = 5;
             exchangeDateLabel.Text = "التاريخ:";
             // 
@@ -232,7 +230,7 @@
             // 
             // currencyBindingSource3
             // 
-            this.currencyBindingSource3.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource3.DataSource = typeof(Alver.DAL.Currency);
             // 
             // baseAmountDataGridViewTextBoxColumn
             // 
@@ -258,7 +256,7 @@
             // 
             // currencyBindingSource2
             // 
-            this.currencyBindingSource2.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource2.DataSource = typeof(Alver.DAL.Currency);
             // 
             // factorDataGridViewTextBoxColumn
             // 
@@ -303,12 +301,12 @@
             // 
             // currencyExchangeBindingSource
             // 
-            this.currencyExchangeBindingSource.DataSource = typeof(DAL.CurrencyExchange);
+            this.currencyExchangeBindingSource.DataSource = typeof(Alver.DAL.CurrencyExchange);
             this.currencyExchangeBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.currencyExchangeBindingSource_ListChanged);
             // 
             // currencyExchangeOperationBindingNavigator
             // 
-            this.currencyExchangeOperationBindingNavigator.AddNewItem = this.addceobtn;
+            this.currencyExchangeOperationBindingNavigator.AddNewItem = null;
             this.currencyExchangeOperationBindingNavigator.BindingSource = this.currencyExchangeOperationsBindingSource;
             this.currencyExchangeOperationBindingNavigator.CountItem = this.bindingNavigatorCountItem;
             this.currencyExchangeOperationBindingNavigator.CountItemFormat = "من أصل {0}";
@@ -325,11 +323,9 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.toolStripSeparator7,
-            this.addceobtn,
             this.toolStripSeparator5,
             this.dceobtn,
-            this.toolStripSeparator6,
-            this.toolStripButton2});
+            this.toolStripSeparator6});
             this.currencyExchangeOperationBindingNavigator.Location = new System.Drawing.Point(3, 3);
             this.currencyExchangeOperationBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.currencyExchangeOperationBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -340,18 +336,10 @@
             this.currencyExchangeOperationBindingNavigator.Size = new System.Drawing.Size(949, 27);
             this.currencyExchangeOperationBindingNavigator.TabIndex = 2;
             // 
-            // addceobtn
-            // 
-            this.addceobtn.Name = "addceobtn";
-            this.addceobtn.RightToLeftAutoMirrorImage = true;
-            this.addceobtn.Size = new System.Drawing.Size(106, 24);
-            this.addceobtn.Text = "إضافة حركة";
-            this.addceobtn.Visible = false;
-            // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(83, 24);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(65, 24);
             this.bindingNavigatorCountItem.Text = "من أصل {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -382,6 +370,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -427,9 +416,10 @@
             // 
             // dceobtn
             // 
+            this.dceobtn.Image = global::Alver.Properties.Resources.deleterow;
             this.dceobtn.Name = "dceobtn";
             this.dceobtn.RightToLeftAutoMirrorImage = true;
-            this.dceobtn.Size = new System.Drawing.Size(108, 24);
+            this.dceobtn.Size = new System.Drawing.Size(89, 24);
             this.dceobtn.Text = "حذف الحركة";
             this.dceobtn.Click += new System.EventHandler(this.dceobtn_Click);
             // 
@@ -437,15 +427,6 @@
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton2.Size = new System.Drawing.Size(108, 24);
-            this.toolStripButton2.Text = "حذف الحركة";
-            this.toolStripButton2.Visible = false;
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // tabControl1
             // 
@@ -571,7 +552,7 @@
             // 
             // currencyBindingSource
             // 
-            this.currencyBindingSource.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             this.currencyBindingSource.CurrentChanged += new System.EventHandler(this.currencyBindingSource_CurrentChanged);
             // 
             // BaseAmountColumn
@@ -594,7 +575,7 @@
             // 
             // currencyBindingSource1
             // 
-            this.currencyBindingSource1.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource1.DataSource = typeof(Alver.DAL.Currency);
             this.currencyBindingSource1.CurrentChanged += new System.EventHandler(this.currencyBindingSource1_CurrentChanged);
             // 
             // FactorColumn
@@ -663,7 +644,7 @@
             this.exchangeDateDateTimePicker.Location = new System.Drawing.Point(744, 32);
             this.exchangeDateDateTimePicker.Name = "exchangeDateDateTimePicker";
             this.exchangeDateDateTimePicker.RightToLeftLayout = true;
-            this.exchangeDateDateTimePicker.Size = new System.Drawing.Size(200, 27);
+            this.exchangeDateDateTimePicker.Size = new System.Drawing.Size(200, 23);
             this.exchangeDateDateTimePicker.TabIndex = 6;
             // 
             // declarationTextBox
@@ -672,7 +653,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.declarationTextBox.Location = new System.Drawing.Point(5, 32);
             this.declarationTextBox.Name = "declarationTextBox";
-            this.declarationTextBox.Size = new System.Drawing.Size(733, 27);
+            this.declarationTextBox.Size = new System.Drawing.Size(733, 23);
             this.declarationTextBox.TabIndex = 5;
             // 
             // currencyExchangeBindingNavigator
@@ -712,7 +693,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(83, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(65, 24);
             this.toolStripLabel1.Text = "من أصل {0}";
             this.toolStripLabel1.ToolTipText = "Total number of items";
             // 
@@ -743,6 +724,7 @@
             // 
             this.toolStripTextBox1.AccessibleName = "Position";
             this.toolStripTextBox1.AutoSize = false;
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox1.Text = "0";
@@ -783,9 +765,10 @@
             // 
             // addcebtn
             // 
+            this.addcebtn.Image = global::Alver.Properties.Resources.addbill;
             this.addcebtn.Name = "addcebtn";
             this.addcebtn.RightToLeftAutoMirrorImage = true;
-            this.addcebtn.Size = new System.Drawing.Size(153, 24);
+            this.addcebtn.Size = new System.Drawing.Size(123, 24);
             this.addcebtn.Text = "إضافة يومية جديدة";
             this.addcebtn.Click += new System.EventHandler(this.addcebtn_Click);
             // 
@@ -796,9 +779,10 @@
             // 
             // dcebtn
             // 
+            this.dcebtn.Image = global::Alver.Properties.Resources.trash;
             this.dcebtn.Name = "dcebtn";
             this.dcebtn.RightToLeftAutoMirrorImage = true;
-            this.dcebtn.Size = new System.Drawing.Size(289, 24);
+            this.dcebtn.Size = new System.Drawing.Size(229, 24);
             this.dcebtn.Text = "حذف اليومية مع جميع الحركات التابعة لها";
             this.dcebtn.Click += new System.EventHandler(this.dcebtn_Click);
             // 
@@ -806,7 +790,7 @@
             // 
             this.savebtn.BackColor = System.Drawing.Color.Gold;
             this.savebtn.Name = "savebtn";
-            this.savebtn.Size = new System.Drawing.Size(153, 24);
+            this.savebtn.Size = new System.Drawing.Size(105, 24);
             this.savebtn.Text = "بيع/شراء عملة تالفة";
             this.savebtn.Visible = false;
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
@@ -855,7 +839,7 @@
             // 
             // frmExchange
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 519);
             this.Controls.Add(this.tabControl1);
@@ -905,7 +889,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn toCurrencyIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn toAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingNavigator currencyExchangeOperationBindingNavigator;
-        private System.Windows.Forms.ToolStripButton addceobtn;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
@@ -924,7 +907,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.BindingNavigator currencyExchangeBindingNavigator;

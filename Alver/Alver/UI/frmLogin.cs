@@ -55,6 +55,7 @@ namespace Alver.Forms
                 MessageBox.Show("لا يمكن الاتصال بقاعدة البيانات يرجى التأكد من وجود قاعدة البيانات وانها في حالة فعالة" + Environment.NewLine + "سيتم إغلاق البرنامج");// + Environment.NewLine + EX.Source);
                                                                                                                                                                         //MessageBox.Show(db.Database.Connection.ConnectionString);
                                                                                                                                                                         //Application.Exit();
+                this.Close();
             }
         }
 

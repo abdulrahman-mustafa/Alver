@@ -21,6 +21,7 @@ namespace Alver.DAL
         }
     
         public int Id { get; set; }
+        public Nullable<bool> CheckedOut { get; set; }
         public string BillType { get; set; }
         public Nullable<int> AccountId { get; set; }
         public Nullable<System.DateTime> BillDate { get; set; }
@@ -43,7 +44,6 @@ namespace Alver.DAL
     
         public virtual Account Account { get; set; }
         public virtual Currency Currency { get; set; }
-        public virtual Currency Currency1 { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<BillLine> BillLines { get; set; }

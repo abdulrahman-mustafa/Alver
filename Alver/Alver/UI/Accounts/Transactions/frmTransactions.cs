@@ -42,7 +42,8 @@ namespace Alver.UI.Accounts.Transactions
             }
             Misc.Utilities.SearchableComboBox(accountcb);
             Misc.Utilities.SearchableComboBox(currencycomboBox);
-            _toggles.Add(onlyremittances);
+            _toggles.Add(onlysales);
+            _toggles.Add(onlypurchases);
             _toggles.Add(onlypayments);
             _toggles.Add(onlyloans);
             _toggles.Add(onlydeposites);
@@ -126,22 +127,18 @@ namespace Alver.UI.Accounts.Transactions
                 {
                     _query = _query.Where(x => x.CurrencyId == _currencyId);
                 }
-                if (onlyremittances.Checked)
+                if (onlysales.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.INC.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNINC.ToString()
-                        || x.TT == TransactionsOperations.TT.OTD.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNOTD.ToString()
-                        || x.TT == TransactionsOperations.TT.ORF.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNORF.ToString()
-                        || x.TT == TransactionsOperations.TT.ORT.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNORT.ToString()
-                        || x.TT == TransactionsOperations.TT.WEI.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNWEI.ToString()
-                        || x.TT == TransactionsOperations.TT.WEO.ToString()
-                        || x.TT == TransactionsOperations.TT.IGNWEO.ToString()
+                        x.TT == TransactionsOperations.TT.BLS.ToString()
+                        );
+                }
+                else if (onlypurchases.Checked)
+                {
+                    _query = _query.Where(
+                        x =>
+                        x.TT == TransactionsOperations.TT.BLP.ToString()
                         );
                 }
                 else if (onlypayments.Checked)
@@ -251,7 +248,7 @@ namespace Alver.UI.Accounts.Transactions
                 _query.Where(x => x.TT == TransactionsOperations.TT.LNT.ToString()).ToList().ForEach(x => x.TT = "دين الى");
                 _query.Where(x => x.TT == TransactionsOperations.TT.LNF.ToString()).ToList().ForEach(x => x.TT = "دين من");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.BLB.ToString()).ToList().ForEach(x => x.TT = "فاتورة بيع");
+                _query.Where(x => x.TT == TransactionsOperations.TT.BLP.ToString()).ToList().ForEach(x => x.TT = "فاتورة بيع");
                 _query.Where(x => x.TT == TransactionsOperations.TT.BLS.ToString()).ToList().ForEach(x => x.TT = "فاتورة شراء");
 
                 transactionBindingSource.DataSource = _query.ToList();

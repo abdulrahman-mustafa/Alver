@@ -37,7 +37,7 @@ namespace Alver.UI.Exchange
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCurrenciesBulletin));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rateDateDataGridViewTextBoxColumn = new CalendarColumn();
+            this.rateDateDataGridViewTextBoxColumn = new Alver.Misc.CalendarColumn();
             this.currencyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,9 +53,7 @@ namespace Alver.UI.Exchange
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.addbtn = new System.Windows.Forms.ToolStripButton();
             this.deletebtn = new System.Windows.Forms.ToolStripButton();
-            this.savebtn = new System.Windows.Forms.ToolStripButton();
             this.exportbtn = new System.Windows.Forms.ToolStripDropDownButton();
             this.excelexportbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.pdfexportbtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,7 +89,7 @@ namespace Alver.UI.Exchange
             operationDateLabel.AutoSize = true;
             operationDateLabel.Location = new System.Drawing.Point(811, 1);
             operationDateLabel.Name = "operationDateLabel";
-            operationDateLabel.Size = new System.Drawing.Size(51, 20);
+            operationDateLabel.Size = new System.Drawing.Size(41, 15);
             operationDateLabel.TabIndex = 13;
             operationDateLabel.Text = "التاريخ:";
             // 
@@ -101,7 +99,7 @@ namespace Alver.UI.Exchange
             currencyIdLabel.AutoSize = true;
             currencyIdLabel.Location = new System.Drawing.Point(683, 1);
             currencyIdLabel.Name = "currencyIdLabel";
-            currencyIdLabel.Size = new System.Drawing.Size(52, 20);
+            currencyIdLabel.Size = new System.Drawing.Size(41, 15);
             currencyIdLabel.TabIndex = 17;
             currencyIdLabel.Text = "العملة:";
             // 
@@ -111,7 +109,7 @@ namespace Alver.UI.Exchange
             label4.AutoSize = true;
             label4.Location = new System.Drawing.Point(475, 2);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(87, 20);
+            label4.Size = new System.Drawing.Size(69, 15);
             label4.TabIndex = 36;
             label4.Text = "سعر الصرف:";
             // 
@@ -177,7 +175,7 @@ namespace Alver.UI.Exchange
             // 
             // currencyBindingSource
             // 
-            this.currencyBindingSource.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // Rate
             // 
@@ -195,7 +193,7 @@ namespace Alver.UI.Exchange
             // 
             // currencyBulletinBindingSource
             // 
-            this.currencyBulletinBindingSource.DataSource = typeof(DAL.CurrencyBulletin);
+            this.currencyBulletinBindingSource.DataSource = typeof(Alver.DAL.CurrencyBulletin);
             // 
             // users_UserBindingNavigator
             // 
@@ -215,9 +213,7 @@ namespace Alver.UI.Exchange
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
-            this.addbtn,
             this.deletebtn,
-            this.savebtn,
             this.exportbtn});
             this.users_UserBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.users_UserBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
@@ -233,7 +229,7 @@ namespace Alver.UI.Exchange
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(87, 24);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(68, 24);
             this.bindingNavigatorCountItem.Text = " من أصل {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -264,6 +260,7 @@ namespace Alver.UI.Exchange
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 27);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -297,49 +294,38 @@ namespace Alver.UI.Exchange
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
-            // addbtn
-            // 
-            this.addbtn.Name = "addbtn";
-            this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(72, 24);
-            this.addbtn.Text = "إضافة";
-            this.addbtn.Visible = false;
-            // 
             // deletebtn
             // 
+            this.deletebtn.Image = global::Alver.Properties.Resources.deleterow;
             this.deletebtn.Name = "deletebtn";
             this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(65, 24);
+            this.deletebtn.Size = new System.Drawing.Size(56, 24);
             this.deletebtn.Text = "حذف";
             this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
-            // 
-            // savebtn
-            // 
-            this.savebtn.Name = "savebtn";
-            this.savebtn.Size = new System.Drawing.Size(126, 24);
-            this.savebtn.Text = "حفظ التعديلات";
-            this.savebtn.Visible = false;
             // 
             // exportbtn
             // 
             this.exportbtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.excelexportbtn,
             this.pdfexportbtn});
+            this.exportbtn.Image = global::Alver.Properties.Resources.export;
             this.exportbtn.Name = "exportbtn";
-            this.exportbtn.Size = new System.Drawing.Size(82, 24);
+            this.exportbtn.Size = new System.Drawing.Size(71, 24);
             this.exportbtn.Text = "تصدير";
             // 
             // excelexportbtn
             // 
+            this.excelexportbtn.Image = global::Alver.Properties.Resources.xls;
             this.excelexportbtn.Name = "excelexportbtn";
-            this.excelexportbtn.Size = new System.Drawing.Size(119, 26);
+            this.excelexportbtn.Size = new System.Drawing.Size(184, 26);
             this.excelexportbtn.Text = "اكسل";
             this.excelexportbtn.Click += new System.EventHandler(this.excelexportbtn_Click);
             // 
             // pdfexportbtn
             // 
+            this.pdfexportbtn.Image = global::Alver.Properties.Resources.pdf;
             this.pdfexportbtn.Name = "pdfexportbtn";
-            this.pdfexportbtn.Size = new System.Drawing.Size(119, 26);
+            this.pdfexportbtn.Size = new System.Drawing.Size(184, 26);
             this.pdfexportbtn.Text = "PDF";
             // 
             // splitContainer1
@@ -374,6 +360,7 @@ namespace Alver.UI.Exchange
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::Alver.Properties.Resources.save;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.Location = new System.Drawing.Point(33, 17);
             this.button1.Name = "button1";
@@ -403,7 +390,7 @@ namespace Alver.UI.Exchange
             this.drb.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.drb.Location = new System.Drawing.Point(6, 16);
             this.drb.Name = "drb";
-            this.drb.Size = new System.Drawing.Size(39, 25);
+            this.drb.Size = new System.Drawing.Size(36, 20);
             this.drb.TabIndex = 39;
             this.drb.TabStop = true;
             this.drb.Text = "/";
@@ -416,7 +403,7 @@ namespace Alver.UI.Exchange
             this.mrd.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.mrd.Location = new System.Drawing.Point(55, 16);
             this.mrd.Name = "mrd";
-            this.mrd.Size = new System.Drawing.Size(39, 25);
+            this.mrd.Size = new System.Drawing.Size(36, 20);
             this.mrd.TabIndex = 38;
             this.mrd.Text = "*";
             this.mrd.UseVisualStyleBackColor = true;
@@ -429,13 +416,13 @@ namespace Alver.UI.Exchange
             this.currencyIdComboBox.FormattingEnabled = true;
             this.currencyIdComboBox.Location = new System.Drawing.Point(564, 21);
             this.currencyIdComboBox.Name = "currencyIdComboBox";
-            this.currencyIdComboBox.Size = new System.Drawing.Size(167, 28);
+            this.currencyIdComboBox.Size = new System.Drawing.Size(167, 23);
             this.currencyIdComboBox.TabIndex = 18;
             this.currencyIdComboBox.ValueMember = "Id";
             // 
             // currencyBindingSource1
             // 
-            this.currencyBindingSource1.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource1.DataSource = typeof(Alver.DAL.Currency);
             // 
             // datetimepicker
             // 
@@ -444,7 +431,7 @@ namespace Alver.UI.Exchange
             this.datetimepicker.Location = new System.Drawing.Point(737, 21);
             this.datetimepicker.Name = "datetimepicker";
             this.datetimepicker.RightToLeftLayout = true;
-            this.datetimepicker.Size = new System.Drawing.Size(121, 27);
+            this.datetimepicker.Size = new System.Drawing.Size(121, 23);
             this.datetimepicker.TabIndex = 14;
             // 
             // ratenud
@@ -463,7 +450,7 @@ namespace Alver.UI.Exchange
             0,
             0});
             this.ratenud.Name = "ratenud";
-            this.ratenud.Size = new System.Drawing.Size(143, 27);
+            this.ratenud.Size = new System.Drawing.Size(143, 23);
             this.ratenud.TabIndex = 37;
             this.ratenud.Value = new decimal(new int[] {
             1,
@@ -473,7 +460,7 @@ namespace Alver.UI.Exchange
             // 
             // frmCurrenciesBulletin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(875, 418);
@@ -524,8 +511,6 @@ namespace Alver.UI.Exchange
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton addbtn;
-        private System.Windows.Forms.ToolStripButton savebtn;
         private System.Windows.Forms.ToolStripDropDownButton exportbtn;
         private System.Windows.Forms.ToolStripMenuItem excelexportbtn;
         private System.Windows.Forms.ToolStripMenuItem pdfexportbtn;

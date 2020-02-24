@@ -72,7 +72,7 @@
             amountLabel.AutoSize = true;
             amountLabel.Location = new System.Drawing.Point(133, 56);
             amountLabel.Name = "amountLabel";
-            amountLabel.Size = new System.Drawing.Size(49, 20);
+            amountLabel.Size = new System.Drawing.Size(39, 15);
             amountLabel.TabIndex = 9;
             amountLabel.Text = "المبلع:";
             // 
@@ -82,7 +82,7 @@
             operationDateLabel.AutoSize = true;
             operationDateLabel.Location = new System.Drawing.Point(351, 28);
             operationDateLabel.Name = "operationDateLabel";
-            operationDateLabel.Size = new System.Drawing.Size(51, 20);
+            operationDateLabel.Size = new System.Drawing.Size(41, 15);
             operationDateLabel.TabIndex = 1;
             operationDateLabel.Text = "التاريخ:";
             // 
@@ -92,7 +92,7 @@
             currencyIdLabel.AutoSize = true;
             currencyIdLabel.Location = new System.Drawing.Point(351, 56);
             currencyIdLabel.Name = "currencyIdLabel";
-            currencyIdLabel.Size = new System.Drawing.Size(52, 20);
+            currencyIdLabel.Size = new System.Drawing.Size(41, 15);
             currencyIdLabel.TabIndex = 11;
             currencyIdLabel.Text = "العملة:";
             // 
@@ -102,7 +102,7 @@
             declarationLabel.AutoSize = true;
             declarationLabel.Location = new System.Drawing.Point(27, 278);
             declarationLabel.Name = "declarationLabel";
-            declarationLabel.Size = new System.Drawing.Size(45, 20);
+            declarationLabel.Size = new System.Drawing.Size(36, 15);
             declarationLabel.TabIndex = 13;
             declarationLabel.Text = "البيان:";
             // 
@@ -162,7 +162,7 @@
             0,
             0});
             this.amountNumericUpDown.Name = "amountNumericUpDown";
-            this.amountNumericUpDown.Size = new System.Drawing.Size(121, 27);
+            this.amountNumericUpDown.Size = new System.Drawing.Size(121, 23);
             this.amountNumericUpDown.TabIndex = 10;
             // 
             // currencyIdComboBox
@@ -174,18 +174,18 @@
             this.currencyIdComboBox.FormattingEnabled = true;
             this.currencyIdComboBox.Location = new System.Drawing.Point(178, 52);
             this.currencyIdComboBox.Name = "currencyIdComboBox";
-            this.currencyIdComboBox.Size = new System.Drawing.Size(167, 28);
+            this.currencyIdComboBox.Size = new System.Drawing.Size(167, 23);
             this.currencyIdComboBox.TabIndex = 12;
             this.currencyIdComboBox.ValueMember = "Id";
             this.currencyIdComboBox.SelectedIndexChanged += new System.EventHandler(this.currencyIdComboBox_SelectedIndexChanged);
             // 
             // paymentsOperationBindingSource
             // 
-            this.paymentsOperationBindingSource.DataSource = typeof(DAL.Payment);
+            this.paymentsOperationBindingSource.DataSource = typeof(Alver.DAL.Payment);
             // 
             // currencyBindingSource
             // 
-            this.currencyBindingSource.DataSource = typeof(DAL.Currency);
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // operationDateDateTimePicker
             // 
@@ -194,7 +194,7 @@
             this.operationDateDateTimePicker.Location = new System.Drawing.Point(224, 22);
             this.operationDateDateTimePicker.Name = "operationDateDateTimePicker";
             this.operationDateDateTimePicker.RightToLeftLayout = true;
-            this.operationDateDateTimePicker.Size = new System.Drawing.Size(121, 27);
+            this.operationDateDateTimePicker.Size = new System.Drawing.Size(121, 23);
             this.operationDateDateTimePicker.TabIndex = 2;
             // 
             // declarationTextBox
@@ -233,9 +233,10 @@
             // 
             // addbtn
             // 
+            this.addbtn.Image = global::Alver.Properties.Resources.Add;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(72, 24);
+            this.addbtn.Size = new System.Drawing.Size(61, 24);
             this.addbtn.Text = "إضافة";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -252,9 +253,10 @@
             // savebtn
             // 
             this.savebtn.Enabled = false;
+            this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(63, 24);
+            this.savebtn.Size = new System.Drawing.Size(54, 24);
             this.savebtn.Text = "حفظ";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
@@ -272,7 +274,7 @@
             this.fundComboBox.FormattingEnabled = true;
             this.fundComboBox.Location = new System.Drawing.Point(6, 43);
             this.fundComboBox.Name = "fundComboBox";
-            this.fundComboBox.Size = new System.Drawing.Size(379, 28);
+            this.fundComboBox.Size = new System.Drawing.Size(379, 23);
             this.fundComboBox.TabIndex = 19;
             this.fundComboBox.ValueMember = "Id";
             // 
@@ -293,7 +295,7 @@
             // 
             // frmRefund
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(431, 433);

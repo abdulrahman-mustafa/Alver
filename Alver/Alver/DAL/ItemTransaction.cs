@@ -24,7 +24,7 @@ namespace Alver.DAL
         public string Declaration { get; set; }
         public Nullable<System.Guid> GUID { get; set; }
     
-        public virtual Item Item { get; set; }
         public virtual Unit Unit { get; set; }
+        public virtual Item Item { get; set; }
     }
 }

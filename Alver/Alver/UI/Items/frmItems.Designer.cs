@@ -36,6 +36,11 @@ namespace Alver.UI.Accounts
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.itemfundsdgv = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.الواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.رقمالواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sPItemGrandResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemFundsBN = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
@@ -58,6 +63,10 @@ namespace Alver.UI.Accounts
             this.categoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ItemCategoriesBS = new System.Windows.Forms.BindingSource(this.components);
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrencyIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.currencyBS = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchasePriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SalePriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemsBS = new System.Windows.Forms.BindingSource(this.components);
             this.itemsBN = new System.Windows.Forms.BindingNavigator(this.components);
@@ -73,15 +82,10 @@ namespace Alver.UI.Accounts
             this.refreshbtn = new System.Windows.Forms.ToolStripButton();
             this.SearchBox = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.addbtn = new System.Windows.Forms.ToolStripButton();
-            this.deletebtn = new System.Windows.Forms.ToolStripButton();
             this.تعديلالوكيلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemfundunitBS = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.الواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.رقمالواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addbtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.deletebtn = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemfundsdgv)).BeginInit();
@@ -93,6 +97,7 @@ namespace Alver.UI.Accounts
             ((System.ComponentModel.ISupportInitialize)(this.itemsdgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemCategoriesBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBN)).BeginInit();
             this.itemsBN.SuspendLayout();
@@ -152,6 +157,43 @@ namespace Alver.UI.Accounts
             this.itemfundsdgv.VirtualMode = true;
             this.itemfundsdgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.balancesDgv_DataBindingComplete);
             this.itemfundsdgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.accounts_FundDataGridView_DataError);
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "الصندوق";
+            this.dataGridViewTextBoxColumn6.HeaderText = "الصندوق";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // الواحدةDataGridViewTextBoxColumn
+            // 
+            this.الواحدةDataGridViewTextBoxColumn.DataPropertyName = "الواحدة";
+            this.الواحدةDataGridViewTextBoxColumn.HeaderText = "الواحدة";
+            this.الواحدةDataGridViewTextBoxColumn.Name = "الواحدةDataGridViewTextBoxColumn";
+            this.الواحدةDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // رقمالواحدةDataGridViewTextBoxColumn
+            // 
+            this.رقمالواحدةDataGridViewTextBoxColumn.DataPropertyName = "رقم_الواحدة";
+            this.رقمالواحدةDataGridViewTextBoxColumn.HeaderText = "رقم_الواحدة";
+            this.رقمالواحدةDataGridViewTextBoxColumn.Name = "رقمالواحدةDataGridViewTextBoxColumn";
+            this.رقمالواحدةDataGridViewTextBoxColumn.ReadOnly = true;
+            this.رقمالواحدةDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "الإجمالي";
+            this.dataGridViewTextBoxColumn7.HeaderText = "الإجمالي";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "لنا_لكم";
+            this.dataGridViewTextBoxColumn8.HeaderText = "لنا_لكم";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Visible = false;
             // 
             // sPItemGrandResultBindingSource
             // 
@@ -312,6 +354,9 @@ namespace Alver.UI.Accounts
             this.unitIdDataGridViewTextBoxColumn,
             this.categoryIdDataGridViewTextBoxColumn,
             this.barcodeDataGridViewTextBoxColumn,
+            this.CurrencyIdColumn,
+            this.PurchasePriceColumn,
+            this.SalePriceColumn,
             this.declarationDataGridViewTextBoxColumn});
             this.itemsdgv.DataSource = this.itemsBS;
             this.itemsdgv.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -322,8 +367,9 @@ namespace Alver.UI.Accounts
             this.itemsdgv.ReadOnly = true;
             this.itemsdgv.Size = new System.Drawing.Size(803, 302);
             this.itemsdgv.TabIndex = 3;
-            this.itemsdgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.accounts_InfoDataGridView_DataBindingComplete);
+            this.itemsdgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.AccountDataGridView_DataBindingComplete);
             this.itemsdgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.accounts_FundDataGridView_DataError);
+            this.itemsdgv.DoubleClick += new System.EventHandler(this.itemsdgv_DoubleClick);
             // 
             // itemNameDataGridViewTextBoxColumn
             // 
@@ -338,13 +384,16 @@ namespace Alver.UI.Accounts
             this.unitIdDataGridViewTextBoxColumn.DataPropertyName = "UnitId";
             this.unitIdDataGridViewTextBoxColumn.DataSource = this.unitsBS;
             this.unitIdDataGridViewTextBoxColumn.DisplayMember = "Title";
+            this.unitIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.unitIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.unitIdDataGridViewTextBoxColumn.HeaderText = "الواحدة";
             this.unitIdDataGridViewTextBoxColumn.Name = "unitIdDataGridViewTextBoxColumn";
             this.unitIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.unitIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.unitIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.unitIdDataGridViewTextBoxColumn.ValueMember = "Id";
-            this.unitIdDataGridViewTextBoxColumn.Width = 67;
+            this.unitIdDataGridViewTextBoxColumn.Visible = false;
+            this.unitIdDataGridViewTextBoxColumn.Width = 65;
             // 
             // unitsBS
             // 
@@ -355,6 +404,8 @@ namespace Alver.UI.Accounts
             this.categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
             this.categoryIdDataGridViewTextBoxColumn.DataSource = this.ItemCategoriesBS;
             this.categoryIdDataGridViewTextBoxColumn.DisplayMember = "Title";
+            this.categoryIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.categoryIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.categoryIdDataGridViewTextBoxColumn.HeaderText = "الصنف";
             this.categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
             this.categoryIdDataGridViewTextBoxColumn.ReadOnly = true;
@@ -374,6 +425,41 @@ namespace Alver.UI.Accounts
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
             this.barcodeDataGridViewTextBoxColumn.Width = 68;
+            // 
+            // CurrencyIdColumn
+            // 
+            this.CurrencyIdColumn.DataPropertyName = "CurrencyId";
+            this.CurrencyIdColumn.DataSource = this.currencyBS;
+            this.CurrencyIdColumn.DisplayMember = "CurrencyName";
+            this.CurrencyIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.CurrencyIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CurrencyIdColumn.HeaderText = "العملة";
+            this.CurrencyIdColumn.Name = "CurrencyIdColumn";
+            this.CurrencyIdColumn.ReadOnly = true;
+            this.CurrencyIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CurrencyIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CurrencyIdColumn.ValueMember = "Id";
+            this.CurrencyIdColumn.Width = 63;
+            // 
+            // currencyBS
+            // 
+            this.currencyBS.DataSource = typeof(Alver.DAL.Currency);
+            // 
+            // PurchasePriceColumn
+            // 
+            this.PurchasePriceColumn.DataPropertyName = "PurchasePrice";
+            this.PurchasePriceColumn.HeaderText = "سعر الشراء";
+            this.PurchasePriceColumn.Name = "PurchasePriceColumn";
+            this.PurchasePriceColumn.ReadOnly = true;
+            this.PurchasePriceColumn.Width = 85;
+            // 
+            // SalePriceColumn
+            // 
+            this.SalePriceColumn.DataPropertyName = "SalePrice";
+            this.SalePriceColumn.HeaderText = "سعر البيع";
+            this.SalePriceColumn.Name = "SalePriceColumn";
+            this.SalePriceColumn.ReadOnly = true;
+            this.SalePriceColumn.Width = 79;
             // 
             // declarationDataGridViewTextBoxColumn
             // 
@@ -491,9 +577,10 @@ namespace Alver.UI.Accounts
             // refreshbtn
             // 
             this.refreshbtn.BackColor = System.Drawing.Color.Aquamarine;
+            this.refreshbtn.Image = global::Alver.Properties.Resources.refresh;
             this.refreshbtn.Name = "refreshbtn";
             this.refreshbtn.RightToLeftAutoMirrorImage = true;
-            this.refreshbtn.Size = new System.Drawing.Size(43, 24);
+            this.refreshbtn.Size = new System.Drawing.Size(63, 24);
             this.refreshbtn.Text = "تحديث";
             this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
             // 
@@ -511,31 +598,18 @@ namespace Alver.UI.Accounts
             this.addbtn,
             this.deletebtn,
             this.تعديلالوكيلToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = global::Alver.Properties.Resources.itemsettings;
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(84, 24);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(104, 24);
             this.toolStripDropDownButton1.Text = "خيارات المادة";
-            // 
-            // addbtn
-            // 
-            this.addbtn.Name = "addbtn";
-            this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(66, 19);
-            this.addbtn.Text = "إضافة مادة";
-            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
-            // 
-            // deletebtn
-            // 
-            this.deletebtn.Name = "deletebtn";
-            this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(68, 19);
-            this.deletebtn.Text = "حذف المادة";
-            this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
+            this.toolStripDropDownButton1.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
             // تعديلالوكيلToolStripMenuItem
             // 
+            this.تعديلالوكيلToolStripMenuItem.Image = global::Alver.Properties.Resources.edit;
             this.تعديلالوكيلToolStripMenuItem.Name = "تعديلالوكيلToolStripMenuItem";
-            this.تعديلالوكيلToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.تعديلالوكيلToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.تعديلالوكيلToolStripMenuItem.Text = "تعديل المادة";
             this.تعديلالوكيلToolStripMenuItem.Click += new System.EventHandler(this.تعديلالوكيلToolStripMenuItem_Click);
             // 
@@ -543,42 +617,23 @@ namespace Alver.UI.Accounts
             // 
             this.itemfundunitBS.DataSource = typeof(Alver.DAL.Unit);
             // 
-            // dataGridViewTextBoxColumn6
+            // addbtn
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "الصندوق";
-            this.dataGridViewTextBoxColumn6.HeaderText = "الصندوق";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.addbtn.Image = global::Alver.Properties.Resources.Add;
+            this.addbtn.Name = "addbtn";
+            this.addbtn.RightToLeftAutoMirrorImage = true;
+            this.addbtn.Size = new System.Drawing.Size(184, 26);
+            this.addbtn.Text = "إضافة مادة";
+            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
-            // الواحدةDataGridViewTextBoxColumn
+            // deletebtn
             // 
-            this.الواحدةDataGridViewTextBoxColumn.DataPropertyName = "الواحدة";
-            this.الواحدةDataGridViewTextBoxColumn.HeaderText = "الواحدة";
-            this.الواحدةDataGridViewTextBoxColumn.Name = "الواحدةDataGridViewTextBoxColumn";
-            this.الواحدةDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // رقمالواحدةDataGridViewTextBoxColumn
-            // 
-            this.رقمالواحدةDataGridViewTextBoxColumn.DataPropertyName = "رقم_الواحدة";
-            this.رقمالواحدةDataGridViewTextBoxColumn.HeaderText = "رقم_الواحدة";
-            this.رقمالواحدةDataGridViewTextBoxColumn.Name = "رقمالواحدةDataGridViewTextBoxColumn";
-            this.رقمالواحدةDataGridViewTextBoxColumn.ReadOnly = true;
-            this.رقمالواحدةDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "الإجمالي";
-            this.dataGridViewTextBoxColumn7.HeaderText = "الإجمالي";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "لنا_لكم";
-            this.dataGridViewTextBoxColumn8.HeaderText = "لنا_لكم";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Visible = false;
+            this.deletebtn.Image = global::Alver.Properties.Resources.Delete;
+            this.deletebtn.Name = "deletebtn";
+            this.deletebtn.RightToLeftAutoMirrorImage = true;
+            this.deletebtn.Size = new System.Drawing.Size(184, 26);
+            this.deletebtn.Text = "حذف المادة";
+            this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
             // 
             // frmItems
             // 
@@ -614,6 +669,7 @@ namespace Alver.UI.Accounts
             ((System.ComponentModel.ISupportInitialize)(this.itemsdgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemCategoriesBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBN)).EndInit();
             this.itemsBN.ResumeLayout(false);
@@ -654,13 +710,8 @@ namespace Alver.UI.Accounts
         private System.Windows.Forms.DataGridViewTextBoxColumn billsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn exchangeFundsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn unitIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource unitsBS;
-        private System.Windows.Forms.DataGridViewComboBoxColumn categoryIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource ItemCategoriesBS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource itemsBS;
         private System.Windows.Forms.BindingNavigator itemsBN;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
@@ -688,13 +739,22 @@ namespace Alver.UI.Accounts
         private System.Windows.Forms.ToolStripButton printbtn;
         private System.Windows.Forms.BindingSource itemfundunitBS;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripButton addbtn;
-        private System.Windows.Forms.ToolStripButton deletebtn;
         private System.Windows.Forms.ToolStripMenuItem تعديلالوكيلToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn الواحدةDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn رقمالواحدةDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.BindingSource currencyBS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn unitIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn categoryIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn CurrencyIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchasePriceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SalePriceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem addbtn;
+        private System.Windows.Forms.ToolStripMenuItem deletebtn;
     }
 }

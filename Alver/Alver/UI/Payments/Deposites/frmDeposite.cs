@@ -219,7 +219,7 @@ namespace Alver.UI.Payments.Deposites
         }
         private void addClientpb_Click(object sender, EventArgs e)
         {
-            (new frmClient()).ShowDialog();
+            (new frmAddAccount()).ShowDialog();
             LoadData();
         }
 
