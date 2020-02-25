@@ -215,7 +215,7 @@ namespace Alver.UI.Accounts
                     }
                     foreach (AccountFund _fund in _funds)
                     {
-                        TransactionsOperations.InsertClientOpeningBalance(ref db, _fund, "رصيد افتتاحي");
+                        TransactionsFuncs.InsertClientOpeningBalance(ref db, _fund, "رصيد افتتاحي");
                     }
                 }
                 catch (Exception ex)

@@ -131,125 +131,125 @@ namespace Alver.UI.Accounts.Transactions
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.BLS.ToString()
+                        x.TT == TransactionsFuncs.TT.BLS.ToString()
                         );
                 }
                 else if (onlypurchases.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.BLP.ToString()
+                        x.TT == TransactionsFuncs.TT.BLP.ToString()
                         );
                 }
                 else if (onlypayments.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.PAY.ToString()
-                        || x.TT == TransactionsOperations.TT.PID.ToString()
+                        x.TT == TransactionsFuncs.TT.PAY.ToString()
+                        || x.TT == TransactionsFuncs.TT.PID.ToString()
                         );
                 }
                 else if (onlyloans.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.LNF.ToString()
-                        || x.TT == TransactionsOperations.TT.LNT.ToString()
+                        x.TT == TransactionsFuncs.TT.LNF.ToString()
+                        || x.TT == TransactionsFuncs.TT.LNT.ToString()
                         );
                 }
                 else if (onlydeposites.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.DTF.ToString()
-                        || x.TT == TransactionsOperations.TT.DTT.ToString()
+                        x.TT == TransactionsFuncs.TT.DTF.ToString()
+                        || x.TT == TransactionsFuncs.TT.DTT.ToString()
                         );
                 }
                 else if (onlycuts.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.CTF.ToString()
-                        || x.TT == TransactionsOperations.TT.CTT.ToString()
+                        x.TT == TransactionsFuncs.TT.CTF.ToString()
+                        || x.TT == TransactionsFuncs.TT.CTT.ToString()
                         );
                 }
                 else if (onlytransfers.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.TRF.ToString()
-                        || x.TT == TransactionsOperations.TT.TRT.ToString()
+                        x.TT == TransactionsFuncs.TT.TRF.ToString()
+                        || x.TT == TransactionsFuncs.TT.TRT.ToString()
                         );
                 }
                 else if (onlyWithdraw.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.TT == TransactionsOperations.TT.GIN.ToString()
-                        || x.TT == TransactionsOperations.TT.LOS.ToString()
+                        x.TT == TransactionsFuncs.TT.GIN.ToString()
+                        || x.TT == TransactionsFuncs.TT.LOS.ToString()
                         );
                 }
                 _query = _query.OrderBy(x => x.TTS);
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.IGNWEO.ToString()).ToList().ForEach(x => x.TT = "اجور علينا ملغاة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.IGNWEI.ToString()).ToList().ForEach(x => x.TT = "اجور لنا ملغاة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.IGNORT.ToString()).ToList().ForEach(x => x.TT = "حوالة خارجية - المستقبل ملغاة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.IGNORF.ToString()).ToList().ForEach(x => x.TT = "حوالة خارجية - المرسل ملغاة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.IGNOBF.ToString()).ToList().ForEach(x => x.TT = "حوالة صادرة ملغاة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.IGNOTD.ToString()).ToList().ForEach(x => x.TT = "حوالة صادرة ملغاة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.IGNICF.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة ملغاة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.IGNINC.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة ملغاة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.WEO.ToString()).ToList().ForEach(x => x.TT = "اجور علينا");
-                _query.Where(x => x.TT == TransactionsOperations.TT.WEI.ToString()).ToList().ForEach(x => x.TT = "اجور لنا");
-                _query.Where(x => x.TT == TransactionsOperations.TT.ORT.ToString()).ToList().ForEach(x => x.TT = "حوالة خارجية - المستقبل");
-                _query.Where(x => x.TT == TransactionsOperations.TT.ORF.ToString()).ToList().ForEach(x => x.TT = "حوالة خارجية - المرسل");
-                _query.Where(x => x.TT == TransactionsOperations.TT.OBF.ToString()).ToList().ForEach(x => x.TT = "حوالة صادرة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.OTD.ToString()).ToList().ForEach(x => x.TT = "حوالة صادرة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.ICF.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.INC.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.IGNWEO.ToString()).ToList().ForEach(x => x.TT = "اجور علينا ملغاة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.IGNWEI.ToString()).ToList().ForEach(x => x.TT = "اجور لنا ملغاة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.IGNORT.ToString()).ToList().ForEach(x => x.TT = "حوالة خارجية - المستقبل ملغاة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.IGNORF.ToString()).ToList().ForEach(x => x.TT = "حوالة خارجية - المرسل ملغاة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.IGNOBF.ToString()).ToList().ForEach(x => x.TT = "حوالة صادرة ملغاة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.IGNOTD.ToString()).ToList().ForEach(x => x.TT = "حوالة صادرة ملغاة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.IGNICF.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة ملغاة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.IGNINC.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة ملغاة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.WEO.ToString()).ToList().ForEach(x => x.TT = "اجور علينا");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.WEI.ToString()).ToList().ForEach(x => x.TT = "اجور لنا");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.ORT.ToString()).ToList().ForEach(x => x.TT = "حوالة خارجية - المستقبل");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.ORF.ToString()).ToList().ForEach(x => x.TT = "حوالة خارجية - المرسل");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.OBF.ToString()).ToList().ForEach(x => x.TT = "حوالة صادرة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.OTD.ToString()).ToList().ForEach(x => x.TT = "حوالة صادرة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.ICF.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.INC.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة");
 
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.TRT.ToString()).ToList().ForEach(x => x.TT = "تحويل رصيد الى");
-                _query.Where(x => x.TT == TransactionsOperations.TT.TRF.ToString()).ToList().ForEach(x => x.TT = "تحويل رصيد من");
-                _query.Where(x => x.TT == TransactionsOperations.TT.CTT.ToString()).ToList().ForEach(x => x.TT = "قص الى");
-                _query.Where(x => x.TT == TransactionsOperations.TT.CTF.ToString()).ToList().ForEach(x => x.TT = "قص من");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.TRT.ToString()).ToList().ForEach(x => x.TT = "تحويل رصيد الى");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.TRF.ToString()).ToList().ForEach(x => x.TT = "تحويل رصيد من");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.CTT.ToString()).ToList().ForEach(x => x.TT = "قص الى");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.CTF.ToString()).ToList().ForEach(x => x.TT = "قص من");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.PYO.ToString()).ToList().ForEach(x => x.TT = "دفعة خارجة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.PYI.ToString()).ToList().ForEach(x => x.TT = "دفعة داخلة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.PID.ToString()).ToList().ForEach(x => x.TT = "دفعة الى");
-                _query.Where(x => x.TT == TransactionsOperations.TT.PAY.ToString()).ToList().ForEach(x => x.TT = "دفعة من");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.PYO.ToString()).ToList().ForEach(x => x.TT = "دفعة خارجة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.PYI.ToString()).ToList().ForEach(x => x.TT = "دفعة داخلة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.PID.ToString()).ToList().ForEach(x => x.TT = "دفعة الى");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.PAY.ToString()).ToList().ForEach(x => x.TT = "دفعة من");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.FOO.ToString()).ToList().ForEach(x => x.TT = "FOO");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.FOO.ToString()).ToList().ForEach(x => x.TT = "FOO");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.OPN.ToString()).ToList().ForEach(x => x.TT = "افتتاحي");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.OPN.ToString()).ToList().ForEach(x => x.TT = "افتتاحي");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.RFD.ToString()).ToList().ForEach(x => x.TT = "تغذية");
-                _query.Where(x => x.TT == TransactionsOperations.TT.DDT.ToString()).ToList().ForEach(x => x.TT = "سحب");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.RFD.ToString()).ToList().ForEach(x => x.TT = "تغذية");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.DDT.ToString()).ToList().ForEach(x => x.TT = "سحب");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.SOT.ToString()).ToList().ForEach(x => x.TT = "موازنة خارجة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.SIN.ToString()).ToList().ForEach(x => x.TT = "موازنة داخلة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.SOT.ToString()).ToList().ForEach(x => x.TT = "موازنة خارجة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.SIN.ToString()).ToList().ForEach(x => x.TT = "موازنة داخلة");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.GIN.ToString()).ToList().ForEach(x => x.TT = "سحب أرباح");
-                _query.Where(x => x.TT == TransactionsOperations.TT.LOS.ToString()).ToList().ForEach(x => x.TT = "إيداع أرباح");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.GIN.ToString()).ToList().ForEach(x => x.TT = "سحب أرباح");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.LOS.ToString()).ToList().ForEach(x => x.TT = "إيداع أرباح");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.EXS.ToString()).ToList().ForEach(x => x.TT = "مصروف");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.EXS.ToString()).ToList().ForEach(x => x.TT = "مصروف");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.CEB.ToString()).ToList().ForEach(x => x.TT = "فرق تصريف");
-                _query.Where(x => x.TT == TransactionsOperations.TT.CES.ToString()).ToList().ForEach(x => x.TT = "بيع عملة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.CEB.ToString()).ToList().ForEach(x => x.TT = "شراء عملة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.CEB.ToString()).ToList().ForEach(x => x.TT = "فرق تصريف");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.CES.ToString()).ToList().ForEach(x => x.TT = "بيع عملة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.CEB.ToString()).ToList().ForEach(x => x.TT = "شراء عملة");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.DTO.ToString()).ToList().ForEach(x => x.TT = "امانة خارجة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.DTI.ToString()).ToList().ForEach(x => x.TT = "امانة داخلة");
-                _query.Where(x => x.TT == TransactionsOperations.TT.DTT.ToString()).ToList().ForEach(x => x.TT = "امانة الى");
-                _query.Where(x => x.TT == TransactionsOperations.TT.DTF.ToString()).ToList().ForEach(x => x.TT = "امانة من");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.DTO.ToString()).ToList().ForEach(x => x.TT = "امانة خارجة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.DTI.ToString()).ToList().ForEach(x => x.TT = "امانة داخلة");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.DTT.ToString()).ToList().ForEach(x => x.TT = "امانة الى");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.DTF.ToString()).ToList().ForEach(x => x.TT = "امانة من");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.LNO.ToString()).ToList().ForEach(x => x.TT = "دين خارج");
-                _query.Where(x => x.TT == TransactionsOperations.TT.LNI.ToString()).ToList().ForEach(x => x.TT = "دين داخل");
-                _query.Where(x => x.TT == TransactionsOperations.TT.LNT.ToString()).ToList().ForEach(x => x.TT = "دين الى");
-                _query.Where(x => x.TT == TransactionsOperations.TT.LNF.ToString()).ToList().ForEach(x => x.TT = "دين من");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.LNO.ToString()).ToList().ForEach(x => x.TT = "دين خارج");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.LNI.ToString()).ToList().ForEach(x => x.TT = "دين داخل");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.LNT.ToString()).ToList().ForEach(x => x.TT = "دين الى");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.LNF.ToString()).ToList().ForEach(x => x.TT = "دين من");
 
-                _query.Where(x => x.TT == TransactionsOperations.TT.BLP.ToString()).ToList().ForEach(x => x.TT = "فاتورة بيع");
-                _query.Where(x => x.TT == TransactionsOperations.TT.BLS.ToString()).ToList().ForEach(x => x.TT = "فاتورة شراء");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.BLP.ToString()).ToList().ForEach(x => x.TT = "فاتورة بيع");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.BLS.ToString()).ToList().ForEach(x => x.TT = "فاتورة شراء");
 
                 transactionBindingSource.DataSource = _query.ToList();
 
@@ -382,7 +382,7 @@ namespace Alver.UI.Accounts.Transactions
 
                             db.Transactions.Remove(db.Transactions.Find(_transactionId));
                             db.SaveChanges();
-                            TransactionsOperations.ClientsRunningTotals(_accountId);
+                            TransactionsFuncs.ClientsRunningTotals(_accountId);
                             MessageBox.Show("تم الحذف بنجاح");
                             Retrive();
                             ColorizeDgv();

@@ -88,21 +88,21 @@ namespace Alver.UI.Funds
             decimal _amount = amountNumericUpDown.Value;
             if (refundRadioButton.Checked)
             {
-                TransactionsOperations.InsertFundTransaction(_currencyId, _amount, TransactionsOperations.TT.FDI, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.FDI, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
             }
             else if (withdrawRadioButton.Checked)
             {
-                TransactionsOperations.InsertFundTransaction(_currencyId, _amount, TransactionsOperations.TT.FDO, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.FDO, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
             }
             if (_purpose == "edit")
             {
                 if (_orginalObject.PaymentType == Misc.Utilities.PaymentType.تغذية_صندوق.ToString())
                 {
-                    TransactionsOperations.InsertFundTransaction(_orginalObject.CurrencyId.Value, _orginalObject.Amount.Value, TransactionsOperations.TT.DDT, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                    TransactionsFuncs.InsertFundTransaction(_orginalObject.CurrencyId.Value, _orginalObject.Amount.Value, TransactionsFuncs.TT.DDT, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
                 }
                 else if (_orginalObject.PaymentType == Misc.Utilities.PaymentType.سحب_من_صندوق.ToString())
                 {
-                    TransactionsOperations.InsertFundTransaction(_orginalObject.CurrencyId.Value, _orginalObject.Amount.Value, TransactionsOperations.TT.RFD, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                    TransactionsFuncs.InsertFundTransaction(_orginalObject.CurrencyId.Value, _orginalObject.Amount.Value, TransactionsFuncs.TT.RFD, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
                 }
             }
         }

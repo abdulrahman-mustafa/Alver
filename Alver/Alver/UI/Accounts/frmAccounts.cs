@@ -168,7 +168,7 @@ namespace Alver.UI.Accounts
                     //{
                     //    _amount = Math.Abs(_amount) * -1;
                     //}
-                    TransactionsOperations.UpdateClientOpeningBalance(item, _amount);
+                    TransactionsFuncs.UpdateClientOpeningBalance(item, _amount);
                     break;
                 }
             }
@@ -469,11 +469,11 @@ namespace Alver.UI.Accounts
                                     db.AccountFunds.RemoveRange(db.AccountFunds.Where(x => x.AccountId == _clientId));
                                     db.Payments.RemoveRange(db.Payments.Where(x => x.AccountId == _clientId));
                                     //db.Bills.RemoveRange(db.Bills.Where(x => x.AccountId == _clientId));
-                                    BillsOperations.DeleteAccountBills(_clientId);
+                                    BillsFuncs.DeleteAccountBills(_clientId);
                                     db.ExchangeFunds.RemoveRange(db.ExchangeFunds.Where(x => x.AccountFromId == _clientId));
                                     db.ExchangeFunds.RemoveRange(db.ExchangeFunds.Where(x => x.AccountToId == _clientId));
 
-                                    TransactionsOperations.DeleteAllClientTransactions(_clientId);
+                                    TransactionsFuncs.DeleteAllClientTransactions(_clientId);
 
                                     if (!db.Accounts.Any(x => x.Id == _clientId))
                                     {
@@ -487,7 +487,7 @@ namespace Alver.UI.Accounts
                                     }
                                     db.SaveChanges();
                                 }
-                                TransactionsOperations.DeleteAllClientTransactions(_clientId);
+                                TransactionsFuncs.DeleteAllClientTransactions(_clientId);
                                 MessageBox.Show("تم حذف الوكيل بنجاح");
                             }
                         }

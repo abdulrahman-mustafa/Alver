@@ -116,8 +116,8 @@ namespace Alver.UI.Accounts.Transfers
             decimal _toAmount = displayer.Value;
             int _fromCurrencyId = (int)currencyIdComboBox.SelectedValue;
             decimal _fromAmount = amountNumericUpDown.Value;
-            TransactionsOperations.InsertClientTransaction(_accountId, _fromCurrencyId, _fromAmount, TransactionsOperations.TT.CTF, _transfer.TransferDate.Value, _transfer.GUID.Value, _declaration);
-            TransactionsOperations.InsertClientTransaction(_accountId, _toCurrencyId, _toAmount, TransactionsOperations.TT.CTT, _transfer.TransferDate.Value, _transfer.GUID.Value, _declaration, _fromCurrencyId);
+            TransactionsFuncs.InsertClientTransaction(_accountId, _fromCurrencyId, _fromAmount, TransactionsFuncs.TT.CTF, _transfer.TransferDate.Value, _transfer.GUID.Value, _declaration);
+            TransactionsFuncs.InsertClientTransaction(_accountId, _toCurrencyId, _toAmount, TransactionsFuncs.TT.CTT, _transfer.TransferDate.Value, _transfer.GUID.Value, _declaration, _fromCurrencyId);
         }
         private void PrepareItem()
         {

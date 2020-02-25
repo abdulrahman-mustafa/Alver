@@ -8,7 +8,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Windows.Forms;
-using static Alver.Misc.TransactionsOperations;
+using static Alver.Misc.TransactionsFuncs;
 using static Alver.Misc.Utilities;
 
 namespace Alver.UI.Exchange
@@ -127,7 +127,7 @@ namespace Alver.UI.Exchange
 
                 rate = decimal.Parse(dgvCell(RateColumn.Index));
                 subAmount = factor ? (baseAmount * rate) : (baseAmount / rate);
-                roundAmount = CurrencyExchangeOperations.RoundExchange(subAmount);
+                roundAmount = CurrencyExchangeFuncs.RoundExchange(subAmount);
                 userid = Properties.Settings.Default.LoggedInUser.Id;
                 if (basecurrency == subcurrency)
                 {
@@ -177,13 +177,13 @@ namespace Alver.UI.Exchange
                     string _declaration = string.Format("{0} عملة بسعر صرف {1}", _exo.Direction.ToString(), _exo.Rate.ToString());
                     if (_exo.Direction == ExchangeType.بيع.ToString())
                     {
-                        TransactionsOperations.InsertFundTransaction(_exo.BaseCurrencyId.Value, _exo.BaseAmount.Value, TransactionsOperations.TT.CES, _exo.OpreationDate.Value, _exo.GUID.Value, _declaration);
-                        TransactionsOperations.InsertFundTransaction(_exo.SubCurrencyId.Value, _exo.SubAmount.Value, TransactionsOperations.TT.CEB, _exo.OpreationDate.Value, _exo.GUID.Value, _declaration);
+                        TransactionsFuncs.InsertFundTransaction(_exo.BaseCurrencyId.Value, _exo.BaseAmount.Value, TransactionsFuncs.TT.CES, _exo.OpreationDate.Value, _exo.GUID.Value, _declaration);
+                        TransactionsFuncs.InsertFundTransaction(_exo.SubCurrencyId.Value, _exo.SubAmount.Value, TransactionsFuncs.TT.CEB, _exo.OpreationDate.Value, _exo.GUID.Value, _declaration);
                     }
                     else if (_exo.Direction == ExchangeType.شراء.ToString())
                     {
-                        TransactionsOperations.InsertFundTransaction(_exo.BaseCurrencyId.Value, _exo.BaseAmount.Value, TransactionsOperations.TT.CEB, _exo.OpreationDate.Value, _exo.GUID.Value, _declaration);
-                        TransactionsOperations.InsertFundTransaction(_exo.SubCurrencyId.Value, _exo.SubAmount.Value, TransactionsOperations.TT.CES, _exo.OpreationDate.Value, _exo.GUID.Value, _declaration);
+                        TransactionsFuncs.InsertFundTransaction(_exo.BaseCurrencyId.Value, _exo.BaseAmount.Value, TransactionsFuncs.TT.CEB, _exo.OpreationDate.Value, _exo.GUID.Value, _declaration);
+                        TransactionsFuncs.InsertFundTransaction(_exo.SubCurrencyId.Value, _exo.SubAmount.Value, TransactionsFuncs.TT.CES, _exo.OpreationDate.Value, _exo.GUID.Value, _declaration);
                     }
                     //decimal _exchange = _exo.SubAmount.Value - _exo.RoundAmount.Value;
                     //if (_exo.SubCurrencyId == 2)
@@ -260,7 +260,7 @@ namespace Alver.UI.Exchange
 
                 subAmount = factor ? (baseAmount * rate) : (baseAmount / rate);
                 dgv.CurrentRow.Cells[SubAmountColumn.Index].Value = Math.Round(subAmount, 2);
-                roundAmount = CurrencyExchangeOperations.RoundExchange(subAmount);
+                roundAmount = CurrencyExchangeFuncs.RoundExchange(subAmount);
                 dgv.CurrentRow.Cells[RoundColumn.Index].Value = roundAmount;
             }
             catch (Exception ex) { }
@@ -307,7 +307,7 @@ namespace Alver.UI.Exchange
                 if (_operation != null && _operation.Id != 0)
                 {
                     //Delete transaction
-                    TransactionsOperations.DeleteTransactions(_operation.GUID.Value);
+                    TransactionsFuncs.DeleteTransactions(_operation.GUID.Value);
                 }
             }
             catch (Exception ex)
@@ -334,8 +334,8 @@ namespace Alver.UI.Exchange
                 int _subCurrencyId = _operation.SubCurrencyId.Value;
                 if (_operation != null)
                 {
-                    TransactionsOperations.DeleteTransactions(_operation.GUID.Value, _baseCurrencyId, 0,0, TT.FOO);
-                    TransactionsOperations.DeleteTransactions(_operation.GUID.Value, _subCurrencyId, 0,0, TT.FOO);
+                    TransactionsFuncs.DeleteTransactions(_operation.GUID.Value, _baseCurrencyId, 0,0, TT.FOO);
+                    TransactionsFuncs.DeleteTransactions(_operation.GUID.Value, _subCurrencyId, 0,0, TT.FOO);
                 }
             }
         }

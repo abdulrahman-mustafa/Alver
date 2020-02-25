@@ -90,17 +90,17 @@ namespace Alver.UI.Payments.Loans
             int _accountId = _item.AccountId.Value;
             int _currencyId = _item.CurrencyId.Value;
             decimal _amount = _item.Amount.Value;
-            TransactionsOperations.DeleteTransactions(_item.GUID.Value, _currencyId, _accountId);
+            TransactionsFuncs.DeleteTransactions(_item.GUID.Value, _currencyId, _accountId);
             string _declaration = "";
             if (_item.PaymentType == Misc.Utilities.PaymentTransactionType.دين_مقبوض.ToString())
             {
-                TransactionsOperations.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsOperations.TT.LNF, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
-                TransactionsOperations.InsertFundTransaction(_currencyId, _amount, TransactionsOperations.TT.LNI, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
+                TransactionsFuncs.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsFuncs.TT.LNF, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
+                TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.LNI, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
             }
             else if (_item.PaymentType == Misc.Utilities.PaymentTransactionType.دين_مدفوع.ToString())
             {
-                TransactionsOperations.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsOperations.TT.LNT, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
-                TransactionsOperations.InsertFundTransaction(_currencyId, _amount, TransactionsOperations.TT.LNO, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
+                TransactionsFuncs.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsFuncs.TT.LNT, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
+                TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.LNO, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
             }
         }
         //private void toolStripButton1_Click(object sender, EventArgs e)
@@ -189,9 +189,9 @@ namespace Alver.UI.Payments.Loans
                         int _accountId = _payment.AccountId.Value;
                         int _currencyId = _payment.CurrencyId.Value;
                         decimal _amount = _payment.Amount.Value;
-                        TransactionsOperations.DeleteTransactions(_payment.GUID.Value, _currencyId, _accountId, 0,TransactionsOperations.TT.FOO);
-                        TransactionsOperations.ClientsRunningTotals(_accountId);
-                        TransactionsOperations.FundsRunningTotals(_currencyId);
+                        TransactionsFuncs.DeleteTransactions(_payment.GUID.Value, _currencyId, _accountId, 0,TransactionsFuncs.TT.FOO);
+                        TransactionsFuncs.ClientsRunningTotals(_accountId);
+                        TransactionsFuncs.FundsRunningTotals(_currencyId);
                         db.Payments.Remove(_payment);
                         paymentsTransactionBindingSource.RemoveCurrent();
                         db.SaveChanges();

@@ -190,8 +190,8 @@ namespace Alver.UI.Accounts.Withdraws
 
                             db.Withdraws.Remove(db.Withdraws.Find(_withdrawId));
                             db.SaveChanges();
-                            TransactionsOperations.DeleteTransactions(_withdraw.GUID.Value, _currencyId, _accountId,0, TransactionsOperations.TT.FOO);
-                            TransactionsOperations.ClientsRunningTotals(_accountId);
+                            TransactionsFuncs.DeleteTransactions(_withdraw.GUID.Value, _currencyId, _accountId,0, TransactionsFuncs.TT.FOO);
+                            TransactionsFuncs.ClientsRunningTotals(_accountId);
                             MessageBox.Show("تم الحذف بنجاح");
                             Retrive();
                             ColorizeDgv();

@@ -49,15 +49,15 @@ namespace Alver.UI.Payments.Deposites
             decimal _amount = amountNumericUpDown.Value;
             if (inDepositeRadioButton.Checked)
             {
-                TransactionsOperations.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsOperations.TT.DTF, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
-                TransactionsOperations.InsertFundTransaction(_currencyId, _amount, TransactionsOperations.TT.DTI, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsFuncs.TT.DTF, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.DTI, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
             }
             else if (outDepositeRadioButton.Checked)
             {
-                TransactionsOperations.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsOperations.TT.DTT, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
-                TransactionsOperations.InsertFundTransaction(_currencyId, _amount, TransactionsOperations.TT.DTO, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsFuncs.TT.DTT, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.DTO, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
             }
-            TransactionsOperations.ClientsRunningTotals(_accountId);
+            TransactionsFuncs.ClientsRunningTotals(_accountId);
         }
         private void Save()
         {

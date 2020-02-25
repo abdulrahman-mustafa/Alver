@@ -131,11 +131,11 @@ namespace Alver.UI.Accounts.Withdraws
             string _declaration = string.Format("{0} الوكيل: {1} {2}", _withdraw.Direction, clientComboBox.Text.Trim(), _withdraw.Declaration);
             if (gaincb.Checked)
             {
-                TransactionsOperations.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsOperations.TT.GIN, _withdraw.WithdrawDate.Value, _withdraw.GUID.Value, _declaration);
+                TransactionsFuncs.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsFuncs.TT.GIN, _withdraw.WithdrawDate.Value, _withdraw.GUID.Value, _declaration);
             }
             else if (losscb.Checked)
             {
-                TransactionsOperations.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsOperations.TT.LOS, _withdraw.WithdrawDate.Value, _withdraw.GUID.Value, _declaration);
+                TransactionsFuncs.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsFuncs.TT.LOS, _withdraw.WithdrawDate.Value, _withdraw.GUID.Value, _declaration);
             }
         }
         private void Save()

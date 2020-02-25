@@ -48,13 +48,13 @@ namespace Alver.UI.Accounts.AccountsPayments
             string _declaration = string.Format("{0} الوكيل: {1} {2}", _payment.PaymentType.ToString(), clientComboBox.Text.Trim(), _payment.Declaration);
             if (fromClientRadioButton.Checked)
             {
-                TransactionsOperations.InsertClientTransaction(_accId, _currencyId, _amount, TransactionsOperations.TT.PAY, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
-                TransactionsOperations.InsertFundTransaction(_currencyId, _amount, TransactionsOperations.TT.PYI, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertClientTransaction(_accId, _currencyId, _amount, TransactionsFuncs.TT.PAY, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.PYI, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
             }
             else if (toClientRadioButton.Checked)
             {
-                TransactionsOperations.InsertClientTransaction(_accId, _currencyId, _amount, TransactionsOperations.TT.PID, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
-                TransactionsOperations.InsertFundTransaction(_currencyId, _amount, TransactionsOperations.TT.PYO, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertClientTransaction(_accId, _currencyId, _amount, TransactionsFuncs.TT.PID, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
+                TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.PYO, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
             }
         }
         private void Save()

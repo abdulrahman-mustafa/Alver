@@ -44,6 +44,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.emailaddresstb = new System.Windows.Forms.TextBox();
+            this.accountantphonetb = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.logopb = new System.Windows.Forms.PictureBox();
             this.titlelbl = new System.Windows.Forms.TextBox();
@@ -53,8 +55,6 @@
             this.managerphonetb = new System.Windows.Forms.TextBox();
             this.addresslbl = new System.Windows.Forms.TextBox();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.accountantphonetb = new System.Windows.Forms.TextBox();
-            this.emailaddresstb = new System.Windows.Forms.TextBox();
             accountantLabel = new System.Windows.Forms.Label();
             addressLabel = new System.Windows.Forms.Label();
             helperLabel = new System.Windows.Forms.Label();
@@ -105,7 +105,7 @@
             // logoIdLabel
             // 
             logoIdLabel.AutoSize = true;
-            logoIdLabel.Location = new System.Drawing.Point(44, 1);
+            logoIdLabel.Location = new System.Drawing.Point(44, 17);
             logoIdLabel.Name = "logoIdLabel";
             logoIdLabel.Size = new System.Drawing.Size(68, 15);
             logoIdLabel.TabIndex = 6;
@@ -138,6 +138,24 @@
             titleLabel.TabIndex = 16;
             titleLabel.Text = "عنوان الشركة:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(334, 114);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(42, 15);
+            label1.TabIndex = 20;
+            label1.Text = "الهاتف:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(546, 172);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(88, 15);
+            label2.TabIndex = 22;
+            label2.Text = "البريد الالكتروني:";
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -153,7 +171,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainer1.Size = new System.Drawing.Size(860, 390);
+            this.splitContainer1.Size = new System.Drawing.Size(860, 343);
             this.splitContainer1.SplitterDistance = 182;
             this.splitContainer1.SplitterWidth = 20;
             this.splitContainer1.TabIndex = 0;
@@ -173,7 +191,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(182, 390);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(182, 343);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button1
@@ -201,7 +219,7 @@
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowToolTips = true;
-            this.tabControl1.Size = new System.Drawing.Size(658, 390);
+            this.tabControl1.Size = new System.Drawing.Size(658, 343);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             // 
@@ -230,16 +248,32 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(650, 352);
+            this.tabPage1.Size = new System.Drawing.Size(650, 305);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "بيانات الشركة";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // emailaddresstb
+            // 
+            this.emailaddresstb.Location = new System.Drawing.Point(173, 169);
+            this.emailaddresstb.Name = "emailaddresstb";
+            this.emailaddresstb.Size = new System.Drawing.Size(367, 23);
+            this.emailaddresstb.TabIndex = 23;
+            // 
+            // accountantphonetb
+            // 
+            this.accountantphonetb.Location = new System.Drawing.Point(173, 111);
+            this.accountantphonetb.Name = "accountantphonetb";
+            this.accountantphonetb.Size = new System.Drawing.Size(155, 23);
+            this.accountantphonetb.TabIndex = 21;
+            this.accountantphonetb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.BackColor = System.Drawing.Color.Gold;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(8, 308);
+            this.button2.Location = new System.Drawing.Point(8, 261);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(101, 36);
             this.button2.TabIndex = 19;
@@ -250,7 +284,7 @@
             // logopb
             // 
             this.logopb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.logopb.Location = new System.Drawing.Point(8, 19);
+            this.logopb.Location = new System.Drawing.Point(8, 35);
             this.logopb.Name = "logopb";
             this.logopb.Size = new System.Drawing.Size(158, 157);
             this.logopb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -309,49 +343,19 @@
             // 
             this.companyBindingSource.DataSource = typeof(Alver.DAL.Company);
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(334, 114);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(42, 15);
-            label1.TabIndex = 20;
-            label1.Text = "الهاتف:";
-            // 
-            // accountantphonetb
-            // 
-            this.accountantphonetb.Location = new System.Drawing.Point(173, 111);
-            this.accountantphonetb.Name = "accountantphonetb";
-            this.accountantphonetb.Size = new System.Drawing.Size(155, 23);
-            this.accountantphonetb.TabIndex = 21;
-            this.accountantphonetb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(546, 172);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(88, 15);
-            label2.TabIndex = 22;
-            label2.Text = "البريد الالكتروني:";
-            // 
-            // emailaddresstb
-            // 
-            this.emailaddresstb.Location = new System.Drawing.Point(173, 169);
-            this.emailaddresstb.Name = "emailaddresstb";
-            this.emailaddresstb.Size = new System.Drawing.Size(367, 23);
-            this.emailaddresstb.TabIndex = 23;
-            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(860, 390);
+            this.ClientSize = new System.Drawing.Size(860, 343);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(876, 382);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(876, 382);
             this.Name = "frmSettings";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;

@@ -103,9 +103,9 @@ namespace Alver.UI.Payments.Expenses
                 {
                     int _currencyId = _expensess.CurrencyId.Value;
                     decimal _amount = _expensess.Amount.Value;
-                    TransactionsOperations.DeleteTransactions(_expensess.GUID.Value, _currencyId);
+                    TransactionsFuncs.DeleteTransactions(_expensess.GUID.Value, _currencyId);
 
-                    TransactionsOperations.FundsRunningTotals(_currencyId); db.Expenses.Remove(_expensess);
+                    TransactionsFuncs.FundsRunningTotals(_currencyId); db.Expenses.Remove(_expensess);
                     payments_ExpenseBindingSource.RemoveCurrent();
                     MessageBox.Show("تم الحفظ بنجاح");
                 }

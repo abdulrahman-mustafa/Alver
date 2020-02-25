@@ -49,7 +49,7 @@ namespace Alver.UI.Payments.Expenses
                     Guid _guid = _expensess.GUID.Value;
                     int _currencyId = (int)currencyIdComboBox.SelectedValue;
                     decimal _amount = amountNumericUpDown.Value;
-                    TransactionsOperations.InsertFundTransaction(_currencyId, _amount, TransactionsOperations.TT.EXS, _expensess.ExpenseDate.Value, _guid, _declaration);
+                    TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.EXS, _expensess.ExpenseDate.Value, _guid, _declaration);
                 }
             }
             catch (Exception ex)

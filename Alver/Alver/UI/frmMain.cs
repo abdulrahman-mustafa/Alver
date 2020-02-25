@@ -237,7 +237,7 @@ namespace Alver.Forms
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                DatabaseOperations.BackupDatabase();
+                DatabaseFuncs.BackupDatabase();
                 this.Cursor = Cursors.Default;
             }
             catch (Exception ex)
@@ -251,7 +251,7 @@ namespace Alver.Forms
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                DatabaseOperations.RestoreDatabase();
+                DatabaseFuncs.RestoreDatabase();
                 this.Cursor = Cursors.Default;
             }
             catch (Exception ex)

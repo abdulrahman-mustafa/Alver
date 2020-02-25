@@ -130,6 +130,8 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.chechprintbillbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.label13 = new System.Windows.Forms.Label();
+            this.remainedquantitylbl = new System.Windows.Forms.Label();
             declarationLabel = new System.Windows.Forms.Label();
             exchangeDateLabel = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -262,7 +264,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(869, 163);
+            this.tabPage1.Size = new System.Drawing.Size(869, 134);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "الاقلام";
             // 
@@ -292,7 +294,7 @@
             this.billLinesDgv.MultiSelect = false;
             this.billLinesDgv.Name = "billLinesDgv";
             this.billLinesDgv.ReadOnly = true;
-            this.billLinesDgv.Size = new System.Drawing.Size(863, 130);
+            this.billLinesDgv.Size = new System.Drawing.Size(863, 101);
             this.billLinesDgv.TabIndex = 8;
             this.billLinesDgv.VirtualMode = true;
             this.billLinesDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.adddgv_DataBindingComplete);
@@ -519,11 +521,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ItemSize = new System.Drawing.Size(257, 25);
-            this.tabControl1.Location = new System.Drawing.Point(0, 180);
+            this.tabControl1.Location = new System.Drawing.Point(0, 209);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(877, 196);
+            this.tabControl1.Size = new System.Drawing.Size(877, 167);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 2;
             // 
@@ -536,7 +538,7 @@
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.RightToLeftLayout = true;
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(877, 180);
+            this.tabControl2.Size = new System.Drawing.Size(877, 209);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 4;
             // 
@@ -549,7 +551,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(869, 147);
+            this.tabPage2.Size = new System.Drawing.Size(869, 176);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "فواتير البيع";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -560,12 +562,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 81);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(863, 60);
+            this.panel1.Size = new System.Drawing.Size(863, 72);
             this.panel1.TabIndex = 7;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.remainedquantitylbl);
+            this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.barcodecb);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.currencycb);
@@ -583,7 +587,7 @@
             this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(863, 60);
+            this.panel3.Size = new System.Drawing.Size(863, 72);
             this.panel3.TabIndex = 41;
             // 
             // barcodecb
@@ -649,7 +653,7 @@
             this.addbilllinebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.addbilllinebtn.Location = new System.Drawing.Point(0, 0);
             this.addbilllinebtn.Name = "addbilllinebtn";
-            this.addbilllinebtn.Size = new System.Drawing.Size(84, 60);
+            this.addbilllinebtn.Size = new System.Drawing.Size(84, 72);
             this.addbilllinebtn.TabIndex = 48;
             this.addbilllinebtn.Text = "إضافة";
             this.addbilllinebtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -690,11 +694,6 @@
             0,
             0,
             0});
-            this.quantitynud.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.quantitynud.Name = "quantitynud";
             this.quantitynud.Size = new System.Drawing.Size(100, 23);
             this.quantitynud.TabIndex = 46;
@@ -718,6 +717,7 @@
             this.unitcb.Size = new System.Drawing.Size(100, 23);
             this.unitcb.TabIndex = 45;
             this.unitcb.ValueMember = "Id";
+            this.unitcb.SelectedValueChanged += new System.EventHandler(this.unitcb_SelectedValueChanged);
             // 
             // unitBS
             // 
@@ -1244,6 +1244,26 @@
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(6, 27);
             // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(616, 50);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(81, 15);
+            this.label13.TabIndex = 53;
+            this.label13.Text = "الكمية المتبقية:";
+            // 
+            // remainedquantitylbl
+            // 
+            this.remainedquantitylbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.remainedquantitylbl.AutoSize = true;
+            this.remainedquantitylbl.Location = new System.Drawing.Point(547, 50);
+            this.remainedquantitylbl.Name = "remainedquantitylbl";
+            this.remainedquantitylbl.Size = new System.Drawing.Size(39, 15);
+            this.remainedquantitylbl.TabIndex = 54;
+            this.remainedquantitylbl.Text = "المادة:";
+            // 
             // frmSell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1400,5 +1420,7 @@
         private System.Windows.Forms.NumericUpDown syrTotalnud;
         private System.Windows.Forms.CheckBox payedchkbox;
         private System.Windows.Forms.CheckBox exchangebillchkbox;
+        private System.Windows.Forms.Label remainedquantitylbl;
+        private System.Windows.Forms.Label label13;
     }
 }

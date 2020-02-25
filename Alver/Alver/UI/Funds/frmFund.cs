@@ -172,14 +172,14 @@ namespace Alver.UI.Funds
             {
                 if (_purpose == "edit")
                 {
-                    FundTransaction _trans = db.FundTransactions.FirstOrDefault(x => x.CurrencyId == _currencyId && x.GUID == _fund.GUID.Value && x.TT == TransactionsOperations.TT.OPN.ToString());
+                    FundTransaction _trans = db.FundTransactions.FirstOrDefault(x => x.CurrencyId == _currencyId && x.GUID == _fund.GUID.Value && x.TT == TransactionsFuncs.TT.OPN.ToString());
                     _trans.Amount = _balance;
                     _trans.CurrencyId = _currencyId;
                     db.SaveChanges();
                 }
                 else if (_purpose == "add")
                 {
-                    TransactionsOperations.InsertFundOpeningBalance(_fund, _declaration);
+                    TransactionsFuncs.InsertFundOpeningBalance(_fund, _declaration);
                 }
             }
         }

@@ -187,7 +187,7 @@ namespace Alver.UI.Items
                         db.Set<ItemFund>().Add(_fund);
                         db.SaveChanges();
                         string _declaration = "كمية اول المدة";
-                        TransactionsOperations.InsertItemOpeningBalance(_fund, _declaration);
+                        TransactionsFuncs.InsertItemOpeningBalance(_fund, _declaration);
                         MessageBox.Show("تم الحفظ بنجاح");
                     }
                     scope.Complete();

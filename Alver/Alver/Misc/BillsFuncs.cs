@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Alver.Misc
 {
-    public class BillsOperations
+    public class BillsFuncs
     {
         public static void DeleteBillLine(BillLine _operation)
         {
@@ -17,7 +17,7 @@ namespace Alver.Misc
                 if (_operation != null && _operation.Id != 0)
                 {
                     //Delete transaction
-                    TransactionsOperations.DeleteTransactions(_operation.GUID.Value);
+                    TransactionsFuncs.DeleteTransactions(_operation.GUID.Value);
                 }
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace Alver.Misc
                             {
                                 DeleteBillLine(item);
                             }
-                            TransactionsOperations.DeleteTransactions(_bill.GUID.Value);
+                            TransactionsFuncs.DeleteTransactions(_bill.GUID.Value);
                             //_ex.CurrencyExchangeOperations.
                             db.BillLines.RemoveRange(_bill.BillLines);
                             db.Bills.Remove(_bill);

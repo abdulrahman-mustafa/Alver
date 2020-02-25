@@ -11,7 +11,7 @@ using static Alver.Misc.Utilities;
 
 namespace DAL.Classes
 {
-    public static class CurrencyExchangeOperations
+    public static class CurrencyExchangeFuncs
     {
         public static void InsertExchangeOperation(CurrencyExchange _ex,
             CurrencyExchangeOperation _exo,
@@ -82,16 +82,16 @@ namespace DAL.Classes
 
                         if (_exo.Direction == ExchangeType.بيع.ToString())
                         {
-                            TransactionsOperations.InsertFundTransaction(_exo.BaseCurrencyId.Value, _exo.BaseAmount.Value, TransactionsOperations.TT.CES, _exo.OpreationDate.Value, _exo.GUID.Value, "");
-                            TransactionsOperations.InsertFundTransaction(_exo.SubCurrencyId.Value, _exo.RoundAmount.Value, TransactionsOperations.TT.CEB, _exo.OpreationDate.Value, _exo.GUID.Value, "");
+                            TransactionsFuncs.InsertFundTransaction(_exo.BaseCurrencyId.Value, _exo.BaseAmount.Value, TransactionsFuncs.TT.CES, _exo.OpreationDate.Value, _exo.GUID.Value, "");
+                            TransactionsFuncs.InsertFundTransaction(_exo.SubCurrencyId.Value, _exo.RoundAmount.Value, TransactionsFuncs.TT.CEB, _exo.OpreationDate.Value, _exo.GUID.Value, "");
                         }
                         else if (_exo.Direction == Utilities.ExchangeType.شراء.ToString())
                         {
-                            TransactionsOperations.InsertFundTransaction(_exo.BaseCurrencyId.Value, _exo.BaseAmount.Value, TransactionsOperations.TT.CEB, _exo.OpreationDate.Value, _exo.GUID.Value, "");
-                            TransactionsOperations.InsertFundTransaction(_exo.SubCurrencyId.Value, _exo.RoundAmount.Value, TransactionsOperations.TT.CES, _exo.OpreationDate.Value, _exo.GUID.Value, "");
+                            TransactionsFuncs.InsertFundTransaction(_exo.BaseCurrencyId.Value, _exo.BaseAmount.Value, TransactionsFuncs.TT.CEB, _exo.OpreationDate.Value, _exo.GUID.Value, "");
+                            TransactionsFuncs.InsertFundTransaction(_exo.SubCurrencyId.Value, _exo.RoundAmount.Value, TransactionsFuncs.TT.CES, _exo.OpreationDate.Value, _exo.GUID.Value, "");
                         }
                         decimal _exchange = _exo.SubAmount.Value - _exo.RoundAmount.Value;
-                        TransactionsOperations.InsertFundTransaction(_exo.SubCurrencyId.Value, _exchange, TransactionsOperations.TT.CED, _exo.OpreationDate.Value, _exo.GUID.Value, "");
+                        TransactionsFuncs.InsertFundTransaction(_exo.SubCurrencyId.Value, _exchange, TransactionsFuncs.TT.CED, _exo.OpreationDate.Value, _exo.GUID.Value, "");
                         db.SaveChanges();
                     }
                 }

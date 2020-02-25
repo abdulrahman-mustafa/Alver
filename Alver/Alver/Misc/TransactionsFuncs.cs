@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Alver.Misc
 {
-    public static class TransactionsOperations
+    public static class TransactionsFuncs
     {
         public enum TT
         {

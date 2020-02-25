@@ -284,7 +284,7 @@ namespace Alver.UI.Accounts
                                 _bills = _bills.Distinct().ToList();
                                 foreach (Bill bill in _bills)
                                 {
-                                    BillsOperations.DeleteBill(bill.Id);
+                                    BillsFuncs.DeleteBill(bill.Id);
                                 }
                                 //TransactionsOperations.DeleteAllItemTransactions(_itemId);
                                 if (!db.Items.Any(x => x.Id == _itemId))
@@ -299,7 +299,7 @@ namespace Alver.UI.Accounts
                                 }
                                 db.SaveChanges();
                             }
-                            TransactionsOperations.DeleteAllItemTransactions(_itemId);
+                            TransactionsFuncs.DeleteAllItemTransactions(_itemId);
                             MessageBox.Show("تم حذف المادة بنجاح");
                         }
                     }

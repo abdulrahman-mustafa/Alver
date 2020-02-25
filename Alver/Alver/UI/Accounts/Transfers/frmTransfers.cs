@@ -168,18 +168,18 @@ namespace Alver.UI.Accounts.Transfers
                     int _fromCurrencyId = _transfer.CurrencyId.Value;
 
                     int _fromAccountId = _transfer.ClientFrom.Value;
-                    TransactionsOperations.DeleteTransactions(_transfer.GUID.Value, _fromCurrencyId, _fromAccountId);
+                    TransactionsFuncs.DeleteTransactions(_transfer.GUID.Value, _fromCurrencyId, _fromAccountId);
                     if (_transfer.ClientTo == _transfer.ClientFrom)
                     {
                         int _toAccountId = _transfer.ClientTo.Value;
                         int _toCurrencyId = db.AccountFunds.FirstOrDefault(x => x.Id == _transfer.FundTo).CurrencyId.Value;
-                        TransactionsOperations.DeleteTransactions(_transfer.GUID.Value, _toCurrencyId, _toAccountId);
+                        TransactionsFuncs.DeleteTransactions(_transfer.GUID.Value, _toCurrencyId, _toAccountId);
                     }
                     db.Transfers.Remove(_transfer);
                     transferClientFundBindingSource.RemoveCurrent();
                     db.SaveChanges();
-                    TransactionsOperations.ClientsRunningTotals(_transfer.ClientTo.Value);
-                    TransactionsOperations.ClientsRunningTotals(_transfer.ClientFrom.Value);
+                    TransactionsFuncs.ClientsRunningTotals(_transfer.ClientTo.Value);
+                    TransactionsFuncs.ClientsRunningTotals(_transfer.ClientFrom.Value);
                 }
                 MessageBox.Show("تم الحذف بنجاح");
                 Retrive();

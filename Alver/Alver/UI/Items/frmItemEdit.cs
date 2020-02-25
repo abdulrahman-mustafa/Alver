@@ -166,7 +166,7 @@ namespace Alver.UI.Items
                     int _fundId = db.ItemFunds.FirstOrDefault(x => x.ItemId == _itemId).Id;
                     ItemFund _fund = db.ItemFunds.Find(_fundId);
                     _fund.Balance = fundBalancenud.Value;
-                    TransactionsOperations.UpdateItemOpeningBalance(_fund, fundBalancenud.Value);
+                    TransactionsFuncs.UpdateItemOpeningBalance(_fund, fundBalancenud.Value);
                 }
             }
             catch (Exception ex)

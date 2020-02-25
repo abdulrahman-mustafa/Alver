@@ -130,6 +130,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
@@ -274,15 +275,17 @@
     <Compile Include="DAL\Withdraw.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Misc\BillsOperations.cs" />
+    <Compile Include="Misc\BillsFuncs.cs" />
     <Compile Include="Misc\CalendarColumn.cs" />
-    <Compile Include="Misc\CurrencyExchangeOperations.cs" />
-    <Compile Include="Misc\DatabaseOperations.cs" />
+    <Compile Include="Misc\CurrencyExchangeFuncs.cs" />
+    <Compile Include="Misc\DatabaseFuncs.cs" />
     <Compile Include="Misc\DateTimeCompare.cs" />
     <Compile Include="Misc\Exporter.cs" />
     <Compile Include="Misc\Extensions.cs" />
+    <Compile Include="Misc\ItemFuncs.cs" />
     <Compile Include="Misc\MSGs.cs" />
-    <Compile Include="Misc\TransactionsOperations.cs" />
+    <Compile Include="Misc\TransactionsFuncs.cs" />
+    <Compile Include="Misc\UsbFuncs.cs" />
     <Compile Include="Misc\Utilities.cs" />
     <Compile Include="ObservableListSource.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
@@ -746,12 +749,14 @@
     <None Include="Properties\DataSources\Alver.DAL.AccountFund1.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.AccountGroup.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.AccountGroup1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Album.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.AppSetting.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.AppSetting1.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Bill.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Bill1.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.BillLine.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.BillLine1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Company.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Currency.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Currency1.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.dbEntities.datasource" />
@@ -768,6 +773,7 @@
     <None Include="Properties\DataSources\Alver.DAL.Fund1.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.FundTransaction.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.FundTransaction1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.Image.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Item.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Item1.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.ItemCategory.datasource" />

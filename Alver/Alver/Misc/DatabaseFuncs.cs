@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace Alver.Misc
 {
-    public static class DatabaseOperations
+    public static class DatabaseFuncs
     {
         //public static dbEntities db;
         public static FolderBrowserDialog fbd;

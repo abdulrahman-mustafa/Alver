@@ -180,7 +180,7 @@ namespace Alver.UI.Accounts
                             _Fund.LUD = DateTime.Now;
                             db.SaveChanges();
                         }
-                        TransactionsOperations.UpdateClientOpeningBalance(_fund, _fund.Balance.Value);
+                        TransactionsFuncs.UpdateClientOpeningBalance(_fund, _fund.Balance.Value);
                     }
                 }
                 catch (Exception ex)

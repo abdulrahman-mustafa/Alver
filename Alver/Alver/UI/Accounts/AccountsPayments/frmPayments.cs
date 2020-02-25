@@ -141,9 +141,9 @@ namespace Alver.UI.Accounts.AccountsPayments
                         int _accountId = _payment.AccountId.Value;
                         int _currencyId = _payment.CurrencyId.Value;
                         decimal _amount = _payment.Amount.Value;
-                        TransactionsOperations.DeleteTransactions(_payment.GUID.Value, _currencyId, _accountId);
-                        TransactionsOperations.ClientsRunningTotals(_accountId);
-                        TransactionsOperations.FundsRunningTotals(_currencyId);
+                        TransactionsFuncs.DeleteTransactions(_payment.GUID.Value, _currencyId, _accountId);
+                        TransactionsFuncs.ClientsRunningTotals(_accountId);
+                        TransactionsFuncs.FundsRunningTotals(_currencyId);
                         db.Payments.Remove(_payment);
                         paymentsOperationBindingSource.RemoveCurrent();
                         db.SaveChanges();

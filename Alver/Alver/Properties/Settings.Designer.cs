@@ -8,87 +8,79 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Alver.DAL;
-
-namespace Alver.Properties
-{
-
-
+namespace Alver.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        internal User LoggedInUser;
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Activated
-        {
-            get
-            {
+        public bool Activated {
+            get {
                 return ((bool)(this["Activated"]));
             }
-            set
-            {
+            set {
                 this["Activated"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int RunTimes
-        {
-            get
-            {
+        public int RunTimes {
+            get {
                 return ((int)(this["RunTimes"]));
             }
-            set
-            {
+            set {
                 this["RunTimes"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public int RunsLimit
-        {
-            get
-            {
+        public int RunsLimit {
+            get {
                 return ((int)(this["RunsLimit"]));
             }
-            set
-            {
+            set {
                 this["RunsLimit"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool TrialActivated
-        {
-            get
-            {
+        public bool TrialActivated {
+            get {
                 return ((bool)(this["TrialActivated"]));
             }
-            set
-            {
+            set {
                 this["TrialActivated"] = value;
             }
         }
-
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public DAL.User LoggedInUser
+        {
+            get {
+                return ((DAL.User)(this["LoggedInUser"]));
+            }
+            set {
+                this["LoggedInUser"] = value;
+            }
+        }
     }
 }
