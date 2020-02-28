@@ -135,6 +135,11 @@
           <Property Name="CurrencyId" Type="int" />
           <Property Name="Price" Type="money" />
           <Property Name="TotalPrice" Type="money" />
+          <Property Name="Exchanged" Type="bit" />
+          <Property Name="Rate" Type="money" />
+          <Property Name="ForeginCurrencyId" Type="int" />
+          <Property Name="ExchangedAmount" Type="money" />
+          <Property Name="ExchangedTotalAmount" Type="money" />
           <Property Name="UserId" Type="int" />
           <Property Name="Hidden" Type="bit" />
           <Property Name="Flag" Type="nvarchar" MaxLength="50" />
@@ -426,7 +431,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PaymentType" Type="nvarchar" MaxLength="10" />
+          <Property Name="PaymentType" Type="nvarchar" MaxLength="20" />
           <Property Name="PaymentDate" Type="datetime" />
           <Property Name="AccountId" Type="int" />
           <Property Name="CurrencyId" Type="int" />
@@ -721,6 +726,18 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Principal>
             <Dependent Role="BillLines">
               <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillLines_Currency1">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="BillLines" Type="Self.BillLines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BillLines">
+              <PropertyRef Name="ForeginCurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1468,8 +1485,19 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="BillSlip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BillId" Type="int" Mode="In" />
+        </Function>
         <Function Name="CreateClientFunds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ClientId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ItemAvgPurchasePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemId" Type="int" Mode="In" />
+          <Parameter Name="unitId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ItemAvgSalePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemId" Type="int" Mode="In" />
+          <Parameter Name="unitId" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_ClientGrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ClientId" Type="int" Mode="In" />
@@ -1570,6 +1598,10 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             <End Role="BillLines" EntitySet="BillLines" />
           </AssociationSet>
           <AssociationSet Name="FK_BillLines_Currency" Association="Self.FK_BillLines_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="BillLines" EntitySet="BillLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillLines_Currency1" Association="Self.FK_BillLines_Currency1">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="BillLines" EntitySet="BillLines" />
           </AssociationSet>
@@ -1837,11 +1869,17 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <FunctionImport Name="SP_ItemGrand" ReturnType="Collection(AlverModel.SP_ItemGrand_Result)">
           <Parameter Name="ItemId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="BillSlip" ReturnType="Collection(AlverModel.BillSlip_Result)">
+          <Parameter Name="BillId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="Accounts" EntityType="AlverModel.Account" />
           <EntitySet Name="AccountFunds" EntityType="AlverModel.AccountFund" />
           <EntitySet Name="AccountGroups" EntityType="AlverModel.AccountGroup" />
+          <EntitySet Name="Albums" EntityType="AlverModel.Album" />
           <EntitySet Name="AppSettings" EntityType="AlverModel.AppSetting" />
+          <EntitySet Name="Bills" EntityType="AlverModel.Bill" />
           <EntitySet Name="BillLines" EntityType="AlverModel.BillLine" />
+          <EntitySet Name="Companies" EntityType="AlverModel.Company" />
           <EntitySet Name="Currencies" EntityType="AlverModel.Currency" />
           <EntitySet Name="CurrencyBulletins" EntityType="AlverModel.CurrencyBulletin" />
           <EntitySet Name="CurrencyExchanges" EntityType="AlverModel.CurrencyExchange" />
@@ -1852,10 +1890,11 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <EntitySet Name="ExpenseCategories" EntityType="AlverModel.ExpenseCategory" />
           <EntitySet Name="Funds" EntityType="AlverModel.Fund" />
           <EntitySet Name="FundTransactions" EntityType="AlverModel.FundTransaction" />
+          <EntitySet Name="Images" EntityType="AlverModel.Image" />
+          <EntitySet Name="Items" EntityType="AlverModel.Item" />
           <EntitySet Name="ItemCategories" EntityType="AlverModel.ItemCategory" />
           <EntitySet Name="ItemFunds" EntityType="AlverModel.ItemFund" />
           <EntitySet Name="ItemTransactions" EntityType="AlverModel.ItemTransaction" />
-          <EntitySet Name="Payments" EntityType="AlverModel.Payment" />
           <EntitySet Name="Receipts" EntityType="AlverModel.Receipt" />
           <EntitySet Name="ReceiptLines" EntityType="AlverModel.ReceiptLine" />
           <EntitySet Name="Roles" EntityType="AlverModel.Role" />
@@ -1876,6 +1915,10 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             <End Role="Account" EntitySet="Accounts" />
             <End Role="AccountFund" EntitySet="AccountFunds" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bill_Account" Association="AlverModel.FK_Bill_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
           <AssociationSet Name="FK_ExchangeFund_AccountFrom" Association="AlverModel.FK_ExchangeFund_AccountFrom">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="ExchangeFund" EntitySet="ExchangeFunds" />
@@ -1883,10 +1926,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <AssociationSet Name="FK_ExchangeFund_AccountTo" Association="AlverModel.FK_ExchangeFund_AccountTo">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="ExchangeFund" EntitySet="ExchangeFunds" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Payment_Account" Association="AlverModel.FK_Payment_Account">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
           <AssociationSet Name="FK_Receipt_Account" Association="AlverModel.FK_Receipt_Account">
             <End Role="Account" EntitySet="Accounts" />
@@ -1928,8 +1967,32 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             <End Role="AccountFund" EntitySet="AccountFunds" />
             <End Role="Transfer" EntitySet="Transfers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Images_Album" Association="AlverModel.FK_Images_Album">
+            <End Role="Album" EntitySet="Albums" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_Currency" Association="AlverModel.FK_Bill_Currency">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_User" Association="AlverModel.FK_Bill_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillLines_Bill" Association="AlverModel.FK_BillLines_Bill">
+            <End Role="Bill" EntitySet="Bills" />
+            <End Role="BillLine" EntitySet="BillLines" />
+          </AssociationSet>
           <AssociationSet Name="FK_BillLines_Currency" Association="AlverModel.FK_BillLines_Currency">
             <End Role="Currency" EntitySet="Currencies" />
+            <End Role="BillLine" EntitySet="BillLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillLines_Currency1" Association="AlverModel.FK_BillLines_Currency1">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="BillLine" EntitySet="BillLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillLines_Item" Association="AlverModel.FK_BillLines_Item">
+            <End Role="Item" EntitySet="Items" />
             <End Role="BillLine" EntitySet="BillLines" />
           </AssociationSet>
           <AssociationSet Name="FK_BillLines_Unit" Association="AlverModel.FK_BillLines_Unit">
@@ -1939,6 +2002,10 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <AssociationSet Name="FK_BillLines_User" Association="AlverModel.FK_BillLines_User">
             <End Role="User" EntitySet="Users" />
             <End Role="BillLine" EntitySet="BillLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Images" Association="AlverModel.FK_Company_Images">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Company" EntitySet="Companies" />
           </AssociationSet>
           <AssociationSet Name="FK_Currency_User" Association="AlverModel.FK_Currency_User">
             <End Role="User" EntitySet="Users" />
@@ -1980,9 +2047,9 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="FundTransaction" EntitySet="FundTransactions" />
           </AssociationSet>
-          <AssociationSet Name="FK_Payment_Currency" Association="AlverModel.FK_Payment_Currency">
+          <AssociationSet Name="FK_Item_Currency" Association="AlverModel.FK_Item_Currency">
             <End Role="Currency" EntitySet="Currencies" />
-            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Item" EntitySet="Items" />
           </AssociationSet>
           <AssociationSet Name="FK_Transaction_Currency" Association="AlverModel.FK_Transaction_Currency">
             <End Role="Currency" EntitySet="Currencies" />
@@ -2040,6 +2107,30 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             <End Role="Fund" EntitySet="Funds" />
             <End Role="FundTransaction" EntitySet="FundTransactions" />
           </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemCategory" Association="AlverModel.FK_Item_ItemCategory">
+            <End Role="ItemCategory" EntitySet="ItemCategories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Unit" Association="AlverModel.FK_Item_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_User" Association="AlverModel.FK_Item_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFund_Item" Association="AlverModel.FK_ItemFund_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemFund" EntitySet="ItemFunds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemTransaction_Item" Association="AlverModel.FK_ItemTransaction_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemTransaction" EntitySet="ItemTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptLines_Item" Association="AlverModel.FK_ReceiptLines_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ReceiptLine" EntitySet="ReceiptLines" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemCategory_User" Association="AlverModel.FK_ItemCategory_User">
             <End Role="User" EntitySet="Users" />
             <End Role="ItemCategory" EntitySet="ItemCategories" />
@@ -2055,10 +2146,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <AssociationSet Name="FK_ItemTransaction_Unit" Association="AlverModel.FK_ItemTransaction_Unit">
             <End Role="Unit" EntitySet="Units" />
             <End Role="ItemTransaction" EntitySet="ItemTransactions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Payment_User" Association="AlverModel.FK_Payment_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
           <AssociationSet Name="FK_Receipt_User" Association="AlverModel.FK_Receipt_User">
             <End Role="User" EntitySet="Users" />
@@ -2092,69 +2179,29 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             <End Role="User" EntitySet="Users" />
             <End Role="Withdraw" EntitySet="Withdraws" />
           </AssociationSet>
-          <EntitySet Name="Albums" EntityType="AlverModel.Album" />
-          <EntitySet Name="Images" EntityType="AlverModel.Image" />
-          <AssociationSet Name="FK_Images_Album" Association="AlverModel.FK_Images_Album">
-            <End Role="Album" EntitySet="Albums" />
-            <End Role="Image" EntitySet="Images" />
-          </AssociationSet>
-          <EntitySet Name="Companies" EntityType="AlverModel.Company" />
-          <AssociationSet Name="FK_Company_Images" Association="AlverModel.FK_Company_Images">
-            <End Role="Image" EntitySet="Images" />
-            <End Role="Company" EntitySet="Companies" />
-          </AssociationSet>
-          <EntitySet Name="Bills" EntityType="AlverModel.Bill" />
-          <EntitySet Name="Items" EntityType="AlverModel.Item" />
-          <AssociationSet Name="FK_Bill_Account" Association="AlverModel.FK_Bill_Account">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Bill" EntitySet="Bills" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Bill_Currency" Association="AlverModel.FK_Bill_Currency">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="Bill" EntitySet="Bills" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Bill_User" Association="AlverModel.FK_Bill_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Bill" EntitySet="Bills" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BillLines_Bill" Association="AlverModel.FK_BillLines_Bill">
-            <End Role="Bill" EntitySet="Bills" />
-            <End Role="BillLine" EntitySet="BillLines" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BillLines_Item" Association="AlverModel.FK_BillLines_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="BillLine" EntitySet="BillLines" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_Currency" Association="AlverModel.FK_Item_Currency">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_ItemCategory" Association="AlverModel.FK_Item_ItemCategory">
-            <End Role="ItemCategory" EntitySet="ItemCategories" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_Unit" Association="AlverModel.FK_Item_Unit">
-            <End Role="Unit" EntitySet="Units" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_User" Association="AlverModel.FK_Item_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemFund_Item" Association="AlverModel.FK_ItemFund_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="ItemFund" EntitySet="ItemFunds" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemTransaction_Item" Association="AlverModel.FK_ItemTransaction_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="ItemTransaction" EntitySet="ItemTransactions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReceiptLines_Item" Association="AlverModel.FK_ReceiptLines_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="ReceiptLine" EntitySet="ReceiptLines" />
-          </AssociationSet>
           <EntitySet Name="V_CLIENTS" EntityType="AlverModel.V_CLIENTS" />
           <EntitySet Name="V_STOCK" EntityType="AlverModel.V_STOCK" />
+          <EntitySet Name="Payments" EntityType="AlverModel.Payment" />
+          <AssociationSet Name="FK_Payment_Account" Association="AlverModel.FK_Payment_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Currency" Association="AlverModel.FK_Payment_Currency">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_User" Association="AlverModel.FK_Payment_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <FunctionImport Name="ItemAvgPurchasePrice" ReturnType="Collection(AlverModel.ItemAvgPurchasePrice_Result)">
+            <Parameter Name="ItemId" Mode="In" Type="Int32" />
+            <Parameter Name="unitId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ItemAvgSalePrice" ReturnType="Collection(AlverModel.ItemAvgSalePrice_Result)">
+            <Parameter Name="ItemId" Mode="In" Type="Int32" />
+            <Parameter Name="unitId" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_ClientGrand_Result">
           <Property Type="String" Name="الصندوق" Nullable="true" MaxLength="50" />
@@ -2178,6 +2225,26 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Type="Int32" Name="رقم_الواحدة" Nullable="true" />
           <Property Type="Decimal" Name="الإجمالي" Nullable="true" Precision="19" />
           <Property Type="String" Name="لنا_لكم" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="BillSlip_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="BillId" Nullable="true" />
+          <Property Type="Int32" Name="ItemId" Nullable="true" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="UnitId" Nullable="true" />
+          <Property Type="String" Name="UnitName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="CurrencyId" Nullable="true" />
+          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="Exchanged" Nullable="true" />
+          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="ForeginCurrencyId" Nullable="true" />
+          <Property Type="String" Name="ForeginCurrencyName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="ExchangedAmount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ExchangedTotalAmount" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="LinesCount" Nullable="true" />
         </ComplexType>
         <EntityType Name="Account">
           <Key>
@@ -2204,15 +2271,15 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <NavigationProperty Name="AccountGroup" Relationship="AlverModel.FK_Account_AccountGroup" FromRole="Account" ToRole="AccountGroup" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_Account_User" FromRole="Account" ToRole="User" />
           <NavigationProperty Name="AccountFunds" Relationship="AlverModel.FK_AccountFund_Account" FromRole="Account" ToRole="AccountFund" />
+          <NavigationProperty Name="Bills" Relationship="AlverModel.FK_Bill_Account" FromRole="Account" ToRole="Bill" />
           <NavigationProperty Name="ExchangeFunds" Relationship="AlverModel.FK_ExchangeFund_AccountFrom" FromRole="Account" ToRole="ExchangeFund" />
           <NavigationProperty Name="ExchangeFunds1" Relationship="AlverModel.FK_ExchangeFund_AccountTo" FromRole="Account" ToRole="ExchangeFund" />
-          <NavigationProperty Name="Payments" Relationship="AlverModel.FK_Payment_Account" FromRole="Account" ToRole="Payment" />
           <NavigationProperty Name="Receipts" Relationship="AlverModel.FK_Receipt_Account" FromRole="Account" ToRole="Receipt" />
           <NavigationProperty Name="Transactions" Relationship="AlverModel.FK_Transaction_Account" FromRole="Account" ToRole="Transaction" />
           <NavigationProperty Name="Transfers" Relationship="AlverModel.FK_Transfer_Account" FromRole="Account" ToRole="Transfer" />
           <NavigationProperty Name="Transfers1" Relationship="AlverModel.FK_Transfer_Account1" FromRole="Account" ToRole="Transfer" />
           <NavigationProperty Name="Withdraws" Relationship="AlverModel.FK_Withdraw_Account" FromRole="Account" ToRole="Withdraw" />
-          <NavigationProperty Name="Bills" Relationship="AlverModel.FK_Bill_Account" FromRole="Account" ToRole="Bill" />
+          <NavigationProperty Name="Payments" Relationship="AlverModel.FK_Payment_Account" FromRole="Account" ToRole="Payment" />
         </EntityType>
         <EntityType Name="AccountFund">
           <Key>
@@ -2255,6 +2322,21 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="PROTECTED" Type="Boolean" />
           <NavigationProperty Name="Accounts" Relationship="AlverModel.FK_Account_AccountGroup" FromRole="AccountGroup" ToRole="Account" />
         </EntityType>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlbumTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Declaration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Images" Relationship="AlverModel.FK_Images_Album" FromRole="Album" ToRole="Image" />
+        </EntityType>
         <EntityType Name="AppSetting">
           <Key>
             <PropertyRef Name="Id" />
@@ -2276,6 +2358,36 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
         </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CheckedOut" Type="Boolean" />
+          <Property Name="BillType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="BillDate" Type="DateTime" Precision="3" />
+          <Property Name="Cashout" Type="Boolean" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="BillAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Exchanged" Type="Boolean" />
+          <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ForeginCurrencyId" Type="Int32" />
+          <Property Name="ExchangedAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Declaration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Account" Relationship="AlverModel.FK_Bill_Account" FromRole="Bill" ToRole="Account" />
+          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_Bill_Currency" FromRole="Bill" ToRole="Currency" />
+          <NavigationProperty Name="User" Relationship="AlverModel.FK_Bill_User" FromRole="Bill" ToRole="User" />
+          <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Bill" FromRole="Bill" ToRole="BillLine" />
+        </EntityType>
         <EntityType Name="BillLine">
           <Key>
             <PropertyRef Name="Id" />
@@ -2288,17 +2400,46 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="CurrencyId" Type="Int32" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Exchanged" Type="Boolean" />
+          <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ForeginCurrencyId" Type="Int32" />
+          <Property Name="ExchangedAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ExchangedTotalAmount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="Hidden" Type="Boolean" />
           <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GUID" Type="Guid" />
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Bill" Relationship="AlverModel.FK_BillLines_Bill" FromRole="BillLine" ToRole="Bill" />
           <NavigationProperty Name="Currency" Relationship="AlverModel.FK_BillLines_Currency" FromRole="BillLine" ToRole="Currency" />
+          <NavigationProperty Name="Currency1" Relationship="AlverModel.FK_BillLines_Currency1" FromRole="BillLine" ToRole="Currency" />
+          <NavigationProperty Name="Item" Relationship="AlverModel.FK_BillLines_Item" FromRole="BillLine" ToRole="Item" />
           <NavigationProperty Name="Unit" Relationship="AlverModel.FK_BillLines_Unit" FromRole="BillLine" ToRole="Unit" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_BillLines_User" FromRole="BillLine" ToRole="User" />
-          <NavigationProperty Name="Bill" Relationship="AlverModel.FK_BillLines_Bill" FromRole="BillLine" ToRole="Bill" />
-          <NavigationProperty Name="Item" Relationship="AlverModel.FK_BillLines_Item" FromRole="BillLine" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Motto" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Manager" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Accountant" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AccountantPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogoId" Type="Int32" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Image" Relationship="AlverModel.FK_Company_Images" FromRole="Company" ToRole="Image" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -2318,7 +2459,9 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
           <NavigationProperty Name="AccountFunds" Relationship="AlverModel.FK_AccountFund_Currency" FromRole="Currency" ToRole="AccountFund" />
+          <NavigationProperty Name="Bills" Relationship="AlverModel.FK_Bill_Currency" FromRole="Currency" ToRole="Bill" />
           <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Currency" FromRole="Currency" ToRole="BillLine" />
+          <NavigationProperty Name="BillLines1" Relationship="AlverModel.FK_BillLines_Currency1" FromRole="Currency" ToRole="BillLine" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_Currency_User" FromRole="Currency" ToRole="User" />
           <NavigationProperty Name="CurrencyBulletins" Relationship="AlverModel.FK_CurrencyBulletin_Currency" FromRole="Currency" ToRole="CurrencyBulletin" />
           <NavigationProperty Name="CurrencyExchangeOperations" Relationship="AlverModel.FK_CurrencyExchangeOperations_Currency" FromRole="Currency" ToRole="CurrencyExchangeOperation" />
@@ -2329,12 +2472,11 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <NavigationProperty Name="Expenses" Relationship="AlverModel.FK_Expense_Currency" FromRole="Currency" ToRole="Expense" />
           <NavigationProperty Name="Funds" Relationship="AlverModel.FK_Fund_Currency" FromRole="Currency" ToRole="Fund" />
           <NavigationProperty Name="FundTransactions" Relationship="AlverModel.FK_FundTransaction_Currency" FromRole="Currency" ToRole="FundTransaction" />
-          <NavigationProperty Name="Payments" Relationship="AlverModel.FK_Payment_Currency" FromRole="Currency" ToRole="Payment" />
+          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_Currency" FromRole="Currency" ToRole="Item" />
           <NavigationProperty Name="Transactions" Relationship="AlverModel.FK_Transaction_Currency" FromRole="Currency" ToRole="Transaction" />
           <NavigationProperty Name="Transfers" Relationship="AlverModel.FK_Transfer_Currency" FromRole="Currency" ToRole="Transfer" />
           <NavigationProperty Name="Withdraws" Relationship="AlverModel.FK_Withdraw_Currency" FromRole="Currency" ToRole="Withdraw" />
-          <NavigationProperty Name="Bills" Relationship="AlverModel.FK_Bill_Currency" FromRole="Currency" ToRole="Bill" />
-          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_Currency" FromRole="Currency" ToRole="Item" />
+          <NavigationProperty Name="Payments" Relationship="AlverModel.FK_Payment_Currency" FromRole="Currency" ToRole="Payment" />
         </EntityType>
         <EntityType Name="CurrencyBulletin">
           <Key>
@@ -2521,6 +2663,51 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <NavigationProperty Name="Currency" Relationship="AlverModel.FK_FundTransaction_Currency" FromRole="FundTransaction" ToRole="Currency" />
           <NavigationProperty Name="Fund" Relationship="AlverModel.FK_FundTransaction_Fund" FromRole="FundTransaction" ToRole="Fund" />
         </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlbumId" Type="Int32" />
+          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Album" Relationship="AlverModel.FK_Images_Album" FromRole="Image" ToRole="Album" />
+          <NavigationProperty Name="Companies" Relationship="AlverModel.FK_Company_Images" FromRole="Image" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="SalePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Declaration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Item" FromRole="Item" ToRole="BillLine" />
+          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_Item_Currency" FromRole="Item" ToRole="Currency" />
+          <NavigationProperty Name="ItemCategory" Relationship="AlverModel.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
+          <NavigationProperty Name="Unit" Relationship="AlverModel.FK_Item_Unit" FromRole="Item" ToRole="Unit" />
+          <NavigationProperty Name="User" Relationship="AlverModel.FK_Item_User" FromRole="Item" ToRole="User" />
+          <NavigationProperty Name="ItemFunds" Relationship="AlverModel.FK_ItemFund_Item" FromRole="Item" ToRole="ItemFund" />
+          <NavigationProperty Name="ItemTransactions" Relationship="AlverModel.FK_ItemTransaction_Item" FromRole="Item" ToRole="ItemTransaction" />
+          <NavigationProperty Name="ReceiptLines" Relationship="AlverModel.FK_ReceiptLines_Item" FromRole="Item" ToRole="ReceiptLine" />
+        </EntityType>
         <EntityType Name="ItemCategory">
           <Key>
             <PropertyRef Name="Id" />
@@ -2534,8 +2721,8 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="GUID" Type="Guid" />
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="User" Relationship="AlverModel.FK_ItemCategory_User" FromRole="ItemCategory" ToRole="User" />
           <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_ItemCategory" FromRole="ItemCategory" ToRole="Item" />
+          <NavigationProperty Name="User" Relationship="AlverModel.FK_ItemCategory_User" FromRole="ItemCategory" ToRole="User" />
         </EntityType>
         <EntityType Name="ItemFund">
           <Key>
@@ -2554,9 +2741,9 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="GUID" Type="Guid" />
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ItemFund_Item" FromRole="ItemFund" ToRole="Item" />
           <NavigationProperty Name="Unit" Relationship="AlverModel.FK_ItemFund_Unit" FromRole="ItemFund" ToRole="Unit" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_ItemFund_User" FromRole="ItemFund" ToRole="User" />
-          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ItemFund_Item" FromRole="ItemFund" ToRole="Item" />
         </EntityType>
         <EntityType Name="ItemTransaction">
           <Key>
@@ -2571,31 +2758,8 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="RunningTotal" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Declaration" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="GUID" Type="Guid" />
-          <NavigationProperty Name="Unit" Relationship="AlverModel.FK_ItemTransaction_Unit" FromRole="ItemTransaction" ToRole="Unit" />
           <NavigationProperty Name="Item" Relationship="AlverModel.FK_ItemTransaction_Item" FromRole="ItemTransaction" ToRole="Item" />
-        </EntityType>
-        <EntityType Name="Payment">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PaymentType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
-          <Property Name="AccountId" Type="Int32" />
-          <Property Name="CurrencyId" Type="Int32" />
-          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Declaration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Payed" Type="Boolean" />
-          <Property Name="Locked" Type="Boolean" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="GUID" Type="Guid" />
-          <Property Name="Hidden" Type="Boolean" />
-          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LUD" Type="DateTime" Precision="3" />
-          <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="Account" Relationship="AlverModel.FK_Payment_Account" FromRole="Payment" ToRole="Account" />
-          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_Payment_Currency" FromRole="Payment" ToRole="Currency" />
-          <NavigationProperty Name="User" Relationship="AlverModel.FK_Payment_User" FromRole="Payment" ToRole="User" />
+          <NavigationProperty Name="Unit" Relationship="AlverModel.FK_ItemTransaction_Unit" FromRole="ItemTransaction" ToRole="Unit" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
@@ -2635,10 +2799,10 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="GUID" Type="Guid" />
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ReceiptLines_Item" FromRole="ReceiptLine" ToRole="Item" />
           <NavigationProperty Name="Receipt" Relationship="AlverModel.FK_ReceiptLines_Receipt" FromRole="ReceiptLine" ToRole="Receipt" />
           <NavigationProperty Name="Unit" Relationship="AlverModel.FK_ReceiptLines_Unit" FromRole="ReceiptLine" ToRole="Unit" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_ReceiptLines_User" FromRole="ReceiptLine" ToRole="User" />
-          <NavigationProperty Name="Item" Relationship="AlverModel.FK_ReceiptLines_Item" FromRole="ReceiptLine" ToRole="Item" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -2715,11 +2879,11 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
           <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Unit" FromRole="Unit" ToRole="BillLine" />
+          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_Unit" FromRole="Unit" ToRole="Item" />
           <NavigationProperty Name="ItemFunds" Relationship="AlverModel.FK_ItemFund_Unit" FromRole="Unit" ToRole="ItemFund" />
           <NavigationProperty Name="ItemTransactions" Relationship="AlverModel.FK_ItemTransaction_Unit" FromRole="Unit" ToRole="ItemTransaction" />
           <NavigationProperty Name="ReceiptLines" Relationship="AlverModel.FK_ReceiptLines_Unit" FromRole="Unit" ToRole="ReceiptLine" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_Unit_User" FromRole="Unit" ToRole="User" />
-          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_Unit" FromRole="Unit" ToRole="Item" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -2742,6 +2906,7 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="LUD" Type="DateTime" Precision="3" />
           <Property Name="PROTECTED" Type="Boolean" />
           <NavigationProperty Name="Accounts" Relationship="AlverModel.FK_Account_User" FromRole="User" ToRole="Account" />
+          <NavigationProperty Name="Bills" Relationship="AlverModel.FK_Bill_User" FromRole="User" ToRole="Bill" />
           <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_User" FromRole="User" ToRole="BillLine" />
           <NavigationProperty Name="Currencies" Relationship="AlverModel.FK_Currency_User" FromRole="User" ToRole="Currency" />
           <NavigationProperty Name="CurrencyExchanges" Relationship="AlverModel.FK_CurrencyExchange_Users_User" FromRole="User" ToRole="CurrencyExchange" />
@@ -2752,17 +2917,16 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <NavigationProperty Name="Expenses" Relationship="AlverModel.FK_Expense_User" FromRole="User" ToRole="Expense" />
           <NavigationProperty Name="ExpenseCategories" Relationship="AlverModel.FK_ExpenseCategory_User" FromRole="User" ToRole="ExpenseCategory" />
           <NavigationProperty Name="Funds" Relationship="AlverModel.FK_Fund_User" FromRole="User" ToRole="Fund" />
+          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_User" FromRole="User" ToRole="Item" />
           <NavigationProperty Name="ItemCategories" Relationship="AlverModel.FK_ItemCategory_User" FromRole="User" ToRole="ItemCategory" />
           <NavigationProperty Name="ItemFunds" Relationship="AlverModel.FK_ItemFund_User" FromRole="User" ToRole="ItemFund" />
-          <NavigationProperty Name="Payments" Relationship="AlverModel.FK_Payment_User" FromRole="User" ToRole="Payment" />
           <NavigationProperty Name="Receipts" Relationship="AlverModel.FK_Receipt_User" FromRole="User" ToRole="Receipt" />
           <NavigationProperty Name="ReceiptLines" Relationship="AlverModel.FK_ReceiptLines_User" FromRole="User" ToRole="ReceiptLine" />
           <NavigationProperty Name="Role" Relationship="AlverModel.FK_Users_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Transfers" Relationship="AlverModel.FK_Transfer_User" FromRole="User" ToRole="Transfer" />
           <NavigationProperty Name="Units" Relationship="AlverModel.FK_Unit_User" FromRole="User" ToRole="Unit" />
           <NavigationProperty Name="Withdraws" Relationship="AlverModel.FK_Withdraw_User" FromRole="User" ToRole="Withdraw" />
-          <NavigationProperty Name="Bills" Relationship="AlverModel.FK_Bill_User" FromRole="User" ToRole="Bill" />
-          <NavigationProperty Name="Items" Relationship="AlverModel.FK_Item_User" FromRole="User" ToRole="Item" />
+          <NavigationProperty Name="Payments" Relationship="AlverModel.FK_Payment_User" FromRole="User" ToRole="Payment" />
         </EntityType>
         <EntityType Name="Withdraw">
           <Key>
@@ -2823,6 +2987,18 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Bill_Account">
+          <End Type="AlverModel.Account" Role="Account" Multiplicity="0..1" />
+          <End Type="AlverModel.Bill" Role="Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ExchangeFund_AccountFrom">
           <End Type="AlverModel.Account" Role="Account" Multiplicity="0..1" />
           <End Type="AlverModel.ExchangeFund" Role="ExchangeFund" Multiplicity="*" />
@@ -2844,18 +3020,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Principal>
             <Dependent Role="ExchangeFund">
               <PropertyRef Name="AccountToId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Payment_Account">
-          <End Type="AlverModel.Account" Role="Account" Multiplicity="0..1" />
-          <End Type="AlverModel.Payment" Role="Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="AccountId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2979,6 +3143,54 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Images_Album">
+          <End Type="AlverModel.Album" Role="Album" Multiplicity="0..1" />
+          <End Type="AlverModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="AlbumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_Currency">
+          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="AlverModel.Bill" Role="Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_User">
+          <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="AlverModel.Bill" Role="Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillLines_Bill">
+          <End Type="AlverModel.Bill" Role="Bill" Multiplicity="0..1" />
+          <End Type="AlverModel.BillLine" Role="BillLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bill">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BillLine">
+              <PropertyRef Name="BillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BillLines_Currency">
           <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
           <End Type="AlverModel.BillLine" Role="BillLine" Multiplicity="*" />
@@ -2988,6 +3200,30 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Principal>
             <Dependent Role="BillLine">
               <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillLines_Currency1">
+          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="AlverModel.BillLine" Role="BillLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BillLine">
+              <PropertyRef Name="ForeginCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillLines_Item">
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="AlverModel.BillLine" Role="BillLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BillLine">
+              <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3012,6 +3248,18 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Principal>
             <Dependent Role="BillLine">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Images">
+          <End Type="AlverModel.Image" Role="Image" Multiplicity="0..1" />
+          <End Type="AlverModel.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="LogoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3135,14 +3383,14 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Payment_Currency">
+        <Association Name="FK_Item_Currency">
           <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="AlverModel.Payment" Role="Payment" Multiplicity="*" />
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Currency">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Payment">
+            <Dependent Role="Item">
               <PropertyRef Name="CurrencyId" />
             </Dependent>
           </ReferentialConstraint>
@@ -3315,6 +3563,78 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Item_ItemCategory">
+          <End Type="AlverModel.ItemCategory" Role="ItemCategory" Multiplicity="0..1" />
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Unit">
+          <End Type="AlverModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_User">
+          <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFund_Item">
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="AlverModel.ItemFund" Role="ItemFund" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemFund">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemTransaction_Item">
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="AlverModel.ItemTransaction" Role="ItemTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemTransaction">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptLines_Item">
+          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="AlverModel.ReceiptLine" Role="ReceiptLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceiptLine">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemCategory_User">
           <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
           <End Type="AlverModel.ItemCategory" Role="ItemCategory" Multiplicity="*" />
@@ -3360,18 +3680,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Principal>
             <Dependent Role="ItemTransaction">
               <PropertyRef Name="UnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Payment_User">
-          <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="AlverModel.Payment" Role="Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3471,287 +3779,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Album">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AlbumTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Declaration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="LUD" Type="DateTime" Precision="3" />
-          <Property Name="GUID" Type="Guid" />
-          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Hidden" Type="Boolean" />
-          <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="Images" Relationship="AlverModel.FK_Images_Album" FromRole="Album" ToRole="Image" />
-        </EntityType>
-        <EntityType Name="Image">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AlbumId" Type="Int32" />
-          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ImageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GUID" Type="Guid" />
-          <Property Name="Hidden" Type="Boolean" />
-          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LUD" Type="DateTime" Precision="3" />
-          <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="Album" Relationship="AlverModel.FK_Images_Album" FromRole="Image" ToRole="Album" />
-          <NavigationProperty Name="Companies" Relationship="AlverModel.FK_Company_Images" FromRole="Image" ToRole="Company" />
-        </EntityType>
-        <Association Name="FK_Images_Album">
-          <End Type="AlverModel.Album" Role="Album" Multiplicity="0..1" />
-          <End Type="AlverModel.Image" Role="Image" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Album">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Image">
-              <PropertyRef Name="AlbumId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Motto" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Manager" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ManagerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Accountant" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AccountantPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="LogoId" Type="Int32" />
-          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="GUID" Type="Guid" />
-          <Property Name="Hidden" Type="Boolean" />
-          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LUD" Type="DateTime" Precision="3" />
-          <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="Image" Relationship="AlverModel.FK_Company_Images" FromRole="Company" ToRole="Image" />
-        </EntityType>
-        <Association Name="FK_Company_Images">
-          <End Type="AlverModel.Image" Role="Image" Multiplicity="0..1" />
-          <End Type="AlverModel.Company" Role="Company" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Image">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Company">
-              <PropertyRef Name="LogoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Bill">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CheckedOut" Type="Boolean" />
-          <Property Name="BillType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="AccountId" Type="Int32" />
-          <Property Name="BillDate" Type="DateTime" Precision="3" />
-          <Property Name="Cashout" Type="Boolean" />
-          <Property Name="CurrencyId" Type="Int32" />
-          <Property Name="BillAmount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Exchanged" Type="Boolean" />
-          <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ForeginCurrencyId" Type="Int32" />
-          <Property Name="ExchangedAmount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Declaration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="Hidden" Type="Boolean" />
-          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GUID" Type="Guid" />
-          <Property Name="LUD" Type="DateTime" Precision="3" />
-          <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="Account" Relationship="AlverModel.FK_Bill_Account" FromRole="Bill" ToRole="Account" />
-          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_Bill_Currency" FromRole="Bill" ToRole="Currency" />
-          <NavigationProperty Name="User" Relationship="AlverModel.FK_Bill_User" FromRole="Bill" ToRole="User" />
-          <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Bill" FromRole="Bill" ToRole="BillLine" />
-        </EntityType>
-        <EntityType Name="Item">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UnitId" Type="Int32" />
-          <Property Name="CategoryId" Type="Int32" />
-          <Property Name="CurrencyId" Type="Int32" />
-          <Property Name="SalePrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PurchasePrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Declaration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="Hidden" Type="Boolean" />
-          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GUID" Type="Guid" />
-          <Property Name="LUD" Type="DateTime" Precision="3" />
-          <Property Name="PROTECTED" Type="Boolean" />
-          <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Item" FromRole="Item" ToRole="BillLine" />
-          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_Item_Currency" FromRole="Item" ToRole="Currency" />
-          <NavigationProperty Name="ItemCategory" Relationship="AlverModel.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
-          <NavigationProperty Name="Unit" Relationship="AlverModel.FK_Item_Unit" FromRole="Item" ToRole="Unit" />
-          <NavigationProperty Name="User" Relationship="AlverModel.FK_Item_User" FromRole="Item" ToRole="User" />
-          <NavigationProperty Name="ItemFunds" Relationship="AlverModel.FK_ItemFund_Item" FromRole="Item" ToRole="ItemFund" />
-          <NavigationProperty Name="ItemTransactions" Relationship="AlverModel.FK_ItemTransaction_Item" FromRole="Item" ToRole="ItemTransaction" />
-          <NavigationProperty Name="ReceiptLines" Relationship="AlverModel.FK_ReceiptLines_Item" FromRole="Item" ToRole="ReceiptLine" />
-        </EntityType>
-        <Association Name="FK_Bill_Account">
-          <End Type="AlverModel.Account" Role="Account" Multiplicity="0..1" />
-          <End Type="AlverModel.Bill" Role="Bill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Bill">
-              <PropertyRef Name="AccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Bill_Currency">
-          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="AlverModel.Bill" Role="Bill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Bill">
-              <PropertyRef Name="CurrencyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Bill_User">
-          <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="AlverModel.Bill" Role="Bill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Bill">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BillLines_Bill">
-          <End Type="AlverModel.Bill" Role="Bill" Multiplicity="0..1" />
-          <End Type="AlverModel.BillLine" Role="BillLine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bill">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BillLine">
-              <PropertyRef Name="BillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BillLines_Item">
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
-          <End Type="AlverModel.BillLine" Role="BillLine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BillLine">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_Currency">
-          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="CurrencyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_ItemCategory">
-          <End Type="AlverModel.ItemCategory" Role="ItemCategory" Multiplicity="0..1" />
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ItemCategory">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_Unit">
-          <End Type="AlverModel.Unit" Role="Unit" Multiplicity="0..1" />
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="UnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_User">
-          <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ItemFund_Item">
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
-          <End Type="AlverModel.ItemFund" Role="ItemFund" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ItemFund">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ItemTransaction_Item">
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
-          <End Type="AlverModel.ItemTransaction" Role="ItemTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ItemTransaction">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReceiptLines_Item">
-          <End Type="AlverModel.Item" Role="Item" Multiplicity="0..1" />
-          <End Type="AlverModel.ReceiptLine" Role="ReceiptLine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ReceiptLine">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="V_CLIENTS">
           <Key>
             <PropertyRef Name="AccountId" />
@@ -3780,6 +3807,81 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Name="هامش_الربح_في_القطعة_الواحدة" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="الربح_المتوقع" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Declaration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Payed" Type="Boolean" />
+          <Property Name="Locked" Type="Boolean" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LUD" Type="DateTime" Precision="3" />
+          <Property Name="PROTECTED" Type="Boolean" />
+          <NavigationProperty Name="Account" Relationship="AlverModel.FK_Payment_Account" FromRole="Payment" ToRole="Account" />
+          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_Payment_Currency" FromRole="Payment" ToRole="Currency" />
+          <NavigationProperty Name="User" Relationship="AlverModel.FK_Payment_User" FromRole="Payment" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Payment_Account">
+          <End Type="AlverModel.Account" Role="Account" Multiplicity="0..1" />
+          <End Type="AlverModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Currency">
+          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="AlverModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_User">
+          <End Type="AlverModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="AlverModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ItemAvgPurchasePrice_Result">
+          <Property Type="Int32" Name="رقم_العملة_الاساس" Nullable="true" />
+          <Property Type="String" Name="العملة_الاساس" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="رقم_العملة_الطرف" Nullable="true" />
+          <Property Type="String" Name="العملة_الطرف" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="السعر_بالعملة_الاساس" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="السعر_بالعملة_الطرف" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="ItemAvgSalePrice_Result">
+          <Property Type="Int32" Name="رقم_العملة_الاساس" Nullable="true" />
+          <Property Type="String" Name="العملة_الاساس" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="رقم_العملة_الطرف" Nullable="true" />
+          <Property Type="String" Name="العملة_الطرف" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="السعر_بالعملة_الاساس" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="السعر_بالعملة_الطرف" Nullable="true" Precision="19" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3819,6 +3921,30 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
                 <ScalarProperty Name="رقم_الواحدة" ColumnName="رقم الواحدة" />
                 <ScalarProperty Name="الإجمالي" ColumnName="الإجمالي" />
                 <ScalarProperty Name="لنا_لكم" ColumnName="لنا/لكم" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BillSlip" FunctionName="AlverModel.Store.BillSlip">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlverModel.BillSlip_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Exchanged" ColumnName="Exchanged" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="ForeginCurrencyId" ColumnName="ForeginCurrencyId" />
+                <ScalarProperty Name="ForeginCurrencyName" ColumnName="ForeginCurrencyName" />
+                <ScalarProperty Name="ExchangedAmount" ColumnName="ExchangedAmount" />
+                <ScalarProperty Name="ExchangedTotalAmount" ColumnName="ExchangedTotalAmount" />
+                <ScalarProperty Name="LinesCount" ColumnName="LinesCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3882,6 +4008,21 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Albums">
+            <EntityTypeMapping TypeName="AlverModel.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+                <ScalarProperty Name="AlbumTitle" ColumnName="AlbumTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="AppSettings">
             <EntityTypeMapping TypeName="AlverModel.AppSetting">
               <MappingFragment StoreEntitySet="AppSettings">
@@ -3904,6 +4045,33 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="AlverModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+                <ScalarProperty Name="ExchangedAmount" ColumnName="ExchangedAmount" />
+                <ScalarProperty Name="ForeginCurrencyId" ColumnName="ForeginCurrencyId" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Exchanged" ColumnName="Exchanged" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="Cashout" ColumnName="Cashout" />
+                <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="CheckedOut" ColumnName="CheckedOut" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="BillLines">
             <EntityTypeMapping TypeName="AlverModel.BillLine">
               <MappingFragment StoreEntitySet="BillLines">
@@ -3913,6 +4081,11 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
                 <ScalarProperty Name="Flag" ColumnName="Flag" />
                 <ScalarProperty Name="Hidden" ColumnName="Hidden" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ExchangedTotalAmount" ColumnName="ExchangedTotalAmount" />
+                <ScalarProperty Name="ExchangedAmount" ColumnName="ExchangedAmount" />
+                <ScalarProperty Name="ForeginCurrencyId" ColumnName="ForeginCurrencyId" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Exchanged" ColumnName="Exchanged" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
@@ -3920,6 +4093,29 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="BillId" ColumnName="BillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="AlverModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LogoId" ColumnName="LogoId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AccountantPhone" ColumnName="AccountantPhone" />
+                <ScalarProperty Name="Accountant" ColumnName="Accountant" />
+                <ScalarProperty Name="ManagerPhone" ColumnName="ManagerPhone" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="Motto" ColumnName="Motto" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4110,6 +4306,43 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="AlverModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ImageTitle" ColumnName="ImageTitle" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="AlverModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ItemCategories">
             <EntityTypeMapping TypeName="AlverModel.ItemCategory">
               <MappingFragment StoreEntitySet="ItemCategory">
@@ -4155,27 +4388,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
                 <ScalarProperty Name="TT" ColumnName="TT" />
                 <ScalarProperty Name="TTS" ColumnName="TTS" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Payments">
-            <EntityTypeMapping TypeName="AlverModel.Payment">
-              <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
-                <ScalarProperty Name="LUD" ColumnName="LUD" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
-                <ScalarProperty Name="GUID" ColumnName="GUID" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Locked" ColumnName="Locked" />
-                <ScalarProperty Name="Payed" ColumnName="Payed" />
-                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
-                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
-                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4331,108 +4543,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Albums">
-            <EntityTypeMapping TypeName="AlverModel.Album">
-              <MappingFragment StoreEntitySet="Album">
-                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
-                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="GUID" ColumnName="GUID" />
-                <ScalarProperty Name="LUD" ColumnName="LUD" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
-                <ScalarProperty Name="AlbumTitle" ColumnName="AlbumTitle" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Images">
-            <EntityTypeMapping TypeName="AlverModel.Image">
-              <MappingFragment StoreEntitySet="Images">
-                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
-                <ScalarProperty Name="LUD" ColumnName="LUD" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
-                <ScalarProperty Name="GUID" ColumnName="GUID" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="ImageTitle" ColumnName="ImageTitle" />
-                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
-                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="AlverModel.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
-                <ScalarProperty Name="LUD" ColumnName="LUD" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
-                <ScalarProperty Name="GUID" ColumnName="GUID" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="LogoId" ColumnName="LogoId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="AccountantPhone" ColumnName="AccountantPhone" />
-                <ScalarProperty Name="Accountant" ColumnName="Accountant" />
-                <ScalarProperty Name="ManagerPhone" ColumnName="ManagerPhone" />
-                <ScalarProperty Name="Manager" ColumnName="Manager" />
-                <ScalarProperty Name="Motto" ColumnName="Motto" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Bills">
-            <EntityTypeMapping TypeName="AlverModel.Bill">
-              <MappingFragment StoreEntitySet="Bill">
-                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
-                <ScalarProperty Name="LUD" ColumnName="LUD" />
-                <ScalarProperty Name="GUID" ColumnName="GUID" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
-                <ScalarProperty Name="ExchangedAmount" ColumnName="ExchangedAmount" />
-                <ScalarProperty Name="ForeginCurrencyId" ColumnName="ForeginCurrencyId" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="Exchanged" ColumnName="Exchanged" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
-                <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
-                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
-                <ScalarProperty Name="Cashout" ColumnName="Cashout" />
-                <ScalarProperty Name="BillDate" ColumnName="BillDate" />
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
-                <ScalarProperty Name="BillType" ColumnName="BillType" />
-                <ScalarProperty Name="CheckedOut" ColumnName="CheckedOut" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="AlverModel.Item">
-              <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
-                <ScalarProperty Name="LUD" ColumnName="LUD" />
-                <ScalarProperty Name="GUID" ColumnName="GUID" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
-                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
-                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="V_CLIENTS">
             <EntityTypeMapping TypeName="AlverModel.V_CLIENTS">
               <MappingFragment StoreEntitySet="V_CLIENTS">
@@ -4463,6 +4573,51 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="AlverModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PROTECTED" ColumnName="PROTECTED" />
+                <ScalarProperty Name="LUD" ColumnName="LUD" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="Payed" ColumnName="Payed" />
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ItemAvgPurchasePrice" FunctionName="AlverModel.Store.ItemAvgPurchasePrice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlverModel.ItemAvgPurchasePrice_Result">
+                <ScalarProperty Name="رقم_العملة_الاساس" ColumnName="رقم العملة الاساس" />
+                <ScalarProperty Name="العملة_الاساس" ColumnName="العملة الاساس" />
+                <ScalarProperty Name="رقم_العملة_الطرف" ColumnName="رقم العملة الطرف" />
+                <ScalarProperty Name="العملة_الطرف" ColumnName="العملة الطرف" />
+                <ScalarProperty Name="السعر_بالعملة_الاساس" ColumnName="السعر بالعملة الاساس" />
+                <ScalarProperty Name="السعر_بالعملة_الطرف" ColumnName="السعر بالعملة الطرف" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ItemAvgSalePrice" FunctionName="AlverModel.Store.ItemAvgSalePrice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlverModel.ItemAvgSalePrice_Result">
+                <ScalarProperty Name="رقم_العملة_الاساس" ColumnName="رقم العملة الاساس" />
+                <ScalarProperty Name="العملة_الاساس" ColumnName="العملة الاساس" />
+                <ScalarProperty Name="رقم_العملة_الطرف" ColumnName="رقم العملة الطرف" />
+                <ScalarProperty Name="العملة_الطرف" ColumnName="العملة الطرف" />
+                <ScalarProperty Name="السعر_بالعملة_الاساس" ColumnName="السعر بالعملة الاساس" />
+                <ScalarProperty Name="السعر_بالعملة_الطرف" ColumnName="السعر بالعملة الطرف" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

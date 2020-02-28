@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Alver.Misc
 {
-    public static class Extensions
+    public static class ControlsExtensions
     {
         #region Clear Controls
         private static Dictionary<Type, Action<Control>> controldefaults = new Dictionary<Type, Action<Control>>() {

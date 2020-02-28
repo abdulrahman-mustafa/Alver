@@ -64,5 +64,19 @@ namespace Alver.UI.Items
                     savebtn_Click(sender, e);
             }
         }
+
+        private void itemBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int _itemId = (itemBindingSource.Current as Item).Id;
+                itemAvgPurchasePriceResultBindingSource.DataSource = ItemFuncs.ItemAvgPurchasePrice(_itemId);
+                itemAvgSalePriceResultBindingSource.DataSource = ItemFuncs.ItemAvgSalePrice(_itemId);
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
     }
 }

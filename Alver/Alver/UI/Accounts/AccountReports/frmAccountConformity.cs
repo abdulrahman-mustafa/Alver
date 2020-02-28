@@ -22,7 +22,9 @@ namespace Alver.UI.Accounts.AccountReports
             {
                 db.Accounts.Load();
                 db.Images.Load();
+                db.Companies.Load();
                 ImageBindingSource.DataSource = db.Images.Find(1);
+                CompanyBindingSource.DataSource = db.Companies.FirstOrDefault(x => x.Id == 1);
                 AccountBindingSource.DataSource = db.Accounts.FirstOrDefault(x => x.Id == _client.Id);
                 SP_ClientGrand_ResultBindingSource.DataSource = db.SP_ClientGrand(_client.Id).ToList();
                 this.reportViewer1.RefreshReport();

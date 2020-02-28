@@ -17,6 +17,11 @@ namespace Alver.UI.Items
         private void frmClientsOverview_Load(object sender, EventArgs e)
         {
             sortcb.Checked = false;
+            using (dbEntities db=new dbEntities())
+            {
+                db.Currencies.Load();
+                currencyBindingSource.DataSource = db.Currencies.ToList();
+            }
         }
        
         private void printbtn_Click(object sender, EventArgs e)
@@ -131,6 +136,16 @@ namespace Alver.UI.Items
         private void sortcb_CheckedChanged(object sender, EventArgs e)
         {
             sortgb.Enabled = sortcb.Checked;
+        }
+
+        private void dgv_ColumnNameChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+
+        }
+
+        private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
         }
     }
 }

@@ -30,37 +30,33 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExpensessCategory));
-            this.payments_ExpenseCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.payments_ExpenseCategoryDataGridView = new System.Windows.Forms.DataGridView();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.payments_ExpenseCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.addbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.deletebtn = new System.Windows.Forms.ToolStripButton();
+            this.firstbtn = new System.Windows.Forms.ToolStripButton();
+            this.prevbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.savebtn = new System.Windows.Forms.ToolStripButton();
-            this.firstbtn = new System.Windows.Forms.ToolStripButton();
-            this.prevbtn = new System.Windows.Forms.ToolStripButton();
             this.nextbtn = new System.Windows.Forms.ToolStripButton();
             this.lastbtn = new System.Windows.Forms.ToolStripButton();
-            ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryBindingSource)).BeginInit();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.deletebtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.savebtn = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // payments_ExpenseCategoryBindingSource
-            // 
-            this.payments_ExpenseCategoryBindingSource.DataSource = typeof(Alver.DAL.ExpenseCategory);
             // 
             // payments_ExpenseCategoryDataGridView
             // 
@@ -78,6 +74,7 @@
             this.userIdDataGridViewTextBoxColumn});
             this.payments_ExpenseCategoryDataGridView.DataSource = this.payments_ExpenseCategoryBindingSource;
             this.payments_ExpenseCategoryDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.payments_ExpenseCategoryDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.payments_ExpenseCategoryDataGridView.GridColor = System.Drawing.SystemColors.Control;
             this.payments_ExpenseCategoryDataGridView.Location = new System.Drawing.Point(0, 27);
             this.payments_ExpenseCategoryDataGridView.Name = "payments_ExpenseCategoryDataGridView";
@@ -115,6 +112,10 @@
             // 
             this.userBindingSource.DataSource = typeof(Alver.DAL.User);
             // 
+            // payments_ExpenseCategoryBindingSource
+            // 
+            this.payments_ExpenseCategoryBindingSource.DataSource = typeof(Alver.DAL.ExpenseCategory);
+            // 
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.addbtn;
@@ -122,7 +123,7 @@
             this.bindingNavigator1.BindingSource = this.payments_ExpenseCategoryBindingSource;
             this.bindingNavigator1.CountItem = this.toolStripLabel1;
             this.bindingNavigator1.CountItemFormat = "من أصل {0}";
-            this.bindingNavigator1.DeleteItem = this.deletebtn;
+            this.bindingNavigator1.DeleteItem = null;
             this.bindingNavigator1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.firstbtn,
@@ -151,7 +152,7 @@
             // 
             // addbtn
             // 
-            this.addbtn.Image = global::Alver.Properties.Resources.Add;
+            this.addbtn.Image = global::Alver.Properties.Resources.addrow;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
             this.addbtn.Size = new System.Drawing.Size(61, 24);
@@ -165,13 +166,23 @@
             this.toolStripLabel1.Text = "من أصل {0}";
             this.toolStripLabel1.ToolTipText = "Total number of items";
             // 
-            // deletebtn
+            // firstbtn
             // 
-            this.deletebtn.Image = global::Alver.Properties.Resources.Delete;
-            this.deletebtn.Name = "deletebtn";
-            this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(56, 24);
-            this.deletebtn.Text = "حذف";
+            this.firstbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.firstbtn.Image = ((System.Drawing.Image)(resources.GetObject("firstbtn.Image")));
+            this.firstbtn.Name = "firstbtn";
+            this.firstbtn.RightToLeftAutoMirrorImage = true;
+            this.firstbtn.Size = new System.Drawing.Size(24, 24);
+            this.firstbtn.Text = "Move first";
+            // 
+            // prevbtn
+            // 
+            this.prevbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.prevbtn.Image = ((System.Drawing.Image)(resources.GetObject("prevbtn.Image")));
+            this.prevbtn.Name = "prevbtn";
+            this.prevbtn.RightToLeftAutoMirrorImage = true;
+            this.prevbtn.Size = new System.Drawing.Size(24, 24);
+            this.prevbtn.Text = "Move previous";
             // 
             // toolStripSeparator1
             // 
@@ -193,48 +204,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
-            // 
-            // savebtn
-            // 
-            this.savebtn.Image = global::Alver.Properties.Resources.save;
-            this.savebtn.Name = "savebtn";
-            this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(103, 24);
-            this.savebtn.Text = "حفظ التعديلات";
-            this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
-            // 
-            // firstbtn
-            // 
-            this.firstbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.firstbtn.Image = ((System.Drawing.Image)(resources.GetObject("firstbtn.Image")));
-            this.firstbtn.Name = "firstbtn";
-            this.firstbtn.RightToLeftAutoMirrorImage = true;
-            this.firstbtn.Size = new System.Drawing.Size(24, 24);
-            this.firstbtn.Text = "Move first";
-            // 
-            // prevbtn
-            // 
-            this.prevbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.prevbtn.Image = ((System.Drawing.Image)(resources.GetObject("prevbtn.Image")));
-            this.prevbtn.Name = "prevbtn";
-            this.prevbtn.RightToLeftAutoMirrorImage = true;
-            this.prevbtn.Size = new System.Drawing.Size(24, 24);
-            this.prevbtn.Text = "Move previous";
-            // 
             // nextbtn
             // 
             this.nextbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -253,6 +222,39 @@
             this.lastbtn.Size = new System.Drawing.Size(24, 24);
             this.lastbtn.Text = "Move last";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            // 
+            // deletebtn
+            // 
+            this.deletebtn.Image = global::Alver.Properties.Resources.deleterow;
+            this.deletebtn.Name = "deletebtn";
+            this.deletebtn.RightToLeftAutoMirrorImage = true;
+            this.deletebtn.Size = new System.Drawing.Size(56, 24);
+            this.deletebtn.Text = "حذف";
+            this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            // 
+            // savebtn
+            // 
+            this.savebtn.Image = global::Alver.Properties.Resources.save;
+            this.savebtn.Name = "savebtn";
+            this.savebtn.RightToLeftAutoMirrorImage = true;
+            this.savebtn.Size = new System.Drawing.Size(103, 24);
+            this.savebtn.Text = "حفظ التعديلات";
+            this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
+            // 
             // frmExpensessCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -268,9 +270,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "تصنيفات المصاريف";
             this.Load += new System.EventHandler(this.frmExpensessCategory_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();

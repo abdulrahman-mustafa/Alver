@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsers));
             this.users_UserBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.users_UserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -57,12 +58,11 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.users_UserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingNavigator)).BeginInit();
             this.users_UserBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roleBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // users_UserBindingNavigator
@@ -98,6 +98,11 @@
             this.users_UserBindingNavigator.Size = new System.Drawing.Size(814, 27);
             this.users_UserBindingNavigator.TabIndex = 0;
             this.users_UserBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // users_UserBindingSource
+            // 
+            this.users_UserBindingSource.DataSource = typeof(Alver.DAL.User);
+            this.users_UserBindingSource.CurrentChanged += new System.EventHandler(this.UserBindingSource_CurrentChanged);
             // 
             // bindingNavigatorCountItem
             // 
@@ -216,7 +221,7 @@
             // 
             this.اكسلToolStripMenuItem.Image = global::Alver.Properties.Resources.xls;
             this.اكسلToolStripMenuItem.Name = "اكسلToolStripMenuItem";
-            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.اكسلToolStripMenuItem.Text = "اكسل";
             this.اكسلToolStripMenuItem.Click += new System.EventHandler(this.اكسلToolStripMenuItem_Click);
             // 
@@ -224,7 +229,7 @@
             // 
             this.pDFToolStripMenuItem.Image = global::Alver.Properties.Resources.pdf;
             this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.pDFToolStripMenuItem.Text = "PDF";
             // 
             // dgv
@@ -331,11 +336,6 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
-            // users_UserBindingSource
-            // 
-            this.users_UserBindingSource.DataSource = typeof(Alver.DAL.User);
-            this.users_UserBindingSource.CurrentChanged += new System.EventHandler(this.UserBindingSource_CurrentChanged);
-            // 
             // frmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -355,9 +355,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingNavigator)).EndInit();
             this.users_UserBindingNavigator.ResumeLayout(false);
             this.users_UserBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roleBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.users_UserBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

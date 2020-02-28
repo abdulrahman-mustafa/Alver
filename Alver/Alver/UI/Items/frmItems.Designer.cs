@@ -32,7 +32,7 @@ namespace Alver.UI.Accounts
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItems));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.itemfundsdgv = new System.Windows.Forms.DataGridView();
@@ -82,10 +82,10 @@ namespace Alver.UI.Accounts
             this.refreshbtn = new System.Windows.Forms.ToolStripButton();
             this.SearchBox = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.تعديلالوكيلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemfundunitBS = new System.Windows.Forms.BindingSource(this.components);
             this.addbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.deletebtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.تعديلالوكيلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemfundunitBS = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemfundsdgv)).BeginInit();
@@ -303,6 +303,7 @@ namespace Alver.UI.Accounts
             this.printbtn.RightToLeftAutoMirrorImage = true;
             this.printbtn.Size = new System.Drawing.Size(111, 24);
             this.printbtn.Text = "طباعة إشعار مطابقة";
+            this.printbtn.Visible = false;
             // 
             // statusStrip1
             // 
@@ -343,8 +344,8 @@ namespace Alver.UI.Accounts
             // 
             this.itemsdgv.AllowUserToAddRows = false;
             this.itemsdgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.itemsdgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.itemsdgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.itemsdgv.AutoGenerateColumns = false;
             this.itemsdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.itemsdgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
@@ -605,24 +606,12 @@ namespace Alver.UI.Accounts
             this.toolStripDropDownButton1.Text = "خيارات المادة";
             this.toolStripDropDownButton1.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
-            // تعديلالوكيلToolStripMenuItem
-            // 
-            this.تعديلالوكيلToolStripMenuItem.Image = global::Alver.Properties.Resources.edit;
-            this.تعديلالوكيلToolStripMenuItem.Name = "تعديلالوكيلToolStripMenuItem";
-            this.تعديلالوكيلToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.تعديلالوكيلToolStripMenuItem.Text = "تعديل المادة";
-            this.تعديلالوكيلToolStripMenuItem.Click += new System.EventHandler(this.تعديلالوكيلToolStripMenuItem_Click);
-            // 
-            // itemfundunitBS
-            // 
-            this.itemfundunitBS.DataSource = typeof(Alver.DAL.Unit);
-            // 
             // addbtn
             // 
             this.addbtn.Image = global::Alver.Properties.Resources.Add;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(184, 26);
+            this.addbtn.Size = new System.Drawing.Size(139, 26);
             this.addbtn.Text = "إضافة مادة";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -631,9 +620,21 @@ namespace Alver.UI.Accounts
             this.deletebtn.Image = global::Alver.Properties.Resources.Delete;
             this.deletebtn.Name = "deletebtn";
             this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(184, 26);
+            this.deletebtn.Size = new System.Drawing.Size(139, 26);
             this.deletebtn.Text = "حذف المادة";
             this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
+            // 
+            // تعديلالوكيلToolStripMenuItem
+            // 
+            this.تعديلالوكيلToolStripMenuItem.Image = global::Alver.Properties.Resources.edit;
+            this.تعديلالوكيلToolStripMenuItem.Name = "تعديلالوكيلToolStripMenuItem";
+            this.تعديلالوكيلToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.تعديلالوكيلToolStripMenuItem.Text = "تعديل المادة";
+            this.تعديلالوكيلToolStripMenuItem.Click += new System.EventHandler(this.تعديلالوكيلToolStripMenuItem_Click);
+            // 
+            // itemfundunitBS
+            // 
+            this.itemfundunitBS.DataSource = typeof(Alver.DAL.Unit);
             // 
             // frmItems
             // 

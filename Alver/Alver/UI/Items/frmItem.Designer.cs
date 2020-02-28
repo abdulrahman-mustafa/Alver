@@ -43,6 +43,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.savebtn = new System.Windows.Forms.ToolStripButton();
             this.infogroupBox = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.salepricenud = new System.Windows.Forms.NumericUpDown();
             this.purchasepricenud = new System.Windows.Forms.NumericUpDown();
             this.fundBalancenud = new System.Windows.Forms.NumericUpDown();
@@ -64,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
             this.infogroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salepricenud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchasepricenud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fundBalancenud)).BeginInit();
@@ -203,6 +205,7 @@
             // 
             // infogroupBox
             // 
+            this.infogroupBox.Controls.Add(this.pictureBox1);
             this.infogroupBox.Controls.Add(this.salepricenud);
             this.infogroupBox.Controls.Add(label4);
             this.infogroupBox.Controls.Add(this.purchasepricenud);
@@ -225,9 +228,18 @@
             this.infogroupBox.Name = "infogroupBox";
             this.infogroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.infogroupBox.Size = new System.Drawing.Size(358, 265);
-            this.infogroupBox.TabIndex = 37;
+            this.infogroupBox.TabIndex = 0;
             this.infogroupBox.TabStop = false;
             this.infogroupBox.Text = "بيانات المادة";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Alver.Properties.Resources.icons8_qr_code_25px;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(23, 23);
+            this.pictureBox1.TabIndex = 54;
+            this.pictureBox1.TabStop = false;
             // 
             // salepricenud
             // 
@@ -246,7 +258,7 @@
             0});
             this.salepricenud.Name = "salepricenud";
             this.salepricenud.Size = new System.Drawing.Size(254, 23);
-            this.salepricenud.TabIndex = 53;
+            this.salepricenud.TabIndex = 6;
             this.salepricenud.Value = new decimal(new int[] {
             1,
             0,
@@ -271,7 +283,7 @@
             0});
             this.purchasepricenud.Name = "purchasepricenud";
             this.purchasepricenud.Size = new System.Drawing.Size(254, 23);
-            this.purchasepricenud.TabIndex = 51;
+            this.purchasepricenud.TabIndex = 5;
             this.purchasepricenud.Value = new decimal(new int[] {
             1,
             0,
@@ -290,7 +302,7 @@
             0});
             this.fundBalancenud.Name = "fundBalancenud";
             this.fundBalancenud.Size = new System.Drawing.Size(254, 23);
-            this.fundBalancenud.TabIndex = 49;
+            this.fundBalancenud.TabIndex = 7;
             this.fundBalancenud.Visible = false;
             // 
             // itemCategorycb
@@ -302,7 +314,7 @@
             this.itemCategorycb.Location = new System.Drawing.Point(12, 80);
             this.itemCategorycb.Name = "itemCategorycb";
             this.itemCategorycb.Size = new System.Drawing.Size(254, 23);
-            this.itemCategorycb.TabIndex = 45;
+            this.itemCategorycb.TabIndex = 2;
             this.itemCategorycb.ValueMember = "Id";
             // 
             // itemCategoryBindingSource
@@ -318,7 +330,7 @@
             this.itemcb.Location = new System.Drawing.Point(12, 51);
             this.itemcb.Name = "itemcb";
             this.itemcb.Size = new System.Drawing.Size(254, 23);
-            this.itemcb.TabIndex = 0;
+            this.itemcb.TabIndex = 1;
             // 
             // declarationcb
             // 
@@ -326,15 +338,15 @@
             this.declarationcb.Location = new System.Drawing.Point(12, 143);
             this.declarationcb.Name = "declarationcb";
             this.declarationcb.Size = new System.Drawing.Size(254, 23);
-            this.declarationcb.TabIndex = 3;
+            this.declarationcb.TabIndex = 4;
             // 
             // barcodecb
             // 
             this.barcodecb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.barcodecb.Location = new System.Drawing.Point(12, 22);
+            this.barcodecb.Location = new System.Drawing.Point(42, 22);
             this.barcodecb.Name = "barcodecb";
-            this.barcodecb.Size = new System.Drawing.Size(254, 23);
-            this.barcodecb.TabIndex = 2;
+            this.barcodecb.Size = new System.Drawing.Size(224, 23);
+            this.barcodecb.TabIndex = 0;
             // 
             // unitcb
             // 
@@ -345,7 +357,7 @@
             this.unitcb.Location = new System.Drawing.Point(12, 114);
             this.unitcb.Name = "unitcb";
             this.unitcb.Size = new System.Drawing.Size(254, 23);
-            this.unitcb.TabIndex = 4;
+            this.unitcb.TabIndex = 3;
             this.unitcb.ValueMember = "Id";
             // 
             // unitBindingSource
@@ -362,6 +374,7 @@
             this.Controls.Add(this.bindingNavigator2);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmItem";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -375,6 +388,7 @@
             this.bindingNavigator2.PerformLayout();
             this.infogroupBox.ResumeLayout(false);
             this.infogroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salepricenud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchasepricenud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fundBalancenud)).EndInit();
@@ -401,5 +415,6 @@
         private System.Windows.Forms.NumericUpDown fundBalancenud;
         private System.Windows.Forms.NumericUpDown salepricenud;
         private System.Windows.Forms.NumericUpDown purchasepricenud;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

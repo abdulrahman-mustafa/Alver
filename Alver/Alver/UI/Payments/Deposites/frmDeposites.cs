@@ -30,6 +30,8 @@ namespace Alver.UI.Payments.Deposites
             db.Currencies.Load();
             db.Accounts.Load();
             db.Payments.Load();
+            db.Users.Load();
+            userBindingSource.DataSource = db.Users.ToList();
             currencyBindingSource.DataSource = db.Currencies.ToList();
             accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
             accountsInfoBindingSource1.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
@@ -37,11 +39,11 @@ namespace Alver.UI.Payments.Deposites
         }
         private void payments_OperationBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            dgv.EndEdit();
-            CheckChanges();
-            db.SaveChanges();
-            MSGs.SaveMessage();
-            Retrive();
+            //dgv.EndEdit();
+            //CheckChanges();
+            //db.SaveChanges();
+            //MSGs.SaveMessage();
+            //Retrive();
         }
         private void CheckChanges()
         {
@@ -130,7 +132,7 @@ namespace Alver.UI.Payments.Deposites
 
                 if (_payment != null && _payment.Payed != null)
                 {
-                    toolStripButton1.Enabled = !_payment.Payed.Value;
+                    //toolStripButton1.Enabled = !_payment.Payed.Value;
                 }
             }
             catch (Exception ex) { }
@@ -275,8 +277,8 @@ namespace Alver.UI.Payments.Deposites
 
         private void ColorizeDgv()
         {
-            int _index = payedDataGridViewTextBoxColumn.Index;
-            Misc.Utilities.ColorizeForeFontStringDGV(dgv, _index, Misc.Utilities.PaymentTransactionType.أمانة_مسلمة.ToString());
+            //int _index = payedDataGridViewTextBoxColumn.Index;
+            //Misc.Utilities.ColorizeForeFontStringDGV(dgv, _index, Misc.Utilities.PaymentTransactionType.أمانة_مسلمة.ToString());
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

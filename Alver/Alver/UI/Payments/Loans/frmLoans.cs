@@ -152,7 +152,7 @@ namespace Alver.UI.Payments.Loans
 
                 if (_payment != null && _payment.Payed != null)
                 {
-                    toolStripButton1.Enabled = !_payment.Payed.Value;
+                    //toolStripButton1.Enabled = !_payment.Payed.Value;
                 }
             }
             catch (Exception ex) { }

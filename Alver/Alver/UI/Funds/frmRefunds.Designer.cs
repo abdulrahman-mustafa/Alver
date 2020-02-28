@@ -239,7 +239,7 @@
             // 
             this.اكسلToolStripMenuItem.Image = global::Alver.Properties.Resources.xls;
             this.اكسلToolStripMenuItem.Name = "اكسلToolStripMenuItem";
-            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.اكسلToolStripMenuItem.Text = "اكسل";
             this.اكسلToolStripMenuItem.Click += new System.EventHandler(this.اكسلToolStripMenuItem_Click);
             // 
@@ -247,7 +247,7 @@
             // 
             this.pDFToolStripMenuItem.Image = global::Alver.Properties.Resources.pdf;
             this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.pDFToolStripMenuItem.Text = "PDF";
             // 
             // dgv

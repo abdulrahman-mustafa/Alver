@@ -17,6 +17,11 @@ namespace Alver.UI.Payments.Expenses
 
         private void frmExpensessCategory_Load(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             db = new dbEntities();
             db.Configuration.ProxyCreationEnabled = false;
 
@@ -36,6 +41,21 @@ namespace Alver.UI.Payments.Expenses
         {
             db.SaveChanges();
             MSGs.SaveMessage();
+        }
+
+        private void deletebtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ItemCategory _itemCategory = itemCategoryBindingSource.Current as ItemCategory;
+                db.ItemCategories.Remove(_itemCategory);
+                db.SaveChanges();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
         }
     }
 }

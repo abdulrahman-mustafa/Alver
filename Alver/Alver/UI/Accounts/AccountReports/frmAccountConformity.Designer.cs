@@ -32,16 +32,35 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccountConformity));
+            this.SP_ClientGrand_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AccountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.CompanyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ImageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.exitbtn = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.SP_ClientGrand_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ImageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.AccountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SP_ClientGrand_ResultBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // SP_ClientGrand_ResultBindingSource
+            // 
+            this.SP_ClientGrand_ResultBindingSource.DataMember = "SP_ClientGrand_Result";
+            // 
+            // AccountBindingSource
+            // 
+            this.AccountBindingSource.DataSource = typeof(Alver.DAL.Account);
+            // 
+            // CompanyBindingSource
+            // 
+            this.CompanyBindingSource.DataSource = typeof(Alver.DAL.Company);
+            // 
+            // ImageBindingSource
+            // 
+            this.ImageBindingSource.DataSource = typeof(Alver.DAL.Image);
             // 
             // exitbtn
             // 
@@ -62,13 +81,16 @@
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "AccounFunds";
             reportDataSource1.Value = this.SP_ClientGrand_ResultBindingSource;
-            reportDataSource2.Name = "CompanyInfo";
-            reportDataSource2.Value = this.ImageBindingSource;
-            reportDataSource3.Name = "AccountDS";
-            reportDataSource3.Value = this.AccountBindingSource;
+            reportDataSource2.Name = "AccountDS";
+            reportDataSource2.Value = this.AccountBindingSource;
+            reportDataSource3.Name = "CompanyInfo";
+            reportDataSource3.Value = this.CompanyBindingSource;
+            reportDataSource4.Name = "ImageDS";
+            reportDataSource4.Value = this.ImageBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Alver.UI.Accounts.AccountReports.ClientConformity.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
@@ -76,19 +98,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(400, 470);
             this.reportViewer1.TabIndex = 3;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
-            // 
-            // SP_ClientGrand_ResultBindingSource
-            // 
-            this.SP_ClientGrand_ResultBindingSource.DataMember = "SP_ClientGrand_Result";
-            // 
-            // ImageBindingSource
-            // 
-            this.ImageBindingSource.DataMember = "Companies";
-            this.ImageBindingSource.DataSource = typeof(Alver.DAL.Image);
-            // 
-            // AccountBindingSource
-            // 
-            this.AccountBindingSource.DataSource = typeof(Alver.DAL.Account);
             // 
             // frmAccountConformity
             // 
@@ -108,8 +117,9 @@
             this.Text = "إشعار مطابقة رصيد";
             this.Load += new System.EventHandler(this.frmClientConformity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SP_ClientGrand_ResultBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -121,5 +131,6 @@
         private System.Windows.Forms.BindingSource SP_ClientGrand_ResultBindingSource;
         private System.Windows.Forms.BindingSource ImageBindingSource;
         private System.Windows.Forms.BindingSource AccountBindingSource;
+        private System.Windows.Forms.BindingSource CompanyBindingSource;
     }
 }

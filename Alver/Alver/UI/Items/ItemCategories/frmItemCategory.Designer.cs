@@ -39,7 +39,6 @@
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.addbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.deletebtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -49,6 +48,7 @@
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.deletebtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.savebtn = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryDataGridView)).BeginInit();
@@ -74,6 +74,7 @@
             this.userIdDataGridViewTextBoxColumn});
             this.payments_ExpenseCategoryDataGridView.DataSource = this.itemCategoryBindingSource;
             this.payments_ExpenseCategoryDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.payments_ExpenseCategoryDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.payments_ExpenseCategoryDataGridView.GridColor = System.Drawing.SystemColors.Control;
             this.payments_ExpenseCategoryDataGridView.Location = new System.Drawing.Point(0, 27);
             this.payments_ExpenseCategoryDataGridView.Name = "payments_ExpenseCategoryDataGridView";
@@ -122,7 +123,7 @@
             this.bindingNavigator1.BindingSource = this.itemCategoryBindingSource;
             this.bindingNavigator1.CountItem = this.toolStripLabel1;
             this.bindingNavigator1.CountItemFormat = "من أصل {0}";
-            this.bindingNavigator1.DeleteItem = this.deletebtn;
+            this.bindingNavigator1.DeleteItem = null;
             this.bindingNavigator1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
@@ -164,14 +165,6 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(66, 24);
             this.toolStripLabel1.Text = "من أصل {0}";
             this.toolStripLabel1.ToolTipText = "Total number of items";
-            // 
-            // deletebtn
-            // 
-            this.deletebtn.Image = global::Alver.Properties.Resources.deleterow;
-            this.deletebtn.Name = "deletebtn";
-            this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(56, 24);
-            this.deletebtn.Text = "حذف";
             // 
             // toolStripButton1
             // 
@@ -234,6 +227,15 @@
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            // 
+            // deletebtn
+            // 
+            this.deletebtn.Image = global::Alver.Properties.Resources.deleterow;
+            this.deletebtn.Name = "deletebtn";
+            this.deletebtn.RightToLeftAutoMirrorImage = true;
+            this.deletebtn.Size = new System.Drawing.Size(56, 24);
+            this.deletebtn.Text = "حذف";
+            this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
             // 
             // toolStripSeparator5
             // 

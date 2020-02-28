@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFundTransactions));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.currencycheckBox = new System.Windows.Forms.CheckBox();
@@ -55,9 +55,13 @@
             this.dgvTotals = new System.Windows.Forms.DataGridView();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.firstbtn = new System.Windows.Forms.ToolStripButton();
+            this.prevbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.nextbtn = new System.Windows.Forms.ToolStripButton();
+            this.lastbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.editobjectbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,10 +80,6 @@
             this.onlyloans = new JCS.ToggleSwitch();
             this.label4 = new System.Windows.Forms.Label();
             this.onlypayments = new JCS.ToggleSwitch();
-            this.firstbtn = new System.Windows.Forms.ToolStripButton();
-            this.prevbtn = new System.Windows.Forms.ToolStripButton();
-            this.nextbtn = new System.Windows.Forms.ToolStripButton();
-            this.lastbtn = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -338,30 +338,30 @@
             // 
             this.dgvTotals.AllowUserToAddRows = false;
             this.dgvTotals.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvTotals.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvTotals.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTotals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTotals.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvTotals.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTotals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.Format = "N5";
-            dataGridViewCellStyle12.NullValue = null;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTotals.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Format = "N5";
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTotals.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTotals.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvTotals.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvTotals.GridColor = System.Drawing.SystemColors.Control;
@@ -415,6 +415,24 @@
             this.toolStripLabel1.Text = "من أصل {0}";
             this.toolStripLabel1.ToolTipText = "Total number of items";
             // 
+            // firstbtn
+            // 
+            this.firstbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.firstbtn.Image = ((System.Drawing.Image)(resources.GetObject("firstbtn.Image")));
+            this.firstbtn.Name = "firstbtn";
+            this.firstbtn.RightToLeftAutoMirrorImage = true;
+            this.firstbtn.Size = new System.Drawing.Size(24, 24);
+            this.firstbtn.Text = "Move first";
+            // 
+            // prevbtn
+            // 
+            this.prevbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.prevbtn.Image = ((System.Drawing.Image)(resources.GetObject("prevbtn.Image")));
+            this.prevbtn.Name = "prevbtn";
+            this.prevbtn.RightToLeftAutoMirrorImage = true;
+            this.prevbtn.Size = new System.Drawing.Size(24, 24);
+            this.prevbtn.Text = "Move previous";
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -434,6 +452,24 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // nextbtn
+            // 
+            this.nextbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nextbtn.Image = ((System.Drawing.Image)(resources.GetObject("nextbtn.Image")));
+            this.nextbtn.Name = "nextbtn";
+            this.nextbtn.RightToLeftAutoMirrorImage = true;
+            this.nextbtn.Size = new System.Drawing.Size(24, 24);
+            this.nextbtn.Text = "Move next";
+            // 
+            // lastbtn
+            // 
+            this.lastbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.lastbtn.Image = ((System.Drawing.Image)(resources.GetObject("lastbtn.Image")));
+            this.lastbtn.Name = "lastbtn";
+            this.lastbtn.RightToLeftAutoMirrorImage = true;
+            this.lastbtn.Size = new System.Drawing.Size(24, 24);
+            this.lastbtn.Text = "Move last";
             // 
             // toolStripSeparator6
             // 
@@ -609,42 +645,6 @@
             this.onlypayments.Size = new System.Drawing.Size(50, 19);
             this.onlypayments.TabIndex = 23;
             this.onlypayments.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.onlyremittances_CheckedChanged);
-            // 
-            // firstbtn
-            // 
-            this.firstbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.firstbtn.Image = ((System.Drawing.Image)(resources.GetObject("firstbtn.Image")));
-            this.firstbtn.Name = "firstbtn";
-            this.firstbtn.RightToLeftAutoMirrorImage = true;
-            this.firstbtn.Size = new System.Drawing.Size(24, 24);
-            this.firstbtn.Text = "Move first";
-            // 
-            // prevbtn
-            // 
-            this.prevbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.prevbtn.Image = ((System.Drawing.Image)(resources.GetObject("prevbtn.Image")));
-            this.prevbtn.Name = "prevbtn";
-            this.prevbtn.RightToLeftAutoMirrorImage = true;
-            this.prevbtn.Size = new System.Drawing.Size(24, 24);
-            this.prevbtn.Text = "Move previous";
-            // 
-            // nextbtn
-            // 
-            this.nextbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.nextbtn.Image = ((System.Drawing.Image)(resources.GetObject("nextbtn.Image")));
-            this.nextbtn.Name = "nextbtn";
-            this.nextbtn.RightToLeftAutoMirrorImage = true;
-            this.nextbtn.Size = new System.Drawing.Size(24, 24);
-            this.nextbtn.Text = "Move next";
-            // 
-            // lastbtn
-            // 
-            this.lastbtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.lastbtn.Image = ((System.Drawing.Image)(resources.GetObject("lastbtn.Image")));
-            this.lastbtn.Name = "lastbtn";
-            this.lastbtn.RightToLeftAutoMirrorImage = true;
-            this.lastbtn.Size = new System.Drawing.Size(24, 24);
-            this.lastbtn.Text = "Move last";
             // 
             // frmFundTransactions
             // 

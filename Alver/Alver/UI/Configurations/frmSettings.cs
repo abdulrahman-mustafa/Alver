@@ -1,7 +1,9 @@
 ﻿using Alver.DAL;
 using Alver.Misc;
+using Alver.Properties;
 using System;
 using System.Linq;
+using System.Management;
 using System.Windows.Forms;
 
 namespace Alver.UI.Configuration
@@ -25,7 +27,26 @@ namespace Alver.UI.Configuration
             //db = new dbEntities();
             //db.Configuration.ProxyCreationEnabled = false;
             LoadData();
+            LoadPrinters();
         }
+
+        private void LoadPrinters()
+        {
+            string _printerInfo;
+            var printerQuery = new ManagementObjectSearcher("SELECT * from Win32_Printer");
+            foreach (var printer in printerQuery.Get())
+            {
+                var name = printer.GetPropertyValue("Name");
+                var status = printer.GetPropertyValue("Status");
+                var isDefault = printer.GetPropertyValue("Default");
+                var isNetworkPrinter = printer.GetPropertyValue("Network");
+                _printerInfo = string.Format("{0} (Status: {1}, Default: {2}, Network: {3}",
+                name, status, isDefault, isNetworkPrinter);
+                printercb.Items.Add(name);
+            }
+            try { printernamelbl.Text = Settings.Default.BillPrinter; } catch { }
+        }
+
         private void LoadData()
         {
             try
@@ -43,7 +64,7 @@ namespace Alver.UI.Configuration
                         accountantphonetb.Text = _company.AccountantPhone;
                         addresslbl.Text = _company.Address;
                         emailaddresstb.Text = _company.EmailAddress;
-                        logopb.Image = Extensions.byteArrayToImage(db.Images.Find(_company.LogoId.Value).ImageData);
+                        logopb.Image = ControlsExtensions.byteArrayToImage(db.Images.Find(_company.LogoId.Value).ImageData);
                     }
                 }
             }
@@ -75,6 +96,9 @@ namespace Alver.UI.Configuration
                             AddImage(_img);
                         db.Images.Find(_company.LogoId).ImageData = _img.imageToByteArray();
                         db.SaveChanges();
+                        string _printerName = printercb.Text.Trim();
+                        Settings.Default.BillPrinter = _printerName;
+                        Settings.Default.Save();
                         MessageBox.Show("تم الحفظ بنجاح");
                     }
                 }
@@ -121,6 +145,14 @@ namespace Alver.UI.Configuration
                 logopb.Image = System.Drawing.Image.FromFile(opf.FileName);
                 addresslbl.Text = logopb.Image.imageToByteArray().ToString();
             }
+        }
+        private void companybtn_Click(object sender, EventArgs e)
+        {
+            CompanyTablControl.SelectedTab = companytabpage;
+        }
+        private void printerbtn_Click(object sender, EventArgs e)
+        {
+            CompanyTablControl.SelectedTab = printertabpage;
         }
     }
 }

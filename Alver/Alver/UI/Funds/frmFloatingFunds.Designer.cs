@@ -148,7 +148,7 @@
             // 
             // fundsMovements_ResultBindingSource
             // 
-            this.fundsMovements_ResultBindingSource.DataSource = typeof(DAL.SP_FundsMovements_Result);
+            this.fundsMovements_ResultBindingSource.DataSource = typeof(Alver.DAL.SP_FundsMovements_Result);
             // 
             // timer1
             // 
@@ -157,7 +157,7 @@
             // 
             // frmFloatingFunds
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(606, 98);

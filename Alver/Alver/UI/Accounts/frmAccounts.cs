@@ -439,6 +439,7 @@ namespace Alver.UI.Accounts
         private void deletebtn_Click(object sender, EventArgs e)
         {
             DeleteClient();
+                toolStripButton8_Click(null, null);
         }
         private void DeleteClient()
         {
@@ -504,9 +505,16 @@ namespace Alver.UI.Accounts
         }
         private void AddClient()
         {
-            frmAddAccount frm = new frmAddAccount();
+            try
+            {
+                frmAddAccount frm = new frmAddAccount();
             frm.ShowDialog();
             toolStripButton8_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         private void EditClient()
         {

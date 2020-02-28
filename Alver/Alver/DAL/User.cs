@@ -18,6 +18,7 @@ namespace Alver.DAL
         public User()
         {
             this.Accounts = new ObservableListSource<Account>();
+            this.Bills = new ObservableListSource<Bill>();
             this.BillLines = new ObservableListSource<BillLine>();
             this.Currencies = new ObservableListSource<Currency>();
             this.CurrencyExchanges = new ObservableListSource<CurrencyExchange>();
@@ -28,16 +29,15 @@ namespace Alver.DAL
             this.Expenses = new ObservableListSource<Expense>();
             this.ExpenseCategories = new ObservableListSource<ExpenseCategory>();
             this.Funds = new ObservableListSource<Fund>();
+            this.Items = new ObservableListSource<Item>();
             this.ItemCategories = new ObservableListSource<ItemCategory>();
             this.ItemFunds = new ObservableListSource<ItemFund>();
-            this.Payments = new ObservableListSource<Payment>();
             this.Receipts = new ObservableListSource<Receipt>();
             this.ReceiptLines = new ObservableListSource<ReceiptLine>();
             this.Transfers = new ObservableListSource<Transfer>();
             this.Units = new ObservableListSource<Unit>();
             this.Withdraws = new ObservableListSource<Withdraw>();
-            this.Bills = new ObservableListSource<Bill>();
-            this.Items = new ObservableListSource<Item>();
+            this.Payments = new ObservableListSource<Payment>();
         }
     
         public int Id { get; set; }
@@ -60,6 +60,8 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Account> Accounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<Bill> Bills { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<BillLine> BillLines { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Currency> Currencies { get; set; }
@@ -80,11 +82,11 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Fund> Funds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<Item> Items { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<ItemCategory> ItemCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<ItemFund> ItemFunds { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Payment> Payments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Receipt> Receipts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -97,8 +99,6 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<Withdraw> Withdraws { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Bill> Bills { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Item> Items { get; set; }
+        public virtual ObservableListSource<Payment> Payments { get; set; }
     }
 }

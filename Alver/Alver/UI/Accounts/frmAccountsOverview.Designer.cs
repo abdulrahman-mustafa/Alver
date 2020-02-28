@@ -390,7 +390,7 @@
             // 
             this.excelexportbtn.Image = global::Alver.Properties.Resources.xls;
             this.excelexportbtn.Name = "excelexportbtn";
-            this.excelexportbtn.Size = new System.Drawing.Size(184, 26);
+            this.excelexportbtn.Size = new System.Drawing.Size(105, 26);
             this.excelexportbtn.Text = "اكسل";
             this.excelexportbtn.Click += new System.EventHandler(this.excelexportbtn_Click);
             // 
@@ -398,7 +398,7 @@
             // 
             this.pdfexportbtn.Image = global::Alver.Properties.Resources.pdf;
             this.pdfexportbtn.Name = "pdfexportbtn";
-            this.pdfexportbtn.Size = new System.Drawing.Size(184, 26);
+            this.pdfexportbtn.Size = new System.Drawing.Size(105, 26);
             this.pdfexportbtn.Text = "PDF";
             // 
             // printbtn

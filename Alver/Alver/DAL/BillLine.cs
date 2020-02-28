@@ -22,6 +22,11 @@ namespace Alver.DAL
         public Nullable<int> CurrencyId { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
+        public Nullable<bool> Exchanged { get; set; }
+        public Nullable<decimal> Rate { get; set; }
+        public Nullable<int> ForeginCurrencyId { get; set; }
+        public Nullable<decimal> ExchangedAmount { get; set; }
+        public Nullable<decimal> ExchangedTotalAmount { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<bool> Hidden { get; set; }
         public string Flag { get; set; }
@@ -29,10 +34,11 @@ namespace Alver.DAL
         public Nullable<System.DateTime> LUD { get; set; }
         public Nullable<bool> PROTECTED { get; set; }
     
+        public virtual Bill Bill { get; set; }
         public virtual Currency Currency { get; set; }
+        public virtual Currency Currency1 { get; set; }
+        public virtual Item Item { get; set; }
         public virtual Unit Unit { get; set; }
         public virtual User User { get; set; }
-        public virtual Bill Bill { get; set; }
-        public virtual Item Item { get; set; }
     }
 }

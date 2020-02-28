@@ -40,20 +40,20 @@
             // 
             // newPasstb
             // 
-            this.newPasstb.Location = new System.Drawing.Point(12, 79);
+            this.newPasstb.Location = new System.Drawing.Point(12, 61);
             this.newPasstb.Name = "newPasstb";
             this.newPasstb.PasswordChar = '*';
-            this.newPasstb.Size = new System.Drawing.Size(283, 27);
+            this.newPasstb.Size = new System.Drawing.Size(283, 23);
             this.newPasstb.TabIndex = 2;
             this.newPasstb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.newPasstb.UseSystemPasswordChar = true;
             // 
             // renewPasstb
             // 
-            this.renewPasstb.Location = new System.Drawing.Point(12, 144);
+            this.renewPasstb.Location = new System.Drawing.Point(12, 111);
             this.renewPasstb.Name = "renewPasstb";
             this.renewPasstb.PasswordChar = '*';
-            this.renewPasstb.Size = new System.Drawing.Size(283, 27);
+            this.renewPasstb.Size = new System.Drawing.Size(283, 23);
             this.renewPasstb.TabIndex = 3;
             this.renewPasstb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.renewPasstb.UseSystemPasswordChar = true;
@@ -61,23 +61,25 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 56);
+            this.label2.Location = new System.Drawing.Point(12, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
+            this.label2.Size = new System.Drawing.Size(65, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "كلمة المرور:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 121);
+            this.label3.Location = new System.Drawing.Point(12, 90);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 20);
+            this.label3.Size = new System.Drawing.Size(110, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "أعد كتابة كلمة المرور:";
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -91,6 +93,8 @@
             // 
             // btnLogIn
             // 
+            this.btnLogIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogIn.FlatAppearance.BorderSize = 0;
             this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogIn.Location = new System.Drawing.Point(36, 245);
@@ -107,14 +111,14 @@
             this.usernamelbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.usernamelbl.Location = new System.Drawing.Point(12, 9);
             this.usernamelbl.Name = "usernamelbl";
-            this.usernamelbl.Size = new System.Drawing.Size(244, 20);
+            this.usernamelbl.Size = new System.Drawing.Size(189, 15);
             this.usernamelbl.TabIndex = 17;
             this.usernamelbl.Text = "ادخل كلمة سر المسؤول لتأكيد العملية";
             // 
             // frmConfirmPassword
             // 
             this.AcceptButton = this.btnLogIn;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CancelButton = this.btnCancel;

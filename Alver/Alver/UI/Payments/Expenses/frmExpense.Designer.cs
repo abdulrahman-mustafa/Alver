@@ -182,7 +182,7 @@
             // 
             this.categoryComboBox.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.categoryComboBox.DataSource = this.paymentsExpenseCategoryBindingSource;
-            this.categoryComboBox.DisplayMember = "CategoryName";
+            this.categoryComboBox.DisplayMember = "Title";
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(6, 117);
             this.categoryComboBox.Name = "categoryComboBox";

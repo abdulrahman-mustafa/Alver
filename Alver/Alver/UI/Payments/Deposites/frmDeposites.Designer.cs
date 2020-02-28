@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDeposites));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.payments_OperationBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.paymentsTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -46,7 +46,6 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.payments_OperationBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.اكسلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,9 +56,8 @@
             this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lockedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.payedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PayDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.accountsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.outDepositecb = new System.Windows.Forms.CheckBox();
@@ -78,6 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.paymentsTransactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountsInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -106,7 +105,6 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorDeleteItem,
-            this.toolStripButton1,
             this.payments_OperationBindingNavigatorSaveItem,
             this.toolStripDropDownButton1});
             this.payments_OperationBindingNavigator.Location = new System.Drawing.Point(0, 0);
@@ -202,19 +200,13 @@
             this.bindingNavigatorDeleteItem.Text = "حذف";
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(54, 24);
-            this.toolStripButton1.Text = "رد الأمانة";
-            // 
             // payments_OperationBindingNavigatorSaveItem
             // 
             this.payments_OperationBindingNavigatorSaveItem.Image = global::Alver.Properties.Resources.save;
             this.payments_OperationBindingNavigatorSaveItem.Name = "payments_OperationBindingNavigatorSaveItem";
             this.payments_OperationBindingNavigatorSaveItem.Size = new System.Drawing.Size(103, 24);
             this.payments_OperationBindingNavigatorSaveItem.Text = "حفظ التعديلات";
+            this.payments_OperationBindingNavigatorSaveItem.Visible = false;
             this.payments_OperationBindingNavigatorSaveItem.Click += new System.EventHandler(this.payments_OperationBindingNavigatorSaveItem_Click);
             // 
             // toolStripDropDownButton1
@@ -231,7 +223,7 @@
             // 
             this.اكسلToolStripMenuItem.Image = global::Alver.Properties.Resources.xls;
             this.اكسلToolStripMenuItem.Name = "اكسلToolStripMenuItem";
-            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.اكسلToolStripMenuItem.Text = "اكسل";
             this.اكسلToolStripMenuItem.Click += new System.EventHandler(this.اكسلToolStripMenuItem_Click);
             // 
@@ -239,15 +231,15 @@
             // 
             this.pDFToolStripMenuItem.Image = global::Alver.Properties.Resources.pdf;
             this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.pDFToolStripMenuItem.Text = "PDF";
             // 
             // dgv
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.AutoGenerateColumns = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
@@ -257,9 +249,7 @@
             this.currencyIdDataGridViewTextBoxColumn,
             this.amountDataGridViewTextBoxColumn,
             this.declarationDataGridViewTextBoxColumn,
-            this.lockedDataGridViewTextBoxColumn,
-            this.payedDataGridViewTextBoxColumn,
-            this.PayDate});
+            this.User});
             this.dgv.DataSource = this.paymentsTransactionBindingSource;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
@@ -273,7 +263,7 @@
             // 
             // Direction
             // 
-            this.Direction.DataPropertyName = "Direction";
+            this.Direction.DataPropertyName = "PaymentType";
             this.Direction.HeaderText = "نوع الحركة";
             this.Direction.Name = "Direction";
             this.Direction.ReadOnly = true;
@@ -316,36 +306,25 @@
             this.declarationDataGridViewTextBoxColumn.ReadOnly = true;
             this.declarationDataGridViewTextBoxColumn.Width = 58;
             // 
-            // lockedDataGridViewTextBoxColumn
+            // User
             // 
-            this.lockedDataGridViewTextBoxColumn.DataPropertyName = "Locked";
-            this.lockedDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lockedDataGridViewTextBoxColumn.HeaderText = "مقفولة";
-            this.lockedDataGridViewTextBoxColumn.Name = "lockedDataGridViewTextBoxColumn";
-            this.lockedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lockedDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.lockedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.lockedDataGridViewTextBoxColumn.Visible = false;
-            this.lockedDataGridViewTextBoxColumn.Width = 84;
+            this.User.DataPropertyName = "User";
+            this.User.DataSource = this.userBindingSource;
+            this.User.DisplayMember = "FullName";
+            this.User.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.User.DisplayStyleForCurrentCellOnly = true;
+            this.User.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.User.HeaderText = "المستخدم";
+            this.User.Name = "User";
+            this.User.ReadOnly = true;
+            this.User.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.User.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.User.ValueMember = "Id";
+            this.User.Width = 80;
             // 
-            // payedDataGridViewTextBoxColumn
+            // userBindingSource
             // 
-            this.payedDataGridViewTextBoxColumn.DataPropertyName = "Payed";
-            this.payedDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.payedDataGridViewTextBoxColumn.HeaderText = "تم ردها";
-            this.payedDataGridViewTextBoxColumn.Name = "payedDataGridViewTextBoxColumn";
-            this.payedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.payedDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.payedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.payedDataGridViewTextBoxColumn.Width = 67;
-            // 
-            // PayDate
-            // 
-            this.PayDate.DataPropertyName = "PayDate";
-            this.PayDate.HeaderText = "تاريخ رد الأمانة";
-            this.PayDate.Name = "PayDate";
-            this.PayDate.ReadOnly = true;
-            this.PayDate.Width = 102;
+            this.userBindingSource.DataSource = typeof(Alver.DAL.User);
             // 
             // accountsInfoBindingSource
             // 
@@ -498,30 +477,30 @@
             // 
             this.dgvTotals.AllowUserToAddRows = false;
             this.dgvTotals.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvTotals.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvTotals.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTotals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTotals.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvTotals.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTotals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.Format = "N5";
-            dataGridViewCellStyle8.NullValue = null;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTotals.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Format = "N5";
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTotals.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTotals.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvTotals.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvTotals.GridColor = System.Drawing.SystemColors.Control;
@@ -556,6 +535,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.paymentsTransactionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountsInfoBindingSource)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -586,7 +566,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.BindingSource currencyBindingSource;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.BindingSource paymentsTransactionBindingSource;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button button1;
@@ -601,17 +580,16 @@
         private System.Windows.Forms.DateTimePicker FromDateTimePicker;
         private System.Windows.Forms.DateTimePicker ToDateTimePicker;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direction;
         private System.Windows.Forms.DataGridViewComboBoxColumn borrowerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn currencyIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn lockedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn payedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PayDate;
         private System.Windows.Forms.DataGridView dgvTotals;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem اكسلToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pDFToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direction;
+        private System.Windows.Forms.DataGridViewComboBoxColumn currencyIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn User;
+        private System.Windows.Forms.BindingSource userBindingSource;
     }
 }

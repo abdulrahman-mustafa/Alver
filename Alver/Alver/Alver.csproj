@@ -18,6 +18,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -31,9 +33,8 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,7 +56,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <ApplicationIcon>ICON.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Alver.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -170,6 +174,9 @@
     <Compile Include="DAL\BillLine.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\BillSlip_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Company.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -207,6 +214,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Item.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ItemAvgPurchasePrice_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ItemAvgSalePrice_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\ItemCategory.cs">
@@ -283,6 +296,7 @@
     <Compile Include="Misc\Exporter.cs" />
     <Compile Include="Misc\Extensions.cs" />
     <Compile Include="Misc\ItemFuncs.cs" />
+    <Compile Include="Misc\LocalReportExtensions.cs" />
     <Compile Include="Misc\MSGs.cs" />
     <Compile Include="Misc\TransactionsFuncs.cs" />
     <Compile Include="Misc\UsbFuncs.cs" />
@@ -378,6 +392,12 @@
     </Compile>
     <Compile Include="UI\Accounts\Withdraws\frmWithdraws.Designer.cs">
       <DependentUpon>frmWithdraws.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Bills\BillReports\frmBillSlip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Bills\BillReports\frmBillSlip.Designer.cs">
+      <DependentUpon>frmBillSlip.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Bills\frmPurchase.cs">
       <SubType>Form</SubType>
@@ -625,6 +645,10 @@
     <EmbeddedResource Include="UI\Accounts\Withdraws\frmWithdraws.resx">
       <DependentUpon>frmWithdraws.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Bills\BillReports\BillSlip.rdlc" />
+    <EmbeddedResource Include="UI\Bills\BillReports\frmBillSlip.resx">
+      <DependentUpon>frmBillSlip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Bills\frmPurchase.resx">
       <DependentUpon>frmPurchase.cs</DependentUpon>
     </EmbeddedResource>
@@ -756,6 +780,7 @@
     <None Include="Properties\DataSources\Alver.DAL.Bill1.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.BillLine.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.BillLine1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.BillSlip_Result.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Company.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Currency.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Currency1.datasource" />
@@ -776,6 +801,8 @@
     <None Include="Properties\DataSources\Alver.DAL.Image.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Item.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.Item1.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ItemAvgPurchasePrice_Result.datasource" />
+    <None Include="Properties\DataSources\Alver.DAL.ItemAvgSalePrice_Result.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.ItemCategory.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.ItemCategory1.datasource" />
     <None Include="Properties\DataSources\Alver.DAL.ItemTransaction.datasource" />
@@ -837,6 +864,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="ICON.ico" />
     <Content Include="Logo.ico" />
     <None Include="Media\Button Faces\MISC\icons8_file_25px.png" />
     <None Include="Media\Button Faces\Database\icons8_database_export_25px.png" />
@@ -876,6 +904,8 @@
     <None Include="Media\Button Faces\Money\icons8_initiate_money_transfer_25px.png" />
     <None Include="Media\Button Faces\Accounts\icons8_exchange_skin_type_7_25px.png" />
     <None Include="Media\Button Faces\MISC\settings.png" />
+    <None Include="Media\Button Faces\MISC\search.png" />
+    <None Include="Media\Button Faces\MISC\icons8_qr_code_25px.png" />
     <Content Include="packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x64\msvcr100.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Alver.DAL;
+
 namespace Alver.Properties {
     
     
@@ -70,16 +72,28 @@ namespace Alver.Properties {
                 this["TrialActivated"] = value;
             }
         }
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public DAL.User LoggedInUser
-        {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public User LoggedInUser {
             get {
-                return ((DAL.User)(this["LoggedInUser"]));
+                return ((User)(this["LoggedInUser"]));
             }
             set {
                 this["LoggedInUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BillPrinter {
+            get {
+                return ((string)(this["BillPrinter"]));
+            }
+            set {
+                this["BillPrinter"] = value;
             }
         }
     }

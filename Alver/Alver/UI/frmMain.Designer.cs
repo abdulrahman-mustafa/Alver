@@ -34,6 +34,7 @@
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.أخذنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.استرجاعنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.إعدادتالبرنامجToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.إغلاقToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +94,6 @@
             this.إدارةالمستخدمينToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BodysplitContainer = new System.Windows.Forms.SplitContainer();
             this.mainstatusstrip = new System.Windows.Forms.StatusStrip();
-            this.إعدادتالبرنامجToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HeadersplitContainer)).BeginInit();
             this.HeadersplitContainer.Panel1.SuspendLayout();
             this.HeadersplitContainer.Panel2.SuspendLayout();
@@ -171,6 +171,14 @@
             this.استرجاعنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.استرجاعنسخةاحتياطيةToolStripMenuItem.Text = "استرجاع نسخة احتياطية";
             this.استرجاعنسخةاحتياطيةToolStripMenuItem.Click += new System.EventHandler(this.استرجاعنسخةاحتياطيةToolStripMenuItem_Click);
+            // 
+            // إعدادتالبرنامجToolStripMenuItem
+            // 
+            this.إعدادتالبرنامجToolStripMenuItem.Image = global::Alver.Properties.Resources.settings;
+            this.إعدادتالبرنامجToolStripMenuItem.Name = "إعدادتالبرنامجToolStripMenuItem";
+            this.إعدادتالبرنامجToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.إعدادتالبرنامجToolStripMenuItem.Text = "إعدادت البرنامج";
+            this.إعدادتالبرنامجToolStripMenuItem.Click += new System.EventHandler(this.إعدادتالبرنامجToolStripMenuItem_Click);
             // 
             // logoutbtn
             // 
@@ -687,14 +695,6 @@
             this.mainstatusstrip.Size = new System.Drawing.Size(882, 22);
             this.mainstatusstrip.TabIndex = 1;
             this.mainstatusstrip.Text = "statusStrip1";
-            // 
-            // إعدادتالبرنامجToolStripMenuItem
-            // 
-            this.إعدادتالبرنامجToolStripMenuItem.Image = global::Alver.Properties.Resources.settings;
-            this.إعدادتالبرنامجToolStripMenuItem.Name = "إعدادتالبرنامجToolStripMenuItem";
-            this.إعدادتالبرنامجToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
-            this.إعدادتالبرنامجToolStripMenuItem.Text = "إعدادت البرنامج";
-            this.إعدادتالبرنامجToolStripMenuItem.Click += new System.EventHandler(this.إعدادتالبرنامجToolStripMenuItem_Click);
             // 
             // frmMain
             // 

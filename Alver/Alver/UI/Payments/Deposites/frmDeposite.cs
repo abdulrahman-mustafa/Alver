@@ -194,26 +194,6 @@ namespace Alver.UI.Payments.Deposites
             if (!CheckDepositeAmount())
                 return;
             PrepareItem();
-
-            //if (!Validator.VCFundFound(_payment.BorrowerId.Value, _payment.CurrencyId.Value))
-            //{
-            //    MessageBox.Show("لا يوجد صندوق اساسي موافق لعملة الامانة لدى الوكيل المرسل، يرجى إنشاء صندوق للوكيل بنفس عملة الامانة اولاً", "تنبيه");
-            //    return;
-            //}
-            //else if (!Validator.VFundFound(_payment.CurrencyId.Value))
-            //{
-            //    MessageBox.Show("لا يوجد صندوق اساسي موافق لعملة الامانة، يرجى إنشاء صندوق مكتب اولاً", "تنبيه");
-            //    return;
-            //}
-            //else if (outDepositeRadioButton.Checked)
-            //{
-
-            //    if (!Validator.VFundBalance(_payment.CurrencyId.Value, _payment.Amount.Value))
-            //    {
-            //        MessageBox.Show("لا يمكن تسليم الأمانة للوكيل الرصيد في الصندوق غير كاف", "تنبيه");
-            //        return;
-            //    }
-            //}
             Save();
             ControlsEnable(false);
         }

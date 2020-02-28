@@ -46,8 +46,6 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.payments_OperationBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.اكسلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,9 +55,6 @@
             this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lockedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.payedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PayDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserId = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.usersUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.accountsInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -109,8 +104,6 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorDeleteItem,
-            this.toolStripButton1,
-            this.payments_OperationBindingNavigatorSaveItem,
             this.toolStripDropDownButton1});
             this.payments_OperationBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.payments_OperationBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
@@ -119,7 +112,7 @@
             this.payments_OperationBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.payments_OperationBindingNavigator.Name = "payments_OperationBindingNavigator";
             this.payments_OperationBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.payments_OperationBindingNavigator.Size = new System.Drawing.Size(651, 27);
+            this.payments_OperationBindingNavigator.Size = new System.Drawing.Size(652, 27);
             this.payments_OperationBindingNavigator.TabIndex = 0;
             this.payments_OperationBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -198,47 +191,36 @@
             // 
             // bindingNavigatorDeleteItem
             // 
+            this.bindingNavigatorDeleteItem.Image = global::Alver.Properties.Resources.Delete;
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(36, 24);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(56, 24);
             this.bindingNavigatorDeleteItem.Text = "حذف";
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(49, 24);
-            this.toolStripButton1.Text = "رد الدين";
-            this.toolStripButton1.Visible = false;
-            // 
-            // payments_OperationBindingNavigatorSaveItem
-            // 
-            this.payments_OperationBindingNavigatorSaveItem.Name = "payments_OperationBindingNavigatorSaveItem";
-            this.payments_OperationBindingNavigatorSaveItem.Size = new System.Drawing.Size(83, 24);
-            this.payments_OperationBindingNavigatorSaveItem.Text = "حفظ التعديلات";
-            this.payments_OperationBindingNavigatorSaveItem.Click += new System.EventHandler(this.payments_OperationBindingNavigatorSaveItem_Click);
             // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.اكسلToolStripMenuItem,
             this.pDFToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = global::Alver.Properties.Resources.export;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(51, 24);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(71, 24);
             this.toolStripDropDownButton1.Text = "تصدير";
             // 
             // اكسلToolStripMenuItem
             // 
+            this.اكسلToolStripMenuItem.Image = global::Alver.Properties.Resources.xls;
             this.اكسلToolStripMenuItem.Name = "اكسلToolStripMenuItem";
-            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.اكسلToolStripMenuItem.Text = "اكسل";
             this.اكسلToolStripMenuItem.Click += new System.EventHandler(this.اكسلToolStripMenuItem_Click);
             // 
             // pDFToolStripMenuItem
             // 
+            this.pDFToolStripMenuItem.Image = global::Alver.Properties.Resources.pdf;
             this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.pDFToolStripMenuItem.Text = "PDF";
             // 
             // dgv
@@ -256,9 +238,6 @@
             this.currencyIdDataGridViewTextBoxColumn,
             this.amountDataGridViewTextBoxColumn,
             this.declarationDataGridViewTextBoxColumn,
-            this.lockedDataGridViewTextBoxColumn,
-            this.payedDataGridViewTextBoxColumn,
-            this.PayDate,
             this.UserId});
             this.dgv.DataSource = this.paymentsTransactionBindingSource;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -267,14 +246,14 @@
             this.dgv.Location = new System.Drawing.Point(0, 27);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
-            this.dgv.Size = new System.Drawing.Size(651, 435);
+            this.dgv.Size = new System.Drawing.Size(652, 435);
             this.dgv.TabIndex = 1;
             this.dgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.payments_OperationDataGridView_DataBindingComplete);
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.payments_OperationDataGridView_DataError);
             // 
             // Direction
             // 
-            this.Direction.DataPropertyName = "Direction";
+            this.Direction.DataPropertyName = "PaymentType";
             this.Direction.HeaderText = "نوع الحركة";
             this.Direction.Name = "Direction";
             this.Direction.ReadOnly = true;
@@ -316,37 +295,6 @@
             this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
             this.declarationDataGridViewTextBoxColumn.ReadOnly = true;
             this.declarationDataGridViewTextBoxColumn.Width = 58;
-            // 
-            // lockedDataGridViewTextBoxColumn
-            // 
-            this.lockedDataGridViewTextBoxColumn.DataPropertyName = "Locked";
-            this.lockedDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lockedDataGridViewTextBoxColumn.HeaderText = "مقفول";
-            this.lockedDataGridViewTextBoxColumn.Name = "lockedDataGridViewTextBoxColumn";
-            this.lockedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lockedDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.lockedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.lockedDataGridViewTextBoxColumn.Visible = false;
-            this.lockedDataGridViewTextBoxColumn.Width = 81;
-            // 
-            // payedDataGridViewTextBoxColumn
-            // 
-            this.payedDataGridViewTextBoxColumn.DataPropertyName = "Payed";
-            this.payedDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.payedDataGridViewTextBoxColumn.HeaderText = "تم رد الدين";
-            this.payedDataGridViewTextBoxColumn.Name = "payedDataGridViewTextBoxColumn";
-            this.payedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.payedDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.payedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.payedDataGridViewTextBoxColumn.Width = 84;
-            // 
-            // PayDate
-            // 
-            this.PayDate.DataPropertyName = "PayDate";
-            this.PayDate.HeaderText = "تاريخ رد الدين";
-            this.PayDate.Name = "PayDate";
-            this.PayDate.ReadOnly = true;
-            this.PayDate.Width = 97;
             // 
             // UserId
             // 
@@ -398,7 +346,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.payments_OperationBindingNavigator);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.splitContainer1.Size = new System.Drawing.Size(836, 512);
-            this.splitContainer1.SplitterDistance = 175;
+            this.splitContainer1.SplitterDistance = 174;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 7;
             // 
@@ -408,7 +356,7 @@
             this.outloancb.AutoSize = true;
             this.outloancb.Checked = true;
             this.outloancb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.outloancb.Location = new System.Drawing.Point(37, 135);
+            this.outloancb.Location = new System.Drawing.Point(36, 135);
             this.outloancb.Name = "outloancb";
             this.outloancb.Size = new System.Drawing.Size(126, 19);
             this.outloancb.TabIndex = 33;
@@ -421,7 +369,7 @@
             this.inLoancb.AutoSize = true;
             this.inLoancb.Checked = true;
             this.inLoancb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.inLoancb.Location = new System.Drawing.Point(30, 165);
+            this.inLoancb.Location = new System.Drawing.Point(29, 165);
             this.inLoancb.Name = "inLoancb";
             this.inLoancb.Size = new System.Drawing.Size(133, 19);
             this.inLoancb.TabIndex = 32;
@@ -432,7 +380,7 @@
             // 
             this.clientcb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.clientcb.AutoSize = true;
-            this.clientcb.Location = new System.Drawing.Point(75, 224);
+            this.clientcb.Location = new System.Drawing.Point(74, 224);
             this.clientcb.Name = "clientcb";
             this.clientcb.Size = new System.Drawing.Size(88, 19);
             this.clientcb.TabIndex = 31;
@@ -451,7 +399,7 @@
             this.clientComboBox.FormattingEnabled = true;
             this.clientComboBox.Location = new System.Drawing.Point(13, 254);
             this.clientComboBox.Name = "clientComboBox";
-            this.clientComboBox.Size = new System.Drawing.Size(150, 23);
+            this.clientComboBox.Size = new System.Drawing.Size(149, 23);
             this.clientComboBox.TabIndex = 30;
             this.clientComboBox.ValueMember = "Id";
             // 
@@ -464,10 +412,11 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::Alver.Properties.Resources.getdata;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.Location = new System.Drawing.Point(13, 470);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 30);
+            this.button1.Size = new System.Drawing.Size(145, 30);
             this.button1.TabIndex = 27;
             this.button1.Text = "جلب";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -478,7 +427,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 63);
+            this.label2.Location = new System.Drawing.Point(94, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 15);
             this.label2.TabIndex = 21;
@@ -488,7 +437,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(98, 9);
+            this.label1.Location = new System.Drawing.Point(97, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 15);
             this.label1.TabIndex = 20;
@@ -503,7 +452,7 @@
             this.FromDateTimePicker.Name = "FromDateTimePicker";
             this.FromDateTimePicker.RightToLeftLayout = true;
             this.FromDateTimePicker.ShowCheckBox = true;
-            this.FromDateTimePicker.Size = new System.Drawing.Size(150, 23);
+            this.FromDateTimePicker.Size = new System.Drawing.Size(149, 23);
             this.FromDateTimePicker.TabIndex = 18;
             // 
             // ToDateTimePicker
@@ -514,7 +463,7 @@
             this.ToDateTimePicker.Location = new System.Drawing.Point(13, 86);
             this.ToDateTimePicker.Name = "ToDateTimePicker";
             this.ToDateTimePicker.RightToLeftLayout = true;
-            this.ToDateTimePicker.Size = new System.Drawing.Size(150, 23);
+            this.ToDateTimePicker.Size = new System.Drawing.Size(149, 23);
             this.ToDateTimePicker.TabIndex = 19;
             // 
             // dgvTotals
@@ -551,7 +500,7 @@
             this.dgvTotals.Location = new System.Drawing.Point(0, 462);
             this.dgvTotals.Name = "dgvTotals";
             this.dgvTotals.ReadOnly = true;
-            this.dgvTotals.Size = new System.Drawing.Size(651, 50);
+            this.dgvTotals.Size = new System.Drawing.Size(652, 50);
             this.dgvTotals.TabIndex = 3;
             // 
             // frmLoans
@@ -601,12 +550,10 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton payments_OperationBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.BindingSource currencyBindingSource;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.BindingSource paymentsTransactionBindingSource;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ComboBox clientComboBox;
@@ -622,18 +569,15 @@
         private System.Windows.Forms.CheckBox inLoancb;
         private System.Windows.Forms.BindingSource usersUserBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direction;
         private System.Windows.Forms.DataGridViewComboBoxColumn borrowerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn currencyIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn lockedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn payedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PayDate;
-        private System.Windows.Forms.DataGridViewComboBoxColumn UserId;
         private System.Windows.Forms.DataGridView dgvTotals;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem اكسلToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pDFToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direction;
+        private System.Windows.Forms.DataGridViewComboBoxColumn currencyIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn UserId;
     }
 }

@@ -1,9 +1,8 @@
 ﻿using Alver.DAL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Alver.Misc
 {
@@ -32,7 +31,8 @@ namespace Alver.Misc
             {
                 using (dbEntities db = new dbEntities())
                 {
-                    _quantity = db.ItemTransactions.Where(x => x.Id == ItemId && x.UnitId== UnitId).Sum(x => x.Amount.Value);
+                    List<ItemTransaction> _transactions = db.ItemTransactions.Where(x => x.ItemId == ItemId && x.UnitId == UnitId).ToList();
+                    _quantity = _transactions.Sum(x => x.Amount.Value);
                 }
             }
             catch (Exception ex)
@@ -41,5 +41,70 @@ namespace Alver.Misc
             }
             return _quantity;
         }
+        public static System.Windows.Forms.BindingSource ItemAvgPurchasePrice(int ItemId)
+        {
+            System.Windows.Forms.BindingSource _avg = new System.Windows.Forms.BindingSource();
+            try
+            {
+                using (dbEntities db = new dbEntities())
+                {
+                    _avg.DataSource = db.ItemAvgPurchasePrice(ItemId,1).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+            return _avg;
+        }
+        public static System.Windows.Forms.BindingSource ItemAvgPurchasePrice(int ItemId,int UnitId)
+        {
+            System.Windows.Forms.BindingSource _avg = new System.Windows.Forms.BindingSource();
+            try
+            {
+                using (dbEntities db = new dbEntities())
+                {
+                    _avg.DataSource = db.ItemAvgPurchasePrice(ItemId, UnitId).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+            return _avg;
+        }
+        public static System.Windows.Forms.BindingSource ItemAvgSalePrice(int ItemId)
+        {
+            System.Windows.Forms.BindingSource _avg = new System.Windows.Forms.BindingSource();
+            try
+            {
+                using (dbEntities db = new dbEntities())
+                {
+                    _avg.DataSource = db.ItemAvgSalePrice(ItemId, 1).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+            return _avg;
+        }
+        public static System.Windows.Forms.BindingSource ItemAvgSalePrice(int ItemId,int UnitId)
+        {
+            System.Windows.Forms.BindingSource _avg = new System.Windows.Forms.BindingSource();
+            try
+            {
+                using (dbEntities db = new dbEntities())
+                {
+                    _avg.DataSource = db.ItemAvgSalePrice(ItemId, UnitId).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+            return _avg;
+        }
+
     }
 }

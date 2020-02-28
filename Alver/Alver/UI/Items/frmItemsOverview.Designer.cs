@@ -39,11 +39,12 @@
             this.رقمالمادةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.اسمالمادةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.عددالكروزاتالمتوفرةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.العملةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.العملةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.سعرشراءالواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.مجموعسعرالشراءDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.تكلفة_الشراء = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.سعرمبيعالواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.مجموعسعرالبيعDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.مجموع_المبيعات = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.الربحالمتوقعDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vSTOCKBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -71,9 +72,12 @@
             this.aseccb = new System.Windows.Forms.RadioButton();
             this.sortcb = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vSTOCKBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accounts_InfoBindingNavigator)).BeginInit();
             this.accounts_InfoBindingNavigator.SuspendLayout();
@@ -122,16 +126,15 @@
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.رقمالمادةDataGridViewTextBoxColumn,
             this.اسمالمادةDataGridViewTextBoxColumn,
             this.عددالكروزاتالمتوفرةDataGridViewTextBoxColumn,
             this.العملةDataGridViewTextBoxColumn,
             this.سعرشراءالواحدةDataGridViewTextBoxColumn,
-            this.مجموعسعرالشراءDataGridViewTextBoxColumn,
+            this.تكلفة_الشراء,
             this.سعرمبيعالواحدةDataGridViewTextBoxColumn,
-            this.مجموعسعرالبيعDataGridViewTextBoxColumn,
+            this.مجموع_المبيعات,
             this.هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn,
             this.الربحالمتوقعDataGridViewTextBoxColumn});
             this.dgv.DataSource = this.vSTOCKBindingSource;
@@ -143,88 +146,102 @@
             this.dgv.ReadOnly = true;
             this.dgv.Size = new System.Drawing.Size(718, 292);
             this.dgv.TabIndex = 3;
+            this.dgv.ColumnNameChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgv_ColumnNameChanged);
+            this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             this.dgv.DoubleClick += new System.EventHandler(this.printbtn_Click);
             // 
             // رقمالمادةDataGridViewTextBoxColumn
             // 
             this.رقمالمادةDataGridViewTextBoxColumn.DataPropertyName = "رقم_المادة";
-            this.رقمالمادةDataGridViewTextBoxColumn.HeaderText = "رقم_المادة";
+            this.رقمالمادةDataGridViewTextBoxColumn.HeaderText = "رقم المادة";
             this.رقمالمادةDataGridViewTextBoxColumn.Name = "رقمالمادةDataGridViewTextBoxColumn";
             this.رقمالمادةDataGridViewTextBoxColumn.ReadOnly = true;
             this.رقمالمادةDataGridViewTextBoxColumn.Visible = false;
-            this.رقمالمادةDataGridViewTextBoxColumn.Width = 83;
+            this.رقمالمادةDataGridViewTextBoxColumn.Width = 77;
             // 
             // اسمالمادةDataGridViewTextBoxColumn
             // 
             this.اسمالمادةDataGridViewTextBoxColumn.DataPropertyName = "اسم_المادة";
-            this.اسمالمادةDataGridViewTextBoxColumn.HeaderText = "اسم_المادة";
+            this.اسمالمادةDataGridViewTextBoxColumn.HeaderText = "اسم المادة";
             this.اسمالمادةDataGridViewTextBoxColumn.Name = "اسمالمادةDataGridViewTextBoxColumn";
             this.اسمالمادةDataGridViewTextBoxColumn.ReadOnly = true;
-            this.اسمالمادةDataGridViewTextBoxColumn.Width = 63;
+            this.اسمالمادةDataGridViewTextBoxColumn.Width = 84;
             // 
             // عددالكروزاتالمتوفرةDataGridViewTextBoxColumn
             // 
             this.عددالكروزاتالمتوفرةDataGridViewTextBoxColumn.DataPropertyName = "عدد_الكروزات_المتوفرة";
-            this.عددالكروزاتالمتوفرةDataGridViewTextBoxColumn.HeaderText = "عدد_الكروزات_المتوفرة";
+            this.عددالكروزاتالمتوفرةDataGridViewTextBoxColumn.HeaderText = "عدد الكروزات المتوفرة";
             this.عددالكروزاتالمتوفرةDataGridViewTextBoxColumn.Name = "عددالكروزاتالمتوفرةDataGridViewTextBoxColumn";
             this.عددالكروزاتالمتوفرةDataGridViewTextBoxColumn.ReadOnly = true;
-            this.عددالكروزاتالمتوفرةDataGridViewTextBoxColumn.Width = 94;
+            this.عددالكروزاتالمتوفرةDataGridViewTextBoxColumn.Width = 138;
             // 
             // العملةDataGridViewTextBoxColumn
             // 
             this.العملةDataGridViewTextBoxColumn.DataPropertyName = "العملة";
+            this.العملةDataGridViewTextBoxColumn.DataSource = this.currencyBindingSource;
+            this.العملةDataGridViewTextBoxColumn.DisplayMember = "CurrencyName";
+            this.العملةDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.العملةDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
+            this.العملةDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.العملةDataGridViewTextBoxColumn.HeaderText = "العملة";
             this.العملةDataGridViewTextBoxColumn.Name = "العملةDataGridViewTextBoxColumn";
             this.العملةDataGridViewTextBoxColumn.ReadOnly = true;
-            this.العملةDataGridViewTextBoxColumn.Width = 50;
+            this.العملةDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.العملةDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.العملةDataGridViewTextBoxColumn.ValueMember = "Id";
+            this.العملةDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // currencyBindingSource
+            // 
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // سعرشراءالواحدةDataGridViewTextBoxColumn
             // 
             this.سعرشراءالواحدةDataGridViewTextBoxColumn.DataPropertyName = "سعر_شراء_الواحدة";
-            this.سعرشراءالواحدةDataGridViewTextBoxColumn.HeaderText = "سعر_شراء_الواحدة";
+            this.سعرشراءالواحدةDataGridViewTextBoxColumn.HeaderText = "سعر شراء الواحدة";
             this.سعرشراءالواحدةDataGridViewTextBoxColumn.Name = "سعرشراءالواحدةDataGridViewTextBoxColumn";
             this.سعرشراءالواحدةDataGridViewTextBoxColumn.ReadOnly = true;
-            this.سعرشراءالواحدةDataGridViewTextBoxColumn.Width = 81;
+            this.سعرشراءالواحدةDataGridViewTextBoxColumn.Width = 116;
             // 
-            // مجموعسعرالشراءDataGridViewTextBoxColumn
+            // تكلفة_الشراء
             // 
-            this.مجموعسعرالشراءDataGridViewTextBoxColumn.DataPropertyName = "مجموع_سعر_الشراء";
-            this.مجموعسعرالشراءDataGridViewTextBoxColumn.HeaderText = "مجموع_سعر_الشراء";
-            this.مجموعسعرالشراءDataGridViewTextBoxColumn.Name = "مجموعسعرالشراءDataGridViewTextBoxColumn";
-            this.مجموعسعرالشراءDataGridViewTextBoxColumn.ReadOnly = true;
-            this.مجموعسعرالشراءDataGridViewTextBoxColumn.Width = 90;
+            this.تكلفة_الشراء.DataPropertyName = "تكلفة_الشراء";
+            this.تكلفة_الشراء.HeaderText = "تكلفة الشراء";
+            this.تكلفة_الشراء.Name = "تكلفة_الشراء";
+            this.تكلفة_الشراء.ReadOnly = true;
+            this.تكلفة_الشراء.Width = 89;
             // 
             // سعرمبيعالواحدةDataGridViewTextBoxColumn
             // 
             this.سعرمبيعالواحدةDataGridViewTextBoxColumn.DataPropertyName = "سعر_مبيع_الواحدة";
-            this.سعرمبيعالواحدةDataGridViewTextBoxColumn.HeaderText = "سعر_مبيع_الواحدة";
+            this.سعرمبيعالواحدةDataGridViewTextBoxColumn.HeaderText = "سعر مبيع الواحدة";
             this.سعرمبيعالواحدةDataGridViewTextBoxColumn.Name = "سعرمبيعالواحدةDataGridViewTextBoxColumn";
             this.سعرمبيعالواحدةDataGridViewTextBoxColumn.ReadOnly = true;
-            this.سعرمبيعالواحدةDataGridViewTextBoxColumn.Width = 82;
+            this.سعرمبيعالواحدةDataGridViewTextBoxColumn.Width = 117;
             // 
-            // مجموعسعرالبيعDataGridViewTextBoxColumn
+            // مجموع_المبيعات
             // 
-            this.مجموعسعرالبيعDataGridViewTextBoxColumn.DataPropertyName = "مجموع_سعر_البيع";
-            this.مجموعسعرالبيعDataGridViewTextBoxColumn.HeaderText = "مجموع_سعر_البيع";
-            this.مجموعسعرالبيعDataGridViewTextBoxColumn.Name = "مجموعسعرالبيعDataGridViewTextBoxColumn";
-            this.مجموعسعرالبيعDataGridViewTextBoxColumn.ReadOnly = true;
-            this.مجموعسعرالبيعDataGridViewTextBoxColumn.Width = 81;
+            this.مجموع_المبيعات.DataPropertyName = "مجموع_المبيعات";
+            this.مجموع_المبيعات.HeaderText = "مجموع المبيعات";
+            this.مجموع_المبيعات.Name = "مجموع_المبيعات";
+            this.مجموع_المبيعات.ReadOnly = true;
+            this.مجموع_المبيعات.Width = 112;
             // 
             // هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn
             // 
             this.هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn.DataPropertyName = "هامش_الربح_في_القطعة_الواحدة";
-            this.هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn.HeaderText = "هامش_الربح_في_القطعة_الواحدة";
+            this.هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn.HeaderText = "هامش الربح في القطعة الواحدة";
             this.هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn.Name = "هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn";
             this.هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn.ReadOnly = true;
-            this.هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn.Width = 118;
+            this.هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn.Width = 186;
             // 
             // الربحالمتوقعDataGridViewTextBoxColumn
             // 
             this.الربحالمتوقعDataGridViewTextBoxColumn.DataPropertyName = "الربح_المتوقع";
-            this.الربحالمتوقعDataGridViewTextBoxColumn.HeaderText = "الربح_المتوقع";
+            this.الربحالمتوقعDataGridViewTextBoxColumn.HeaderText = "الربح المتوقع";
             this.الربحالمتوقعDataGridViewTextBoxColumn.Name = "الربحالمتوقعDataGridViewTextBoxColumn";
             this.الربحالمتوقعDataGridViewTextBoxColumn.ReadOnly = true;
-            this.الربحالمتوقعDataGridViewTextBoxColumn.Width = 69;
+            this.الربحالمتوقعDataGridViewTextBoxColumn.Width = 95;
             // 
             // vSTOCKBindingSource
             // 
@@ -375,7 +392,7 @@
             // 
             this.excelexportbtn.Image = global::Alver.Properties.Resources.xls;
             this.excelexportbtn.Name = "excelexportbtn";
-            this.excelexportbtn.Size = new System.Drawing.Size(184, 26);
+            this.excelexportbtn.Size = new System.Drawing.Size(105, 26);
             this.excelexportbtn.Text = "اكسل";
             this.excelexportbtn.Click += new System.EventHandler(this.excelexportbtn_Click);
             // 
@@ -383,7 +400,7 @@
             // 
             this.pdfexportbtn.Image = global::Alver.Properties.Resources.pdf;
             this.pdfexportbtn.Name = "pdfexportbtn";
-            this.pdfexportbtn.Size = new System.Drawing.Size(184, 26);
+            this.pdfexportbtn.Size = new System.Drawing.Size(105, 26);
             this.pdfexportbtn.Text = "PDF";
             // 
             // printbtn
@@ -391,7 +408,7 @@
             this.printbtn.BackColor = System.Drawing.Color.Aquamarine;
             this.printbtn.Name = "printbtn";
             this.printbtn.RightToLeftAutoMirrorImage = true;
-            this.printbtn.Size = new System.Drawing.Size(111, 23);
+            this.printbtn.Size = new System.Drawing.Size(111, 19);
             this.printbtn.Text = "طباعة إشعار مطابقة";
             this.printbtn.Click += new System.EventHandler(this.printbtn_Click);
             // 
@@ -518,6 +535,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "تكلفة_الشراء";
+            this.dataGridViewTextBoxColumn1.HeaderText = "تكلفة الشراء";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 88;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "مجموع_المبيعات";
+            this.dataGridViewTextBoxColumn2.HeaderText = "مجموع المبيعات";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 102;
+            // 
             // frmItemsOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -533,10 +566,12 @@
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "كميات المواد";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmClientsOverview_Load);
             this.tabControl2.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vSTOCKBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accounts_InfoBindingNavigator)).EndInit();
             this.accounts_InfoBindingNavigator.ResumeLayout(false);
@@ -565,16 +600,8 @@
         private System.Windows.Forms.RadioButton desccb;
         private System.Windows.Forms.CheckBox sortcb;
         private System.Windows.Forms.GroupBox sortgb;
-        private System.Windows.Forms.DataGridViewTextBoxColumn رقمالمادةDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn اسمالمادةDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn عددالكروزاتالمتوفرةDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn العملةDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn سعرشراءالواحدةDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعسعرالشراءDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn سعرمبيعالواحدةDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعسعرالبيعDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn الربحالمتوقعDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource vSTOCKBindingSource;
         private System.Windows.Forms.BindingNavigator accounts_InfoBindingNavigator;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -593,5 +620,18 @@
         private System.Windows.Forms.ToolStripMenuItem excelexportbtn;
         private System.Windows.Forms.ToolStripMenuItem pdfexportbtn;
         private System.Windows.Forms.ToolStripButton printbtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn رقمالمادةDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn اسمالمادةDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn عددالكروزاتالمتوفرةDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn العملةDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource currencyBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn سعرشراءالواحدةDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn تكلفة_الشراء;
+        private System.Windows.Forms.DataGridViewTextBoxColumn سعرمبيعالواحدةDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn مجموع_المبيعات;
+        private System.Windows.Forms.DataGridViewTextBoxColumn هامشالربحفيالقطعةالواحدةDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn الربحالمتوقعDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }
