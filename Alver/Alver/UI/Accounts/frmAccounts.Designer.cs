@@ -765,7 +765,7 @@ namespace Alver.UI.Accounts
             this.addbtn.Image = global::Alver.Properties.Resources.adduser;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(141, 26);
+            this.addbtn.Size = new System.Drawing.Size(184, 26);
             this.addbtn.Text = "إضافة وكيل";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -774,7 +774,7 @@ namespace Alver.UI.Accounts
             this.deletebtn.Image = global::Alver.Properties.Resources.deleteuser;
             this.deletebtn.Name = "deletebtn";
             this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(141, 26);
+            this.deletebtn.Size = new System.Drawing.Size(184, 26);
             this.deletebtn.Text = "حذف وكيل";
             this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
             // 
@@ -782,7 +782,7 @@ namespace Alver.UI.Accounts
             // 
             this.deactivatebtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deactivatebtn.Name = "deactivatebtn";
-            this.deactivatebtn.Size = new System.Drawing.Size(141, 26);
+            this.deactivatebtn.Size = new System.Drawing.Size(184, 26);
             this.deactivatebtn.Text = "إلغاء تنشيط";
             this.deactivatebtn.Visible = false;
             this.deactivatebtn.Click += new System.EventHandler(this.deactivatebtn_Click);
@@ -791,7 +791,7 @@ namespace Alver.UI.Accounts
             // 
             this.تعديلالوكيلToolStripMenuItem.Image = global::Alver.Properties.Resources.edituser;
             this.تعديلالوكيلToolStripMenuItem.Name = "تعديلالوكيلToolStripMenuItem";
-            this.تعديلالوكيلToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
+            this.تعديلالوكيلToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.تعديلالوكيلToolStripMenuItem.Text = "تعديل الوكيل";
             this.تعديلالوكيلToolStripMenuItem.Click += new System.EventHandler(this.تعديلالوكيلToolStripMenuItem_Click);
             // 

@@ -439,7 +439,7 @@ namespace Alver.UI.Accounts
         private void deletebtn_Click(object sender, EventArgs e)
         {
             DeleteClient();
-                toolStripButton8_Click(null, null);
+            toolStripButton8_Click(null, null);
         }
         private void DeleteClient()
         {

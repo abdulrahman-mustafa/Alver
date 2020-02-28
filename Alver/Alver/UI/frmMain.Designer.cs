@@ -94,6 +94,7 @@
             this.إدارةالمستخدمينToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BodysplitContainer = new System.Windows.Forms.SplitContainer();
             this.mainstatusstrip = new System.Windows.Forms.StatusStrip();
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HeadersplitContainer)).BeginInit();
             this.HeadersplitContainer.Panel1.SuspendLayout();
             this.HeadersplitContainer.Panel2.SuspendLayout();
@@ -150,7 +151,8 @@
             this.استرجاعنسخةاحتياطيةToolStripMenuItem,
             this.إعدادتالبرنامجToolStripMenuItem,
             this.logoutbtn,
-            this.إغلاقToolStripMenuItem});
+            this.إغلاقToolStripMenuItem,
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem});
             this.ملفToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_file_25px;
             this.ملفToolStripMenuItem.Name = "ملفToolStripMenuItem";
             this.ملفToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
@@ -160,7 +162,7 @@
             // 
             this.أخذنسخةاحتياطيةToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_database_export_25px;
             this.أخذنسخةاحتياطيةToolStripMenuItem.Name = "أخذنسخةاحتياطيةToolStripMenuItem";
-            this.أخذنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.أخذنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.أخذنسخةاحتياطيةToolStripMenuItem.Text = "أخذ نسخة احتياطية";
             this.أخذنسخةاحتياطيةToolStripMenuItem.Click += new System.EventHandler(this.أخذنسخةاحتياطيةToolStripMenuItem_Click);
             // 
@@ -168,7 +170,7 @@
             // 
             this.استرجاعنسخةاحتياطيةToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_database_restore_25px;
             this.استرجاعنسخةاحتياطيةToolStripMenuItem.Name = "استرجاعنسخةاحتياطيةToolStripMenuItem";
-            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.استرجاعنسخةاحتياطيةToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.استرجاعنسخةاحتياطيةToolStripMenuItem.Text = "استرجاع نسخة احتياطية";
             this.استرجاعنسخةاحتياطيةToolStripMenuItem.Click += new System.EventHandler(this.استرجاعنسخةاحتياطيةToolStripMenuItem_Click);
             // 
@@ -176,7 +178,7 @@
             // 
             this.إعدادتالبرنامجToolStripMenuItem.Image = global::Alver.Properties.Resources.settings;
             this.إعدادتالبرنامجToolStripMenuItem.Name = "إعدادتالبرنامجToolStripMenuItem";
-            this.إعدادتالبرنامجToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.إعدادتالبرنامجToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.إعدادتالبرنامجToolStripMenuItem.Text = "إعدادت البرنامج";
             this.إعدادتالبرنامجToolStripMenuItem.Click += new System.EventHandler(this.إعدادتالبرنامجToolStripMenuItem_Click);
             // 
@@ -184,7 +186,7 @@
             // 
             this.logoutbtn.Image = global::Alver.Properties.Resources.icons8_exit_sign_25px;
             this.logoutbtn.Name = "logoutbtn";
-            this.logoutbtn.Size = new System.Drawing.Size(190, 26);
+            this.logoutbtn.Size = new System.Drawing.Size(209, 26);
             this.logoutbtn.Text = "تسجيل الخروج";
             this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click_1);
             // 
@@ -192,7 +194,7 @@
             // 
             this.إغلاقToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_shutdown_25px;
             this.إغلاقToolStripMenuItem.Name = "إغلاقToolStripMenuItem";
-            this.إغلاقToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.إغلاقToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.إغلاقToolStripMenuItem.Text = "إغلاق";
             this.إغلاقToolStripMenuItem.Click += new System.EventHandler(this.إغلاقToolStripMenuItem_Click);
             // 
@@ -696,6 +698,13 @@
             this.mainstatusstrip.TabIndex = 1;
             this.mainstatusstrip.Text = "statusStrip1";
             // 
+            // مساعدإعدادقاعدةالبياناتToolStripMenuItem
+            // 
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Name = "مساعدإعدادقاعدةالبياناتToolStripMenuItem";
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Text = "مساعد إعداد قاعدة البيانات";
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Click += new System.EventHandler(this.مساعدإعدادقاعدةالبياناتToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -795,5 +804,6 @@
         private System.Windows.Forms.ToolStripMenuItem مطابقاتالوكلاءToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem كمياتالموادToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem إعدادتالبرنامجToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem مساعدإعدادقاعدةالبياناتToolStripMenuItem;
     }
 }

@@ -133,6 +133,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
@@ -599,6 +600,12 @@
     <Compile Include="UI\Utilities\frmConfirmPassword.Designer.cs">
       <DependentUpon>frmConfirmPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Utilities\frmDBTools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Utilities\frmDBTools.Designer.cs">
+      <DependentUpon>frmDBTools.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\Accounts\AccountsPayments\frmPayment.resx">
       <DependentUpon>frmPayment.cs</DependentUpon>
     </EmbeddedResource>
@@ -757,6 +764,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Utilities\frmConfirmPassword.resx">
       <DependentUpon>frmConfirmPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Utilities\frmDBTools.resx">
+      <DependentUpon>frmDBTools.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DAL\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

@@ -15,6 +15,7 @@ using Alver.UI.Payments.Deposites;
 using Alver.UI.Payments.Expenses;
 using Alver.UI.Payments.Loans;
 using Alver.UI.Users;
+using Alver.UI.Utilities;
 using System;
 using System.Windows.Forms;
 
@@ -306,6 +307,21 @@ namespace Alver.Forms
         {
             frmSettings frm = new frmSettings();
             frm.Show();
+        }
+
+        private void مساعدإعدادقاعدةالبياناتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string _msg = "هذه نافذة تتطلب خبير قواعد بيانات للتعامل معها بشكل صحيح، وإلا قد تفقد جميع بياناتك. هل تريد الاستمرار؟؟؟!";
+            DialogResult _ConfirmationDialog = MessageBox.Show(_msg, "تأكيد!!!!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2,
+                MessageBoxOptions.RightAlign);
+            if (_ConfirmationDialog == DialogResult.Yes)
+            {
+                frmDBTools frm = new frmDBTools();
+                frm.Show();
+            }
         }
     }
 }

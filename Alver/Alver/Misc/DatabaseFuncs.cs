@@ -1,6 +1,7 @@
 ﻿using Alver.DAL;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -272,6 +273,110 @@ namespace Alver.Misc
                     _msg += tableSchema + "." + tableName + Environment.NewLine;
                 }
                 MessageBox.Show(_msg);
+            }
+        }
+        public static List<string> GetDatabaseList(string _server)
+        {
+            List<string> list = new List<string>();
+
+            // Open connection to the database
+            string conString = "server=" + _server + ";Integrated Security=True;";
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                con.Open();
+
+                // Set up a command with the given query and associate
+                // this with the current connection.
+                using (SqlCommand cmd = new SqlCommand("SELECT name from sys.databases", con))
+                {
+                    using (IDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            list.Add(dr[0].ToString());
+                        }
+                    }
+                }
+            }
+            return list;
+
+        }
+
+        //SERVERS FUNCS
+        public static List<string> GETSQLSERVERS()
+        {
+            List<string> _servers = new List<string>();
+
+            string myServer = Environment.MachineName;
+
+            DataTable servers = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
+            for (int i = 0; i < servers.Rows.Count; i++)
+            {
+                if (myServer == servers.Rows[i]["ServerName"].ToString()) ///// used to get the servers in the local machine////
+                {
+                    if ((servers.Rows[i]["InstanceName"] as string) != null)
+                        _servers.Add(servers.Rows[i]["ServerName"] + "\\" + servers.Rows[i]["InstanceName"]);
+                    else
+                        _servers.Add(servers.Rows[i]["ServerName"].ToString());
+                }
+            }
+            return _servers;
+        }
+        public static IEnumerable<string> ListLocalSqlInstances()
+        {
+            if (Environment.Is64BitOperatingSystem)
+            {
+                using (var hive = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+                {
+                    foreach (string item in ListLocalSqlInstances(hive))
+                    {
+                        yield return item;
+                    }
+                }
+
+                using (var hive = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+                {
+                    foreach (string item in ListLocalSqlInstances(hive))
+                    {
+                        yield return item;
+                    }
+                }
+            }
+            else
+            {
+                foreach (string item in ListLocalSqlInstances(Registry.LocalMachine))
+                {
+                    yield return item;
+                }
+            }
+        }
+        private static IEnumerable<string> ListLocalSqlInstances(RegistryKey hive)
+        {
+            const string keyName = @"Software\Microsoft\Microsoft SQL Server";
+            const string valueName = "InstalledInstances";
+            const string defaultName = "MSSQLSERVER";
+
+            using (var key = hive.OpenSubKey(keyName, false))
+            {
+                if (key == null) return Enumerable.Empty<string>();
+
+                var value = key.GetValue(valueName) as string[];
+                if (value == null) return Enumerable.Empty<string>();
+
+                for (int index = 0; index < value.Length; index++)
+                {
+                    if (string.Equals(value[index], defaultName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        value[index] = ".";
+                    }
+                    else
+                    {
+                        value[index] = @".\" + value[index];
+                    }
+                }
+
+                return value;
             }
         }
     }

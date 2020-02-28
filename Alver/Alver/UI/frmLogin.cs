@@ -1,5 +1,6 @@
 ﻿using Alver.DAL;
 using Alver.Properties;
+using Alver.UI.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,9 +53,14 @@ namespace Alver.Forms
                 //string _errorMsg = EX.Message;
                 //_errorMsg += "    " + EX.InnerException;
                 //MessageBox.Show(_errorMsg);
-                MessageBox.Show("لا يمكن الاتصال بقاعدة البيانات يرجى التأكد من وجود قاعدة البيانات وانها في حالة فعالة" + Environment.NewLine + "سيتم إغلاق البرنامج");// + Environment.NewLine + EX.Source);
-                                                                                                                                                                        //MessageBox.Show(db.Database.Connection.ConnectionString);
-                                                                                                                                                                        //Application.Exit();
+              DialogResult _dialog=  MessageBox.Show("لا يمكن الاتصال بقاعدة البيانات يرجى التأكد من وجود قاعدة البيانات وانها في حالة فعالة" + Environment.NewLine + "هل تريد فتح نافذة اعداد قاعدة البيانات؟؟؟؟","خطأ في قاعدة البيانات",MessageBoxButtons.YesNo);// + Environment.NewLine + EX.Source);
+                                                                                                                                                                                                                                                                    //MessageBox.Show(db.Database.Connection.ConnectionString);
+                                                                                                                                                                                                                                                                    //Application.Exit();
+                if (_dialog==DialogResult.Yes)
+                {
+                    frmDBTools frm = new frmDBTools();
+                    frm.Show();
+                }
                 this.Close();
             }
         }
