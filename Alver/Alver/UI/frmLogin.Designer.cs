@@ -186,6 +186,7 @@
             this.passwordtb.PasswordChar = '*';
             this.passwordtb.Size = new System.Drawing.Size(239, 40);
             this.passwordtb.TabIndex = 1;
+            this.passwordtb.Text = "0";
             this.passwordtb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // usernametb
@@ -196,6 +197,7 @@
             this.usernametb.Name = "usernametb";
             this.usernametb.Size = new System.Drawing.Size(239, 40);
             this.usernametb.TabIndex = 0;
+            this.usernametb.Text = "0";
             this.usernametb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5

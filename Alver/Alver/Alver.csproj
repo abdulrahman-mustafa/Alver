@@ -400,6 +400,12 @@
     <Compile Include="UI\Bills\BillReports\frmBillSlip.Designer.cs">
       <DependentUpon>frmBillSlip.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Bills\frmBillMangement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Bills\frmBillMangement.Designer.cs">
+      <DependentUpon>frmBillMangement.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Bills\frmPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -655,6 +661,9 @@
     <EmbeddedResource Include="UI\Bills\BillReports\BillSlip.rdlc" />
     <EmbeddedResource Include="UI\Bills\BillReports\frmBillSlip.resx">
       <DependentUpon>frmBillSlip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Bills\frmBillMangement.resx">
+      <DependentUpon>frmBillMangement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Bills\frmPurchase.resx">
       <DependentUpon>frmPurchase.cs</DependentUpon>

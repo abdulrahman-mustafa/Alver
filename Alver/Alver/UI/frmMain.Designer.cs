@@ -37,6 +37,7 @@
             this.إعدادتالبرنامجToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.إغلاقToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addclientbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsbtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +95,7 @@
             this.إدارةالمستخدمينToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BodysplitContainer = new System.Windows.Forms.SplitContainer();
             this.mainstatusstrip = new System.Windows.Forms.StatusStrip();
-            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.billmanagementbtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HeadersplitContainer)).BeginInit();
             this.HeadersplitContainer.Panel1.SuspendLayout();
             this.HeadersplitContainer.Panel2.SuspendLayout();
@@ -198,6 +199,13 @@
             this.إغلاقToolStripMenuItem.Text = "إغلاق";
             this.إغلاقToolStripMenuItem.Click += new System.EventHandler(this.إغلاقToolStripMenuItem_Click);
             // 
+            // مساعدإعدادقاعدةالبياناتToolStripMenuItem
+            // 
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Name = "مساعدإعدادقاعدةالبياناتToolStripMenuItem";
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Text = "مساعد إعداد قاعدة البيانات";
+            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Click += new System.EventHandler(this.مساعدإعدادقاعدةالبياناتToolStripMenuItem_Click);
+            // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -221,7 +229,7 @@
             // 
             this.addclientbtn.Image = global::Alver.Properties.Resources.adduser;
             this.addclientbtn.Name = "addclientbtn";
-            this.addclientbtn.Size = new System.Drawing.Size(183, 26);
+            this.addclientbtn.Size = new System.Drawing.Size(184, 26);
             this.addclientbtn.Text = "إضافة وكيل";
             this.addclientbtn.Click += new System.EventHandler(this.addclientbtn_Click);
             // 
@@ -229,7 +237,7 @@
             // 
             this.clientsbtn.Image = global::Alver.Properties.Resources.icons8_user_account_skin_type_7_25px;
             this.clientsbtn.Name = "clientsbtn";
-            this.clientsbtn.Size = new System.Drawing.Size(183, 26);
+            this.clientsbtn.Size = new System.Drawing.Size(184, 26);
             this.clientsbtn.Text = "عرض الوكلاء";
             this.clientsbtn.Click += new System.EventHandler(this.clientsbtn_Click);
             // 
@@ -237,14 +245,14 @@
             // 
             this.clientoverviewbtn.Image = global::Alver.Properties.Resources.icons8_find_user_male_25px;
             this.clientoverviewbtn.Name = "clientoverviewbtn";
-            this.clientoverviewbtn.Size = new System.Drawing.Size(183, 26);
+            this.clientoverviewbtn.Size = new System.Drawing.Size(184, 26);
             this.clientoverviewbtn.Text = "كشف حساب تفصيلي";
             this.clientoverviewbtn.Click += new System.EventHandler(this.clientoverviewbtn_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(180, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(181, 6);
             // 
             // دفعاتالوكلاءToolStripMenuItem
             // 
@@ -253,7 +261,7 @@
             this.عرضالدفعاتToolStripMenuItem});
             this.دفعاتالوكلاءToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_debt_25px_1;
             this.دفعاتالوكلاءToolStripMenuItem.Name = "دفعاتالوكلاءToolStripMenuItem";
-            this.دفعاتالوكلاءToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.دفعاتالوكلاءToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.دفعاتالوكلاءToolStripMenuItem.Text = "دفعات الوكلاء";
             // 
             // إضافةدفعةToolStripMenuItem
@@ -275,7 +283,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(180, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(181, 6);
             // 
             // withdrawbtn
             // 
@@ -284,7 +292,7 @@
             this.عرضالحركاتToolStripMenuItem});
             this.withdrawbtn.Image = global::Alver.Properties.Resources.icons8_cash_in_hand_25px;
             this.withdrawbtn.Name = "withdrawbtn";
-            this.withdrawbtn.Size = new System.Drawing.Size(183, 26);
+            this.withdrawbtn.Size = new System.Drawing.Size(184, 26);
             this.withdrawbtn.Text = "سحب وإيداع";
             // 
             // إضافةحركةToolStripMenuItem
@@ -306,7 +314,7 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(180, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(181, 6);
             // 
             // قصوتحويلالرصيدToolStripMenuItem
             // 
@@ -316,7 +324,7 @@
             this.عرضالعملياتToolStripMenuItem});
             this.قصوتحويلالرصيدToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_tax_25px;
             this.قصوتحويلالرصيدToolStripMenuItem.Name = "قصوتحويلالرصيدToolStripMenuItem";
-            this.قصوتحويلالرصيدToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.قصوتحويلالرصيدToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.قصوتحويلالرصيدToolStripMenuItem.Text = "قص وتحويل الرصيد";
             // 
             // cutbtn
@@ -347,7 +355,7 @@
             // 
             this.تصنيفاتالوكلاءToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_categorize_25px;
             this.تصنيفاتالوكلاءToolStripMenuItem.Name = "تصنيفاتالوكلاءToolStripMenuItem";
-            this.تصنيفاتالوكلاءToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.تصنيفاتالوكلاءToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.تصنيفاتالوكلاءToolStripMenuItem.Text = "تصنيفات الوكلاء";
             this.تصنيفاتالوكلاءToolStripMenuItem.Click += new System.EventHandler(this.تصنيفاتالوكلاءToolStripMenuItem_Click);
             // 
@@ -355,7 +363,7 @@
             // 
             this.مطابقاتالوكلاءToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_control_panel_25px;
             this.مطابقاتالوكلاءToolStripMenuItem.Name = "مطابقاتالوكلاءToolStripMenuItem";
-            this.مطابقاتالوكلاءToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.مطابقاتالوكلاءToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.مطابقاتالوكلاءToolStripMenuItem.Text = "مطابقات الوكلاء";
             this.مطابقاتالوكلاءToolStripMenuItem.Click += new System.EventHandler(this.مطابقاتالوكلاءToolStripMenuItem_Click);
             // 
@@ -378,7 +386,7 @@
             // 
             this.إضافةمادةToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_add_shopping_cart_25px;
             this.إضافةمادةToolStripMenuItem.Name = "إضافةمادةToolStripMenuItem";
-            this.إضافةمادةToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.إضافةمادةToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.إضافةمادةToolStripMenuItem.Text = "إضافة مادة";
             this.إضافةمادةToolStripMenuItem.Click += new System.EventHandler(this.إضافةمادةToolStripMenuItem_Click);
             // 
@@ -386,7 +394,7 @@
             // 
             this.عرضالموادToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_sell_stock_25px;
             this.عرضالموادToolStripMenuItem.Name = "عرضالموادToolStripMenuItem";
-            this.عرضالموادToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.عرضالموادToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.عرضالموادToolStripMenuItem.Text = "عرض المواد";
             this.عرضالموادToolStripMenuItem.Click += new System.EventHandler(this.عرضالموادToolStripMenuItem_Click);
             // 
@@ -394,7 +402,7 @@
             // 
             this.تصنيفاتالموادToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_descending_sorting_25px;
             this.تصنيفاتالموادToolStripMenuItem.Name = "تصنيفاتالموادToolStripMenuItem";
-            this.تصنيفاتالموادToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.تصنيفاتالموادToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.تصنيفاتالموادToolStripMenuItem.Text = "تصنيفات المواد";
             this.تصنيفاتالموادToolStripMenuItem.Click += new System.EventHandler(this.تصنيفاتالموادToolStripMenuItem_Click);
             // 
@@ -402,7 +410,7 @@
             // 
             this.الواحداتToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_unit_25px;
             this.الواحداتToolStripMenuItem.Name = "الواحداتToolStripMenuItem";
-            this.الواحداتToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.الواحداتToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.الواحداتToolStripMenuItem.Text = "الواحدات";
             this.الواحداتToolStripMenuItem.Click += new System.EventHandler(this.الواحداتToolStripMenuItem_Click);
             // 
@@ -410,7 +418,7 @@
             // 
             this.كشفحسابمادةToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_control_panel_25px1;
             this.كشفحسابمادةToolStripMenuItem.Name = "كشفحسابمادةToolStripMenuItem";
-            this.كشفحسابمادةToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.كشفحسابمادةToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.كشفحسابمادةToolStripMenuItem.Text = "كشف حساب مادة";
             this.كشفحسابمادةToolStripMenuItem.Click += new System.EventHandler(this.كشفحسابمادةToolStripMenuItem_Click);
             // 
@@ -418,7 +426,7 @@
             // 
             this.تسعيرالموادToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_cash_25px;
             this.تسعيرالموادToolStripMenuItem.Name = "تسعيرالموادToolStripMenuItem";
-            this.تسعيرالموادToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.تسعيرالموادToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.تسعيرالموادToolStripMenuItem.Text = "تسعير المواد";
             this.تسعيرالموادToolStripMenuItem.Click += new System.EventHandler(this.تسعيرالموادToolStripMenuItem_Click);
             // 
@@ -426,7 +434,7 @@
             // 
             this.كمياتالموادToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_shop_25px;
             this.كمياتالموادToolStripMenuItem.Name = "كمياتالموادToolStripMenuItem";
-            this.كمياتالموادToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.كمياتالموادToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.كمياتالموادToolStripMenuItem.Text = "كميات المواد";
             this.كمياتالموادToolStripMenuItem.Click += new System.EventHandler(this.كمياتالموادToolStripMenuItem_Click);
             // 
@@ -434,7 +442,8 @@
             // 
             this.billsbtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buybillbtn,
-            this.sellbillbtn});
+            this.sellbillbtn,
+            this.billmanagementbtn});
             this.billsbtn.Image = global::Alver.Properties.Resources.icons8_bill_25px;
             this.billsbtn.Name = "billsbtn";
             this.billsbtn.Size = new System.Drawing.Size(74, 24);
@@ -444,7 +453,7 @@
             // 
             this.buybillbtn.Image = global::Alver.Properties.Resources.icons8_purchase_order_25px;
             this.buybillbtn.Name = "buybillbtn";
-            this.buybillbtn.Size = new System.Drawing.Size(131, 26);
+            this.buybillbtn.Size = new System.Drawing.Size(184, 26);
             this.buybillbtn.Text = "فاتورة شراء";
             this.buybillbtn.Click += new System.EventHandler(this.buybillbtn_Click);
             // 
@@ -452,7 +461,7 @@
             // 
             this.sellbillbtn.Image = global::Alver.Properties.Resources.icons8_invoice_25px;
             this.sellbillbtn.Name = "sellbillbtn";
-            this.sellbillbtn.Size = new System.Drawing.Size(131, 26);
+            this.sellbillbtn.Size = new System.Drawing.Size(184, 26);
             this.sellbillbtn.Text = "فاتورة بيع";
             this.sellbillbtn.Click += new System.EventHandler(this.sellbillbtn_Click);
             // 
@@ -535,7 +544,7 @@
             // 
             this.إضافةعملياتصرافةToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_exchange_25px;
             this.إضافةعملياتصرافةToolStripMenuItem.Name = "إضافةعملياتصرافةToolStripMenuItem";
-            this.إضافةعملياتصرافةToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.إضافةعملياتصرافةToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.إضافةعملياتصرافةToolStripMenuItem.Text = "سجل عمليات الصرافة";
             this.إضافةعملياتصرافةToolStripMenuItem.Click += new System.EventHandler(this.إضافةعملياتصرافةToolStripMenuItem_Click);
             // 
@@ -543,7 +552,7 @@
             // 
             this.نشرةالأسعارToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_combo_chart_25px;
             this.نشرةالأسعارToolStripMenuItem.Name = "نشرةالأسعارToolStripMenuItem";
-            this.نشرةالأسعارToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.نشرةالأسعارToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.نشرةالأسعارToolStripMenuItem.Text = "نشرة الأسعار";
             this.نشرةالأسعارToolStripMenuItem.Click += new System.EventHandler(this.نشرةالأسعارToolStripMenuItem_Click);
             // 
@@ -563,7 +572,7 @@
             // 
             this.addExpensebtn.Image = global::Alver.Properties.Resources.icons8_donate_25px;
             this.addExpensebtn.Name = "addExpensebtn";
-            this.addExpensebtn.Size = new System.Drawing.Size(176, 26);
+            this.addExpensebtn.Size = new System.Drawing.Size(184, 26);
             this.addExpensebtn.Text = "إضافة مصروف";
             this.addExpensebtn.Click += new System.EventHandler(this.addExpensebtn_Click);
             // 
@@ -571,20 +580,20 @@
             // 
             this.viewExpensesbtn.Image = global::Alver.Properties.Resources.icons8_list_25px;
             this.viewExpensesbtn.Name = "viewExpensesbtn";
-            this.viewExpensesbtn.Size = new System.Drawing.Size(176, 26);
+            this.viewExpensesbtn.Size = new System.Drawing.Size(184, 26);
             this.viewExpensesbtn.Text = "عرض المصاريف";
             this.viewExpensesbtn.Click += new System.EventHandler(this.viewExpensesbtn_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(173, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
             // 
             // expensesCategoriesbtn
             // 
             this.expensesCategoriesbtn.Image = global::Alver.Properties.Resources.icons8_descending_sorting_25px;
             this.expensesCategoriesbtn.Name = "expensesCategoriesbtn";
-            this.expensesCategoriesbtn.Size = new System.Drawing.Size(176, 26);
+            this.expensesCategoriesbtn.Size = new System.Drawing.Size(184, 26);
             this.expensesCategoriesbtn.Text = "تصنيفات المصاريف";
             this.expensesCategoriesbtn.Click += new System.EventHandler(this.expensesCategoriesbtn_Click);
             // 
@@ -605,7 +614,7 @@
             this.viewLoansbtn});
             this.الديونToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_request_money_25px;
             this.الديونToolStripMenuItem.Name = "الديونToolStripMenuItem";
-            this.الديونToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
+            this.الديونToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.الديونToolStripMenuItem.Text = "الديون";
             // 
             // addLoanbtn
@@ -631,7 +640,7 @@
             this.viewDepositesbtn});
             this.depositesbtn.Image = global::Alver.Properties.Resources.icons8_initiate_money_transfer_25px;
             this.depositesbtn.Name = "depositesbtn";
-            this.depositesbtn.Size = new System.Drawing.Size(116, 26);
+            this.depositesbtn.Size = new System.Drawing.Size(184, 26);
             this.depositesbtn.Text = "الأمانات";
             // 
             // addDepositebtn
@@ -663,7 +672,7 @@
             // 
             this.إدارةالمستخدمينToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_admin_settings_male_25px;
             this.إدارةالمستخدمينToolStripMenuItem.Name = "إدارةالمستخدمينToolStripMenuItem";
-            this.إدارةالمستخدمينToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.إدارةالمستخدمينToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.إدارةالمستخدمينToolStripMenuItem.Text = "إدارة المستخدمين";
             this.إدارةالمستخدمينToolStripMenuItem.Click += new System.EventHandler(this.إدارةالمستخدمينToolStripMenuItem_Click);
             // 
@@ -698,12 +707,13 @@
             this.mainstatusstrip.TabIndex = 1;
             this.mainstatusstrip.Text = "statusStrip1";
             // 
-            // مساعدإعدادقاعدةالبياناتToolStripMenuItem
+            // billmanagementbtn
             // 
-            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Name = "مساعدإعدادقاعدةالبياناتToolStripMenuItem";
-            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
-            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Text = "مساعد إعداد قاعدة البيانات";
-            this.مساعدإعدادقاعدةالبياناتToolStripMenuItem.Click += new System.EventHandler(this.مساعدإعدادقاعدةالبياناتToolStripMenuItem_Click);
+            this.billmanagementbtn.Image = global::Alver.Properties.Resources.itemsettings;
+            this.billmanagementbtn.Name = "billmanagementbtn";
+            this.billmanagementbtn.Size = new System.Drawing.Size(184, 26);
+            this.billmanagementbtn.Text = "إداراة الفواتير";
+            this.billmanagementbtn.Click += new System.EventHandler(this.billmanagementbtn_Click);
             // 
             // frmMain
             // 
@@ -805,5 +815,6 @@
         private System.Windows.Forms.ToolStripMenuItem كمياتالموادToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem إعدادتالبرنامجToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem مساعدإعدادقاعدةالبياناتToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem billmanagementbtn;
     }
 }

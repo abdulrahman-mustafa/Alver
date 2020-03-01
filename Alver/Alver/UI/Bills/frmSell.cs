@@ -66,7 +66,7 @@ namespace Alver.UI.Bills
         #endregion   Init
 
         #region Methods
-        private void RetreiveItemStatics()
+        private void RetreiveItemStaticsByItemId()
         {
             try
             {
@@ -90,6 +90,38 @@ namespace Alver.UI.Bills
 
                         remainedquantitylbl.Text = _remainedQuantity.ToString();
                         quantitynud.Maximum = _remainedQuantity;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+        private void RetreiveItemStaticsByBarcode()
+        {
+            try
+            {
+                string _barcode = barcodecb.Text;
+                int _itemId = 0, _unitId = 0;
+                if (unitcb.SelectedValue != null)
+                    _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
+                if (barcodecb.Text != string.Empty)
+                {
+                    using (dbEntities db = new dbEntities())
+                    {
+                        if ( db.Items.Where(x=>x.Barcode== _barcode).Count()>0)
+                        {
+                            _itemId = db.Items.FirstOrDefault(x => x.Barcode == _barcode).Id;
+                            itemcb.SelectedValue = _itemId;
+                            decimal _salePrice = db.Items.FirstOrDefault(x => x.Id == _itemId && x.UnitId == _unitId).SalePrice.Value != null ? db.Items.Find(_itemId).SalePrice.Value : 0;
+                            pricenud.Value = _salePrice >= 1 ? _salePrice : 1;
+                            exchangedpricenud.Value = pricenud.Value * ratenud.Value;
+                            decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
+                            remainedquantitylbl.Text = _remainedQuantity.ToString();
+                            quantitynud.Maximum = _remainedQuantity;
+                        }
+                        
                     }
                 }
             }
@@ -530,7 +562,7 @@ namespace Alver.UI.Bills
         }
         private void itemcb_SelectedValueChanged(object sender, EventArgs e)
         {
-            RetreiveItemStatics();
+            RetreiveItemStaticsByItemId();
         }
         private void payedchkbox_CheckedChanged(object sender, EventArgs e)
         {
@@ -561,7 +593,7 @@ namespace Alver.UI.Bills
         }
         private void unitcb_SelectedValueChanged(object sender, EventArgs e)
         {
-            RetreiveItemStatics();
+            RetreiveItemStaticsByItemId();
         }
         private void chechprintbillbtn_Click(object sender, EventArgs e)
         {
@@ -589,7 +621,7 @@ namespace Alver.UI.Bills
             //ControlsEnable(false);
             try
             {
-                RetreiveItemStatics();
+                RetreiveItemStaticsByItemId();
                 discountnud.Value = discountnud.Minimum;
                 accountcb.SelectedValue = 1;
                 InsertBill();
@@ -857,6 +889,14 @@ namespace Alver.UI.Bills
         private void printbillslipbtn_Click(object sender, EventArgs e)
         {
             PrintBillSlip();
+        }
+
+        private void barcodecb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                RetreiveItemStaticsByBarcode();
+            }
         }
     }
 }

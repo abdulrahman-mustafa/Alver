@@ -679,6 +679,7 @@
             this.barcodecb.Name = "barcodecb";
             this.barcodecb.Size = new System.Drawing.Size(150, 23);
             this.barcodecb.TabIndex = 52;
+            this.barcodecb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.barcodecb_KeyDown);
             // 
             // label10
             // 

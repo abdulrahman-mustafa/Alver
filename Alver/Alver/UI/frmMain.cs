@@ -323,5 +323,11 @@ namespace Alver.Forms
                 frm.Show();
             }
         }
+
+        private void billmanagementbtn_Click(object sender, EventArgs e)
+        {
+            frmBillMangement frm = new frmBillMangement();
+            frm.Show();
+        }
     }
 }
