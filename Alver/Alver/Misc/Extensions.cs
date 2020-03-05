@@ -9,11 +9,12 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Alver.Misc
+namespace Alver.MISC
 {
     public static class ControlsExtensions
     {
         #region Clear Controls
+
         private static Dictionary<Type, Action<Control>> controldefaults = new Dictionary<Type, Action<Control>>() {
             {typeof(TextBox), c => ((TextBox)c).Clear()},
             {typeof(NumericUpDown), c => ((NumericUpDown)c).Value=((NumericUpDown)c).Minimum},
@@ -53,11 +54,12 @@ namespace Alver.Misc
                     FindAndInvoke(typeof(T), control);
                 }
             }
-
         }
-        #endregion
+
+        #endregion Clear Controls
 
         #region DataGridView Extensions
+
         public static void DoubleBuffered(this DataGridView dgv, bool setting)
         {
             Type dgvType = dgv.GetType();
@@ -65,6 +67,7 @@ namespace Alver.Misc
                   BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(dgv, setting, null);
         }
+
         public static void ColorizeDecimalDGVFullRow(this DataGridView dgv, int index)
         {
             try
@@ -79,6 +82,7 @@ namespace Alver.Misc
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeDecimalDGVCell(this DataGridView dgv, int index)
         {
             try
@@ -93,6 +97,7 @@ namespace Alver.Misc
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeDecimalDGVCell(this DataGridView dgv)
         {
             try
@@ -110,6 +115,7 @@ namespace Alver.Misc
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeDecimalDGVTwoCells(this DataGridView dgv, int index1, int index2)
         {
             try
@@ -128,6 +134,7 @@ namespace Alver.Misc
             }
             catch (Exception ex) { }
         }
+
         public static void copyAlltoClipboard(this DataGridView dgv)
         {
             dgv.SelectAll();
@@ -135,11 +142,10 @@ namespace Alver.Misc
             if (dataObj != null)
                 Clipboard.SetDataObject(dataObj);
         }
+
         public static void ExportToExcelViaHTML(this DataGridView dgv)
         {
-
             var dgvCounts = dgv.Rows.Count;
-
 
             StringBuilder html = new StringBuilder();
             html.Append("<table>");
@@ -168,6 +174,7 @@ namespace Alver.Misc
             html.Append("</table>");
             CopyHtmlToClipBoard(html.ToString());
         }
+
         public static void CopyHtmlToClipBoard(string html)
         {
             Encoding enc = Encoding.UTF8;
@@ -204,6 +211,7 @@ namespace Alver.Misc
 
             Clipboard.SetDataObject(obj, true);
         }
+
         public static void ExportToExcel(this DataGridView dgv)
         {
             try
@@ -223,6 +231,7 @@ namespace Alver.Misc
             }
             catch (Exception ex) { }
         }
+
         public static void ExportToPdf(this DataGridView dgv)
         {
             //Creating iTextSharp Misc Entries Table from the DataTable data
@@ -247,6 +256,7 @@ namespace Alver.Misc
             //    }
             //}
         }
+
         public static string ConvertDataGridViewToHTMLWithFormatting(this DataGridView dgv)
         {
             StringBuilder sb = new StringBuilder();
@@ -289,6 +299,7 @@ namespace Alver.Misc
             sb.Append(">");
             return sb.ToString();
         }
+
         public static string DGVCellToHTMLWithFormatting(DataGridView dgv, int row, int col)
         {
             StringBuilder sb = new StringBuilder();
@@ -298,6 +309,7 @@ namespace Alver.Misc
             sb.Append(">");
             return sb.ToString();
         }
+
         public static string DGVCellColorToHTML(Color foreColor, Color backColor)
         {
             if (foreColor.Name == "0" && backColor.Name == "0") return string.Empty;
@@ -325,6 +337,7 @@ namespace Alver.Misc
             sb.Append(";\"");
             return sb.ToString();
         }
+
         public static string DGVCellFontAndValueToHTML(string value, Font font)
         {
             Font _defualt = new Font("segoe ui", 9, FontStyle.Regular);
@@ -342,7 +355,7 @@ namespace Alver.Misc
             string size = string.Empty;
             if (font.Size != _defualt.Size) size = "font-size: " + font.Size + "pt;";
 
-            //The <font> tag is not supported in HTML5. Use CSS or a span instead. 
+            //The <font> tag is not supported in HTML5. Use CSS or a span instead.
             if (font.FontFamily.Name != _defualt.Name)
             {
                 sb.Append("<span style=\"font-family: ");
@@ -361,6 +374,7 @@ namespace Alver.Misc
 
             return sb.ToString();
         }
+
         public static string DGVCellAlignmentToHTML(DataGridViewContentAlignment align)
         {
             if (align == DataGridViewContentAlignment.NotSet) return string.Empty;
@@ -376,6 +390,7 @@ namespace Alver.Misc
             sb.Append("'");
             return sb.ToString();
         }
+
         public static void CellAlignment(DataGridViewContentAlignment align, ref string horizontalAlignment, ref string verticalAlignment)
         {
             switch (align)
@@ -384,34 +399,42 @@ namespace Alver.Misc
                     horizontalAlignment = "right";
                     verticalAlignment = "middle";
                     break;
+
                 case DataGridViewContentAlignment.MiddleLeft:
                     horizontalAlignment = "left";
                     verticalAlignment = "middle";
                     break;
+
                 case DataGridViewContentAlignment.MiddleCenter:
                     horizontalAlignment = "centre";
                     verticalAlignment = "middle";
                     break;
+
                 case DataGridViewContentAlignment.TopCenter:
                     horizontalAlignment = "centre";
                     verticalAlignment = "top";
                     break;
+
                 case DataGridViewContentAlignment.BottomCenter:
                     horizontalAlignment = "centre";
                     verticalAlignment = "bottom";
                     break;
+
                 case DataGridViewContentAlignment.TopLeft:
                     horizontalAlignment = "left";
                     verticalAlignment = "top";
                     break;
+
                 case DataGridViewContentAlignment.BottomLeft:
                     horizontalAlignment = "left";
                     verticalAlignment = "bottom";
                     break;
+
                 case DataGridViewContentAlignment.TopRight:
                     horizontalAlignment = "right";
                     verticalAlignment = "top";
                     break;
+
                 case DataGridViewContentAlignment.BottomRight:
                     horizontalAlignment = "right";
                     verticalAlignment = "bottom";
@@ -423,6 +446,7 @@ namespace Alver.Misc
                     break;
             }
         }
+
         public static decimal ColumnSum(this DataGridView dgv, int _index)
         {
             decimal _sum = 0;
@@ -430,6 +454,7 @@ namespace Alver.Misc
                 .Sum(t => Convert.ToDecimal(t.Cells[_index].Value));
             return _sum;
         }
+
         public static DataTable TotalsDGV(this DataGridView dgv, int _currencyIndex, int _amountIndex)
         {
             DataTable dt = new DataTable();
@@ -462,6 +487,7 @@ namespace Alver.Misc
             }
             return dt;
         }
+
         public static DataTable OverviewTotalsDGV(this DataGridView dgv)
         {
             DataTable dt = new DataTable();
@@ -482,21 +508,320 @@ namespace Alver.Misc
             }
             return dt;
         }
-        #endregion
+
+        public static void EXPXLS(this DataGridView dgv, string ReportName, string ReportHeader, string _decimalPlaces = "1", string _firstTitle = "", string _secondTitle = "", string Head1 = "", string Head2 = "", string Head3 = "")
+        {
+            DataGridView dgvDetails = CopyDataGridView(dgv);
+
+            // creating Excel Application
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            // creating new WorkBook within Excel application
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            // creating new Excelsheet in workbook
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            // see the excel sheet behind the program
+            app.Visible = true;
+            // get the reference of first sheet. By default its name is Sheet1.
+            // store its reference to worksheet
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            // changing the name of active sheet
+            worksheet.Name = ReportName;
+            //// Inserting Company Details
+            string strColumnAlphabet = GetColumnAlphabet(dgvDetails.Columns.Count + 64); // ((char)(dgvDetails.Columns.Count + 64)).ToStringCustom();
+            worksheet.Cells[1, 1] = _firstTitle;
+            worksheet.Cells[1, 1].Font.Bold = true;
+            worksheet.Cells[1, 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            worksheet.Range["A1:" + strColumnAlphabet + "1"].Merge();
+
+            worksheet.Cells[2, 1] = _secondTitle;
+            worksheet.Cells[2, 1].Font.Bold = true;
+            worksheet.Cells[2, 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            worksheet.Range["A2:" + strColumnAlphabet + "2"].Merge();
+
+            worksheet.Cells[3, 1] = "";
+            worksheet.Range["A3:" + strColumnAlphabet + "3"].Merge();
+
+            worksheet.Cells[4, 1] = ReportName;
+            worksheet.Cells[4, 1].Font.Bold = true;
+            worksheet.Cells[4, 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            worksheet.Range["A4:" + strColumnAlphabet + "4"].Merge();
+
+            worksheet.Cells[5, 1] = ReportHeader;
+            worksheet.Cells[5, 1].Font.Bold = true;
+            worksheet.Range["A5:" + strColumnAlphabet + "5"].Merge();
+
+            worksheet.Cells[6, 1] = "";
+            worksheet.Range["A6:" + strColumnAlphabet + "6"].Merge();
+
+            int RowIndex = 7;
+
+            if (Head1 != string.Empty)
+            {
+                worksheet.Cells[RowIndex, 1] = Head1;
+                worksheet.Cells[RowIndex, 1].Font.Bold = true;
+                worksheet.Range["A" + RowIndex + ":" + strColumnAlphabet + RowIndex.ToString()].Merge();
+                RowIndex = RowIndex + 1;
+            }
+
+            if (Head2 != string.Empty)
+            {
+                worksheet.Cells[RowIndex, 1] = Head2;
+                worksheet.Cells[RowIndex, 1].Font.Bold = true;
+                worksheet.Range["A" + RowIndex + ":" + strColumnAlphabet + RowIndex.ToString()].Merge();
+                RowIndex = RowIndex + 1;
+            }
+
+            if (Head3 != string.Empty)
+            {
+                worksheet.Cells[RowIndex, 1] = Head3;
+                worksheet.Cells[RowIndex, 1].Font.Bold = true;
+                worksheet.Range["A" + RowIndex + ":" + strColumnAlphabet + RowIndex.ToString()].Merge();
+                RowIndex = RowIndex + 1;
+            }
+
+            if (RowIndex > 7)
+                RowIndex = RowIndex + 1;
+
+            // storing header part in Excel
+            for (int i = 1; i < dgvDetails.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[RowIndex, i] = dgvDetails.Columns[i - 1].HeaderText;
+                worksheet.Cells[RowIndex, i].Font.Bold = true;
+            }
+
+            RowIndex = RowIndex + 2;
+            // storing Each row and column value to excel sheet
+            for (int i = 0; i < dgvDetails.Rows.Count; i++)
+            {
+                int _groupId = 0;
+                for (int j = 0; j < dgvDetails.Columns.Count; j++)
+                {
+                    //if (dgvDetails.Columns[j].Name.ToLower().Contains("id"))
+                    //{
+                    //    worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                    //    worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "@";
+                    //    worksheet.Cells[i + RowIndex, j + 1] = dgvDetails.Rows[i].Cells[j].Value.ToString();
+                    //}
+                    //else
+                    if (dgvDetails.Columns[j].Name.ToLower().Contains("Date") && dgvDetails.Rows[i].Cells[j].Value.ToString() != string.Empty)
+                    {
+                        worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                        worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "@";
+                        worksheet.Cells[i + RowIndex, j + 1] = ReportName == "B2B" ? dgvDetails.Rows[i].Cells[j].Value.ToString() : dgvDetails.Rows[i].Cells[j].Value.ToString();//.ToDateTime().ToShortDateString();
+                    }
+                    else if (dgvDetails.Columns[j].Name.ToLower().Contains("balance"))
+                    {
+                        worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        worksheet.Cells[i + RowIndex, j + 1] = dgvDetails.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else if (
+                        (dgvDetails.Columns[j].Name.ToLower().Contains("currency")
+                        || dgvDetails.Columns[j].Name.ToLower().Contains("currencies"))
+                        && int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId))
+                    {
+                        string _currencyName = "";
+                        using (dbEntities db = new dbEntities())
+                        {
+                            _currencyName = db.Currencies.Find(_groupId).CurrencyName;
+                        }
+                        worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        worksheet.Cells[i + RowIndex, j + 1] = _currencyName;// dgvDetails.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else if (
+                        dgvDetails.Columns[j].Name.ToLower().Contains("itemcategory")
+                        && (int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId)))
+                    {
+                        string _categoryName = "";
+                        using (dbEntities db = new dbEntities())
+                        {
+                            _categoryName = db.ItemCategories.Find(_groupId).Title;
+                        }
+                        worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        worksheet.Cells[i + RowIndex, j + 1] = _categoryName;// dgvDetails.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else if (
+                        dgvDetails.Columns[j].Name.ToLower().Contains("unit")
+                        && (int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId)))
+                    {
+                        string _unitName = "";
+                        using (dbEntities db = new dbEntities())
+                        {
+                            _unitName = db.Units.Find(_groupId).Title;
+                        }
+                        worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        worksheet.Cells[i + RowIndex, j + 1] = _unitName;// dgvDetails.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else if (
+                        dgvDetails.Columns[j].Name.ToLower().Contains("accountgroup")
+                        && (int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId)))
+                    {
+                        string _groupName = "";
+                        using (dbEntities db = new dbEntities())
+                        {
+                            _groupName = db.AccountGroups.Find(_groupId).GroupTitle;
+                        }
+                        worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        worksheet.Cells[i + RowIndex, j + 1] = _groupName;// dgvDetails.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else if (
+                        dgvDetails.Columns[j].Name.ToLower().Contains("expensecategory")
+                        && (int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId)))
+                    {
+                        string _groupName = "";
+                        using (dbEntities db = new dbEntities())
+                        {
+                            _groupName = db.ExpenseCategories.Find(_groupId).Title;
+                        }
+                        worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        worksheet.Cells[i + RowIndex, j + 1] = _groupName;// dgvDetails.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else
+                    {
+                        decimal value;
+
+                        if (Decimal.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out value))
+                        {
+                            if (dgvDetails.Columns[j].Name.ToLower().Contains("qty") || dgvDetails.Columns[j].Name.ToLower().Contains("quantity") ||
+                                dgvDetails.Columns[j].Name.ToLower().Contains("stock"))
+                            {
+                                if (value == 0)
+                                    worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "0.000";
+                                else
+                                    worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "###################.000";
+                            }
+                            else
+                            {
+                                switch (_decimalPlaces)//ClsCommonSettings.DecimalPlaces)
+                                {
+                                    case "0":
+                                        if (value == 0)
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "0";
+                                        else
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "###################";
+                                        break;
+
+                                    case "1":
+                                        if (value == 0)
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "0.0";
+                                        else
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "###################.0";
+                                        break;
+
+                                    case "2":
+                                        if (value == 0)
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "0.00";
+                                        else
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "###################.00";
+                                        break;
+
+                                    case "3":
+                                        if (value == 0)
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "0.000";
+                                        else
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "###################.000";
+                                        break;
+
+                                    case "4":
+                                        if (value == 0)
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "0.0000";
+                                        else
+                                            worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "###################.0000";
+                                        break;
+                                }
+                            }
+
+                            worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        }
+                        else if (dgvDetails.Columns[j].Name == "ExpenseAmt" || dgvDetails.Columns[j].Name == "IncomeAmt" ||
+                            dgvDetails.Columns[j].Name == "LiabilityAmt" || dgvDetails.Columns[j].Name == "AssetAmt")
+                        {
+                            if (dgvDetails.Rows[i].Cells[j].Value.ToString().Contains("("))
+                            {
+                                worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "@";
+                                worksheet.Cells[i + RowIndex, j + 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                            }
+                        }
+
+                        worksheet.Cells[i + RowIndex, j + 1] = dgvDetails.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+            }
+            // Auto fit columns
+            worksheet.Columns.AutoFit();
+            worksheet.PageSetup.TopMargin = 0.75;
+            worksheet.PageSetup.LeftMargin = 0.25;
+            worksheet.PageSetup.RightMargin = 0.25;
+            worksheet.PageSetup.BottomMargin = 0.75;
+            worksheet.PageSetup.CenterHorizontally = true;
+            worksheet.PageSetup.PrintGridlines = true;
+            // Exit from the application
+            app.Quit();
+        }
+
+        public static string GetColumnAlphabet(int ColumnCount)
+        {
+            if (ColumnCount > 0 && ColumnCount < 27)
+                return ((char)(ColumnCount + 64)).ToString();
+            else
+                return "A" + ((char)((ColumnCount - 26) + 64)).ToString();
+        }
+
+        public static DataGridView CopyDataGridView(DataGridView dgv)
+        {
+            DataGridView dgv_copy = new DataGridView();
+            try
+            {
+                if (dgv_copy.Columns.Count == 0)
+                {
+                    foreach (DataGridViewColumn dgvc in dgv.Columns)
+                    {
+                        if (dgvc.Visible)
+                            dgv_copy.Columns.Add(dgvc.Clone() as DataGridViewColumn);
+                    }
+                }
+
+                for (int i = 0; i < dgv.Rows.Count; i++)
+                {
+                    int intColIndex = 0;
+                    dgv_copy.Rows.Add();
+
+                    foreach (DataGridViewCell cell in dgv.Rows[i].Cells)
+                    {
+                        if (cell.Visible)
+                        {
+                            dgv_copy.Rows[i].Cells[intColIndex].Value = cell.Value;
+                            intColIndex++;
+                        }
+                    }
+                }
+
+                dgv_copy.AllowUserToAddRows = false;
+                dgv_copy.Refresh();
+            }
+            catch { }
+
+            return dgv_copy;
+        }
+
+        #endregion DataGridView Extensions
 
         #region Images
+
         public static byte[] imageToByteArray(this System.Drawing.Image imageIn)
         {
             MemoryStream ms = new MemoryStream();
             imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
             return ms.ToArray();
         }
+
         public static System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
         {
             MemoryStream ms = new MemoryStream(byteArrayIn);
             System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
             return returnImage;
         }
-        #endregion
+
+        #endregion Images
     }
 }

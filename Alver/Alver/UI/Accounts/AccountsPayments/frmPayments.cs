@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using Alver.MISC;
 using System;
 using System.Data.Entity;
@@ -38,7 +38,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
                 accountsInfoBindingSource1.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
             }
-            Misc.Utilities.SearchableComboBox(accountcombobox);
+            MISC.Utilities.SearchableComboBox(accountcombobox);
         }
         private void payments_OperationBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -187,11 +187,11 @@ namespace Alver.UI.Accounts.AccountsPayments
                 string _fromClient = null, _toClient = null;
                 if (fromclientcb.Checked)
                 {
-                    _fromClient = Misc.Utilities.PaymentType.دفعة_من_وكيل.ToString();
+                    _fromClient = MISC.Utilities.PaymentType.دفعة_من_وكيل.ToString();
                 }
                 if (toclientcb.Checked)
                 {
-                    _toClient = Misc.Utilities.PaymentType.دفعة_لوكيل.ToString();
+                    _toClient = MISC.Utilities.PaymentType.دفعة_لوكيل.ToString();
                 }
                 int _accountId = 0;
                 if (accountcb.Checked)
@@ -269,7 +269,7 @@ namespace Alver.UI.Accounts.AccountsPayments
         private void ColorizeDgv()
         {
             int _index = paymentTypeDataGridViewTextBoxColumn.Index;
-            Misc.Utilities.ColorizeStringDGV(dgv, _index, "دفعة_لعميل");
+            MISC.Utilities.ColorizeStringDGV(dgv, _index, "دفعة_لعميل");
         }
 
         private void frmPayments_FormClosing(object sender, FormClosingEventArgs e)

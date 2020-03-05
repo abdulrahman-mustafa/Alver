@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using Alver.UI.Accounts;
 using System;
 using System.Data.Entity;
@@ -27,7 +27,7 @@ namespace Alver.UI.Funds
             operationDateDateTimePicker.Value = payment.PaymentDate.Value;
             currencyIdComboBox.SelectedValue = payment.CurrencyId.Value;
             amountNumericUpDown.Value = payment.Amount.Value;
-            if (payment.PaymentType == Misc.Utilities.PaymentType.تغذية_صندوق.ToString())
+            if (payment.PaymentType == MISC.Utilities.PaymentType.تغذية_صندوق.ToString())
             {
                 refundRadioButton.Checked = true;
                 withdrawRadioButton.Checked = false;
@@ -63,7 +63,7 @@ namespace Alver.UI.Funds
             fundBindingSource.DataSource = db.Funds.ToList();
             //paymentsOperationBindingSource.DataSource = db.Payment.ToList();
             currencyBindingSource.DataSource = db.Currencies.ToList();
-            Misc.Utilities.SearchableComboBox(fundComboBox);
+            MISC.Utilities.SearchableComboBox(fundComboBox);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -73,13 +73,13 @@ namespace Alver.UI.Funds
         {
             EditItem();
             InitTransactions();
-            Misc.Utilities.SaveChanges(ref db, this);
+            MISC.Utilities.SaveChanges(ref db, this);
         }
         private void Save()
         {
             InitTransactions();
             db.Payments.Add(_payment);
-            Misc.Utilities.SaveChanges(ref db, this);
+            MISC.Utilities.SaveChanges(ref db, this);
         }
         private void InitTransactions()
         {
@@ -96,11 +96,11 @@ namespace Alver.UI.Funds
             }
             if (_purpose == "edit")
             {
-                if (_orginalObject.PaymentType == Misc.Utilities.PaymentType.تغذية_صندوق.ToString())
+                if (_orginalObject.PaymentType == MISC.Utilities.PaymentType.تغذية_صندوق.ToString())
                 {
                     TransactionsFuncs.InsertFundTransaction(_orginalObject.CurrencyId.Value, _orginalObject.Amount.Value, TransactionsFuncs.TT.DDT, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
                 }
-                else if (_orginalObject.PaymentType == Misc.Utilities.PaymentType.سحب_من_صندوق.ToString())
+                else if (_orginalObject.PaymentType == MISC.Utilities.PaymentType.سحب_من_صندوق.ToString())
                 {
                     TransactionsFuncs.InsertFundTransaction(_orginalObject.CurrencyId.Value, _orginalObject.Amount.Value, TransactionsFuncs.TT.RFD, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
                 }
@@ -135,7 +135,7 @@ namespace Alver.UI.Funds
                 {
                     _payment = new Payment()
                     {
-                        PaymentType = Misc.Utilities.PaymentType.تغذية_صندوق.ToString(),
+                        PaymentType = MISC.Utilities.PaymentType.تغذية_صندوق.ToString(),
                         PaymentDate = operationDateDateTimePicker.Value,
                         CurrencyId = _currencyId,
                         Amount = _amount,
@@ -154,7 +154,7 @@ namespace Alver.UI.Funds
                 {
                     _payment = new Payment()
                     {
-                        PaymentType = Misc.Utilities.PaymentType.سحب_من_صندوق.ToString(),
+                        PaymentType = MISC.Utilities.PaymentType.سحب_من_صندوق.ToString(),
                         PaymentDate = operationDateDateTimePicker.Value,
                         CurrencyId = _currencyId,
                         Amount = _amount,
@@ -191,7 +191,7 @@ namespace Alver.UI.Funds
                 decimal _amount = amountNumericUpDown.Value;
                 if (refundRadioButton.Checked)
                 {
-                    _payment.PaymentType = Misc.Utilities.PaymentType.تغذية_صندوق.ToString();
+                    _payment.PaymentType = MISC.Utilities.PaymentType.تغذية_صندوق.ToString();
                     _payment.PaymentDate = operationDateDateTimePicker.Value;
                     _payment.CurrencyId = _currencyId;
                     _payment.Amount = _amount;
@@ -207,7 +207,7 @@ namespace Alver.UI.Funds
                 }
                 else if (withdrawRadioButton.Checked)
                 {
-                    _payment.PaymentType = Misc.Utilities.PaymentType.سحب_من_صندوق.ToString();
+                    _payment.PaymentType = MISC.Utilities.PaymentType.سحب_من_صندوق.ToString();
                     _payment.PaymentDate = operationDateDateTimePicker.Value;
                     _payment.CurrencyId = _currencyId;
                     _payment.Amount = _amount;

@@ -1,4 +1,4 @@
-﻿using Alver.Misc;
+﻿using Alver.MISC;
 
 namespace Alver.UI.Accounts
 {

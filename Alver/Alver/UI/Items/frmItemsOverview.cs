@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Data;
 using System.Data.Entity;
@@ -14,16 +14,17 @@ namespace Alver.UI.Items
         {
             InitializeComponent();
         }
+
         private void frmClientsOverview_Load(object sender, EventArgs e)
         {
             sortcb.Checked = false;
-            using (dbEntities db=new dbEntities())
+            using (dbEntities db = new dbEntities())
             {
                 db.Currencies.Load();
                 currencyBindingSource.DataSource = db.Currencies.ToList();
             }
         }
-       
+
         private void printbtn_Click(object sender, EventArgs e)
         {
             //Account acc = new Account();
@@ -39,6 +40,7 @@ namespace Alver.UI.Items
             //    //frm.ShowDialog();
             //}
         }
+
         private void refreshdatabtn_Click(object sender, EventArgs e)
         {
             //this.Cursor = Cursors.WaitCursor;
@@ -53,11 +55,15 @@ namespace Alver.UI.Items
             //dgv.DoubleBuffered(true);
             //this.Cursor = Cursors.Default;
         }
+
         private void excelexportbtn_Click(object sender, EventArgs e)
         {
             if (dgv.Rows.Count > 0)
+            {
                 dgv.ExportToExcel();
+            }
         }
+
         private void Search(string _keyword)
         {
             using (dbEntities db = new dbEntities())
@@ -74,11 +80,13 @@ namespace Alver.UI.Items
                 }
             }
         }
+
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             sortcb.Checked = false;
             Search(SearchBox.Text.Trim());
         }
+
         private void Retrieve(int _currencyId, bool ASEC)
         {
             IQueryable<V_STOCK> _query;
@@ -110,6 +118,7 @@ namespace Alver.UI.Items
                 vSTOCKBindingSource.DataSource = _query.ToList();
             }
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -140,7 +149,6 @@ namespace Alver.UI.Items
 
         private void dgv_ColumnNameChanged(object sender, DataGridViewColumnEventArgs e)
         {
-
         }
 
         private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)

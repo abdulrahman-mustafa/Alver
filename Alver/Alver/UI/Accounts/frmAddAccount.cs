@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -28,7 +28,7 @@ namespace Alver.UI.Accounts
             db.AccountGroups.AsNoTracking().AsQueryable().Load();
             currencyBindingSource.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
             accountGroupBindingSource.DataSource = db.AccountGroups.AsNoTracking().AsQueryable().ToList();
-            Misc.Utilities.SearchableComboBox(clientComboBox);
+            MISC.Utilities.SearchableComboBox(clientComboBox);
         }
         private void addNew()
         {
@@ -186,7 +186,7 @@ namespace Alver.UI.Accounts
                     return;
                 //db.Entry(_client).State = EntityState.Modified;
                 db.Accounts.Attach(_client);
-                Misc.Utilities.SaveChanges(ref db, this);
+                MISC.Utilities.SaveChanges(ref db, this);
                 dgv.DataSource = null;
                 ControlsEnable(false);
             }

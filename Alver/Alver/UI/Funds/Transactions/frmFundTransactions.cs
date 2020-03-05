@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JCS;
 using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 
 namespace Alver.UI.Funds.Transactions
 {
@@ -36,7 +36,7 @@ namespace Alver.UI.Funds.Transactions
             {
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
             }
-            Misc.Utilities.SearchableComboBox(currencycomboBox);
+            MISC.Utilities.SearchableComboBox(currencycomboBox);
             _toggles.Add(onlypayments);
             _toggles.Add(onlyloans);
             _toggles.Add(onlydeposites);

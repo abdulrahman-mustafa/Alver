@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -30,7 +30,7 @@ namespace Alver.UI.Funds
                 db.Currencies.AsNoTracking().AsQueryable().Load();
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
             }
-            Misc.Utilities.SearchableComboBox(fundComboBox);
+            MISC.Utilities.SearchableComboBox(fundComboBox);
         }
         private void addNew()
         {

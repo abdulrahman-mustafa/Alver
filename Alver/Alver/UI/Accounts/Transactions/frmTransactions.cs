@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JCS;
 using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using Alver.UI.Accounts.AccountReports;
 
 namespace Alver.UI.Accounts.Transactions
@@ -40,8 +40,8 @@ namespace Alver.UI.Accounts.Transactions
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
                 accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().ToList().AsQueryable();
             }
-            Misc.Utilities.SearchableComboBox(accountcb);
-            Misc.Utilities.SearchableComboBox(currencycomboBox);
+            MISC.Utilities.SearchableComboBox(accountcb);
+            MISC.Utilities.SearchableComboBox(currencycomboBox);
             _toggles.Add(onlysales);
             _toggles.Add(onlypurchases);
             _toggles.Add(onlypayments);

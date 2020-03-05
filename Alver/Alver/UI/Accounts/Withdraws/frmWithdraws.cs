@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,8 +40,8 @@ namespace Alver.UI.Accounts.Withdraws
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
                 accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().ToList().AsQueryable();
             }
-            Misc.Utilities.SearchableComboBox(accountcb);
-            Misc.Utilities.SearchableComboBox(currencycomboBox);
+            MISC.Utilities.SearchableComboBox(accountcb);
+            MISC.Utilities.SearchableComboBox(currencycomboBox);
         }
         private void DGVTotals()
         {
@@ -122,14 +122,14 @@ namespace Alver.UI.Accounts.Withdraws
                 {
                     _query = _query.Where(
                         x =>
-                        x.Direction == Misc.Utilities.WithdrawDirections.سحب_أرباح.ToString()
+                        x.Direction == MISC.Utilities.WithdrawDirections.سحب_أرباح.ToString()
                         );
                 }
                 else if (losscb.Checked && !gaincb.Checked)
                 {
                     _query = _query.Where(
                         x =>
-                        x.Direction == Misc.Utilities.WithdrawDirections.إيداع_أرباح.ToString()
+                        x.Direction == MISC.Utilities.WithdrawDirections.إيداع_أرباح.ToString()
                         );
                 }
                 _query = _query.OrderBy(x => x.WithdrawDate);

@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -37,7 +37,7 @@ namespace Alver.UI.Items
                     unitBindingSource.DataSource = db.Units.AsNoTracking().ToList().AsQueryable();
                     itemCategoryBindingSource.DataSource = db.ItemCategories.AsNoTracking().ToList().AsQueryable();
                     currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
-                    Misc.Utilities.SearchableComboBox(itemcb);
+                    MISC.Utilities.SearchableComboBox(itemcb);
                     Item _item = db.Items.Find(_itemId);
                     if (_item != null)
                     {

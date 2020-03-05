@@ -7,8 +7,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Windows.Forms;
 using Alver.DAL;
-using Alver.Misc;
-using Alver.UI.Accounts.AccountReports;
+using Alver.MISC;
 using Alver.UI.Items;
 using Alver.UI.Utilities;
 
@@ -17,25 +16,30 @@ namespace Alver.UI.Accounts
     public partial class frmItems : Form
     {
         //dbEntities db;
-        Item _item;
+        private Item _item;
+
         public frmItems(Item item)
         {
             InitializeComponent();
             _item = item == null ? (new Item()) : item;
         }
+
         private void AccountBindingNavigatorSaveItem_Click(object sender, System.EventArgs e)
         {
         }
+
         private void frmClients_Load(object sender, System.EventArgs e)
         {
             LoadData();
             SearchBox.Focus();
         }
+
         private void LoadData()
         {
             load();
             ColorizeDgv();
         }
+
         private void load()
         {
             using (dbEntities db = new dbEntities())
@@ -51,22 +55,27 @@ namespace Alver.UI.Accounts
                 ItemCategoriesBS.DataSource = db.ItemCategories.AsNoTracking().AsQueryable().ToList();
             }
         }
+
         private void clearForm()
         {
             this.Controls.ClearControls();
             tabPage2.Controls.ClearControls();
         }
+
         private void accounts_FundDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
+
         private void accounts_FundDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            Misc.Utilities.ComboBoxBlackBGFix((DataGridView)sender, e);
+            MISC.Utilities.ComboBoxBlackBGFix((DataGridView)sender, e);
         }
+
         private void AccountBindingSource_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
         }
+
         private void AccountBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             try
@@ -89,17 +98,19 @@ namespace Alver.UI.Accounts
             }
             catch (Exception ex)
             {
-
             }
         }
+
         private void accounts_FundDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ColorizeDgv();
         }
+
         private void balancesDgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ColorizeDgv();
         }
+
         private void Search(string _keyword)
         {
             using (dbEntities db = new dbEntities())
@@ -116,18 +127,20 @@ namespace Alver.UI.Accounts
                 }
             }
         }
+
         private void toolStripTextBox3_TextChanged(object sender, EventArgs e)
         {
             Search(SearchBox.Text);
         }
+
         private void toolStripTextBox4_Click(object sender, EventArgs e)
         {
-
         }
+
         private void bindingNavigator3_TextChanged(object sender, EventArgs e)
         {
-
         }
+
         private void toolStripTextBox4_TextChanged(object sender, EventArgs e)
         {
             //Account _client = AccountBindingSource.Current as Account;
@@ -144,10 +157,12 @@ namespace Alver.UI.Accounts
             //    x.ClientId == _client.Id).ToList();
             //}
         }
+
         private void AccountDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ColorizeDgv();
         }
+
         private void ColorizeDgv()
         {
             //int _index = DeactivatedColumn.Index;
@@ -156,6 +171,7 @@ namespace Alver.UI.Accounts
             //_index = balanceDirectionDataGridViewTextBoxColumn.Index;
             //Misc.Utilities.ColorizeStringDGV(accounts_FundDataGridView, _index, "لكم");
         }
+
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             //this.Cursor = Cursors.WaitCursor;
@@ -175,19 +191,21 @@ namespace Alver.UI.Accounts
             //accountsdgv.DoubleBuffered(true);
             //this.Cursor = Cursors.Default;
         }
+
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-
         }
+
         private void frmClients_FormClosing(object sender, FormClosingEventArgs e)
         {
             itemsBS.DataSource = null;
             itemsdgv.DataSource = null;
         }
+
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-
         }
+
         private void accounts_FundDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -199,6 +217,7 @@ namespace Alver.UI.Accounts
             }
             catch (Exception ex) { }
         }
+
         private void frmClients_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.R && e.Control)
@@ -214,15 +233,17 @@ namespace Alver.UI.Accounts
                 //toolStripButton7_Click(null, null);
             }
         }
+
         private void SearchBox_Click(object sender, EventArgs e)
         {
-
         }
+
         private void اكسلToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (itemsdgv.Rows.Count > 0)
                 itemsdgv.ExportToExcel();
         }
+
         private void itemsBS_CurrentChanged(object sender, EventArgs e)
         {
             try
@@ -238,16 +259,16 @@ namespace Alver.UI.Accounts
             }
             catch (Exception ex)
             {
-
             }
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             frmItem frm = new frmItem();
             frm.ShowDialog();
             LoadData();
-
         }
+
         private void DeleteItem()
         {
             if (itemsBS.Count <= 0)
@@ -311,16 +332,18 @@ namespace Alver.UI.Accounts
             }
             deletebtn.Enabled = true;
         }
+
         private void deletebtn_Click(object sender, EventArgs e)
         {
             DeleteItem();
             LoadData();
         }
+
         private void تعديلالوكيلToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                if (itemsBS.Count>0)
+                if (itemsBS.Count > 0)
                 {
                     int _itemId = (itemsBS.Current as Item).Id;
                     frmItemEdit frm = new frmItemEdit(_itemId);
@@ -333,20 +356,43 @@ namespace Alver.UI.Accounts
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void refreshbtn_Click(object sender, EventArgs e)
         {
             LoadData();
-
         }
 
         private void itemsdgv_DoubleClick(object sender, EventArgs e)
         {
-            تعديلالوكيلToolStripMenuItem_Click(null,null);
+            تعديلالوكيلToolStripMenuItem_Click(null, null);
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
         {
+        }
 
+        private void excelexportbtn_Click(object sender, EventArgs e)
+        {
+            if (itemsdgv.RowCount > 0)
+            {
+                string _companyname = "",
+                    _companyAddress = "",
+                    _companyManager = "",
+                    _ManagerPhone = "";
+                using (dbEntities db = new dbEntities())
+                {
+                    _companyname = db.Companies.Find(1).Title;
+                    _companyAddress = db.Companies.Find(1).Address;
+                    _companyManager = db.Companies.Find(1).Manager;
+                    _ManagerPhone = db.Companies.Find(1).ManagerPhone;
+                }
+                string _reportName = "المواد";
+                string _reportHeader = "قائمة بالمواد الموجودة في المخزن";
+                string _decimalPlaces = "2";
+                string _firstTitle = string.Format("{0} - العنوان: {1}", _companyname, _companyAddress);
+                string _secondTitle = string.Format("بإدارة: {0} - الهاتف: {1}", _companyManager, _ManagerPhone);
+                itemsdgv.EXPXLS(_reportName, _reportHeader, _decimalPlaces, _firstTitle, _secondTitle);
+            }
         }
     }
 }

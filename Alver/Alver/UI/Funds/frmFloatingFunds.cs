@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -41,7 +41,7 @@ namespace Alver.UI.Funds
         private void LoadData()
         {
             fundsMovements_ResultBindingSource.DataSource = db.SP_FundsMovements().ToList();
-            Misc.Utilities.ColorizeGain(dgv);
+            MISC.Utilities.ColorizeGain(dgv);
             decimal _grand = 0;
             decimal _USD = 0, _SYP = 0, _TL = 0, _EURO = 0, _SAR = 0;
             try

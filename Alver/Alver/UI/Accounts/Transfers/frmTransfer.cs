@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -55,7 +55,7 @@ namespace Alver.UI.Accounts.Transfers
                 accountsFundBindingSource1.DataSource = accountsInfoBindingSource;
                 accountsFundBindingSource2.DataSource = accountsInfoBindingSource;
             }
-            Misc.Utilities.SearchableComboBox(clientComboBox);
+            MISC.Utilities.SearchableComboBox(clientComboBox);
 
         }
         private void transferClientFundBindingSource_CurrentChanged(object sender, EventArgs e)

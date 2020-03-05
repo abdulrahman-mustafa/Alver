@@ -1,6 +1,6 @@
 ﻿
 using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using DAL.Classes;
 using System;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Windows.Forms;
-using static Alver.Misc.TransactionsFuncs;
-using static Alver.Misc.Utilities;
+using static Alver.MISC.TransactionsFuncs;
+using static Alver.MISC.Utilities;
 
 namespace Alver.UI.Exchange
 {

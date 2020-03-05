@@ -4,7 +4,7 @@ using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
 using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 
 namespace Alver.UI.Payments.Expenses
 {
@@ -37,7 +37,7 @@ namespace Alver.UI.Payments.Expenses
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
                 paymentsExpenseCategoryBindingSource.DataSource = db.ExpenseCategories.AsNoTracking().AsQueryable().ToList();
             }
-            Misc.Utilities.SearchableComboBox(categoryComboBox);
+            MISC.Utilities.SearchableComboBox(categoryComboBox);
         }
         private void InitTransactions()
         {

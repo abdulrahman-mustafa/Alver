@@ -16,7 +16,8 @@ namespace Alver.Forms
 {
     public partial class frmLogin : Form
     {
-        dbEntities db;
+        private dbEntities db;
+
         public frmLogin()
         {
             InitializeComponent();
@@ -44,8 +45,9 @@ namespace Alver.Forms
                 bool _trialActivation = Settings.Default.TrialActivated;
                 int _runTimes = Settings.Default.RunTimes;
                 int _runsLimit = Settings.Default.RunsLimit;
-                
-                _runTimes = 0;
+                Settings.Default.RunTimes = ++_runTimes;
+                Settings.Default.Save();
+                //_runTimes = 0;
                 //_runTimes = CheckActivation(_fullActivation, _trialActivation, _runTimes, _runsLimit);
             }
             catch (Exception EX)
@@ -53,10 +55,10 @@ namespace Alver.Forms
                 //string _errorMsg = EX.Message;
                 //_errorMsg += "    " + EX.InnerException;
                 //MessageBox.Show(_errorMsg);
-              DialogResult _dialog=  MessageBox.Show("لا يمكن الاتصال بقاعدة البيانات يرجى التأكد من وجود قاعدة البيانات وانها في حالة فعالة" + Environment.NewLine + "هل تريد فتح نافذة اعداد قاعدة البيانات؟؟؟؟","خطأ في قاعدة البيانات",MessageBoxButtons.YesNo);// + Environment.NewLine + EX.Source);
-                                                                                                                                                                                                                                                                    //MessageBox.Show(db.Database.Connection.ConnectionString);
-                                                                                                                                                                                                                                                                    //Application.Exit();
-                if (_dialog==DialogResult.Yes)
+                DialogResult _dialog = MessageBox.Show("لا يمكن الاتصال بقاعدة البيانات يرجى التأكد من وجود قاعدة البيانات وانها في حالة فعالة" + Environment.NewLine + "هل تريد فتح نافذة اعداد قاعدة البيانات؟؟؟؟", "خطأ في قاعدة البيانات", MessageBoxButtons.YesNo);// + Environment.NewLine + EX.Source);
+                                                                                                                                                                                                                                                                        //MessageBox.Show(db.Database.Connection.ConnectionString);
+                                                                                                                                                                                                                                                                        //Application.Exit();
+                if (_dialog == DialogResult.Yes)
                 {
                     frmDBTools frm = new frmDBTools();
                     frm.Show();

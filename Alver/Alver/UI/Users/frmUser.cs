@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -40,7 +40,7 @@ namespace Alver.UI.Users
                 db.Roles.AsQueryable().AsNoTracking().Load();
                 roleBindingSource.DataSource = db.Roles.AsQueryable().AsNoTracking().ToList();
             }
-            Misc.Utilities.SearchableComboBox(rolescb);
+            MISC.Utilities.SearchableComboBox(rolescb);
         }
         private void addNew()
         {

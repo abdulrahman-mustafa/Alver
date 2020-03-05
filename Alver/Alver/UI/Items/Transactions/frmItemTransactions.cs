@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JCS;
 using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using Alver.UI.Accounts.AccountReports;
 
 namespace Alver.UI.Items.Transactions
@@ -43,8 +43,8 @@ namespace Alver.UI.Items.Transactions
                 itemBindingSource.DataSource = db.Items.Where(x => x.Hidden == false).AsNoTracking().ToList().AsQueryable();
                 itemBindingSource1.DataSource = db.Items.Where(x => x.Hidden == false).AsNoTracking().ToList().AsQueryable();
             }
-            Misc.Utilities.SearchableComboBox(itemcb);
-            Misc.Utilities.SearchableComboBox(unitcb);
+            MISC.Utilities.SearchableComboBox(itemcb);
+            MISC.Utilities.SearchableComboBox(unitcb);
             _toggles.Add(onlypurchases);
             _toggles.Add(onlysales);
         }

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alver.Misc
+namespace Alver.MISC
 {
     public static class TransactionsFuncs
     {

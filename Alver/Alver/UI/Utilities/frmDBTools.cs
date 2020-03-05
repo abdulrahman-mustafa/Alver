@@ -1,4 +1,4 @@
-﻿using Alver.Misc;
+﻿using Alver.MISC;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System;

@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -35,7 +35,7 @@ namespace Alver.UI.Payments.Expenses
             paymentsExpenseCategoryBindingSource.DataSource = db.ExpenseCategories.ToList();
             currencyBindingSource.DataSource = db.Currencies.ToList();
             fundBindingSource.DataSource = db.Funds.ToList();
-            Misc.Utilities.SearchableComboBox(expenseCategoryComboBox);
+            MISC.Utilities.SearchableComboBox(expenseCategoryComboBox);
         }
 
         private void payments_ExpenseBindingNavigatorSaveItem_Click(object sender, EventArgs e)

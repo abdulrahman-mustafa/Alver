@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -47,8 +47,8 @@ namespace Alver.UI.Accounts.Transfers
                 accountsInfoBindingSource.DataSource = db.Accounts.AsNoTracking().Where(x => x.Deactivated == false && x.Hidden == false).ToList().AsQueryable();
                 accountsInfoBindingSource1.DataSource = db.Accounts.AsNoTracking().Where(x => x.Deactivated == false && x.Hidden == false).ToList().AsQueryable();
             }
-            Misc.Utilities.SearchableComboBox(fromclientComboBox);
-            Misc.Utilities.SearchableComboBox(toclientcomboBox);
+            MISC.Utilities.SearchableComboBox(fromclientComboBox);
+            MISC.Utilities.SearchableComboBox(toclientcomboBox);
         }
         private void transferClientFundBindingSource_CurrentChanged(object sender, EventArgs e)
         {

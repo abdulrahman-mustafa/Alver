@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data.Entity.Infrastructure;
 using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 
 namespace Alver.UI.Funds
 {
@@ -36,13 +36,13 @@ namespace Alver.UI.Funds
             fundBindingSource.DataSource = db.Funds.ToList();
             currencyBindingSource.DataSource = db.Currencies.ToList();
             currencyBindingSource1.DataSource = db.Currencies.ToList();
-            Misc.Utilities.SearchableComboBox(currencyComboBox);
+            MISC.Utilities.SearchableComboBox(currencyComboBox);
         }
         private void payments_OperationBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             dgv.EndEdit();
             CheckChanges();
-            Misc.Utilities.SaveChanges(ref db, this);
+            MISC.Utilities.SaveChanges(ref db, this);
             Retrive();
         }
 
@@ -191,11 +191,11 @@ namespace Alver.UI.Funds
             }
             if (toFundchkbox.Checked)
             {
-                _toFund = Misc.Utilities.PaymentType.تغذية_صندوق.ToString();
+                _toFund = MISC.Utilities.PaymentType.تغذية_صندوق.ToString();
             }
             if (fromFundchkbox.Checked)
             {
-                _fromFund = Misc.Utilities.PaymentType.سحب_من_صندوق.ToString();
+                _fromFund = MISC.Utilities.PaymentType.سحب_من_صندوق.ToString();
             }
             Search(_from, _to, _currencyId, _fromFund, _toFund);
         }
@@ -245,7 +245,7 @@ namespace Alver.UI.Funds
         private void ColorizeDgv()
         {
             int _index = paymentTypeDataGridViewTextBoxColumn.Index;
-            Misc.Utilities.ColorizeStringForeColorDGV(dgv, _index, "سحب_من_صندوق");
+            MISC.Utilities.ColorizeStringForeColorDGV(dgv, _index, "سحب_من_صندوق");
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

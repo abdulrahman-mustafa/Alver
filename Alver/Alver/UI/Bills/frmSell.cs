@@ -1,6 +1,6 @@
 ﻿
 using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using Alver.UI.Bills.BillReports;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static Alver.Misc.Utilities;
+using static Alver.MISC.Utilities;
 
 namespace Alver.UI.Bills
 {
@@ -474,12 +474,14 @@ namespace Alver.UI.Bills
                             {
                                 _account = accountcb.Text.Trim();
                             }
+                            Guid _guid = bill.GUID.Value;
+                            
                             string _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
                         _account,
                         _bill.Id.ToString(),
                         discountnud.Value.ToString());
 
-                            Guid _guid = bill.GUID.Value;
+                            
                             TransactionsFuncs.DeleteTransactions(_guid);
                             foreach (BillLine _billLine in bill.BillLines)
                             {

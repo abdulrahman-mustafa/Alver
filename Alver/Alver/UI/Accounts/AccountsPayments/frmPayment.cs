@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 accountsInfoBindingSource.DataSource = db.Accounts.AsNoTracking().Where(x => x.Deactivated == false && x.Hidden == false).ToList().AsQueryable();
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
             }
-            Misc.Utilities.SearchableComboBox(clientComboBox);
+            MISC.Utilities.SearchableComboBox(clientComboBox);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -118,7 +118,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 {
                     _payment = new Payment()
                     {
-                        PaymentType = Misc.Utilities.PaymentType.دفعة_من_وكيل.ToString(),
+                        PaymentType = MISC.Utilities.PaymentType.دفعة_من_وكيل.ToString(),
                         PaymentDate = operationDateDateTimePicker.Value,
                         CurrencyId = (int)currencyIdComboBox.SelectedValue,
                         Amount = amountNumericUpDown.Value,
@@ -140,7 +140,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 {
                     _payment = new Payment()
                     {
-                        PaymentType = Misc.Utilities.PaymentType.دفعة_لوكيل.ToString(),
+                        PaymentType = MISC.Utilities.PaymentType.دفعة_لوكيل.ToString(),
                         PaymentDate = operationDateDateTimePicker.Value,
                         CurrencyId = (int)currencyIdComboBox.SelectedValue,
                         Amount = amountNumericUpDown.Value,

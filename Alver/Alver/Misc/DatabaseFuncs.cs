@@ -16,7 +16,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Alver.Misc
+namespace Alver.MISC
 {
     public static class DatabaseFuncs
     {

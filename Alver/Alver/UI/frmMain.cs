@@ -1,4 +1,6 @@
-﻿using Alver.Misc;
+﻿using Alver.DAL;
+using Alver.MISC;
+using Alver.Properties;
 using Alver.UI.Accounts;
 using Alver.UI.Accounts.AccountsPayments;
 using Alver.UI.Accounts.Transactions;
@@ -26,6 +28,17 @@ namespace Alver.Forms
         public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void InitStatusStrip()
+        {
+            User _user = Properties.Settings.Default.LoggedInUser;
+            if (_user != null)
+            {
+                usernameLabel.Text = _user.FullName;
+            }
+            databasenamelbl.Text = (new dbEntities()).Database.Connection.Database;
+            runtimeslbl.Text = Settings.Default.RunTimes.ToString();
         }
 
         private void إغلاقToolStripMenuItem_Click(object sender, EventArgs e)
@@ -146,7 +159,6 @@ namespace Alver.Forms
             frm.Show();
         }
 
-
         private void عرضالحركاتToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmRefunds frm = new frmRefunds(null);
@@ -218,6 +230,7 @@ namespace Alver.Forms
             frmItemTransactions frm = new frmItemTransactions();
             frm.Show();
         }
+
         private void OpenLoginForm()
         {
             Application.EnableVisualStyles();
@@ -233,6 +246,7 @@ namespace Alver.Forms
                 Application.Exit();
             }
         }
+
         private void أخذنسخةاحتياطيةToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -288,7 +302,6 @@ namespace Alver.Forms
 
         private void BodysplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
         {
-
         }
 
         private void مطابقاتالوكلاءToolStripMenuItem_Click(object sender, EventArgs e)
@@ -328,6 +341,11 @@ namespace Alver.Forms
         {
             frmBillMangement frm = new frmBillMangement();
             frm.Show();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            InitStatusStrip();
         }
     }
 }

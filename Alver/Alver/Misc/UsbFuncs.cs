@@ -5,7 +5,7 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alver.Misc
+namespace Alver.MISC
 {
     public static class UsbFuncs
     {

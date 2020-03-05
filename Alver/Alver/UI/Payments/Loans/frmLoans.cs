@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -33,7 +33,7 @@ namespace Alver.UI.Payments.Loans
             currencyBindingSource.DataSource = db.Currencies.ToList();
             accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
             accountsInfoBindingSource1.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
-            Misc.Utilities.SearchableComboBox(clientComboBox);
+            MISC.Utilities.SearchableComboBox(clientComboBox);
 
             db.Users.Load();
             usersUserBindingSource.DataSource = db.Users.ToList();
@@ -43,7 +43,7 @@ namespace Alver.UI.Payments.Loans
         {
             dgv.EndEdit();
             CheckChanges();
-            Misc.Utilities.SaveChanges(ref db, this);
+            MISC.Utilities.SaveChanges(ref db, this);
             Retrive();
         }
         private void CheckChanges()
@@ -92,12 +92,12 @@ namespace Alver.UI.Payments.Loans
             decimal _amount = _item.Amount.Value;
             TransactionsFuncs.DeleteTransactions(_item.GUID.Value, _currencyId, _accountId);
             string _declaration = "";
-            if (_item.PaymentType == Misc.Utilities.PaymentTransactionType.دين_مقبوض.ToString())
+            if (_item.PaymentType == MISC.Utilities.PaymentTransactionType.دين_مقبوض.ToString())
             {
                 TransactionsFuncs.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsFuncs.TT.LNF, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
                 TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.LNI, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
             }
-            else if (_item.PaymentType == Misc.Utilities.PaymentTransactionType.دين_مدفوع.ToString())
+            else if (_item.PaymentType == MISC.Utilities.PaymentTransactionType.دين_مدفوع.ToString())
             {
                 TransactionsFuncs.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsFuncs.TT.LNT, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
                 TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.LNO, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
@@ -166,7 +166,7 @@ namespace Alver.UI.Payments.Loans
         private void ColorizeDgv()
         {
             int _index = Direction.Index;
-            Misc.Utilities.ColorizeForeFontStringDGV(dgv, _index, Misc.Utilities.PaymentTransactionType.دين_مقبوض.ToString());
+            MISC.Utilities.ColorizeForeFontStringDGV(dgv, _index, MISC.Utilities.PaymentTransactionType.دين_مقبوض.ToString());
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
@@ -267,20 +267,20 @@ namespace Alver.UI.Payments.Loans
             if (_inLoan && !_outLoan)
             {
                 _query = _query.Where(x =>
-                  x.PaymentType == Misc.Utilities.PaymentTransactionType.دين_مقبوض.ToString()
+                  x.PaymentType == MISC.Utilities.PaymentTransactionType.دين_مقبوض.ToString()
                 ).ToList();
             }
             else if (!_inLoan && _outLoan)
             {
                 _query = _query.Where(x =>
-                  x.PaymentType == Misc.Utilities.PaymentTransactionType.دين_مدفوع.ToString()
+                  x.PaymentType == MISC.Utilities.PaymentTransactionType.دين_مدفوع.ToString()
                 ).ToList();
             }
             else
             {
                 _query = _query.Where(x =>
-                  x.PaymentType == Misc.Utilities.PaymentTransactionType.دين_مقبوض.ToString() ||
-                  x.PaymentType == Misc.Utilities.PaymentTransactionType.دين_مدفوع.ToString()
+                  x.PaymentType == MISC.Utilities.PaymentTransactionType.دين_مقبوض.ToString() ||
+                  x.PaymentType == MISC.Utilities.PaymentTransactionType.دين_مدفوع.ToString()
                 ).ToList();
             }
             if (_clientId != 0)

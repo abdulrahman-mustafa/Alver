@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Alver.Misc
+namespace Alver.MISC
 {
     public static class MSGs
     {

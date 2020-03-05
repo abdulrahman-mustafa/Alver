@@ -1,4 +1,4 @@
-﻿using Alver.Misc;
+﻿using Alver.MISC;
 
 namespace Alver.UI.Exchange
 {
@@ -37,7 +37,7 @@ namespace Alver.UI.Exchange
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCurrenciesBulletin));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rateDateDataGridViewTextBoxColumn = new Alver.Misc.CalendarColumn();
+            this.rateDateDataGridViewTextBoxColumn = new Alver.MISC.CalendarColumn();
             this.currencyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();

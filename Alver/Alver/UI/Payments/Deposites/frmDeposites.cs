@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -35,7 +35,7 @@ namespace Alver.UI.Payments.Deposites
             currencyBindingSource.DataSource = db.Currencies.ToList();
             accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
             accountsInfoBindingSource1.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
-            Misc.Utilities.SearchableComboBox(clientComboBox);
+            MISC.Utilities.SearchableComboBox(clientComboBox);
         }
         private void payments_OperationBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -250,20 +250,20 @@ namespace Alver.UI.Payments.Deposites
             if (_inDeposite && !_outDeposite)
             {
                 _query = _query.Where(x =>
-                  x.PaymentType == Misc.Utilities.PaymentTransactionType.أمانة_مسلمة.ToString()
+                  x.PaymentType == MISC.Utilities.PaymentTransactionType.أمانة_مسلمة.ToString()
                 ).ToList();
             }
             else if (!_inDeposite && _outDeposite)
             {
                 _query = _query.Where(x =>
-                  x.PaymentType == Misc.Utilities.PaymentTransactionType.أمانة_مستلمة.ToString()
+                  x.PaymentType == MISC.Utilities.PaymentTransactionType.أمانة_مستلمة.ToString()
                 ).ToList();
             }
             else
             {
                 _query = _query.Where(x =>
-                  x.PaymentType == Misc.Utilities.PaymentTransactionType.أمانة_مستلمة.ToString() ||
-                  x.PaymentType == Misc.Utilities.PaymentTransactionType.أمانة_مسلمة.ToString()
+                  x.PaymentType == MISC.Utilities.PaymentTransactionType.أمانة_مستلمة.ToString() ||
+                  x.PaymentType == MISC.Utilities.PaymentTransactionType.أمانة_مسلمة.ToString()
                 ).ToList();
             }
             if (_clientId != 0)

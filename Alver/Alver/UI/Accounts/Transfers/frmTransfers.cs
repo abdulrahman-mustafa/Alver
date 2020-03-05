@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -37,7 +37,7 @@ namespace Alver.UI.Accounts.Transfers
             accountsFundBindingSource.DataSource = accountsInfoBindingSource;
             accountsFundBindingSource1.DataSource = accountsInfoBindingSource1;
             currencyBindingSource.DataSource = db.Currencies.ToList();
-            Misc.Utilities.SearchableComboBox(clientComboBox);
+            MISC.Utilities.SearchableComboBox(clientComboBox);
         }
 
         private void remittances_OperationDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -126,7 +126,7 @@ namespace Alver.UI.Accounts.Transfers
 
         private void remittances_OperationBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            Misc.Utilities.SaveChanges(ref db, this);
+            MISC.Utilities.SaveChanges(ref db, this);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -144,7 +144,7 @@ namespace Alver.UI.Accounts.Transfers
         private void RemittanceDGV()
         {
             int _index = rateDataGridViewTextBoxColumn.Index;
-            Misc.Utilities.ColorizeDecimalDGV(dgv, _index);
+            MISC.Utilities.ColorizeDecimalDGV(dgv, _index);
         }
 
         private void bindingNavigatorDeleteItem_Click_1(object sender, EventArgs e)
@@ -195,7 +195,7 @@ namespace Alver.UI.Accounts.Transfers
         {
             dgv.EndEdit();
             CheckChanges();
-            Misc.Utilities.SaveChanges(ref db, this);
+            MISC.Utilities.SaveChanges(ref db, this);
             Retrive();
             RemittanceDGV();
         }

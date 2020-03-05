@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExpensessCategory));
             this.payments_ExpenseCategoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.payments_ExpenseCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -51,6 +48,9 @@
             this.deletebtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.savebtn = new System.Windows.Forms.ToolStripButton();
+            this.expensecategorycolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryBindingSource)).BeginInit();
@@ -69,7 +69,7 @@
             this.payments_ExpenseCategoryDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.payments_ExpenseCategoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.payments_ExpenseCategoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.titleDataGridViewTextBoxColumn,
+            this.expensecategorycolumn,
             this.declarationDataGridViewTextBoxColumn,
             this.userIdDataGridViewTextBoxColumn});
             this.payments_ExpenseCategoryDataGridView.DataSource = this.payments_ExpenseCategoryBindingSource;
@@ -81,32 +81,6 @@
             this.payments_ExpenseCategoryDataGridView.Size = new System.Drawing.Size(680, 390);
             this.payments_ExpenseCategoryDataGridView.TabIndex = 1;
             this.payments_ExpenseCategoryDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.payments_ExpenseCategoryDataGridView_DataError);
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "التصنيف";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            // 
-            // declarationDataGridViewTextBoxColumn
-            // 
-            this.declarationDataGridViewTextBoxColumn.DataPropertyName = "Declaration";
-            this.declarationDataGridViewTextBoxColumn.HeaderText = "البيان";
-            this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
-            // 
-            // userIdDataGridViewTextBoxColumn
-            // 
-            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
-            this.userIdDataGridViewTextBoxColumn.DataSource = this.userBindingSource;
-            this.userIdDataGridViewTextBoxColumn.DisplayMember = "FullName";
-            this.userIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.userIdDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
-            this.userIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userIdDataGridViewTextBoxColumn.HeaderText = "المستخدم";
-            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
-            this.userIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.userIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.userIdDataGridViewTextBoxColumn.ValueMember = "Id";
             // 
             // userBindingSource
             // 
@@ -255,6 +229,32 @@
             this.savebtn.Text = "حفظ التعديلات";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
+            // expensecategorycolumn
+            // 
+            this.expensecategorycolumn.DataPropertyName = "Title";
+            this.expensecategorycolumn.HeaderText = "التصنيف";
+            this.expensecategorycolumn.Name = "expensecategorycolumn";
+            // 
+            // declarationDataGridViewTextBoxColumn
+            // 
+            this.declarationDataGridViewTextBoxColumn.DataPropertyName = "Declaration";
+            this.declarationDataGridViewTextBoxColumn.HeaderText = "البيان";
+            this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
+            // 
+            // userIdDataGridViewTextBoxColumn
+            // 
+            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
+            this.userIdDataGridViewTextBoxColumn.DataSource = this.userBindingSource;
+            this.userIdDataGridViewTextBoxColumn.DisplayMember = "FullName";
+            this.userIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.userIdDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
+            this.userIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.userIdDataGridViewTextBoxColumn.HeaderText = "المستخدم";
+            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
+            this.userIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.userIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.userIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            // 
             // frmExpensessCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -298,13 +298,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton savebtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn userIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource userBindingSource;
         private System.Windows.Forms.ToolStripButton firstbtn;
         private System.Windows.Forms.ToolStripButton prevbtn;
         private System.Windows.Forms.ToolStripButton nextbtn;
         private System.Windows.Forms.ToolStripButton lastbtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expensecategorycolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn userIdDataGridViewTextBoxColumn;
     }
 }

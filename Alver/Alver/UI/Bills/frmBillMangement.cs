@@ -1,30 +1,34 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
+using Alver.UI.Bills.BillReports;
 using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
-using static Alver.Misc.Utilities;
+using static Alver.MISC.Utilities;
 
 namespace Alver.UI.Bills
 {
     public partial class frmBillMangement : Form
     {
         #region Variables
-        bool _sellBillschk = false,
+
+        private bool _sellBillschk = false,
             _purchaseBillschk = false,
             _checkedoutBillschk = false,
             _nonecheckedBillschk = false,
             _billIdchk = false,
             _itemIdchk = false;
 
-        #endregion
+        #endregion Variables
 
         #region Init
+
         public frmBillMangement()
         {
             InitializeComponent();
         }
+
         private void frmIncomes_Load(object sender, EventArgs e)
         {
             using (dbEntities db = new dbEntities())
@@ -35,11 +39,21 @@ namespace Alver.UI.Bills
                 billIdBS.DataSource = db.Bills.AsNoTracking().AsQueryable().ToList();
                 itemIdBS.DataSource = db.Items.AsNoTracking().AsQueryable().ToList();
             }
-
         }
-        #endregion
+
+        #endregion Init
 
         #region Funcs
+
+        private void PrintBillSlip(bool _silent = false)
+        {
+            int _billId, _userId;
+            _billId = (BillsBS.Current as Bill).Id;
+            _userId = Properties.Settings.Default.LoggedInUser.Id;
+            frmBillSlip frm = new frmBillSlip(_billId, _userId, _silent);
+            frm.ShowDialog();
+        }
+
         private void LoadData()
         {
             using (dbEntities db = new dbEntities())
@@ -55,10 +69,11 @@ namespace Alver.UI.Bills
                 billlineitemBS.DataSource = db.Items.AsQueryable().AsNoTracking().ToList();
             }
         }
+
         //_from, _to, _billId, _itemId,  _sellBill, _PurchaseBill, _checkedout, _nonecheckedout
         private IQueryable<Bill> GrandSearch(DateTime _from, DateTime _to, int _billId, int _itemId, string _sellBill, string _PurchaseBill, bool _checkedout, bool _nonecheckedout)
         {
-            IQueryable<Bill> _query;// = new IQueryable<Remittances_Operation>;
+            IQueryable<Bill> _query = null;// = new IQueryable<Remittances_Operation>;
             try
             {
                 using (dbEntities db = new dbEntities())
@@ -76,7 +91,6 @@ namespace Alver.UI.Bills
                                 (x.BillType == _PurchaseBill && _PurchaseBill != null)
                             )
                             ).Include(x => x.BillLines).AsQueryable();
-
                     }
                     else if (_from.Year != _to.Year)
                     {
@@ -124,11 +138,10 @@ namespace Alver.UI.Bills
             {
                 MSGs.ErrorMessage(ex);
             }
-            finally
-            {
-                return _query;
-            }
+
+            return _query;
         }
+
         private void InitChecks()
         {
             _billIdchk = billidchkbox.Checked;
@@ -138,6 +151,7 @@ namespace Alver.UI.Bills
             _checkedoutBillschk = billcheckedoutchkbox.Checked;
             _nonecheckedBillschk = nonetcheckedoutbillchkbox.Checked;
         }
+
         private void Retrive()
         {
             try
@@ -189,10 +203,10 @@ namespace Alver.UI.Bills
             }
         }
 
-
-        #endregion
+        #endregion Funcs
 
         #region Form Events
+
         //DGVs
         private void billsdgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
@@ -204,36 +218,43 @@ namespace Alver.UI.Bills
         {
             _sellBillschk = sellbillchkbox.Checked;
         }
+
         private void billidchkbox_CheckedChanged(object sender, EventArgs e)
         {
             _billIdchk = billidchkbox.Checked;
             billidcb.Enabled = billidchkbox.Checked;
         }
+
         private void purchasebillchkbox_CheckedChanged(object sender, EventArgs e)
         {
             _purchaseBillschk = purchasebillchkbox.Checked;
-
         }
+
         private void billcheckedoutchkbox_CheckedChanged(object sender, EventArgs e)
         {
             _checkedoutBillschk = billcheckedoutchkbox.Checked;
         }
+
         private void notcheckedoutbillchkbox_CheckedChanged(object sender, EventArgs e)
         {
             _nonecheckedBillschk = nonetcheckedoutbillchkbox.Checked;
         }
+
         private void itemchkbox_CheckedChanged(object sender, EventArgs e)
         {
             _itemIdchk = itemchkbox.Checked;
             itemcb.Enabled = itemchkbox.Checked;
         }
-        #endregion
+
+        #endregion Form Events
 
         #region Buttons Clicks
+
         private void searchbtn_Click(object sender, EventArgs e)
         {
             Retrive();
         }
-        #endregion
+
+        #endregion Buttons Clicks
     }
 }

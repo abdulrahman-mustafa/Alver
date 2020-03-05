@@ -1,5 +1,5 @@
 ﻿using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -39,7 +39,7 @@ namespace Alver.UI.Accounts
                     db.AccountGroups.AsNoTracking().AsQueryable().Load();
                     currencyBindingSource.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
                     accountGroupBindingSource.DataSource = db.AccountGroups.AsNoTracking().AsQueryable().ToList();
-                    Misc.Utilities.SearchableComboBox(accountcb);
+                    MISC.Utilities.SearchableComboBox(accountcb);
 
                     Account _account = db.Accounts.Find(_accountId);
                     if (_account != null)

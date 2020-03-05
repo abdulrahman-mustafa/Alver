@@ -7,7 +7,7 @@ using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
 using Alver.DAL;
-using Alver.Misc;
+using Alver.MISC;
 using Alver.UI.Accounts.AccountReports;
 using Alver.UI.Utilities;
 
@@ -179,7 +179,7 @@ namespace Alver.UI.Accounts
         }
         private void accounts_FundDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            Misc.Utilities.ComboBoxBlackBGFix((DataGridView)sender, e);
+            MISC.Utilities.ComboBoxBlackBGFix((DataGridView)sender, e);
         }
         private void AccountBindingSource_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
@@ -288,10 +288,10 @@ namespace Alver.UI.Accounts
         private void ColorizeDgv()
         {
             int _index = DeactivatedColumn.Index;
-            Misc.Utilities.ColorizeBoolDGV(accountsdgv, _index, true, System.Drawing.Color.Tomato);
-            Misc.Utilities.ColorizeForeColor(balancesDgv, dataGridViewTextBoxColumn9.Index);
+            MISC.Utilities.ColorizeBoolDGV(accountsdgv, _index, true, System.Drawing.Color.Tomato);
+            MISC.Utilities.ColorizeForeColor(balancesDgv, dataGridViewTextBoxColumn9.Index);
             _index = balanceDirectionDataGridViewTextBoxColumn.Index;
-            Misc.Utilities.ColorizeStringDGV(accounts_FundDataGridView, _index, "لكم");
+            MISC.Utilities.ColorizeStringDGV(accounts_FundDataGridView, _index, "لكم");
         }
 
         private void toolStripButton8_Click(object sender, EventArgs e)

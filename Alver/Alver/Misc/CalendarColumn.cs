@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Alver.Misc
+namespace Alver.MISC
 {
 
     public class CalendarColumn : DataGridViewColumn

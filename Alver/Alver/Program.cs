@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Alver
 {
-    static class Program
+    internal static class Program
     {
         //public class ObservableListSource<T> : ObservableCollection<T>, IListSource
         //   where T : class
@@ -41,15 +41,17 @@ namespace Alver
             }
             return null;
         }
+
         private static void Start(Action a)
         {
             a.BeginInvoke(null, null);
         }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
