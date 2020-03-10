@@ -528,7 +528,7 @@ namespace Alver.MISC
             // changing the name of active sheet
             worksheet.Name = ReportName;
             //// Inserting Company Details
-            string strColumnAlphabet = GetColumnAlphabet(dgvDetails.Columns.Count + 64); // ((char)(dgvDetails.Columns.Count + 64)).ToStringCustom();
+            string strColumnAlphabet = GetColumnAlphabet(dgvDetails.Columns.Count); // ((char)(dgvDetails.Columns.Count + 64)).ToStringCustom();
             worksheet.Cells[1, 1] = _firstTitle;
             worksheet.Cells[1, 1].Font.Bold = true;
             worksheet.Cells[1, 1].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;

@@ -22,7 +22,9 @@ namespace Alver.MISC
     {
         //public static dbEntities db;
         public static FolderBrowserDialog fbd;
+
         public static string _path;
+
         public static bool BackupBrowse()
         {
             bool _action = false;
@@ -43,6 +45,7 @@ namespace Alver.MISC
             }
             return _action;
         }
+
         public static void BackupDatabase()
         {
             try
@@ -59,7 +62,7 @@ namespace Alver.MISC
                     string DatabaseName, ServerName, UserId, Password, conn;
                     using (dbEntities db = new DAL.dbEntities())
                     {
-                        conn= db.Database.Connection.ConnectionString;
+                        conn = db.Database.Connection.ConnectionString;
                         DatabaseName = db.Database.Connection.Database;
                         ServerName = db.Database.Connection.DataSource;
                         UserId = "sa";
@@ -118,6 +121,7 @@ namespace Alver.MISC
                 MSGs.ErrorMessage(ex);
             }
         }
+
         public static void BackupDatabase2()
         {
             //LoadData();
@@ -132,6 +136,7 @@ namespace Alver.MISC
                     string.Format(cmd, database, "1"));
             }
         }
+
         public static void BackupDatabase1()
         {
             BackupBrowse();
@@ -174,6 +179,7 @@ namespace Alver.MISC
                 MessageBox.Show("خطأ في أخذ النسخة الاحتياطية", "نسخة احتياطية", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public static bool RestoreBrowse()
         {
             bool _action = true;
@@ -196,6 +202,7 @@ namespace Alver.MISC
             }
             return _action;
         }
+
         public static void RestoreDatabase()
         {
             if (!RestoreBrowse()) return;
@@ -224,7 +231,6 @@ namespace Alver.MISC
 
                     MessageBox.Show("تم استرجاع قاعدة البيانات بنجاح", "استرجاع", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     con.Close();
-
                 }
                 catch (Exception ex)
                 {
@@ -232,6 +238,7 @@ namespace Alver.MISC
                 }
             }
         }
+
         public static List<string> ServersNamesLookup()
         {
             List<string> _servers = new List<string>();
@@ -242,12 +249,14 @@ namespace Alver.MISC
             }
             return _servers;
         }
+
         public static List<IPAddress> ServersIPsLookup()
         {
             List<IPAddress> _serversIPs = new List<IPAddress>();
             _serversIPs.AddRange(Dns.GetHostEntry(Dns.GetHostName()).AddressList.Where(ip => ip.AddressFamily == AddressFamily.InterNetwork));
             return _serversIPs;
         }
+
         public static void DatabaseTables(dbEntities db)
         {
             using (db)
@@ -275,6 +284,7 @@ namespace Alver.MISC
                 MessageBox.Show(_msg);
             }
         }
+
         public static List<string> GetDatabaseList(string _server)
         {
             List<string> list = new List<string>();
@@ -300,7 +310,6 @@ namespace Alver.MISC
                 }
             }
             return list;
-
         }
 
         //SERVERS FUNCS
@@ -323,6 +332,7 @@ namespace Alver.MISC
             }
             return _servers;
         }
+
         public static IEnumerable<string> ListLocalSqlInstances()
         {
             if (Environment.Is64BitOperatingSystem)
@@ -351,6 +361,7 @@ namespace Alver.MISC
                 }
             }
         }
+
         private static IEnumerable<string> ListLocalSqlInstances(RegistryKey hive)
         {
             const string keyName = @"Software\Microsoft\Microsoft SQL Server";
@@ -378,6 +389,165 @@ namespace Alver.MISC
 
                 return value;
             }
+        }
+
+        //CHECK IF DATABASE EXISTS
+        public static bool CheckDatabaseExists(SqlConnection tmpConn, string databaseName)
+        {
+            string sqlCreateDBQuery;
+            bool result = false;
+
+            try
+            {
+                //tmpConn = new SqlConnection("server=(local)\\SQLEXPRESS;Trusted_Connection=yes");
+
+                sqlCreateDBQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", databaseName);
+
+                using (tmpConn)
+                {
+                    using (SqlCommand sqlCmd = new SqlCommand(sqlCreateDBQuery, tmpConn))
+                    {
+                        tmpConn.Open();
+
+                        object resultObj = sqlCmd.ExecuteScalar();
+
+                        int databaseID = 0;
+
+                        if (resultObj != null)
+                        {
+                            int.TryParse(resultObj.ToString(), out databaseID);
+                        }
+
+                        tmpConn.Close();
+
+                        result = (databaseID > 0);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public static bool CheckDatabaseExists(string databaseName)
+        {
+            SqlConnection tmpConn;
+            string sqlCreateDBQuery;
+            bool result = false;
+
+            try
+            {
+                tmpConn = new SqlConnection("server=.;Integrated Security=True;");
+
+                sqlCreateDBQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", databaseName);
+
+                using (tmpConn)
+                {
+                    using (SqlCommand sqlCmd = new SqlCommand(sqlCreateDBQuery, tmpConn))
+                    {
+                        tmpConn.Open();
+
+                        object resultObj = sqlCmd.ExecuteScalar();
+
+                        int databaseID = 0;
+
+                        if (resultObj != null)
+                        {
+                            int.TryParse(resultObj.ToString(), out databaseID);
+                        }
+
+                        tmpConn.Close();
+
+                        result = (databaseID > 0);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        //CREATE APPLICATION DATABASE
+        public static bool CreateDatabase()
+        {
+            bool _created = false;
+            var _tempServers = DatabaseFuncs.ListLocalSqlInstances();
+            List<string> _servers = new List<string>();
+            foreach (var server in _tempServers)
+            {
+                _servers.Add(server);
+            }
+            if (_servers.Count > 0)
+            {
+                string _server = _servers[0];
+                string _masterDatabase = "master";
+                string _databaseName = "Alver";
+                string _connectionString = "Server=" + _server
+                        + ";Database=" + _masterDatabase
+                        + ";Trusted_Connection = True;";
+                if (!CheckDatabaseExists(new SqlConnection(_connectionString), _databaseName))
+                {
+                    using (SqlConnection _conn = new SqlConnection(_connectionString))
+                    {
+                        try
+                        {
+                            ////CREATE DATABASE
+                            //string _command = "CREATE DATABASE " + _databaseName;
+                            //SqlCommand myCommand = new SqlCommand(_command, _conn);
+                            //_conn.Open();
+                            //myCommand.ExecuteNonQuery();
+                            //MessageBox.Show("Database Created Successfully", "DATABASE",
+                            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            //EXECUTE SCRIPTS
+                            _path = Path.Combine(Application.StartupPath, "full.sql");
+                            string script = File.ReadAllText(_path);
+                            Server server = new Server(new ServerConnection(_conn));
+                            server.ConnectionContext.ExecuteNonQuery(script);
+                            MessageBox.Show("تم إنشاء قاعدة البيانات بنجاح على القرص D، يرجى إعادة تشغيل البرنامج");
+                            _created = true;
+                            ////SCHEMA FIRST
+                            //_path = Path.Combine(Application.StartupPath, "schema.sql");
+                            //string script = File.ReadAllText(_path);
+                            //Server server = new Server(new ServerConnection(_conn));
+                            //server.ConnectionContext.ExecuteNonQuery(script);
+                            ////INSERT DATA TO TABLES
+                            //_path = Path.Combine(Application.StartupPath, "data.sql");
+                            //script = File.ReadAllText(_path);
+                            //server.ConnectionContext.ExecuteNonQuery(script);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            _created = false;
+                        }
+                        finally
+                        {
+                            if (_conn.State == ConnectionState.Open)
+                            {
+                                _conn.Close();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("قاعدة البيانات موجودة");
+                    _created = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("لم يتم تنصيب برنامج SQL SERVER يرجى التواصل مع المبرمج");
+                _created = false;
+            }
+            return _created;
         }
     }
 }

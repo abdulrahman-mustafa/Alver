@@ -1,4 +1,7 @@
 ﻿using Alver.Forms;
+using Alver.MISC;
+using Alver.Properties;
+using Alver.UI.Utilities;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
@@ -70,14 +73,61 @@ namespace Alver
             //        context.SaveChangesAsync();
             //    }
             //});
-            frmLogin login_form = new frmLogin();
-            if (login_form.ShowDialog() == DialogResult.OK)
+            //try
+            //{
+            //    Settings.Default.Activated = false;
+            //    Settings.Default.RunsLimit = 20;
+            //    Settings.Default.RunTimes = 0;
+            //Settings.Default.FirstRun = false;
+            //Settings.Default.Save();
+            //    MessageBox.Show("تم الاستعادة بنجاح");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MSGs.ErrorMessage(ex);
+            //}
+            if (Settings.Default.FirstRun)
             {
-                Application.Run(new frmMain());
+                if (!DatabaseFuncs.CheckDatabaseExists("Alver"))
+                {
+                    if (DatabaseFuncs.CreateDatabase())
+                    {
+                        Settings.Default.FirstRun = false;
+                        Settings.Default.Save();
+                        Application.Exit();
+                    }
+                }
+            }
+            else if (DatabaseFuncs.CheckDatabaseExists("Alver"))
+            {
+                frmLogin login_form = new frmLogin();
+                if (login_form.ShowDialog() == DialogResult.OK)
+                {
+                    Application.Run(new frmMain());
+                }
+                else
+                {
+                    Application.Exit();
+                }
             }
             else
             {
-                Application.Exit();
+                DialogResult _dialog =
+                    MessageBox.Show("قاعدة البيانات غير موجودة، او تم حذفها او تم إيقاف السيرفر" + Environment.NewLine + "هل تريد فتح نافذة اعداد قاعدة البيانات؟؟؟؟",
+                    "خطأ في قاعدة البيانات",
+                    MessageBoxButtons.YesNo);// + Environment.NewLine + EX.Source);
+                                             //MessageBox.Show(db.Database.Connection.ConnectionString);
+                                             //Application.Exit();
+                if (_dialog == DialogResult.Yes)
+                {
+                    frmDBTools frm = new frmDBTools();
+                    frm.ShowDialog();
+                    MessageBox.Show("يرجى إعادة تشغيل البرنامج");
+                }
+                else
+                {
+                    Application.Exit();
+                }
             }
         }
     }

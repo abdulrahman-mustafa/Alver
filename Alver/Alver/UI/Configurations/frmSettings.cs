@@ -1,6 +1,7 @@
 ﻿using Alver.DAL;
 using Alver.MISC;
 using Alver.Properties;
+using Alver.UI.Utilities;
 using System;
 using System.Linq;
 using System.Management;
@@ -11,17 +12,20 @@ namespace Alver.UI.Configuration
     public partial class frmSettings : Form
     {
         //dbEntities db;
-        int _baseCompanyId = 1;
-        Company _company;
-        byte[] _image;
+        private int _baseCompanyId = 1;
+
+        private Company _company;
+        private byte[] _image;
+
         public frmSettings()
         {
             InitializeComponent();
         }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
         }
+
         private void frmSettings_Load(object sender, EventArgs e)
         {
             //db = new dbEntities();
@@ -33,6 +37,7 @@ namespace Alver.UI.Configuration
         private void LoadPrinters()
         {
             string _printerInfo;
+            printercb.Items.Clear();
             var printerQuery = new ManagementObjectSearcher("SELECT * from Win32_Printer");
             foreach (var printer in printerQuery.Get())
             {
@@ -130,7 +135,6 @@ namespace Alver.UI.Configuration
             {
                 MessageBox.Show("حدث خطأ اثناء حفظ لوغو الشركة");
             }
-
         }
 
         private void logopb_DoubleClick(object sender, EventArgs e)
@@ -141,18 +145,91 @@ namespace Alver.UI.Configuration
 
             if (opf.ShowDialog() == DialogResult.OK)
             {
-                // get the image returned by OpenFileDialog 
+                // get the image returned by OpenFileDialog
                 logopb.Image = System.Drawing.Image.FromFile(opf.FileName);
                 addresslbl.Text = logopb.Image.imageToByteArray().ToString();
             }
         }
+
         private void companybtn_Click(object sender, EventArgs e)
         {
             CompanyTablControl.SelectedTab = companytabpage;
         }
+
         private void printerbtn_Click(object sender, EventArgs e)
         {
             CompanyTablControl.SelectedTab = printertabpage;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CompanyTablControl.SelectedTab = deletedatatabpage;
+        }
+
+        private void deletealldatabtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string _msg = "هل أنت متأكد من تنفيذ العملية؟، سيتم حذف جميع العمليات !";
+                DialogResult _ConfirmationDialog = MessageBox.Show(_msg, "تأكيد!!!!",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2,
+                    MessageBoxOptions.RightAlign);
+                if (_ConfirmationDialog == DialogResult.Yes)
+                {
+                    DialogResult _PasswordConfirmationDialog = (new frmConfirmPassword()).ShowDialog();
+                    if (_PasswordConfirmationDialog == DialogResult.OK)
+                    {
+                        using (dbEntities db = new dbEntities())
+                        {
+                            _msg = "هل تريد اخذ نسخة احتياطية للبيانات قبل الخروج من البرنامج؟";
+                            _ConfirmationDialog = MessageBox.Show(_msg, "تأكيد!!!!",
+                               MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question,
+                               MessageBoxDefaultButton.Button1,
+                               MessageBoxOptions.RightAlign);
+                            if (_ConfirmationDialog == DialogResult.Yes)
+                            {
+                                DatabaseFuncs.BackupDatabase();
+                            }
+                            db.DeleteAllData();
+                            MessageBox.Show("تم الحذف بنجاح");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CompanyTablControl.SelectedTab = defaultsettingdtabpage;
+        }
+
+        private void refreshprinterslistbtn_Click(object sender, EventArgs e)
+        {
+            LoadPrinters();
+        }
+
+        private void restoredefaultsbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Settings.Default.Activated = false;
+                Settings.Default.RunsLimit = 20;
+                Settings.Default.RunTimes = 0;
+                Settings.Default.FirstRun = true;
+                Settings.Default.Save();
+                MessageBox.Show("تم الاستعادة بنجاح");
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
         }
     }
 }

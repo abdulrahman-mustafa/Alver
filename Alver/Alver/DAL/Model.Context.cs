@@ -80,11 +80,6 @@ namespace Alver.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ClientGrand_Result>("SP_ClientGrand", clientIdParameter);
         }
     
-        public virtual ObjectResult<SP_FundsMovements_Result> SP_FundsMovements()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_FundsMovements_Result>("SP_FundsMovements");
-        }
-    
         public virtual ObjectResult<SP_ItemGrand_Result> SP_ItemGrand(Nullable<int> itemId)
         {
             var itemIdParameter = itemId.HasValue ?
@@ -127,6 +122,16 @@ namespace Alver.DAL
                 new ObjectParameter("unitId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemAvgSalePrice_Result>("ItemAvgSalePrice", itemIdParameter, unitIdParameter);
+        }
+    
+        public virtual int DeleteAllData()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAllData");
+        }
+    
+        public virtual ObjectResult<SP_FundsMovements_Result> SP_FundsMovements()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_FundsMovements_Result>("SP_FundsMovements");
         }
     }
 }

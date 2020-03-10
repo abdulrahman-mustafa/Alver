@@ -76,7 +76,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::Alver.Properties.Resources.bw_logo;
+            this.pictureBox2.Image = global::Alver.Properties.Resources.loginlock;
             this.pictureBox2.Location = new System.Drawing.Point(181, 13);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(70, 70);

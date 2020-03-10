@@ -34,6 +34,7 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBillSlip));
             this.BillBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CompanyBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -42,11 +43,13 @@
             this.ImageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.exitbtn = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.CurrencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BillBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillSlip_ResultBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BillBindingSource
@@ -96,11 +99,14 @@
             reportDataSource4.Value = this.BillSlip_ResultBindingSource;
             reportDataSource5.Name = "ImageDS";
             reportDataSource5.Value = this.ImageBindingSource;
+            reportDataSource6.Name = "CurrencyDS";
+            reportDataSource6.Value = this.CurrencyBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Alver.UI.Bills.BillReports.BillSlip.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
@@ -108,6 +114,10 @@
             this.reportViewer1.Size = new System.Drawing.Size(400, 470);
             this.reportViewer1.TabIndex = 3;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
+            // 
+            // CurrencyBindingSource
+            // 
+            this.CurrencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // frmBillSlip
             // 
@@ -120,7 +130,6 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "frmBillSlip";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
@@ -132,6 +141,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillSlip_ResultBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -145,5 +155,6 @@
         private System.Windows.Forms.BindingSource UserBindingSource;
         private System.Windows.Forms.BindingSource BillSlip_ResultBindingSource;
         private System.Windows.Forms.BindingSource ImageBindingSource;
+        private System.Windows.Forms.BindingSource CurrencyBindingSource;
     }
 }

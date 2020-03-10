@@ -5,11 +5,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
+
 namespace Alver.UI.Users
 {
     public partial class frmUser : Form
     {
-        User _user;
+        private User _user;
+
         //Role _role;
         public frmUser()
         {
@@ -21,6 +23,7 @@ namespace Alver.UI.Users
             LoadDate();
             ControlsEnable(false);
         }
+
         private void ControlsEnable(bool _enable)
         {
             savebtn.Enabled = _enable;
@@ -33,6 +36,7 @@ namespace Alver.UI.Users
                 }
             }
         }
+
         private void LoadDate()
         {
             using (dbEntities db = new dbEntities())
@@ -42,6 +46,7 @@ namespace Alver.UI.Users
             }
             MISC.Utilities.SearchableComboBox(rolescb);
         }
+
         private void addNew()
         {
             ClearForm();
@@ -56,11 +61,13 @@ namespace Alver.UI.Users
             passwordtb.Text = string.Empty;
             notestextBox.Text = string.Empty;
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             addNew();
             ControlsEnable(true);
         }
+
         private bool CheckValues()
         {
             bool _result = true;
@@ -87,11 +94,11 @@ namespace Alver.UI.Users
                         _result = false;
                     }
                 }
-
             }
             catch (Exception ex) { }
             return _result;
         }
+
         private void PrepareItem()
         {
             try
@@ -101,6 +108,20 @@ namespace Alver.UI.Users
                     Guid _guid = Guid.NewGuid();
                     int _roleId = (int)rolescb.SelectedValue;
                     //_role = db.Roles.Find(_roleId);
+                    //_user = new User
+                    //{
+                    //    RoleId = _roleId,
+                    //    UserName = usernametb.Text.Trim(),
+                    //    FullName = fullnametb.Text.Trim(),
+                    //    Password = passwordtb.Text,
+                    //    Declaration = notestextBox.Text.Trim(),
+                    //    LUD = DateTime.Now,
+                    //    Hidden = false,
+                    //    Flag = string.Empty,
+                    //    GUID = _guid,
+                    //    PROTECTED = false,
+                    //    CD = DateTime.Now
+                    //};
                     _user = new User();
                     _user.RoleId = _roleId;
                     _user.UserName = usernametb.Text.Trim();
@@ -123,6 +144,7 @@ namespace Alver.UI.Users
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void Save()
         {
             try
@@ -147,6 +169,7 @@ namespace Alver.UI.Users
                 MessageBox.Show("حصل خطأ أثناء حفظ المستخدم");
             }
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -160,6 +183,19 @@ namespace Alver.UI.Users
             catch (Exception ex)
             {
                 MessageBox.Show("حصل خطأ أثناء حفظ المستخدم");
+            }
+        }
+
+        private void frmUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.N && e.Control)
+            {
+                addbtn_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.S && e.Control)
+            {
+                if (savebtn.Enabled)
+                    savebtn_Click(sender, e);
             }
         }
     }

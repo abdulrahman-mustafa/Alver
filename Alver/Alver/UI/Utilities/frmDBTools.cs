@@ -3,27 +3,25 @@ using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Alver.UI.Utilities
 {
     public partial class frmDBTools : Form
     {
-        string _connectionString = string.Empty
-            ,_path=string.Empty;
-        bool _connected = false;
+        private string _connectionString = string.Empty
+            , _path = string.Empty;
+
+        private bool _connected = false;
+
         public frmDBTools()
         {
             InitializeComponent();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -32,7 +30,6 @@ namespace Alver.UI.Utilities
                 foreach (var item in _servers)
                 {
                     serverscb.Items.Add(item);
-
                 }
             }
             catch (Exception ex)
@@ -40,6 +37,7 @@ namespace Alver.UI.Utilities
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             try
@@ -49,7 +47,6 @@ namespace Alver.UI.Utilities
                 foreach (var item in _databases)
                 {
                     databasescb.Items.Add(item);
-
                 }
             }
             catch (Exception ex)
@@ -57,10 +54,11 @@ namespace Alver.UI.Utilities
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
-
         }
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -72,6 +70,7 @@ namespace Alver.UI.Utilities
                 throw;
             }
         }
+
         private void testconnectionbtn_Click(object sender, EventArgs e)
         {
             try
@@ -121,38 +120,36 @@ namespace Alver.UI.Utilities
             }
             catch (Exception ex)
             {
-
             }
-            
         }
 
         private void createdatabasebtn_Click(object sender, EventArgs e)
         {
-            if(_connected)
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                try
+            if (_connected)
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
-                    string _command = "CREATE DATABASE " + databasenametb.Text.Trim();
-
-                    SqlCommand myCommand = new SqlCommand(_command, connection);
-                    connection.Open();
-                    myCommand.ExecuteNonQuery();
-                    MessageBox.Show("Database Created Successfully", "DATABASE",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    if (connection.State == ConnectionState.Open)
+                    try
                     {
-                        connection.Close();
+                        string _command = "CREATE DATABASE " + databasenametb.Text.Trim();
+
+                        SqlCommand myCommand = new SqlCommand(_command, connection);
+                        connection.Open();
+                        myCommand.ExecuteNonQuery();
+                        MessageBox.Show("Database Created Successfully", "DATABASE",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        if (connection.State == ConnectionState.Open)
+                        {
+                            connection.Close();
+                        }
                     }
                 }
-            }
         }
 
         private void execscriptbtn_Click(object sender, EventArgs e)
@@ -169,6 +166,24 @@ namespace Alver.UI.Utilities
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (_connected)
+                if (DatabaseFuncs.CheckDatabaseExists(new SqlConnection(_connectionString), databasenametb.Text))
+                {
+                    MessageBox.Show("Database Exists");
+                }
+                else
+                {
+                    MessageBox.Show("Database Not Exists!!!!");
+                }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DatabaseFuncs.CreateDatabase();
         }
 
         private void browsebtn_Click(object sender, EventArgs e)

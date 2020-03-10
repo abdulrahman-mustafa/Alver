@@ -98,9 +98,9 @@
             this.mainstatusstrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.runtimeslbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.databasenamelbl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.runtimeslbl = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.HeadersplitContainer)).BeginInit();
             this.HeadersplitContainer.Panel1.SuspendLayout();
             this.HeadersplitContainer.Panel2.SuspendLayout();
@@ -743,14 +743,6 @@
             this.usernameLabel.Size = new System.Drawing.Size(12, 17);
             this.usernameLabel.Text = "-";
             // 
-            // runtimeslbl
-            // 
-            this.runtimeslbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.runtimeslbl.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.runtimeslbl.Name = "runtimeslbl";
-            this.runtimeslbl.Size = new System.Drawing.Size(21, 17);
-            this.runtimeslbl.Text = "00";
-            // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -765,6 +757,14 @@
             this.databasenamelbl.Name = "databasenamelbl";
             this.databasenamelbl.Size = new System.Drawing.Size(19, 17);
             this.databasenamelbl.Text = "00";
+            // 
+            // runtimeslbl
+            // 
+            this.runtimeslbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.runtimeslbl.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.runtimeslbl.Name = "runtimeslbl";
+            this.runtimeslbl.Size = new System.Drawing.Size(21, 17);
+            this.runtimeslbl.Text = "00";
             // 
             // frmMain
             // 
@@ -784,6 +784,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alver";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.HeadersplitContainer.Panel1.ResumeLayout(false);
             this.HeadersplitContainer.Panel1.PerformLayout();

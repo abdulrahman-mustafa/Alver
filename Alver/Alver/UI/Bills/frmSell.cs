@@ -1,5 +1,4 @@
-﻿
-using Alver.DAL;
+﻿using Alver.DAL;
 using Alver.MISC;
 using Alver.UI.Bills.BillReports;
 using System;
@@ -15,18 +14,38 @@ namespace Alver.UI.Bills
 {
     public partial class frmSell : Form
     {
-        dbEntities db;
+        private dbEntities db;
+        private int BILLID = 0;
 
         #region Init
-        public frmSell()
+
+        public frmSell(int billid = 0)
         {
             InitializeComponent();
+            BILLID = billid;
         }
+
         private void frmExchange_Load(object sender, EventArgs e)
         {
-            LoadData();
-            barcodecb.Focus();
+            if (CheckRecords())
+            {
+                LoadData();
+                barcodecb.Focus();
+                if (BILLID > 0)
+                {
+                    Bill _tempBill = (new dbEntities()).Bills.Find(BILLID);
+                    if (_tempBill != null)
+                    {
+                        BillBS.Position = BillBS.IndexOf(_tempBill);
+                    }
+                }
+            }
+            else
+            {
+                this.Close();
+            }
         }
+
         private void LoadData()
         {
             db = new dbEntities();
@@ -59,13 +78,35 @@ namespace Alver.UI.Bills
             //EnableControls();
             barcodecb.Focus();
         }
+
         private void currencyExchangeDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
-        #endregion   Init
+
+        #endregion Init
 
         #region Methods
+
+        private bool CheckRecords()
+        {
+            bool _result = true;
+            using (dbEntities db = new dbEntities())
+            {
+                if (db.Items.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة مواد بعد، لا يمكنك إضافة فاتورة");
+                    _result = false;
+                }
+                else if (db.CurrencyBulletins.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة اسعار الصرف بعد، لا يمكنك إضافة فاتورة");
+                    _result = false;
+                }
+            }
+            return _result;
+        }
+
         private void RetreiveItemStaticsByItemId()
         {
             try
@@ -98,6 +139,7 @@ namespace Alver.UI.Bills
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void RetreiveItemStaticsByBarcode()
         {
             try
@@ -110,7 +152,7 @@ namespace Alver.UI.Bills
                 {
                     using (dbEntities db = new dbEntities())
                     {
-                        if ( db.Items.Where(x=>x.Barcode== _barcode).Count()>0)
+                        if (db.Items.Where(x => x.Barcode == _barcode).Count() > 0)
                         {
                             _itemId = db.Items.FirstOrDefault(x => x.Barcode == _barcode).Id;
                             itemcb.SelectedValue = _itemId;
@@ -121,7 +163,6 @@ namespace Alver.UI.Bills
                             remainedquantitylbl.Text = _remainedQuantity.ToString();
                             quantitynud.Maximum = _remainedQuantity;
                         }
-                        
                     }
                 }
             }
@@ -130,6 +171,7 @@ namespace Alver.UI.Bills
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private bool CheckAttributes()
         {
             bool _result = true;
@@ -155,12 +197,14 @@ namespace Alver.UI.Bills
             }
             return _result;
         }
+
         private void Reload()
         {
             db.Dispose();
             LoadData();
             billLinesDgv.Refresh();
         }
+
         //private void ControlsEnable(bool _enable)
         //{
         //    billdatedtp.Value = DateTime.Now;
@@ -177,7 +221,6 @@ namespace Alver.UI.Bills
             //int index = DirectionColumn.Index;
             //for (int i = 0; i < dgv.Rows.Count; i++)
             //{
-
             //    if (dgv.Rows[i].Cells[index].FormattedValue.ToString() == Utilities.ExchangeType.بيع.ToString())
             //    {
             //        dgv.Rows[i].Cells[BaseAmountColumn.Index].Style.BackColor = System.Drawing.Color.Tomato;
@@ -190,7 +233,6 @@ namespace Alver.UI.Bills
             //index = directionDataGridViewTextBoxColumn.Index;
             //for (int i = 0; i < adddgv.Rows.Count; i++)
             //{
-
             //    if (adddgv.Rows[i].Cells[index].FormattedValue.ToString() == Utilities.ExchangeType.بيع.ToString())
             //    {
             //        adddgv.Rows[i].Cells[baseAmountDataGridViewTextBoxColumn.Index].Style.BackColor = System.Drawing.Color.Tomato;
@@ -201,6 +243,7 @@ namespace Alver.UI.Bills
             //    }
             //}
         }
+
         //private string dgvCell(int index)
         //{
         //    if (dgv.CurrentRow != null)
@@ -244,18 +287,17 @@ namespace Alver.UI.Bills
                 //Reload();
                 payedchkbox.Checked = true;
                 exchangebillchkbox.Checked = true;
-
             }
             catch (Exception ex)
             {
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void InsertBillLine()
         {
             try
             {
-
                 Bill _bill = BillBS.Current as Bill;
                 Guid _guid = Guid.NewGuid();
 
@@ -365,6 +407,7 @@ namespace Alver.UI.Bills
                 MessageBox.Show("الرجاء التأكد من القيم المدخلة ومن عدم إدخال  قيم فارغة");
             }
         }
+
         private void calcSumTotals()
         {
             try
@@ -379,6 +422,7 @@ namespace Alver.UI.Bills
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void CalcGrandTotal()
         {
             try
@@ -397,9 +441,11 @@ namespace Alver.UI.Bills
                 totalnud.Value = sumtotalsnud.Value;
             }
         }
-        #endregion
+
+        #endregion Methods
 
         #region Buttons Click
+
         private void BillBS_CurrentChanged(object sender, EventArgs e)
         {
             //try
@@ -417,6 +463,7 @@ namespace Alver.UI.Bills
             //    MSGs.ErrorMessage(ex);
             //}
         }
+
         private void checkbillbtn_Click(object sender, EventArgs e)
         {
             if (BillBS.List.Count <= 0)
@@ -475,13 +522,12 @@ namespace Alver.UI.Bills
                                 _account = accountcb.Text.Trim();
                             }
                             Guid _guid = bill.GUID.Value;
-                            
+
                             string _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
                         _account,
                         _bill.Id.ToString(),
                         discountnud.Value.ToString());
 
-                            
                             TransactionsFuncs.DeleteTransactions(_guid);
                             foreach (BillLine _billLine in bill.BillLines)
                             {
@@ -516,7 +562,6 @@ namespace Alver.UI.Bills
                                     }
                                 }
                             }
-
                             else if (bill.BillType == BillType.شراء.ToString())
                             {
                                 foreach (BillLine _billLine in bill.BillLines)
@@ -558,14 +603,17 @@ namespace Alver.UI.Bills
             }
             LoadData();
         }
+
         private void billLinesBS_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
             calcSumTotals();
         }
+
         private void itemcb_SelectedValueChanged(object sender, EventArgs e)
         {
             RetreiveItemStaticsByItemId();
         }
+
         private void payedchkbox_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -577,10 +625,11 @@ namespace Alver.UI.Bills
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void exchangebillchkbox_CheckedChanged(object sender, EventArgs e)
         {
-
         }
+
         private void ratenud_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -593,10 +642,12 @@ namespace Alver.UI.Bills
                 MessageBox.Show("لم يتم إضافة سعر تصريف ....");
             }
         }
+
         private void unitcb_SelectedValueChanged(object sender, EventArgs e)
         {
             RetreiveItemStaticsByItemId();
         }
+
         private void chechprintbillbtn_Click(object sender, EventArgs e)
         {
             checkbillbtn_Click(null, null);
@@ -604,7 +655,7 @@ namespace Alver.UI.Bills
             LoadData();
         }
 
-        private void PrintBillSlip(bool _silent=false)
+        private void PrintBillSlip(bool _silent = false)
         {
             int _billId, _userId;
             _billId = (BillBS.Current as Bill).Id;
@@ -669,10 +720,12 @@ namespace Alver.UI.Bills
             }
             catch (Exception ex) { }
         }
+
         private void currencyBindingSource1_CurrentChanged(object sender, EventArgs e)
         {
             //OrganizeCurrencies();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -686,6 +739,7 @@ namespace Alver.UI.Bills
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void discountnud_ValueChanged_1(object sender, EventArgs e)
         {
             if (discountnud.Value >= sumtotalsnud.Value)
@@ -700,10 +754,11 @@ namespace Alver.UI.Bills
                 discountnud.ForeColor = Color.Black;
             }
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
-
         }
+
         private void dceobtn_Click(object sender, EventArgs e)
         {
             if (billLinesBS.Count > 0)
@@ -727,6 +782,7 @@ namespace Alver.UI.Bills
                 deletebilllinebtn.Enabled = true;
             }
         }
+
         private void frmExchange_FormClosing(object sender, FormClosingEventArgs e)
         {
             billIdcb.DataSource = null;
@@ -734,9 +790,11 @@ namespace Alver.UI.Bills
             billLinesBS = null;
             billLinesDgv.DataSource = null;
         }
-        #endregion
+
+        #endregion Buttons Click
 
         #region DGV
+
         //private void currencyExchangeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         //{
         //    try
@@ -760,9 +818,11 @@ namespace Alver.UI.Bills
         //        ColorizeCells();
         //    }
         //}
-        #endregion
+
+        #endregion DGV
 
         #region Delete
+
         //private void DeleteBill()
         //{
         //    try
@@ -830,12 +890,13 @@ namespace Alver.UI.Bills
             }
         }
 
-        #endregion
+        #endregion Delete
 
         private void pricenud_ValueChanged(object sender, EventArgs e)
         {
             ExchangePrice();
         }
+
         private void ExchangePrice()
         {
             try
@@ -847,6 +908,7 @@ namespace Alver.UI.Bills
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void SearchByBillId()
         {
             try
@@ -887,7 +949,7 @@ namespace Alver.UI.Bills
                 SearchByBillId();
             }
         }
-        
+
         private void printbillslipbtn_Click(object sender, EventArgs e)
         {
             PrintBillSlip();
@@ -895,7 +957,7 @@ namespace Alver.UI.Bills
 
         private void barcodecb_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 RetreiveItemStaticsByBarcode();
             }

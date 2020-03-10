@@ -225,6 +225,68 @@ namespace Alver.UI.Bills
             billidcb.Enabled = billidchkbox.Checked;
         }
 
+        private void deletebillbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                deletebillbtn.Enabled = false;
+                try
+                {
+                    if (MessageBox.Show("سيتم حذف الفاتورة وكافة الاقلام التابعة لها. هل انت متأكد؟", "تحذير", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        BillsFuncs.DeleteBill((BillsBS.Current as Bill).Id);
+                        searchbtn_Click(null, null);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MSGs.ErrorMessage(ex);
+                }
+                deletebillbtn.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+
+        private void printbillslipbtn_Click(object sender, EventArgs e)
+        {
+            PrintBillSlip(false);
+        }
+
+        private void printbillbtn_Click(object sender, EventArgs e)
+        {
+            PrintBillSlip(true);
+        }
+
+        private void editbillbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Bill _tempBill = (BillsBS.Current as Bill);
+                if (_tempBill != null)
+                {
+                    int _billid = _tempBill.Id;
+                    if (_billid > 0)
+                    {
+                        if (_tempBill.BillType == BillType.بيع.ToString())
+                        {
+                            (new frmSell(_billid)).ShowDialog();
+                        }
+                        else if (_tempBill.BillType == BillType.شراء.ToString())
+                        {
+                            (new frmPurchase(_billid)).ShowDialog();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+
         private void purchasebillchkbox_CheckedChanged(object sender, EventArgs e)
         {
             _purchaseBillschk = purchasebillchkbox.Checked;

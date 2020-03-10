@@ -1491,6 +1491,7 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
         <Function Name="CreateClientFunds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ClientId" Type="int" Mode="In" />
         </Function>
+        <Function Name="DeleteAllData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ItemAvgPurchasePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ItemId" Type="int" Mode="In" />
           <Parameter Name="unitId" Type="int" Mode="In" />
@@ -1865,7 +1866,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <FunctionImport Name="SP_ClientGrand" ReturnType="Collection(AlverModel.SP_ClientGrand_Result)">
           <Parameter Name="ClientId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_FundsMovements" ReturnType="Collection(AlverModel.SP_FundsMovements_Result)" />
           <FunctionImport Name="SP_ItemGrand" ReturnType="Collection(AlverModel.SP_ItemGrand_Result)">
           <Parameter Name="ItemId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -2202,6 +2202,8 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             <Parameter Name="ItemId" Mode="In" Type="Int32" />
             <Parameter Name="unitId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="DeleteAllData" />
+          <FunctionImport Name="SP_FundsMovements" ReturnType="Collection(AlverModel.SP_FundsMovements_Result)" />
           </EntityContainer>
         <ComplexType Name="SP_ClientGrand_Result">
           <Property Type="String" Name="الصندوق" Nullable="true" MaxLength="50" />
@@ -2209,15 +2211,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Type="Int32" Name="رقم_العملة" Nullable="true" />
           <Property Type="Decimal" Name="الإجمالي" Nullable="true" Precision="19" />
           <Property Type="String" Name="لنا_لكم" Nullable="true" MaxLength="3" />
-        </ComplexType>
-        <ComplexType Name="SP_FundsMovements_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="Fund" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="دولار_امريكي" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="ليرة_سورية" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="ليرة_تركية" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="يورو" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="ريال_سعودي" Nullable="true" Precision="19" />
         </ComplexType>
         <ComplexType Name="SP_ItemGrand_Result">
           <Property Type="String" Name="الصندوق" Nullable="true" MaxLength="50" />
@@ -3882,6 +3875,15 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Type="Decimal" Name="السعر_بالعملة_الاساس" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="السعر_بالعملة_الطرف" Nullable="true" Precision="19" />
         </ComplexType>
+        <ComplexType Name="SP_FundsMovements_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Fund" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="دولار_امريكي" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ليرة_سورية" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ليرة_تركية" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="يورو" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ريال_سعودي" Nullable="true" Precision="19" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3897,19 +3899,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
                 <ScalarProperty Name="رقم_العملة" ColumnName="رقم العملة" />
                 <ScalarProperty Name="الإجمالي" ColumnName="الإجمالي" />
                 <ScalarProperty Name="لنا_لكم" ColumnName="لنا/لكم" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_FundsMovements" FunctionName="AlverModel.Store.SP_FundsMovements">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="AlverModel.SP_FundsMovements_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Fund" ColumnName="Fund" />
-                <ScalarProperty Name="دولار_امريكي" ColumnName="دولار امريكي" />
-                <ScalarProperty Name="ليرة_سورية" ColumnName="ليرة سورية" />
-                <ScalarProperty Name="ليرة_تركية" ColumnName="ليرة تركية" />
-                <ScalarProperty Name="يورو" ColumnName="يورو" />
-                <ScalarProperty Name="ريال_سعودي" ColumnName="ريال سعودي" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -4615,6 +4604,20 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
                 <ScalarProperty Name="العملة_الطرف" ColumnName="العملة الطرف" />
                 <ScalarProperty Name="السعر_بالعملة_الاساس" ColumnName="السعر بالعملة الاساس" />
                 <ScalarProperty Name="السعر_بالعملة_الطرف" ColumnName="السعر بالعملة الطرف" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteAllData" FunctionName="AlverModel.Store.DeleteAllData" />
+          <FunctionImportMapping FunctionImportName="SP_FundsMovements" FunctionName="AlverModel.Store.SP_FundsMovements">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlverModel.SP_FundsMovements_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fund" ColumnName="Fund" />
+                <ScalarProperty Name="دولار_امريكي" ColumnName="دولار امريكي" />
+                <ScalarProperty Name="ليرة_سورية" ColumnName="ليرة سورية" />
+                <ScalarProperty Name="ليرة_تركية" ColumnName="ليرة تركية" />
+                <ScalarProperty Name="يورو" ColumnName="يورو" />
+                <ScalarProperty Name="ريال_سعودي" ColumnName="ريال سعودي" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

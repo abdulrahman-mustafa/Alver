@@ -133,16 +133,6 @@ namespace Alver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bw_logo {
-            get {
-                object obj = ResourceManager.GetObject("bw logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap changepassword {
             get {
                 object obj = ResourceManager.GetObject("changepassword", resourceCulture);
@@ -666,16 +656,6 @@ namespace Alver.Properties {
         internal static System.Drawing.Bitmap loginlock {
             get {
                 object obj = ResourceManager.GetObject("loginlock", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap main_logo {
-            get {
-                object obj = ResourceManager.GetObject("main logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

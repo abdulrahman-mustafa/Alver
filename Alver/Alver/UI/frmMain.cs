@@ -347,5 +347,19 @@ namespace Alver.Forms
         {
             InitStatusStrip();
         }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string _msg = "هل تريد اخذ نسخة احتياطية للبيانات قبل الخروج من البرنامج؟";
+            DialogResult _ConfirmationDialog = MessageBox.Show(_msg, "تأكيد!!!!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2,
+                MessageBoxOptions.RightAlign);
+            if (_ConfirmationDialog == DialogResult.Yes)
+            {
+                أخذنسخةاحتياطيةToolStripMenuItem_Click(null, null);
+            }
+        }
     }
 }

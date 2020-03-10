@@ -10,13 +10,16 @@ namespace Alver.UI.Bills.BillReports
     public partial class frmBillSlip : Form
     {
         //dbEntities db;
-        int _billId, _userId;
-        bool _silentPrinting = false;
-        public frmBillSlip(int BillId,int UserId,bool SilentPrinting=false)
+        private int _billId, _userId, _currencyId;
+
+        private bool _silentPrinting = false;
+
+        public frmBillSlip(int BillId, int UserId, bool SilentPrinting = false)
         {
             InitializeComponent();
-            _billId =BillId;
+            _billId = BillId;
             _userId = UserId;
+            _currencyId = (new dbEntities()).Bills.Find(_billId).ForeginCurrencyId.Value;
             _silentPrinting = SilentPrinting;
         }
 
@@ -26,6 +29,7 @@ namespace Alver.UI.Bills.BillReports
             {
                 db.Images.Load();
                 db.Bills.Load();
+                db.Currencies.Load();
                 db.Companies.Load();
                 db.Users.Load();
                 ImageBindingSource.DataSource = db.Images.Find(1);
@@ -33,13 +37,13 @@ namespace Alver.UI.Bills.BillReports
                 CompanyBindingSource.DataSource = db.Companies.FirstOrDefault(x => x.Id == 1);
                 UserBindingSource.DataSource = db.Users.FirstOrDefault(x => x.Id == _userId);
                 BillSlip_ResultBindingSource.DataSource = db.BillSlip(_billId).ToList();
+                CurrencyBindingSource.DataSource = db.Currencies.FirstOrDefault(x => x.Id == _currencyId);
                 this.reportViewer1.RefreshReport();
                 if (_silentPrinting)
                 {
                     this.reportViewer1.LocalReport.Print();
                     this.Close();
                 }
-
             }
         }
 

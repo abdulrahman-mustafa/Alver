@@ -928,6 +928,7 @@
     <None Include="Media\Button Faces\MISC\settings.png" />
     <None Include="Media\Button Faces\MISC\search.png" />
     <None Include="Media\Button Faces\MISC\icons8_qr_code_25px.png" />
+    <None Include="Media\Icons\New folder\lizard_logo_white.ico" />
     <Content Include="packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x64\msvcr100.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -940,6 +941,8 @@
     <Content Include="packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x86\SqlServerSpatial110.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Lizard Logo white.png" />
+    <Content Include="Resources\Lizard Logo.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <None Include="Media\Button Faces\Accounts\icons8_admin_settings_male_25px.png" />
     <None Include="Media\Button Faces\Accounts\addgroup.png" />
@@ -972,9 +975,7 @@
     <None Include="Media\Button Faces\MISC\icons8_password_1_25px.png" />
     <Content Include="Media\Button Faces\Plus.png" />
     <Content Include="Media\Icons\icoMain.ico" />
-    <None Include="Resources\Lizard Logo white.png" />
     <None Include="Media\Icons\icons8_keepass_100px.png" />
-    <None Include="Resources\Lizard Logo.png" />
     <None Include="Media\Icons\lock.png" />
   </ItemGroup>
   <ItemGroup>

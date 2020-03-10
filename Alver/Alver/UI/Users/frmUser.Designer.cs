@@ -198,7 +198,7 @@
             this.passwordconfirmtb.Name = "passwordconfirmtb";
             this.passwordconfirmtb.PasswordChar = '*';
             this.passwordconfirmtb.Size = new System.Drawing.Size(171, 23);
-            this.passwordconfirmtb.TabIndex = 47;
+            this.passwordconfirmtb.TabIndex = 4;
             // 
             // rolescb
             // 
@@ -209,7 +209,7 @@
             this.rolescb.Location = new System.Drawing.Point(134, 60);
             this.rolescb.Name = "rolescb";
             this.rolescb.Size = new System.Drawing.Size(171, 23);
-            this.rolescb.TabIndex = 45;
+            this.rolescb.TabIndex = 1;
             this.rolescb.ValueMember = "Id";
             // 
             // roleBindingSource
@@ -222,7 +222,7 @@
             this.notestextBox.Location = new System.Drawing.Point(13, 193);
             this.notestextBox.Name = "notestextBox";
             this.notestextBox.Size = new System.Drawing.Size(292, 23);
-            this.notestextBox.TabIndex = 9;
+            this.notestextBox.TabIndex = 5;
             // 
             // fullnametb
             // 
@@ -241,7 +241,7 @@
             this.usernametb.Location = new System.Drawing.Point(134, 94);
             this.usernametb.Name = "usernametb";
             this.usernametb.Size = new System.Drawing.Size(171, 23);
-            this.usernametb.TabIndex = 1;
+            this.usernametb.TabIndex = 2;
             // 
             // passwordtb
             // 
@@ -250,7 +250,7 @@
             this.passwordtb.Name = "passwordtb";
             this.passwordtb.PasswordChar = '*';
             this.passwordtb.Size = new System.Drawing.Size(171, 23);
-            this.passwordtb.TabIndex = 2;
+            this.passwordtb.TabIndex = 3;
             // 
             // frmUser
             // 
@@ -262,6 +262,7 @@
             this.Controls.Add(this.bindingNavigator2);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmUser";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -271,6 +272,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "إضافة مستخدم";
             this.Load += new System.EventHandler(this.frmUser_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUser_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).EndInit();
             this.bindingNavigator2.ResumeLayout(false);
             this.bindingNavigator2.PerformLayout();

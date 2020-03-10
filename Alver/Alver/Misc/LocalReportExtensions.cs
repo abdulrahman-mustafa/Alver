@@ -57,7 +57,7 @@ public static class LocalReportExtensions
             printDocument.PrinterSettings.PrinterName = _printer;
         }
         if (!printDocument.PrinterSettings.IsValid)
-            throw new Exception("Error: cannot find the default printer.");
+            throw new Exception("الطابعة غير متصلة او لم يتم تعريف طابعة بعد!");
         else
         {
             printDocument.PrintPage += (sender, e) =>

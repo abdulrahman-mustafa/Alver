@@ -61,9 +61,13 @@ namespace Alver.Forms
                 if (_dialog == DialogResult.Yes)
                 {
                     frmDBTools frm = new frmDBTools();
+                    this.Hide();
                     frm.Show();
                 }
-                this.Close();
+                else
+                {
+                    Application.Exit();
+                }
             }
         }
 

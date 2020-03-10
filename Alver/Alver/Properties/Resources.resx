@@ -124,9 +124,6 @@
   <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\CRUD\Delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="print1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Button Faces\MISC\print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8_find_user_male_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Accounts\icons8_find_user_male_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -147,6 +144,9 @@
   </data>
   <data name="adduser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Accounts\icons8_add_user_male_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Button Faces\CRUD\icons8_edit_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="saveandprintbill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Bills\icons8_receipt_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,17 +181,11 @@
   <data name="icons8_file_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\MISC\icons8_file_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_no_cash_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Button Faces\Money\icons8_no_cash_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="loginlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Icons\icons8_keepass_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_list_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\MISC\icons8_list_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="changepassword" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Button Faces\MISC\icons8_password_1_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edituser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Accounts\icons8_registration_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,6 +214,9 @@
   <data name="deleteuser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Accounts\icons8_denied_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="export" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Button Faces\Export\icons8_output_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\MISC\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -228,6 +225,9 @@
   </data>
   <data name="icons8_control_panel_25px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\MISC\icons8_control_panel_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_safe_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Button Faces\Money\icons8_safe_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\CRUD\Add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,20 +250,17 @@
   <data name="pdf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Export\icons8_pdf_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8_combo_chart_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Button Faces\Reports\icons8_combo_chart_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_exchange_skin_type_7_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Accounts\icons8_exchange_skin_type_7_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_sell_stock_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Items\icons8_sell_stock_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="main logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Lizard Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="deletebill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Bills\icons8_delete_document_25px_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Button Faces\CRUD\icons8_delete_bin_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="addfunds" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Money\icons8_safe_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -301,6 +298,9 @@
   <data name="icons8_request_money_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Money\icons8_request_money_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8_qr_code_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Button Faces\MISC\icons8_qr_code_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_exit_sign_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\MISC\icons8_exit_sign_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -316,28 +316,22 @@
   <data name="icons8_user_account_skin_type_7_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Accounts\icons8_user_account_skin_type_7_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bw logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Lizard Logo white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="addgroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Accounts\addgroup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Button Faces\CRUD\icons8_edit_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="changepassword" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Button Faces\MISC\icons8_password_1_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_combo_chart_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Button Faces\Reports\icons8_combo_chart_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="print1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Button Faces\MISC\print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_layers_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Media\Button Faces\Items\icons8_layers_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="export" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Button Faces\Export\icons8_output_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Button Faces\CRUD\icons8_delete_bin_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_safe_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Button Faces\Money\icons8_safe_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_qr_code_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Media\Button Faces\MISC\icons8_qr_code_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_no_cash_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Media\Button Faces\Money\icons8_no_cash_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

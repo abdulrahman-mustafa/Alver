@@ -92,27 +92,19 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.BillFuncs = new System.Windows.Forms.ToolStripDropDownButton();
+            this.deletebillbtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.printbillslipbtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.printbillbtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.editbillbtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addbillbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.billlinesdgv = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.billIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.billlineitemBS = new System.Windows.Forms.BindingSource(this.components);
-            this.unitIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.billlineunitBS = new System.Windows.Forms.BindingSource(this.components);
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currencyIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.billlinebasecurrencyBS = new System.Windows.Forms.BindingSource(this.components);
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exchangedDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.rateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.billlineforeigncurrencyBS = new System.Windows.Forms.BindingSource(this.components);
-            this.exchangedAmountDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exchangedTotalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.billlineuserBS = new System.Windows.Forms.BindingSource(this.components);
             this.BillLinesBS = new System.Windows.Forms.BindingSource(this.components);
             this.billLinesBN = new System.Windows.Forms.BindingNavigator(this.components);
@@ -144,6 +136,20 @@
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exchangedDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.rateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.exchangedAmountDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exchangedTotalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -786,7 +792,8 @@
             this.bindingNavigatorSeparator1,
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2});
+            this.bindingNavigatorSeparator2,
+            this.BillFuncs});
             this.billsBN.Location = new System.Drawing.Point(0, 0);
             this.billsBN.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.billsBN.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -866,6 +873,59 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // BillFuncs
+            // 
+            this.BillFuncs.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addbillbtn,
+            this.editbillbtn,
+            this.deletebillbtn,
+            this.printbillslipbtn,
+            this.printbillbtn});
+            this.BillFuncs.Image = global::Alver.Properties.Resources.itemsettings;
+            this.BillFuncs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BillFuncs.Name = "BillFuncs";
+            this.BillFuncs.Size = new System.Drawing.Size(104, 22);
+            this.BillFuncs.Text = "أدوات الفاتورة";
+            // 
+            // deletebillbtn
+            // 
+            this.deletebillbtn.Image = global::Alver.Properties.Resources.deletebill;
+            this.deletebillbtn.Name = "deletebillbtn";
+            this.deletebillbtn.Size = new System.Drawing.Size(180, 22);
+            this.deletebillbtn.Text = "حذف الفاتورة";
+            this.deletebillbtn.Click += new System.EventHandler(this.deletebillbtn_Click);
+            // 
+            // printbillslipbtn
+            // 
+            this.printbillslipbtn.Image = global::Alver.Properties.Resources.print;
+            this.printbillslipbtn.Name = "printbillslipbtn";
+            this.printbillslipbtn.Size = new System.Drawing.Size(180, 22);
+            this.printbillslipbtn.Text = "طباعة إشعار الفاتورة";
+            this.printbillslipbtn.Click += new System.EventHandler(this.printbillslipbtn_Click);
+            // 
+            // printbillbtn
+            // 
+            this.printbillbtn.Image = global::Alver.Properties.Resources.print;
+            this.printbillbtn.Name = "printbillbtn";
+            this.printbillbtn.Size = new System.Drawing.Size(180, 22);
+            this.printbillbtn.Text = "طباعة الفاتورة";
+            this.printbillbtn.Click += new System.EventHandler(this.printbillbtn_Click);
+            // 
+            // editbillbtn
+            // 
+            this.editbillbtn.Image = global::Alver.Properties.Resources.edit;
+            this.editbillbtn.Name = "editbillbtn";
+            this.editbillbtn.Size = new System.Drawing.Size(180, 22);
+            this.editbillbtn.Text = "تعديل الفاتورة";
+            this.editbillbtn.Click += new System.EventHandler(this.editbillbtn_Click);
+            // 
+            // addbillbtn
+            // 
+            this.addbillbtn.Image = global::Alver.Properties.Resources.addbill;
+            this.addbillbtn.Name = "addbillbtn";
+            this.addbillbtn.Size = new System.Drawing.Size(180, 22);
+            this.addbillbtn.Text = "إضافة فاتورة";
+            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage2);
@@ -926,162 +986,21 @@
             this.billlinesdgv.TabIndex = 3;
             this.billlinesdgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.billsdgv_DataError);
             // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn1.Visible = false;
-            this.idDataGridViewTextBoxColumn1.Width = 42;
-            // 
-            // billIdDataGridViewTextBoxColumn
-            // 
-            this.billIdDataGridViewTextBoxColumn.DataPropertyName = "BillId";
-            this.billIdDataGridViewTextBoxColumn.HeaderText = "BillId";
-            this.billIdDataGridViewTextBoxColumn.Name = "billIdDataGridViewTextBoxColumn";
-            this.billIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.billIdDataGridViewTextBoxColumn.Visible = false;
-            this.billIdDataGridViewTextBoxColumn.Width = 58;
-            // 
-            // itemIdDataGridViewTextBoxColumn
-            // 
-            this.itemIdDataGridViewTextBoxColumn.DataPropertyName = "ItemId";
-            this.itemIdDataGridViewTextBoxColumn.DataSource = this.billlineitemBS;
-            this.itemIdDataGridViewTextBoxColumn.DisplayMember = "ItemName";
-            this.itemIdDataGridViewTextBoxColumn.HeaderText = "المادة";
-            this.itemIdDataGridViewTextBoxColumn.Name = "itemIdDataGridViewTextBoxColumn";
-            this.itemIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.itemIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.itemIdDataGridViewTextBoxColumn.ValueMember = "Id";
-            this.itemIdDataGridViewTextBoxColumn.Width = 61;
-            // 
             // billlineitemBS
             // 
             this.billlineitemBS.DataSource = typeof(Alver.DAL.Item);
-            // 
-            // unitIdDataGridViewTextBoxColumn
-            // 
-            this.unitIdDataGridViewTextBoxColumn.DataPropertyName = "UnitId";
-            this.unitIdDataGridViewTextBoxColumn.DataSource = this.billlineunitBS;
-            this.unitIdDataGridViewTextBoxColumn.DisplayMember = "Title";
-            this.unitIdDataGridViewTextBoxColumn.HeaderText = "الواحدة";
-            this.unitIdDataGridViewTextBoxColumn.Name = "unitIdDataGridViewTextBoxColumn";
-            this.unitIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.unitIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unitIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.unitIdDataGridViewTextBoxColumn.ValueMember = "Id";
-            this.unitIdDataGridViewTextBoxColumn.Width = 67;
             // 
             // billlineunitBS
             // 
             this.billlineunitBS.DataSource = typeof(Alver.DAL.Unit);
             // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "الكمية";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.quantityDataGridViewTextBoxColumn.Width = 62;
-            // 
-            // currencyIdDataGridViewTextBoxColumn1
-            // 
-            this.currencyIdDataGridViewTextBoxColumn1.DataPropertyName = "CurrencyId";
-            this.currencyIdDataGridViewTextBoxColumn1.DataSource = this.billlinebasecurrencyBS;
-            this.currencyIdDataGridViewTextBoxColumn1.DisplayMember = "CurrencyName";
-            this.currencyIdDataGridViewTextBoxColumn1.HeaderText = "العملة الاساس";
-            this.currencyIdDataGridViewTextBoxColumn1.Name = "currencyIdDataGridViewTextBoxColumn1";
-            this.currencyIdDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.currencyIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.currencyIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.currencyIdDataGridViewTextBoxColumn1.ValueMember = "Id";
-            this.currencyIdDataGridViewTextBoxColumn1.Width = 103;
-            // 
             // billlinebasecurrencyBS
             // 
             this.billlinebasecurrencyBS.DataSource = typeof(Alver.DAL.Currency);
             // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "السعر";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.priceDataGridViewTextBoxColumn.Width = 61;
-            // 
-            // totalPriceDataGridViewTextBoxColumn
-            // 
-            this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
-            this.totalPriceDataGridViewTextBoxColumn.HeaderText = "الاجمالي";
-            this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
-            this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.totalPriceDataGridViewTextBoxColumn.Width = 73;
-            // 
-            // exchangedDataGridViewTextBoxColumn1
-            // 
-            this.exchangedDataGridViewTextBoxColumn1.DataPropertyName = "Exchanged";
-            this.exchangedDataGridViewTextBoxColumn1.HeaderText = "تم التصريف";
-            this.exchangedDataGridViewTextBoxColumn1.Name = "exchangedDataGridViewTextBoxColumn1";
-            this.exchangedDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.exchangedDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.exchangedDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.exchangedDataGridViewTextBoxColumn1.Width = 90;
-            // 
-            // rateDataGridViewTextBoxColumn1
-            // 
-            this.rateDataGridViewTextBoxColumn1.DataPropertyName = "Rate";
-            this.rateDataGridViewTextBoxColumn1.HeaderText = "سعر الصرف";
-            this.rateDataGridViewTextBoxColumn1.Name = "rateDataGridViewTextBoxColumn1";
-            this.rateDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.rateDataGridViewTextBoxColumn1.Width = 91;
-            // 
-            // foreginCurrencyIdDataGridViewTextBoxColumn1
-            // 
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.DataPropertyName = "ForeginCurrencyId";
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.DataSource = this.billlineforeigncurrencyBS;
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.DisplayMember = "CurrencyName";
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.HeaderText = "العملة الطرف";
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.Name = "foreginCurrencyIdDataGridViewTextBoxColumn1";
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.ValueMember = "Id";
-            this.foreginCurrencyIdDataGridViewTextBoxColumn1.Width = 99;
-            // 
             // billlineforeigncurrencyBS
             // 
             this.billlineforeigncurrencyBS.DataSource = typeof(Alver.DAL.Currency);
-            // 
-            // exchangedAmountDataGridViewTextBoxColumn1
-            // 
-            this.exchangedAmountDataGridViewTextBoxColumn1.DataPropertyName = "ExchangedAmount";
-            this.exchangedAmountDataGridViewTextBoxColumn1.HeaderText = "سعر الواحدة - ل.س";
-            this.exchangedAmountDataGridViewTextBoxColumn1.Name = "exchangedAmountDataGridViewTextBoxColumn1";
-            this.exchangedAmountDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.exchangedAmountDataGridViewTextBoxColumn1.Width = 128;
-            // 
-            // exchangedTotalAmountDataGridViewTextBoxColumn
-            // 
-            this.exchangedTotalAmountDataGridViewTextBoxColumn.DataPropertyName = "ExchangedTotalAmount";
-            this.exchangedTotalAmountDataGridViewTextBoxColumn.HeaderText = "الاجمالي - ل.س";
-            this.exchangedTotalAmountDataGridViewTextBoxColumn.Name = "exchangedTotalAmountDataGridViewTextBoxColumn";
-            this.exchangedTotalAmountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.exchangedTotalAmountDataGridViewTextBoxColumn.Width = 109;
-            // 
-            // userIdDataGridViewTextBoxColumn1
-            // 
-            this.userIdDataGridViewTextBoxColumn1.DataPropertyName = "UserId";
-            this.userIdDataGridViewTextBoxColumn1.DataSource = this.billlineuserBS;
-            this.userIdDataGridViewTextBoxColumn1.DisplayMember = "FullName";
-            this.userIdDataGridViewTextBoxColumn1.HeaderText = "المستخدم";
-            this.userIdDataGridViewTextBoxColumn1.Name = "userIdDataGridViewTextBoxColumn1";
-            this.userIdDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.userIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.userIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.userIdDataGridViewTextBoxColumn1.ValueMember = "Id";
-            this.userIdDataGridViewTextBoxColumn1.Width = 80;
             // 
             // billlineuserBS
             // 
@@ -1376,6 +1295,162 @@
             this.UserId.ReadOnly = true;
             this.UserId.Width = 77;
             // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn1.Visible = false;
+            this.idDataGridViewTextBoxColumn1.Width = 42;
+            // 
+            // billIdDataGridViewTextBoxColumn
+            // 
+            this.billIdDataGridViewTextBoxColumn.DataPropertyName = "BillId";
+            this.billIdDataGridViewTextBoxColumn.HeaderText = "BillId";
+            this.billIdDataGridViewTextBoxColumn.Name = "billIdDataGridViewTextBoxColumn";
+            this.billIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.billIdDataGridViewTextBoxColumn.Visible = false;
+            this.billIdDataGridViewTextBoxColumn.Width = 58;
+            // 
+            // itemIdDataGridViewTextBoxColumn
+            // 
+            this.itemIdDataGridViewTextBoxColumn.DataPropertyName = "ItemId";
+            this.itemIdDataGridViewTextBoxColumn.DataSource = this.billlineitemBS;
+            this.itemIdDataGridViewTextBoxColumn.DisplayMember = "ItemName";
+            this.itemIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.itemIdDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
+            this.itemIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemIdDataGridViewTextBoxColumn.HeaderText = "المادة";
+            this.itemIdDataGridViewTextBoxColumn.Name = "itemIdDataGridViewTextBoxColumn";
+            this.itemIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.itemIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.itemIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            this.itemIdDataGridViewTextBoxColumn.Width = 61;
+            // 
+            // unitIdDataGridViewTextBoxColumn
+            // 
+            this.unitIdDataGridViewTextBoxColumn.DataPropertyName = "UnitId";
+            this.unitIdDataGridViewTextBoxColumn.DataSource = this.billlineunitBS;
+            this.unitIdDataGridViewTextBoxColumn.DisplayMember = "Title";
+            this.unitIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.unitIdDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
+            this.unitIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.unitIdDataGridViewTextBoxColumn.HeaderText = "الواحدة";
+            this.unitIdDataGridViewTextBoxColumn.Name = "unitIdDataGridViewTextBoxColumn";
+            this.unitIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unitIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.unitIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            this.unitIdDataGridViewTextBoxColumn.Width = 67;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "الكمية";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.quantityDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // currencyIdDataGridViewTextBoxColumn1
+            // 
+            this.currencyIdDataGridViewTextBoxColumn1.DataPropertyName = "CurrencyId";
+            this.currencyIdDataGridViewTextBoxColumn1.DataSource = this.billlinebasecurrencyBS;
+            this.currencyIdDataGridViewTextBoxColumn1.DisplayMember = "CurrencyName";
+            this.currencyIdDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.currencyIdDataGridViewTextBoxColumn1.DisplayStyleForCurrentCellOnly = true;
+            this.currencyIdDataGridViewTextBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.currencyIdDataGridViewTextBoxColumn1.HeaderText = "العملة الاساس";
+            this.currencyIdDataGridViewTextBoxColumn1.Name = "currencyIdDataGridViewTextBoxColumn1";
+            this.currencyIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.currencyIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.currencyIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.currencyIdDataGridViewTextBoxColumn1.ValueMember = "Id";
+            this.currencyIdDataGridViewTextBoxColumn1.Width = 103;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "السعر";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priceDataGridViewTextBoxColumn.Width = 61;
+            // 
+            // totalPriceDataGridViewTextBoxColumn
+            // 
+            this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
+            this.totalPriceDataGridViewTextBoxColumn.HeaderText = "الاجمالي";
+            this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
+            this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.totalPriceDataGridViewTextBoxColumn.Width = 73;
+            // 
+            // exchangedDataGridViewTextBoxColumn1
+            // 
+            this.exchangedDataGridViewTextBoxColumn1.DataPropertyName = "Exchanged";
+            this.exchangedDataGridViewTextBoxColumn1.HeaderText = "تم التصريف";
+            this.exchangedDataGridViewTextBoxColumn1.Name = "exchangedDataGridViewTextBoxColumn1";
+            this.exchangedDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.exchangedDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.exchangedDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.exchangedDataGridViewTextBoxColumn1.Width = 90;
+            // 
+            // rateDataGridViewTextBoxColumn1
+            // 
+            this.rateDataGridViewTextBoxColumn1.DataPropertyName = "Rate";
+            this.rateDataGridViewTextBoxColumn1.HeaderText = "سعر الصرف";
+            this.rateDataGridViewTextBoxColumn1.Name = "rateDataGridViewTextBoxColumn1";
+            this.rateDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.rateDataGridViewTextBoxColumn1.Width = 91;
+            // 
+            // foreginCurrencyIdDataGridViewTextBoxColumn1
+            // 
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.DataPropertyName = "ForeginCurrencyId";
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.DataSource = this.billlineforeigncurrencyBS;
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.DisplayMember = "CurrencyName";
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.DisplayStyleForCurrentCellOnly = true;
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.HeaderText = "العملة الطرف";
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.Name = "foreginCurrencyIdDataGridViewTextBoxColumn1";
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.ValueMember = "Id";
+            this.foreginCurrencyIdDataGridViewTextBoxColumn1.Width = 99;
+            // 
+            // exchangedAmountDataGridViewTextBoxColumn1
+            // 
+            this.exchangedAmountDataGridViewTextBoxColumn1.DataPropertyName = "ExchangedAmount";
+            this.exchangedAmountDataGridViewTextBoxColumn1.HeaderText = "سعر الواحدة - ل.س";
+            this.exchangedAmountDataGridViewTextBoxColumn1.Name = "exchangedAmountDataGridViewTextBoxColumn1";
+            this.exchangedAmountDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.exchangedAmountDataGridViewTextBoxColumn1.Width = 128;
+            // 
+            // exchangedTotalAmountDataGridViewTextBoxColumn
+            // 
+            this.exchangedTotalAmountDataGridViewTextBoxColumn.DataPropertyName = "ExchangedTotalAmount";
+            this.exchangedTotalAmountDataGridViewTextBoxColumn.HeaderText = "الاجمالي - ل.س";
+            this.exchangedTotalAmountDataGridViewTextBoxColumn.Name = "exchangedTotalAmountDataGridViewTextBoxColumn";
+            this.exchangedTotalAmountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.exchangedTotalAmountDataGridViewTextBoxColumn.Width = 109;
+            // 
+            // userIdDataGridViewTextBoxColumn1
+            // 
+            this.userIdDataGridViewTextBoxColumn1.DataPropertyName = "UserId";
+            this.userIdDataGridViewTextBoxColumn1.DataSource = this.billlineuserBS;
+            this.userIdDataGridViewTextBoxColumn1.DisplayMember = "FullName";
+            this.userIdDataGridViewTextBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.userIdDataGridViewTextBoxColumn1.DisplayStyleForCurrentCellOnly = true;
+            this.userIdDataGridViewTextBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.userIdDataGridViewTextBoxColumn1.HeaderText = "المستخدم";
+            this.userIdDataGridViewTextBoxColumn1.Name = "userIdDataGridViewTextBoxColumn1";
+            this.userIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.userIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.userIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.userIdDataGridViewTextBoxColumn1.ValueMember = "Id";
+            this.userIdDataGridViewTextBoxColumn1.Width = 80;
+            // 
             // frmBillMangement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1553,6 +1628,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn exchangedAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn userIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripDropDownButton BillFuncs;
+        private System.Windows.Forms.ToolStripMenuItem deletebillbtn;
+        private System.Windows.Forms.ToolStripMenuItem printbillslipbtn;
+        private System.Windows.Forms.ToolStripMenuItem printbillbtn;
+        private System.Windows.Forms.ToolStripMenuItem editbillbtn;
+        private System.Windows.Forms.ToolStripMenuItem addbillbtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn billIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn itemIdDataGridViewTextBoxColumn;

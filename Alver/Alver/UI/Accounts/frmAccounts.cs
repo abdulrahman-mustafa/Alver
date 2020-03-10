@@ -15,17 +15,20 @@ namespace Alver.UI.Accounts
 {
     public partial class frmAccounts : Form
     {
-        dbEntities db;
-        Account _client;
+        private dbEntities db;
+        private Account _client;
+
         public frmAccounts(Account Client)
         {
             InitializeComponent();
             _client = Client == null ? (new Account()) : Client;
         }
+
         private void AccountBindingNavigatorSaveItem_Click(object sender, System.EventArgs e)
         {
             Save();
         }
+
         private void Save()
         {
             //prepareList();
@@ -33,6 +36,7 @@ namespace Alver.UI.Accounts
             MSGs.SaveMessage();
             clearForm();
         }
+
         private void prepareList()
         {
             foreach (Account _account in AccountBindingSource.List)
@@ -60,6 +64,7 @@ namespace Alver.UI.Accounts
                 catch (Exception ex) { }
             }
         }
+
         private void frmClients_Load(object sender, System.EventArgs e)
         {
             db = new dbEntities();
@@ -85,16 +90,19 @@ namespace Alver.UI.Accounts
             accounts_FundBindingSource.DataSource = AccountBindingSource;
             currencyBindingSource.DataSource = db.Currencies.ToList();
         }
+
         private void clearForm()
         {
             this.Controls.ClearControls();
             tabPage1.Controls.ClearControls();
             tabPage2.Controls.ClearControls();
         }
+
         private void accounts_FundDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
+
         private void AccountDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -107,6 +115,7 @@ namespace Alver.UI.Accounts
             {
             }
         }
+
         private void AccountBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -121,6 +130,7 @@ namespace Alver.UI.Accounts
             accounts_FundBindingSource.Position = _fundPosition;
             this.Cursor = Cursors.Default;
         }
+
         private void CheckChanges()
         {
             foreach (AccountFund item in accounts_FundBindingSource.List)
@@ -142,7 +152,6 @@ namespace Alver.UI.Accounts
                             }
                             //if (db.Entry(item).State == EntityState.Detached || db.Entry(item).State == EntityState.Added)
                             //{
-
                             //}
                         }
                         catch (Exception ex) { }
@@ -151,6 +160,7 @@ namespace Alver.UI.Accounts
                 catch (Exception ex) { }
             }//END foreach
         }
+
         private void ItemChanged(DbPropertyValues originalValues, DbPropertyValues currentValues, AccountFund item)
         {
             foreach (string propertyName in originalValues.PropertyNames)
@@ -173,17 +183,20 @@ namespace Alver.UI.Accounts
                 }
             }
         }
+
         private void accounts_FundDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
         }
+
         private void accounts_FundDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             MISC.Utilities.ComboBoxBlackBGFix((DataGridView)sender, e);
         }
+
         private void AccountBindingSource_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
         }
+
         private void AccountBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             try
@@ -206,7 +219,6 @@ namespace Alver.UI.Accounts
             }
             catch (Exception ex)
             {
-
             }
         }
 
@@ -220,7 +232,6 @@ namespace Alver.UI.Accounts
         private void balancesDgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ColorizeDgv();
-
         }
 
         private void Search(string _keyword)
@@ -244,12 +255,10 @@ namespace Alver.UI.Accounts
 
         private void toolStripTextBox4_Click(object sender, EventArgs e)
         {
-
         }
 
         private void bindingNavigator3_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void toolStripTextBox4_TextChanged(object sender, EventArgs e)
@@ -316,7 +325,6 @@ namespace Alver.UI.Accounts
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void frmClients_FormClosing(object sender, FormClosingEventArgs e)
@@ -327,7 +335,6 @@ namespace Alver.UI.Accounts
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void accounts_FundDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -360,7 +367,6 @@ namespace Alver.UI.Accounts
 
         private void SearchBox_Click(object sender, EventArgs e)
         {
-
         }
 
         private void اكسلToolStripMenuItem_Click(object sender, EventArgs e)
@@ -441,9 +447,10 @@ namespace Alver.UI.Accounts
             DeleteClient();
             toolStripButton8_Click(null, null);
         }
+
         private void DeleteClient()
         {
-            using (TransactionScope transaction=new TransactionScope())
+            using (TransactionScope transaction = new TransactionScope())
             {
                 if (AccountBindingSource.Count <= 0)
                     return;
@@ -501,21 +508,21 @@ namespace Alver.UI.Accounts
                 deletebtn.Enabled = true;
                 transaction.Complete();
             }
-            
         }
+
         private void AddClient()
         {
             try
             {
                 frmAddAccount frm = new frmAddAccount();
-            frm.ShowDialog();
-            toolStripButton8_Click(null, null);
+                frm.ShowDialog();
+                toolStripButton8_Click(null, null);
             }
             catch (Exception ex)
             {
-
             }
         }
+
         private void EditClient()
         {
             try
@@ -529,7 +536,6 @@ namespace Alver.UI.Accounts
             }
             catch (Exception ex)
             {
-                
             }
         }
 
