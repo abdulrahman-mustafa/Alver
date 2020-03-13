@@ -133,6 +133,16 @@ namespace Alver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BG__3_ {
+            get {
+                object obj = ResourceManager.GetObject("BG (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap changepassword {
             get {
                 object obj = ResourceManager.GetObject("changepassword", resourceCulture);
@@ -216,6 +226,16 @@ namespace Alver.Properties {
         internal static System.Drawing.Bitmap getdata {
             get {
                 object obj = ResourceManager.GetObject("getdata", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_active_directory_25px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_active_directory_25px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -466,6 +486,16 @@ namespace Alver.Properties {
         internal static System.Drawing.Bitmap icons8_invoice_25px {
             get {
                 object obj = ResourceManager.GetObject("icons8_invoice_25px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_job_25px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_job_25px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

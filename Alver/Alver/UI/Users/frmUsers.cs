@@ -9,8 +9,9 @@ namespace Alver.UI.Users
 {
     public partial class frmUsers : Form
     {
-        dbEntities db;
-        User _user;
+        private dbEntities db;
+        private User _user;
+
         public frmUsers()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace Alver.UI.Users
         {
             try
             {
-                int _userId=(users_UserBindingSource.Current as User).Id;
+                int _userId = (users_UserBindingSource.Current as User).Id;
                 frmEditUser frm = new frmEditUser(_userId);
                 frm.ShowDialog();
                 LoadData();
@@ -53,6 +54,7 @@ namespace Alver.UI.Users
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             //User newUser = UserBindingSource.AddNew() as User;
@@ -146,12 +148,19 @@ namespace Alver.UI.Users
                 MessageBox.Show("حصل خطأ داخلي");
                 throw;
             }
-
         }
 
         private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
+        }
+
+        private void pdfexportbtn_Click(object sender, EventArgs e)
+        {
+            if (dgv.Rows.Count > 0)
+            {
+                dgv.ExportToPDF();
+            }
         }
     }
 }

@@ -475,23 +475,23 @@
             // 
             // sortgb
             // 
-            this.sortgb.Controls.Add(this.desccb);
             this.sortgb.Controls.Add(this.aseccb);
+            this.sortgb.Controls.Add(this.desccb);
+            this.sortgb.Dock = System.Windows.Forms.DockStyle.Top;
             this.sortgb.Enabled = false;
-            this.sortgb.Location = new System.Drawing.Point(12, 38);
+            this.sortgb.Location = new System.Drawing.Point(0, 19);
             this.sortgb.Name = "sortgb";
-            this.sortgb.Size = new System.Drawing.Size(184, 90);
+            this.sortgb.Size = new System.Drawing.Size(207, 90);
             this.sortgb.TabIndex = 59;
             this.sortgb.TabStop = false;
             // 
             // desccb
             // 
-            this.desccb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.desccb.AutoSize = true;
             this.desccb.Checked = true;
-            this.desccb.Location = new System.Drawing.Point(51, 26);
+            this.desccb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.desccb.Location = new System.Drawing.Point(3, 19);
             this.desccb.Name = "desccb";
-            this.desccb.Size = new System.Drawing.Size(127, 19);
+            this.desccb.Size = new System.Drawing.Size(201, 30);
             this.desccb.TabIndex = 57;
             this.desccb.TabStop = true;
             this.desccb.Text = "من الأعلى إلى الأدنى";
@@ -499,11 +499,10 @@
             // 
             // aseccb
             // 
-            this.aseccb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.aseccb.AutoSize = true;
-            this.aseccb.Location = new System.Drawing.Point(51, 56);
+            this.aseccb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.aseccb.Location = new System.Drawing.Point(3, 49);
             this.aseccb.Name = "aseccb";
-            this.aseccb.Size = new System.Drawing.Size(127, 19);
+            this.aseccb.Size = new System.Drawing.Size(201, 30);
             this.aseccb.TabIndex = 57;
             this.aseccb.Text = "من الأدنى إلى الأعلى";
             this.aseccb.UseVisualStyleBackColor = true;
@@ -511,11 +510,12 @@
             // sortcb
             // 
             this.sortcb.AutoSize = true;
-            this.sortcb.Location = new System.Drawing.Point(155, 12);
+            this.sortcb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.sortcb.Location = new System.Drawing.Point(0, 0);
             this.sortcb.Name = "sortcb";
-            this.sortcb.Size = new System.Drawing.Size(41, 19);
+            this.sortcb.Size = new System.Drawing.Size(207, 19);
             this.sortcb.TabIndex = 58;
-            this.sortcb.Text = "فرز";
+            this.sortcb.Text = "فرز حسب الكمية";
             this.sortcb.UseVisualStyleBackColor = true;
             this.sortcb.CheckedChanged += new System.EventHandler(this.sortcb_CheckedChanged);
             // 
@@ -583,7 +583,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.sortgb.ResumeLayout(false);
-            this.sortgb.PerformLayout();
             this.ResumeLayout(false);
 
         }

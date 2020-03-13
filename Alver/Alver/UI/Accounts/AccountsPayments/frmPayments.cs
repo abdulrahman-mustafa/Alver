@@ -1,6 +1,8 @@
 ﻿using Alver.DAL;
 using Alver.MISC;
+
 using Alver.MISC;
+
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -12,12 +14,14 @@ namespace Alver.UI.Accounts.AccountsPayments
     public partial class frmPayments : Form
     {
         //dbEntities db;
-        Payment _payment;
+        private Payment _payment;
+
         public frmPayments(Payment Payment)
         {
             InitializeComponent();
             _payment = Payment == null ? (new Payment()) : Payment;
         }
+
         private void frmPayments_Load(object sender, EventArgs e)
         {
             //db = new dbEntities();
@@ -40,6 +44,7 @@ namespace Alver.UI.Accounts.AccountsPayments
             }
             MISC.Utilities.SearchableComboBox(accountcombobox);
         }
+
         private void payments_OperationBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             //dgv.EndEdit();
@@ -47,6 +52,7 @@ namespace Alver.UI.Accounts.AccountsPayments
             //Utilities.SaveChanges(ref db, this);
             //Retrive();
         }
+
         private void CheckChanges()
         {
             //foreach (Payment item in paymentsOperationBindingSource.List)
@@ -71,6 +77,7 @@ namespace Alver.UI.Accounts.AccountsPayments
             //    catch (Exception ex) { }
             //}//END foreach
         }
+
         private void ItemChanged(DbPropertyValues originalValues, DbPropertyValues currentValues, Payment item)
         {
             foreach (string propertyName in originalValues.PropertyNames)
@@ -85,6 +92,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 }
             }
         }
+
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             //try
@@ -108,6 +116,7 @@ namespace Alver.UI.Accounts.AccountsPayments
         {
             e.ThrowException = false;
         }
+
         private void paymentsOperationBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             try
@@ -121,6 +130,7 @@ namespace Alver.UI.Accounts.AccountsPayments
             }
             catch (Exception ex) { }
         }
+
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             DialogResult _ConfirmationDialog = MessageBox.Show("هل انت متأكد من تنفيذ العملية؟، لن تتمكن من التراجع عن تنفيذ العملية!", "تنبيه", MessageBoxButtons.YesNo);
@@ -157,17 +167,20 @@ namespace Alver.UI.Accounts.AccountsPayments
                 MessageBox.Show("حدث خطأ أثناء الحذف");
             }
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Retrive();
             DGVTotals();
         }
+
         private void DGVTotals()
         {
             int _currencyIndex = currencyIdDataGridViewTextBoxColumn.Index;
             int _amountIndex = amountDataGridViewTextBoxColumn.Index;
             dgvTotals.DataSource = dgv.TotalsDGV(_currencyIndex, _amountIndex);
         }
+
         private void Retrive()
         {
             try
@@ -220,6 +233,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 MessageBox.Show("حدث خطأ داخلي");
             }
         }
+
         private IQueryable<Payment> GrandSearch(DateTime _from, DateTime _to, int _currencyId, int _accountId, string _fromClient, string _toClient)
         {
             IQueryable<Payment> _query;// = new IQueryable<Remittances_Operation>;
@@ -234,7 +248,6 @@ namespace Alver.UI.Accounts.AccountsPayments
                                 (x.PaymentDate.Value.Day >= _from.Day && x.PaymentDate.Value.Day <= _to.Day))
 
                         ).AsQueryable();
-
                 }
                 else if (_from.Year != _to.Year)
                 {
@@ -279,7 +292,6 @@ namespace Alver.UI.Accounts.AccountsPayments
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void اكسلToolStripMenuItem_Click(object sender, EventArgs e)

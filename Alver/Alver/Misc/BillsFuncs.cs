@@ -52,6 +52,7 @@ namespace Alver.MISC
                         {
                             DeleteBillLine(item);
                         }
+                        TransactionsFuncs.DeleteTransactions(_bill.GUID.Value);
                         //_ex.CurrencyExchangeOperations.
                         db.BillLines.RemoveRange(_bill.BillLines);
                         db.Bills.Remove(_bill);

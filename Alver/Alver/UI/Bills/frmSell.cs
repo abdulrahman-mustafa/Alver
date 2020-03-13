@@ -120,7 +120,7 @@ namespace Alver.UI.Bills
                 {
                     using (dbEntities db = new dbEntities())
                     {
-                        if (barcodecb.Text == string.Empty && db.Items.Find(_itemId).Barcode != null)
+                        if (db.Items.Find(_itemId).Barcode != null)
                         {
                             barcodecb.Text = db.Items.Find(_itemId).Barcode;
                         }
@@ -679,6 +679,7 @@ namespace Alver.UI.Bills
                 accountcb.SelectedValue = 1;
                 InsertBill();
                 ExchangeRate();
+                payedchkbox.Checked = exchangebillchkbox.Checked = true;
                 barcodecb.Focus();
             }
             catch (Exception ex)
@@ -960,6 +961,23 @@ namespace Alver.UI.Bills
             if (e.KeyCode == Keys.Enter)
             {
                 RetreiveItemStaticsByBarcode();
+                barcodecb.SelectAll();
+            }
+        }
+
+        private void quantitynud_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal _totalusd = 0, _totalsyp = 0;
+                _totalusd = quantitynud.Value * pricenud.Value;
+                _totalsyp = quantitynud.Value * exchangedpricenud.Value;
+                totallineudslbl.Text = _totalusd.ToString();
+                totallinesyplbl.Text = _totalsyp.ToString();
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
             }
         }
     }

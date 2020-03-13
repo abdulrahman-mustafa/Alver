@@ -1,4 +1,5 @@
 ﻿using Alver.DAL;
+using Alver.MISC;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Data.Entity;
@@ -16,11 +17,25 @@ namespace Alver.UI.Bills.BillReports
 
         public frmBillSlip(int BillId, int UserId, bool SilentPrinting = false)
         {
-            InitializeComponent();
-            _billId = BillId;
-            _userId = UserId;
-            _currencyId = (new dbEntities()).Bills.Find(_billId).ForeginCurrencyId.Value;
-            _silentPrinting = SilentPrinting;
+            try
+            {
+                InitializeComponent();
+                _billId = BillId;
+                _userId = UserId;
+                if ((new dbEntities()).Bills.Find(_billId).ForeginCurrencyId != null)
+                {
+                    _currencyId = (new dbEntities()).Bills.Find(_billId).ForeginCurrencyId.Value;
+                }
+                else
+                {
+                    _currencyId = 2;
+                }
+                _silentPrinting = SilentPrinting;
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
         }
 
         private void frmClientConformity_Load(object sender, EventArgs e)

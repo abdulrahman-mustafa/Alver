@@ -4,6 +4,7 @@ using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
@@ -12,8 +13,20 @@ namespace Alver.UI.Utilities
 {
     public partial class frmDBTools : Form
     {
+        private const string SQLSERVER = ".";
+        private const string EXPRESSSERVER = @".\SQLExpress";
+        private const string DATABASE = "Alver";
+
         private string _connectionString = string.Empty
             , _path = string.Empty;
+
+        //Build an Entity Framework connection string
+        private EntityConnectionStringBuilder entityString = new EntityConnectionStringBuilder()
+        {
+            Provider = "System.Data.SqlClient",
+            Metadata = "res://*/DAL.Model.csdl|res://*/DAL.Model.ssdl|res://*/DAL.Model.msl",
+            ProviderConnectionString = @"data source=" + SQLSERVER + ";initial catalog=" + DATABASE + ";integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"// sqlString.ToString()
+        };
 
         private bool _connected = false;
 
@@ -117,6 +130,8 @@ namespace Alver.UI.Utilities
                                     System.Configuration.ConfigurationManager.
                                     ConnectionStrings["dbEntities"].ConnectionString;
                 connectionstringtb.Text = connection.ToString();// _connectionString;
+                connectionstringtb.Text += Environment.NewLine + Environment.NewLine;
+                connectionstringtb.Text += entityString;
             }
             catch (Exception ex)
             {

@@ -241,6 +241,7 @@
             // addClientpb
             // 
             this.addClientpb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addClientpb.Image = global::Alver.Properties.Resources.adduser;
             this.addClientpb.Location = new System.Drawing.Point(17, 22);
             this.addClientpb.Name = "addClientpb";
             this.addClientpb.Size = new System.Drawing.Size(25, 25);

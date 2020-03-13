@@ -138,6 +138,8 @@
             this.chechprintbillbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.printbillslipbtn = new System.Windows.Forms.ToolStripButton();
+            this.totallineudslbl = new System.Windows.Forms.Label();
+            this.totallinesyplbl = new System.Windows.Forms.Label();
             declarationLabel = new System.Windows.Forms.Label();
             exchangeDateLabel = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -589,6 +591,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.totallinesyplbl);
+            this.panel3.Controls.Add(this.totallineudslbl);
             this.panel3.Controls.Add(this.exchangedpricenud);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.remainedquantitylbl);
@@ -780,6 +784,7 @@
             0,
             0,
             0});
+            this.quantitynud.ValueChanged += new System.EventHandler(this.quantitynud_ValueChanged);
             // 
             // unitcb
             // 
@@ -1352,6 +1357,26 @@
             this.printbillslipbtn.Text = "طباعة الفاتورة";
             this.printbillslipbtn.Click += new System.EventHandler(this.printbillslipbtn_Click);
             // 
+            // totallineudslbl
+            // 
+            this.totallineudslbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totallineudslbl.AutoSize = true;
+            this.totallineudslbl.Location = new System.Drawing.Point(231, 50);
+            this.totallineudslbl.Name = "totallineudslbl";
+            this.totallineudslbl.Size = new System.Drawing.Size(13, 15);
+            this.totallineudslbl.TabIndex = 57;
+            this.totallineudslbl.Text = "0";
+            // 
+            // totallinesyplbl
+            // 
+            this.totallinesyplbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totallinesyplbl.AutoSize = true;
+            this.totallinesyplbl.Location = new System.Drawing.Point(120, 50);
+            this.totallinesyplbl.Name = "totallinesyplbl";
+            this.totallinesyplbl.Size = new System.Drawing.Size(13, 15);
+            this.totallinesyplbl.TabIndex = 58;
+            this.totallinesyplbl.Text = "0";
+            // 
             // frmSell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1519,5 +1544,7 @@
         private System.Windows.Forms.ComboBox billIdcb;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ToolStripButton printbillslipbtn;
+        private System.Windows.Forms.Label totallinesyplbl;
+        private System.Windows.Forms.Label totallineudslbl;
     }
 }

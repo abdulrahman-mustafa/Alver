@@ -32,6 +32,19 @@ namespace Alver.UI.Configuration
             //db.Configuration.ProxyCreationEnabled = false;
             LoadData();
             LoadPrinters();
+            LoadUserSettings();
+        }
+
+        private void LoadUserSettings()
+        {
+            try
+            {
+                bkupaskchkbox.Checked = Settings.Default.AskForBKUP;
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
         }
 
         private void LoadPrinters()
@@ -103,6 +116,7 @@ namespace Alver.UI.Configuration
                         db.SaveChanges();
                         string _printerName = printercb.Text.Trim();
                         Settings.Default.BillPrinter = _printerName;
+                        Settings.Default.AskForBKUP = bkupaskchkbox.Checked;
                         Settings.Default.Save();
                         MessageBox.Show("تم الحفظ بنجاح");
                     }
@@ -230,6 +244,11 @@ namespace Alver.UI.Configuration
             {
                 MSGs.ErrorMessage(ex);
             }
+        }
+
+        private void generalsettingsbtn_Click(object sender, EventArgs e)
+        {
+            CompanyTablControl.SelectedTab = generalsettingstabpage;
         }
     }
 }

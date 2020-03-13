@@ -40,17 +40,13 @@
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label5;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.printerbtn = new System.Windows.Forms.Button();
-            this.companybtn = new System.Windows.Forms.Button();
             this.CompanyTablControl = new System.Windows.Forms.TabControl();
             this.companytabpage = new System.Windows.Forms.TabPage();
             this.emailaddresstb = new System.Windows.Forms.TextBox();
             this.accountantphonetb = new System.Windows.Forms.TextBox();
-            this.logopb = new System.Windows.Forms.PictureBox();
             this.titlelbl = new System.Windows.Forms.TextBox();
             this.mottolbl = new System.Windows.Forms.TextBox();
             this.managerlbl = new System.Windows.Forms.TextBox();
@@ -58,7 +54,6 @@
             this.managerphonetb = new System.Windows.Forms.TextBox();
             this.addresslbl = new System.Windows.Forms.TextBox();
             this.printertabpage = new System.Windows.Forms.TabPage();
-            this.refreshprinterslistbtn = new System.Windows.Forms.Button();
             this.printernamelbl = new System.Windows.Forms.Label();
             this.printercb = new System.Windows.Forms.ComboBox();
             this.deletedatatabpage = new System.Windows.Forms.TabPage();
@@ -67,10 +62,19 @@
             this.button3 = new System.Windows.Forms.Button();
             this.deletealldatabtn = new System.Windows.Forms.Button();
             this.defaultsettingdtabpage = new System.Windows.Forms.TabPage();
+            this.restoredefaultsbtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.generalsettingsbtn = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.printerbtn = new System.Windows.Forms.Button();
+            this.companybtn = new System.Windows.Forms.Button();
+            this.logopb = new System.Windows.Forms.PictureBox();
+            this.refreshprinterslistbtn = new System.Windows.Forms.Button();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.restoredefaultsbtn = new System.Windows.Forms.Button();
+            this.generalsettingstabpage = new System.Windows.Forms.TabPage();
+            this.bkupaskchkbox = new System.Windows.Forms.CheckBox();
             accountantLabel = new System.Windows.Forms.Label();
             addressLabel = new System.Windows.Forms.Label();
             helperLabel = new System.Windows.Forms.Label();
@@ -82,18 +86,20 @@
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.CompanyTablControl.SuspendLayout();
             this.companytabpage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logopb)).BeginInit();
             this.printertabpage.SuspendLayout();
             this.deletedatatabpage.SuspendLayout();
             this.defaultsettingdtabpage.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logopb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
+            this.generalsettingstabpage.SuspendLayout();
             this.SuspendLayout();
             // 
             // accountantLabel
@@ -204,6 +210,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.splitContainer1.Panel1.Controls.Add(this.generalsettingsbtn);
             this.splitContainer1.Panel1.Controls.Add(this.button6);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.printerbtn);
@@ -221,72 +228,13 @@
             this.splitContainer1.SplitterWidth = 20;
             this.splitContainer1.TabIndex = 0;
             // 
-            // button6
-            // 
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = global::Alver.Properties.Resources.trash;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.Location = new System.Drawing.Point(3, 126);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(176, 35);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "استرجاع الاعدادت الافتراضية";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button1
-            // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::Alver.Properties.Resources.trash;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(3, 85);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 35);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "حذف البيانات";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // printerbtn
-            // 
-            this.printerbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.printerbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.printerbtn.Image = global::Alver.Properties.Resources.print;
-            this.printerbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.printerbtn.Location = new System.Drawing.Point(3, 44);
-            this.printerbtn.Name = "printerbtn";
-            this.printerbtn.Size = new System.Drawing.Size(176, 35);
-            this.printerbtn.TabIndex = 1;
-            this.printerbtn.Text = "إعدادات الطابعة";
-            this.printerbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.printerbtn.UseVisualStyleBackColor = true;
-            this.printerbtn.Click += new System.EventHandler(this.printerbtn_Click);
-            // 
-            // companybtn
-            // 
-            this.companybtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.companybtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.companybtn.Image = global::Alver.Properties.Resources.settings;
-            this.companybtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.companybtn.Location = new System.Drawing.Point(3, 3);
-            this.companybtn.Name = "companybtn";
-            this.companybtn.Size = new System.Drawing.Size(176, 35);
-            this.companybtn.TabIndex = 0;
-            this.companybtn.Text = "بيانات الشركة";
-            this.companybtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.companybtn.UseVisualStyleBackColor = true;
-            this.companybtn.Click += new System.EventHandler(this.companybtn_Click);
-            // 
             // CompanyTablControl
             // 
             this.CompanyTablControl.Controls.Add(this.companytabpage);
             this.CompanyTablControl.Controls.Add(this.printertabpage);
             this.CompanyTablControl.Controls.Add(this.deletedatatabpage);
             this.CompanyTablControl.Controls.Add(this.defaultsettingdtabpage);
+            this.CompanyTablControl.Controls.Add(this.generalsettingstabpage);
             this.CompanyTablControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CompanyTablControl.ItemSize = new System.Drawing.Size(150, 30);
             this.CompanyTablControl.Location = new System.Drawing.Point(0, 0);
@@ -322,10 +270,10 @@
             this.companytabpage.Controls.Add(titleLabel);
             this.companytabpage.Controls.Add(this.addresslbl);
             this.companytabpage.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.companytabpage.Location = new System.Drawing.Point(4, 34);
+            this.companytabpage.Location = new System.Drawing.Point(4, 64);
             this.companytabpage.Name = "companytabpage";
             this.companytabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.companytabpage.Size = new System.Drawing.Size(650, 255);
+            this.companytabpage.Size = new System.Drawing.Size(650, 225);
             this.companytabpage.TabIndex = 0;
             this.companytabpage.Text = "بيانات الشركة";
             // 
@@ -343,18 +291,6 @@
             this.accountantphonetb.Size = new System.Drawing.Size(155, 23);
             this.accountantphonetb.TabIndex = 21;
             this.accountantphonetb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // logopb
-            // 
-            this.logopb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.logopb.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logopb.Location = new System.Drawing.Point(8, 35);
-            this.logopb.Name = "logopb";
-            this.logopb.Size = new System.Drawing.Size(158, 157);
-            this.logopb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logopb.TabIndex = 18;
-            this.logopb.TabStop = false;
-            this.logopb.DoubleClick += new System.EventHandler(this.logopb_DoubleClick);
             // 
             // titlelbl
             // 
@@ -406,36 +342,18 @@
             // printertabpage
             // 
             this.printertabpage.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.printertabpage.Controls.Add(this.refreshprinterslistbtn);
             this.printertabpage.Controls.Add(this.printernamelbl);
             this.printertabpage.Controls.Add(label4);
             this.printertabpage.Controls.Add(this.printercb);
             this.printertabpage.Controls.Add(label3);
+            this.printertabpage.Controls.Add(this.refreshprinterslistbtn);
             this.printertabpage.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.printertabpage.Location = new System.Drawing.Point(4, 34);
+            this.printertabpage.Location = new System.Drawing.Point(4, 64);
             this.printertabpage.Name = "printertabpage";
             this.printertabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.printertabpage.Size = new System.Drawing.Size(650, 255);
+            this.printertabpage.Size = new System.Drawing.Size(650, 225);
             this.printertabpage.TabIndex = 1;
             this.printertabpage.Text = "إعدادات الطابعة";
-            // 
-            // refreshprinterslistbtn
-            // 
-            this.refreshprinterslistbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.refreshprinterslistbtn.BackColor = System.Drawing.Color.Lime;
-            this.refreshprinterslistbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refreshprinterslistbtn.FlatAppearance.BorderSize = 0;
-            this.refreshprinterslistbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.refreshprinterslistbtn.ForeColor = System.Drawing.Color.Cornsilk;
-            this.refreshprinterslistbtn.Image = global::Alver.Properties.Resources.refresh;
-            this.refreshprinterslistbtn.Location = new System.Drawing.Point(167, 59);
-            this.refreshprinterslistbtn.Name = "refreshprinterslistbtn";
-            this.refreshprinterslistbtn.Size = new System.Drawing.Size(25, 25);
-            this.refreshprinterslistbtn.TabIndex = 22;
-            this.refreshprinterslistbtn.UseCompatibleTextRendering = true;
-            this.refreshprinterslistbtn.UseVisualStyleBackColor = false;
-            this.refreshprinterslistbtn.Click += new System.EventHandler(this.refreshprinterslistbtn_Click);
             // 
             // printernamelbl
             // 
@@ -463,10 +381,10 @@
             this.deletedatatabpage.Controls.Add(this.button4);
             this.deletedatatabpage.Controls.Add(this.button3);
             this.deletedatatabpage.Controls.Add(this.deletealldatabtn);
-            this.deletedatatabpage.Location = new System.Drawing.Point(4, 34);
+            this.deletedatatabpage.Location = new System.Drawing.Point(4, 64);
             this.deletedatatabpage.Name = "deletedatatabpage";
             this.deletedatatabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.deletedatatabpage.Size = new System.Drawing.Size(650, 255);
+            this.deletedatatabpage.Size = new System.Drawing.Size(650, 225);
             this.deletedatatabpage.TabIndex = 2;
             this.deletedatatabpage.Text = "حذف البيانات";
             // 
@@ -530,7 +448,7 @@
             this.deletealldatabtn.FlatAppearance.BorderSize = 0;
             this.deletealldatabtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deletealldatabtn.ForeColor = System.Drawing.Color.Cornsilk;
-            this.deletealldatabtn.Location = new System.Drawing.Point(8, 219);
+            this.deletealldatabtn.Location = new System.Drawing.Point(8, 189);
             this.deletealldatabtn.Name = "deletealldatabtn";
             this.deletealldatabtn.Size = new System.Drawing.Size(623, 30);
             this.deletealldatabtn.TabIndex = 20;
@@ -550,6 +468,24 @@
             this.defaultsettingdtabpage.Size = new System.Drawing.Size(650, 255);
             this.defaultsettingdtabpage.TabIndex = 3;
             this.defaultsettingdtabpage.Text = "استعادة الاعدادات";
+            // 
+            // restoredefaultsbtn
+            // 
+            this.restoredefaultsbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.restoredefaultsbtn.BackColor = System.Drawing.Color.Teal;
+            this.restoredefaultsbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.restoredefaultsbtn.FlatAppearance.BorderSize = 0;
+            this.restoredefaultsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.restoredefaultsbtn.ForeColor = System.Drawing.Color.Cornsilk;
+            this.restoredefaultsbtn.Location = new System.Drawing.Point(199, 112);
+            this.restoredefaultsbtn.Name = "restoredefaultsbtn";
+            this.restoredefaultsbtn.Size = new System.Drawing.Size(253, 30);
+            this.restoredefaultsbtn.TabIndex = 22;
+            this.restoredefaultsbtn.Text = "استعادة الاعدادت الافتراضية";
+            this.restoredefaultsbtn.UseCompatibleTextRendering = true;
+            this.restoredefaultsbtn.UseVisualStyleBackColor = false;
+            this.restoredefaultsbtn.Click += new System.EventHandler(this.restoredefaultsbtn_Click);
             // 
             // panel1
             // 
@@ -575,27 +511,158 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // generalsettingsbtn
+            // 
+            this.generalsettingsbtn.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.generalsettingsbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.generalsettingsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.generalsettingsbtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.generalsettingsbtn.Image = global::Alver.Properties.Resources.itemsettings;
+            this.generalsettingsbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.generalsettingsbtn.Location = new System.Drawing.Point(3, 85);
+            this.generalsettingsbtn.Name = "generalsettingsbtn";
+            this.generalsettingsbtn.Size = new System.Drawing.Size(176, 35);
+            this.generalsettingsbtn.TabIndex = 4;
+            this.generalsettingsbtn.Text = "الاعدادت العامة";
+            this.generalsettingsbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.generalsettingsbtn.UseVisualStyleBackColor = false;
+            this.generalsettingsbtn.Click += new System.EventHandler(this.generalsettingsbtn_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button6.Image = global::Alver.Properties.Resources.icons8_job_25px;
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button6.Location = new System.Drawing.Point(3, 167);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(176, 35);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "استرجاع الاعدادت الافتراضية";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.Image = global::Alver.Properties.Resources.trash;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(3, 126);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(176, 35);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "حذف البيانات";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // printerbtn
+            // 
+            this.printerbtn.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.printerbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.printerbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.printerbtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.printerbtn.Image = global::Alver.Properties.Resources.print;
+            this.printerbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.printerbtn.Location = new System.Drawing.Point(3, 44);
+            this.printerbtn.Name = "printerbtn";
+            this.printerbtn.Size = new System.Drawing.Size(176, 35);
+            this.printerbtn.TabIndex = 1;
+            this.printerbtn.Text = "إعدادات الطابعة";
+            this.printerbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.printerbtn.UseVisualStyleBackColor = false;
+            this.printerbtn.Click += new System.EventHandler(this.printerbtn_Click);
+            // 
+            // companybtn
+            // 
+            this.companybtn.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.companybtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.companybtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.companybtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.companybtn.Image = global::Alver.Properties.Resources.settings;
+            this.companybtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.companybtn.Location = new System.Drawing.Point(3, 3);
+            this.companybtn.Name = "companybtn";
+            this.companybtn.Size = new System.Drawing.Size(176, 35);
+            this.companybtn.TabIndex = 0;
+            this.companybtn.Text = "بيانات الشركة";
+            this.companybtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.companybtn.UseVisualStyleBackColor = false;
+            this.companybtn.Click += new System.EventHandler(this.companybtn_Click);
+            // 
+            // logopb
+            // 
+            this.logopb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.logopb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.logopb.Location = new System.Drawing.Point(8, 35);
+            this.logopb.Name = "logopb";
+            this.logopb.Size = new System.Drawing.Size(158, 157);
+            this.logopb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logopb.TabIndex = 18;
+            this.logopb.TabStop = false;
+            this.logopb.DoubleClick += new System.EventHandler(this.logopb_DoubleClick);
+            // 
+            // refreshprinterslistbtn
+            // 
+            this.refreshprinterslistbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.refreshprinterslistbtn.BackColor = System.Drawing.Color.Lime;
+            this.refreshprinterslistbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refreshprinterslistbtn.FlatAppearance.BorderSize = 0;
+            this.refreshprinterslistbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshprinterslistbtn.ForeColor = System.Drawing.Color.Cornsilk;
+            this.refreshprinterslistbtn.Image = global::Alver.Properties.Resources.refresh;
+            this.refreshprinterslistbtn.Location = new System.Drawing.Point(167, 59);
+            this.refreshprinterslistbtn.Name = "refreshprinterslistbtn";
+            this.refreshprinterslistbtn.Size = new System.Drawing.Size(25, 25);
+            this.refreshprinterslistbtn.TabIndex = 22;
+            this.refreshprinterslistbtn.UseCompatibleTextRendering = true;
+            this.refreshprinterslistbtn.UseVisualStyleBackColor = false;
+            this.refreshprinterslistbtn.Click += new System.EventHandler(this.refreshprinterslistbtn_Click);
+            // 
             // companyBindingSource
             // 
             this.companyBindingSource.DataSource = typeof(Alver.DAL.Company);
             // 
-            // restoredefaultsbtn
+            // generalsettingstabpage
             // 
-            this.restoredefaultsbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.restoredefaultsbtn.BackColor = System.Drawing.Color.Teal;
-            this.restoredefaultsbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.restoredefaultsbtn.FlatAppearance.BorderSize = 0;
-            this.restoredefaultsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.restoredefaultsbtn.ForeColor = System.Drawing.Color.Cornsilk;
-            this.restoredefaultsbtn.Location = new System.Drawing.Point(199, 112);
-            this.restoredefaultsbtn.Name = "restoredefaultsbtn";
-            this.restoredefaultsbtn.Size = new System.Drawing.Size(253, 30);
-            this.restoredefaultsbtn.TabIndex = 22;
-            this.restoredefaultsbtn.Text = "استعادة الاعدادت الافتراضية";
-            this.restoredefaultsbtn.UseCompatibleTextRendering = true;
-            this.restoredefaultsbtn.UseVisualStyleBackColor = false;
-            this.restoredefaultsbtn.Click += new System.EventHandler(this.restoredefaultsbtn_Click);
+            this.generalsettingstabpage.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.generalsettingstabpage.Controls.Add(this.bkupaskchkbox);
+            this.generalsettingstabpage.Controls.Add(label5);
+            this.generalsettingstabpage.Location = new System.Drawing.Point(4, 64);
+            this.generalsettingstabpage.Name = "generalsettingstabpage";
+            this.generalsettingstabpage.Padding = new System.Windows.Forms.Padding(3);
+            this.generalsettingstabpage.Size = new System.Drawing.Size(650, 225);
+            this.generalsettingstabpage.TabIndex = 4;
+            this.generalsettingstabpage.Text = "الاعدادات العامة";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = System.Drawing.Color.WhiteSmoke;
+            label5.Location = new System.Drawing.Point(412, 21);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(232, 15);
+            label5.TabIndex = 5;
+            label5.Text = "السؤال لاخذ نسخة احتياطية عند إغلاق البرنامج؟";
+            // 
+            // bkupaskchkbox
+            // 
+            this.bkupaskchkbox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bkupaskchkbox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bkupaskchkbox.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bkupaskchkbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bkupaskchkbox.Location = new System.Drawing.Point(364, 21);
+            this.bkupaskchkbox.Name = "bkupaskchkbox";
+            this.bkupaskchkbox.Size = new System.Drawing.Size(17, 17);
+            this.bkupaskchkbox.TabIndex = 6;
+            this.bkupaskchkbox.UseVisualStyleBackColor = true;
             // 
             // frmSettings
             // 
@@ -625,13 +692,15 @@
             this.CompanyTablControl.ResumeLayout(false);
             this.companytabpage.ResumeLayout(false);
             this.companytabpage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logopb)).EndInit();
             this.printertabpage.ResumeLayout(false);
             this.printertabpage.PerformLayout();
             this.deletedatatabpage.ResumeLayout(false);
             this.defaultsettingdtabpage.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.logopb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
+            this.generalsettingstabpage.ResumeLayout(false);
+            this.generalsettingstabpage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -668,5 +737,8 @@
         private System.Windows.Forms.TabPage defaultsettingdtabpage;
         private System.Windows.Forms.Button refreshprinterslistbtn;
         private System.Windows.Forms.Button restoredefaultsbtn;
+        private System.Windows.Forms.Button generalsettingsbtn;
+        private System.Windows.Forms.TabPage generalsettingstabpage;
+        private System.Windows.Forms.CheckBox bkupaskchkbox;
     }
 }

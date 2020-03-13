@@ -122,67 +122,9 @@ namespace Alver.MISC
             }
         }
 
-        public static void BackupDatabase2()
-        {
-            //LoadData();
-            BackupBrowse();
-            using (dbEntities db = new DAL.dbEntities())
-            {
-                string database = db.Database.Connection.Database;
-                //string cmd = @"BACKUP DATABASE [{0}] TO  DISK = N'{1}' WITH NOFORMAT, NOINIT,  NAME = N'MyAir-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
-                string cmd = "BACKUP DATABASE [" + database + "] TO DISK='" + _path + "\\" + "database" + "-" + DateTime.Now.ToString("yyyy-MM-dd--HH-mm-ss") + ".bak'";
-                db.Database.ExecuteSqlCommand(
-                    System.Data.Entity.TransactionalBehavior.DoNotEnsureTransaction,
-                    string.Format(cmd, database, "1"));
-            }
-        }
-
-        public static void BackupDatabase1()
-        {
-            BackupBrowse();
-            string connstr = "Data Source =.; Initial Catalog = Master; Persist Security Info = True; User ID = sa; Password = 11";
-            //db.Database.Connection.ConnectionString;
-            SqlConnection _conn = new SqlConnection(connstr);
-            string DatabaseName;
-            using (dbEntities db = new DAL.dbEntities())
-            {
-                DatabaseName = db.Database.Connection.Database;
-            }
-            try
-            {
-                StringBuilder builder = new StringBuilder(_path);
-                builder.Replace(@"\\", @"\");
-                _path = builder.ToString();
-                //_path.Replace("\\", "\");
-                if (_path == string.Empty)
-                {
-                    MessageBox.Show("اختر مسار صحيح لحفظ النسخة الاحتياطية");
-                }
-                else
-                {
-                    string cmd = "BACKUP DATABASE [" + DatabaseName + "] TO DISK='" + _path + "\\" + "database" + "-" + DateTime.Now.ToString("yyyy-MM-dd--HH-mm-ss") + ".bak'";
-                    using (SqlCommand command = new SqlCommand(cmd, _conn))
-                    {
-                        if (_conn.State != System.Data.ConnectionState.Open)
-                        {
-                            _conn.Open();
-                        }
-                        command.ExecuteNonQuery();
-                        _conn.Close();
-                        MessageBox.Show("تم أخذ نسخة احتياطية بنجاح", "نسخة احتياطية", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //BackupButton.Enabled = false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("خطأ في أخذ النسخة الاحتياطية", "نسخة احتياطية", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         public static bool RestoreBrowse()
         {
-            bool _action = true;
+            bool _action = false;
             try
             {
                 OpenFileDialog ofd = new OpenFileDialog();
@@ -192,7 +134,7 @@ namespace Alver.MISC
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     _path = ofd.FileName;
-                    //restoreButton.Enabled = true;
+                    _action = true;
                 }
             }
             catch (Exception ex)

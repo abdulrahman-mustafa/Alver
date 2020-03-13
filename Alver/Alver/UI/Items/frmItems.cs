@@ -130,7 +130,6 @@ namespace Alver.UI.Accounts
 
         private void toolStripTextBox3_TextChanged(object sender, EventArgs e)
         {
-            Search(SearchBox.Text);
         }
 
         private void toolStripTextBox4_Click(object sender, EventArgs e)
@@ -393,6 +392,16 @@ namespace Alver.UI.Accounts
                 string _secondTitle = string.Format("بإدارة: {0} - الهاتف: {1}", _companyManager, _ManagerPhone);
                 itemsdgv.EXPXLS(_reportName, _reportHeader, _decimalPlaces, _firstTitle, _secondTitle);
             }
+        }
+
+        private void SearchBox_Click_1(object sender, EventArgs e)
+        {
+            Search(SearchBox.Text);
+        }
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+            Search(SearchBox.Text);
         }
     }
 }

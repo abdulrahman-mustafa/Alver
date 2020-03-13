@@ -12,7 +12,8 @@ namespace Alver.UI.Users
     {
         private User _user;
 
-        //Role _role;
+        private Role _role;
+
         public frmUser()
         {
             InitializeComponent();
@@ -107,33 +108,33 @@ namespace Alver.UI.Users
                 {
                     Guid _guid = Guid.NewGuid();
                     int _roleId = (int)rolescb.SelectedValue;
-                    //_role = db.Roles.Find(_roleId);
-                    //_user = new User
-                    //{
-                    //    RoleId = _roleId,
-                    //    UserName = usernametb.Text.Trim(),
-                    //    FullName = fullnametb.Text.Trim(),
-                    //    Password = passwordtb.Text,
-                    //    Declaration = notestextBox.Text.Trim(),
-                    //    LUD = DateTime.Now,
-                    //    Hidden = false,
-                    //    Flag = string.Empty,
-                    //    GUID = _guid,
-                    //    PROTECTED = false,
-                    //    CD = DateTime.Now
-                    //};
-                    _user = new User();
-                    _user.RoleId = _roleId;
-                    _user.UserName = usernametb.Text.Trim();
-                    _user.FullName = fullnametb.Text.Trim();
-                    _user.Password = passwordtb.Text;
-                    _user.Declaration = notestextBox.Text.Trim();
-                    _user.LUD = DateTime.Now;
-                    _user.Hidden = false;
-                    _user.Flag = string.Empty;
-                    _user.GUID = _guid;
-                    _user.PROTECTED = false;
-                    _user.CD = DateTime.Now;
+                    _role = db.Roles.Find(_roleId);
+                    _user = new User
+                    {
+                        RoleId = _roleId,
+                        UserName = usernametb.Text.Trim(),
+                        FullName = fullnametb.Text.Trim(),
+                        Password = passwordtb.Text,
+                        Declaration = notestextBox.Text.Trim(),
+                        LUD = DateTime.Now,
+                        Hidden = false,
+                        Flag = string.Empty,
+                        GUID = _guid,
+                        PROTECTED = false,
+                        CD = DateTime.Now
+                    };
+                    //_user = new User();
+                    //_user.RoleId = _roleId;
+                    //_user.UserName = usernametb.Text.Trim();
+                    //_user.FullName = fullnametb.Text.Trim();
+                    //_user.Password = passwordtb.Text;
+                    //_user.Declaration = notestextBox.Text.Trim();
+                    //_user.LUD = DateTime.Now;
+                    //_user.Hidden = false;
+                    //_user.Flag = string.Empty;
+                    //_user.GUID = _guid;
+                    //_user.PROTECTED = false;
+                    //_user.CD = DateTime.Now;
                     db.Set<User>().Add(_user);
                     db.SaveChanges();
                     MessageBox.Show("تم إضافة المستخدم بنجاح");

@@ -132,7 +132,6 @@
             label1.Size = new System.Drawing.Size(73, 15);
             label1.TabIndex = 48;
             label1.Text = "الكمية الاولية:";
-            label1.Visible = false;
             // 
             // label3
             // 
@@ -303,7 +302,6 @@
             this.fundBalancenud.Name = "fundBalancenud";
             this.fundBalancenud.Size = new System.Drawing.Size(254, 23);
             this.fundBalancenud.TabIndex = 7;
-            this.fundBalancenud.Visible = false;
             // 
             // itemCategorycb
             // 

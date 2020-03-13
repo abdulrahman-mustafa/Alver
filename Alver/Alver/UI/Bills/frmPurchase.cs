@@ -423,6 +423,7 @@ namespace Alver.UI.Bills
                 accountcb.SelectedValue = 1;
                 InsertBill();
                 ExchangeRate();
+                payedchkbox.Checked = exchangebillchkbox.Checked = true;
                 barcodecb.Focus();
             }
             catch (Exception ex)
@@ -969,6 +970,47 @@ namespace Alver.UI.Bills
             checkbillbtn_Click(null, null);
             PrintBillSlip(true);
             LoadData();
+        }
+
+        private void RetreiveItemStaticsByBarcode()
+        {
+            try
+            {
+                string _barcode = barcodecb.Text;
+                int _itemId = 0, _unitId = 0;
+                if (unitcb.SelectedValue != null)
+                    _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
+                if (barcodecb.Text != string.Empty)
+                {
+                    using (dbEntities db = new dbEntities())
+                    {
+                        if (db.Items.Where(x => x.Barcode == _barcode).Count() > 0)
+                        {
+                            _itemId = db.Items.FirstOrDefault(x => x.Barcode == _barcode).Id;
+                            itemcb.SelectedValue = _itemId;
+                            decimal _purchasePrice = db.Items.FirstOrDefault(x => x.Id == _itemId && x.UnitId == _unitId).PurchasePrice.Value != null ? db.Items.Find(_itemId).PurchasePrice.Value : 0;
+                            pricenud.Value = _purchasePrice >= 1 ? _purchasePrice : 1;
+                            exchangedpricenud.Value = pricenud.Value * ratenud.Value;
+                            decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
+                            remainedquantitylbl.Text = _remainedQuantity.ToString();
+                            quantitynud.Maximum = _remainedQuantity;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+
+        private void barcodecb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                RetreiveItemStaticsByBarcode();
+                barcodecb.SelectAll();
+            }
         }
     }
 }

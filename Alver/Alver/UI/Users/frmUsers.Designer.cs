@@ -47,7 +47,7 @@
             this.savebtn = new System.Windows.Forms.ToolStripButton();
             this.exportbtn = new System.Windows.Forms.ToolStripDropDownButton();
             this.اكسلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pdfexportbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.roleBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -211,7 +211,7 @@
             // 
             this.exportbtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.اكسلToolStripMenuItem,
-            this.pDFToolStripMenuItem});
+            this.pdfexportbtn});
             this.exportbtn.Image = global::Alver.Properties.Resources.export;
             this.exportbtn.Name = "exportbtn";
             this.exportbtn.Size = new System.Drawing.Size(71, 24);
@@ -221,16 +221,17 @@
             // 
             this.اكسلToolStripMenuItem.Image = global::Alver.Properties.Resources.xls;
             this.اكسلToolStripMenuItem.Name = "اكسلToolStripMenuItem";
-            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
+            this.اكسلToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.اكسلToolStripMenuItem.Text = "اكسل";
             this.اكسلToolStripMenuItem.Click += new System.EventHandler(this.اكسلToolStripMenuItem_Click);
             // 
-            // pDFToolStripMenuItem
+            // pdfexportbtn
             // 
-            this.pDFToolStripMenuItem.Image = global::Alver.Properties.Resources.pdf;
-            this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
-            this.pDFToolStripMenuItem.Text = "PDF";
+            this.pdfexportbtn.Image = global::Alver.Properties.Resources.pdf;
+            this.pdfexportbtn.Name = "pdfexportbtn";
+            this.pdfexportbtn.Size = new System.Drawing.Size(184, 26);
+            this.pdfexportbtn.Text = "PDF";
+            this.pdfexportbtn.Click += new System.EventHandler(this.pdfexportbtn_Click);
             // 
             // dgv
             // 
@@ -394,6 +395,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.ToolStripDropDownButton exportbtn;
         private System.Windows.Forms.ToolStripMenuItem اكسلToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pDFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pdfexportbtn;
     }
 }

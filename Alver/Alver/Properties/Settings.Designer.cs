@@ -133,5 +133,65 @@ namespace Alver.Properties
                 this["FirstRun"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AskForBKUP
+        {
+            get
+            {
+                return ((bool)(this["AskForBKUP"]));
+            }
+            set
+            {
+                this["AskForBKUP"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("sa")]
+        public string UserId
+        {
+            get
+            {
+                return ((string)(this["UserId"]));
+            }
+            set
+            {
+                this["UserId"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("11")]
+        public string SQLPassword
+        {
+            get
+            {
+                return ((string)(this["SQLPassword"]));
+            }
+            set
+            {
+                this["SQLPassword"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Alver")]
+        public string InitialCatalog
+        {
+            get
+            {
+                return ((string)(this["InitialCatalog"]));
+            }
+            set
+            {
+                this["InitialCatalog"] = value;
+            }
+        }
     }
 }

@@ -31,6 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.HeadersplitContainer = new System.Windows.Forms.SplitContainer();
             this.mainmenustrip = new System.Windows.Forms.MenuStrip();
+            this.BodysplitContainer = new System.Windows.Forms.SplitContainer();
+            this.mainstatusstrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.databasenamelbl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.runtimeslbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.أخذنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.استرجاعنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +72,7 @@
             this.كشفحسابمادةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تسعيرالموادToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.كمياتالموادToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.كشفحركةالمادةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.billsbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.buybillbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.sellbillbtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,13 +102,6 @@
             this.viewDepositesbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.المستخدمونToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إدارةالمستخدمينToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BodysplitContainer = new System.Windows.Forms.SplitContainer();
-            this.mainstatusstrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.databasenamelbl = new System.Windows.Forms.ToolStripStatusLabel();
-            this.runtimeslbl = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.HeadersplitContainer)).BeginInit();
             this.HeadersplitContainer.Panel1.SuspendLayout();
             this.HeadersplitContainer.Panel2.SuspendLayout();
@@ -150,6 +151,84 @@
             this.mainmenustrip.Size = new System.Drawing.Size(882, 28);
             this.mainmenustrip.TabIndex = 0;
             this.mainmenustrip.Text = "menuStrip1";
+            // 
+            // BodysplitContainer
+            // 
+            this.BodysplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BodysplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.BodysplitContainer.Name = "BodysplitContainer";
+            // 
+            // BodysplitContainer.Panel1
+            // 
+            this.BodysplitContainer.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.BodysplitContainer.Panel1.BackgroundImage = global::Alver.Properties.Resources.BG__3_;
+            this.BodysplitContainer.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BodysplitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            // 
+            // BodysplitContainer.Panel2
+            // 
+            this.BodysplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.BodysplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.BodysplitContainer.Size = new System.Drawing.Size(882, 400);
+            this.BodysplitContainer.SplitterDistance = 736;
+            this.BodysplitContainer.SplitterWidth = 20;
+            this.BodysplitContainer.TabIndex = 0;
+            this.BodysplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.BodysplitContainer_SplitterMoved);
+            // 
+            // mainstatusstrip
+            // 
+            this.mainstatusstrip.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.mainstatusstrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mainstatusstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.usernameLabel,
+            this.toolStripStatusLabel3,
+            this.databasenamelbl,
+            this.runtimeslbl});
+            this.mainstatusstrip.Location = new System.Drawing.Point(0, 449);
+            this.mainstatusstrip.Name = "mainstatusstrip";
+            this.mainstatusstrip.Size = new System.Drawing.Size(882, 22);
+            this.mainstatusstrip.TabIndex = 1;
+            this.mainstatusstrip.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(92, 17);
+            this.toolStripStatusLabel1.Text = "المستخدم الحالي:";
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.usernameLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(12, 17);
+            this.usernameLabel.Text = "-";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel3.ForeColor = System.Drawing.Color.White;
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(77, 17);
+            this.toolStripStatusLabel3.Text = "قاعدة البيانات:";
+            // 
+            // databasenamelbl
+            // 
+            this.databasenamelbl.ForeColor = System.Drawing.Color.White;
+            this.databasenamelbl.Name = "databasenamelbl";
+            this.databasenamelbl.Size = new System.Drawing.Size(19, 17);
+            this.databasenamelbl.Text = "00";
+            // 
+            // runtimeslbl
+            // 
+            this.runtimeslbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.runtimeslbl.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.runtimeslbl.Name = "runtimeslbl";
+            this.runtimeslbl.Size = new System.Drawing.Size(21, 17);
+            this.runtimeslbl.Text = "00";
             // 
             // ملفToolStripMenuItem
             // 
@@ -382,7 +461,8 @@
             this.الواحداتToolStripMenuItem,
             this.كشفحسابمادةToolStripMenuItem,
             this.تسعيرالموادToolStripMenuItem,
-            this.كمياتالموادToolStripMenuItem});
+            this.كمياتالموادToolStripMenuItem,
+            this.كشفحركةالمادةToolStripMenuItem});
             this.الموادToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_product_25px;
             this.الموادToolStripMenuItem.Name = "الموادToolStripMenuItem";
             this.الموادToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
@@ -443,6 +523,14 @@
             this.كمياتالموادToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.كمياتالموادToolStripMenuItem.Text = "كميات المواد";
             this.كمياتالموادToolStripMenuItem.Click += new System.EventHandler(this.كمياتالموادToolStripMenuItem_Click);
+            // 
+            // كشفحركةالمادةToolStripMenuItem
+            // 
+            this.كشفحركةالمادةToolStripMenuItem.Image = global::Alver.Properties.Resources.icons8_active_directory_25px;
+            this.كشفحركةالمادةToolStripMenuItem.Name = "كشفحركةالمادةToolStripMenuItem";
+            this.كشفحركةالمادةToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.كشفحركةالمادةToolStripMenuItem.Text = "كشف حركة المادة";
+            this.كشفحركةالمادةToolStripMenuItem.Click += new System.EventHandler(this.كشفحركةالمادةToolStripMenuItem_Click);
             // 
             // billsbtn
             // 
@@ -690,82 +778,6 @@
             this.إدارةالمستخدمينToolStripMenuItem.Text = "إدارة المستخدمين";
             this.إدارةالمستخدمينToolStripMenuItem.Click += new System.EventHandler(this.إدارةالمستخدمينToolStripMenuItem_Click);
             // 
-            // BodysplitContainer
-            // 
-            this.BodysplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BodysplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.BodysplitContainer.Name = "BodysplitContainer";
-            // 
-            // BodysplitContainer.Panel1
-            // 
-            this.BodysplitContainer.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.BodysplitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            // 
-            // BodysplitContainer.Panel2
-            // 
-            this.BodysplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.BodysplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.BodysplitContainer.Size = new System.Drawing.Size(882, 400);
-            this.BodysplitContainer.SplitterDistance = 613;
-            this.BodysplitContainer.SplitterWidth = 20;
-            this.BodysplitContainer.TabIndex = 0;
-            this.BodysplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.BodysplitContainer_SplitterMoved);
-            // 
-            // mainstatusstrip
-            // 
-            this.mainstatusstrip.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.mainstatusstrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.mainstatusstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.usernameLabel,
-            this.toolStripStatusLabel3,
-            this.databasenamelbl,
-            this.runtimeslbl});
-            this.mainstatusstrip.Location = new System.Drawing.Point(0, 449);
-            this.mainstatusstrip.Name = "mainstatusstrip";
-            this.mainstatusstrip.Size = new System.Drawing.Size(882, 22);
-            this.mainstatusstrip.TabIndex = 1;
-            this.mainstatusstrip.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(92, 17);
-            this.toolStripStatusLabel1.Text = "المستخدم الحالي:";
-            // 
-            // usernameLabel
-            // 
-            this.usernameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.usernameLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(12, 17);
-            this.usernameLabel.Text = "-";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel3.ForeColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(77, 17);
-            this.toolStripStatusLabel3.Text = "قاعدة البيانات:";
-            // 
-            // databasenamelbl
-            // 
-            this.databasenamelbl.ForeColor = System.Drawing.Color.White;
-            this.databasenamelbl.Name = "databasenamelbl";
-            this.databasenamelbl.Size = new System.Drawing.Size(19, 17);
-            this.databasenamelbl.Text = "00";
-            // 
-            // runtimeslbl
-            // 
-            this.runtimeslbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.runtimeslbl.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.runtimeslbl.Name = "runtimeslbl";
-            this.runtimeslbl.Size = new System.Drawing.Size(21, 17);
-            this.runtimeslbl.Text = "00";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -876,5 +888,6 @@
         private System.Windows.Forms.ToolStripStatusLabel runtimeslbl;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel databasenamelbl;
+        private System.Windows.Forms.ToolStripMenuItem كشفحركةالمادةToolStripMenuItem;
     }
 }

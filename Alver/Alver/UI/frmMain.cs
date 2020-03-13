@@ -350,16 +350,26 @@ namespace Alver.Forms
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string _msg = "هل تريد اخذ نسخة احتياطية للبيانات قبل الخروج من البرنامج؟";
-            DialogResult _ConfirmationDialog = MessageBox.Show(_msg, "تأكيد!!!!",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2,
-                MessageBoxOptions.RightAlign);
-            if (_ConfirmationDialog == DialogResult.Yes)
+            if (Settings.Default.AskForBKUP)
             {
-                أخذنسخةاحتياطيةToolStripMenuItem_Click(null, null);
+                string _msg = "هل تريد اخذ نسخة احتياطية للبيانات قبل الخروج من البرنامج؟";
+                DialogResult _ConfirmationDialog = MessageBox.Show(_msg, "تأكيد!!!!",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2,
+                    MessageBoxOptions.RightAlign);
+                if (_ConfirmationDialog == DialogResult.Yes)
+                {
+                    أخذنسخةاحتياطيةToolStripMenuItem_Click(null, null);
+                }
+                e.Cancel = (_ConfirmationDialog == DialogResult.Cancel);
             }
+        }
+
+        private void كشفحركةالمادةToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmItemMovements frm = new frmItemMovements();
+            frm.Show();
         }
     }
 }

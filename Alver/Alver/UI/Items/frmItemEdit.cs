@@ -11,7 +11,8 @@ namespace Alver.UI.Items
 {
     public partial class frmItemEdit : Form
     {
-        int _itemId = 0;
+        private int _itemId = 0;
+
         public frmItemEdit(int ItemId)
         {
             if (ItemId < 1)
@@ -25,6 +26,7 @@ namespace Alver.UI.Items
             }
             InitializeComponent();
         }
+
         private void frmOut_Load(object sender, EventArgs e)
         {
             try
@@ -34,6 +36,7 @@ namespace Alver.UI.Items
                     db.Units.AsNoTracking().Load();
                     db.Currencies.AsNoTracking().Load();
                     db.ItemCategories.AsNoTracking().Load();
+                    //db.ItemFunds.AsNoTracking().Load();
                     unitBindingSource.DataSource = db.Units.AsNoTracking().ToList().AsQueryable();
                     itemCategoryBindingSource.DataSource = db.ItemCategories.AsNoTracking().ToList().AsQueryable();
                     currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
@@ -41,7 +44,9 @@ namespace Alver.UI.Items
                     Item _item = db.Items.Find(_itemId);
                     if (_item != null)
                     {
+                        //fundBalancenud.Value = (db.ItemFunds.FirstOrDefault(x => x.ItemId == _itemId).Balance.Value);
                         itemcb.Text = _item.ItemName;
+                        //fundBalancenud.Value = (db.ItemFunds.FirstOrDefault(x => x.ItemId == _itemId).Balance.Value);
                         barcodecb.Text = _item.Barcode;
                         itemCategorycb.SelectedValue = _item.CategoryId.Value;
                         itemCategorycb.SelectedValue = _item.CategoryId.Value;
@@ -63,30 +68,32 @@ namespace Alver.UI.Items
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private bool CheckValues()
         {
             bool _result = true;
             try
             {
-                using (dbEntities db=new dbEntities())
+                using (dbEntities db = new dbEntities())
                 {
-                if (string.IsNullOrWhiteSpace(itemcb.Text.Trim()))
-                {
-                    MessageBox.Show("الرجاء التأكد من اسم المادة، لا يجب ان يكون اسم المادة فارغاً");
-                    itemcb.Focus();
-                    _result = false;
-                }
-                else if (db.Accounts.Any(x => x.FullName.ToLower().Trim() == itemcb.Text.ToLower().Trim()))
-                {
-                    MessageBox.Show("اسم المادة موجود من قبل، يرجى اختيار اسم آخر");
-                    itemcb.Focus();
-                    _result = false;
-                }
+                    if (string.IsNullOrWhiteSpace(itemcb.Text.Trim()))
+                    {
+                        MessageBox.Show("الرجاء التأكد من اسم المادة، لا يجب ان يكون اسم المادة فارغاً");
+                        itemcb.Focus();
+                        _result = false;
+                    }
+                    else if (db.Accounts.Any(x => x.FullName.ToLower().Trim() == itemcb.Text.ToLower().Trim()))
+                    {
+                        MessageBox.Show("اسم المادة موجود من قبل، يرجى اختيار اسم آخر");
+                        itemcb.Focus();
+                        _result = false;
+                    }
                 }
             }
             catch (Exception ex) { }
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -102,6 +109,7 @@ namespace Alver.UI.Items
             }
             catch (Exception ex) { }
         }
+
         private void Save()
         {
             try
@@ -112,10 +120,15 @@ namespace Alver.UI.Items
                     {
                         try
                         {
+                            int _currencyId = 0;
                             int _categoryId = 0;
                             int _unitId = 0;
                             Item _item;
 
+                            if (currencycb.SelectedValue != null)
+                            {
+                                _currencyId = (int)currencycb.SelectedValue;
+                            }
                             if (itemCategorycb.SelectedValue != null)
                             {
                                 _categoryId = (int)itemCategorycb.SelectedValue;
@@ -126,12 +139,13 @@ namespace Alver.UI.Items
                             }
                             _item = db.Items.Find(_itemId);
 
-
                             _item.ItemName = itemcb.Text.Trim();
+                            _item.Barcode = barcodecb.Text.Trim();
                             _item.Declaration = declarationcb.Text.Trim();
                             _item.UserId = Properties.Settings.Default.LoggedInUser.Id;
                             //Users_User = Properties.Settings.Default.LoggedInUser;
                             //Navigation properties
+                            _item.CurrencyId = _currencyId;
                             _item.CategoryId = _categoryId;
                             _item.UnitId = _unitId;
                             _item.Hidden = false;
@@ -161,11 +175,12 @@ namespace Alver.UI.Items
         {
             try
             {
-                using (dbEntities db=new dbEntities())
+                using (dbEntities db = new dbEntities())
                 {
                     int _fundId = db.ItemFunds.FirstOrDefault(x => x.ItemId == _itemId).Id;
                     ItemFund _fund = db.ItemFunds.Find(_fundId);
                     _fund.Balance = fundBalancenud.Value;
+                    db.SaveChanges();
                     TransactionsFuncs.UpdateItemOpeningBalance(_fund, fundBalancenud.Value);
                 }
             }

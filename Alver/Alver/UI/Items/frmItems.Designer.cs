@@ -36,12 +36,6 @@ namespace Alver.UI.Accounts
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.itemfundsdgv = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.الواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.رقمالواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sPItemGrandResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemFundsBN = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
@@ -57,10 +51,7 @@ namespace Alver.UI.Accounts
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.itemsdgv = new System.Windows.Forms.DataGridView();
-            this.unitsBS = new System.Windows.Forms.BindingSource(this.components);
-            this.ItemCategoriesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.currencyBS = new System.Windows.Forms.BindingSource(this.components);
-            this.itemsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.CurrencyIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.itemsBN = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -80,30 +71,39 @@ namespace Alver.UI.Accounts
             this.exportbtn = new System.Windows.Forms.ToolStripDropDownButton();
             this.excelexportbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.pdfexportbtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemfundunitBS = new System.Windows.Forms.BindingSource(this.components);
             this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitsBS = new System.Windows.Forms.BindingSource(this.components);
             this.itemcategoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ItemCategoriesBS = new System.Windows.Forms.BindingSource(this.components);
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CurrencyIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.currencyBS = new System.Windows.Forms.BindingSource(this.components);
             this.PurchasePriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalePriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.الواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.رقمالواحدةDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sPItemGrandResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemfundunitBS = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemfundsdgv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPItemGrandResultBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemFundsBN)).BeginInit();
             this.itemFundsBN.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemsdgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBN)).BeginInit();
+            this.itemsBN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemCategoriesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currencyBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsBN)).BeginInit();
-            this.itemsBN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sPItemGrandResultBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemfundunitBS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,47 +160,6 @@ namespace Alver.UI.Accounts
             this.itemfundsdgv.VirtualMode = true;
             this.itemfundsdgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.balancesDgv_DataBindingComplete);
             this.itemfundsdgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.accounts_FundDataGridView_DataError);
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "الصندوق";
-            this.dataGridViewTextBoxColumn6.HeaderText = "الصندوق";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // الواحدةDataGridViewTextBoxColumn
-            // 
-            this.الواحدةDataGridViewTextBoxColumn.DataPropertyName = "الواحدة";
-            this.الواحدةDataGridViewTextBoxColumn.HeaderText = "الواحدة";
-            this.الواحدةDataGridViewTextBoxColumn.Name = "الواحدةDataGridViewTextBoxColumn";
-            this.الواحدةDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // رقمالواحدةDataGridViewTextBoxColumn
-            // 
-            this.رقمالواحدةDataGridViewTextBoxColumn.DataPropertyName = "رقم_الواحدة";
-            this.رقمالواحدةDataGridViewTextBoxColumn.HeaderText = "رقم_الواحدة";
-            this.رقمالواحدةDataGridViewTextBoxColumn.Name = "رقمالواحدةDataGridViewTextBoxColumn";
-            this.رقمالواحدةDataGridViewTextBoxColumn.ReadOnly = true;
-            this.رقمالواحدةDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "الإجمالي";
-            this.dataGridViewTextBoxColumn7.HeaderText = "الإجمالي";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "لنا_لكم";
-            this.dataGridViewTextBoxColumn8.HeaderText = "لنا_لكم";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Visible = false;
-            // 
-            // sPItemGrandResultBindingSource
-            // 
-            this.sPItemGrandResultBindingSource.DataSource = typeof(Alver.DAL.SP_ItemGrand_Result);
             // 
             // itemFundsBN
             // 
@@ -375,22 +334,20 @@ namespace Alver.UI.Accounts
             this.itemsdgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.accounts_FundDataGridView_DataError);
             this.itemsdgv.DoubleClick += new System.EventHandler(this.itemsdgv_DoubleClick);
             // 
-            // unitsBS
+            // CurrencyIdColumn
             // 
-            this.unitsBS.DataSource = typeof(Alver.DAL.Unit);
-            // 
-            // ItemCategoriesBS
-            // 
-            this.ItemCategoriesBS.DataSource = typeof(Alver.DAL.ItemCategory);
-            // 
-            // currencyBS
-            // 
-            this.currencyBS.DataSource = typeof(Alver.DAL.Currency);
-            // 
-            // itemsBS
-            // 
-            this.itemsBS.DataSource = typeof(Alver.DAL.Item);
-            this.itemsBS.CurrentChanged += new System.EventHandler(this.itemsBS_CurrentChanged);
+            this.CurrencyIdColumn.DataPropertyName = "CurrencyId";
+            this.CurrencyIdColumn.DataSource = this.currencyBS;
+            this.CurrencyIdColumn.DisplayMember = "CurrencyName";
+            this.CurrencyIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.CurrencyIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CurrencyIdColumn.HeaderText = "العملة";
+            this.CurrencyIdColumn.Name = "CurrencyIdColumn";
+            this.CurrencyIdColumn.ReadOnly = true;
+            this.CurrencyIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CurrencyIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CurrencyIdColumn.ValueMember = "Id";
+            this.CurrencyIdColumn.Width = 63;
             // 
             // itemsBN
             // 
@@ -510,6 +467,7 @@ namespace Alver.UI.Accounts
             this.SearchBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.Size = new System.Drawing.Size(200, 27);
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // toolStripDropDownButton1
             // 
@@ -575,10 +533,6 @@ namespace Alver.UI.Accounts
             this.pdfexportbtn.Size = new System.Drawing.Size(105, 26);
             this.pdfexportbtn.Text = "PDF";
             // 
-            // itemfundunitBS
-            // 
-            this.itemfundunitBS.DataSource = typeof(Alver.DAL.Unit);
-            // 
             // itemNameDataGridViewTextBoxColumn
             // 
             this.itemNameDataGridViewTextBoxColumn.DataPropertyName = "ItemName";
@@ -601,7 +555,11 @@ namespace Alver.UI.Accounts
             this.unitIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.unitIdDataGridViewTextBoxColumn.ValueMember = "Id";
             this.unitIdDataGridViewTextBoxColumn.Visible = false;
-            this.unitIdDataGridViewTextBoxColumn.Width = 67;
+            this.unitIdDataGridViewTextBoxColumn.Width = 65;
+            // 
+            // unitsBS
+            // 
+            this.unitsBS.DataSource = typeof(Alver.DAL.Unit);
             // 
             // itemcategoryIdDataGridViewTextBoxColumn
             // 
@@ -618,6 +576,10 @@ namespace Alver.UI.Accounts
             this.itemcategoryIdDataGridViewTextBoxColumn.ValueMember = "Id";
             this.itemcategoryIdDataGridViewTextBoxColumn.Width = 67;
             // 
+            // ItemCategoriesBS
+            // 
+            this.ItemCategoriesBS.DataSource = typeof(Alver.DAL.ItemCategory);
+            // 
             // barcodeDataGridViewTextBoxColumn
             // 
             this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
@@ -626,20 +588,9 @@ namespace Alver.UI.Accounts
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
             this.barcodeDataGridViewTextBoxColumn.Width = 68;
             // 
-            // CurrencyIdColumn
+            // currencyBS
             // 
-            this.CurrencyIdColumn.DataPropertyName = "CurrencyId";
-            this.CurrencyIdColumn.DataSource = this.currencyBS;
-            this.CurrencyIdColumn.DisplayMember = "CurrencyName";
-            this.CurrencyIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.CurrencyIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CurrencyIdColumn.HeaderText = "العملة";
-            this.CurrencyIdColumn.Name = "CurrencyIdColumn";
-            this.CurrencyIdColumn.ReadOnly = true;
-            this.CurrencyIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CurrencyIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CurrencyIdColumn.ValueMember = "Id";
-            this.CurrencyIdColumn.Width = 63;
+            this.currencyBS.DataSource = typeof(Alver.DAL.Currency);
             // 
             // PurchasePriceColumn
             // 
@@ -665,6 +616,56 @@ namespace Alver.UI.Accounts
             this.declarationDataGridViewTextBoxColumn.ReadOnly = true;
             this.declarationDataGridViewTextBoxColumn.Width = 58;
             // 
+            // itemsBS
+            // 
+            this.itemsBS.DataSource = typeof(Alver.DAL.Item);
+            this.itemsBS.CurrentChanged += new System.EventHandler(this.itemsBS_CurrentChanged);
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "الصندوق";
+            this.dataGridViewTextBoxColumn6.HeaderText = "الصندوق";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // الواحدةDataGridViewTextBoxColumn
+            // 
+            this.الواحدةDataGridViewTextBoxColumn.DataPropertyName = "الواحدة";
+            this.الواحدةDataGridViewTextBoxColumn.HeaderText = "الواحدة";
+            this.الواحدةDataGridViewTextBoxColumn.Name = "الواحدةDataGridViewTextBoxColumn";
+            this.الواحدةDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // رقمالواحدةDataGridViewTextBoxColumn
+            // 
+            this.رقمالواحدةDataGridViewTextBoxColumn.DataPropertyName = "رقم_الواحدة";
+            this.رقمالواحدةDataGridViewTextBoxColumn.HeaderText = "رقم_الواحدة";
+            this.رقمالواحدةDataGridViewTextBoxColumn.Name = "رقمالواحدةDataGridViewTextBoxColumn";
+            this.رقمالواحدةDataGridViewTextBoxColumn.ReadOnly = true;
+            this.رقمالواحدةDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "الإجمالي";
+            this.dataGridViewTextBoxColumn7.HeaderText = "الإجمالي";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "لنا_لكم";
+            this.dataGridViewTextBoxColumn8.HeaderText = "لنا_لكم";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Visible = false;
+            // 
+            // sPItemGrandResultBindingSource
+            // 
+            this.sPItemGrandResultBindingSource.DataSource = typeof(Alver.DAL.SP_ItemGrand_Result);
+            // 
+            // itemfundunitBS
+            // 
+            this.itemfundunitBS.DataSource = typeof(Alver.DAL.Unit);
+            // 
             // frmItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -689,7 +690,6 @@ namespace Alver.UI.Accounts
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemfundsdgv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPItemGrandResultBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemFundsBN)).EndInit();
             this.itemFundsBN.ResumeLayout(false);
             this.itemFundsBN.PerformLayout();
@@ -697,13 +697,14 @@ namespace Alver.UI.Accounts
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemsdgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBN)).EndInit();
+            this.itemsBN.ResumeLayout(false);
+            this.itemsBN.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemCategoriesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currencyBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsBN)).EndInit();
-            this.itemsBN.ResumeLayout(false);
-            this.itemsBN.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sPItemGrandResultBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemfundunitBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

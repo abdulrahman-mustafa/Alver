@@ -51,18 +51,8 @@
             this.اكسلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.paymentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.accountsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.currencyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lockedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lUDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.usersUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.accountcb = new System.Windows.Forms.CheckBox();
@@ -80,6 +70,16 @@
             this.FromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ToDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dgvTotals = new System.Windows.Forms.DataGridView();
+            this.paymentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.currencyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lockedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lUDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.payments_OperationBindingNavigator)).BeginInit();
             this.payments_OperationBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.paymentsOperationBindingSource)).BeginInit();
@@ -276,116 +276,13 @@
             this.dgv.TabIndex = 1;
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.payments_OperationDataGridView_DataError);
             // 
-            // paymentDateDataGridViewTextBoxColumn
-            // 
-            this.paymentDateDataGridViewTextBoxColumn.DataPropertyName = "PaymentDate";
-            this.paymentDateDataGridViewTextBoxColumn.HeaderText = "التاريخ";
-            this.paymentDateDataGridViewTextBoxColumn.Name = "paymentDateDataGridViewTextBoxColumn";
-            this.paymentDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.paymentDateDataGridViewTextBoxColumn.Width = 63;
-            // 
-            // paymentTypeDataGridViewTextBoxColumn
-            // 
-            this.paymentTypeDataGridViewTextBoxColumn.DataPropertyName = "PaymentType";
-            this.paymentTypeDataGridViewTextBoxColumn.HeaderText = "نوع الدفعة";
-            this.paymentTypeDataGridViewTextBoxColumn.Name = "paymentTypeDataGridViewTextBoxColumn";
-            this.paymentTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.paymentTypeDataGridViewTextBoxColumn.Width = 84;
-            // 
-            // accountIdDataGridViewTextBoxColumn
-            // 
-            this.accountIdDataGridViewTextBoxColumn.DataPropertyName = "AccountId";
-            this.accountIdDataGridViewTextBoxColumn.DataSource = this.accountsInfoBindingSource;
-            this.accountIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.accountIdDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
-            this.accountIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.accountIdDataGridViewTextBoxColumn.HeaderText = "الوكيل";
-            this.accountIdDataGridViewTextBoxColumn.Name = "accountIdDataGridViewTextBoxColumn";
-            this.accountIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.accountIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.accountIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.accountIdDataGridViewTextBoxColumn.ValueMember = "Id";
-            this.accountIdDataGridViewTextBoxColumn.Width = 63;
-            // 
             // accountsInfoBindingSource
             // 
             this.accountsInfoBindingSource.DataSource = typeof(Alver.DAL.Account);
             // 
-            // currencyIdDataGridViewTextBoxColumn
-            // 
-            this.currencyIdDataGridViewTextBoxColumn.DataPropertyName = "CurrencyId";
-            this.currencyIdDataGridViewTextBoxColumn.DataSource = this.currencyBindingSource;
-            this.currencyIdDataGridViewTextBoxColumn.DisplayMember = "CurrencyName";
-            this.currencyIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.currencyIdDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
-            this.currencyIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.currencyIdDataGridViewTextBoxColumn.HeaderText = "العملة";
-            this.currencyIdDataGridViewTextBoxColumn.Name = "currencyIdDataGridViewTextBoxColumn";
-            this.currencyIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.currencyIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.currencyIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.currencyIdDataGridViewTextBoxColumn.ValueMember = "Id";
-            this.currencyIdDataGridViewTextBoxColumn.Width = 63;
-            // 
             // currencyBindingSource
             // 
             this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.HeaderText = "المبلغ";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.amountDataGridViewTextBoxColumn.Width = 61;
-            // 
-            // declarationDataGridViewTextBoxColumn
-            // 
-            this.declarationDataGridViewTextBoxColumn.DataPropertyName = "Declaration";
-            this.declarationDataGridViewTextBoxColumn.HeaderText = "البيان";
-            this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
-            this.declarationDataGridViewTextBoxColumn.ReadOnly = true;
-            this.declarationDataGridViewTextBoxColumn.Width = 58;
-            // 
-            // payedDataGridViewTextBoxColumn
-            // 
-            this.payedDataGridViewTextBoxColumn.DataPropertyName = "Payed";
-            this.payedDataGridViewTextBoxColumn.HeaderText = "Payed";
-            this.payedDataGridViewTextBoxColumn.Name = "payedDataGridViewTextBoxColumn";
-            this.payedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.payedDataGridViewTextBoxColumn.Visible = false;
-            this.payedDataGridViewTextBoxColumn.Width = 77;
-            // 
-            // lockedDataGridViewTextBoxColumn
-            // 
-            this.lockedDataGridViewTextBoxColumn.DataPropertyName = "Locked";
-            this.lockedDataGridViewTextBoxColumn.HeaderText = "Locked";
-            this.lockedDataGridViewTextBoxColumn.Name = "lockedDataGridViewTextBoxColumn";
-            this.lockedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lockedDataGridViewTextBoxColumn.Visible = false;
-            this.lockedDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // lUDDataGridViewTextBoxColumn
-            // 
-            this.lUDDataGridViewTextBoxColumn.DataPropertyName = "LUD";
-            this.lUDDataGridViewTextBoxColumn.HeaderText = "LUD";
-            this.lUDDataGridViewTextBoxColumn.Name = "lUDDataGridViewTextBoxColumn";
-            this.lUDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lUDDataGridViewTextBoxColumn.Visible = false;
-            this.lUDDataGridViewTextBoxColumn.Width = 66;
-            // 
-            // UserIdColumn
-            // 
-            this.UserIdColumn.DataPropertyName = "UserId";
-            this.UserIdColumn.DataSource = this.usersUserBindingSource;
-            this.UserIdColumn.DisplayMember = "FullName";
-            this.UserIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.UserIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UserIdColumn.HeaderText = "المستخدم";
-            this.UserIdColumn.Name = "UserIdColumn";
-            this.UserIdColumn.ReadOnly = true;
-            this.UserIdColumn.ValueMember = "Id";
-            this.UserIdColumn.Width = 61;
             // 
             // usersUserBindingSource
             // 
@@ -622,6 +519,110 @@
             this.dgvTotals.ReadOnly = true;
             this.dgvTotals.Size = new System.Drawing.Size(713, 50);
             this.dgvTotals.TabIndex = 3;
+            // 
+            // paymentDateDataGridViewTextBoxColumn
+            // 
+            this.paymentDateDataGridViewTextBoxColumn.DataPropertyName = "PaymentDate";
+            this.paymentDateDataGridViewTextBoxColumn.HeaderText = "التاريخ";
+            this.paymentDateDataGridViewTextBoxColumn.Name = "paymentDateDataGridViewTextBoxColumn";
+            this.paymentDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.paymentDateDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // paymentTypeDataGridViewTextBoxColumn
+            // 
+            this.paymentTypeDataGridViewTextBoxColumn.DataPropertyName = "PaymentType";
+            this.paymentTypeDataGridViewTextBoxColumn.HeaderText = "نوع الدفعة";
+            this.paymentTypeDataGridViewTextBoxColumn.Name = "paymentTypeDataGridViewTextBoxColumn";
+            this.paymentTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.paymentTypeDataGridViewTextBoxColumn.Width = 84;
+            // 
+            // accountIdDataGridViewTextBoxColumn
+            // 
+            this.accountIdDataGridViewTextBoxColumn.DataPropertyName = "AccountId";
+            this.accountIdDataGridViewTextBoxColumn.DataSource = this.accountsInfoBindingSource;
+            this.accountIdDataGridViewTextBoxColumn.DisplayMember = "FullName";
+            this.accountIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.accountIdDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
+            this.accountIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.accountIdDataGridViewTextBoxColumn.HeaderText = "الوكيل";
+            this.accountIdDataGridViewTextBoxColumn.Name = "accountIdDataGridViewTextBoxColumn";
+            this.accountIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.accountIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.accountIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.accountIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            this.accountIdDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // currencyIdDataGridViewTextBoxColumn
+            // 
+            this.currencyIdDataGridViewTextBoxColumn.DataPropertyName = "CurrencyId";
+            this.currencyIdDataGridViewTextBoxColumn.DataSource = this.currencyBindingSource;
+            this.currencyIdDataGridViewTextBoxColumn.DisplayMember = "CurrencyName";
+            this.currencyIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.currencyIdDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
+            this.currencyIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.currencyIdDataGridViewTextBoxColumn.HeaderText = "العملة";
+            this.currencyIdDataGridViewTextBoxColumn.Name = "currencyIdDataGridViewTextBoxColumn";
+            this.currencyIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.currencyIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.currencyIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.currencyIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            this.currencyIdDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            this.amountDataGridViewTextBoxColumn.HeaderText = "المبلغ";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.amountDataGridViewTextBoxColumn.Width = 61;
+            // 
+            // declarationDataGridViewTextBoxColumn
+            // 
+            this.declarationDataGridViewTextBoxColumn.DataPropertyName = "Declaration";
+            this.declarationDataGridViewTextBoxColumn.HeaderText = "البيان";
+            this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
+            this.declarationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.declarationDataGridViewTextBoxColumn.Width = 58;
+            // 
+            // payedDataGridViewTextBoxColumn
+            // 
+            this.payedDataGridViewTextBoxColumn.DataPropertyName = "Payed";
+            this.payedDataGridViewTextBoxColumn.HeaderText = "Payed";
+            this.payedDataGridViewTextBoxColumn.Name = "payedDataGridViewTextBoxColumn";
+            this.payedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.payedDataGridViewTextBoxColumn.Visible = false;
+            this.payedDataGridViewTextBoxColumn.Width = 64;
+            // 
+            // lockedDataGridViewTextBoxColumn
+            // 
+            this.lockedDataGridViewTextBoxColumn.DataPropertyName = "Locked";
+            this.lockedDataGridViewTextBoxColumn.HeaderText = "Locked";
+            this.lockedDataGridViewTextBoxColumn.Name = "lockedDataGridViewTextBoxColumn";
+            this.lockedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lockedDataGridViewTextBoxColumn.Visible = false;
+            this.lockedDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // lUDDataGridViewTextBoxColumn
+            // 
+            this.lUDDataGridViewTextBoxColumn.DataPropertyName = "LUD";
+            this.lUDDataGridViewTextBoxColumn.HeaderText = "LUD";
+            this.lUDDataGridViewTextBoxColumn.Name = "lUDDataGridViewTextBoxColumn";
+            this.lUDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lUDDataGridViewTextBoxColumn.Visible = false;
+            this.lUDDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // UserIdColumn
+            // 
+            this.UserIdColumn.DataPropertyName = "UserId";
+            this.UserIdColumn.DataSource = this.usersUserBindingSource;
+            this.UserIdColumn.DisplayMember = "FullName";
+            this.UserIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.UserIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UserIdColumn.HeaderText = "المستخدم";
+            this.UserIdColumn.Name = "UserIdColumn";
+            this.UserIdColumn.ReadOnly = true;
+            this.UserIdColumn.ValueMember = "Id";
+            this.UserIdColumn.Width = 61;
             // 
             // frmPayments
             // 

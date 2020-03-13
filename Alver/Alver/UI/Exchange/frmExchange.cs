@@ -1,5 +1,4 @@
-﻿
-using Alver.DAL;
+﻿using Alver.DAL;
 using Alver.MISC;
 using DAL.Classes;
 using System;
@@ -15,18 +14,22 @@ namespace Alver.UI.Exchange
 {
     public partial class frmExchange : Form
     {
-        dbEntities db;
-        System.Collections.Generic.List<long> _deletedIds = new System.Collections.Generic.List<long>();
+        private dbEntities db;
+        private System.Collections.Generic.List<long> _deletedIds = new System.Collections.Generic.List<long>();
+
         #region Init
+
         public frmExchange()
         {
             InitializeComponent();
         }
+
         private void frmExchange_Load(object sender, EventArgs e)
         {
             LoadData();
             dgv.Rows.Add();
         }
+
         private void LoadData()
         {
             db = new dbEntities();
@@ -50,19 +53,21 @@ namespace Alver.UI.Exchange
             adddgv.Refresh();
             EnableControls();
         }
+
         private void currencyExchangeDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
-        #endregion   Init
+
+        #endregion Init
 
         #region Methods
+
         private void ColorizeCells()
         {
             int index = DirectionColumn.Index;
             for (int i = 0; i < dgv.Rows.Count; i++)
             {
-
                 if (dgv.Rows[i].Cells[index].FormattedValue.ToString() == ExchangeType.بيع.ToString())
                 {
                     dgv.Rows[i].Cells[BaseAmountColumn.Index].Style.BackColor = System.Drawing.Color.Tomato;
@@ -75,7 +80,6 @@ namespace Alver.UI.Exchange
             index = directionDataGridViewTextBoxColumn.Index;
             for (int i = 0; i < adddgv.Rows.Count; i++)
             {
-
                 if (adddgv.Rows[i].Cells[index].FormattedValue.ToString() == ExchangeType.بيع.ToString())
                 {
                     adddgv.Rows[i].Cells[baseAmountDataGridViewTextBoxColumn.Index].Style.BackColor = System.Drawing.Color.Tomato;
@@ -86,6 +90,7 @@ namespace Alver.UI.Exchange
                 }
             }
         }
+
         private string dgvCell(int index)
         {
             if (dgv.CurrentRow != null)
@@ -97,6 +102,7 @@ namespace Alver.UI.Exchange
                 return "";
             }
         }
+
         private void InsertExchangeOperation()
         {
             try
@@ -114,10 +120,10 @@ namespace Alver.UI.Exchange
                 {
                     direction = _dir.ToString();
                 }
-                basecurrency = int.Parse(dgv.CurrentRow.Cells[SubCurrencyIdColumn.Index].Value.ToString());
+                basecurrency = int.Parse(dgv.CurrentRow.Cells[BaseCurrencyIdColumn.Index].Value.ToString());
                 baseAmount = decimal.Parse(dgvCell(BaseAmountColumn.Index));
                 _baseCurrency = db.Currencies.FirstOrDefault(x => x.Id == basecurrency);
-                subcurrency = int.Parse(dgv.CurrentRow.Cells[BaseCurrencyIdColumn.Index].Value.ToString());
+                subcurrency = int.Parse(dgv.CurrentRow.Cells[SubCurrencyIdColumn.Index].Value.ToString());
                 _subCurrency = db.Currencies.FirstOrDefault(x => x.Id == subcurrency);
                 var _fac = dgv.CurrentRow.Cells[FactorColumn.Index].FormattedValue;
                 if (_fac != null)
@@ -209,6 +215,7 @@ namespace Alver.UI.Exchange
                 MessageBox.Show("الرجاء التأكد من القيم المدخلة ومن عدم إدخال  قيم فارغة");
             }
         }
+
         private void EnableControls()
         {
             bool _enable;
@@ -236,16 +243,20 @@ namespace Alver.UI.Exchange
             tabControl1.Enabled = _enable;
             panel1.Enabled = _enable;
         }
-        #endregion
+
+        #endregion Methods
 
         #region Buttons Click
+
         private void frmExchange_FormClosing(object sender, FormClosingEventArgs e)
         {
             adddgv.DataSource = null;
         }
-        #endregion
+
+        #endregion Buttons Click
 
         #region DGV
+
         private void currencyExchangeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -269,9 +280,11 @@ namespace Alver.UI.Exchange
                 ColorizeCells();
             }
         }
-        #endregion
+
+        #endregion DGV
 
         #region SAVE
+
         private void DeleteCurrencyExchange()
         {
             try
@@ -300,6 +313,7 @@ namespace Alver.UI.Exchange
                 MessageBox.Show("حصل خطأ أثناء حذف اليومية ،لم يتم الحذف بنجاح", "حذف يومية", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void DeleteCurrencyExchangeOperation(CurrencyExchangeOperation _operation)
         {
             try
@@ -315,14 +329,18 @@ namespace Alver.UI.Exchange
                 MessageBox.Show("حدث خطأ اثناء حذف الحركة");
             }
         }
-        #endregion        
+
+        #endregion SAVE
+
         private void Save()
+
         {
             //CheckDeleted();
             //PrepareList();
             db.SaveChanges();
             MSGs.SaveMessage();
         }
+
         private void CheckDeleted()
         {
             _deletedIds = _deletedIds.Distinct().ToList();
@@ -334,11 +352,12 @@ namespace Alver.UI.Exchange
                 int _subCurrencyId = _operation.SubCurrencyId.Value;
                 if (_operation != null)
                 {
-                    TransactionsFuncs.DeleteTransactions(_operation.GUID.Value, _baseCurrencyId, 0,0, TT.FOO);
-                    TransactionsFuncs.DeleteTransactions(_operation.GUID.Value, _subCurrencyId, 0,0, TT.FOO);
+                    TransactionsFuncs.DeleteTransactions(_operation.GUID.Value, _baseCurrencyId, 0, 0, TT.FOO);
+                    TransactionsFuncs.DeleteTransactions(_operation.GUID.Value, _subCurrencyId, 0, 0, TT.FOO);
                 }
             }
         }
+
         private void dceobtn_Click(object sender, EventArgs e)
         {
             dceobtn.Enabled = false;
@@ -356,9 +375,11 @@ namespace Alver.UI.Exchange
             { }
             dceobtn.Enabled = true;
         }
+
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
         }
+
         private void dgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             //if (e.ColumnIndex == dgvaddbtn.Index)
@@ -372,6 +393,7 @@ namespace Alver.UI.Exchange
             //    }
             //}
         }
+
         private void Reload()
         {
             db.Dispose();
@@ -383,6 +405,7 @@ namespace Alver.UI.Exchange
             dgv.Refresh();
             adddgv.Refresh();
         }
+
         private void CurrencyDifferntiate()
         {
             try
@@ -394,6 +417,7 @@ namespace Alver.UI.Exchange
             }
             catch (Exception ex) { }
         }
+
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             CurrencyDifferntiate();
@@ -415,23 +439,28 @@ namespace Alver.UI.Exchange
                 }
             }
         }
+
         private void Refocus()
         {
             dgv.CurrentCell = dgv.Rows[0].Cells[1];
         }
+
         private void adddgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ColorizeCells();
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             Save();
             LoadData();
         }
+
         private void currencyExchangeBindingSource_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
             EnableControls();
         }
+
         private void dcebtn_Click(object sender, EventArgs e)
         {
             dcebtn.Enabled = false;
@@ -449,6 +478,7 @@ namespace Alver.UI.Exchange
             }
             dcebtn.Enabled = true;
         }
+
         private void addcebtn_Click(object sender, EventArgs e)
         {
             int userid = Properties.Settings.Default.LoggedInUser.Id;
@@ -465,6 +495,7 @@ namespace Alver.UI.Exchange
             db.SaveChanges();
             Reload();
         }
+
         private void currencyBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             try
@@ -475,6 +506,7 @@ namespace Alver.UI.Exchange
             }
             catch (Exception ex) { }
         }
+
         private void currencyBindingSource1_CurrentChanged(object sender, EventArgs e)
         {
             //OrganizeCurrencies();

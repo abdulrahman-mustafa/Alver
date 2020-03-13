@@ -593,6 +593,7 @@ namespace Alver.UI.Accounts
             this.accountsdgv.GridColor = System.Drawing.SystemColors.Control;
             this.accountsdgv.Location = new System.Drawing.Point(3, 33);
             this.accountsdgv.Name = "accountsdgv";
+            this.accountsdgv.ReadOnly = true;
             this.accountsdgv.Size = new System.Drawing.Size(886, 299);
             this.accountsdgv.TabIndex = 3;
             this.accountsdgv.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccountDataGridView_CellEndEdit);
@@ -604,6 +605,7 @@ namespace Alver.UI.Accounts
             this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
             this.fullNameDataGridViewTextBoxColumn.HeaderText = "الاسم";
             this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.fullNameDataGridViewTextBoxColumn.Width = 59;
             // 
             // phoneDataGridViewTextBoxColumn
@@ -611,6 +613,7 @@ namespace Alver.UI.Accounts
             this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
             this.phoneDataGridViewTextBoxColumn.HeaderText = "الهاتف";
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
             this.phoneDataGridViewTextBoxColumn.Width = 64;
             // 
             // addressDataGridViewTextBoxColumn
@@ -618,6 +621,7 @@ namespace Alver.UI.Accounts
             this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
             this.addressDataGridViewTextBoxColumn.HeaderText = "العنوان";
             this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             this.addressDataGridViewTextBoxColumn.Width = 67;
             // 
             // declarationDataGridViewTextBoxColumn
@@ -625,6 +629,7 @@ namespace Alver.UI.Accounts
             this.declarationDataGridViewTextBoxColumn.DataPropertyName = "Declaration";
             this.declarationDataGridViewTextBoxColumn.HeaderText = "الملاحظات";
             this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
+            this.declarationDataGridViewTextBoxColumn.ReadOnly = true;
             this.declarationDataGridViewTextBoxColumn.Width = 84;
             // 
             // DeactivatedColumn
@@ -632,6 +637,7 @@ namespace Alver.UI.Accounts
             this.DeactivatedColumn.DataPropertyName = "Deactivated";
             this.DeactivatedColumn.HeaderText = "DeactivatedColumn";
             this.DeactivatedColumn.Name = "DeactivatedColumn";
+            this.DeactivatedColumn.ReadOnly = true;
             this.DeactivatedColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.DeactivatedColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.DeactivatedColumn.Visible = false;
@@ -765,7 +771,7 @@ namespace Alver.UI.Accounts
             this.addbtn.Image = global::Alver.Properties.Resources.adduser;
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(184, 26);
+            this.addbtn.Size = new System.Drawing.Size(141, 26);
             this.addbtn.Text = "إضافة وكيل";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -774,7 +780,7 @@ namespace Alver.UI.Accounts
             this.deletebtn.Image = global::Alver.Properties.Resources.deleteuser;
             this.deletebtn.Name = "deletebtn";
             this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(184, 26);
+            this.deletebtn.Size = new System.Drawing.Size(141, 26);
             this.deletebtn.Text = "حذف وكيل";
             this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
             // 
@@ -782,7 +788,7 @@ namespace Alver.UI.Accounts
             // 
             this.deactivatebtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deactivatebtn.Name = "deactivatebtn";
-            this.deactivatebtn.Size = new System.Drawing.Size(184, 26);
+            this.deactivatebtn.Size = new System.Drawing.Size(141, 26);
             this.deactivatebtn.Text = "إلغاء تنشيط";
             this.deactivatebtn.Visible = false;
             this.deactivatebtn.Click += new System.EventHandler(this.deactivatebtn_Click);
@@ -791,7 +797,7 @@ namespace Alver.UI.Accounts
             // 
             this.تعديلالوكيلToolStripMenuItem.Image = global::Alver.Properties.Resources.edituser;
             this.تعديلالوكيلToolStripMenuItem.Name = "تعديلالوكيلToolStripMenuItem";
-            this.تعديلالوكيلToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.تعديلالوكيلToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.تعديلالوكيلToolStripMenuItem.Text = "تعديل الوكيل";
             this.تعديلالوكيلToolStripMenuItem.Click += new System.EventHandler(this.تعديلالوكيلToolStripMenuItem_Click);
             // 

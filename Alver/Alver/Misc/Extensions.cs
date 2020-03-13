@@ -1,4 +1,6 @@
 ﻿using Alver.DAL;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Web.UI;
 using System.Windows.Forms;
 
 namespace Alver.MISC
@@ -15,7 +18,7 @@ namespace Alver.MISC
     {
         #region Clear Controls
 
-        private static Dictionary<Type, Action<Control>> controldefaults = new Dictionary<Type, Action<Control>>() {
+        private static Dictionary<Type, Action<System.Windows.Forms.Control>> controldefaults = new Dictionary<Type, Action<System.Windows.Forms.Control>>() {
             {typeof(TextBox), c => ((TextBox)c).Clear()},
             {typeof(NumericUpDown), c => ((NumericUpDown)c).Value=((NumericUpDown)c).Minimum},
             {typeof(DataGridView), c => ((DataGridView)c).Refresh()},
@@ -27,7 +30,7 @@ namespace Alver.MISC
             {typeof(Panel), c => ((Panel)c).Controls.ClearControls()}
     };
 
-        private static void FindAndInvoke(Type type, Control control)
+        private static void FindAndInvoke(Type type, System.Windows.Forms.Control control)
         {
             if (controldefaults.ContainsKey(type))
             {
@@ -35,19 +38,19 @@ namespace Alver.MISC
             }
         }
 
-        public static void ClearControls(this Control.ControlCollection controls)
+        public static void ClearControls(this System.Windows.Forms.Control.ControlCollection controls)
         {
-            foreach (Control control in controls)
+            foreach (System.Windows.Forms.Control control in controls)
             {
                 FindAndInvoke(control.GetType(), control);
             }
         }
 
-        public static void ClearControls<T>(this Control.ControlCollection controls) where T : class
+        public static void ClearControls<T>(this System.Windows.Forms.Control.ControlCollection controls) where T : class
         {
             if (!controldefaults.ContainsKey(typeof(T))) return;
 
-            foreach (Control control in controls)
+            foreach (System.Windows.Forms.Control control in controls)
             {
                 if (control.GetType().Equals(typeof(T)))
                 {
@@ -60,12 +63,32 @@ namespace Alver.MISC
 
         #region DataGridView Extensions
 
+        public static DataTable ConvertToDatatable(this DataGridView dgv)
+        {
+            return (DataTable)dgv.DataSource;
+        }
+
         public static void DoubleBuffered(this DataGridView dgv, bool setting)
         {
             Type dgvType = dgv.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
                   BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(dgv, setting, null);
+        }
+
+        public static void ColorizeStringDGVFullRow(this DataGridView dgv, int index, string _value)
+        {
+            try
+            {
+                for (int i = 0; i < dgv.Rows.Count; i++)
+                {
+                    if (dgv.Rows[i].Cells[index].FormattedValue.ToString().Trim().ToLower().Equals(_value.Trim().ToLower()))
+                    {
+                        dgv.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
+                    }
+                }
+            }
+            catch (Exception ex) { }
         }
 
         public static void ColorizeDecimalDGVFullRow(this DataGridView dgv, int index)
@@ -235,26 +258,26 @@ namespace Alver.MISC
         public static void ExportToPdf(this DataGridView dgv)
         {
             //Creating iTextSharp Misc Entries Table from the DataTable data
-            //PdfPTable miscTable = new PdfPTable(dgv.ColumnCount);
-            //miscTable.DefaultCell.Padding = 3;
-            //float[] miscWidthPosit = new float[] { 1000f, 200f };
-            //miscTable.WidthPercentage = 80;
-            //miscTable.SetWidths(miscWidthPosit);
-            //miscTable.HorizontalAlignment = Element.ALIGN_CENTER;
-            //miscTable.DefaultCell.BorderWidth = 1;
-            //miscTable.SpacingBefore = 10;
-            //miscTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
+            PdfPTable miscTable = new PdfPTable(dgv.ColumnCount);
+            miscTable.DefaultCell.Padding = 3;
+            float[] miscWidthPosit = new float[] { 1000f, 200f };
+            miscTable.WidthPercentage = 80;
+            miscTable.SetWidths(miscWidthPosit);
+            miscTable.HorizontalAlignment = Element.ALIGN_CENTER;
+            miscTable.DefaultCell.BorderWidth = 1;
+            miscTable.SpacingBefore = 10;
+            miscTable.DefaultCell.HorizontalAlignment = Element.ALIGN_LEFT;
 
-            //foreach (DataGridViewRow row in dgv.Rows)
-            //{
-            //    foreach (DataGridViewCell cell in row.Cells)
-            //    {
-            //        if (cell.Value != null)
-            //        {
-            //            miscTable.AddCell(cell.FormattedValue.ToString());
-            //        }
-            //    }
-            //}
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null)
+                    {
+                        miscTable.AddCell(cell.FormattedValue.ToString());
+                    }
+                }
+            }
         }
 
         public static string ConvertDataGridViewToHTMLWithFormatting(this DataGridView dgv)
@@ -338,9 +361,9 @@ namespace Alver.MISC
             return sb.ToString();
         }
 
-        public static string DGVCellFontAndValueToHTML(string value, Font font)
+        public static string DGVCellFontAndValueToHTML(string value, System.Drawing.Font font)
         {
-            Font _defualt = new Font("segoe ui", 9, FontStyle.Regular);
+            System.Drawing.Font _defualt = new System.Drawing.Font("segoe ui", 9, FontStyle.Regular);
             //If no font has been set then assume its the default as someone would be expected in HTML or Excel
             if (font == null || font == _defualt && !(font.Bold | font.Italic | font.Underline | font.Strikeout)) return value;
             StringBuilder sb = new StringBuilder();
@@ -802,6 +825,85 @@ namespace Alver.MISC
             catch { }
 
             return dgv_copy;
+        }
+
+        public static void ExportToPDF(this DataGridView dgv)
+        {
+            if (dgv.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Output.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(dgv.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            foreach (DataGridViewColumn column in dgv.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
+                                pdfTable.AddCell(cell);
+                            }
+
+                            foreach (DataGridViewRow row in dgv.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    try
+                                    {
+                                        pdfTable.AddCell(cell.Value.ToString());
+                                    }
+                                    catch { }
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                pdfDoc.Open();
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record To Export !!!", "Info");
+            }
+        }
+
+        public static void EXPDF(this DataGridView dgv)
+        {
         }
 
         #endregion DataGridView Extensions
