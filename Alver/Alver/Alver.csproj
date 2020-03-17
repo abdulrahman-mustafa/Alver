@@ -425,6 +425,12 @@
     <Compile Include="UI\Bills\frmSell.Designer.cs">
       <DependentUpon>frmSell.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Bills\frmSellBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Bills\frmSellBill.Designer.cs">
+      <DependentUpon>frmSellBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Configurations\frmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -683,6 +689,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Bills\frmSell.resx">
       <DependentUpon>frmSell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Bills\frmSellBill.resx">
+      <DependentUpon>frmSellBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Configurations\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
@@ -957,6 +966,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\BG %283%29.jpg" />
+    <None Include="Resources\abstract-blue-background-wave-vector_1407-88.jpg" />
     <Content Include="Resources\Lizard Logo white.png" />
     <Content Include="Resources\Lizard Logo.png" />
     <Content Include="SqlServerTypes\readme.htm" />

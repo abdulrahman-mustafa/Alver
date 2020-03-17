@@ -30,7 +30,7 @@ namespace Alver.Forms
             InitializeComponent();
         }
 
-        private void InitStatusStrip()
+        private void InitInfo()
         {
             User _user = Properties.Settings.Default.LoggedInUser;
             if (_user != null)
@@ -38,7 +38,11 @@ namespace Alver.Forms
                 usernameLabel.Text = _user.FullName;
             }
             databasenamelbl.Text = (new dbEntities()).Database.Connection.Database;
+            companytitlelbl.Text = (new dbEntities()).Companies.Find(1).Title;
+            addresslbl.Text = (new dbEntities()).Companies.Find(1).Address;
+            phonelbl.Text = (new dbEntities()).Companies.Find(1).ManagerPhone;
             runtimeslbl.Text = Settings.Default.RunTimes.ToString();
+            clocklbl.Text = DateTime.Now.ToLongTimeString();
         }
 
         private void إغلاقToolStripMenuItem_Click(object sender, EventArgs e)
@@ -345,7 +349,7 @@ namespace Alver.Forms
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            InitStatusStrip();
+            timer1.Start();
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -370,6 +374,18 @@ namespace Alver.Forms
         {
             frmItemMovements frm = new frmItemMovements();
             frm.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                InitInfo();
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
         }
     }
 }

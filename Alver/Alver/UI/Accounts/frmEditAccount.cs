@@ -10,9 +10,10 @@ namespace Alver.UI.Accounts
 {
     public partial class frmEditAccount : Form
     {
-        dbEntities database = new dbEntities();
-        List<Account> _accounts;
-        int _accountId = 0;
+        private dbEntities database = new dbEntities();
+        private List<Account> _accounts;
+        private int _accountId = 0;
+
         public frmEditAccount(int AccountId)
         {
             if (AccountId < 1)
@@ -26,11 +27,12 @@ namespace Alver.UI.Accounts
             }
             InitializeComponent();
         }
+
         private void frmOut_Load(object sender, EventArgs e)
         {
             database.Accounts.Load();
             _accounts = new List<Account>();
-            _accounts = database.Accounts.Where(x=>x.Id!=_accountId).ToList();
+            _accounts = database.Accounts.Where(x => x.Id != _accountId).ToList();
             try
             {
                 using (dbEntities db = new dbEntities())
@@ -69,6 +71,7 @@ namespace Alver.UI.Accounts
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void Save()
         {
             try
@@ -109,10 +112,12 @@ namespace Alver.UI.Accounts
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void accounts_FundDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
+
         private bool CheckValues()
         {
             bool _result = true;
@@ -137,6 +142,7 @@ namespace Alver.UI.Accounts
             catch (Exception ex) { }
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -152,6 +158,7 @@ namespace Alver.UI.Accounts
             }
             catch (Exception ex) { }
         }
+
         private bool PrepareFund()
         {
             bool _result = true;
