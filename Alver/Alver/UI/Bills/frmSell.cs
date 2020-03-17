@@ -1,6 +1,7 @@
 ﻿using Alver.DAL;
 using Alver.MISC;
 using Alver.UI.Bills.BillReports;
+using DAL.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -111,22 +112,30 @@ namespace Alver.UI.Bills
         {
             try
             {
-                int _itemId = 0, _unitId = 0;
+                int _itemId = 0, _unitId = 0, _currencyId = 0;
+                decimal _roundedExchangedValue = 0, _exchangedValue = 0;
                 if (itemcb.SelectedValue != null)
                     _ = int.TryParse(itemcb.SelectedValue.ToString(), out _itemId);
                 if (unitcb.SelectedValue != null)
                     _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
+                //if (currencycb.SelectedValue != null)
+                //    _ = int.TryParse(currencycb.SelectedValue.ToString(), out _currencyId);
                 if (_itemId != 0)
                 {
                     using (dbEntities db = new dbEntities())
                     {
+                        _currencyId = db.Items.Find(_itemId).CurrencyId.Value;
+                        currencycb.SelectedValue = _currencyId;
                         if (db.Items.Find(_itemId).Barcode != null)
                         {
                             barcodecb.Text = db.Items.Find(_itemId).Barcode;
                         }
                         decimal _salePrice = db.Items.FirstOrDefault(x => x.Id == _itemId && x.UnitId == _unitId).SalePrice.Value != null ? db.Items.Find(_itemId).SalePrice.Value : 0;
                         pricenud.Value = _salePrice >= 1 ? _salePrice : 1;
-                        exchangedpricenud.Value = pricenud.Value * ratenud.Value;
+
+                        _exchangedValue = pricenud.Value * ratenud.Value;
+                        _roundedExchangedValue = CurrencyExchangeFuncs.RoundExchange(_exchangedValue);
+                        exchangedpricenud.Value = _roundedExchangedValue >= exchangedpricenud.Minimum ? _roundedExchangedValue : exchangedpricenud.Minimum;
                         decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
 
                         remainedquantitylbl.Text = _remainedQuantity.ToString();
@@ -146,6 +155,7 @@ namespace Alver.UI.Bills
             {
                 string _barcode = barcodecb.Text;
                 int _itemId = 0, _unitId = 0;
+                decimal _roundedExchangedValue = 0, _exchangedValue = 0;
                 if (unitcb.SelectedValue != null)
                     _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
                 if (barcodecb.Text != string.Empty)
@@ -158,7 +168,10 @@ namespace Alver.UI.Bills
                             itemcb.SelectedValue = _itemId;
                             decimal _salePrice = db.Items.FirstOrDefault(x => x.Id == _itemId && x.UnitId == _unitId).SalePrice.Value != null ? db.Items.Find(_itemId).SalePrice.Value : 0;
                             pricenud.Value = _salePrice >= 1 ? _salePrice : 1;
-                            exchangedpricenud.Value = pricenud.Value * ratenud.Value;
+                            //exchangedpricenud.Value = pricenud.Value * ratenud.Value;
+                            _exchangedValue = pricenud.Value * ratenud.Value;
+                            _roundedExchangedValue = CurrencyExchangeFuncs.RoundExchange(_exchangedValue);
+                            exchangedpricenud.Value = _roundedExchangedValue >= exchangedpricenud.Minimum ? _roundedExchangedValue : exchangedpricenud.Minimum;
                             decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
                             remainedquantitylbl.Text = _remainedQuantity.ToString();
                             quantitynud.Maximum = _remainedQuantity;
@@ -413,7 +426,8 @@ namespace Alver.UI.Bills
             try
             {
                 decimal _sumtotals = 0;
-                _sumtotals = billLinesDgv.ColumnSum(totalpriceColumn.Index);
+                _sumtotals = billLinesDgv.ColumnSum(totalpriceColumn.Index);//, currencyIdColumn.Index);
+                //_sumtotals = billLinesDgv.ColumnSum(totalpriceColumn.Index, currencyIdColumn.Index);
                 sumtotalsnud.Value = _sumtotals;
                 CalcGrandTotal();
             }
@@ -428,11 +442,18 @@ namespace Alver.UI.Bills
             try
             {
                 decimal _sumtotals = 0, _discount = 0, _total = 0;
+
+                decimal _roundedTotalExchangedValue = 0;
+
                 _sumtotals = sumtotalsnud.Value;
                 _discount = discountnud.Value;
                 _total = _sumtotals - _discount;
                 totalnud.Value = _total;
-                syrTotalnud.Value = _total * ratenud.Value;
+
+                _roundedTotalExchangedValue = CurrencyExchangeFuncs.RoundExchange(_total * ratenud.Value);
+                syrTotalnud.Value = _roundedTotalExchangedValue >= syrTotalnud.Minimum ? _roundedTotalExchangedValue : syrTotalnud.Minimum;
+
+                //syrTotalnud.Value = _total * ratenud.Value;
             }
             catch (Exception ex)
             {
@@ -514,20 +535,19 @@ namespace Alver.UI.Bills
                             }
                             bill.Rate = ratenud.Value;
                             bill.ExchangedAmount = syrTotalnud.Value;
-
-                            db.SaveChanges();
                             string _account = "بيع نقدي";
                             if (!payedchkbox.Checked)
                             {
                                 _account = accountcb.Text.Trim();
                             }
-                            Guid _guid = bill.GUID.Value;
 
                             string _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
                         _account,
                         _bill.Id.ToString(),
                         discountnud.Value.ToString());
+                            db.SaveChanges();
 
+                            Guid _guid = bill.GUID.Value;
                             TransactionsFuncs.DeleteTransactions(_guid);
                             foreach (BillLine _billLine in bill.BillLines)
                             {
@@ -537,46 +557,20 @@ namespace Alver.UI.Bills
                             {
                                 foreach (BillLine _billLine in bill.BillLines)
                                 {
-                                    TransactionsFuncs.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsFuncs.TT.BLP, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
+                                    TransactionsFuncs.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsFuncs.TT.BLS, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
                                 }
                                 if (payedchkbox.Checked)
                                 {
                                     if (exchangebillchkbox.Checked)
                                     {
-                                        TransactionsFuncs.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
+                                        TransactionsFuncs.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLS, bill.LUD.Value, _guid, _declaration);
                                     }
                                     else
                                     {
-                                        TransactionsFuncs.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
+                                        TransactionsFuncs.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLS, bill.LUD.Value, _guid, _declaration);
                                     }
                                 }
                                 else
-                                {
-                                    if (exchangebillchkbox.Checked)
-                                    {
-                                        TransactionsFuncs.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                    else
-                                    {
-                                        TransactionsFuncs.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                }
-                            }
-                            else if (bill.BillType == BillType.شراء.ToString())
-                            {
-                                foreach (BillLine _billLine in bill.BillLines)
-                                {
-                                    TransactionsFuncs.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsFuncs.TT.BLS, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
-                                }
-                                if (exchangebillchkbox.Checked)
-                                {
-                                    TransactionsFuncs.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLS, bill.LUD.Value, _guid, _declaration);
-                                }
-                                else
-                                {
-                                    TransactionsFuncs.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLS, bill.LUD.Value, _guid, _declaration);
-                                }
-                                if (!payedchkbox.Checked)
                                 {
                                     if (exchangebillchkbox.Checked)
                                     {
@@ -585,6 +579,32 @@ namespace Alver.UI.Bills
                                     else
                                     {
                                         TransactionsFuncs.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLS, bill.LUD.Value, _guid, _declaration);
+                                    }
+                                }
+                            }
+                            else if (bill.BillType == BillType.شراء.ToString())
+                            {
+                                foreach (BillLine _billLine in bill.BillLines)
+                                {
+                                    TransactionsFuncs.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsFuncs.TT.BLP, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
+                                }
+                                if (exchangebillchkbox.Checked)
+                                {
+                                    TransactionsFuncs.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
+                                }
+                                else
+                                {
+                                    TransactionsFuncs.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
+                                }
+                                if (!payedchkbox.Checked)
+                                {
+                                    if (exchangebillchkbox.Checked)
+                                    {
+                                        TransactionsFuncs.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
+                                    }
+                                    else
+                                    {
+                                        TransactionsFuncs.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                     }
                                 }
                             }
@@ -634,8 +654,14 @@ namespace Alver.UI.Bills
         {
             try
             {
-                syrTotalnud.Value = ratenud.Value * totalnud.Value;
-                exchangedpricenud.Value = ratenud.Value * pricenud.Value;
+                //exchangedpricenud.Value = ratenud.Value * pricenud.Value;
+                decimal _roundedExchangedValue = 0, _roundedTotalExchangedValue = 0, _exchangedValue = 0, _exchangedTotalValue = 0;
+                _exchangedValue = pricenud.Value * ratenud.Value;
+                _roundedExchangedValue = CurrencyExchangeFuncs.RoundExchange(_exchangedValue);
+                exchangedpricenud.Value = _roundedExchangedValue >= exchangedpricenud.Minimum ? _roundedExchangedValue : exchangedpricenud.Minimum;
+                _exchangedTotalValue = ratenud.Value * totalnud.Value;
+                _roundedTotalExchangedValue = CurrencyExchangeFuncs.RoundExchange(_exchangedTotalValue);
+                syrTotalnud.Value = _roundedTotalExchangedValue >= syrTotalnud.Minimum ? _roundedTotalExchangedValue : syrTotalnud.Minimum;
             }
             catch (Exception ex)
             {
@@ -680,6 +706,7 @@ namespace Alver.UI.Bills
                 InsertBill();
                 ExchangeRate();
                 payedchkbox.Checked = exchangebillchkbox.Checked = true;
+                billdatedtp.Value = DateTime.Now;
                 barcodecb.Focus();
             }
             catch (Exception ex)
@@ -972,8 +999,25 @@ namespace Alver.UI.Bills
                 decimal _totalusd = 0, _totalsyp = 0;
                 _totalusd = quantitynud.Value * pricenud.Value;
                 _totalsyp = quantitynud.Value * exchangedpricenud.Value;
-                totallineudslbl.Text = _totalusd.ToString();
-                totallinesyplbl.Text = _totalsyp.ToString();
+
+                totallineudslbl.Text = Math.Round(_totalusd, 2).ToString();
+                totallinesyplbl.Text = CurrencyExchangeFuncs.RoundExchange(_totalsyp).ToString();
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+
+        private void exchangedpricenud_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal _price = 0, _exchangedPrice = 0, _rate = 0;
+                _exchangedPrice = exchangedpricenud.Value;
+                _rate = ratenud.Value;
+                _price = _exchangedPrice / _rate;
+                pricenud.Value = _price;
             }
             catch (Exception ex)
             {

@@ -16,14 +16,17 @@ namespace Alver.MISC
         {
             بيع, شراء
         }
+
         public enum AccountGroup
         {
             وكيل_حوالات, مختلط, شريك, صاحب_ذمة, تعاملات_مالية
         }
+
         public enum PaymentType
         {
             دفعة_من_وكيل, دفعة_لوكيل, تغذية_صندوق, سحب_من_صندوق
         }
+
         public enum WageOrigin
         {
             وكيل_مقبوض,
@@ -32,20 +35,24 @@ namespace Alver.MISC
             مكتب_مقبوض,
             مكتب_عند_الوكيل
         }
+
         public enum RemittanceType
         {
             صادرة,
             واردة,
             خارجية
         }
+
         public enum ExchangeType
         {
             بيع, شراء
         }
+
         public enum Factor
         {
             M, D
         }
+
         public enum PaymentTransactionType
         {
             دين_مدفوع,
@@ -53,17 +60,19 @@ namespace Alver.MISC
             أمانة_مستلمة,
             أمانة_مسلمة
         }
-       
+
         public enum WithdrawDirections
         {
             سحب_أرباح, إيداع_أرباح
         }
+
         public static void OpenCalculator()
         {
             System.Diagnostics.Process p = System.Diagnostics.Process.Start("calc.exe");
             //Thread _thread=new Thread(new )
         }
-        public static decimal cConvert(bool Factor, decimal Rate, decimal amount)
+
+        public static decimal CConvert(bool Factor, decimal Rate, decimal amount)
         {
             //Factor = True ==> * ||Factor = False ==> /
             decimal _value = amount;
@@ -81,6 +90,7 @@ namespace Alver.MISC
             _value = Math.Round(_value, 2);
             return _value;
         }
+
         public static void formLoad(ref dbEntities db)
         {
             db = new dbEntities();
@@ -88,7 +98,9 @@ namespace Alver.MISC
             //db.Configuration.AutoDetectChangesEnabled = false;
             //db.Configuration.ValidateOnSaveEnabled = false;
         }
+
         public static DataGridView _dgv;
+
         public static void ComboBoxBlackBGFix(DataGridView dgv, DataGridViewEditingControlShowingEventArgs e)
         {
             var comboBox = e.Control as DataGridViewComboBoxEditingControl;
@@ -101,10 +113,12 @@ namespace Alver.MISC
                 comboBox.DropDown += new EventHandler(combo_DropDown);
             }
         }
+
         public static void combo_DropDown(object sender, EventArgs e)
         {
             ((ComboBox)sender).BackColor = _dgv.DefaultCellStyle.BackColor;
         }
+
         public static void SaveChanges(ref dbEntities db, ref List<BindingSource> bss, Form frm)
         {
             try
@@ -132,6 +146,7 @@ namespace Alver.MISC
                 //throw;
             }
         }
+
         public static void SaveChanges(ref dbEntities db, Form frm, string msg = "")
         {
             try
@@ -166,6 +181,7 @@ namespace Alver.MISC
                 MessageBox.Show("لم تم الحفظ بنجاح" + Environment.NewLine + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
+
         public static void ResetBindings(ref List<BindingSource> bss)
         {
             try
@@ -190,6 +206,7 @@ namespace Alver.MISC
                 //throw;
             }
         }
+
         public static void RollBack(ref dbEntities db)
         {
             //dbContext.Entry(entity).Reload();
@@ -210,6 +227,7 @@ namespace Alver.MISC
                             entry.State = EntityState.Modified; //Revert changes made to deleted entity.
                             entry.State = EntityState.Unchanged;
                             break;
+
                         case EntityState.Added:
                             entry.State = EntityState.Detached;
                             break;
@@ -219,6 +237,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static decimal ColumnSum(DataGridView dgv, int index)
         {
             decimal totalSum = 0;
@@ -227,6 +246,7 @@ namespace Alver.MISC
                 .ToString());
             return Convert.ToDecimal(totalSum.ToString());
         }
+
         public static void ColorizeDecimalDGV(DataGridView dgv, int index)
         {
             try
@@ -241,6 +261,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeDecimalDGVCells(DataGridView dgv)
         {
             decimal _val;
@@ -260,6 +281,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeGain(DataGridView dgv)
         {
             decimal _val;
@@ -283,6 +305,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeForeColor(DataGridView dgv, int index)
         {
             try
@@ -300,6 +323,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeStringForeColorDGV(DataGridView dgv, int index, string _check)
         {
             try
@@ -317,6 +341,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeStringDGV(DataGridView dgv, int index, string _check)
         {
             try
@@ -332,6 +357,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeForeFontStringDGV(DataGridView dgv, int index, string _check)
         {
             try
@@ -346,6 +372,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeExchangesDGV(DataGridView dgv, int index)
         {
             try
@@ -364,6 +391,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeBoolDGV(DataGridView dgv, int index, bool Factor, Color color)
         {
             try
@@ -378,6 +406,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeBoolPayedDGV(DataGridView dgv, int index)
         {
             try
@@ -392,6 +421,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static void ColorizeCurrencyDGV(DataGridView dgv, int index)
         {
             string _val;
@@ -413,18 +443,23 @@ namespace Alver.MISC
                             case USD:
                                 dgv.Rows[i].DefaultCellStyle.ForeColor = Color.Green;
                                 break;
+
                             case SYP:
                                 dgv.Rows[i].DefaultCellStyle.ForeColor = Color.Black;
                                 break;
+
                             case TL:
                                 dgv.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
                                 break;
+
                             case EUR:
                                 dgv.Rows[i].DefaultCellStyle.ForeColor = Color.Blue;
                                 break;
+
                             case SAR:
                                 dgv.Rows[i].DefaultCellStyle.ForeColor = Color.Fuchsia;
                                 break;
+
                             default:
                                 break;
                         }
@@ -433,6 +468,7 @@ namespace Alver.MISC
             }
             catch (Exception ex) { }
         }
+
         public static int CalculateAge(DateTime dateOfBirth)
         {
             int age = 0;
@@ -442,6 +478,7 @@ namespace Alver.MISC
 
             return age;
         }
+
         public static void dgvCheckNumericCell(DataGridViewCellValidatingEventArgs e, int cellIndex)
         {
             try
@@ -462,6 +499,7 @@ namespace Alver.MISC
             }
             catch (Exception) { }
         }
+
         public static void dgvRowDelete(object sender, DataGridViewCellEventArgs e, BindingSource bs)
         {
             if (((DataGridView)sender).Columns[e.ColumnIndex].Name.ToLower().Contains("delete"))
@@ -469,8 +507,10 @@ namespace Alver.MISC
                 bs.RemoveCurrent();
             }
         }
-        static DateTimePicker dtp;
-        static DataGridView dgv;
+
+        private static DateTimePicker dtp;
+        private static DataGridView dgv;
+
         public static void dgvDataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             DataGridView dgv = (DataGridView)sender;
@@ -484,6 +524,7 @@ namespace Alver.MISC
                 }
             }
         }
+
         public static bool dgvCheckedChanged(object sender, EventArgs e, int cellIndex)
         {
             bool _checked = false;
@@ -499,12 +540,14 @@ namespace Alver.MISC
             dgv.EndEdit();
             return _checked;
         }
+
         public static void SearchableComboBox(ComboBox _combobox)
         {
             _combobox.DropDownStyle = ComboBoxStyle.DropDown;
             _combobox.AutoCompleteMode = AutoCompleteMode.Suggest;
             _combobox.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
+
         public static string MD5(this string s)
         {
             using (var provider = System.Security.Cryptography.MD5.Create())
@@ -518,6 +561,7 @@ namespace Alver.MISC
                 return builder.ToString();
             }
         }
+
         //public bool Exists<T>(T entity) where T : class
         //{
         //    return this.Set<T>().Local.Any(e => e == entity);

@@ -11,12 +11,14 @@ namespace Alver.UI.Items
 {
     public partial class frmPricingItems : Form
     {
-        dbEntities db;
+        private dbEntities db;
+
         //int _itemId = 0;
         public frmPricingItems()
         {
             InitializeComponent();
         }
+
         private void frmOut_Load(object sender, EventArgs e)
         {
             try
@@ -31,7 +33,6 @@ namespace Alver.UI.Items
                 unitBindingSource.DataSource = db.Units.ToList();
                 itemCategoryBindingSource.DataSource = db.ItemCategories.ToList();
                 currencyBindingSource.DataSource = db.Currencies.ToList();
-
                 itemBindingSource.DataSource = db.Items.Local;
             }
             catch (Exception ex)
@@ -39,6 +40,7 @@ namespace Alver.UI.Items
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -56,6 +58,7 @@ namespace Alver.UI.Items
             }
             catch (Exception ex) { }
         }
+
         private void frmClient_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.S && e.Control)

@@ -470,6 +470,48 @@ namespace Alver.MISC
             }
         }
 
+        public static decimal ColumnSum(this DataGridView dgv, int _valueIndex, int _currencyIndex)
+        {
+            using (dbEntities db = new dbEntities())
+            {
+                int _index = 0;
+                int CURRENCIESCOUNT = db.Currencies.Count();
+                decimal[] _total = new decimal[CURRENCIESCOUNT];
+                foreach (var item in db.Currencies)
+                {
+                    _index = item.Id;
+                    _total[_index - 1] = dgv.Rows.Cast<DataGridViewRow>()
+                        .Where(x => Convert.ToInt32(x.Cells[_currencyIndex].Value) == _index)
+                        .Sum(t => Convert.ToDecimal(t.Cells[_valueIndex].Value));
+                }
+
+                decimal _sum = 0;
+                decimal _grand = 0;
+                decimal _USD = 0, _SYP = 0, _TL = 0, _EURO = 0, _SAR = 0;
+                try
+                {
+                    _USD = 1;
+                    _SYP = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 2).Rate.Value;
+                    _TL = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 3).Rate.Value;
+                    _EURO = db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 4).Rate.Value;
+                    _SAR = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 5).Rate.Value;
+
+                    _USD = _USD * _total[0];
+                    _SYP = _SYP * _total[0];
+                    _TL = _TL * _total[0];
+                    _EURO = _EURO * _total[0];
+                    _SAR = _SAR * _total[0];
+
+                    _grand = _USD + _SYP + _TL + _EURO + _SAR;
+                }
+                catch (Exception ex)
+                {
+                    //MSGs.ErrorMessage(ex);
+                }
+                return _grand;
+            }
+        }
+
         public static decimal ColumnSum(this DataGridView dgv, int _index)
         {
             decimal _sum = 0;

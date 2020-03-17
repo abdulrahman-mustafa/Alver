@@ -10,18 +10,21 @@ namespace Alver.UI.Accounts
 {
     public partial class frmAddAccount : Form
     {
-        dbEntities db;
-        Account _client;
+        private dbEntities db;
+        private Account _client;
+
         public frmAddAccount()
         {
             InitializeComponent();
         }
+
         private void frmOut_Load(object sender, EventArgs e)
         {
             db = new dbEntities();
             db.Configuration.ProxyCreationEnabled = false;
             ControlsEnable(false);
         }
+
         private void LoadData()
         {
             db.Currencies.AsNoTracking().AsQueryable().Load();
@@ -30,6 +33,7 @@ namespace Alver.UI.Accounts
             accountGroupBindingSource.DataSource = db.AccountGroups.AsNoTracking().AsQueryable().ToList();
             MISC.Utilities.SearchableComboBox(clientComboBox);
         }
+
         private void addNew()
         {
             //db.Dispose();
@@ -61,7 +65,6 @@ namespace Alver.UI.Accounts
                 }
                 _client = new Account()
                 {
-
                     FullName = clientComboBox.Text.Trim(),
                     Father = fatherTextBox.Text.Trim(),
                     Mother = motherTextBox.Text.Trim(),
@@ -91,7 +94,6 @@ namespace Alver.UI.Accounts
 
         private void GetValuesFromForm()
         {
-
             _client.AccountGroupId = 1;// Misc.Utilities.AccountGroup.وكيل_حوالات.ToString();
             _client.FullName = clientComboBox.Text.Trim();
             _client.Father = fatherTextBox.Text.Trim();
@@ -125,15 +127,18 @@ namespace Alver.UI.Accounts
                 }
             }
         }
+
         private void accounts_FundDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             addNew();
             ControlsEnable(true);
         }
+
         private bool CheckValues()
         {
             bool _result = true;
@@ -155,6 +160,7 @@ namespace Alver.UI.Accounts
             catch (Exception ex) { }
             return _result;
         }
+
         private bool CheckLaterValues()
         {
             bool _result = true;
@@ -176,6 +182,7 @@ namespace Alver.UI.Accounts
             catch (Exception ex) { }
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -202,6 +209,7 @@ namespace Alver.UI.Accounts
                 Validate();
                 dgv.EndEdit();
                 accountsFundBindingSource.EndEdit();
+                string _accountName = db.Accounts.Find(_clientId).FullName;
                 var ff = db.AccountFunds.Where(x => x.AccountId == _clientId).ToList();
                 var _funds = accountsFundBindingSource.List;
                 try
@@ -215,7 +223,7 @@ namespace Alver.UI.Accounts
                     }
                     foreach (AccountFund _fund in _funds)
                     {
-                        TransactionsFuncs.InsertClientOpeningBalance(ref db, _fund, "رصيد افتتاحي");
+                        TransactionsFuncs.InsertClientOpeningBalance(ref db, _fund, "رصيد افتتاحي - الوكيل:" + _accountName);
                     }
                 }
                 catch (Exception ex)

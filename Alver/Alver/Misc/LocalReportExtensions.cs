@@ -12,6 +12,8 @@ public static class LocalReportExtensions
     public static void Print(this LocalReport report)
     {
         var pageSettings = new PageSettings();
+        PaperSize _paperSize = new PaperSize();
+        _paperSize.Width = 0;
         pageSettings.PaperSize = report.GetDefaultPageSettings().PaperSize;
         pageSettings.Landscape = report.GetDefaultPageSettings().IsLandscape;
         pageSettings.Margins = report.GetDefaultPageSettings().Margins;

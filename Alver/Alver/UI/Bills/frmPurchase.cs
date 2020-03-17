@@ -350,7 +350,7 @@ namespace Alver.UI.Bills
         {
             try
             {
-                int _itemId = 0, _unitId = 0;
+                int _itemId = 0, _unitId = 0, _currencyId = 0;
                 if (itemcb.SelectedValue != null)
                     _ = int.TryParse(itemcb.SelectedValue.ToString(), out _itemId);
                 if (unitcb.SelectedValue != null)
@@ -359,7 +359,9 @@ namespace Alver.UI.Bills
                 {
                     using (dbEntities db = new dbEntities())
                     {
-                        if (barcodecb.Text == string.Empty && db.Items.Find(_itemId).Barcode != null)
+                        _currencyId = db.Items.Find(_itemId).CurrencyId.Value;
+                        currencycb.SelectedValue = _currencyId;
+                        if (db.Items.Find(_itemId).Barcode != null)
                         {
                             barcodecb.Text = db.Items.Find(_itemId).Barcode;
                         }
@@ -424,6 +426,7 @@ namespace Alver.UI.Bills
                 InsertBill();
                 ExchangeRate();
                 payedchkbox.Checked = exchangebillchkbox.Checked = true;
+                billdatedtp.Value = DateTime.Now;
                 barcodecb.Focus();
             }
             catch (Exception ex)
@@ -577,7 +580,7 @@ namespace Alver.UI.Bills
                         //ControlsEnable(false);
                         Bill _bill = BillBS.Current as Bill;
                         int _billId = _bill.Id;
-                        string _declaration = string.Empty;
+                        //string _declaration = string.Empty;
 
                         using (dbEntities db = new dbEntities())
                         {
@@ -591,24 +594,25 @@ namespace Alver.UI.Bills
                             bill.TotalAmount = totalnud.Value;
                             bill.BillDate = billdatedtp.Value;
                             bill.Declaration = declarationtb.Text.Trim();
+                            bill.CheckedOut = true;
 
                             if (payedchkbox.Checked)
                             {
                                 bill.AccountId = 0;
                                 bill.Cashout = true;
-                                _declaration = string.Format("فاتورة شراء - المورد {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
-                        "نقدي  ",
-                        _bill.Id.ToString(),
-                        discountnud.Value.ToString());
+                                //        _declaration = string.Format("فاتورة شراء - المورد {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
+                                //"نقدي  ",
+                                //_bill.Id.ToString(),
+                                //discountnud.Value.ToString());
                             }
                             else
                             {
                                 bill.AccountId = (int)accountcb.SelectedValue;
                                 bill.Cashout = false;
-                                _declaration = string.Format("فاتورة شراء - المورد {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
-                        accountcb.Text.Trim(),
-                        _bill.Id.ToString(),
-                        discountnud.Value.ToString());
+                                //        _declaration = string.Format("فاتورة شراء - المورد {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
+                                //accountcb.Text.Trim(),
+                                //_bill.Id.ToString(),
+                                //discountnud.Value.ToString());
                             }
                             if (exchangebillchkbox.Checked)
                             {
@@ -620,7 +624,16 @@ namespace Alver.UI.Bills
                             }
                             bill.Rate = ratenud.Value;
                             bill.ExchangedAmount = syrTotalnud.Value;
+                            string _account = "بيع نقدي";
+                            if (!payedchkbox.Checked)
+                            {
+                                _account = accountcb.Text.Trim();
+                            }
 
+                            string _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
+                        _account,
+                        _bill.Id.ToString(),
+                        discountnud.Value.ToString());
                             db.SaveChanges();
 
                             Guid _guid = bill.GUID.Value;
@@ -634,37 +647,7 @@ namespace Alver.UI.Bills
                             {
                                 foreach (BillLine _billLine in bill.BillLines)
                                 {
-                                    TransactionsFuncs.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsFuncs.TT.BLP, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
-                                }
-                                if (!payedchkbox.Checked)
-                                {
-                                    if (exchangebillchkbox.Checked)
-                                    {
-                                        TransactionsFuncs.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                    else
-                                    {
-                                        TransactionsFuncs.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                }
-                                else
-                                {
-                                    if (exchangebillchkbox.Checked)
-                                    {
-                                        TransactionsFuncs.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                    else
-                                    {
-                                        TransactionsFuncs.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
-                                    }
-                                }
-                            }
-                            else if (bill.BillType == BillType.شراء.ToString())
-                            {
-                                foreach (BillLine _billLine in bill.BillLines)
-                                {
                                     TransactionsFuncs.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsFuncs.TT.BLS, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
-                                    db.Items.Find(_billLine.ItemId.Value).PurchasePrice = _billLine.Price.Value;
                                 }
                                 if (!payedchkbox.Checked)
                                 {
@@ -686,6 +669,36 @@ namespace Alver.UI.Bills
                                     else
                                     {
                                         TransactionsFuncs.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLS, bill.LUD.Value, _guid, _declaration);
+                                    }
+                                }
+                            }
+                            else if (bill.BillType == BillType.شراء.ToString())
+                            {
+                                foreach (BillLine _billLine in bill.BillLines)
+                                {
+                                    TransactionsFuncs.InsertItemTransaction(_billLine.ItemId.Value, _billLine.UnitId.Value, _billLine.Quantity.Value, TransactionsFuncs.TT.BLP, _billLine.LUD.Value, _billLine.GUID.Value, _declaration);
+                                    db.Items.Find(_billLine.ItemId.Value).PurchasePrice = _billLine.Price.Value;
+                                }
+                                if (!payedchkbox.Checked)
+                                {
+                                    if (exchangebillchkbox.Checked)
+                                    {
+                                        TransactionsFuncs.InsertClientTransaction(bill.AccountId.Value, bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
+                                    }
+                                    else
+                                    {
+                                        TransactionsFuncs.InsertClientTransaction(bill.AccountId.Value, bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
+                                    }
+                                }
+                                else
+                                {
+                                    if (exchangebillchkbox.Checked)
+                                    {
+                                        TransactionsFuncs.InsertFundTransaction(bill.ForeginCurrencyId.Value, bill.ExchangedAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
+                                    }
+                                    else
+                                    {
+                                        TransactionsFuncs.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, TransactionsFuncs.TT.BLP, bill.LUD.Value, _guid, _declaration);
                                     }
                                 }
                             }
@@ -1010,6 +1023,22 @@ namespace Alver.UI.Bills
             {
                 RetreiveItemStaticsByBarcode();
                 barcodecb.SelectAll();
+            }
+        }
+
+        private void quantitynud_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal _totalusd = 0, _totalsyp = 0;
+                _totalusd = quantitynud.Value * pricenud.Value;
+                _totalsyp = quantitynud.Value * exchangedpricenud.Value;
+                totallineudslbl.Text = _totalusd.ToString();
+                totallinesyplbl.Text = _totalsyp.ToString();
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
             }
         }
     }

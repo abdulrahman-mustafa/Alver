@@ -41,9 +41,9 @@
             this.UserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BillSlip_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ImageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.CurrencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.exitbtn = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.CurrencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BillBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBindingSource)).BeginInit();
@@ -72,6 +72,10 @@
             // 
             this.ImageBindingSource.DataSource = typeof(Alver.DAL.Image);
             // 
+            // CurrencyBindingSource
+            // 
+            this.CurrencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
+            // 
             // exitbtn
             // 
             this.exitbtn.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -80,7 +84,7 @@
             this.exitbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.exitbtn.Location = new System.Drawing.Point(0, 470);
             this.exitbtn.Name = "exitbtn";
-            this.exitbtn.Size = new System.Drawing.Size(400, 30);
+            this.exitbtn.Size = new System.Drawing.Size(300, 30);
             this.exitbtn.TabIndex = 2;
             this.exitbtn.Text = "تــــــــــــــــــــــم";
             this.exitbtn.UseVisualStyleBackColor = true;
@@ -111,20 +115,16 @@
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ShowToolBar = false;
-            this.reportViewer1.Size = new System.Drawing.Size(400, 470);
+            this.reportViewer1.Size = new System.Drawing.Size(300, 470);
             this.reportViewer1.TabIndex = 3;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
-            // 
-            // CurrencyBindingSource
-            // 
-            this.CurrencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // frmBillSlip
             // 
             this.AcceptButton = this.exitbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 500);
+            this.ClientSize = new System.Drawing.Size(300, 500);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.exitbtn);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);

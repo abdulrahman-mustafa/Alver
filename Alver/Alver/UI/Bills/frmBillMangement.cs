@@ -18,7 +18,8 @@ namespace Alver.UI.Bills
             _checkedoutBillschk = false,
             _nonecheckedBillschk = false,
             _billIdchk = false,
-            _itemIdchk = false;
+            _itemIdchk = false,
+            _accountchk = false;
 
         #endregion Variables
 
@@ -35,9 +36,11 @@ namespace Alver.UI.Bills
             {
                 db.Bills.AsNoTracking().Load();
                 db.Items.AsNoTracking().Load();
+                db.Accounts.AsNoTracking().Load();
                 //db.Items.AsNoTracking().Load();
                 billIdBS.DataSource = db.Bills.AsNoTracking().AsQueryable().ToList();
                 itemIdBS.DataSource = db.Items.AsNoTracking().AsQueryable().ToList();
+                accountBindingSource1.DataSource = db.Accounts.AsNoTracking().AsQueryable().ToList();
             }
         }
 
@@ -58,6 +61,8 @@ namespace Alver.UI.Bills
         {
             using (dbEntities db = new dbEntities())
             {
+                db.Accounts.Load();
+                accountBindingSource.DataSource = db.Accounts.ToList();
                 BillLinesBS.DataSource = BillsBS;
                 billlinebasecurrencyBS.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
                 billbasecurrencyBS.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
@@ -71,7 +76,7 @@ namespace Alver.UI.Bills
         }
 
         //_from, _to, _billId, _itemId,  _sellBill, _PurchaseBill, _checkedout, _nonecheckedout
-        private IQueryable<Bill> GrandSearch(DateTime _from, DateTime _to, int _billId, int _itemId, string _sellBill, string _PurchaseBill, bool _checkedout, bool _nonecheckedout)
+        private IQueryable<Bill> GrandSearch(DateTime _from, DateTime _to, int _billId, int _itemId, int _accountId, string _sellBill, string _PurchaseBill, bool _checkedout, bool _nonecheckedout)
         {
             IQueryable<Bill> _query = null;// = new IQueryable<Remittances_Operation>;
             try
@@ -129,7 +134,10 @@ namespace Alver.UI.Bills
                     {
                         _query = _query.Where(x => x.CurrencyId == _itemId);
                     }
-
+                    if (_accountId != 0)
+                    {
+                        _query = _query.Where(x => x.AccountId == _accountId);
+                    }
                     BillsBS.DataSource = _query.ToList();
                 }
                 //LoadData();
@@ -161,6 +169,7 @@ namespace Alver.UI.Bills
                 DateTime _from, _to;
                 string _sellBill = null, _PurchaseBill = null;// _outer = null;
                 int _billId = 0;
+                int _accountId = 0;
                 int _itemId = 0;//, _accountId = 0;//, _fromClient = 0, _toClient = 0;
                 InitChecks();
                 if (FromDateTimePicker.Checked)
@@ -181,6 +190,10 @@ namespace Alver.UI.Bills
                 {
                     _itemId = (int)itemcb.SelectedValue;
                 }
+                if (_accountchk)
+                {
+                    _accountId = (int)accountcb.SelectedValue;
+                }
                 if (_sellBillschk && _purchaseBillschk)
                 {
                     _sellBill = BillType.بيع.ToString();
@@ -194,7 +207,7 @@ namespace Alver.UI.Bills
                 {
                     _PurchaseBill = BillType.شراء.ToString();
                 }
-                GrandSearch(_from, _to, _billId, _itemId, _sellBill, _PurchaseBill, _checkedoutBillschk, _nonecheckedBillschk);
+                GrandSearch(_from, _to, _billId, _itemId, _accountId, _sellBill, _PurchaseBill, _checkedoutBillschk, _nonecheckedBillschk);
                 this.Cursor = Cursors.Default;
             }
             catch (Exception ex)
@@ -285,6 +298,12 @@ namespace Alver.UI.Bills
             {
                 MSGs.ErrorMessage(ex);
             }
+        }
+
+        private void accountchkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            _accountchk = accountchkbox.Checked;
+            accountcb.Enabled = accountchkbox.Checked;
         }
 
         private void purchasebillchkbox_CheckedChanged(object sender, EventArgs e)

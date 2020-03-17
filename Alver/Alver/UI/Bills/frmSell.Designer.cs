@@ -75,6 +75,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.totallinesyplbl = new System.Windows.Forms.Label();
+            this.totallineudslbl = new System.Windows.Forms.Label();
             this.exchangedpricenud = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.remainedquantitylbl = new System.Windows.Forms.Label();
@@ -138,8 +140,6 @@
             this.chechprintbillbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.printbillslipbtn = new System.Windows.Forms.ToolStripButton();
-            this.totallineudslbl = new System.Windows.Forms.Label();
-            this.totallinesyplbl = new System.Windows.Forms.Label();
             declarationLabel = new System.Windows.Forms.Label();
             exchangeDateLabel = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -617,6 +617,26 @@
             this.panel3.Size = new System.Drawing.Size(966, 72);
             this.panel3.TabIndex = 41;
             // 
+            // totallinesyplbl
+            // 
+            this.totallinesyplbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totallinesyplbl.AutoSize = true;
+            this.totallinesyplbl.Location = new System.Drawing.Point(120, 50);
+            this.totallinesyplbl.Name = "totallinesyplbl";
+            this.totallinesyplbl.Size = new System.Drawing.Size(13, 15);
+            this.totallinesyplbl.TabIndex = 58;
+            this.totallinesyplbl.Text = "0";
+            // 
+            // totallineudslbl
+            // 
+            this.totallineudslbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totallineudslbl.AutoSize = true;
+            this.totallineudslbl.Location = new System.Drawing.Point(231, 50);
+            this.totallineudslbl.Name = "totallineudslbl";
+            this.totallineudslbl.Size = new System.Drawing.Size(13, 15);
+            this.totallineudslbl.TabIndex = 57;
+            this.totallineudslbl.Text = "0";
+            // 
             // exchangedpricenud
             // 
             this.exchangedpricenud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -640,6 +660,7 @@
             0,
             0,
             0});
+            this.exchangedpricenud.ValueChanged += new System.EventHandler(this.exchangedpricenud_ValueChanged);
             // 
             // label14
             // 
@@ -1356,26 +1377,6 @@
             this.printbillslipbtn.Size = new System.Drawing.Size(100, 24);
             this.printbillslipbtn.Text = "طباعة الفاتورة";
             this.printbillslipbtn.Click += new System.EventHandler(this.printbillslipbtn_Click);
-            // 
-            // totallineudslbl
-            // 
-            this.totallineudslbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.totallineudslbl.AutoSize = true;
-            this.totallineudslbl.Location = new System.Drawing.Point(231, 50);
-            this.totallineudslbl.Name = "totallineudslbl";
-            this.totallineudslbl.Size = new System.Drawing.Size(13, 15);
-            this.totallineudslbl.TabIndex = 57;
-            this.totallineudslbl.Text = "0";
-            // 
-            // totallinesyplbl
-            // 
-            this.totallinesyplbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.totallinesyplbl.AutoSize = true;
-            this.totallinesyplbl.Location = new System.Drawing.Point(120, 50);
-            this.totallinesyplbl.Name = "totallinesyplbl";
-            this.totallinesyplbl.Size = new System.Drawing.Size(13, 15);
-            this.totallinesyplbl.TabIndex = 58;
-            this.totallinesyplbl.Text = "0";
             // 
             // frmSell
             // 

@@ -37,10 +37,10 @@
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label11;
             System.Windows.Forms.Label label12;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchase));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.billLinesDgv = new System.Windows.Forms.DataGridView();
             this.itemIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -138,6 +138,8 @@
             this.chechprintbillbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.editbillbtn = new System.Windows.Forms.ToolStripButton();
+            this.totallinesyplbl = new System.Windows.Forms.Label();
+            this.totallineudslbl = new System.Windows.Forms.Label();
             declarationLabel = new System.Windows.Forms.Label();
             exchangeDateLabel = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -278,8 +280,8 @@
             this.billLinesDgv.AllowUserToAddRows = false;
             this.billLinesDgv.AllowUserToDeleteRows = false;
             this.billLinesDgv.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.billLinesDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.billLinesDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.billLinesDgv.AutoGenerateColumns = false;
             this.billLinesDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.billLinesDgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
@@ -589,6 +591,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.totallinesyplbl);
+            this.panel3.Controls.Add(this.totallineudslbl);
             this.panel3.Controls.Add(this.exchangedpricenud);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.remainedquantitylbl);
@@ -781,6 +785,7 @@
             0,
             0,
             0});
+            this.quantitynud.ValueChanged += new System.EventHandler(this.quantitynud_ValueChanged);
             // 
             // unitcb
             // 
@@ -1111,9 +1116,9 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "OpreationDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn1.HeaderText = "التاريخ";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1136,8 +1141,8 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "SubAmount";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Gold;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Gold;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn4.HeaderText = "المبلغ الناتج";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -1350,6 +1355,26 @@
             this.editbillbtn.Text = "طباعة الفاتورة";
             this.editbillbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
+            // totallinesyplbl
+            // 
+            this.totallinesyplbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totallinesyplbl.AutoSize = true;
+            this.totallinesyplbl.Location = new System.Drawing.Point(127, 52);
+            this.totallinesyplbl.Name = "totallinesyplbl";
+            this.totallinesyplbl.Size = new System.Drawing.Size(13, 15);
+            this.totallinesyplbl.TabIndex = 60;
+            this.totallinesyplbl.Text = "0";
+            // 
+            // totallineudslbl
+            // 
+            this.totallineudslbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totallineudslbl.AutoSize = true;
+            this.totallineudslbl.Location = new System.Drawing.Point(238, 52);
+            this.totallineudslbl.Name = "totallineudslbl";
+            this.totallineudslbl.Size = new System.Drawing.Size(13, 15);
+            this.totallineudslbl.TabIndex = 59;
+            this.totallineudslbl.Text = "0";
+            // 
             // frmPurchase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1517,5 +1542,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox billIdcb;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label totallinesyplbl;
+        private System.Windows.Forms.Label totallineudslbl;
     }
 }

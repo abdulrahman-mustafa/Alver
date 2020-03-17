@@ -3,6 +3,7 @@ using Alver.MISC;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,7 +12,7 @@ namespace Alver.UI.Bills.BillReports
     public partial class frmBillSlip : Form
     {
         //dbEntities db;
-        private int _billId, _userId, _currencyId;
+        private int _billId = 0, _userId = 0, _currencyId = 0, _billLinesCount = 0;
 
         private bool _silentPrinting = false;
 
@@ -22,6 +23,7 @@ namespace Alver.UI.Bills.BillReports
                 InitializeComponent();
                 _billId = BillId;
                 _userId = UserId;
+                _billLinesCount = (new dbEntities()).Bills.Find(_billId).BillLines.Count;
                 if ((new dbEntities()).Bills.Find(_billId).ForeginCurrencyId != null)
                 {
                     _currencyId = (new dbEntities()).Bills.Find(_billId).ForeginCurrencyId.Value;

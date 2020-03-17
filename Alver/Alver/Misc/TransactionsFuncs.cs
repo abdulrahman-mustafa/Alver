@@ -17,28 +17,34 @@ namespace Alver.MISC
         {
             //BILL
             BLP,//BILL PURCHASE
+
             BLS,//BILL SELL
 
             //LOSS & GAIN
             LOS,//LOSS
+
             GIN,//GAIN
 
             //CUT
             CTF,//CUT FROM
+
             CTT,//CUT TO
 
             //TRANSFER
             TRF,//TRANSFER FROM
+
             TRT,//TRANSFER TO
 
             //PAYMENT
             PAY,//PAY
+
             PID,//PAYED
             PYI,//PAYMENT IN FUND
             PYO,//PAYMENT OUT FUND
 
             //REMITTANCE
             INC,//INCOME REMITTANCE
+
             IGNINC,//IGNORE INCOME REMITTANCE
             OTD,//OUTBOUND REMITTANCE
             IGNOTD,//IGNORE OUTBOUND REMITTANCE
@@ -50,25 +56,28 @@ namespace Alver.MISC
             IGNICF,//IGNORE INCOME FUND  REMITTANCE
             OBF,//OUTBOUND FUND REMITTANCE
             IGNOBF,//IGNORE OUTBOUND FUND REMITTANCE
-            WEI,//WAGE IN 
-            IGNWEI,//IGNORE WAGE IN 
+            WEI,//WAGE IN
+            IGNWEI,//IGNORE WAGE IN
             WEO,//WAGE OUT
             IGNWEO,//IGNORE WAGE OUT
 
             //LOAN
             LNF,//LOAN FROM
+
             LNT,//LOAN TO
             LNI,//LOAN IN FUND
             LNO,//LOAN FROM FUND
 
             //DEPOSITE
             DTF,//DEPOSITE FROM
+
             DTT,//DEPOSITE TO
             DTI,//DEPOSITE IN FUND
             DTO,//DEPOSITE OUT FUND
 
             //CURRENCY EXCHANGE
             CEB,//CURRENCY EXCHANGE BUY
+
             CES,//CURRENCY EXCHANGE SELL
             CED,//CURRENCY EXCHANGE DIFFERENCE
 
@@ -91,12 +100,14 @@ namespace Alver.MISC
 
             //EMPLOYEES SECTION
             EMPOPN,//EMPLOYEE OPENING
+
             EMPSAL,//EMPLOYEE SALARY
             EMPLNI,//EMPLOYEE LOAN IN
             EMPLNO,//EMPLOYEE LOAN OUT
             EMPDTI,//EMPLOYEE DEPOSITE IN
             EMPDTO//EMPLOYEE DEPOSITE OUT
         }
+
         public enum CC
         {
             ONE,
@@ -105,8 +116,8 @@ namespace Alver.MISC
         }
 
         //GENERAL PURPOSE METHODS
-        
-        public static void DeleteTransactions(Guid _guid, int currencyId = 0, int accountId = 0,int itemId=0, TT _TT = TT.FOO)
+
+        public static void DeleteTransactions(Guid _guid, int currencyId = 0, int accountId = 0, int itemId = 0, TT _TT = TT.FOO)
         {
             using (dbEntities db = new dbEntities())
             {
@@ -134,6 +145,7 @@ namespace Alver.MISC
                 ItemsRunningTotals(itemId);
             }
         }
+
         public static TEnum GetEnumStringEnumType<TEnum>(string strenum)
     where TEnum : struct
         {
@@ -165,6 +177,7 @@ namespace Alver.MISC
                 //ClientsRunningTotals(_clientId);
             }
         }
+
         public static void InsertClientTransaction(int accountId, int currencyId, decimal amount, TT OperationType, DateTime OperationDate, Guid OperationGUID, string _declaration, int ForeignCurrency = 0)
         {
             using (dbEntities db = new DAL.dbEntities())
@@ -189,6 +202,7 @@ namespace Alver.MISC
                             amount *= -1;
                         }
                         break;
+
                     case TT.TRF:
                     case TT.CTF:
                         if (_sum >= 0)
@@ -196,6 +210,7 @@ namespace Alver.MISC
                             amount = amount * -1;
                         }
                         break;
+
                     case TT.CTT:
                         int _fromCurrency = ForeignCurrency;// db.Funds.FirstOrDefault(x => x.Id == _transfer.FundFrom.Value).CurrencyId.Value;
                         List<Transaction> _fromTransactions = db.Transactions.Where(x =>
@@ -209,6 +224,7 @@ namespace Alver.MISC
                             amount *= -1;
                         }
                         break;
+
                     case TT.DDT:
                     case TT.DTF:
                     case TT.LNF:
@@ -223,6 +239,7 @@ namespace Alver.MISC
                     case TT.BLP:
                         amount = amount * -1;
                         break;
+
                     case TT.RFD:
                     case TT.DTT:
                     case TT.LNT:
@@ -239,6 +256,7 @@ namespace Alver.MISC
                         amount = amount;
 #pragma warning restore CS1717 // Assignment made to same variable
                         break;
+
                     default:
                         break;
                 }
@@ -259,6 +277,7 @@ namespace Alver.MISC
                 ClientsRunningTotals(accountId, currencyId);
             }
         }
+
         public static void InsertClientOpeningBalance(ref dbEntities db, AccountFund _fund, string _declaration)
         {
             int _sign = 1;
@@ -281,6 +300,7 @@ namespace Alver.MISC
             );
             ClientsRunningTotals(_fund.AccountId.Value, _fund.CurrencyId.Value);
         }
+
         public static void UpdateClientOpeningBalance(AccountFund _fund, decimal _amount)
         {
             using (dbEntities db = new dbEntities())
@@ -298,7 +318,6 @@ namespace Alver.MISC
             }
         }
 
-
         //FUND TRANACTIONS OPERATIONS
         public static void DeleteAllFundTransactions(int _fundId, TT _TT = TT.FOO)
         {
@@ -308,6 +327,7 @@ namespace Alver.MISC
                 db.SaveChanges();
             }
         }
+
         public static void InsertFundOpeningBalance(Fund _fund, string _declaration)
         {
             using (dbEntities db = new DAL.dbEntities())
@@ -333,6 +353,7 @@ namespace Alver.MISC
                 FundsRunningTotals(_fund.CurrencyId.Value);
             }
         }
+
         public static void InsertFundTransaction(int currencyId, decimal amount, TT OperationType, DateTime OperationDate, Guid OperationGUID, string _declaration)
         {
             if (OperationType != TT.CED)
@@ -358,11 +379,12 @@ namespace Alver.MISC
                     //case TT.PAY:
                     case TT.PYI:
                     case TT.IGNICF:
-                    case TT.BLP:
+                    case TT.BLS:
 #pragma warning disable CS1717 // Assignment made to same variable
                         amount = amount;
 #pragma warning restore CS1717 // Assignment made to same variable
                         break;
+
                     case TT.SOT:
                     case TT.DDT:
                     case TT.CES:
@@ -379,9 +401,10 @@ namespace Alver.MISC
                     case TT.PYO:
                     case TT.IGNOBF:
                     case TT.IGNWEI:
-                    case TT.BLS:
+                    case TT.BLP:
                         amount = amount * -1;
                         break;
+
                     default:
                         break;
                 }
@@ -407,6 +430,7 @@ namespace Alver.MISC
                 FundsRunningTotals(currencyId);
             }
         }
+
         public static void UpdateFundOpeningBalance(Fund _fund, decimal _amount)
         {
             using (dbEntities db = new DAL.dbEntities())
@@ -423,6 +447,7 @@ namespace Alver.MISC
                 FundsRunningTotals(_transaction.CurrencyId.Value);
             }
         }
+
         public static void FundsRunningTotals(int currencyid)
         {
             using (dbEntities db = new dbEntities())
@@ -439,7 +464,6 @@ namespace Alver.MISC
                 db.SaveChanges();
             }
         }
-
 
         //ITEM TRANACTIONS OPERATIONS
         public static void DeleteAllItemTransactions(int _itemId, TT _TT = TT.FOO)
@@ -458,6 +482,7 @@ namespace Alver.MISC
                 ItemsRunningTotals(_itemId);
             }
         }
+
         public static void InsertItemTransaction(
             int ItemId,
             int UnitId,
@@ -470,19 +495,21 @@ namespace Alver.MISC
             using (dbEntities db = new DAL.dbEntities())
             {
                 List<ItemTransaction> _transactions = db.ItemTransactions.Where(x =>
-                                                                          x.ItemId == ItemId&&
+                                                                          x.ItemId == ItemId &&
                                                                           x.UnitId == UnitId
                                                                         ).ToList();
                 decimal _sum = _transactions.Sum(x => x.Amount.Value); //Previous running total
                 amount = Math.Abs(amount);
                 switch (OperationType)
                 {
-                    case TT.BLP:
+                    case TT.BLS:
                         amount *= -1;
                         break;
-                    case TT.BLS:
+
+                    case TT.BLP:
                         amount = amount;
                         break;
+
                     default:
                         break;
                 }
@@ -503,6 +530,7 @@ namespace Alver.MISC
                 ItemsRunningTotals(ItemId, UnitId);
             }
         }
+
         public static void InsertItemOpeningBalance(ItemFund _fund, string _declaration)
         {
             int _sign = 1;
@@ -511,7 +539,7 @@ namespace Alver.MISC
             //    _sign *= -1;
             //}
             decimal Amount = Math.Abs(_fund.Balance.Value) * _sign;
-            using (dbEntities db=new dbEntities())
+            using (dbEntities db = new dbEntities())
             {
                 ItemTransaction _transaction = new ItemTransaction()
                 {
@@ -529,6 +557,7 @@ namespace Alver.MISC
             }
             ItemsRunningTotals(_fund.ItemId.Value, _fund.UnitId.Value);
         }
+
         public static void UpdateItemOpeningBalance(ItemFund _fund, decimal _amount)
         {
             using (dbEntities db = new dbEntities())
@@ -545,8 +574,6 @@ namespace Alver.MISC
                 ItemsRunningTotals(_transaction.ItemId.Value, _transaction.UnitId.Value);
             }
         }
-
-
 
         //Client Transactions
         public static void RegenerateClientTransaction(ref dbEntities db, int accountId, int currencyId, decimal amount, TT OperationType, DateTime OperationDate, Guid OperationGUID, int ForeignCurrency = 0)
@@ -593,6 +620,7 @@ namespace Alver.MISC
 #pragma warning restore CS1717 // Assignment made to same variable
                     }
                     break;
+
                 case TT.CTT:
                     //Transfer_ClientFund _transfer = db.Transfer_ClientFund.FirstOrDefault(x => x.GUID == OperationGUID);
                     int _fromCurrency = ForeignCurrency;// db.Funds.FirstOrDefault(x => x.Id == _transfer.FundFrom.Value).CurrencyId.Value;
@@ -635,6 +663,7 @@ namespace Alver.MISC
                         amount = amount * -1;
                     }
                     break;
+
                 case TT.TRF:
                 case TT.DDT:
                 case TT.DTF:
@@ -645,6 +674,7 @@ namespace Alver.MISC
                 case TT.PAY:
                     amount = amount * -1;
                     break;
+
                 case TT.TRT:
                 case TT.RFD:
                 case TT.DTT:
@@ -657,6 +687,7 @@ namespace Alver.MISC
                     amount = amount;
 #pragma warning restore CS1717 // Assignment made to same variable
                     break;
+
                 default:
                     break;
             }
@@ -671,6 +702,7 @@ namespace Alver.MISC
             };
             db.Transactions.Add(_transaction);
         }
+
         public static void ClientsRunningTotals(int accountId)
         {
             using (dbEntities db = new dbEntities())
@@ -691,6 +723,7 @@ namespace Alver.MISC
                 db.SaveChanges();
             }
         }
+
         public static void ClientsRunningTotals(int accountId, int currencyId)
         {
             using (dbEntities db = new dbEntities())
@@ -706,7 +739,6 @@ namespace Alver.MISC
                 db.SaveChanges();
             }
         }
-
 
         //Item Transactions
         public static void ItemsRunningTotals(int itemId)
@@ -729,6 +761,7 @@ namespace Alver.MISC
                 db.SaveChanges();
             }
         }
+
         public static void ItemsRunningTotals(int itemId, int unitId)
         {
             using (dbEntities db = new dbEntities())
