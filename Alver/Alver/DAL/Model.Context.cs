@@ -36,7 +36,6 @@ namespace Alver.DAL
         public virtual DbSet<BillLine> BillLines { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
-        public virtual DbSet<CurrencyBulletin> CurrencyBulletins { get; set; }
         public virtual DbSet<CurrencyExchange> CurrencyExchanges { get; set; }
         public virtual DbSet<CurrencyExchangeOperation> CurrencyExchangeOperations { get; set; }
         public virtual DbSet<Exchange> Exchanges { get; set; }
@@ -61,6 +60,7 @@ namespace Alver.DAL
         public virtual DbSet<V_CLIENTS> V_CLIENTS { get; set; }
         public virtual DbSet<V_STOCK> V_STOCK { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<CurrencyBulletin> CurrencyBulletins { get; set; }
     
         public virtual int CreateClientFunds(Nullable<int> clientId)
         {

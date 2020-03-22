@@ -778,8 +778,12 @@
         private System.Windows.Forms.DataGridView dgvTotals;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button button1;
+#pragma warning disable CS0169 // The field 'frmItemMovements.مجموعسعرالشراءDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعسعرالشراءDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItemMovements.مجموعسعرالشراءDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItemMovements.مجموعسعرالبيعDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعسعرالبيعDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItemMovements.مجموعسعرالبيعDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.BindingNavigator billLineBN;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;

@@ -88,7 +88,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeDecimalDGVFullRow(this DataGridView dgv, int index)
@@ -103,7 +105,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeDecimalDGVCell(this DataGridView dgv, int index)
@@ -118,7 +122,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeDecimalDGVCell(this DataGridView dgv)
@@ -136,7 +142,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeDecimalDGVTwoCells(this DataGridView dgv, int index1, int index2)
@@ -155,7 +163,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void copyAlltoClipboard(this DataGridView dgv)
@@ -252,7 +262,9 @@ namespace Alver.MISC
                 CR.Select();
                 xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ExportToPdf(this DataGridView dgv)
@@ -485,7 +497,9 @@ namespace Alver.MISC
                         .Sum(t => Convert.ToDecimal(t.Cells[_valueIndex].Value));
                 }
 
+#pragma warning disable CS0219 // The variable '_sum' is assigned but its value is never used
                 decimal _sum = 0;
+#pragma warning restore CS0219 // The variable '_sum' is assigned but its value is never used
                 decimal _grand = 0;
                 decimal _USD = 0, _SYP = 0, _TL = 0, _EURO = 0, _SAR = 0;
                 try
@@ -504,7 +518,9 @@ namespace Alver.MISC
 
                     _grand = _USD + _SYP + _TL + _EURO + _SAR;
                 }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                 catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                 {
                     //MSGs.ErrorMessage(ex);
                 }

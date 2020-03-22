@@ -80,7 +80,9 @@ namespace Alver.UI.Users
                 }
 
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
         private void Save()
@@ -120,7 +122,9 @@ namespace Alver.UI.Users
                 Save();
                 this.Close();
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء حفظ التعديلات");
             }

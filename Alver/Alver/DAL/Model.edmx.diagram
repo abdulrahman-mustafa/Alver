@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="AlverModel.BillLine" Width="1.5" PointX="15.75" PointY="62.125" />
         <EntityTypeShape EntityType="AlverModel.Company" Width="1.5" PointX="5.25" PointY="1" />
         <EntityTypeShape EntityType="AlverModel.Currency" Width="1.5" PointX="5.25" PointY="57.875" />
-        <EntityTypeShape EntityType="AlverModel.CurrencyBulletin" Width="1.5" PointX="7.5" PointY="87.5" />
         <EntityTypeShape EntityType="AlverModel.CurrencyExchange" Width="1.5" PointX="5.25" PointY="41.25" />
         <EntityTypeShape EntityType="AlverModel.CurrencyExchangeOperation" Width="1.5" PointX="7.5" PointY="53.5" />
         <EntityTypeShape EntityType="AlverModel.Exchange" Width="1.5" PointX="10.5" PointY="54.625" />
@@ -63,7 +62,6 @@
         <AssociationConnector Association="AlverModel.FK_BillLines_User" />
         <AssociationConnector Association="AlverModel.FK_Company_Images" />
         <AssociationConnector Association="AlverModel.FK_Currency_User" />
-        <AssociationConnector Association="AlverModel.FK_CurrencyBulletin_Currency" />
         <AssociationConnector Association="AlverModel.FK_CurrencyExchangeOperations_Currency" />
         <AssociationConnector Association="AlverModel.FK_CurrencyExchangeOperations_Currency1" />
         <AssociationConnector Association="AlverModel.FK_Exchange_BaseCurrency" />
@@ -111,6 +109,8 @@
         <AssociationConnector Association="AlverModel.FK_Payment_Account" />
         <AssociationConnector Association="AlverModel.FK_Payment_Currency" />
         <AssociationConnector Association="AlverModel.FK_Payment_User" />
+        <EntityTypeShape EntityType="AlverModel.CurrencyBulletin" Width="1.5" PointX="7.5" PointY="65.125" />
+        <AssociationConnector Association="AlverModel.FK_CurrencyBulletin_Currency" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

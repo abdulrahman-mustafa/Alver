@@ -43,7 +43,9 @@ namespace Alver.MISC
                 //            if (FromDate.Hour == ToDate.Hour)
                 //                if (FromDate.Minute == ToDate.Minute) { }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             { }
             return _result;// 0 = Equal - 1 = FromDate is greater - -1 = FromDate is less than
         }

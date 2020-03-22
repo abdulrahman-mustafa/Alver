@@ -65,10 +65,14 @@ namespace Alver.UI.Funds
                                 item.LUD = DateTime.Now;
                             }
                         }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                         catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                     }
                 }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                 catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             }//END foreach
         }
 
@@ -120,7 +124,9 @@ namespace Alver.UI.Funds
                 //    toolStripButton1.Enabled = !_payment.Payed.Value;
                 //}
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
@@ -145,7 +151,9 @@ namespace Alver.UI.Funds
                     MessageBox.Show("تم الحذف بنجاح");
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ أثناء الحذف");
             }

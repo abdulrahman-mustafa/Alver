@@ -71,7 +71,9 @@ namespace Alver.UI.Funds
                     Currency = _currency
                 };
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
         private void ControlsEnable(bool _enable)
         {
@@ -117,7 +119,9 @@ namespace Alver.UI.Funds
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
         private void Save()
@@ -143,7 +147,9 @@ namespace Alver.UI.Funds
                     scope.Complete();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي سيتم التراجع عن الحفظ");
             }
@@ -158,7 +164,9 @@ namespace Alver.UI.Funds
                 Save();
                 ControlsEnable(false);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ اثناء إضافة الصندوق", "تنبيه");
             }

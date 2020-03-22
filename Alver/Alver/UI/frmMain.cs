@@ -387,5 +387,11 @@ namespace Alver.Forms
                 MSGs.ErrorMessage(ex);
             }
         }
+
+        private void POSbtn_Click_1(object sender, EventArgs e)
+        {
+            frmPOS frm = new frmPOS();
+            frm.Show();
+        }
     }
 }

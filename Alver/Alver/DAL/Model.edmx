@@ -196,7 +196,7 @@
           <Property Name="CurrencyId" Type="int" />
           <Property Name="Rate" Type="money" />
           <Property Name="ReversedRate" Type="money" />
-          <Property Name="TOUSD" Type="bit" />
+          <Property Name="Factor" Type="bit" />
           <Property Name="GUID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="CurrencyExchange">
@@ -1881,7 +1881,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <EntitySet Name="BillLines" EntityType="AlverModel.BillLine" />
           <EntitySet Name="Companies" EntityType="AlverModel.Company" />
           <EntitySet Name="Currencies" EntityType="AlverModel.Currency" />
-          <EntitySet Name="CurrencyBulletins" EntityType="AlverModel.CurrencyBulletin" />
           <EntitySet Name="CurrencyExchanges" EntityType="AlverModel.CurrencyExchange" />
           <EntitySet Name="CurrencyExchangeOperations" EntityType="AlverModel.CurrencyExchangeOperation" />
           <EntitySet Name="Exchanges" EntityType="AlverModel.Exchange" />
@@ -2010,10 +2009,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <AssociationSet Name="FK_Currency_User" Association="AlverModel.FK_Currency_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Currency" EntitySet="Currencies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CurrencyBulletin_Currency" Association="AlverModel.FK_CurrencyBulletin_Currency">
-            <End Role="Currency" EntitySet="Currencies" />
-            <End Role="CurrencyBulletin" EntitySet="CurrencyBulletins" />
           </AssociationSet>
           <AssociationSet Name="FK_CurrencyExchangeOperations_Currency" Association="AlverModel.FK_CurrencyExchangeOperations_Currency">
             <End Role="Currency" EntitySet="Currencies" />
@@ -2204,6 +2199,11 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="DeleteAllData" />
           <FunctionImport Name="SP_FundsMovements" ReturnType="Collection(AlverModel.SP_FundsMovements_Result)" />
+          <EntitySet Name="CurrencyBulletins" EntityType="AlverModel.CurrencyBulletin" />
+          <AssociationSet Name="FK_CurrencyBulletin_Currency" Association="AlverModel.FK_CurrencyBulletin_Currency">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="CurrencyBulletin" EntitySet="CurrencyBulletins" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_ClientGrand_Result">
           <Property Type="String" Name="الصندوق" Nullable="true" MaxLength="50" />
@@ -2456,7 +2456,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <NavigationProperty Name="BillLines" Relationship="AlverModel.FK_BillLines_Currency" FromRole="Currency" ToRole="BillLine" />
           <NavigationProperty Name="BillLines1" Relationship="AlverModel.FK_BillLines_Currency1" FromRole="Currency" ToRole="BillLine" />
           <NavigationProperty Name="User" Relationship="AlverModel.FK_Currency_User" FromRole="Currency" ToRole="User" />
-          <NavigationProperty Name="CurrencyBulletins" Relationship="AlverModel.FK_CurrencyBulletin_Currency" FromRole="Currency" ToRole="CurrencyBulletin" />
           <NavigationProperty Name="CurrencyExchangeOperations" Relationship="AlverModel.FK_CurrencyExchangeOperations_Currency" FromRole="Currency" ToRole="CurrencyExchangeOperation" />
           <NavigationProperty Name="CurrencyExchangeOperations1" Relationship="AlverModel.FK_CurrencyExchangeOperations_Currency1" FromRole="Currency" ToRole="CurrencyExchangeOperation" />
           <NavigationProperty Name="Exchanges" Relationship="AlverModel.FK_Exchange_BaseCurrency" FromRole="Currency" ToRole="Exchange" />
@@ -2470,19 +2469,7 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <NavigationProperty Name="Transfers" Relationship="AlverModel.FK_Transfer_Currency" FromRole="Currency" ToRole="Transfer" />
           <NavigationProperty Name="Withdraws" Relationship="AlverModel.FK_Withdraw_Currency" FromRole="Currency" ToRole="Withdraw" />
           <NavigationProperty Name="Payments" Relationship="AlverModel.FK_Payment_Currency" FromRole="Currency" ToRole="Payment" />
-        </EntityType>
-        <EntityType Name="CurrencyBulletin">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RateDate" Type="DateTime" Precision="3" />
-          <Property Name="CurrencyId" Type="Int32" />
-          <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ReversedRate" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TOUSD" Type="Boolean" />
-          <Property Name="GUID" Type="Guid" />
-          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_CurrencyBulletin_Currency" FromRole="CurrencyBulletin" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyBulletins" Relationship="AlverModel.FK_CurrencyBulletin_Currency" FromRole="Currency" ToRole="CurrencyBulletin" />
         </EntityType>
         <EntityType Name="CurrencyExchange">
           <Key>
@@ -3268,18 +3255,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CurrencyBulletin_Currency">
-          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="AlverModel.CurrencyBulletin" Role="CurrencyBulletin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CurrencyBulletin">
-              <PropertyRef Name="CurrencyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CurrencyExchangeOperations_Currency">
           <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
           <End Type="AlverModel.CurrencyExchangeOperation" Role="CurrencyExchangeOperation" Multiplicity="*" />
@@ -3884,6 +3859,31 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
           <Property Type="Decimal" Name="يورو" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="ريال_سعودي" Nullable="true" Precision="19" />
         </ComplexType>
+        <EntityType Name="CurrencyBulletin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RateDate" Type="DateTime" Precision="3" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReversedRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Factor" Type="Boolean" />
+          <Property Name="GUID" Type="Guid" />
+          <NavigationProperty Name="Currency" Relationship="AlverModel.FK_CurrencyBulletin_Currency" FromRole="CurrencyBulletin" ToRole="Currency" />
+        </EntityType>
+        <Association Name="FK_CurrencyBulletin_Currency">
+          <End Type="AlverModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="AlverModel.CurrencyBulletin" Role="CurrencyBulletin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrencyBulletin">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4124,19 +4124,6 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
                 <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
                 <ScalarProperty Name="CurrencySymbol" ColumnName="CurrencySymbol" />
                 <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CurrencyBulletins">
-            <EntityTypeMapping TypeName="AlverModel.CurrencyBulletin">
-              <MappingFragment StoreEntitySet="CurrencyBulletin">
-                <ScalarProperty Name="GUID" ColumnName="GUID" />
-                <ScalarProperty Name="TOUSD" ColumnName="TOUSD" />
-                <ScalarProperty Name="ReversedRate" ColumnName="ReversedRate" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
-                <ScalarProperty Name="RateDate" ColumnName="RateDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4621,6 +4608,19 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="CurrencyBulletins">
+            <EntityTypeMapping TypeName="AlverModel.CurrencyBulletin">
+              <MappingFragment StoreEntitySet="CurrencyBulletin">
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="ReversedRate" ColumnName="ReversedRate" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="RateDate" ColumnName="RateDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

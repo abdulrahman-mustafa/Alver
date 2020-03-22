@@ -285,8 +285,12 @@
 
         private System.Windows.Forms.BindingSource payments_ExpenseCategoryBindingSource;
         private System.Windows.Forms.DataGridView payments_ExpenseCategoryDataGridView;
+#pragma warning disable CS0169 // The field 'frmExpensessCategory.dataGridViewTextBoxColumn2' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+#pragma warning restore CS0169 // The field 'frmExpensessCategory.dataGridViewTextBoxColumn2' is never used
+#pragma warning disable CS0169 // The field 'frmExpensessCategory.dataGridViewTextBoxColumn3' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+#pragma warning restore CS0169 // The field 'frmExpensessCategory.dataGridViewTextBoxColumn3' is never used
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripButton addbtn;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;

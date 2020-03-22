@@ -52,7 +52,9 @@ namespace Alver.UI.Payments.Expenses
                     TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.EXS, _expensess.ExpenseDate.Value, _guid, _declaration);
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي سيتم التراجع عن الحفظ");
             }
@@ -83,7 +85,9 @@ namespace Alver.UI.Payments.Expenses
                     scope.Complete();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي سيتم التراجع عن الحفظ");
             }
@@ -119,7 +123,9 @@ namespace Alver.UI.Payments.Expenses
                 _expensess.GUID = Guid.NewGuid();
                 _expensess.PROTECTED = false;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي");
             }
@@ -134,7 +140,9 @@ namespace Alver.UI.Payments.Expenses
                     _category = db.ExpenseCategories.FirstOrDefault(x => x.Id == Id);
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
 
             }
@@ -150,7 +158,9 @@ namespace Alver.UI.Payments.Expenses
                     _currency = db.Currencies.FirstOrDefault(x => x.Id == Id);
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
             }
 
@@ -227,7 +237,9 @@ namespace Alver.UI.Payments.Expenses
                 Save();
                 ControlsEnable(false);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي");
             }

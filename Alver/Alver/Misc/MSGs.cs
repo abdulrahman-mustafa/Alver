@@ -24,9 +24,10 @@ namespace Alver.MISC
             MessageBoxOptions _options = MessageBoxOptions.RightAlign;
             MessageBox.Show(_msg, _caption, _buttons, _icon, _defaultButton, _options, false);
         }
+
         public static void ErrorMessage(Exception Ex = null)
         {
-            string _msg = "حدث خطأ أثناء الحفظ";
+            string _msg = "حدث خطأ داخلي";
             if (Ex != null)
             {
                 _msg += Environment.NewLine;

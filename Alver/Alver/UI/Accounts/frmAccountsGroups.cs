@@ -10,7 +10,9 @@ namespace Alver.UI.Accounts
     public partial class frmAccountsGroups : Form
     {
         dbEntities db;
+#pragma warning disable CS0169 // The field 'frmAccountsGroups._category' is never used
         ExpenseCategory _category;
+#pragma warning restore CS0169 // The field 'frmAccountsGroups._category' is never used
         public frmAccountsGroups()
         {
             InitializeComponent();

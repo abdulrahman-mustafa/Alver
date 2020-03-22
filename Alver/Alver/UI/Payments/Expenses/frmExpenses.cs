@@ -64,10 +64,14 @@ namespace Alver.UI.Payments.Expenses
                                 item.LUD = DateTime.Now;
                             }
                         }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                         catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                     }
                 }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                 catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             }//END foreach
         }
         private void ItemChanged(DbPropertyValues originalValues, DbPropertyValues currentValues, Expense item)
@@ -111,7 +115,9 @@ namespace Alver.UI.Payments.Expenses
                 }
 
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             bindingNavigatorDeleteItem.Enabled = true;
         }
 

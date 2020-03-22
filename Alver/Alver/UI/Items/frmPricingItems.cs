@@ -56,7 +56,9 @@ namespace Alver.UI.Items
                 db.SaveChanges();
                 MessageBox.Show("تم الحفظ بنجاح");
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void frmClient_KeyDown(object sender, KeyEventArgs e)

@@ -17,7 +17,9 @@ namespace Alver.MISC
                 //Delete transaction
                 TransactionsFuncs.DeleteTransactions(_guid);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ اثناء حذف الحركة");
             }
@@ -33,7 +35,9 @@ namespace Alver.MISC
                     TransactionsFuncs.DeleteTransactions(_operation.GUID.Value);
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ اثناء حذف الحركة");
             }
@@ -61,7 +65,9 @@ namespace Alver.MISC
                 }
                 MessageBox.Show("تم حذف العملية بنجاح");
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء حذف الفاتورة ،لم يتم الحذف بنجاح", "حذف فاتورة", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -93,7 +99,9 @@ namespace Alver.MISC
                     db.SaveChanges();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء حذف الفواتير ،لم يتم الحذف بنجاح", "حذف فاتورة", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -127,7 +135,9 @@ namespace Alver.MISC
                     db.SaveChanges();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء حذف الفواتير ،لم يتم الحذف بنجاح", "حذف فاتورة", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

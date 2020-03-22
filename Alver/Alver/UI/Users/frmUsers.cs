@@ -87,7 +87,9 @@ namespace Alver.UI.Users
                     deleteuserbtn.Enabled = false;
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -102,7 +104,9 @@ namespace Alver.UI.Users
                     LoadData();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void اكسلToolStripMenuItem_Click(object sender, EventArgs e)
@@ -143,7 +147,9 @@ namespace Alver.UI.Users
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ داخلي");
                 throw;

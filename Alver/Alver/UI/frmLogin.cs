@@ -50,7 +50,9 @@ namespace Alver.Forms
                 //_runTimes = 0;
                 //_runTimes = CheckActivation(_fullActivation, _trialActivation, _runTimes, _runsLimit);
             }
+#pragma warning disable CS0168 // The variable 'EX' is declared but never used
             catch (Exception EX)
+#pragma warning restore CS0168 // The variable 'EX' is declared but never used
             {
                 //string _errorMsg = EX.Message;
                 //_errorMsg += "    " + EX.InnerException;
@@ -168,7 +170,9 @@ namespace Alver.Forms
                     MessageBox.Show("البيانات خاطئة", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي", "تنبيه");
             }

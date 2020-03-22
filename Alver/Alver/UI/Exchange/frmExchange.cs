@@ -114,7 +114,9 @@ namespace Alver.UI.Exchange
                 bool factor = true;//*
                 int basecurrency = 0, subcurrency = 0, userid = 0;
                 Currency _baseCurrency, _subCurrency;
+#pragma warning disable CS0168 // The variable 'declaration' is declared but never used
                 string direction = string.Empty, declaration;
+#pragma warning restore CS0168 // The variable 'declaration' is declared but never used
                 var _dir = dgv.CurrentRow.Cells[DirectionColumn.Index].Value;
                 if (_dir != null)
                 {
@@ -209,7 +211,9 @@ namespace Alver.UI.Exchange
             {
                 MessageBox.Show("الرجاء التأكد من القيم المدخلة ومن عدم إدخال  قيم فارغة");
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 //MessageBox.Show(ex.Message);
                 MessageBox.Show("الرجاء التأكد من القيم المدخلة ومن عدم إدخال  قيم فارغة");
@@ -274,7 +278,9 @@ namespace Alver.UI.Exchange
                 roundAmount = CurrencyExchangeFuncs.RoundExchange(subAmount);
                 dgv.CurrentRow.Cells[RoundColumn.Index].Value = roundAmount;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             if (e.ColumnIndex == DirectionColumn.Index)// RED || GREEN
             {
                 ColorizeCells();
@@ -308,7 +314,9 @@ namespace Alver.UI.Exchange
                 db.SaveChanges();
                 MessageBox.Show("تم حذف العملية بنجاح");
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء حذف اليومية ،لم يتم الحذف بنجاح", "حذف يومية", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -324,7 +332,9 @@ namespace Alver.UI.Exchange
                     TransactionsFuncs.DeleteTransactions(_operation.GUID.Value);
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ اثناء حذف الحركة");
             }
@@ -371,7 +381,9 @@ namespace Alver.UI.Exchange
                 db.SaveChanges();
                 Reload();
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             { }
             dceobtn.Enabled = true;
         }
@@ -415,7 +427,9 @@ namespace Alver.UI.Exchange
                 int Id = _curr.Id;
                 currencyBindingSource1.DataSource = db.Currencies.Where(x => x.Id != Id).ToList();
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -472,7 +486,9 @@ namespace Alver.UI.Exchange
                     Reload();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء حذف اليومية ،لم يتم الحذف بنجاح", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -504,7 +520,9 @@ namespace Alver.UI.Exchange
                 //basecurrency = (currencyBindingSource.Current as Currency).Id;
                 //currencyBindingSource1.DataSource = db.Currencies.Where(x => x.Id != basecurrency);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void currencyBindingSource1_CurrentChanged(object sender, EventArgs e)

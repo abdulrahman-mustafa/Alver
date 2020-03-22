@@ -885,9 +885,15 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.BindingSource currencyBindingSource;
         private System.Windows.Forms.BindingSource currencyBindingSource1;
+#pragma warning disable CS0169 // The field 'frmExchange.fromAmountDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn fromAmountDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmExchange.fromAmountDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmExchange.toCurrencyIdDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn toCurrencyIdDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmExchange.toCurrencyIdDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmExchange.toAmountDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn toAmountDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmExchange.toAmountDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.BindingNavigator currencyExchangeOperationBindingNavigator;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;

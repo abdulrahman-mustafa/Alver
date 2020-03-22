@@ -1601,7 +1601,9 @@
         private System.Windows.Forms.GroupBox billcheckedouttypegb;
         private System.Windows.Forms.CheckBox nonetcheckedoutbillchkbox;
         private System.Windows.Forms.CheckBox billcheckedoutchkbox;
+#pragma warning disable CS0169 // The field 'frmBillMangement.dataGridViewTextBoxColumn8' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn8;
+#pragma warning restore CS0169 // The field 'frmBillMangement.dataGridViewTextBoxColumn8' is never used
         private System.Windows.Forms.DataGridView dgvTotals;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SelectColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
@@ -1623,24 +1625,60 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewComboBoxColumn UserId;
         private System.Windows.Forms.SplitContainer splitContainer3;
+#pragma warning disable CS0169 // The field 'frmBillMangement.codeDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.codeDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.directionDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn directionDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.directionDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.operationDateDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn operationDateDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.operationDateDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.payeeIdDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn payeeIdDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.payeeIdDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.amountDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.amountDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.senderIdDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn senderIdDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.senderIdDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.clientIdDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn clientIdDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.clientIdDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.foreignCurrencyIdDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn foreignCurrencyIdDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.foreignCurrencyIdDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.foreignAmountDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn foreignAmountDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.foreignAmountDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.senderNameDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn senderNameDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.senderNameDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.lockedDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn lockedDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.lockedDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.suspendedDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewCheckBoxColumn suspendedDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.suspendedDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.ignoredDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewCheckBoxColumn ignoredDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.ignoredDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.ignoreDateDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn ignoreDateDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.ignoreDateDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.payedDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewCheckBoxColumn payedDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.payedDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.payDateDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn payDateDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.payDateDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.receiptedDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewCheckBoxColumn receiptedDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.receiptedDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmBillMangement.receiptedDateDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn receiptedDateDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmBillMangement.receiptedDateDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.GroupBox dategb;
         private System.Windows.Forms.GroupBox itemgb;
         private System.Windows.Forms.ComboBox itemcb;

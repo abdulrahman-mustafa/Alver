@@ -3,7 +3,6 @@ using System.Windows.Forms;
 
 namespace Alver.MISC
 {
-
     public class CalendarColumn : DataGridViewColumn
     {
         public CalendarColumn() : base(new CalendarCell())
@@ -31,7 +30,6 @@ namespace Alver.MISC
 
     public class CalendarCell : DataGridViewTextBoxCell
     {
-
         public CalendarCell()
             : base()
         {
@@ -59,7 +57,9 @@ namespace Alver.MISC
                     ctl.Value = (DateTime)this.Value;
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public override Type EditType
@@ -91,18 +91,18 @@ namespace Alver.MISC
         }
     }
 
-    class CalendarEditingControl : DateTimePicker, IDataGridViewEditingControl
+    internal class CalendarEditingControl : DateTimePicker, IDataGridViewEditingControl
     {
-        DataGridView dataGridView;
+        private DataGridView dataGridView;
         private bool valueChanged = false;
-        int rowIndex;
+        private int rowIndex;
 
         public CalendarEditingControl()
         {
             this.Format = DateTimePickerFormat.Short;
         }
 
-        // Implements the IDataGridViewEditingControl.EditingControlFormattedValue 
+        // Implements the IDataGridViewEditingControl.EditingControlFormattedValue
         // property.
         public object EditingControlFormattedValue
         {
@@ -116,13 +116,13 @@ namespace Alver.MISC
                 {
                     try
                     {
-                        // This will throw an exception of the string is 
+                        // This will throw an exception of the string is
                         // null, empty, or not in the format of a date.
                         this.Value = DateTime.Parse((String)value);
                     }
                     catch
                     {
-                        // In the case of an exception, just use the 
+                        // In the case of an exception, just use the
                         // default value so we're not left with a null
                         // value.
                         this.Value = DateTime.Now;
@@ -131,7 +131,7 @@ namespace Alver.MISC
             }
         }
 
-        // Implements the 
+        // Implements the
         // IDataGridViewEditingControl.GetEditingControlFormattedValue method.
         public object GetEditingControlFormattedValue(
             DataGridViewDataErrorContexts context)
@@ -139,7 +139,7 @@ namespace Alver.MISC
             return EditingControlFormattedValue;
         }
 
-        // Implements the 
+        // Implements the
         // IDataGridViewEditingControl.ApplyCellStyleToEditingControl method.
         public void ApplyCellStyleToEditingControl(
             DataGridViewCellStyle dataGridViewCellStyle)
@@ -150,10 +150,12 @@ namespace Alver.MISC
                 this.CalendarForeColor = dataGridViewCellStyle.ForeColor;
                 this.CalendarMonthBackground = dataGridViewCellStyle.BackColor;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
-        // Implements the IDataGridViewEditingControl.EditingControlRowIndex 
+        // Implements the IDataGridViewEditingControl.EditingControlRowIndex
         // property.
         public int EditingControlRowIndex
         {
@@ -167,7 +169,7 @@ namespace Alver.MISC
             }
         }
 
-        // Implements the IDataGridViewEditingControl.EditingControlWantsInputKey 
+        // Implements the IDataGridViewEditingControl.EditingControlWantsInputKey
         // method.
         public bool EditingControlWantsInputKey(
             Keys key, bool dataGridViewWantsInputKey)
@@ -184,12 +186,13 @@ namespace Alver.MISC
                 case Keys.PageDown:
                 case Keys.PageUp:
                     return true;
+
                 default:
                     return !dataGridViewWantsInputKey;
             }
         }
 
-        // Implements the IDataGridViewEditingControl.PrepareEditingControlForEdit 
+        // Implements the IDataGridViewEditingControl.PrepareEditingControlForEdit
         // method.
         public void PrepareEditingControlForEdit(bool selectAll)
         {
@@ -253,5 +256,4 @@ namespace Alver.MISC
             base.OnValueChanged(eventargs);
         }
     }
-
 }

@@ -304,7 +304,9 @@ namespace Alver.UI.Bills
                 {
                     MessageBox.Show("الرجاء التأكد من القيم المدخلة ومن عدم إدخال  قيم فارغة");
                 }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                 catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                 {
                     //MessageBox.Show(ex.Message);
                     MessageBox.Show("الرجاء التأكد من القيم المدخلة ومن عدم إدخال  قيم فارغة");
@@ -365,7 +367,9 @@ namespace Alver.UI.Bills
                         {
                             barcodecb.Text = db.Items.Find(_itemId).Barcode;
                         }
+#pragma warning disable CS0472 // The result of the expression is always 'true' since a value of type 'decimal' is never equal to 'null' of type 'decimal?'
                         decimal _purchasePrice = db.Items.FirstOrDefault(x => x.Id == _itemId && x.UnitId == _unitId).SalePrice.Value != null ? db.Items.Find(_itemId).PurchasePrice.Value : 0;
+#pragma warning restore CS0472 // The result of the expression is always 'true' since a value of type 'decimal' is never equal to 'null' of type 'decimal?'
                         pricenud.Value = _purchasePrice >= 1 ? _purchasePrice : 1;
                         exchangedpricenud.Value = pricenud.Value * ratenud.Value;
                         decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
@@ -466,7 +470,9 @@ namespace Alver.UI.Bills
                 //basecurrency = (currencyBindingSource.Current as Currency).Id;
                 //currencyBindingSource1.DataSource = db.Currencies.Where(x => x.Id != basecurrency);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void currencyBindingSource1_CurrentChanged(object sender, EventArgs e)
@@ -779,7 +785,9 @@ namespace Alver.UI.Bills
                 syrTotalnud.Value = ratenud.Value * totalnud.Value;
                 exchangedpricenud.Value = ratenud.Value * pricenud.Value;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("لم يتم إضافة سعر تصريف ....");
                 //MSGs.ErrorMessage(ex);
@@ -1001,12 +1009,14 @@ namespace Alver.UI.Bills
                         {
                             _itemId = db.Items.FirstOrDefault(x => x.Barcode == _barcode).Id;
                             itemcb.SelectedValue = _itemId;
+#pragma warning disable CS0472 // The result of the expression is always 'true' since a value of type 'decimal' is never equal to 'null' of type 'decimal?'
                             decimal _purchasePrice = db.Items.FirstOrDefault(x => x.Id == _itemId && x.UnitId == _unitId).PurchasePrice.Value != null ? db.Items.Find(_itemId).PurchasePrice.Value : 0;
+#pragma warning restore CS0472 // The result of the expression is always 'true' since a value of type 'decimal' is never equal to 'null' of type 'decimal?'
                             pricenud.Value = _purchasePrice >= 1 ? _purchasePrice : 1;
                             exchangedpricenud.Value = pricenud.Value * ratenud.Value;
                             decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
                             remainedquantitylbl.Text = _remainedQuantity.ToString();
-                            quantitynud.Maximum = _remainedQuantity;
+                            //quantitynud.Maximum = _remainedQuantity;
                         }
                     }
                 }

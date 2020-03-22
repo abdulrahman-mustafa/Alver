@@ -19,7 +19,7 @@ namespace Alver.DAL
         public Nullable<int> CurrencyId { get; set; }
         public Nullable<decimal> Rate { get; set; }
         public Nullable<decimal> ReversedRate { get; set; }
-        public Nullable<bool> TOUSD { get; set; }
+        public Nullable<bool> Factor { get; set; }
         public Nullable<System.Guid> GUID { get; set; }
     
         public virtual Currency Currency { get; set; }

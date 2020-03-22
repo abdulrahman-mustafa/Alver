@@ -15,7 +15,9 @@ namespace Alver.UI.Configuration
         private int _baseCompanyId = 1;
 
         private Company _company;
+#pragma warning disable CS0169 // The field 'frmSettings._image' is never used
         private byte[] _image;
+#pragma warning restore CS0169 // The field 'frmSettings._image' is never used
 
         public frmSettings()
         {
@@ -86,7 +88,9 @@ namespace Alver.UI.Configuration
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي");
             }
@@ -122,7 +126,9 @@ namespace Alver.UI.Configuration
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي");
             }
@@ -145,7 +151,9 @@ namespace Alver.UI.Configuration
                     db.SaveChanges();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ اثناء حفظ لوغو الشركة");
             }

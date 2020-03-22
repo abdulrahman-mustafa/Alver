@@ -184,7 +184,9 @@ namespace Alver.UI.Accounts.Transfers
                 MessageBox.Show("تم الحذف بنجاح");
                 Retrive();
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي اثناء الحذف");
             }
@@ -217,10 +219,14 @@ namespace Alver.UI.Accounts.Transfers
                                 item.LUD = DateTime.Now;
                             }
                         }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                         catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                     }
                 }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                 catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             }//END foreach
         }
 
@@ -253,7 +259,9 @@ namespace Alver.UI.Accounts.Transfers
                 subAmount = factor ? (baseAmount * rate) : (baseAmount / rate);
                 dgv.CurrentRow.Cells[toAmountDataGridViewTextBoxColumn.Index].Value = Math.Round(subAmount, 2);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
         private string dgvCell(int index)
         {

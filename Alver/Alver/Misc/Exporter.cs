@@ -1,5 +1,7 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using Microsoft.Reporting.WinForms;
+
+//using Microsoft.Reporting.WinForms;
 using System;
 using System.IO;
 using System.Text;
@@ -293,7 +295,9 @@ namespace Alver.MISC
                                 switch ("2")//ClsCommonSettings.DecimalPlaces)
                                 {
                                     case "1":
+#pragma warning disable CS0162 // Unreachable code detected
                                         if (value == 0)
+#pragma warning restore CS0162 // Unreachable code detected
                                             worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "0.0";
                                         else
                                             worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "###################.0";
@@ -307,14 +311,18 @@ namespace Alver.MISC
                                         break;
 
                                     case "3":
+#pragma warning disable CS0162 // Unreachable code detected
                                         if (value == 0)
+#pragma warning restore CS0162 // Unreachable code detected
                                             worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "0.000";
                                         else
                                             worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "###################.000";
                                         break;
 
                                     case "4":
+#pragma warning disable CS0162 // Unreachable code detected
                                         if (value == 0)
+#pragma warning restore CS0162 // Unreachable code detected
                                             worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "0.0000";
                                         else
                                             worksheet.Cells[i + RowIndex, j + 1].NumberFormat = "###################.0000";

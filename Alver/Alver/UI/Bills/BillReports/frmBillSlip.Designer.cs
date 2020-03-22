@@ -111,7 +111,7 @@
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Alver.UI.Bills.BillReports.BillSlip.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Alver.UI.Bills.BillReports.SYPBillSlip.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ShowToolBar = false;

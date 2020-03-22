@@ -38,9 +38,14 @@
             System.Windows.Forms.Label label11;
             System.Windows.Forms.Label label12;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSell));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSell));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.billLinesDgv = new System.Windows.Forms.DataGridView();
             this.itemIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -348,6 +353,9 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "الكمية";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
@@ -373,6 +381,9 @@
             // priceColumn
             // 
             this.priceColumn.DataPropertyName = "Price";
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.priceColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.priceColumn.HeaderText = "سعر الواحدة - $";
             this.priceColumn.Name = "priceColumn";
             this.priceColumn.ReadOnly = true;
@@ -380,6 +391,9 @@
             // ExchangedAmount
             // 
             this.ExchangedAmount.DataPropertyName = "ExchangedAmount";
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.ExchangedAmount.DefaultCellStyle = dataGridViewCellStyle4;
             this.ExchangedAmount.HeaderText = "سعر الواحدة - ل.س";
             this.ExchangedAmount.Name = "ExchangedAmount";
             this.ExchangedAmount.ReadOnly = true;
@@ -387,6 +401,9 @@
             // totalpriceColumn
             // 
             this.totalpriceColumn.DataPropertyName = "TotalPrice";
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.totalpriceColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.totalpriceColumn.HeaderText = "السعر الاجمالي - $";
             this.totalpriceColumn.Name = "totalpriceColumn";
             this.totalpriceColumn.ReadOnly = true;
@@ -394,6 +411,8 @@
             // ExchangedTotalAmount
             // 
             this.ExchangedTotalAmount.DataPropertyName = "ExchangedTotalAmount";
+            dataGridViewCellStyle6.Format = "N0";
+            this.ExchangedTotalAmount.DefaultCellStyle = dataGridViewCellStyle6;
             this.ExchangedTotalAmount.HeaderText = "السعر الاجمالي - ل.س";
             this.ExchangedTotalAmount.Name = "ExchangedTotalAmount";
             this.ExchangedTotalAmount.ReadOnly = true;
@@ -1137,9 +1156,9 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "OpreationDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.NullValue = null;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn1.HeaderText = "التاريخ";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1162,8 +1181,8 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "SubAmount";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Gold;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Gold;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewTextBoxColumn4.HeaderText = "المبلغ الناتج";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -1214,7 +1233,6 @@
             this.exchangebillchkbox.Text = "تصريف الفاتورة";
             this.exchangebillchkbox.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.exchangebillchkbox.UseVisualStyleBackColor = false;
-            this.exchangebillchkbox.CheckedChanged += new System.EventHandler(this.exchangebillchkbox_CheckedChanged);
             // 
             // syrTotalnud
             // 
@@ -1328,6 +1346,7 @@
             this.bindingNavigator2.MovePreviousItem = null;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = null;
+            this.bindingNavigator2.ShowItemToolTips = false;
             this.bindingNavigator2.Size = new System.Drawing.Size(980, 27);
             this.bindingNavigator2.TabIndex = 41;
             // 
@@ -1448,9 +1467,15 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.BindingSource currencyBS;
+#pragma warning disable CS0169 // The field 'frmSell.fromAmountDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn fromAmountDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmSell.fromAmountDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmSell.toCurrencyIdDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn toCurrencyIdDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmSell.toCurrencyIdDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmSell.toAmountDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn toAmountDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmSell.toAmountDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.BindingNavigator BillLineBN;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
@@ -1533,6 +1558,11 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown exchangedpricenud;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox billIdcb;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ToolStripButton printbillslipbtn;
+        private System.Windows.Forms.Label totallinesyplbl;
+        private System.Windows.Forms.Label totallineudslbl;
         private System.Windows.Forms.DataGridViewComboBoxColumn itemIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn unitIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
@@ -1542,10 +1572,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalpriceColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExchangedTotalAmount;
         private System.Windows.Forms.DataGridViewComboBoxColumn userIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ComboBox billIdcb;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ToolStripButton printbillslipbtn;
-        private System.Windows.Forms.Label totallinesyplbl;
-        private System.Windows.Forms.Label totallineudslbl;
     }
 }

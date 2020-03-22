@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props" Condition="Exists('packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" />
   <Import Project="packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props')" />
   <Import Project="packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props')" />
@@ -66,12 +67,10 @@
       <HintPath>C:\Users\HP\Desktop\مشاريع C#\AnalogClockControl.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
@@ -81,17 +80,17 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>F:\SimpleEx\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.DataVisualization.DLL</HintPath>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Design, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Design.DLL</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WebDesign, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebDesign.DLL</HintPath>
@@ -134,8 +133,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.SqlEnum.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.Types.11.0.1\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -296,6 +295,7 @@
     <Compile Include="DAL\Withdraw.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Misc\BillsFuncs.cs" />
     <Compile Include="Misc\CalendarColumn.cs" />
     <Compile Include="Misc\CurrencyExchangeFuncs.cs" />
@@ -419,17 +419,23 @@
     <Compile Include="UI\Bills\frmPurchase.Designer.cs">
       <DependentUpon>frmPurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Bills\frmPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Bills\frmPOS.Designer.cs">
+      <DependentUpon>frmPOS.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Bills\frmSell.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Bills\frmSell.Designer.cs">
       <DependentUpon>frmSell.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Bills\frmSellBill.cs">
+    <Compile Include="UI\Bills\pos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Bills\frmSellBill.Designer.cs">
-      <DependentUpon>frmSellBill.cs</DependentUpon>
+    <Compile Include="UI\Bills\pos.Designer.cs">
+      <DependentUpon>pos.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Configurations\frmSettings.cs">
       <SubType>Form</SubType>
@@ -677,7 +683,8 @@
     <EmbeddedResource Include="UI\Accounts\Withdraws\frmWithdraws.resx">
       <DependentUpon>frmWithdraws.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Bills\BillReports\BillSlip.rdlc" />
+    <EmbeddedResource Include="UI\Bills\BillReports\USDBillSlip.rdlc" />
+    <EmbeddedResource Include="UI\Bills\BillReports\SYPBillSlip.rdlc" />
     <EmbeddedResource Include="UI\Bills\BillReports\frmBillSlip.resx">
       <DependentUpon>frmBillSlip.cs</DependentUpon>
     </EmbeddedResource>
@@ -687,11 +694,14 @@
     <EmbeddedResource Include="UI\Bills\frmPurchase.resx">
       <DependentUpon>frmPurchase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Bills\frmPOS.resx">
+      <DependentUpon>frmPOS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Bills\frmSell.resx">
       <DependentUpon>frmSell.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Bills\frmSellBill.resx">
-      <DependentUpon>frmSellBill.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Bills\pos.resx">
+      <DependentUpon>pos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Configurations\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
@@ -910,6 +920,19 @@
     </Content>
     <Content Include="ICON.ico" />
     <Content Include="Logo.ico" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Media\Button Faces\MISC\icons8_file_25px.png" />
     <None Include="Media\Button Faces\Database\icons8_database_export_25px.png" />
     <None Include="Media\Button Faces\Database\icons8_database_restore_25px.png" />
@@ -953,6 +976,7 @@
     <None Include="Media\Icons\New folder\lizard_logo_white.ico" />
     <None Include="Media\Button Faces\Items\icons8_active_directory_25px.png" />
     <None Include="Media\Button Faces\MISC\icons8_job_25px.png" />
+    <None Include="Media\Button Faces\Bills\icons8_barcode_reader_25px.png" />
     <Content Include="packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x64\msvcr100.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -969,7 +993,6 @@
     <None Include="Resources\abstract-blue-background-wave-vector_1407-88.jpg" />
     <Content Include="Resources\Lizard Logo white.png" />
     <Content Include="Resources\Lizard Logo.png" />
-    <Content Include="SqlServerTypes\readme.htm" />
     <None Include="Media\Button Faces\Accounts\icons8_admin_settings_male_25px.png" />
     <None Include="Media\Button Faces\Accounts\addgroup.png" />
     <None Include="Media\Button Faces\Accounts\icons8_add_user_male_25px.png" />
@@ -1018,11 +1041,7 @@
     <Analyzer Include="packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SqlServerTypes\x64\" />
-    <Folder Include="SqlServerTypes\x86\" />
-    <Folder Include="UC\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -1033,7 +1052,10 @@
     <Error Condition="!Exists('packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props'))" />
     <Error Condition="!Exists('packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props'))" />
     <Error Condition="!Exists('packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

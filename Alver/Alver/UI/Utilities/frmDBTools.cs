@@ -78,7 +78,9 @@ namespace Alver.UI.Utilities
             {
                 useridtb.ReadOnly = passwordtb.ReadOnly = !sqlauthenticationrb.Checked;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 throw;
             }
@@ -133,7 +135,9 @@ namespace Alver.UI.Utilities
                 connectionstringtb.Text += Environment.NewLine + Environment.NewLine;
                 connectionstringtb.Text += entityString;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
             }
         }

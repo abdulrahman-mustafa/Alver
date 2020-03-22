@@ -157,7 +157,9 @@ namespace Alver.UI.Accounts
                     _result = false;
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
 
@@ -179,7 +181,9 @@ namespace Alver.UI.Accounts
                     _result = false;
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
 
@@ -197,7 +201,9 @@ namespace Alver.UI.Accounts
                 dgv.DataSource = null;
                 ControlsEnable(false);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private bool PrepareFund()
@@ -252,7 +258,9 @@ namespace Alver.UI.Accounts
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("تم حفظ بيانات الوكيل بنجاح، لكن حدث خطأ اثناء إضافة الصناديق");
                 _result = false;

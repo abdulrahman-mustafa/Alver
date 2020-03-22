@@ -676,8 +676,12 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton payments_OperationBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView dgv;
+#pragma warning disable CS0169 // The field 'frmPayments.dataGridViewTextBoxColumn4' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;
+#pragma warning restore CS0169 // The field 'frmPayments.dataGridViewTextBoxColumn4' is never used
+#pragma warning disable CS0169 // The field 'frmPayments.dataGridViewTextBoxColumn5' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn5;
+#pragma warning restore CS0169 // The field 'frmPayments.dataGridViewTextBoxColumn5' is never used
         private System.Windows.Forms.BindingSource currencyBindingSource;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ComboBox accountcombobox;

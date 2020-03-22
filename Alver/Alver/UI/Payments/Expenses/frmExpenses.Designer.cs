@@ -578,7 +578,9 @@
         private System.Windows.Forms.BindingSource fundBindingSource;
         private System.Windows.Forms.BindingSource currencyBindingSource;
         private System.Windows.Forms.BindingSource paymentsExpenseCategoryBindingSource;
+#pragma warning disable CS0169 // The field 'frmExpenses.dataGridViewTextBoxColumn7' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+#pragma warning restore CS0169 // The field 'frmExpenses.dataGridViewTextBoxColumn7' is never used
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ComboBox expenseCategoryComboBox;
         private System.Windows.Forms.Button button1;
@@ -608,7 +610,9 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem اكسلToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pDFToolStripMenuItem;
+#pragma warning disable CS0169 // The field 'frmExpenses.dataGridViewTextBoxColumn3' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn3;
+#pragma warning restore CS0169 // The field 'frmExpenses.dataGridViewTextBoxColumn3' is never used
         private MISC.CalendarColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;

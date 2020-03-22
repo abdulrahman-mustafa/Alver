@@ -318,7 +318,9 @@ namespace Alver.UI.Funds
                 int _currencyId = (int)currencyIdComboBox.SelectedValue;
                 fundBindingSource.DataSource = db.Funds.Where(x => x.CurrencyId == _currencyId).ToList();
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
         private void frmRefund_KeyDown(object sender, KeyEventArgs e)
         {

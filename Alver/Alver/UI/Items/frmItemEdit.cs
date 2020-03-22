@@ -90,7 +90,9 @@ namespace Alver.UI.Items
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
 
@@ -107,7 +109,9 @@ namespace Alver.UI.Items
                 MessageBox.Show("تم الحفظ بنجاح");
                 this.Close();
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void Save()
@@ -165,7 +169,9 @@ namespace Alver.UI.Items
                     scope.Complete();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }

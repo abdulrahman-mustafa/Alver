@@ -1,7 +1,9 @@
 ﻿using Alver.DAL;
 using Alver.MISC;
 
+#pragma warning disable CS0105 // The using directive for 'Alver.MISC' appeared previously in this namespace
 using Alver.MISC;
+#pragma warning restore CS0105 // The using directive for 'Alver.MISC' appeared previously in this namespace
 
 using System;
 using System.Data.Entity;
@@ -128,7 +130,9 @@ namespace Alver.UI.Accounts.AccountsPayments
                 //    toolStripButton1.Enabled = !_payment.Payed.Value;
                 //}
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
@@ -162,7 +166,9 @@ namespace Alver.UI.Accounts.AccountsPayments
                     MessageBox.Show("تم الحذف بنجاح");
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ أثناء الحذف");
             }
@@ -228,7 +234,9 @@ namespace Alver.UI.Accounts.AccountsPayments
                 ColorizeDgv();
                 this.Cursor = Cursors.Default;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي");
             }

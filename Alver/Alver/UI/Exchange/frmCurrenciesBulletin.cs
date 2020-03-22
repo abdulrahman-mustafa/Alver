@@ -19,10 +19,12 @@ namespace Alver.UI.Exchange
         {
             InitializeComponent();
         }
+
         private void frmCurrencies_Load(object sender, EventArgs e)
         {
             LoadData();
         }
+
         private void LoadData()
         {
             using (dbEntities db = new dbEntities())
@@ -34,6 +36,7 @@ namespace Alver.UI.Exchange
                 currencyBindingSource1.DataSource = db.Currencies.Where(x => x.BaseCurrency == false).AsNoTracking().AsQueryable().ToList();
             }
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -41,14 +44,14 @@ namespace Alver.UI.Exchange
                 DateTime _date = datetimepicker.Value;
                 int _currencyId = (int)currencyIdComboBox.SelectedValue;
                 decimal _rate = ratenud.Value;
-                bool _isReversed = drb.Checked;
+                bool _isReversed = drb.Checked;//  DIVISION=TRUE - MULTIPLICATION=FALSE
                 CurrencyBulletin _bulletin = new CurrencyBulletin();
                 _bulletin.RateDate = _date;
                 _bulletin.CurrencyId = _currencyId;
                 _bulletin.Rate = _rate;
                 _bulletin.GUID = Guid.NewGuid();
                 _bulletin.ReversedRate = 1 / _rate;
-                _bulletin.TOUSD = _isReversed;
+                _bulletin.Factor = _isReversed;
                 using (dbEntities db = new dbEntities())
                 {
                     db.Set<CurrencyBulletin>().Add(_bulletin);
@@ -57,7 +60,9 @@ namespace Alver.UI.Exchange
                 MessageBox.Show("تم الحفظ بنجاح");
                 LoadData();
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي سيتم التراجع عن الحفظ");
             }
@@ -82,9 +87,10 @@ namespace Alver.UI.Exchange
                     MessageBox.Show("تم الحذف بنجاح");
                     LoadData();
                 }
-
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي");
             }

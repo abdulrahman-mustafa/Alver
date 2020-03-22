@@ -65,10 +65,14 @@ namespace Alver.UI.Payments.Loans
                                 item.LUD = DateTime.Now;
                             }
                         }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                         catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                     }
                 }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                 catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             }//END foreach
         }
         private void ItemChanged(DbPropertyValues originalValues, DbPropertyValues currentValues, Payment item)
@@ -155,7 +159,9 @@ namespace Alver.UI.Payments.Loans
                     //toolStripButton1.Enabled = !_payment.Payed.Value;
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void payments_OperationDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -200,7 +206,9 @@ namespace Alver.UI.Payments.Loans
                     Retrive();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ أثناء حذف الدين");
             }

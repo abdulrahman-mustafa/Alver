@@ -719,28 +719,72 @@ namespace Alver.UI.Accounts
         private System.Windows.Forms.DataGridView itemsdgv;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView itemfundsdgv;
+#pragma warning disable CS0169 // The field 'frmItems.column1DataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn column1DataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.column1DataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.العملةDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn العملةDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.العملةDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.الرصيدDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn الرصيدDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.الرصيدDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.مجموعالأرباحDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعالأرباحDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.مجموعالأرباحDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.العملةDataGridViewTextBoxColumn1' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn العملةDataGridViewTextBoxColumn1;
+#pragma warning restore CS0169 // The field 'frmItems.العملةDataGridViewTextBoxColumn1' is never used
+#pragma warning disable CS0169 // The field 'frmItems.مجموعالأرباحDataGridViewTextBoxColumn1' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعالأرباحDataGridViewTextBoxColumn1;
+#pragma warning restore CS0169 // The field 'frmItems.مجموعالأرباحDataGridViewTextBoxColumn1' is never used
+#pragma warning disable CS0169 // The field 'frmItems.dataGridViewTextBoxColumn17' is never used
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn17;
+#pragma warning restore CS0169 // The field 'frmItems.dataGridViewTextBoxColumn17' is never used
+#pragma warning disable CS0169 // The field 'frmItems.dataGridViewTextBoxColumn3' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+#pragma warning restore CS0169 // The field 'frmItems.dataGridViewTextBoxColumn3' is never used
+#pragma warning disable CS0169 // The field 'frmItems.dataGridViewTextBoxColumn4' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;
+#pragma warning restore CS0169 // The field 'frmItems.dataGridViewTextBoxColumn4' is never used
+#pragma warning disable CS0169 // The field 'frmItems.dataGridViewTextBoxColumn5' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+#pragma warning restore CS0169 // The field 'frmItems.dataGridViewTextBoxColumn5' is never used
+#pragma warning disable CS0169 // The field 'frmItems.dataGridViewTextBoxColumn10' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+#pragma warning restore CS0169 // The field 'frmItems.dataGridViewTextBoxColumn10' is never used
+#pragma warning disable CS0169 // The field 'frmItems.dataGridViewTextBoxColumn2' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+#pragma warning restore CS0169 // The field 'frmItems.dataGridViewTextBoxColumn2' is never used
+#pragma warning disable CS0169 // The field 'frmItems.أرباحالحوالاتDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn أرباحالحوالاتDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.أرباحالحوالاتDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.dataGridViewTextBoxColumn15' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+#pragma warning restore CS0169 // The field 'frmItems.dataGridViewTextBoxColumn15' is never used
+#pragma warning disable CS0169 // The field 'frmItems.dataGridViewTextBoxColumn14' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+#pragma warning restore CS0169 // The field 'frmItems.dataGridViewTextBoxColumn14' is never used
+#pragma warning disable CS0169 // The field 'frmItems.الصندوقDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn الصندوقDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.الصندوقDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.dataGridViewTextBoxColumn1' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn1;
+#pragma warning restore CS0169 // The field 'frmItems.dataGridViewTextBoxColumn1' is never used
+#pragma warning disable CS0169 // The field 'frmItems.الإجماليDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn الإجماليDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.الإجماليDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.لنالكمDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn لنالكمDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.لنالكمDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.billsDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn billsDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.billsDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.exchangeFundsDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn exchangeFundsDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.exchangeFundsDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItems.paymentsDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentsDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItems.paymentsDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.BindingSource unitsBS;
         private System.Windows.Forms.BindingSource ItemCategoriesBS;
         private System.Windows.Forms.BindingSource itemsBS;

@@ -273,6 +273,16 @@ namespace Alver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_barcode_reader_25px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_barcode_reader_25px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_bill_25px {
             get {
                 object obj = ResourceManager.GetObject("icons8_bill_25px", resourceCulture);

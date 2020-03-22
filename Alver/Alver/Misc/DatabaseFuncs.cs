@@ -366,7 +366,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 result = false;
             }
@@ -407,7 +409,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 result = false;
             }
@@ -448,6 +452,8 @@ namespace Alver.MISC
                             //        MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             //EXECUTE SCRIPTS
+                            //_path = Path.GetDirectoryName(Application.ExecutablePath);
+                            //_path = Path.GetDirectoryName(Application.ExecutablePath).Remove(_path.Length - 10) + @"\Scripts\full.sql";
                             _path = Path.Combine(Application.StartupPath, "full.sql");
                             string script = File.ReadAllText(_path);
                             Server server = new Server(new ServerConnection(_conn));

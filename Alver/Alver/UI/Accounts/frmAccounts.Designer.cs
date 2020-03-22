@@ -974,12 +974,24 @@ namespace Alver.UI.Accounts
         private System.Windows.Forms.ToolStripButton savebtn;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView balancesDgv;
+#pragma warning disable CS0169 // The field 'frmAccounts.column1DataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn column1DataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.column1DataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.العملةDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn العملةDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.العملةDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.الرصيدDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn الرصيدDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.الرصيدDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.مجموعالأرباحDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعالأرباحDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.مجموعالأرباحDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.العملةDataGridViewTextBoxColumn1' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn العملةDataGridViewTextBoxColumn1;
+#pragma warning restore CS0169 // The field 'frmAccounts.العملةDataGridViewTextBoxColumn1' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.مجموعالأرباحDataGridViewTextBoxColumn1' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعالأرباحDataGridViewTextBoxColumn1;
+#pragma warning restore CS0169 // The field 'frmAccounts.مجموعالأرباحDataGridViewTextBoxColumn1' is never used
         private System.Windows.Forms.ToolStripTextBox SearchBox;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.BindingNavigator bindingNavigator4;
@@ -995,11 +1007,21 @@ namespace Alver.UI.Accounts
         private System.Windows.Forms.ToolStripButton printbtn;
         private System.Windows.Forms.BindingSource clientGrandResultBindingSource;
         private System.Windows.Forms.ToolStripButton refreshdatabtn;
+#pragma warning disable CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn17' is never used
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn17;
+#pragma warning restore CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn17' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn3' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+#pragma warning restore CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn3' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn4' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;
+#pragma warning restore CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn4' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn5' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+#pragma warning restore CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn5' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn10' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+#pragma warning restore CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn10' is never used
         private System.Windows.Forms.ToolStripDropDownButton exportbtn;
         private System.Windows.Forms.ToolStripMenuItem excelexportbtn;
         private System.Windows.Forms.ToolStripMenuItem pdfexportbtn;
@@ -1009,17 +1031,39 @@ namespace Alver.UI.Accounts
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
+#pragma warning disable CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn2' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+#pragma warning restore CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn2' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.أرباحالحوالاتDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn أرباحالحوالاتDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.أرباحالحوالاتDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn15' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+#pragma warning restore CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn15' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn14' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+#pragma warning restore CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn14' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.الصندوقDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn الصندوقDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.الصندوقDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn1' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn1;
+#pragma warning restore CS0169 // The field 'frmAccounts.dataGridViewTextBoxColumn1' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.الإجماليDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn الإجماليDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.الإجماليDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.لنالكمDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn لنالكمDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.لنالكمDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.billsDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn billsDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.billsDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.exchangeFundsDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn exchangeFundsDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.exchangeFundsDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmAccounts.paymentsDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentsDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmAccounts.paymentsDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.BindingSource accounts_FundBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;

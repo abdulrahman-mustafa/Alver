@@ -33,7 +33,9 @@ namespace Alver.UI.Funds
             {
                 _value = (decimal)dgv.Rows[0].Cells[_index].Value;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
             }
             return _value;
@@ -64,7 +66,9 @@ namespace Alver.UI.Funds
                     this.Text = "حركات الصناديق - ( " + decimal.Round(_grand, 2).ToString() + " )";
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 //MSGs.ErrorMessage(ex);
             }

@@ -139,7 +139,9 @@ namespace Alver.UI.Accounts
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
 
@@ -156,7 +158,9 @@ namespace Alver.UI.Accounts
                 dgv.DataSource = null;
                 MSGs.SaveMessage();
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private bool PrepareFund()

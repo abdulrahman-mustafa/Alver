@@ -599,8 +599,12 @@
         private System.Windows.Forms.RadioButton desccb;
         private System.Windows.Forms.CheckBox sortcb;
         private System.Windows.Forms.GroupBox sortgb;
+#pragma warning disable CS0169 // The field 'frmItemsOverview.مجموعسعرالشراءDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعسعرالشراءDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItemsOverview.مجموعسعرالشراءDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmItemsOverview.مجموعسعرالبيعDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn مجموعسعرالبيعDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmItemsOverview.مجموعسعرالبيعDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.BindingSource vSTOCKBindingSource;
         private System.Windows.Forms.BindingNavigator accounts_InfoBindingNavigator;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;

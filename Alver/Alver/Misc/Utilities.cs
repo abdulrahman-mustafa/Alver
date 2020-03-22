@@ -235,7 +235,9 @@ namespace Alver.MISC
                 }
                 MessageBox.Show("تم التراجع عن التعديلات", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static decimal ColumnSum(DataGridView dgv, int index)
@@ -259,7 +261,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeDecimalDGVCells(DataGridView dgv)
@@ -279,7 +283,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeGain(DataGridView dgv)
@@ -303,7 +309,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeForeColor(DataGridView dgv, int index)
@@ -321,7 +329,9 @@ namespace Alver.MISC
                     //}
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeStringForeColorDGV(DataGridView dgv, int index, string _check)
@@ -339,7 +349,9 @@ namespace Alver.MISC
                     //}
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeStringDGV(DataGridView dgv, int index, string _check)
@@ -355,7 +367,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeForeFontStringDGV(DataGridView dgv, int index, string _check)
@@ -370,7 +384,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeExchangesDGV(DataGridView dgv, int index)
@@ -389,7 +405,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeBoolDGV(DataGridView dgv, int index, bool Factor, Color color)
@@ -404,7 +422,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeBoolPayedDGV(DataGridView dgv, int index)
@@ -419,7 +439,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static void ColorizeCurrencyDGV(DataGridView dgv, int index)
@@ -466,7 +488,9 @@ namespace Alver.MISC
                     }
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         public static int CalculateAge(DateTime dateOfBirth)
@@ -508,8 +532,12 @@ namespace Alver.MISC
             }
         }
 
+#pragma warning disable CS0169 // The field 'Utilities.dtp' is never used
         private static DateTimePicker dtp;
+#pragma warning restore CS0169 // The field 'Utilities.dtp' is never used
+#pragma warning disable CS0169 // The field 'Utilities.dgv' is never used
         private static DataGridView dgv;
+#pragma warning restore CS0169 // The field 'Utilities.dgv' is never used
 
         public static void dgvDataError(object sender, DataGridViewDataErrorEventArgs e)
         {

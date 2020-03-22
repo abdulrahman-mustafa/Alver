@@ -551,8 +551,12 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.DataGridView dgv;
+#pragma warning disable CS0169 // The field 'frmLoans.dataGridViewTextBoxColumn4' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn4;
+#pragma warning restore CS0169 // The field 'frmLoans.dataGridViewTextBoxColumn4' is never used
+#pragma warning disable CS0169 // The field 'frmLoans.dataGridViewTextBoxColumn5' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn5;
+#pragma warning restore CS0169 // The field 'frmLoans.dataGridViewTextBoxColumn5' is never used
         private System.Windows.Forms.BindingSource currencyBindingSource;
         private System.Windows.Forms.BindingSource paymentsTransactionBindingSource;
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -568,8 +572,12 @@
         private System.Windows.Forms.CheckBox outloancb;
         private System.Windows.Forms.CheckBox inLoancb;
         private System.Windows.Forms.BindingSource usersUserBindingSource;
+#pragma warning disable CS0169 // The field 'frmLoans.transactionDateDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmLoans.transactionDateDataGridViewTextBoxColumn' is never used
+#pragma warning disable CS0169 // The field 'frmLoans.borrowerDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridViewComboBoxColumn borrowerDataGridViewTextBoxColumn;
+#pragma warning restore CS0169 // The field 'frmLoans.borrowerDataGridViewTextBoxColumn' is never used
         private System.Windows.Forms.DataGridView dgvTotals;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem اكسلToolStripMenuItem;

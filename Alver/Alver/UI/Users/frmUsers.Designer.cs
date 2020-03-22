@@ -389,8 +389,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn passwordColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+#pragma warning disable CS0169 // The field 'frmUsers.dataGridViewTextBoxColumn8' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+#pragma warning restore CS0169 // The field 'frmUsers.dataGridViewTextBoxColumn8' is never used
+#pragma warning disable CS0169 // The field 'frmUsers.dataGridViewTextBoxColumn9' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+#pragma warning restore CS0169 // The field 'frmUsers.dataGridViewTextBoxColumn9' is never used
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.ToolStripDropDownButton exportbtn;

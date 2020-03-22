@@ -100,7 +100,9 @@ namespace Alver.UI.Accounts.Transfers
                     scope.Complete();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             { MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح"); }
         }
         private void InitTransactions()
@@ -181,7 +183,9 @@ namespace Alver.UI.Accounts.Transfers
                 //resultnumericUpDown.Value = _result;
                 displayer.Value = _result;
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("المبلغ غير صحيح");
             }
@@ -241,7 +245,9 @@ namespace Alver.UI.Accounts.Transfers
                 Save();
                 ControlsEnable(false);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء الحفظ");
             }
@@ -258,7 +264,9 @@ namespace Alver.UI.Accounts.Transfers
                     FromFundcomboBox.SelectedValue = db.AccountFunds.FirstOrDefault(x => x.AccountId == accId && x.CurrencyId == currId).Id;
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void frmTransfer_KeyDown(object sender, KeyEventArgs e)
@@ -287,7 +295,9 @@ namespace Alver.UI.Accounts.Transfers
                 }
 
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
     }
 }

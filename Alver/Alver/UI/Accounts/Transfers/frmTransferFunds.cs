@@ -86,7 +86,9 @@ namespace Alver.UI.Accounts.Transfers
                     scope.Complete();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             { MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح"); }
         }
         private void InitTransactions()
@@ -185,7 +187,9 @@ namespace Alver.UI.Accounts.Transfers
                 Save();
                 ControlsEnable(false);
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء الحفظ");
             }
@@ -200,7 +204,9 @@ namespace Alver.UI.Accounts.Transfers
                     accountsInfoBindingSource1.DataSource = db.Accounts.Where(x => x.Id != fromId).ToList();
                 }
             }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             { }
         }
         private void button1_Click_1(object sender, EventArgs e)

@@ -1,9 +1,7 @@
 ﻿using Alver.DAL;
 using Alver.MISC;
-using Microsoft.Reporting.WinForms;
 using System;
 using System.Data.Entity;
-using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,6 +10,8 @@ namespace Alver.UI.Bills.BillReports
     public partial class frmBillSlip : Form
     {
         //dbEntities db;
+        private bool _exchanged = false;
+
         private int _billId = 0, _userId = 0, _currencyId = 0, _billLinesCount = 0;
 
         private bool _silentPrinting = false;
@@ -23,14 +23,22 @@ namespace Alver.UI.Bills.BillReports
                 InitializeComponent();
                 _billId = BillId;
                 _userId = UserId;
+                _exchanged = (new dbEntities()).Bills.Find(_billId).Exchanged.Value;
                 _billLinesCount = (new dbEntities()).Bills.Find(_billId).BillLines.Count;
-                if ((new dbEntities()).Bills.Find(_billId).ForeginCurrencyId != null)
+                if (_exchanged)
                 {
-                    _currencyId = (new dbEntities()).Bills.Find(_billId).ForeginCurrencyId.Value;
+                    if ((new dbEntities()).Bills.Find(_billId).ForeginCurrencyId != null)
+                    {
+                        _currencyId = (new dbEntities()).Bills.Find(_billId).ForeginCurrencyId.Value;
+                    }
+                    else
+                    {
+                        _currencyId = 2;
+                    }
                 }
                 else
                 {
-                    _currencyId = 2;
+                    _currencyId = 1;
                 }
                 _silentPrinting = SilentPrinting;
             }
@@ -55,6 +63,14 @@ namespace Alver.UI.Bills.BillReports
                 UserBindingSource.DataSource = db.Users.FirstOrDefault(x => x.Id == _userId);
                 BillSlip_ResultBindingSource.DataSource = db.BillSlip(_billId).ToList();
                 CurrencyBindingSource.DataSource = db.Currencies.FirstOrDefault(x => x.Id == _currencyId);
+                if (_exchanged)
+                {
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = @"Alver.UI.Bills.BillReports.SYPBillSlip.rdlc";
+                }
+                else
+                {
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = @"Alver.UI.Bills.BillReports.USDBillSlip.rdlc";
+                }
                 this.reportViewer1.RefreshReport();
                 if (_silentPrinting)
                 {
