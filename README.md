@@ -1,2 +1,2 @@
 # Alver
-Sales Point Software
+Point Of Sales Software
