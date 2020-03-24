@@ -61,19 +61,8 @@ namespace Alver.UI.Accounts
                         db.Accounts.AddOrUpdate(_account);
                     }
                 }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                 catch (Exception ex) { }
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             }
-        }
-
-        private void frmClients_Load(object sender, System.EventArgs e)
-        {
-            db = new dbEntities();
-            db.Configuration.ProxyCreationEnabled = false;
-            LoadData();
-            //clearForm();
-            SearchBox.Focus();
         }
 
         private void LoadData()
@@ -113,9 +102,7 @@ namespace Alver.UI.Accounts
                 _temp.AccountGroupId = 1;
                 _temp.LUD = DateTime.Now;
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
             }
         }
@@ -158,14 +145,10 @@ namespace Alver.UI.Accounts
                             //{
                             //}
                         }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                         catch (Exception ex) { }
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                     }
                 }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                 catch (Exception ex) { }
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             }//END foreach
         }
 
@@ -225,9 +208,7 @@ namespace Alver.UI.Accounts
                     ColorizeDgv();
                 }
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
             }
         }
@@ -351,14 +332,12 @@ namespace Alver.UI.Accounts
         {
             try
             {
-                AccountFund _fund = accounts_FundBindingSource.Current as AccountFund;
-                db.Entry(_fund).State = EntityState.Modified;
-                _fund.LUD = DateTime.Now;
+                //AccountFund _fund = accounts_FundBindingSource.Current as AccountFund;
+                //db.Entry(_fund).State = EntityState.Modified;
+                //_fund.LUD = DateTime.Now;
                 //Misc.Utilities.ColorizeDGV((DataGridView)sender, dataGridViewTextBoxColumn4.Index);
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void frmClients_KeyDown(object sender, KeyEventArgs e)
@@ -443,9 +422,7 @@ namespace Alver.UI.Accounts
                     }
                 }
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي");
             }
@@ -513,9 +490,7 @@ namespace Alver.UI.Accounts
                                 MessageBox.Show("تم حذف الوكيل بنجاح");
                             }
                         }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                         catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                         {
                             MessageBox.Show("حصل خطأ أثناء حذف الوكيل ،لم يتم الحذف بنجاح", "حذف وكيل", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -534,9 +509,7 @@ namespace Alver.UI.Accounts
                 frm.ShowDialog();
                 toolStripButton8_Click(null, null);
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
             }
         }
@@ -552,9 +525,7 @@ namespace Alver.UI.Accounts
                 frm.ShowDialog();
                 toolStripButton8_Click(null, null);
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
             }
         }
@@ -562,6 +533,15 @@ namespace Alver.UI.Accounts
         private void تعديلالوكيلToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditClient();
+        }
+
+        private void frmAccounts_Load(object sender, EventArgs e)
+        {
+            db = new dbEntities();
+            db.Configuration.ProxyCreationEnabled = false;
+            LoadData();
+            //clearForm();
+            SearchBox.Focus();
         }
     }
 }

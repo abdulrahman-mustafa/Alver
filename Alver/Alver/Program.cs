@@ -64,8 +64,8 @@ namespace Alver
                 MessageBox.Show("لا يمكن تشغيل أكثر من نسخة من اليرنامج في نفس الوقت");
                 return;
             }
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
             //Start(() =>
             //{
             //    using (dbEntities context = new dbEntities())

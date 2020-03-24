@@ -1,5 +1,6 @@
 ﻿using Alver.DAL;
 using Alver.MISC;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace Alver.UI.Bills.BillReports
         //dbEntities db;
         private bool _exchanged = false;
 
+        private string _accountName = "";
+
         private int _billId = 0, _userId = 0, _currencyId = 0, _billLinesCount = 0;
 
         private bool _silentPrinting = false;
@@ -23,6 +26,18 @@ namespace Alver.UI.Bills.BillReports
                 InitializeComponent();
                 _billId = BillId;
                 _userId = UserId;
+                using (dbEntities db = new dbEntities())
+                {
+                    int _accountId = db.Bills.Find(_billId).AccountId.Value;
+                    if (_accountId == 0)
+                    {
+                        _accountName = "نقدي";
+                    }
+                    else
+                    {
+                        _accountName = db.Accounts.Find(_accountId).FullName;
+                    }
+                }
                 _exchanged = (new dbEntities()).Bills.Find(_billId).Exchanged.Value;
                 _billLinesCount = (new dbEntities()).Bills.Find(_billId).BillLines.Count;
                 if (_exchanged)
@@ -57,6 +72,7 @@ namespace Alver.UI.Bills.BillReports
                 db.Currencies.Load();
                 db.Companies.Load();
                 db.Users.Load();
+
                 ImageBindingSource.DataSource = db.Images.Find(1);
                 BillBindingSource.DataSource = db.Bills.FirstOrDefault(x => x.Id == _billId);
                 CompanyBindingSource.DataSource = db.Companies.FirstOrDefault(x => x.Id == 1);
@@ -71,6 +87,8 @@ namespace Alver.UI.Bills.BillReports
                 {
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = @"Alver.UI.Bills.BillReports.USDBillSlip.rdlc";
                 }
+                ReportParameter _para = new ReportParameter("AccountName", _accountName);
+                this.reportViewer1.LocalReport.SetParameters(_para);
                 this.reportViewer1.RefreshReport();
                 if (_silentPrinting)
                 {
