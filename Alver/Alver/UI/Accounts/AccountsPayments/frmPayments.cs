@@ -26,14 +26,14 @@ namespace Alver.UI.Accounts.AccountsPayments
 
         private void frmPayments_Load(object sender, EventArgs e)
         {
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             LoadData();
         }
 
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Currencies.AsNoTracking().Load();
                 db.Accounts.AsNoTracking().Load();
@@ -149,7 +149,7 @@ namespace Alver.UI.Accounts.AccountsPayments
 
                 if (_payment != null && paymentsOperationBindingSource.Count > 0)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         _payment = db.Payments.Find(_paymentId);
                         int _accountId = _payment.AccountId.Value;
@@ -245,7 +245,7 @@ namespace Alver.UI.Accounts.AccountsPayments
         private IQueryable<Payment> GrandSearch(DateTime _from, DateTime _to, int _currencyId, int _accountId, string _fromClient, string _toClient)
         {
             IQueryable<Payment> _query;// = new IQueryable<Remittances_Operation>;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 _query = db.Payments as IQueryable<Payment>;
                 if (_from.Year == _to.Year && _from.Month == _to.Month)

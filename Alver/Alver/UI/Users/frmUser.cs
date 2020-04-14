@@ -40,7 +40,7 @@ namespace Alver.UI.Users
 
         private void LoadDate()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Roles.AsQueryable().AsNoTracking().Load();
                 roleBindingSource.DataSource = db.Roles.AsQueryable().AsNoTracking().ToList();
@@ -74,7 +74,7 @@ namespace Alver.UI.Users
             bool _result = true;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     if (string.IsNullOrWhiteSpace(rolescb.Text.Trim()))
                     {
@@ -106,7 +106,7 @@ namespace Alver.UI.Users
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     Guid _guid = Guid.NewGuid();
                     int _roleId = (int)rolescb.SelectedValue;
@@ -154,7 +154,7 @@ namespace Alver.UI.Users
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         //Navigation properties
                         //_user.Role = _role;

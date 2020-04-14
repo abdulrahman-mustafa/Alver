@@ -52,7 +52,7 @@ namespace Alver.MISC
             {
                 //LoadData();
                 if (!BackupBrowse()) return;
-                //db = new dbEntities();
+                //db = new dbEntities(0);
                 if (_path == string.Empty)
                 {
                     MessageBox.Show("اختر مسار صحيح لحفظ النسخة الاحتياطية");
@@ -148,7 +148,7 @@ namespace Alver.MISC
         public static void RestoreDatabase()
         {
             if (!RestoreBrowse()) return;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 SqlConnection con = new SqlConnection(db.Database.Connection.ConnectionString);
                 string database = db.Database.Connection.Database;

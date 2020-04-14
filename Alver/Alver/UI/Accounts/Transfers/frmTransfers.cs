@@ -11,8 +11,9 @@ namespace Alver.UI.Accounts.Transfers
 {
     public partial class frmTransfers : Form
     {
-        dbEntities db;
-        Transfer _transfer;
+        private dbEntities db;
+        private Transfer _transfer;
+
         public frmTransfers()
         {
             InitializeComponent();
@@ -20,7 +21,7 @@ namespace Alver.UI.Accounts.Transfers
 
         private void frmIncomes_Load(object sender, EventArgs e)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             LoadData();
         }
@@ -134,6 +135,7 @@ namespace Alver.UI.Accounts.Transfers
             Retrive();
             DGVTotals();
         }
+
         private void DGVTotals()
         {
             int _currencyIndex = currencyIdDataGridViewTextBoxColumn.Index;
@@ -159,7 +161,7 @@ namespace Alver.UI.Accounts.Transfers
             bindingNavigatorDeleteItem.Enabled = false;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _transfer = db.Transfers.Find(_transferId);
                     decimal _fromAmount = _transfer.FromAmount.Value;
@@ -201,6 +203,7 @@ namespace Alver.UI.Accounts.Transfers
             Retrive();
             RemittanceDGV();
         }
+
         private void CheckChanges()
         {
             foreach (Transfer item in transferClientFundBindingSource.List)
@@ -244,6 +247,7 @@ namespace Alver.UI.Accounts.Transfers
                 }
             }
         }
+
         private void remittances_OperationDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -263,6 +267,7 @@ namespace Alver.UI.Accounts.Transfers
             catch (Exception ex) { }
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
+
         private string dgvCell(int index)
         {
             if (dgv.CurrentRow != null)

@@ -392,7 +392,7 @@ namespace Alver.UI.Accounts
                                                             MessageBoxIcon.Information);
                             if (_dialog2 == DialogResult.Yes)
                             {
-                                using (dbEntities db = new dbEntities())
+                                using (dbEntities db = new dbEntities(0))
                                 {
                                     AccountBindingSource.EndEdit();
                                     accountsdgv.EndEdit();
@@ -407,7 +407,7 @@ namespace Alver.UI.Accounts
                         }
                         else
                         {
-                            using (dbEntities db = new dbEntities())
+                            using (dbEntities db = new dbEntities(0))
                             {
                                 AccountBindingSource.EndEdit();
                                 accountsdgv.EndEdit();
@@ -463,7 +463,7 @@ namespace Alver.UI.Accounts
                             if (_client != null && AccountBindingSource.Count > 0)
                             {
                                 int _clientId = _client.Id;
-                                using (dbEntities db = new dbEntities())
+                                using (dbEntities db = new dbEntities(0))
                                 {
                                     db.AccountFunds.RemoveRange(db.AccountFunds.Where(x => x.AccountId == _clientId));
                                     db.Payments.RemoveRange(db.Payments.Where(x => x.AccountId == _clientId));
@@ -537,11 +537,15 @@ namespace Alver.UI.Accounts
 
         private void frmAccounts_Load(object sender, EventArgs e)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             LoadData();
             //clearForm();
             SearchBox.Focus();
+        }
+
+        private void pdfexportbtn_Click(object sender, EventArgs e)
+        {
         }
     }
 }

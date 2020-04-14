@@ -11,21 +11,25 @@ namespace Alver.UI.Accounts.Transfers
     public partial class frmTransfer : Form
     {
         //dbEntities db;
-        Currency _currency;
-        Account _client;
-        AccountFund _fromFund, _toFund;
-        Transfer _transfer;
+        private Currency _currency;
+
+        private Account _client;
+        private AccountFund _fromFund, _toFund;
+        private Transfer _transfer;
+
         public frmTransfer(Transfer Trans)
         {
             InitializeComponent();
             _transfer = Trans == null ? (new Transfer()) : Trans;
         }
+
         private void frmTransferFunds_Load(object sender, EventArgs e)
         {
             displayer.Controls[0].Visible = false;
             LoadData();
             ControlsEnable(false);
         }
+
         private void ControlsEnable(bool _enable)
         {
             operationDateDateTimePicker.Value = DateTime.Now;
@@ -43,9 +47,10 @@ namespace Alver.UI.Accounts.Transfers
                 }
             }
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Currencies.AsNoTracking().Load();
                 db.AccountFunds.AsNoTracking().Load();
@@ -56,29 +61,31 @@ namespace Alver.UI.Accounts.Transfers
                 accountsFundBindingSource2.DataSource = accountsInfoBindingSource;
             }
             MISC.Utilities.SearchableComboBox(clientComboBox);
-
         }
+
         private void transferClientFundBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             _transfer = transferClientFundBindingSource.Current as Transfer;
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
-
         }
+
         private void addNew()
         {
             //db.Dispose();
             //_transfer = new Transfer();
             //LoadData();
         }
+
         private void Save()
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         User _user = Properties.Settings.Default.LoggedInUser;
                         _transfer.User = _user;
@@ -105,6 +112,7 @@ namespace Alver.UI.Accounts.Transfers
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             { MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح"); }
         }
+
         private void InitTransactions()
         {
             string _declaration = string.Format("قص رصيد مبلغ {0} من صندوق: {1} إلى صندوق: {2} بسعر صرف {3} ",
@@ -121,6 +129,7 @@ namespace Alver.UI.Accounts.Transfers
             TransactionsFuncs.InsertClientTransaction(_accountId, _fromCurrencyId, _fromAmount, TransactionsFuncs.TT.CTF, _transfer.TransferDate.Value, _transfer.GUID.Value, _declaration);
             TransactionsFuncs.InsertClientTransaction(_accountId, _toCurrencyId, _toAmount, TransactionsFuncs.TT.CTT, _transfer.TransferDate.Value, _transfer.GUID.Value, _declaration, _fromCurrencyId);
         }
+
         private void PrepareItem()
         {
             try
@@ -132,7 +141,7 @@ namespace Alver.UI.Accounts.Transfers
                 int _fromFundId = (int)FromFundcomboBox.SelectedValue;
                 int _toFundId = (int)ToFundcomboBox.SelectedValue;
 
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _currency = db.Currencies.Find(_currencyId);
                     _client = db.Accounts.Find(_clientId);
@@ -163,10 +172,12 @@ namespace Alver.UI.Accounts.Transfers
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void amountNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             ExchangeMoney();
         }
+
         private void ExchangeMoney()
         {
             try
@@ -190,28 +201,33 @@ namespace Alver.UI.Accounts.Transfers
                 MessageBox.Show("المبلغ غير صحيح");
             }
         }
+
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             ExchangeMoney();
         }
+
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             ExchangeMoney();
         }
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             ExchangeMoney();
         }
+
         private void button4_Click(object sender, EventArgs e)
         {
-
             //addNew();
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             //addNew();
             ControlsEnable(true);
         }
+
         private bool CheckTransferAmount()
         {
             bool _result = true;
@@ -235,6 +251,7 @@ namespace Alver.UI.Accounts.Transfers
             //}
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -252,11 +269,12 @@ namespace Alver.UI.Accounts.Transfers
                 MessageBox.Show("حصل خطأ أثناء الحفظ");
             }
         }
+
         private void currencyIdComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     int accId = (int)clientComboBox.SelectedValue;
                     int currId = (int)currencyIdComboBox.SelectedValue;
@@ -286,14 +304,13 @@ namespace Alver.UI.Accounts.Transfers
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     int accId = (int)clientComboBox.SelectedValue;
                     int accFundId = (int)FromFundcomboBox.SelectedValue;
                     int currId = (int)currencyIdComboBox.SelectedValue;
                     accountsFundBindingSource2.DataSource = db.AccountFunds.Where(x => x.AccountId == accId && x.CurrencyId == currId && x.Id != accFundId).ToList();
                 }
-
             }
 #pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }

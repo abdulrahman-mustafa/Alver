@@ -11,25 +11,29 @@ namespace Alver.UI.Payments.Expenses
     public partial class frmExpense : Form
     {
         //dbEntities db;
-        Expense _expensess;
-        Currency _currency;
-        ExpenseCategory _category;
+        private Expense _expensess;
+
+        private Currency _currency;
+        private ExpenseCategory _category;
+
         //Fund _fund;
         public frmExpense(Expense Expensess)
         {
             InitializeComponent();
             _expensess = Expensess == null ? (new Expense()) : Expensess;
         }
+
         private void frmExpensess_Load(object sender, EventArgs e)
         {
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             LoadData();
             ControlsEnable(false);
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Currencies.AsNoTracking().Load();
                 db.ExpenseCategories.AsNoTracking().Load();
@@ -39,11 +43,12 @@ namespace Alver.UI.Payments.Expenses
             }
             MISC.Utilities.SearchableComboBox(categoryComboBox);
         }
+
         private void InitTransactions()
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     string _declaration = string.Format("مصروف - {0}", categoryComboBox.Text.Trim());
                     Guid _guid = _expensess.GUID.Value;
@@ -59,13 +64,14 @@ namespace Alver.UI.Payments.Expenses
                 MessageBox.Show("حدث خطأ داخلي سيتم التراجع عن الحفظ");
             }
         }
+
         private void Save()
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         User _user = Properties.Settings.Default.LoggedInUser;
                         //_expensess.Fund = _fund;
@@ -92,6 +98,7 @@ namespace Alver.UI.Payments.Expenses
                 MessageBox.Show("حدث خطأ داخلي سيتم التراجع عن الحفظ");
             }
         }
+
         private void PrepareItem()
         {
             try
@@ -102,7 +109,7 @@ namespace Alver.UI.Payments.Expenses
                 int _categoryId = (int)categoryComboBox.SelectedValue;
                 int _currencyId = (int)currencyIdComboBox.SelectedValue;
                 //int _fundId = (int)currencyIdComboBox.SelectedValue;
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _category = db.ExpenseCategories.FirstOrDefault(x => x.Id == _categoryId);
                     _currency = db.Currencies.FirstOrDefault(x => x.Id == _currencyId);
@@ -130,12 +137,13 @@ namespace Alver.UI.Payments.Expenses
                 MessageBox.Show("حدث خطأ داخلي");
             }
         }
+
         private void ExpensessCategory()
         {
             try
             {
                 int Id = (int)categoryComboBox.SelectedValue;
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _category = db.ExpenseCategories.FirstOrDefault(x => x.Id == Id);
                 }
@@ -144,16 +152,15 @@ namespace Alver.UI.Payments.Expenses
             catch (Exception ex)
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
-
             }
-
         }
+
         private void ExpensessCurrency()
         {
             try
             {
                 int Id = (int)currencyIdComboBox.SelectedValue;
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _currency = db.Currencies.FirstOrDefault(x => x.Id == Id);
                 }
@@ -163,13 +170,13 @@ namespace Alver.UI.Payments.Expenses
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
             }
-
         }
+
         //private void ExpensessFund()
         //{
         //    try
         //    {
-        //        using (dbEntities db = new dbEntities())
+        //        using (dbEntities db = new dbEntities(0))
         //        {
         //            int Id = (int)currencyIdComboBox.SelectedValue;
         //            _fund = db.Funds.FirstOrDefault(x => x.CurrencyId == Id);
@@ -177,7 +184,6 @@ namespace Alver.UI.Payments.Expenses
         //    }
         //    catch (Exception ex)
         //    {
-
         //    }
 
         //}
@@ -188,15 +194,17 @@ namespace Alver.UI.Payments.Expenses
             currencyBindingSource.Position = 1;
             ControlsEnable(true);
         }
+
         private void addNew()
         {
             //db.Dispose();
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             //_expensess = new Payments_Expense();
             //LoadData();
             //currencyBindingSource.Position = 1;
         }
+
         private void ControlsEnable(bool _enable)
         {
             expenseDateDateTimePicker.Value = DateTime.Now;
@@ -206,6 +214,7 @@ namespace Alver.UI.Payments.Expenses
             amountNumericUpDown.Value = amountNumericUpDown.Minimum;
             groupBox1.Enabled = _enable;
         }
+
         private bool CheckExpensessAmount()
         {
             bool _result = true;
@@ -217,6 +226,7 @@ namespace Alver.UI.Payments.Expenses
             }
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -244,6 +254,7 @@ namespace Alver.UI.Payments.Expenses
                 MessageBox.Show("حدث خطأ داخلي");
             }
         }
+
         private void frmExpensess_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.N && e.Control)

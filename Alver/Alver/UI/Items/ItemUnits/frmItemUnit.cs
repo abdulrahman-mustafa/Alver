@@ -16,7 +16,7 @@ namespace Alver.UI.Payments.Expenses
 
         private void frmExpensessCategory_Load(object sender, EventArgs e)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
 
             db.Units.Load();

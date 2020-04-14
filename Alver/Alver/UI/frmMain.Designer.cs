@@ -32,18 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.HeadersplitContainer = new System.Windows.Forms.SplitContainer();
             this.mainmenustrip = new System.Windows.Forms.MenuStrip();
-            this.BodysplitContainer = new System.Windows.Forms.SplitContainer();
-            this.clocklbl = new System.Windows.Forms.Label();
-            this.phonelbl = new System.Windows.Forms.Label();
-            this.addresslbl = new System.Windows.Forms.Label();
-            this.companytitlelbl = new System.Windows.Forms.Label();
-            this.mainstatusstrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.databasenamelbl = new System.Windows.Forms.ToolStripStatusLabel();
-            this.runtimeslbl = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.أخذنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.استرجاعنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,7 +97,20 @@
             this.viewDepositesbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.المستخدمونToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إدارةالمستخدمينToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BodysplitContainer = new System.Windows.Forms.SplitContainer();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.clocklbl = new System.Windows.Forms.Label();
+            this.phonelbl = new System.Windows.Forms.Label();
+            this.addresslbl = new System.Windows.Forms.Label();
+            this.companytitlelbl = new System.Windows.Forms.Label();
+            this.mainstatusstrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.usernameLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.databasenamelbl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.runtimeslbl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeadersplitContainer)).BeginInit();
             this.HeadersplitContainer.Panel1.SuspendLayout();
             this.HeadersplitContainer.Panel2.SuspendLayout();
@@ -161,153 +162,6 @@
             this.mainmenustrip.Size = new System.Drawing.Size(882, 28);
             this.mainmenustrip.TabIndex = 0;
             this.mainmenustrip.Text = "menuStrip1";
-            // 
-            // BodysplitContainer
-            // 
-            this.BodysplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BodysplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.BodysplitContainer.Name = "BodysplitContainer";
-            // 
-            // BodysplitContainer.Panel1
-            // 
-            this.BodysplitContainer.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.BodysplitContainer.Panel1.BackgroundImage = global::Alver.Properties.Resources.BG__3_;
-            this.BodysplitContainer.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BodysplitContainer.Panel1.Controls.Add(this.button1);
-            this.BodysplitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            // 
-            // BodysplitContainer.Panel2
-            // 
-            this.BodysplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.BodysplitContainer.Panel2.BackgroundImage = global::Alver.Properties.Resources.abstract_blue_background_wave_vector_1407_88;
-            this.BodysplitContainer.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BodysplitContainer.Panel2.Controls.Add(this.clocklbl);
-            this.BodysplitContainer.Panel2.Controls.Add(this.phonelbl);
-            this.BodysplitContainer.Panel2.Controls.Add(this.addresslbl);
-            this.BodysplitContainer.Panel2.Controls.Add(this.companytitlelbl);
-            this.BodysplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.BodysplitContainer.Size = new System.Drawing.Size(882, 400);
-            this.BodysplitContainer.SplitterDistance = 736;
-            this.BodysplitContainer.SplitterWidth = 20;
-            this.BodysplitContainer.TabIndex = 0;
-            this.BodysplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.BodysplitContainer_SplitterMoved);
-            // 
-            // clocklbl
-            // 
-            this.clocklbl.BackColor = System.Drawing.Color.Transparent;
-            this.clocklbl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.clocklbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clocklbl.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.clocklbl.ForeColor = System.Drawing.Color.OrangeRed;
-            this.clocklbl.Location = new System.Drawing.Point(0, 355);
-            this.clocklbl.Name = "clocklbl";
-            this.clocklbl.Size = new System.Drawing.Size(126, 45);
-            this.clocklbl.TabIndex = 3;
-            this.clocklbl.Text = "0";
-            this.clocklbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.clocklbl.UseCompatibleTextRendering = true;
-            // 
-            // phonelbl
-            // 
-            this.phonelbl.BackColor = System.Drawing.Color.Transparent;
-            this.phonelbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.phonelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.phonelbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.phonelbl.Location = new System.Drawing.Point(0, 90);
-            this.phonelbl.Name = "phonelbl";
-            this.phonelbl.Size = new System.Drawing.Size(126, 45);
-            this.phonelbl.TabIndex = 2;
-            this.phonelbl.Text = "0";
-            this.phonelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.phonelbl.UseCompatibleTextRendering = true;
-            // 
-            // addresslbl
-            // 
-            this.addresslbl.BackColor = System.Drawing.Color.Transparent;
-            this.addresslbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addresslbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addresslbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.addresslbl.Location = new System.Drawing.Point(0, 45);
-            this.addresslbl.Name = "addresslbl";
-            this.addresslbl.Size = new System.Drawing.Size(126, 45);
-            this.addresslbl.TabIndex = 1;
-            this.addresslbl.Text = "0";
-            this.addresslbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.addresslbl.UseCompatibleTextRendering = true;
-            // 
-            // companytitlelbl
-            // 
-            this.companytitlelbl.BackColor = System.Drawing.Color.Transparent;
-            this.companytitlelbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.companytitlelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.companytitlelbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.companytitlelbl.Location = new System.Drawing.Point(0, 0);
-            this.companytitlelbl.Name = "companytitlelbl";
-            this.companytitlelbl.Size = new System.Drawing.Size(126, 45);
-            this.companytitlelbl.TabIndex = 0;
-            this.companytitlelbl.Text = "0";
-            this.companytitlelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.companytitlelbl.UseCompatibleTextRendering = true;
-            // 
-            // mainstatusstrip
-            // 
-            this.mainstatusstrip.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.mainstatusstrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.mainstatusstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.usernameLabel,
-            this.toolStripStatusLabel3,
-            this.databasenamelbl,
-            this.runtimeslbl});
-            this.mainstatusstrip.Location = new System.Drawing.Point(0, 449);
-            this.mainstatusstrip.Name = "mainstatusstrip";
-            this.mainstatusstrip.Size = new System.Drawing.Size(882, 22);
-            this.mainstatusstrip.TabIndex = 1;
-            this.mainstatusstrip.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(92, 17);
-            this.toolStripStatusLabel1.Text = "المستخدم الحالي:";
-            // 
-            // usernameLabel
-            // 
-            this.usernameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.usernameLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(12, 17);
-            this.usernameLabel.Text = "-";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel3.ForeColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(77, 17);
-            this.toolStripStatusLabel3.Text = "قاعدة البيانات:";
-            // 
-            // databasenamelbl
-            // 
-            this.databasenamelbl.ForeColor = System.Drawing.Color.White;
-            this.databasenamelbl.Name = "databasenamelbl";
-            this.databasenamelbl.Size = new System.Drawing.Size(19, 17);
-            this.databasenamelbl.Text = "00";
-            // 
-            // runtimeslbl
-            // 
-            this.runtimeslbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.runtimeslbl.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.runtimeslbl.Name = "runtimeslbl";
-            this.runtimeslbl.Size = new System.Drawing.Size(21, 17);
-            this.runtimeslbl.Text = "00";
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ملفToolStripMenuItem
             // 
@@ -627,7 +481,7 @@
             // 
             this.POSbtn.Image = global::Alver.Properties.Resources.icons8_barcode_reader_25px;
             this.POSbtn.Name = "POSbtn";
-            this.POSbtn.Size = new System.Drawing.Size(184, 26);
+            this.POSbtn.Size = new System.Drawing.Size(141, 26);
             this.POSbtn.Text = "نقطة البيع";
             this.POSbtn.Click += new System.EventHandler(this.POSbtn_Click_1);
             // 
@@ -635,7 +489,7 @@
             // 
             this.buybillbtn.Image = global::Alver.Properties.Resources.icons8_purchase_order_25px;
             this.buybillbtn.Name = "buybillbtn";
-            this.buybillbtn.Size = new System.Drawing.Size(184, 26);
+            this.buybillbtn.Size = new System.Drawing.Size(141, 26);
             this.buybillbtn.Text = "فاتورة شراء";
             this.buybillbtn.Click += new System.EventHandler(this.buybillbtn_Click);
             // 
@@ -643,7 +497,7 @@
             // 
             this.sellbillbtn.Image = global::Alver.Properties.Resources.icons8_invoice_25px;
             this.sellbillbtn.Name = "sellbillbtn";
-            this.sellbillbtn.Size = new System.Drawing.Size(184, 26);
+            this.sellbillbtn.Size = new System.Drawing.Size(141, 26);
             this.sellbillbtn.Text = "فاتورة بيع";
             this.sellbillbtn.Click += new System.EventHandler(this.sellbillbtn_Click);
             // 
@@ -651,7 +505,7 @@
             // 
             this.billmanagementbtn.Image = global::Alver.Properties.Resources.itemsettings;
             this.billmanagementbtn.Name = "billmanagementbtn";
-            this.billmanagementbtn.Size = new System.Drawing.Size(184, 26);
+            this.billmanagementbtn.Size = new System.Drawing.Size(141, 26);
             this.billmanagementbtn.Text = "إداراة الفواتير";
             this.billmanagementbtn.Click += new System.EventHandler(this.billmanagementbtn_Click);
             // 
@@ -866,6 +720,58 @@
             this.إدارةالمستخدمينToolStripMenuItem.Text = "إدارة المستخدمين";
             this.إدارةالمستخدمينToolStripMenuItem.Click += new System.EventHandler(this.إدارةالمستخدمينToolStripMenuItem_Click);
             // 
+            // BodysplitContainer
+            // 
+            this.BodysplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BodysplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.BodysplitContainer.Name = "BodysplitContainer";
+            // 
+            // BodysplitContainer.Panel1
+            // 
+            this.BodysplitContainer.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.BodysplitContainer.Panel1.BackgroundImage = global::Alver.Properties.Resources.BG__3_;
+            this.BodysplitContainer.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BodysplitContainer.Panel1.Controls.Add(this.button2);
+            this.BodysplitContainer.Panel1.Controls.Add(this.button1);
+            this.BodysplitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            // 
+            // BodysplitContainer.Panel2
+            // 
+            this.BodysplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.BodysplitContainer.Panel2.BackgroundImage = global::Alver.Properties.Resources.abstract_blue_background_wave_vector_1407_88;
+            this.BodysplitContainer.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BodysplitContainer.Panel2.Controls.Add(this.clocklbl);
+            this.BodysplitContainer.Panel2.Controls.Add(this.phonelbl);
+            this.BodysplitContainer.Panel2.Controls.Add(this.addresslbl);
+            this.BodysplitContainer.Panel2.Controls.Add(this.companytitlelbl);
+            this.BodysplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.BodysplitContainer.Size = new System.Drawing.Size(882, 400);
+            this.BodysplitContainer.SplitterDistance = 736;
+            this.BodysplitContainer.SplitterWidth = 20;
+            this.BodysplitContainer.TabIndex = 0;
+            this.BodysplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.BodysplitContainer_SplitterMoved);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.button2.Image = global::Alver.Properties.Resources.icons8_barcode_reader_25px;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.Location = new System.Drawing.Point(3, 59);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 50);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "نقطة البيع";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button2.UseCompatibleTextRendering = true;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
@@ -886,6 +792,123 @@
             this.button1.UseCompatibleTextRendering = true;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.POSbtn_Click_1);
+            // 
+            // clocklbl
+            // 
+            this.clocklbl.BackColor = System.Drawing.Color.Transparent;
+            this.clocklbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.clocklbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clocklbl.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.clocklbl.ForeColor = System.Drawing.Color.OrangeRed;
+            this.clocklbl.Location = new System.Drawing.Point(0, 355);
+            this.clocklbl.Name = "clocklbl";
+            this.clocklbl.Size = new System.Drawing.Size(126, 45);
+            this.clocklbl.TabIndex = 3;
+            this.clocklbl.Text = "0";
+            this.clocklbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.clocklbl.UseCompatibleTextRendering = true;
+            // 
+            // phonelbl
+            // 
+            this.phonelbl.BackColor = System.Drawing.Color.Transparent;
+            this.phonelbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.phonelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.phonelbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.phonelbl.Location = new System.Drawing.Point(0, 90);
+            this.phonelbl.Name = "phonelbl";
+            this.phonelbl.Size = new System.Drawing.Size(126, 45);
+            this.phonelbl.TabIndex = 2;
+            this.phonelbl.Text = "0";
+            this.phonelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.phonelbl.UseCompatibleTextRendering = true;
+            // 
+            // addresslbl
+            // 
+            this.addresslbl.BackColor = System.Drawing.Color.Transparent;
+            this.addresslbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addresslbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addresslbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.addresslbl.Location = new System.Drawing.Point(0, 45);
+            this.addresslbl.Name = "addresslbl";
+            this.addresslbl.Size = new System.Drawing.Size(126, 45);
+            this.addresslbl.TabIndex = 1;
+            this.addresslbl.Text = "0";
+            this.addresslbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.addresslbl.UseCompatibleTextRendering = true;
+            // 
+            // companytitlelbl
+            // 
+            this.companytitlelbl.BackColor = System.Drawing.Color.Transparent;
+            this.companytitlelbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.companytitlelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.companytitlelbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.companytitlelbl.Location = new System.Drawing.Point(0, 0);
+            this.companytitlelbl.Name = "companytitlelbl";
+            this.companytitlelbl.Size = new System.Drawing.Size(126, 45);
+            this.companytitlelbl.TabIndex = 0;
+            this.companytitlelbl.Text = "0";
+            this.companytitlelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.companytitlelbl.UseCompatibleTextRendering = true;
+            // 
+            // mainstatusstrip
+            // 
+            this.mainstatusstrip.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.mainstatusstrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mainstatusstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.usernameLabel,
+            this.toolStripStatusLabel3,
+            this.databasenamelbl,
+            this.runtimeslbl});
+            this.mainstatusstrip.Location = new System.Drawing.Point(0, 449);
+            this.mainstatusstrip.Name = "mainstatusstrip";
+            this.mainstatusstrip.Size = new System.Drawing.Size(882, 22);
+            this.mainstatusstrip.TabIndex = 1;
+            this.mainstatusstrip.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(92, 17);
+            this.toolStripStatusLabel1.Text = "المستخدم الحالي:";
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.usernameLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(12, 17);
+            this.usernameLabel.Text = "-";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel3.ForeColor = System.Drawing.Color.White;
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(77, 17);
+            this.toolStripStatusLabel3.Text = "قاعدة البيانات:";
+            // 
+            // databasenamelbl
+            // 
+            this.databasenamelbl.ForeColor = System.Drawing.Color.White;
+            this.databasenamelbl.Name = "databasenamelbl";
+            this.databasenamelbl.Size = new System.Drawing.Size(19, 17);
+            this.databasenamelbl.Text = "00";
+            // 
+            // runtimeslbl
+            // 
+            this.runtimeslbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.runtimeslbl.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.runtimeslbl.Name = "runtimeslbl";
+            this.runtimeslbl.Size = new System.Drawing.Size(21, 17);
+            this.runtimeslbl.Text = "00";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // frmMain
             // 
@@ -1007,5 +1030,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem POSbtn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

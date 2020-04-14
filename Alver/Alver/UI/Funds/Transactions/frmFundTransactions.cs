@@ -16,23 +16,25 @@ namespace Alver.UI.Funds.Transactions
 {
     public partial class frmFundTransactions : Form
     {
-        List<JCS.ToggleSwitch> _toggles = new List<JCS.ToggleSwitch>();
+        private List<JCS.ToggleSwitch> _toggles = new List<JCS.ToggleSwitch>();
 
         public frmFundTransactions()
         {
             InitializeComponent();
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Currencies.AsNoTracking().Load();
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
             }
         }
+
         private void frmTransactions_Load(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
             }
@@ -41,12 +43,14 @@ namespace Alver.UI.Funds.Transactions
             _toggles.Add(onlyloans);
             _toggles.Add(onlydeposites);
         }
+
         private void DGVTotals()
         {
             int _currencyIndex = currencyIdDataGridViewTextBoxColumn.Index;
             int _amountIndex = amountDataGridViewTextBoxColumn.Index;
             dgvTotals.DataSource = dgv.TotalsDGV(_currencyIndex, _amountIndex);
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             int currencyId = (int)currencycomboBox.SelectedValue;
@@ -55,6 +59,7 @@ namespace Alver.UI.Funds.Transactions
             DGVTotals();
             ColorizeDgv();
         }
+
         private void Retrive()
         {
             this.Cursor = Cursors.WaitCursor;
@@ -81,7 +86,7 @@ namespace Alver.UI.Funds.Transactions
         private IQueryable<FundTransaction> GrandSearch(DateTime _from, DateTime _to, int _currencyId)
         {
             IQueryable<FundTransaction> _query;// = new IQueryable<Remittances_Operation>;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 _query = db.FundTransactions as IQueryable<FundTransaction>;
                 if (_from.Year == _to.Year && _from.Month == _to.Month)
@@ -91,7 +96,6 @@ namespace Alver.UI.Funds.Transactions
                                 (x.TTS.Value.Month >= _from.Month && x.TTS.Value.Month <= _to.Month) &&
                                 (x.TTS.Value.Day >= _from.Day && x.TTS.Value.Day <= _to.Day))
                         ).AsQueryable();
-
                 }
                 else if (_from.Year != _to.Year)
                 {
@@ -163,7 +167,6 @@ namespace Alver.UI.Funds.Transactions
                 _query.Where(x => x.TT == TransactionsFuncs.TT.ICF.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة");
                 _query.Where(x => x.TT == TransactionsFuncs.TT.INC.ToString()).ToList().ForEach(x => x.TT = "حوالة واردة");
 
-
                 _query.Where(x => x.TT == TransactionsFuncs.TT.TRT.ToString()).ToList().ForEach(x => x.TT = "تحويل رصيد الى");
                 _query.Where(x => x.TT == TransactionsFuncs.TT.TRF.ToString()).ToList().ForEach(x => x.TT = "تحويل رصيد من");
                 _query.Where(x => x.TT == TransactionsFuncs.TT.CTT.ToString()).ToList().ForEach(x => x.TT = "قص الى");
@@ -205,45 +208,52 @@ namespace Alver.UI.Funds.Transactions
                 _query.Where(x => x.TT == TransactionsFuncs.TT.LNT.ToString()).ToList().ForEach(x => x.TT = "دين الى");
                 _query.Where(x => x.TT == TransactionsFuncs.TT.LNF.ToString()).ToList().ForEach(x => x.TT = "دين من");
 
-                _query.Where(x => x.TT == TransactionsFuncs.TT.BLP.ToString()).ToList().ForEach(x => x.TT = "فاتورة بيع");
-                _query.Where(x => x.TT == TransactionsFuncs.TT.BLS.ToString()).ToList().ForEach(x => x.TT = "فاتورة شراء");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.BLP.ToString()).ToList().ForEach(x => x.TT = "فاتورة شراء");
+                _query.Where(x => x.TT == TransactionsFuncs.TT.BLS.ToString()).ToList().ForEach(x => x.TT = "فاتورة بيع");
 
                 fundTransactionBindingSource.DataSource = _query.ToList();
-
             }
             return _query;
         }
+
         private void accountchkb_CheckedChanged(object sender, EventArgs e)
         {
         }
+
         private void currencycheckBox_CheckedChanged(object sender, EventArgs e)
         {
             currencycomboBox.Enabled = currencycheckBox.Checked;
         }
+
         private void ColorizeDgv()
         {
             int _index1 = amountDataGridViewTextBoxColumn.Index;
             int _index2 = runningTotalDataGridViewTextBoxColumn.Index;
             dgv.ColorizeDecimalDGVTwoCells(_index1, _index2);
         }
+
         private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
+
         private void frmTransactions_FormClosing(object sender, FormClosingEventArgs e)
         {
             dgv.DataSource = null;
         }
+
         private void onlyremittances_CheckedChanged(object sender, EventArgs e)
         {
             JCS.ToggleSwitch _this = (JCS.ToggleSwitch)sender;
             ActivateMe(_this);
         }
+
         private void ActivateMe(JCS.ToggleSwitch _this)
         {
             if (_this.Checked)
                 DisableAllTogglesButThis(_this);
         }
+
         private void DisableAllTogglesButThis(JCS.ToggleSwitch activeToggle)
         {
             foreach (var item in _toggles)
@@ -261,8 +271,8 @@ namespace Alver.UI.Funds.Transactions
 
         private void button2_Click(object sender, EventArgs e)
         {
-
         }
+
         private void button3_Click(object sender, EventArgs e)
         {
             if (dgv.Rows.Count > 0)
@@ -271,7 +281,6 @@ namespace Alver.UI.Funds.Transactions
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-
         }
 
         private void اكسلToolStripMenuItem_Click(object sender, EventArgs e)
@@ -298,9 +307,8 @@ namespace Alver.UI.Funds.Transactions
                MessageBoxOptions.RightAlign);
                     if (_ConfirmationDialog == DialogResult.Yes)
                     {
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
-
                             db.FundTransactions.Remove(db.FundTransactions.Find(_transactionId));
                             db.SaveChanges();
                             TransactionsFuncs.FundsRunningTotals(_currencyId);

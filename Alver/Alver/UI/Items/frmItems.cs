@@ -42,7 +42,7 @@ namespace Alver.UI.Accounts
 
         private void load()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Items.AsNoTracking().Load();
                 db.ItemFunds.AsNoTracking().Load();
@@ -115,7 +115,7 @@ namespace Alver.UI.Accounts
 
         private void Search(string _keyword)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 if (string.IsNullOrEmpty(_keyword))
                 {
@@ -251,7 +251,7 @@ namespace Alver.UI.Accounts
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     Item _item = itemsBS.Current as Item;
                     if (_item != null)
@@ -296,7 +296,7 @@ namespace Alver.UI.Accounts
                         if (_item != null && itemsBS.Count > 0)
                         {
                             int _itemId = _item.Id;
-                            using (dbEntities db = new dbEntities())
+                            using (dbEntities db = new dbEntities(0))
                             {
                                 List<Bill> _bills = new List<Bill>();
                                 db.ItemFunds.RemoveRange(db.ItemFunds.Where(x => x.ItemId == _itemId));
@@ -386,7 +386,7 @@ namespace Alver.UI.Accounts
                     _companyAddress = "",
                     _companyManager = "",
                     _ManagerPhone = "";
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _companyname = db.Companies.Find(1).Title;
                     _companyAddress = db.Companies.Find(1).Address;

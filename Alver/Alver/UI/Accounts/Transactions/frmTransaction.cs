@@ -8,15 +8,17 @@ namespace Alver.UI.Accounts.Transactions
 {
     public partial class frmTransaction : Form
     {
-        Transaction _baseTransaction;
+        private Transaction _baseTransaction;
+
         public frmTransaction(Transaction transaction)
         {
             InitializeComponent();
             _baseTransaction = transaction == null ? (new Transaction()) : transaction;
         }
+
         private void frmWage_Load(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 int _accountId = _baseTransaction.AccountId.Value;
                 db.Currencies.AsNoTracking().Load();
@@ -35,7 +37,7 @@ namespace Alver.UI.Accounts.Transactions
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     Validate();
                     currencyBindingSource.EndEdit();

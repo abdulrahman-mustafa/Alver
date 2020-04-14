@@ -11,16 +11,18 @@ namespace Alver.UI.Payments.Deposites
 {
     public partial class frmDeposites : Form
     {
-        dbEntities db;
-        Payment _payment;
+        private dbEntities db;
+        private Payment _payment;
+
         public frmDeposites(Payment Payment)
         {
             InitializeComponent();
             _payment = Payment == null ? (new Payment()) : Payment;
         }
+
         private void frmPayments_Load(object sender, EventArgs e)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             LoadData();
         }
@@ -37,6 +39,7 @@ namespace Alver.UI.Payments.Deposites
             accountsInfoBindingSource1.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
             MISC.Utilities.SearchableComboBox(clientComboBox);
         }
+
         private void payments_OperationBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             //dgv.EndEdit();
@@ -45,6 +48,7 @@ namespace Alver.UI.Payments.Deposites
             //MSGs.SaveMessage();
             //Retrive();
         }
+
         private void CheckChanges()
         {
             foreach (Payment item in paymentsTransactionBindingSource.List)
@@ -73,6 +77,7 @@ namespace Alver.UI.Payments.Deposites
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             }//END foreach
         }
+
         private void ItemChanged(DbPropertyValues originalValues, DbPropertyValues currentValues, Payment item)
         {
             foreach (string propertyName in originalValues.PropertyNames)
@@ -87,6 +92,7 @@ namespace Alver.UI.Payments.Deposites
                 }
             }
         }
+
         //private void toolStripButton1_Click(object sender, EventArgs e)
         //{
         //    try
@@ -128,6 +134,7 @@ namespace Alver.UI.Payments.Deposites
         {
             e.ThrowException = false;
         }
+
         private void paymentsTransactionBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             try
@@ -143,6 +150,7 @@ namespace Alver.UI.Payments.Deposites
             catch (Exception ex) { }
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
+
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             DialogResult _ConfirmationDialog = MessageBox.Show("هل انت متأكد من تنفيذ العملية؟، لن تتمكن من التراجع عن تنفيذ العملية!", "تنبيه", MessageBoxButtons.YesNo);
@@ -157,13 +165,13 @@ namespace Alver.UI.Payments.Deposites
                 int _paymentId = _payment.Id;
                 if (_payment != null && paymentsTransactionBindingSource.Count > 0)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         _payment = db.Payments.Find(_paymentId);
                         int _accountId = _payment.AccountId.Value;
                         int _currencyId = _payment.CurrencyId.Value;
                         decimal _amount = _payment.Amount.Value;
-                        TransactionsFuncs.DeleteTransactions(_payment.GUID.Value, _currencyId, _accountId, 0,TransactionsFuncs.TT.FOO);
+                        TransactionsFuncs.DeleteTransactions(_payment.GUID.Value, _currencyId, _accountId, 0, TransactionsFuncs.TT.FOO);
                         TransactionsFuncs.ClientsRunningTotals(_accountId);
                         TransactionsFuncs.FundsRunningTotals(_currencyId);
                         db.Payments.Remove(_payment);
@@ -182,6 +190,7 @@ namespace Alver.UI.Payments.Deposites
             }
             bindingNavigatorDeleteItem.Enabled = true;
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Retrive();
@@ -196,6 +205,7 @@ namespace Alver.UI.Payments.Deposites
             }
             //DGVTotals();
         }
+
         private void DGVTotals()
         {
             int _currencyIndex = currencyIdDataGridViewTextBoxColumn.Index;

@@ -16,17 +16,19 @@ namespace Alver.UI.Accounts.Withdraws
 {
     public partial class frmWithdraw : Form
     {
-        Withdraw _withdraw;
-        Currency _currency;
-        Account _client;
+        private Withdraw _withdraw;
+        private Currency _currency;
+        private Account _client;
+
         public frmWithdraw(Withdraw withdraw)
         {
             InitializeComponent();
             _withdraw = withdraw == null ? (new Withdraw()) : withdraw;
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Accounts.AsNoTracking().Load();
                 db.Currencies.AsNoTracking().Load();
@@ -35,6 +37,7 @@ namespace Alver.UI.Accounts.Withdraws
             }
             MISC.Utilities.SearchableComboBox(clientComboBox);
         }
+
         private void ControlsEnable(bool _enable)
         {
             operationDateDateTimePicker.Value = DateTime.Now;
@@ -51,15 +54,18 @@ namespace Alver.UI.Accounts.Withdraws
                 }
             }
         }
+
         private void frmWithdraw_Load(object sender, EventArgs e)
         {
             LoadData();
             ControlsEnable(false);
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             ControlsEnable(true);
         }
+
         private bool CheckAmount()
         {
             bool _result = true;
@@ -77,12 +83,13 @@ namespace Alver.UI.Accounts.Withdraws
             }
             return _result;
         }
+
         private bool PrepareItem()
         {
             bool _result = true;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     Guid _guid = Guid.NewGuid();
 
@@ -125,6 +132,7 @@ namespace Alver.UI.Accounts.Withdraws
             }
             return _result;
         }
+
         private void InitTransactions()
         {
             int _accountId = (int)clientComboBox.SelectedValue;
@@ -140,13 +148,14 @@ namespace Alver.UI.Accounts.Withdraws
                 TransactionsFuncs.InsertClientTransaction(_accountId, _currencyId, _amount, TransactionsFuncs.TT.LOS, _withdraw.WithdrawDate.Value, _withdraw.GUID.Value, _declaration);
             }
         }
+
         private void Save()
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         User _user = Properties.Settings.Default.LoggedInUser;
                         _withdraw.User = _user;
@@ -170,6 +179,7 @@ namespace Alver.UI.Accounts.Withdraws
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             if (!CheckAmount())
@@ -197,6 +207,7 @@ namespace Alver.UI.Accounts.Withdraws
             Save();
             ControlsEnable(false);
         }
+
         private void frmWithdraw_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.N && e.Control)
@@ -209,6 +220,7 @@ namespace Alver.UI.Accounts.Withdraws
                     savebtn_Click(sender, e);
             }
         }
+
         private void addClientpb_Click(object sender, EventArgs e)
         {
             (new frmAddAccount()).ShowDialog();

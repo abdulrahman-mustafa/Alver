@@ -23,7 +23,7 @@ namespace Alver.UI.Items
         {
             try
             {
-                db = new dbEntities();
+                db = new dbEntities(0);
                 db.Configuration.ProxyCreationEnabled = false;
 
                 db.Items.Load();

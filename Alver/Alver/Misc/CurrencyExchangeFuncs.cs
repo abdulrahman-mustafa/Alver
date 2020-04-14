@@ -49,7 +49,7 @@ namespace DAL.Classes
                         subcurrency != 0 ||
                         rate > 0)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         _baseCurrency = db.Currencies.FirstOrDefault(x => x.Id == basecurrency);
                         _subCurrency = db.Currencies.FirstOrDefault(x => x.Id == subcurrency);
@@ -116,6 +116,7 @@ namespace DAL.Classes
                 MessageBox.Show("الرجاء التأكد من القيم المدخلة ومن عدم إدخال  قيم فارغة");
             }
         }
+
         public static decimal RoundExchange(decimal _value)
         {
             decimal _result = 0;

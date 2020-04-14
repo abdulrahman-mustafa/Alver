@@ -12,22 +12,26 @@ namespace Alver.UI.Payments.Loans
     public partial class frmLoan : Form
     {
         //dbEntities db;
-        Payment _payment;
-        Currency _currency;
-        Account _client;
+        private Payment _payment;
+
+        private Currency _currency;
+        private Account _client;
+
         public frmLoan(Payment Payment)
         {
             InitializeComponent();
             _payment = Payment == null ? (new Payment()) : Payment;
         }
+
         private void frmNewPayment_Load(object sender, EventArgs e)
         {
             LoadData();
             ControlsEnable(false);
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Accounts.AsNoTracking().Load();
                 db.Currencies.AsNoTracking().Load();
@@ -36,6 +40,7 @@ namespace Alver.UI.Payments.Loans
             }
             MISC.Utilities.SearchableComboBox(clientComboBox);
         }
+
         private void InitTransactions()
         {
             string _declaration = string.Format("{0}: {1}", _payment.PaymentType.ToString(), declarationTextBox.Text.Trim());
@@ -53,13 +58,14 @@ namespace Alver.UI.Payments.Loans
                 TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.LNO, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
             }
         }
+
         private void Save()
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         User _user = Properties.Settings.Default.LoggedInUser;
                         _payment.User = _user;
@@ -83,12 +89,13 @@ namespace Alver.UI.Payments.Loans
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }
         }
+
         private bool PrepareItem()
         {
             bool _result = true;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     Guid _guid = Guid.NewGuid();
                     int Id = (int)clientComboBox.SelectedValue;
@@ -146,19 +153,22 @@ namespace Alver.UI.Payments.Loans
             }
             return _result;
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             //addNew();
             ControlsEnable(true);
         }
+
         private void addNew()
         {
             //db.Dispose();
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             //_payment = new Payment();
             //LoadData();
         }
+
         private void ControlsEnable(bool _enable)
         {
             operationDateDateTimePicker.Value = DateTime.Now;
@@ -175,6 +185,7 @@ namespace Alver.UI.Payments.Loans
                 }
             }
         }
+
         private bool CheckLoanAmount()
         {
             bool _result = true;
@@ -192,6 +203,7 @@ namespace Alver.UI.Payments.Loans
             }
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             if (!CheckLoanAmount())
@@ -219,11 +231,13 @@ namespace Alver.UI.Payments.Loans
             Save();
             ControlsEnable(false);
         }
+
         private void addClientpb_Click(object sender, EventArgs e)
         {
             (new frmAddAccount()).ShowDialog();
             LoadData();
         }
+
         private void frmClientLoan_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.N && e.Control)

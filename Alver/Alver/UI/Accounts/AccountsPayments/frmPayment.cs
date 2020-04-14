@@ -11,22 +11,26 @@ namespace Alver.UI.Accounts.AccountsPayments
     public partial class frmPayment : Form
     {
         //dbEntities db;
-        Payment _payment;
-        Currency _currency;
-        Account _account;
+        private Payment _payment;
+
+        private Currency _currency;
+        private Account _account;
+
         public frmPayment(Account Payment)
         {
             InitializeComponent();
             //_payment = Payment == null ? (new Payments_Operation()) : Payment;
         }
+
         private void frmNewPayment_Load(object sender, EventArgs e)
         {
             LoadData();
             ControlsEnable(false);
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 //db.Payments_Operation.AsNoTracking().Load();
                 db.Accounts.AsNoTracking().Load();
@@ -36,10 +40,12 @@ namespace Alver.UI.Accounts.AccountsPayments
             }
             MISC.Utilities.SearchableComboBox(clientComboBox);
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Save();
         }
+
         private void InitTransactions()
         {
             int _accId = (int)clientComboBox.SelectedValue;
@@ -57,13 +63,14 @@ namespace Alver.UI.Accounts.AccountsPayments
                 TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.PYO, _payment.PaymentDate.Value, _payment.GUID.Value, _declaration);
             }
         }
+
         private void Save()
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         User _user = Properties.Settings.Default.LoggedInUser;
                         //_payment = new Payments_Operation();
@@ -88,6 +95,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }
         }
+
         private void ControlsEnable(bool _enable)
         {
             operationDateDateTimePicker.Value = DateTime.Now;
@@ -104,6 +112,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 }
             }
         }
+
         private void PrepareItem()
         {
             bool _payed = payedcheckBox.Checked;
@@ -111,7 +120,7 @@ namespace Alver.UI.Accounts.AccountsPayments
             int Id = (int)clientComboBox.SelectedValue;
             int _currencyId = (int)currencyIdComboBox.SelectedValue;
             Guid _guid = Guid.NewGuid();
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 _currency = db.Currencies.FirstOrDefault(x => x.Id == _currencyId);
                 _account = db.Accounts.FirstOrDefault(x => x.Id == Id);
@@ -135,7 +144,6 @@ namespace Alver.UI.Accounts.AccountsPayments
                         Hidden = false,
                         GUID = _guid,
                         PROTECTED = false
-
                     };
                 }
                 else if (toClientRadioButton.Checked)
@@ -161,19 +169,22 @@ namespace Alver.UI.Accounts.AccountsPayments
                 }
             }
         }
+
         private void addNew()
         {
             //db.Dispose();
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             //_payment = new Payments_Operation();
             //LoadData();
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             //addNew();
             ControlsEnable(true);
         }
+
         private bool CheckPaymentAmount()
         {
             bool _result = true;
@@ -191,6 +202,7 @@ namespace Alver.UI.Accounts.AccountsPayments
             }
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -226,6 +238,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }
         }
+
         private void addClientpb_Click(object sender, EventArgs e)
         {
             (new frmAddAccount()).ShowDialog();

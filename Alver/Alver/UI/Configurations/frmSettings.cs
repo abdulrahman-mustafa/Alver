@@ -30,7 +30,7 @@ namespace Alver.UI.Configuration
 
         private void frmSettings_Load(object sender, EventArgs e)
         {
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             LoadData();
             LoadPrinters();
@@ -42,6 +42,7 @@ namespace Alver.UI.Configuration
             try
             {
                 bkupaskchkbox.Checked = Settings.Default.AskForBKUP;
+                connectionstringtb.Text = Settings.Default.ConnectionStringValue;
             }
             catch (Exception ex)
             {
@@ -71,7 +72,7 @@ namespace Alver.UI.Configuration
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _company = db.Companies.Find(_baseCompanyId);
                     if (_company != null)
@@ -88,11 +89,9 @@ namespace Alver.UI.Configuration
                     }
                 }
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
-                MessageBox.Show("حدث خطأ داخلي");
+                MSGs.ErrorMessage(ex);
             }
         }
 
@@ -100,7 +99,7 @@ namespace Alver.UI.Configuration
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _company = db.Companies.Find(_baseCompanyId);
                     if (_company != null)
@@ -126,10 +125,9 @@ namespace Alver.UI.Configuration
                     }
                 }
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
+                //MSGs.ErrorMessage(ex);
                 MessageBox.Show("حدث خطأ داخلي");
             }
         }
@@ -138,7 +136,7 @@ namespace Alver.UI.Configuration
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     DAL.Image _image = new DAL.Image();
                     _image.AlbumId = 1;
@@ -151,10 +149,9 @@ namespace Alver.UI.Configuration
                     db.SaveChanges();
                 }
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
+                //MSGs.ErrorMessage(ex);
                 MessageBox.Show("حدث خطأ اثناء حفظ لوغو الشركة");
             }
         }
@@ -203,7 +200,7 @@ namespace Alver.UI.Configuration
                     DialogResult _PasswordConfirmationDialog = (new frmConfirmPassword()).ShowDialog();
                     if (_PasswordConfirmationDialog == DialogResult.OK)
                     {
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             _msg = "هل تريد اخذ نسخة احتياطية للبيانات قبل الخروج من البرنامج؟";
                             _ConfirmationDialog = MessageBox.Show(_msg, "تأكيد!!!!",

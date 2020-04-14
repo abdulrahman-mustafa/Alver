@@ -19,9 +19,10 @@ namespace Alver.UI.Accounts.Withdraws
         {
             InitializeComponent();
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Currencies.AsNoTracking().Load();
                 db.Accounts.AsNoTracking().Load();
@@ -33,9 +34,10 @@ namespace Alver.UI.Accounts.Withdraws
                 usersUserBindingSource.DataSource = db.Users.AsNoTracking().AsQueryable().ToList();
             }
         }
+
         private void frmTransactions_Load(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
                 accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().ToList().AsQueryable();
@@ -43,18 +45,21 @@ namespace Alver.UI.Accounts.Withdraws
             MISC.Utilities.SearchableComboBox(accountcb);
             MISC.Utilities.SearchableComboBox(currencycomboBox);
         }
+
         private void DGVTotals()
         {
             int _currencyIndex = currencyIdDataGridViewTextBoxColumn.Index;
             int _amountIndex = amountDataGridViewTextBoxColumn.Index;
             dgvTotals.DataSource = dgv.TotalsDGV(_currencyIndex, _amountIndex);
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Retrive();
             DGVTotals();
             ColorizeDgv();
         }
+
         private void Retrive()
         {
             this.Cursor = Cursors.WaitCursor;
@@ -82,10 +87,11 @@ namespace Alver.UI.Accounts.Withdraws
             GrandSearch(_from, _to, _currencyId, _accountId);
             this.Cursor = Cursors.Default;
         }
+
         private IQueryable<Withdraw> GrandSearch(DateTime _from, DateTime _to, int _currencyId, int _accountId)
         {
             IQueryable<Withdraw> _query;// = new IQueryable<Remittances_Operation>;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 _query = db.Withdraws as IQueryable<Withdraw>;
                 if (_from.Year == _to.Year && _from.Month == _to.Month)
@@ -95,7 +101,6 @@ namespace Alver.UI.Accounts.Withdraws
                                 (x.WithdrawDate.Value.Month >= _from.Month && x.WithdrawDate.Value.Month <= _to.Month) &&
                                 (x.WithdrawDate.Value.Day >= _from.Day && x.WithdrawDate.Value.Day <= _to.Day))
                         ).AsQueryable();
-
                 }
                 else if (_from.Year != _to.Year)
                 {
@@ -137,14 +142,17 @@ namespace Alver.UI.Accounts.Withdraws
             }
             return _query;
         }
+
         private void accountchkb_CheckedChanged(object sender, EventArgs e)
         {
             accountcb.Enabled = accountchkb.Checked;
         }
+
         private void currencycheckBox_CheckedChanged(object sender, EventArgs e)
         {
             currencycomboBox.Enabled = currencycheckBox.Checked;
         }
+
         private void ColorizeDgv()
         {
             int _index1 = amountDataGridViewTextBoxColumn.Index;
@@ -153,19 +161,23 @@ namespace Alver.UI.Accounts.Withdraws
             //int _index4 = runningtotalDataGridViewTextBoxColumn1.Index;
             //dgv2.ColorizeDecimalDGVTwoCells(_index3, _index4);
         }
+
         private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
+
         private void frmTransactions_FormClosing(object sender, FormClosingEventArgs e)
         {
             dgv.DataSource = null;
         }
+
         private void اكسلToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgv.Rows.Count > 0)
                 dgv.ExportToExcel();
         }
+
         private void deletebtn_Click(object sender, EventArgs e)
         {
             deletebtn.Enabled = false;
@@ -185,12 +197,11 @@ namespace Alver.UI.Accounts.Withdraws
                MessageBoxOptions.RightAlign);
                     if (_ConfirmationDialog == DialogResult.Yes)
                     {
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
-
                             db.Withdraws.Remove(db.Withdraws.Find(_withdrawId));
                             db.SaveChanges();
-                            TransactionsFuncs.DeleteTransactions(_withdraw.GUID.Value, _currencyId, _accountId,0, TransactionsFuncs.TT.FOO);
+                            TransactionsFuncs.DeleteTransactions(_withdraw.GUID.Value, _currencyId, _accountId, 0, TransactionsFuncs.TT.FOO);
                             TransactionsFuncs.ClientsRunningTotals(_accountId);
                             MessageBox.Show("تم الحذف بنجاح");
                             Retrive();

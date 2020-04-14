@@ -31,7 +31,7 @@ namespace Alver.UI.Items
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     db.Units.AsNoTracking().Load();
                     db.Currencies.AsNoTracking().Load();
@@ -74,7 +74,7 @@ namespace Alver.UI.Items
             bool _result = true;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     if (string.IsNullOrWhiteSpace(itemcb.Text.Trim()))
                     {
@@ -120,7 +120,7 @@ namespace Alver.UI.Items
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         try
                         {
@@ -181,7 +181,7 @@ namespace Alver.UI.Items
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     int _fundId = db.ItemFunds.FirstOrDefault(x => x.ItemId == _itemId).Id;
                     ItemFund _fund = db.ItemFunds.Find(_fundId);

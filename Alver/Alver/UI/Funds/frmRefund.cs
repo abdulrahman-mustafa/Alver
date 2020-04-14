@@ -54,7 +54,7 @@ namespace Alver.UI.Funds
         }
         public void LoadData()
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             db.Transactions.Load();
             db.Accounts.Load();
@@ -248,7 +248,7 @@ namespace Alver.UI.Funds
             {
                 db.Dispose();
             }
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             _payment = new Payment();
             LoadData();

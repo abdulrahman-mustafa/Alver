@@ -484,7 +484,7 @@ namespace Alver.MISC
 
         public static decimal ColumnSum(this DataGridView dgv, int _valueIndex, int _currencyIndex)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 int _index = 0;
                 int CURRENCIESCOUNT = db.Currencies.Count();
@@ -539,7 +539,7 @@ namespace Alver.MISC
         public static DataTable TotalsDGV(this DataGridView dgv, int _currencyIndex, int _amountIndex)
         {
             DataTable dt = new DataTable();
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 int _index = 0;
                 int CURRENCIESCOUNT = db.Currencies.Count();
@@ -569,10 +569,31 @@ namespace Alver.MISC
             return dt;
         }
 
+        public static DataTable POSTotalsDGV(this DataGridView dgv, int _itemsCount, int _sumQuantity, decimal _sumPrices, decimal _sumTotals)
+        {
+            DataTable dt = new DataTable();
+            int _index = 0;
+            int COLUMNSCOUNT = 5;
+            decimal[] _total = new decimal[COLUMNSCOUNT];
+            dt.Clear();
+            dt.Columns.Add("عدد الأقلام");
+            dt.Columns.Add("");
+            dt.Columns.Add("مجموع الكميات");
+            dt.Columns.Add("اجمالي السعر");
+            dt.Columns.Add("الاجمالي الكلي");
+            _total[0] = _itemsCount;
+            //_total[1] = "";
+            _total[2] = _sumQuantity;
+            _total[3] = _sumPrices;
+            _total[4] = _sumTotals;
+            dt.Rows.Add(new object[] { _total[0], "", _total[2], _total[3], _total[4] });
+            return dt;
+        }
+
         public static DataTable OverviewTotalsDGV(this DataGridView dgv)
         {
             DataTable dt = new DataTable();
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 int _index = 0;
                 int CURRENCIESCOUNT = db.Currencies.Count();
@@ -702,7 +723,7 @@ namespace Alver.MISC
                         && int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId))
                     {
                         string _currencyName = "";
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             _currencyName = db.Currencies.Find(_groupId).CurrencyName;
                         }
@@ -714,7 +735,7 @@ namespace Alver.MISC
                         && (int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId)))
                     {
                         string _categoryName = "";
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             _categoryName = db.ItemCategories.Find(_groupId).Title;
                         }
@@ -726,7 +747,7 @@ namespace Alver.MISC
                         && (int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId)))
                     {
                         string _unitName = "";
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             _unitName = db.Units.Find(_groupId).Title;
                         }
@@ -738,7 +759,7 @@ namespace Alver.MISC
                         && (int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId)))
                     {
                         string _groupName = "";
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             _groupName = db.AccountGroups.Find(_groupId).GroupTitle;
                         }
@@ -750,7 +771,7 @@ namespace Alver.MISC
                         && (int.TryParse(dgvDetails.Rows[i].Cells[j].Value.ToString(), out _groupId)))
                     {
                         string _groupName = "";
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             _groupName = db.ExpenseCategories.Find(_groupId).Title;
                         }

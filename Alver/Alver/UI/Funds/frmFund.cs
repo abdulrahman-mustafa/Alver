@@ -11,46 +11,52 @@ namespace Alver.UI.Funds
 {
     public partial class frmFund : Form
     {
-        Currency _currency;
-        Fund _fund;
-        string _purpose = "add";
+        private Currency _currency;
+        private Fund _fund;
+        private string _purpose = "add";
+
         public frmFund()
         {
             InitializeComponent();
         }
+
         private void frmOut_Load(object sender, EventArgs e)
         {
             ControlsEnable(false);
             LoadData();
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Currencies.AsNoTracking().AsQueryable().Load();
                 currencyBindingSource.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
             }
             MISC.Utilities.SearchableComboBox(fundComboBox);
         }
+
         private void addNew()
         {
             //db.Dispose();
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             ClearForm();
             //LoadData();
         }
+
         private void ClearForm()
         {
             fundComboBox.Text = string.Empty;
             balancenud.Value = 0;
             notestextBox.Text = string.Empty;
         }
+
         private void PrepareItem()
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _currency = db.Currencies.FirstOrDefault(x => x.Id == (int)currencyComboBox.SelectedValue);
                 }
@@ -75,6 +81,7 @@ namespace Alver.UI.Funds
             catch (Exception ex) { }
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
+
         private void ControlsEnable(bool _enable)
         {
             savebtn.Enabled = _enable;
@@ -87,17 +94,19 @@ namespace Alver.UI.Funds
                 }
             }
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             addNew();
             ControlsEnable(true);
         }
+
         private bool CheckValues()
         {
             bool _result = true;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     if (string.IsNullOrWhiteSpace(fundComboBox.Text.Trim()))
                     {
@@ -124,13 +133,14 @@ namespace Alver.UI.Funds
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
+
         private void Save()
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         User _user = Properties.Settings.Default.LoggedInUser;
                         _fund.Currency = _currency;
@@ -154,6 +164,7 @@ namespace Alver.UI.Funds
                 MessageBox.Show("حدث خطأ داخلي سيتم التراجع عن الحفظ");
             }
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -171,12 +182,13 @@ namespace Alver.UI.Funds
                 MessageBox.Show("حدث خطأ اثناء إضافة الصندوق", "تنبيه");
             }
         }
+
         private void InitTransactions()
         {
             string _declaration = string.Format("رصيد افتتاحي");
             int _currencyId = (int)currencyComboBox.SelectedValue;
             decimal _balance = balancenud.Value;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 if (_purpose == "edit")
                 {
@@ -191,6 +203,7 @@ namespace Alver.UI.Funds
                 }
             }
         }
+
         private void frmFund_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.N && e.Control)

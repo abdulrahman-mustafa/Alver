@@ -1491,6 +1491,11 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
         <Function Name="CreateClientFunds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ClientId" Type="int" Mode="In" />
         </Function>
+        <Function Name="DailyBillAmount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CurrencyId" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+          <Parameter Name="BillType" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="DeleteAllData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ItemAvgPurchasePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ItemId" Type="int" Mode="In" />
@@ -2204,6 +2209,11 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="CurrencyBulletin" EntitySet="CurrencyBulletins" />
           </AssociationSet>
+          <FunctionImport Name="DailyBillAmount" ReturnType="Collection(Decimal)">
+            <Parameter Name="CurrencyId" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="BillType" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_ClientGrand_Result">
           <Property Type="String" Name="الصندوق" Nullable="true" MaxLength="50" />
@@ -4621,6 +4631,7 @@ warning 6002: The table/view 'Alver.dbo.V_STOCK' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DailyBillAmount" FunctionName="AlverModel.Store.DailyBillAmount" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

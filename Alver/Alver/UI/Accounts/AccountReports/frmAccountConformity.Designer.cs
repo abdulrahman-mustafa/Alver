@@ -94,6 +94,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Alver.UI.Accounts.AccountReports.ClientConformity.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.ShowToolBar = false;
             this.reportViewer1.Size = new System.Drawing.Size(400, 470);
             this.reportViewer1.TabIndex = 3;

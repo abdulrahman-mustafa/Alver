@@ -20,7 +20,7 @@ namespace Alver.UI.Funds
         }
         private void frmPayments_Load(object sender, EventArgs e)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             LoadData();
         }

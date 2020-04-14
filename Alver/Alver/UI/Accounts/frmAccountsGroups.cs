@@ -25,7 +25,7 @@ namespace Alver.UI.Accounts
 
         private void LoadData()
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
 
             db.ExpenseCategories.Load();

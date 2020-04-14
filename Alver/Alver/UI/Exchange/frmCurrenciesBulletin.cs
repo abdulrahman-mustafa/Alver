@@ -27,7 +27,7 @@ namespace Alver.UI.Exchange
 
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Currencies.AsNoTracking().Load();
                 db.CurrencyBulletins.AsNoTracking().Load();
@@ -52,7 +52,7 @@ namespace Alver.UI.Exchange
                 _bulletin.GUID = Guid.NewGuid();
                 _bulletin.ReversedRate = 1 / _rate;
                 _bulletin.Factor = _isReversed;
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     db.Set<CurrencyBulletin>().Add(_bulletin);
                     db.SaveChanges();
@@ -77,7 +77,7 @@ namespace Alver.UI.Exchange
                 if (_bulletin != null && currencyBulletinBindingSource.Count > 0)
                 {
                     int _bulletinId = _bulletin.Id;
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         _bulletin = db.CurrencyBulletins.Find(_bulletinId);
                         db.CurrencyBulletins.Remove(_bulletin);

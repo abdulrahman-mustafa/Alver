@@ -47,7 +47,7 @@ namespace Alver.MISC
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     Bill _bill = db.Bills.Find(_billId);
                     if (_bill != null && _bill.Id != 0)
@@ -77,7 +77,7 @@ namespace Alver.MISC
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     List<Bill> _bills = db.Bills.Where(x => x.AccountId == _accountId).ToList();
 
@@ -111,7 +111,7 @@ namespace Alver.MISC
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     List<BillLine> _billLines = db.BillLines.Where(x => x.ItemId == _itemId).ToList();
                     List<int> _billsIds = new List<int>();

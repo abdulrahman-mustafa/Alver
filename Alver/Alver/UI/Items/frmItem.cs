@@ -11,22 +11,24 @@ namespace Alver.UI.Items
 {
     public partial class frmItem : Form
     {
-        dbEntities db;
-        Item _item;
-        ItemCategory _category = null;
-        Unit _unit = null;
+        private dbEntities db;
+        private Item _item;
+        private ItemCategory _category = null;
+        private Unit _unit = null;
 
         public frmItem()
         {
             InitializeComponent();
         }
+
         private void frmOut_Load(object sender, EventArgs e)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             ControlsEnable(false);
             barcodecb.Focus();
         }
+
         private void LoadData()
         {
             db.Units.AsNoTracking().AsQueryable().Load();
@@ -35,29 +37,31 @@ namespace Alver.UI.Items
             unitBindingSource.DataSource = db.Units.AsNoTracking().AsQueryable().ToList();
             MISC.Utilities.SearchableComboBox(itemcb);
         }
+
         private void addNew()
         {
             //db.Dispose();
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             ClearForm();
             LoadData();
         }
+
         private void ClearForm()
         {
             itemcb.Text = string.Empty;
             barcodecb.Text = string.Empty;
             declarationcb.Text = string.Empty;
         }
+
         private void PrepareItem()
         {
             try
             {
                 int _categoryId = 0;
                 int _unitId = 0;
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
-
                     if (itemCategorycb.SelectedValue != null)
                     {
                         _categoryId = (int)itemCategorycb.SelectedValue;
@@ -70,9 +74,8 @@ namespace Alver.UI.Items
                     _unit = db.Units.Find(_unitId);
                     _item = new Item()
                     {
-
                         ItemName = itemcb.Text.Trim(),
-                        Barcode=barcodecb.Text.Trim(),
+                        Barcode = barcodecb.Text.Trim(),
                         Declaration = declarationcb.Text.Trim(),
                         UserId = Properties.Settings.Default.LoggedInUser.Id,
                         //Users_User = Properties.Settings.Default.LoggedInUser,
@@ -80,8 +83,8 @@ namespace Alver.UI.Items
                         CategoryId = _categoryId,
                         UnitId = _unitId,
                         CurrencyId = 1,
-                        PurchasePrice=purchasepricenud.Value,
-                        SalePrice=salepricenud.Value,
+                        PurchasePrice = purchasepricenud.Value,
+                        SalePrice = salepricenud.Value,
                         ItemCategory = _category,
                         Unit = _unit,
                         Hidden = false,
@@ -97,6 +100,7 @@ namespace Alver.UI.Items
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void ControlsEnable(bool _enable)
         {
             savebtn.Enabled = _enable;
@@ -109,11 +113,13 @@ namespace Alver.UI.Items
                 }
             }
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             addNew();
             ControlsEnable(true);
         }
+
         private bool CheckValues()
         {
             bool _result = true;
@@ -137,6 +143,7 @@ namespace Alver.UI.Items
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -152,13 +159,14 @@ namespace Alver.UI.Items
             catch (Exception ex) { }
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
+
         private void Save()
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         User _user = Properties.Settings.Default.LoggedInUser;
                         decimal _balance = fundBalancenud.Value;
@@ -181,7 +189,7 @@ namespace Alver.UI.Items
                             Declaration = "",
                             FundTitle = "الكمية المتبقية",
                             UnitId = _unitId,
-                            UserId= _userId,
+                            UserId = _userId,
                             Hidden = false,
                             LUD = DateTime.Now,
                             GUID = Guid.NewGuid(),
@@ -204,6 +212,7 @@ namespace Alver.UI.Items
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }
         }
+
         private void frmClient_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.N && e.Control)

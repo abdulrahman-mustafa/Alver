@@ -6,12 +6,14 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Windows.Forms;
+
 namespace Alver.UI.Payments.Loans
 {
     public partial class frmLoans : Form
     {
-        dbEntities db;
-        Payment _payment;
+        private dbEntities db;
+        private Payment _payment;
+
         public frmLoans(Payment Payment)
         {
             InitializeComponent();
@@ -20,7 +22,7 @@ namespace Alver.UI.Payments.Loans
 
         private void frmPayments_Load(object sender, EventArgs e)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             LoadData();
         }
@@ -46,6 +48,7 @@ namespace Alver.UI.Payments.Loans
             MISC.Utilities.SaveChanges(ref db, this);
             Retrive();
         }
+
         private void CheckChanges()
         {
             foreach (Payment item in paymentsTransactionBindingSource.List)
@@ -75,6 +78,7 @@ namespace Alver.UI.Payments.Loans
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             }//END foreach
         }
+
         private void ItemChanged(DbPropertyValues originalValues, DbPropertyValues currentValues, Payment item)
         {
             foreach (string propertyName in originalValues.PropertyNames)
@@ -89,6 +93,7 @@ namespace Alver.UI.Payments.Loans
                 }
             }
         }
+
         private void InitTransactions(Payment _item)
         {
             int _accountId = _item.AccountId.Value;
@@ -107,6 +112,7 @@ namespace Alver.UI.Payments.Loans
                 TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.LNO, _item.PaymentDate.Value, _item.GUID.Value, _declaration);
             }
         }
+
         //private void toolStripButton1_Click(object sender, EventArgs e)
         //{
         //    try
@@ -148,6 +154,7 @@ namespace Alver.UI.Payments.Loans
         {
             e.ThrowException = false;
         }
+
         private void paymentsTransactionBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             try
@@ -189,13 +196,13 @@ namespace Alver.UI.Payments.Loans
                 int _paymentId = _payment.Id;
                 if (_payment != null && paymentsTransactionBindingSource.Count > 0)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         _payment = db.Payments.Find(_paymentId);
                         int _accountId = _payment.AccountId.Value;
                         int _currencyId = _payment.CurrencyId.Value;
                         decimal _amount = _payment.Amount.Value;
-                        TransactionsFuncs.DeleteTransactions(_payment.GUID.Value, _currencyId, _accountId, 0,TransactionsFuncs.TT.FOO);
+                        TransactionsFuncs.DeleteTransactions(_payment.GUID.Value, _currencyId, _accountId, 0, TransactionsFuncs.TT.FOO);
                         TransactionsFuncs.ClientsRunningTotals(_accountId);
                         TransactionsFuncs.FundsRunningTotals(_currencyId);
                         db.Payments.Remove(_payment);
@@ -313,6 +320,7 @@ namespace Alver.UI.Payments.Loans
                 dgvTotals.Visible = true;
             }
         }
+
         private void DGVTotals()
         {
             int _currencyIndex = currencyIdDataGridViewTextBoxColumn.Index;

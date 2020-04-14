@@ -133,5 +133,22 @@ namespace Alver.DAL
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_FundsMovements_Result>("SP_FundsMovements");
         }
+    
+        public virtual ObjectResult<Nullable<decimal>> DailyBillAmount(Nullable<int> currencyId, Nullable<System.DateTime> date, string billType)
+        {
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("CurrencyId", currencyId) :
+                new ObjectParameter("CurrencyId", typeof(int));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var billTypeParameter = billType != null ?
+                new ObjectParameter("BillType", billType) :
+                new ObjectParameter("BillType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyBillAmount", currencyIdParameter, dateParameter, billTypeParameter);
+        }
     }
 }

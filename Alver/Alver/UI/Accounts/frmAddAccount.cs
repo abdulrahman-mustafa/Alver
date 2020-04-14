@@ -20,7 +20,7 @@ namespace Alver.UI.Accounts
 
         private void frmOut_Load(object sender, EventArgs e)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             ControlsEnable(false);
         }
@@ -37,7 +37,7 @@ namespace Alver.UI.Accounts
         private void addNew()
         {
             //db.Dispose();
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             ClearForm();
             LoadData();

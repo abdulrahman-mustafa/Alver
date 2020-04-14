@@ -9,7 +9,8 @@ namespace Alver.UI.Accounts.AccountReports
     public partial class frmAccountConformity : Form
     {
         //dbEntities db;
-        Account _client;
+        private Account _client;
+
         public frmAccountConformity(Account Client)
         {
             InitializeComponent();
@@ -18,7 +19,7 @@ namespace Alver.UI.Accounts.AccountReports
 
         private void frmClientConformity_Load(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Accounts.Load();
                 db.Images.Load();

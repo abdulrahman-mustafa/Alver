@@ -224,7 +224,7 @@
             // 
             label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(908, 22);
+            label9.Location = new System.Drawing.Point(908, 15);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(63, 15);
             label9.TabIndex = 39;
@@ -234,7 +234,7 @@
             // 
             amountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             amountLabel.AutoSize = true;
-            amountLabel.Location = new System.Drawing.Point(792, 22);
+            amountLabel.Location = new System.Drawing.Point(792, 15);
             amountLabel.Name = "amountLabel";
             amountLabel.Size = new System.Drawing.Size(53, 15);
             amountLabel.TabIndex = 9;
@@ -244,7 +244,7 @@
             // 
             label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(615, 22);
+            label4.Location = new System.Drawing.Point(615, 15);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(104, 15);
             label4.TabIndex = 41;
@@ -253,7 +253,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(238, 22);
+            label11.Location = new System.Drawing.Point(238, 15);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(69, 15);
             label11.TabIndex = 45;
@@ -262,7 +262,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(53, 22);
+            label12.Location = new System.Drawing.Point(53, 15);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(128, 15);
             label12.TabIndex = 47;
@@ -277,7 +277,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(982, 134);
+            this.tabPage1.Size = new System.Drawing.Size(982, 140);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "الاقلام";
             // 
@@ -309,7 +309,7 @@
             this.billLinesDgv.Location = new System.Drawing.Point(3, 30);
             this.billLinesDgv.MultiSelect = false;
             this.billLinesDgv.Name = "billLinesDgv";
-            this.billLinesDgv.Size = new System.Drawing.Size(976, 101);
+            this.billLinesDgv.Size = new System.Drawing.Size(976, 107);
             this.billLinesDgv.TabIndex = 8;
             this.billLinesDgv.VirtualMode = true;
             this.billLinesDgv.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.billLinesDgv_CellValueChanged);
@@ -575,7 +575,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(990, 167);
+            this.tabControl1.Size = new System.Drawing.Size(990, 173);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 2;
             // 
@@ -749,9 +749,7 @@
             this.currencycb.BackColor = System.Drawing.Color.LemonChiffon;
             this.currencycb.DataSource = this.currencyBS;
             this.currencycb.DisplayMember = "CurrencyName";
-            this.currencycb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.currencycb.Enabled = false;
-            this.currencycb.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.currencycb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.currencycb.FormattingEnabled = true;
             this.currencycb.Location = new System.Drawing.Point(342, 25);
             this.currencycb.Name = "currencycb";
@@ -1221,9 +1219,9 @@
             this.groupBox1.Controls.Add(this.discountnud);
             this.groupBox1.Controls.Add(amountLabel);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 376);
+            this.groupBox1.Location = new System.Drawing.Point(0, 382);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(990, 70);
+            this.groupBox1.Size = new System.Drawing.Size(990, 64);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "الإجماليات";
@@ -1237,7 +1235,7 @@
             this.exchangebillchkbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.BillBS, "Exchanged", true));
             this.exchangebillchkbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exchangebillchkbox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.exchangebillchkbox.Location = new System.Drawing.Point(310, 22);
+            this.exchangebillchkbox.Location = new System.Drawing.Point(310, 15);
             this.exchangebillchkbox.Name = "exchangebillchkbox";
             this.exchangebillchkbox.Size = new System.Drawing.Size(97, 42);
             this.exchangebillchkbox.TabIndex = 49;
@@ -1249,7 +1247,7 @@
             // 
             this.syrTotalnud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "ExchangedAmount", true));
             this.syrTotalnud.DecimalPlaces = 3;
-            this.syrTotalnud.Location = new System.Drawing.Point(12, 41);
+            this.syrTotalnud.Location = new System.Drawing.Point(12, 34);
             this.syrTotalnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -1264,7 +1262,7 @@
             // 
             this.ratenud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "Rate", true));
             this.ratenud.DecimalPlaces = 3;
-            this.ratenud.Location = new System.Drawing.Point(184, 41);
+            this.ratenud.Location = new System.Drawing.Point(184, 34);
             this.ratenud.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -1290,7 +1288,7 @@
             this.sumtotalsnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.sumtotalsnud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "BillAmount", true));
             this.sumtotalsnud.DecimalPlaces = 3;
-            this.sumtotalsnud.Location = new System.Drawing.Point(851, 41);
+            this.sumtotalsnud.Location = new System.Drawing.Point(851, 34);
             this.sumtotalsnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -1306,7 +1304,7 @@
             this.totalnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.totalnud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "TotalAmount", true));
             this.totalnud.DecimalPlaces = 3;
-            this.totalnud.Location = new System.Drawing.Point(599, 41);
+            this.totalnud.Location = new System.Drawing.Point(599, 34);
             this.totalnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -1322,7 +1320,7 @@
             this.discountnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.discountnud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "DiscountAmount", true));
             this.discountnud.DecimalPlaces = 3;
-            this.discountnud.Location = new System.Drawing.Point(725, 41);
+            this.discountnud.Location = new System.Drawing.Point(725, 34);
             this.discountnud.Maximum = new decimal(new int[] {
             1410065407,
             2,

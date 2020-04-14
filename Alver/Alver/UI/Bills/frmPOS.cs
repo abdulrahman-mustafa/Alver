@@ -34,7 +34,7 @@ namespace Alver.UI.Bills
                 barcodecb.Focus();
                 if (BILLID > 0)
                 {
-                    Bill _tempBill = (new dbEntities()).Bills.Find(BILLID);
+                    Bill _tempBill = (new dbEntities(0)).Bills.Find(BILLID);
                     if (_tempBill != null)
                     {
                         BillBS.Position = BillBS.IndexOf(_tempBill);
@@ -49,7 +49,7 @@ namespace Alver.UI.Bills
 
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Configuration.ProxyCreationEnabled = false;
                 BillBS.ResetBindings(false);
@@ -94,7 +94,7 @@ namespace Alver.UI.Bills
         private bool CheckRecords()
         {
             bool _result = true;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 if (db.Items.Count() < 1)
                 {
@@ -125,7 +125,7 @@ namespace Alver.UI.Bills
                 //    _ = int.TryParse(currencycb.SelectedValue.ToString(), out _currencyId);
                 if (_itemId != 0)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         _currencyId = db.Items.Find(_itemId).CurrencyId.Value;
                         currencycb.SelectedValue = _currencyId;
@@ -167,7 +167,7 @@ namespace Alver.UI.Bills
                     _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
                 if (barcodecb.Text != string.Empty)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         if (db.Items.Where(x => x.Barcode == _barcode).Count() > 0)
                         {
@@ -312,7 +312,7 @@ namespace Alver.UI.Bills
                 //db.Bills.Attach(bill);
                 bill.Cashout = false;
                 bill.CheckedOut = false;
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     db.Bills.Add(bill);
                     db.SaveChanges();
@@ -348,7 +348,7 @@ namespace Alver.UI.Bills
                 _price = pricenud.Value;
                 _exchangedPrice = exchangedpricenud.Value;
                 _discount = discountnud.Value;
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     Bill _bill = db.Bills.Find(_billId);
                     Currency _currency, _foreignCurrency;
@@ -460,6 +460,30 @@ namespace Alver.UI.Bills
             }
         }
 
+        private void AddBillLine(bool _barcodeRead)
+        {
+            try
+            {
+                InsertBillLine(_barcodeRead);
+                calcSumTotals();
+                Reload();
+                barcodecb.Focus();
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
+
+        private void BarcodeRead()
+        {
+            if (RetreiveItemByBarcode())
+            {
+                AddBillLine(true);
+                barcodecb.SelectAll();
+            }
+        }
+
         private void calcSumTotals()
         {
             try
@@ -517,7 +541,7 @@ namespace Alver.UI.Bills
                     int _billId = (int)billIdcb.SelectedValue;
                     //if (db.Bills.Where(x => x.Id == _billId && x.BillType == BillType.شراء.ToString()).Count() > 1)
                     //{
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         Bill _bill = db.Bills.Find(_billId);
                         if (_bill != null)
@@ -560,13 +584,23 @@ namespace Alver.UI.Bills
         {
             try
             {
-                decimal _totalsyp = 0;
-                _totalsyp = ratenud.Value * pricenud.Value;
-                exchangedpricenud.Text = CurrencyExchangeFuncs.RoundExchange(_totalsyp).ToString();
+                if (currencycb.SelectedValue != null)
+                    if ((int)currencycb.SelectedValue == 1)
+                    {
+                        decimal _totalsyp = 0;
+                        _totalsyp = ratenud.Value * pricenud.Value;
+                        exchangedpricenud.Value = CurrencyExchangeFuncs.RoundExchange(_totalsyp);
+                    }
+                    else if ((int)currencycb.SelectedValue == 2)
+                    {
+                        decimal _totalusd = 0;
+                        _totalusd = ratenud.Value * pricenud.Value;
+                        exchangedpricenud.Value = _totalusd;
+                    }
             }
             catch (Exception ex)
             {
-                MSGs.ErrorMessage(ex);
+                //MSGs.ErrorMessage(ex);
             }
         }
 
@@ -614,28 +648,13 @@ namespace Alver.UI.Bills
 
         private void barcodecb_KeyDown(object sender, KeyEventArgs e)
         {
-            //if (_barcodeRead)
-            //{
-            //    _barcodeRead = false;
-            //    return;
-            //}
-            if (e.KeyCode == Keys.Enter)// && !e.Handled)// || e.KeyCode == Keys.Return)
+            if (e.KeyCode == Keys.Enter)
             {
-                //_barcodeRead = true;
                 if (barcodecb.Text != string.Empty)
                 {
                     BarcodeRead();
                 }
                 e.Handled = true;
-            }
-        }
-
-        private void BarcodeRead()
-        {
-            if (RetreiveItemByBarcode())
-            {
-                AddBillLine(true);
-                barcodecb.SelectAll();
             }
         }
 
@@ -684,7 +703,7 @@ namespace Alver.UI.Bills
                         Bill _bill = BillBS.Current as Bill;
                         int _billId = _bill.Id;
 
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             Bill bill = db.Bills.Find(_billId);
                             //TODO: CONVERT CURRENCY TO USD VIA CURRENCY BULLETIN
@@ -924,7 +943,7 @@ namespace Alver.UI.Bills
             decimal _SYP = 0;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     if (db.CurrencyBulletins.Where(x => x.CurrencyId == 2).ToList().Count() > 0)
                     {
@@ -963,21 +982,6 @@ namespace Alver.UI.Bills
         private void button1_Click(object sender, EventArgs e)
         {
             AddBillLine(false);
-        }
-
-        private void AddBillLine(bool _barcodeRead)
-        {
-            try
-            {
-                InsertBillLine(_barcodeRead);
-                calcSumTotals();
-                Reload();
-                barcodecb.Focus();
-            }
-            catch (Exception ex)
-            {
-                MSGs.ErrorMessage(ex);
-            }
         }
 
         private void discountnud_ValueChanged_1(object sender, EventArgs e)
@@ -1023,7 +1027,7 @@ namespace Alver.UI.Bills
                     BillsFuncs.DeleteBillLine(_billLine);
                     _bill.BillLines.Remove(_billLine);
                     int _billLineId = _billLine.Id, _billId = _bill.Id;
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         db.BillLines.Remove(db.BillLines.Find(_billLineId));
                         db.SaveChanges();
@@ -1215,7 +1219,7 @@ namespace Alver.UI.Bills
                     if (_price <= 0)
                     {
                         MessageBox.Show("لا يمكن ان يكون السعر اقل او يساوي الصفر");
-                        billLinesDgv.Rows[_rowIndex].Cells[priceclm.Index].Value = (new dbEntities()).Items.Find(_itemId).SalePrice.Value;
+                        billLinesDgv.Rows[_rowIndex].Cells[priceclm.Index].Value = (new dbEntities(0)).Items.Find(_itemId).SalePrice.Value;
                         return;
                     }
                     //decimal.TryParse(billLinesDgv.Rows[_rowIndex].Cells[exchangedpriceclm.Index].FormattedValue.ToString(), out _exchangedPrice);
@@ -1234,7 +1238,7 @@ namespace Alver.UI.Bills
                     if (_exchangedPrice <= 0)
                     {
                         MessageBox.Show("لا يمكن ان يكون السعر اقل او يساوي الصفر");
-                        billLinesDgv.Rows[_rowIndex].Cells[exchangedpriceclm.Index].Value = (new dbEntities()).Items.Find(_itemId).SalePrice.Value * _rate;
+                        billLinesDgv.Rows[_rowIndex].Cells[exchangedpriceclm.Index].Value = (new dbEntities(0)).Items.Find(_itemId).SalePrice.Value * _rate;
                         return;
                     }
                     _price = _exchangedPrice / _rate;//Currency Convert
@@ -1244,7 +1248,7 @@ namespace Alver.UI.Bills
                     billLinesDgv.Rows[_rowIndex].Cells[totalpriceclm.Index].Value = _totalPrice;
                     billLinesDgv.Rows[_rowIndex].Cells[exchangedtotalpriceclm.Index].Value = _exchangedTotalPrice;
                 }
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     db.BillLines.Find(_billlineId).Quantity = _quantity;
                     db.BillLines.Find(_billlineId).Price = _price;
@@ -1256,9 +1260,7 @@ namespace Alver.UI.Bills
                 billLinesDgv.CommitEdit(DataGridViewDataErrorContexts.Commit);
                 calcSumTotals();
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 //MSGs.ErrorMessage(ex);
             }

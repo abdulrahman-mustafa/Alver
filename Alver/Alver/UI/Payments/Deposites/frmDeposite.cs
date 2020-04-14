@@ -12,22 +12,26 @@ namespace Alver.UI.Payments.Deposites
     public partial class frmDeposite : Form
     {
         //dbEntities db;
-        Payment _payment;
-        Currency _currency;
-        Account _client;
+        private Payment _payment;
+
+        private Currency _currency;
+        private Account _client;
+
         public frmDeposite(Payment Payment)
         {
             InitializeComponent();
             _payment = Payment == null ? (new Payment()) : Payment;
         }
+
         private void frmNewPayment_Load(object sender, EventArgs e)
         {
             LoadData();
             ControlsEnable(false);
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Accounts.AsNoTracking().Load();
                 db.Currencies.AsNoTracking().Load();
@@ -37,10 +41,12 @@ namespace Alver.UI.Payments.Deposites
             }
             MISC.Utilities.SearchableComboBox(clientComboBox);
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Save();
         }
+
         private void InitTransactions()
         {
             string _declaration = string.Format("{0}: {1}", _payment.PaymentType.ToString(), _payment.Declaration);
@@ -59,13 +65,14 @@ namespace Alver.UI.Payments.Deposites
             }
             TransactionsFuncs.ClientsRunningTotals(_accountId);
         }
+
         private void Save()
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         User _user = Properties.Settings.Default.LoggedInUser;
                         _payment.User = _user;
@@ -89,6 +96,7 @@ namespace Alver.UI.Payments.Deposites
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }
         }
+
         private void ControlsEnable(bool _enable)
         {
             operationDateDateTimePicker.Value = DateTime.Now;
@@ -105,9 +113,10 @@ namespace Alver.UI.Payments.Deposites
                 }
             }
         }
+
         private void PrepareItem()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 Guid _guid = Guid.NewGuid();
                 int Id = (int)clientComboBox.SelectedValue;
@@ -157,23 +166,27 @@ namespace Alver.UI.Payments.Deposites
                 }
             }
         }
+
         private void button3_Click(object sender, EventArgs e)
         {
             Save();
         }
+
         private void addNew()
         {
             //db.Dispose();
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             _payment = new Payment();
             LoadData();
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             //addNew();
             ControlsEnable(true);
         }
+
         private bool CheckDepositeAmount()
         {
             bool _result = true;
@@ -191,6 +204,7 @@ namespace Alver.UI.Payments.Deposites
             }
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             if (!CheckDepositeAmount())
@@ -199,6 +213,7 @@ namespace Alver.UI.Payments.Deposites
             Save();
             ControlsEnable(false);
         }
+
         private void addClientpb_Click(object sender, EventArgs e)
         {
             (new frmAddAccount()).ShowDialog();

@@ -8,14 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Alver.DAL;
-
 namespace Alver.Properties
 {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
     {
 
@@ -92,11 +90,11 @@ namespace Alver.Properties
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public User LoggedInUser
+        public DAL.User LoggedInUser
         {
             get
             {
-                return ((User)(this["LoggedInUser"]));
+                return ((DAL.User)(this["LoggedInUser"]));
             }
             set
             {
@@ -191,6 +189,21 @@ namespace Alver.Properties
             set
             {
                 this["InitialCatalog"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ConnectionStringValue
+        {
+            get
+            {
+                return ((string)(this["ConnectionStringValue"]));
+            }
+            set
+            {
+                this["ConnectionStringValue"] = value;
             }
         }
     }

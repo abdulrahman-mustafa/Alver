@@ -14,7 +14,8 @@ namespace Alver.UI.Utilities
 {
     public partial class frmConfirmPassword : Form
     {
-        User _user;
+        private User _user;
+
         public frmConfirmPassword()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace Alver.UI.Utilities
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 _user = db.Users.FirstOrDefault(x => x.RoleId == 2);
             }
@@ -60,7 +61,7 @@ namespace Alver.UI.Utilities
 
         private void LoadData()
         {
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             //db.Users_User.Load();
         }

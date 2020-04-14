@@ -14,7 +14,7 @@ namespace Alver.MISC
     {
         public enum BillType
         {
-            بيع, شراء
+            بيع, شراء, مرتجع
         }
 
         public enum AccountGroup
@@ -93,7 +93,7 @@ namespace Alver.MISC
 
         public static void formLoad(ref dbEntities db)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             //db.Configuration.AutoDetectChangesEnabled = false;
             //db.Configuration.ValidateOnSaveEnabled = false;

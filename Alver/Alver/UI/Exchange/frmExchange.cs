@@ -32,7 +32,7 @@ namespace Alver.UI.Exchange
 
         private void LoadData()
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             currencyExchangeBindingSource.ResetBindings(false);
             currencyExchangeOperationsBindingSource.ResetBindings(false);
@@ -409,7 +409,7 @@ namespace Alver.UI.Exchange
         private void Reload()
         {
             db.Dispose();
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             LoadData();
             //currencyExchangeBindingSource.ResetBindings(false);

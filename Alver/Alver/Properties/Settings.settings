@@ -35,5 +35,8 @@
     <Setting Name="InitialCatalog" Type="System.String" Scope="User">
       <Value Profile="(Default)">Alver</Value>
     </Setting>
+    <Setting Name="ConnectionStringValue" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

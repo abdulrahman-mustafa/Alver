@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBillMangement));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.Accountgb = new System.Windows.Forms.GroupBox();
+            this.accountcb = new System.Windows.Forms.ComboBox();
+            this.accountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.accountchkbox = new System.Windows.Forms.CheckBox();
             this.itemgb = new System.Windows.Forms.GroupBox();
             this.itemcb = new System.Windows.Forms.ComboBox();
             this.itemIdBS = new System.Windows.Forms.BindingSource(this.components);
@@ -151,14 +155,12 @@
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserId = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Accountgb = new System.Windows.Forms.GroupBox();
-            this.accountcb = new System.Windows.Forms.ComboBox();
-            this.accountchkbox = new System.Windows.Forms.CheckBox();
-            this.accountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.Accountgb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).BeginInit();
             this.itemgb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemIdBS)).BeginInit();
             this.billIdgb.SuspendLayout();
@@ -195,8 +197,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BillLinesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.billLinesBN)).BeginInit();
             this.billLinesBN.SuspendLayout();
-            this.Accountgb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -227,6 +227,50 @@
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 5;
             // 
+            // Accountgb
+            // 
+            this.Accountgb.Controls.Add(this.accountcb);
+            this.Accountgb.Controls.Add(this.accountchkbox);
+            this.Accountgb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Accountgb.Location = new System.Drawing.Point(0, 407);
+            this.Accountgb.Name = "Accountgb";
+            this.Accountgb.Size = new System.Drawing.Size(190, 69);
+            this.Accountgb.TabIndex = 57;
+            this.Accountgb.TabStop = false;
+            this.Accountgb.Text = "المورد/الزبون";
+            // 
+            // accountcb
+            // 
+            this.accountcb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.accountcb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.accountcb.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.accountcb.DataSource = this.accountBindingSource1;
+            this.accountcb.DisplayMember = "FullName";
+            this.accountcb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.accountcb.Enabled = false;
+            this.accountcb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.accountcb.FormattingEnabled = true;
+            this.accountcb.Location = new System.Drawing.Point(3, 39);
+            this.accountcb.Name = "accountcb";
+            this.accountcb.Size = new System.Drawing.Size(184, 23);
+            this.accountcb.TabIndex = 31;
+            this.accountcb.ValueMember = "Id";
+            // 
+            // accountBindingSource1
+            // 
+            this.accountBindingSource1.DataSource = typeof(Alver.DAL.Account);
+            // 
+            // accountchkbox
+            // 
+            this.accountchkbox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.accountchkbox.Location = new System.Drawing.Point(3, 19);
+            this.accountchkbox.Name = "accountchkbox";
+            this.accountchkbox.Size = new System.Drawing.Size(184, 20);
+            this.accountchkbox.TabIndex = 38;
+            this.accountchkbox.Text = "فواتير المورد/الزبون";
+            this.accountchkbox.UseVisualStyleBackColor = true;
+            this.accountchkbox.CheckedChanged += new System.EventHandler(this.accountchkbox_CheckedChanged);
+            // 
             // itemgb
             // 
             this.itemgb.Controls.Add(this.itemcb);
@@ -241,11 +285,12 @@
             // 
             // itemcb
             // 
+            this.itemcb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.itemcb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.itemcb.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.itemcb.DataSource = this.itemIdBS;
             this.itemcb.DisplayMember = "ItemName";
             this.itemcb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.itemcb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.itemcb.Enabled = false;
             this.itemcb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.itemcb.FormattingEnabled = true;
@@ -284,11 +329,12 @@
             // 
             // billidcb
             // 
+            this.billidcb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.billidcb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.billidcb.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.billidcb.DataSource = this.billIdBS;
             this.billidcb.DisplayMember = "Id";
             this.billidcb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.billidcb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.billidcb.Enabled = false;
             this.billidcb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.billidcb.FormattingEnabled = true;
@@ -531,8 +577,8 @@
             // 
             this.billsdgv.AllowUserToAddRows = false;
             this.billsdgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.billsdgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.billsdgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.billsdgv.AutoGenerateColumns = false;
             this.billsdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.billsdgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
@@ -757,30 +803,30 @@
             // 
             this.dgvTotals.AllowUserToAddRows = false;
             this.dgvTotals.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvTotals.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvTotals.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTotals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTotals.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvTotals.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTotals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.Format = "N5";
-            dataGridViewCellStyle9.NullValue = null;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTotals.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Format = "N5";
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTotals.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTotals.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvTotals.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvTotals.GridColor = System.Drawing.SystemColors.Control;
@@ -1461,8 +1507,8 @@
             // UserId
             // 
             this.UserId.DataPropertyName = "UserId";
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.UserId.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.UserId.DefaultCellStyle = dataGridViewCellStyle5;
             this.UserId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.UserId.DisplayStyleForCurrentCellOnly = true;
             this.UserId.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1470,49 +1516,6 @@
             this.UserId.Name = "UserId";
             this.UserId.ReadOnly = true;
             this.UserId.Width = 77;
-            // 
-            // Accountgb
-            // 
-            this.Accountgb.Controls.Add(this.accountcb);
-            this.Accountgb.Controls.Add(this.accountchkbox);
-            this.Accountgb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Accountgb.Location = new System.Drawing.Point(0, 407);
-            this.Accountgb.Name = "Accountgb";
-            this.Accountgb.Size = new System.Drawing.Size(190, 69);
-            this.Accountgb.TabIndex = 57;
-            this.Accountgb.TabStop = false;
-            this.Accountgb.Text = "المورد/الزبون";
-            // 
-            // accountcb
-            // 
-            this.accountcb.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.accountcb.DataSource = this.accountBindingSource1;
-            this.accountcb.DisplayMember = "FullName";
-            this.accountcb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.accountcb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.accountcb.Enabled = false;
-            this.accountcb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.accountcb.FormattingEnabled = true;
-            this.accountcb.Location = new System.Drawing.Point(3, 39);
-            this.accountcb.Name = "accountcb";
-            this.accountcb.Size = new System.Drawing.Size(184, 23);
-            this.accountcb.TabIndex = 31;
-            this.accountcb.ValueMember = "Id";
-            // 
-            // accountchkbox
-            // 
-            this.accountchkbox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.accountchkbox.Location = new System.Drawing.Point(3, 19);
-            this.accountchkbox.Name = "accountchkbox";
-            this.accountchkbox.Size = new System.Drawing.Size(184, 20);
-            this.accountchkbox.TabIndex = 38;
-            this.accountchkbox.Text = "فواتير المورد/الزبون";
-            this.accountchkbox.UseVisualStyleBackColor = true;
-            this.accountchkbox.CheckedChanged += new System.EventHandler(this.accountchkbox_CheckedChanged);
-            // 
-            // accountBindingSource1
-            // 
-            this.accountBindingSource1.DataSource = typeof(Alver.DAL.Account);
             // 
             // frmBillMangement
             // 
@@ -1533,6 +1536,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.Accountgb.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).EndInit();
             this.itemgb.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.itemIdBS)).EndInit();
             this.billIdgb.ResumeLayout(false);
@@ -1573,8 +1578,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.billLinesBN)).EndInit();
             this.billLinesBN.ResumeLayout(false);
             this.billLinesBN.PerformLayout();
-            this.Accountgb.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }

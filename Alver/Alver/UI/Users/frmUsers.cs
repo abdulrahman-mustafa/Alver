@@ -19,14 +19,14 @@ namespace Alver.UI.Users
 
         private void frmUsers_Load(object sender, EventArgs e)
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             LoadData();
         }
 
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Users.Load();
                 db.Roles.Load();
@@ -130,7 +130,7 @@ namespace Alver.UI.Users
 
                 if (_user != null && users_UserBindingSource.Count > 0)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         _user = db.Users.Find(_userId);
                         if (_user.PROTECTED.Value != true)

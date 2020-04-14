@@ -69,7 +69,7 @@ namespace Alver.UI.Users
 
         private void LoadData()
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             db.Users.Load();
         }

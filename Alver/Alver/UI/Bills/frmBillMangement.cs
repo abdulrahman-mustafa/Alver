@@ -32,7 +32,7 @@ namespace Alver.UI.Bills
 
         private void frmIncomes_Load(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Bills.AsNoTracking().Load();
                 db.Items.AsNoTracking().Load();
@@ -59,7 +59,7 @@ namespace Alver.UI.Bills
 
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Accounts.Load();
                 accountBindingSource.DataSource = db.Accounts.ToList();
@@ -81,7 +81,7 @@ namespace Alver.UI.Bills
             IQueryable<Bill> _query = null;// = new IQueryable<Remittances_Operation>;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _query = db.Bills as IQueryable<Bill>;
                     if (_from.Year == _to.Year && _from.Month == _to.Month)

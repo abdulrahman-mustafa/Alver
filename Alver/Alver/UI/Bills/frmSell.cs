@@ -34,7 +34,7 @@ namespace Alver.UI.Bills
                 barcodecb.Focus();
                 if (BILLID > 0)
                 {
-                    Bill _tempBill = (new dbEntities()).Bills.Find(BILLID);
+                    Bill _tempBill = (new dbEntities(0)).Bills.Find(BILLID);
                     if (_tempBill != null)
                     {
                         BillBS.Position = BillBS.IndexOf(_tempBill);
@@ -49,7 +49,7 @@ namespace Alver.UI.Bills
 
         private void LoadData()
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             BillBS.ResetBindings(false);
             billLinesBS.ResetBindings(false);
@@ -92,7 +92,7 @@ namespace Alver.UI.Bills
         private bool CheckRecords()
         {
             bool _result = true;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 if (db.Items.Count() < 1)
                 {
@@ -122,7 +122,7 @@ namespace Alver.UI.Bills
                 //    _ = int.TryParse(currencycb.SelectedValue.ToString(), out _currencyId);
                 if (_itemId != 0)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         _currencyId = db.Items.Find(_itemId).CurrencyId.Value;
                         currencycb.SelectedValue = _currencyId;
@@ -162,7 +162,7 @@ namespace Alver.UI.Bills
                     _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
                 if (barcodecb.Text != string.Empty)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         if (db.Items.Where(x => x.Barcode == _barcode).Count() > 0)
                         {
@@ -522,21 +522,23 @@ namespace Alver.UI.Bills
         {
             try
             {
-                //exchangedpricenud.Value = ratenud.Value * pricenud.Value;
-                try
-                {
-                    decimal _totalsyp = 0;
-                    _totalsyp = ratenud.Value * pricenud.Value;
-                    exchangedpricenud.Text = CurrencyExchangeFuncs.RoundExchange(_totalsyp).ToString();
-                }
-                catch (Exception ex)
-                {
-                    MSGs.ErrorMessage(ex);
-                }
+                if (currencycb.SelectedValue != null)
+                    if ((int)currencycb.SelectedValue == 1)
+                    {
+                        decimal _totalsyp = 0;
+                        _totalsyp = ratenud.Value * pricenud.Value;
+                        exchangedpricenud.Value = CurrencyExchangeFuncs.RoundExchange(_totalsyp);
+                    }
+                    else if ((int)currencycb.SelectedValue == 2)
+                    {
+                        decimal _totalusd = 0;
+                        _totalusd = ratenud.Value * pricenud.Value;
+                        exchangedpricenud.Value = _totalusd;
+                    }
             }
             catch (Exception ex)
             {
-                MSGs.ErrorMessage(ex);
+                //MSGs.ErrorMessage(ex);
             }
         }
 
@@ -632,7 +634,7 @@ namespace Alver.UI.Bills
                         Bill _bill = BillBS.Current as Bill;
                         int _billId = _bill.Id;
 
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             Bill bill = db.Bills.Find(_billId);
                             //TODO: CONVERT CURRENCY TO USD VIA CURRENCY BULLETIN
@@ -798,9 +800,7 @@ namespace Alver.UI.Bills
                 _roundedTotalExchangedValue = CurrencyExchangeFuncs.RoundExchange(_exchangedTotalValue);
                 syrTotalnud.Value = _roundedTotalExchangedValue >= syrTotalnud.Minimum ? _roundedTotalExchangedValue : syrTotalnud.Minimum;
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("لم يتم إضافة سعر تصريف ....");
             }
@@ -857,7 +857,7 @@ namespace Alver.UI.Bills
             decimal _SYP = 0;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     if (db.CurrencyBulletins.Where(x => x.CurrencyId == 2).ToList().Count() > 0)
                     {
@@ -883,9 +883,7 @@ namespace Alver.UI.Bills
                 //basecurrency = (currencyBindingSource.Current as Currency).Id;
                 //currencyBindingSource1.DataSource = db.Currencies.Where(x => x.Id != basecurrency);
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void currencyBindingSource1_CurrentChanged(object sender, EventArgs e)

@@ -24,7 +24,7 @@ namespace Alver.UI.Payments.Expenses
 
         private void LoadData()
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
 
             db.Currencies.Load();

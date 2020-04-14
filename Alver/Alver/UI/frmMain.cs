@@ -37,10 +37,10 @@ namespace Alver.Forms
             {
                 usernameLabel.Text = _user.FullName;
             }
-            databasenamelbl.Text = (new dbEntities()).Database.Connection.Database;
-            companytitlelbl.Text = (new dbEntities()).Companies.Find(1).Title;
-            addresslbl.Text = (new dbEntities()).Companies.Find(1).Address;
-            phonelbl.Text = (new dbEntities()).Companies.Find(1).ManagerPhone;
+            databasenamelbl.Text = (new dbEntities(0)).Database.Connection.Database;
+            companytitlelbl.Text = (new dbEntities(0)).Companies.Find(1).Title;
+            addresslbl.Text = (new dbEntities(0)).Companies.Find(1).Address;
+            phonelbl.Text = (new dbEntities(0)).Companies.Find(1).ManagerPhone;
             runtimeslbl.Text = Settings.Default.RunTimes.ToString();
             clocklbl.Text = DateTime.Now.ToLongTimeString();
         }
@@ -391,6 +391,12 @@ namespace Alver.Forms
         private void POSbtn_Click_1(object sender, EventArgs e)
         {
             frmPOS frm = new frmPOS();
+            frm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            pos frm = new pos();
             frm.Show();
         }
     }

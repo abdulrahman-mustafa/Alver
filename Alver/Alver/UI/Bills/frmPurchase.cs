@@ -28,7 +28,7 @@ namespace Alver.UI.Bills
         private bool CheckRecords()
         {
             bool _result = true;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 if (db.Items.Count() < 1)
                 {
@@ -52,7 +52,7 @@ namespace Alver.UI.Bills
                 barcodecb.Focus();
                 if (BILLID > 0)
                 {
-                    Bill _tempBill = (new dbEntities()).Bills.Find(BILLID);
+                    Bill _tempBill = (new dbEntities(0)).Bills.Find(BILLID);
                     if (_tempBill != null)
                     {
                         BillBS.Position = BillBS.IndexOf(_tempBill);
@@ -67,7 +67,7 @@ namespace Alver.UI.Bills
 
         private void LoadData()
         {
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             BillBS.ResetBindings(false);
             billLinesBS.ResetBindings(false);
@@ -359,7 +359,7 @@ namespace Alver.UI.Bills
                     _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
                 if (_itemId != 0)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         _currencyId = db.Items.Find(_itemId).CurrencyId.Value;
                         currencycb.SelectedValue = _currencyId;
@@ -444,7 +444,7 @@ namespace Alver.UI.Bills
             decimal _SYP = 0;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     if (db.CurrencyBulletins.Where(x => x.CurrencyId == 2).ToList().Count() > 0)
                     {
@@ -588,7 +588,7 @@ namespace Alver.UI.Bills
                         int _billId = _bill.Id;
                         //string _declaration = string.Empty;
 
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             Bill bill = db.Bills.Find(_billId);
                             //TODO: CONVERT CURRENCY TO USD VIA CURRENCY BULLETIN
@@ -630,13 +630,13 @@ namespace Alver.UI.Bills
                             }
                             bill.Rate = ratenud.Value;
                             bill.ExchangedAmount = syrTotalnud.Value;
-                            string _account = "بيع نقدي";
+                            string _account = "شراء نقدي";
                             if (!payedchkbox.Checked)
                             {
                                 _account = accountcb.Text.Trim();
                             }
 
-                            string _declaration = string.Format("فاتورة بيع - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
+                            string _declaration = string.Format("فاتورة شراء - الزبون {0} - رقم الفاتورة {1} - مقدار الحسم {2}",
                         _account,
                         _bill.Id.ToString(),
                         discountnud.Value.ToString());
@@ -739,7 +739,7 @@ namespace Alver.UI.Bills
             //        _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
             //    if (_itemId != 0)
             //    {
-            //        using (dbEntities db = new dbEntities())
+            //        using (dbEntities db = new dbEntities(0))
             //        {
             //            if (barcodecb.Text == string.Empty && db.Items.Find(_itemId).Barcode != null)
             //            {
@@ -806,7 +806,7 @@ namespace Alver.UI.Bills
             //        _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
             //    if (_itemId != 0)
             //    {
-            //        using (dbEntities db = new dbEntities())
+            //        using (dbEntities db = new dbEntities(0))
             //        {
             //            if (barcodecb.Text == string.Empty && db.Items.Find(_itemId).Barcode != null)
             //            {
@@ -1003,7 +1003,7 @@ namespace Alver.UI.Bills
                     _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
                 if (barcodecb.Text != string.Empty)
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         if (db.Items.Where(x => x.Barcode == _barcode).Count() > 0)
                         {

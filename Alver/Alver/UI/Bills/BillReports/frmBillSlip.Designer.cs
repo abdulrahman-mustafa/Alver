@@ -29,27 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBillSlip));
             this.exitbtn = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.BillBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.UserBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.CompanyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ImageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.BillSlip_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CurrencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.BillBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillSlip_ResultBindingSource)).BeginInit();
+            this.BillSlip_ResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BillSlip_ResultBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // exitbtn
@@ -69,25 +55,7 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "BillDS";
-            reportDataSource1.Value = this.BillBindingSource;
-            reportDataSource2.Name = "CompanyDS";
-            reportDataSource2.Value = this.CompanyBindingSource;
-            reportDataSource3.Name = "UserDS";
-            reportDataSource3.Value = this.UserBindingSource;
-            reportDataSource4.Name = "BillLinesDS";
-            reportDataSource4.Value = this.BillSlip_ResultBindingSource;
-            reportDataSource5.Name = "ImageDS";
-            reportDataSource5.Value = this.ImageBindingSource;
-            reportDataSource6.Name = "CurrencyDS";
-            reportDataSource6.Value = this.CurrencyBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Alver.UI.Bills.BillReports.SYPBillSlip.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Alver.UI.Bills.BillReports.BillSlip.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
@@ -96,29 +64,13 @@
             this.reportViewer1.TabIndex = 3;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
-            // BillBindingSource
+            // CurrencyBindingSource
             // 
-            this.BillBindingSource.DataSource = typeof(Alver.DAL.Bill);
-            // 
-            // UserBindingSource
-            // 
-            this.UserBindingSource.DataSource = typeof(Alver.DAL.User);
-            // 
-            // CompanyBindingSource
-            // 
-            this.CompanyBindingSource.DataSource = typeof(Alver.DAL.Company);
-            // 
-            // ImageBindingSource
-            // 
-            this.ImageBindingSource.DataSource = typeof(Alver.DAL.Image);
+            this.CurrencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // BillSlip_ResultBindingSource
             // 
             this.BillSlip_ResultBindingSource.DataSource = typeof(Alver.DAL.BillSlip_Result);
-            // 
-            // CurrencyBindingSource
-            // 
-            this.CurrencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // frmBillSlip
             // 
@@ -137,12 +89,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "إشعار مطابقة رصيد";
             this.Load += new System.EventHandler(this.frmClientConformity_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.BillBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillSlip_ResultBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BillSlip_ResultBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -151,11 +99,7 @@
 
         private System.Windows.Forms.Button exitbtn;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource BillBindingSource;
-        private System.Windows.Forms.BindingSource UserBindingSource;
-        private System.Windows.Forms.BindingSource CompanyBindingSource;
-        private System.Windows.Forms.BindingSource ImageBindingSource;
-        private System.Windows.Forms.BindingSource BillSlip_ResultBindingSource;
         private System.Windows.Forms.BindingSource CurrencyBindingSource;
+        private System.Windows.Forms.BindingSource BillSlip_ResultBindingSource;
     }
 }

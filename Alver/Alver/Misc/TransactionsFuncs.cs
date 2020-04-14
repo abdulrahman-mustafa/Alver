@@ -20,6 +20,8 @@ namespace Alver.MISC
 
             BLS,//BILL SELL
 
+            BLD,//BILL DISCARD
+
             //LOSS & GAIN
             LOS,//LOSS
 
@@ -119,7 +121,7 @@ namespace Alver.MISC
 
         public static void DeleteTransactions(Guid _guid, int currencyId = 0, int accountId = 0, int itemId = 0, TT _TT = TT.FOO)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 if (_TT == TT.FOO)
                 {
@@ -237,6 +239,7 @@ namespace Alver.MISC
                     case TT.IGNWEI:
                     case TT.LOS:
                     case TT.BLP:
+                    case TT.BLD:
                         amount = amount * -1;
                         break;
 
@@ -303,7 +306,7 @@ namespace Alver.MISC
 
         public static void UpdateClientOpeningBalance(AccountFund _fund, decimal _amount)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 Transaction _transaction = db.Transactions.FirstOrDefault(x => x.GUID.Value == _fund.GUID.Value && x.TT == TT.OPN.ToString());
                 int _sign = 1;
@@ -380,9 +383,7 @@ namespace Alver.MISC
                     case TT.PYI:
                     case TT.IGNICF:
                     case TT.BLS:
-#pragma warning disable CS1717 // Assignment made to same variable
                         amount = amount;
-#pragma warning restore CS1717 // Assignment made to same variable
                         break;
 
                     case TT.SOT:
@@ -402,6 +403,7 @@ namespace Alver.MISC
                     case TT.IGNOBF:
                     case TT.IGNWEI:
                     case TT.BLP:
+                    case TT.BLD:
                         amount = amount * -1;
                         break;
 
@@ -450,12 +452,12 @@ namespace Alver.MISC
 
         public static void FundsRunningTotals(int currencyid)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 decimal runningtotal = 0;
                 runningtotal = 0;
                 var list = db.FundTransactions
-                    .Where(x => x.CurrencyId == currencyid).OrderBy(x => x.TTS);
+                    .Where(x => x.CurrencyId == currencyid).OrderBy(x => x.TTS).ToList();
                 foreach (var trans in list)
                 {
                     runningtotal += trans.Amount.Value;
@@ -507,6 +509,7 @@ namespace Alver.MISC
                         break;
 
                     case TT.BLP:
+                    case TT.BLD:
                         amount = amount;
                         break;
 
@@ -539,7 +542,7 @@ namespace Alver.MISC
             //    _sign *= -1;
             //}
             decimal Amount = Math.Abs(_fund.Balance.Value) * _sign;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 ItemTransaction _transaction = new ItemTransaction()
                 {
@@ -560,7 +563,7 @@ namespace Alver.MISC
 
         public static void UpdateItemOpeningBalance(ItemFund _fund, decimal _amount)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 ItemTransaction _transaction = db.ItemTransactions.FirstOrDefault(x => x.GUID.Value == _fund.GUID.Value && x.TT == TT.OPN.ToString());
                 int _sign = 1;
@@ -705,7 +708,7 @@ namespace Alver.MISC
 
         public static void ClientsRunningTotals(int accountId)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 decimal runningtotal = 0;
                 var currencyid = db.Currencies.Select(x => x.Id);
@@ -713,7 +716,7 @@ namespace Alver.MISC
                 {
                     runningtotal = 0;
                     var list = db.Transactions
-                        .Where(x => x.AccountId == accountId && x.CurrencyId == currency);
+                        .Where(x => x.AccountId == accountId && x.CurrencyId == currency).ToList();
                     foreach (var trans in list)
                     {
                         runningtotal += trans.Amount.Value;
@@ -726,7 +729,7 @@ namespace Alver.MISC
 
         public static void ClientsRunningTotals(int accountId, int currencyId)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 decimal runningtotal = 0;
                 var list = db.Transactions
@@ -743,7 +746,7 @@ namespace Alver.MISC
         //Item Transactions
         public static void ItemsRunningTotals(int itemId)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 decimal runningtotal = 0;
                 var units = db.Units.Select(x => x.Id);
@@ -751,7 +754,7 @@ namespace Alver.MISC
                 {
                     runningtotal = 0;
                     var list = db.ItemTransactions
-                        .Where(x => x.ItemId == itemId && x.UnitId == unit);
+                        .Where(x => x.ItemId == itemId && x.UnitId == unit).ToList();
                     foreach (var trans in list)
                     {
                         runningtotal += trans.Amount.Value;
@@ -764,7 +767,7 @@ namespace Alver.MISC
 
         public static void ItemsRunningTotals(int itemId, int unitId)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 decimal runningtotal = 0;
                 var list = db.ItemTransactions

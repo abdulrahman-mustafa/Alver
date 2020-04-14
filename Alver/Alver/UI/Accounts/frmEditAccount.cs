@@ -35,7 +35,7 @@ namespace Alver.UI.Accounts
             _accounts = database.Accounts.Where(x => x.Id != _accountId).ToList();
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     db.Currencies.AsNoTracking().AsQueryable().Load();
                     db.AccountGroups.AsNoTracking().AsQueryable().Load();
@@ -81,7 +81,7 @@ namespace Alver.UI.Accounts
                 {
                     _groupId = (int)accountgroupcb.SelectedValue;
                 }
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     Account _account = db.Accounts.Find(_accountId);
 
@@ -123,7 +123,7 @@ namespace Alver.UI.Accounts
             bool _result = true;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     if (string.IsNullOrWhiteSpace(accountcb.Text.Trim()))
                     {
@@ -183,7 +183,7 @@ namespace Alver.UI.Accounts
                     }
                     foreach (AccountFund _fund in _funds)
                     {
-                        using (dbEntities db = new dbEntities())
+                        using (dbEntities db = new dbEntities(0))
                         {
                             AccountFund _Fund = db.AccountFunds.Find(_fund.Id);
                             _Fund.Balance = _fund.Balance.Value;

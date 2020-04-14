@@ -10,17 +10,20 @@ namespace Alver.UI.Accounts.Transfers
 {
     public partial class frmTransferFunds : Form
     {
-        Transfer _transfer;
+        private Transfer _transfer;
+
         public frmTransferFunds(Transfer Trans)
         {
             InitializeComponent();
             _transfer = Trans == null ? (new Transfer()) : Trans;
         }
+
         private void frmTransferFunds_Load(object sender, EventArgs e)
         {
             LoadData();
             ControlsEnable(false);
         }
+
         private void ControlsEnable(bool _enable)
         {
             operationDateDateTimePicker.Value = DateTime.Now;
@@ -36,9 +39,10 @@ namespace Alver.UI.Accounts.Transfers
                 }
             }
         }
+
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Currencies.AsNoTracking().Load();
                 db.AccountFunds.AsNoTracking().Load();
@@ -50,25 +54,28 @@ namespace Alver.UI.Accounts.Transfers
             MISC.Utilities.SearchableComboBox(fromclientComboBox);
             MISC.Utilities.SearchableComboBox(toclientcomboBox);
         }
+
         private void transferClientFundBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             //_transfer = transferClientFundBindingSource.Current as Transfer;
         }
+
         private void addNew()
         {
             //db.Dispose();
-            //db = new dbEntities();
+            //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             //_transfer = new Transfer();
             //LoadData();
         }
+
         private void Save()
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    using (dbEntities db = new dbEntities())
+                    using (dbEntities db = new dbEntities(0))
                     {
                         Account _fromAccount, _toAccount;
                         _fromAccount = accountsInfoBindingSource.Current as Account;
@@ -91,6 +98,7 @@ namespace Alver.UI.Accounts.Transfers
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             { MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح"); }
         }
+
         private void InitTransactions()
         {
             string _declaration = string.Format("تحويل/اعتماد رصيد {0} من صندوق الوكيل: {1} إلى صندوق الوكيل: {2}",
@@ -106,9 +114,10 @@ namespace Alver.UI.Accounts.Transfers
             TransactionsFuncs.InsertClientTransaction(_toAccountId, _currencyId, _amount, TransactionsFuncs.TT.TRT, _transfer.TransferDate.Value, _transfer.GUID.Value, _declaration, _fromAccountId);
             TransactionsFuncs.InsertClientTransaction(_fromAccountId, _currencyId, _amount, TransactionsFuncs.TT.TRF, _transfer.TransferDate.Value, _transfer.GUID.Value, _declaration);
         }
+
         private void PrepareItem()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 if (_transfer != null)
                 {
@@ -131,10 +140,12 @@ namespace Alver.UI.Accounts.Transfers
                 }
             }
         }
+
         private void amountNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             ExchangeMoney();
         }
+
         private void ExchangeMoney()
         {
             //if (radioButton2.Checked)
@@ -146,26 +157,32 @@ namespace Alver.UI.Accounts.Transfers
             //    numericUpDown1.Value = amountNumericUpDown.Value / numericUpDown2.Value;
             //}
         }
+
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             ExchangeMoney();
         }
+
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             ExchangeMoney();
         }
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             ExchangeMoney();
         }
+
         private void button4_Click(object sender, EventArgs e)
         {
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             //addNew();
             ControlsEnable(true);
         }
+
         private bool CheckTransferAmount()
         {
             bool _result = true;
@@ -177,6 +194,7 @@ namespace Alver.UI.Accounts.Transfers
             }
             return _result;
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try
@@ -194,11 +212,12 @@ namespace Alver.UI.Accounts.Transfers
                 MessageBox.Show("حصل خطأ أثناء الحفظ");
             }
         }
+
         private void fromclientComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     int fromId = (int)fromclientComboBox.SelectedValue;
                     accountsInfoBindingSource1.DataSource = db.Accounts.Where(x => x.Id != fromId).ToList();
@@ -209,16 +228,19 @@ namespace Alver.UI.Accounts.Transfers
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             { }
         }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             frmAddAccount frm = new frmAddAccount();
             frm.Show();
         }
+
         private void button9_Click(object sender, EventArgs e)
         {
             frmAddAccount frm = new frmAddAccount();
             frm.Show();
         }
+
         private void frmTransferFunds_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.N && e.Control)

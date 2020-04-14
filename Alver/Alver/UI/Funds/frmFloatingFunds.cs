@@ -5,27 +5,28 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-
 namespace Alver.UI.Funds
 {
     public partial class frmFloatingFunds : Form
     {
-        dbEntities db;
+        private dbEntities db;
+
         public frmFloatingFunds()
         {
             InitializeComponent();
-
         }
+
         private void frmFloatingFunds_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(0,
                                    Screen.PrimaryScreen.WorkingArea.Height - this.Height);
-            db = new dbEntities();
+            db = new dbEntities(0);
             db.Configuration.ProxyCreationEnabled = false;
             LoadData();
             timer1.Start();
         }
+
         private Decimal GetValue(int _index)
         {
             decimal _value = 0;
@@ -40,6 +41,7 @@ namespace Alver.UI.Funds
             }
             return _value;
         }
+
         private void LoadData()
         {
             fundsMovements_ResultBindingSource.DataSource = db.SP_FundsMovements().ToList();
@@ -48,7 +50,7 @@ namespace Alver.UI.Funds
             decimal _USD = 0, _SYP = 0, _TL = 0, _EURO = 0, _SAR = 0;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _USD = 1;
                     _SYP = 1 / db.CurrencyBulletins.OrderByDescending(x => x.RateDate).First(x => x.CurrencyId == 2).Rate.Value;
@@ -73,10 +75,12 @@ namespace Alver.UI.Funds
                 //MSGs.ErrorMessage(ex);
             }
         }
+
         private void fundsMovements_ResultDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             LoadData();

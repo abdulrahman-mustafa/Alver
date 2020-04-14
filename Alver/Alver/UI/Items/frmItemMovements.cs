@@ -18,7 +18,7 @@ namespace Alver.UI.Items
 
         private void frmClientsOverview_Load(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Items.Load();
                 itemBindingSource.DataSource = db.Items.AsNoTracking().AsQueryable().ToList();
@@ -27,7 +27,7 @@ namespace Alver.UI.Items
 
         private void LoadData()
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Items.Load();
                 db.Users.Load();
@@ -46,7 +46,7 @@ namespace Alver.UI.Items
             //Account acc = new Account();
             //V_CLIENTS _currentRow = vCLIENTSBindingSource.Current as V_CLIENTS;
             //int _accountId = _currentRow.AccountId;
-            //using (dbEntities db = new dbEntities())
+            //using (dbEntities db = new dbEntities(0))
             //{
             //    acc = db.Accounts.Find(_accountId);
             //}
@@ -82,7 +82,7 @@ namespace Alver.UI.Items
 
         private void Search(string _keyword)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 if (string.IsNullOrEmpty(_keyword))
                 {
@@ -105,7 +105,7 @@ namespace Alver.UI.Items
         private IQueryable<BillLine> GrandSearch(DateTime _from, DateTime _to, int _itemId)
         {
             IQueryable<BillLine> _query;// = new IQueryable<Remittances_Operation>;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 _query = db.BillLines as IQueryable<BillLine>;
                 if (_from.Year == _to.Year && _from.Month == _to.Month)

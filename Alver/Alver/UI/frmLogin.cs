@@ -37,7 +37,7 @@ namespace Alver.Forms
         {
             try
             {
-                db = new dbEntities();
+                db = new dbEntities(0);
                 db.Configuration.ProxyCreationEnabled = false;
                 //db.Database.EnsureCreatedAsync();
                 db.Users.Load();

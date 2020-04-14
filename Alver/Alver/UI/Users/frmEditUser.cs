@@ -6,12 +6,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
+
 namespace Alver.UI.Users
 {
     public partial class frmEditUser : Form
     {
-        int _userId = 0;
-        List<User> _users;
+        private int _userId = 0;
+        private List<User> _users;
+
         //User _user;
         //Role _role;
         public frmEditUser(int UserId)
@@ -24,11 +26,12 @@ namespace Alver.UI.Users
         {
             LoadDate();
         }
+
         private void LoadDate()
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     _users = new List<User>();
                     db.Roles.AsQueryable().AsNoTracking().Load();
@@ -39,25 +42,26 @@ namespace Alver.UI.Users
                     rolescb.SelectedValue = _user.RoleId;
                     usernametb.Text = _user.UserName;
                     fullnametb.Text = _user.FullName;
-                    passwordconfirmtb.Text= passwordtb.Text = _user.Password;
+                    passwordconfirmtb.Text = passwordtb.Text = _user.Password;
                     notestextBox.Text = _user.Declaration;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MSGs.ErrorMessage(ex);
             }
         }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
-            
         }
+
         private bool CheckValues()
         {
             bool _result = true;
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     if (string.IsNullOrWhiteSpace(rolescb.Text.Trim()))
                     {
@@ -78,18 +82,18 @@ namespace Alver.UI.Users
                         _result = false;
                     }
                 }
-
             }
 #pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
+
         private void Save()
         {
             try
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     int _roleId = (int)rolescb.SelectedValue;
                     //_role = db.Roles.Find(_roleId);
@@ -113,6 +117,7 @@ namespace Alver.UI.Users
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             try

@@ -46,16 +46,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.databasenametb = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.browsebtn = new System.Windows.Forms.Button();
             this.pathtb = new System.Windows.Forms.TextBox();
             this.execscriptbtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.connectionstringtb = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -223,6 +223,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create new database";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(45, 51);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(121, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Check Existance";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.browsebtn);
@@ -294,6 +304,16 @@
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(207, 182);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(101, 23);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Save";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.connectionstringtb);
@@ -314,27 +334,6 @@
             this.connectionstringtb.Size = new System.Drawing.Size(347, 88);
             this.connectionstringtb.TabIndex = 17;
             this.connectionstringtb.Text = "";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(45, 51);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 23);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Check Existance";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(207, 182);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 23);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Test Connection";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // frmDBTools
             // 

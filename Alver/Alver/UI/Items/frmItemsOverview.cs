@@ -18,7 +18,7 @@ namespace Alver.UI.Items
         private void frmClientsOverview_Load(object sender, EventArgs e)
         {
             sortcb.Checked = false;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 db.Currencies.Load();
                 currencyBindingSource.DataSource = db.Currencies.ToList();
@@ -30,7 +30,7 @@ namespace Alver.UI.Items
             //Account acc = new Account();
             //V_CLIENTS _currentRow = vCLIENTSBindingSource.Current as V_CLIENTS;
             //int _accountId = _currentRow.AccountId;
-            //using (dbEntities db = new dbEntities())
+            //using (dbEntities db = new dbEntities(0))
             //{
             //    acc = db.Accounts.Find(_accountId);
             //}
@@ -66,7 +66,7 @@ namespace Alver.UI.Items
 
         private void Search(string _keyword)
         {
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 if (string.IsNullOrEmpty(_keyword))
                 {
@@ -90,7 +90,7 @@ namespace Alver.UI.Items
         private void Retrieve(int _currencyId, bool ASEC)
         {
             IQueryable<V_STOCK> _query;
-            using (dbEntities db = new dbEntities())
+            using (dbEntities db = new dbEntities(0))
             {
                 _query = db.V_STOCK as IQueryable<V_STOCK>;
                 _query = ASEC ? _query.OrderBy(x => x.عدد_الكروزات_المتوفرة) : _query.OrderByDescending(x => x.عدد_الكروزات_المتوفرة);
@@ -132,7 +132,7 @@ namespace Alver.UI.Items
             }
             else
             {
-                using (dbEntities db = new dbEntities())
+                using (dbEntities db = new dbEntities(0))
                 {
                     vSTOCKBindingSource.DataSource = db.V_STOCK.ToList();
                 }
