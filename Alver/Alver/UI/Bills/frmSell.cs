@@ -115,9 +115,9 @@ namespace Alver.UI.Bills
                 int _itemId = 0, _unitId = 0, _currencyId = 0;
                 decimal _roundedExchangedValue = 0, _exchangedValue = 0;
                 if (itemcb.SelectedValue != null)
-                    _ = int.TryParse(itemcb.SelectedValue.ToString(), out _itemId);
+                    int.TryParse(itemcb.SelectedValue.ToString(), out _itemId);
                 if (unitcb.SelectedValue != null)
-                    _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
+                    int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
                 //if (currencycb.SelectedValue != null)
                 //    _ = int.TryParse(currencycb.SelectedValue.ToString(), out _currencyId);
                 if (_itemId != 0)
@@ -159,7 +159,7 @@ namespace Alver.UI.Bills
                 int _itemId = 0, _unitId = 0;
                 decimal _roundedExchangedValue = 0, _exchangedValue = 0;
                 if (unitcb.SelectedValue != null)
-                    _ = int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
+                    int.TryParse(unitcb.SelectedValue.ToString(), out _unitId);
                 if (barcodecb.Text != string.Empty)
                 {
                     using (dbEntities db = new dbEntities(0))

@@ -80,27 +80,8 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>F:\SimpleEx\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebDesign.DLL</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>F:\SimpleEx\DAL\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
@@ -145,6 +126,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -311,7 +293,6 @@
     <Compile Include="Misc\UsbFuncs.cs" />
     <Compile Include="Misc\Utilities.cs" />
     <Compile Include="ObservableListSource.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UI\Accounts\AccountsPayments\frmPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -684,11 +665,7 @@
     <EmbeddedResource Include="UI\Accounts\Withdraws\frmWithdraws.resx">
       <DependentUpon>frmWithdraws.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Bills\BillReports\BillSlip.rdlc" />
-    <EmbeddedResource Include="UI\Bills\BillReports\SYPBillSlip - Copy.rdlc" />
-    <EmbeddedResource Include="UI\Bills\BillReports\USDBillSlip - Copy.rdlc" />
-    <EmbeddedResource Include="UI\Bills\BillReports\USDBillSlip.rdlc" />
-    <EmbeddedResource Include="UI\Bills\BillReports\SYPBillSlip.rdlc" />
+    <EmbeddedResource Include="UI\Bills\BillReports\Slip.rdlc" />
     <EmbeddedResource Include="UI\Bills\BillReports\frmBillSlip.resx">
       <DependentUpon>frmBillSlip.cs</DependentUpon>
     </EmbeddedResource>
@@ -924,19 +901,6 @@
     </Content>
     <Content Include="ICON.ico" />
     <Content Include="Logo.ico" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Media\Button Faces\MISC\icons8_file_25px.png" />
     <None Include="Media\Button Faces\Database\icons8_database_export_25px.png" />
     <None Include="Media\Button Faces\Database\icons8_database_restore_25px.png" />

@@ -166,6 +166,7 @@ namespace Alver.UI.Bills
                     //db.Currencies.AsNoTracking().AsQueryable().Load();
                     //db.Items.AsNoTracking().AsQueryable().Load();
                     currencyBS.DataSource = db.Currencies.Where(x => x.Id == 1 || x.Id == 2).AsQueryable().AsNoTracking().ToList();
+                    itemBS.DataSource = db.Items.AsQueryable().AsNoTracking().ToList();
                     itemBindingSource.DataSource = db.Items.AsQueryable().AsNoTracking().ToList();
                     unitBindingSource.DataSource = db.Units.AsQueryable().AsNoTracking().ToList();
                     billLineBS.List.Clear();
@@ -237,7 +238,7 @@ namespace Alver.UI.Bills
                         {
                             //Barcode Found
                             _barcodeFound = true;
-                            itemBS.DataSource = db.Items.Where(x => x.Barcode == _barcode).AsQueryable().AsNoTracking().ToList();
+                            //itemBS.DataSource = db.Items.Where(x => x.Barcode == _barcode).AsQueryable().AsNoTracking().ToList();
                             _itemId = db.Items.FirstOrDefault(x => x.Barcode == _barcode).Id;
                             itemcb.SelectedValue = _itemId;
                             _salePrice = db.Items.FirstOrDefault(x => x.Id == _itemId && x.UnitId == _unitId).SalePrice != null ? db.Items.Find(_itemId).SalePrice.Value : 0;
@@ -251,12 +252,19 @@ namespace Alver.UI.Bills
                             {
                                 if ((int)row.Cells[itemidclm.Index].Value == _itemId)
                                 {
-                                    _soldQuantity = (decimal)dgv.Rows[row.Index].Cells[quantityclm.Index].Value;
+                                    _soldQuantity = (decimal)dgv.Rows[row.Index].Cells[quantityclm.Index].Value + 1;
                                     break;
                                 }
                             }
                             remainedquantitynud.Value = _remainedQuantity;
-                            remainedaftersoldnud.Value = _remainedQuantity - _soldQuantity;
+                            if (billtypecb.Text.Trim() == BillType.بيع.ToString())
+                            {
+                                remainedaftersoldnud.Value = _remainedQuantity - _soldQuantity;
+                            }
+                            else if (billtypecb.Text.Trim() == BillType.مرتجع.ToString())
+                            {
+                                remainedaftersoldnud.Value = _remainedQuantity + _soldQuantity;
+                            }
                         }
                         else
                         {
@@ -285,6 +293,7 @@ namespace Alver.UI.Bills
                 int _itemId = 0, userid = 0;
                 string _declaration = string.Empty;
                 int _currencyId = 1, _foreignCurrencyId = 2, _unitId = 1;
+
                 DateTime _billDate = DateTime.Now;
                 string _billType = billtypecb.Text.Trim() == BillType.بيع.ToString() ? BillType.بيع.ToString() : BillType.مرتجع.ToString();
                 _itemId = (int)itemcb.SelectedValue;
@@ -320,6 +329,8 @@ namespace Alver.UI.Bills
                             if ((int)currencycb.SelectedValue == 1)
                             {
                                 //CurrencyId  = 1
+                                _currencyId = 1;
+                                _foreignCurrencyId = 2;
                                 _price = (decimal)dgv.Rows[_rowIndex].Cells[priceclm.Index].Value;
                                 _totalPrice = Math.Round(_quantity * _price, 2);
                                 _exchangedPrice = _price * ratenud.Value;
@@ -329,6 +340,8 @@ namespace Alver.UI.Bills
                             if ((int)currencycb.SelectedValue == 2)
                             {
                                 //CurrencyId  = 2
+                                _currencyId = 2;
+                                _foreignCurrencyId = 1;
                                 _exchangedPrice = (decimal)dgv.Rows[_rowIndex].Cells[priceclm.Index].Value;
                                 _totalExchangedPrice = _quantity * _exchangedPrice;
                                 _price = Math.Round(_exchangedPrice / ratenud.Value, 2);
@@ -448,7 +461,26 @@ namespace Alver.UI.Bills
                 MSGs.ErrorMessage(ex);
             }
         }
-
+        private void ItemRead()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(itemcb.Text))
+                {
+                    if (RetreiveItemById())
+                    {
+                        AddBillLine(true);
+                        calcSumTotals();
+                        barcodecb.Focus();
+                        barcodecb.SelectAll();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+        }
         private bool CheckAttributes()
         {
             bool _result = true;
@@ -628,7 +660,30 @@ namespace Alver.UI.Bills
             Guid _guid = Guid.NewGuid();
             try
             {
+                decimal _price, _total, _exprice, _extotal;
+
+                _price = _billLine.Price.Value;
+                _total = _billLine.TotalPrice.Value;
+                _exprice = _billLine.ExchangedAmount.Value;
+                _extotal = _billLine.ExchangedTotalAmount.Value;
+
                 _billLine.BillId = billId;
+                if ((int)currencycb.SelectedValue == 1)
+                {
+                    _billLine.CurrencyId = 1;
+                    _billLine.ForeginCurrencyId = 2;
+                    _billLine.Exchanged = false;
+                }
+                else if ((int)currencycb.SelectedValue == 2)
+                {
+                    _billLine.CurrencyId = 2;
+                    _billLine.ForeginCurrencyId = 1;
+                    _billLine.Price = _exprice;
+                    _billLine.TotalPrice = _extotal;
+                    _billLine.ExchangedAmount = _price;
+                    _billLine.ExchangedTotalAmount = _total;
+                    _billLine.Exchanged = true;
+                }
                 using (dbEntities db = new dbEntities(0))
                 {
                     db.Set<BillLine>().Add(_billLine);
@@ -686,6 +741,7 @@ namespace Alver.UI.Bills
                     totalclm.DefaultCellStyle.Format = "0##";
                 }
                 calcSumTotals();
+                RetriveDailyBillAmount();
             }
         }
 
@@ -722,6 +778,11 @@ namespace Alver.UI.Bills
 
         private void billLineBS_CurrentChanged(object sender, EventArgs e)
         {
+            BilllineCurrentChanged();
+        }
+
+        private void BilllineCurrentChanged()
+        {
             try
             {
                 int _itemId = 0, _unitId = 1;
@@ -742,7 +803,14 @@ namespace Alver.UI.Bills
                             }
                             decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
                             remainedquantitynud.Value = _remainedQuantity;
-                            remainedaftersoldnud.Value = _remainedQuantity - _billline.Quantity.Value;
+                            if (billtypecb.Text.Trim() == BillType.بيع.ToString())
+                            {
+                                remainedaftersoldnud.Value = _remainedQuantity - _billline.Quantity.Value;
+                            }
+                            else if (billtypecb.Text.Trim() == BillType.مرتجع.ToString())
+                            {
+                                remainedaftersoldnud.Value = _remainedQuantity + _billline.Quantity.Value;
+                            }
                         }
                     }
             }
@@ -803,6 +871,7 @@ namespace Alver.UI.Bills
             if (CheckAttributes())
             {
                 SaveBill();
+                RetriveDailyBillAmount();
             }
         }
 
@@ -811,10 +880,88 @@ namespace Alver.UI.Bills
             if (CheckAttributes())
             {
                 int billId = SaveBill();
+                RetriveDailyBillAmount();
                 PrintBillSlip(billId, true);
             }
         }
 
         #endregion Events
+
+        private void billtypecb_SelectedValueChanged(object sender, EventArgs e)
+        {
+            BilllineCurrentChanged();
+        }
+
+        private void itemcb_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ItemRead();
+            }
+            e.Handled = true;
+        }
+        private bool RetreiveItemById()
+        {
+            bool _itemFound = false;
+            try
+            {
+                string _barcode = barcodecb.Text;
+                int _itemId = (int)itemcb.SelectedValue;
+                int  _unitId = 1;
+                decimal _salePrice = 0;
+                //decimal _roundedExchangedValue = 0, _exchangedValue = 0;
+                //int _currencyId = (int)currencycb.SelectedValue;
+
+                if (!string.IsNullOrEmpty(itemcb.Text))
+                {
+                    using (dbEntities db = new dbEntities(0))
+                    {
+                        if (db.Items.Where(x => x.Id == _itemId).Any())
+                        {
+                            //Barcode Found
+                            _itemFound = true;
+                            //itemBS.DataSource = db.Items.Where(x => x.Id == _itemId).AsQueryable().AsNoTracking().ToList();
+                            _barcode = db.Items.FirstOrDefault(x => x.Id == _itemId).Barcode;
+                            //itemcb.SelectedValue = _itemId;
+                            _salePrice = db.Items.FirstOrDefault(x => x.Id == _itemId && x.UnitId == _unitId).SalePrice != null ? db.Items.Find(_itemId).SalePrice.Value : 0;
+                            priceusdnud.Value = _salePrice;
+                            pricesypnud.Value = _salePrice * ratenud.Value;
+                            //_roundedExchangedValue = CurrencyExchangeFuncs.RoundExchange(_exchangedValue);
+
+                            decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
+                            decimal _soldQuantity = 0;
+                            foreach (DataGridViewRow row in dgv.Rows)
+                            {
+                                if ((int)row.Cells[itemidclm.Index].Value == _itemId)
+                                {
+                                    _soldQuantity = (decimal)dgv.Rows[row.Index].Cells[quantityclm.Index].Value + 1;
+                                    break;
+                                }
+                            }
+                            remainedquantitynud.Value = _remainedQuantity;
+                            if (billtypecb.Text.Trim() == BillType.بيع.ToString())
+                            {
+                                remainedaftersoldnud.Value = _remainedQuantity - _soldQuantity;
+                            }
+                            else if (billtypecb.Text.Trim() == BillType.مرتجع.ToString())
+                            {
+                                remainedaftersoldnud.Value = _remainedQuantity + _soldQuantity;
+                            }
+                        }
+                        else
+                        {
+                            //Barcode Not Found
+                            _itemFound = false;
+                            MessageBox.Show("لم يتم تعريف الباركود او ربطه باي مادة!!!!");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
+            }
+            return _itemFound;
+        }
     }
 }

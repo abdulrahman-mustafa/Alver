@@ -152,7 +152,7 @@
             // 
             label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(290, 9);
+            label4.Location = new System.Drawing.Point(327, 9);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(116, 19);
             label4.TabIndex = 48;
@@ -162,7 +162,7 @@
             // 
             label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(751, 9);
+            label9.Location = new System.Drawing.Point(788, 9);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(66, 19);
             label9.TabIndex = 47;
@@ -172,7 +172,7 @@
             // 
             amountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             amountLabel.AutoSize = true;
-            amountLabel.Location = new System.Drawing.Point(552, 9);
+            amountLabel.Location = new System.Drawing.Point(589, 9);
             amountLabel.Name = "amountLabel";
             amountLabel.Size = new System.Drawing.Size(53, 19);
             amountLabel.TabIndex = 44;
@@ -192,7 +192,7 @@
             // 
             label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(146, 9);
+            label3.Location = new System.Drawing.Point(183, 9);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(137, 19);
             label3.TabIndex = 48;
@@ -202,7 +202,7 @@
             // 
             label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(586, 9);
+            label6.Location = new System.Drawing.Point(623, 9);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(145, 19);
             label6.TabIndex = 47;
@@ -213,7 +213,8 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToOrderColumns = true;
-            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.AutoGenerateColumns = false;
             this.dgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -229,14 +230,14 @@
             this.deleteclm});
             this.dgv.DataSource = this.billLineBS;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgv.Location = new System.Drawing.Point(275, 134);
+            this.dgv.Location = new System.Drawing.Point(238, 134);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgv.RowTemplate.Height = 30;
-            this.dgv.Size = new System.Drawing.Size(827, 201);
+            this.dgv.Size = new System.Drawing.Size(864, 201);
             this.dgv.TabIndex = 9;
             this.dgv.VirtualMode = true;
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
@@ -523,6 +524,7 @@
             this.billtypecb.Size = new System.Drawing.Size(115, 25);
             this.billtypecb.TabIndex = 0;
             this.billtypecb.ValueMember = "Id";
+            this.billtypecb.SelectedValueChanged += new System.EventHandler(this.billtypecb_SelectedValueChanged);
             // 
             // label1
             // 
@@ -718,6 +720,7 @@
             this.itemcb.Size = new System.Drawing.Size(150, 25);
             this.itemcb.TabIndex = 1;
             this.itemcb.ValueMember = "Id";
+            this.itemcb.KeyUp += new System.Windows.Forms.KeyEventHandler(this.itemcb_KeyUp);
             // 
             // itemBS
             // 
@@ -758,6 +761,7 @@
             this.susspendbillbtn.Text = "حفظ وتعليق الفاتورة";
             this.susspendbillbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.susspendbillbtn.UseVisualStyleBackColor = false;
+            this.susspendbillbtn.Visible = false;
             // 
             // cashoutprintbtn
             // 
@@ -810,16 +814,17 @@
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.sumtotalsnud);
             this.panel4.Controls.Add(label4);
             this.panel4.Controls.Add(this.totalnud);
             this.panel4.Controls.Add(label9);
             this.panel4.Controls.Add(this.discountnud);
             this.panel4.Controls.Add(amountLabel);
-            this.panel4.Location = new System.Drawing.Point(275, 401);
+            this.panel4.Location = new System.Drawing.Point(238, 401);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(827, 37);
+            this.panel4.Size = new System.Drawing.Size(864, 37);
             this.panel4.TabIndex = 3;
             // 
             // sumtotalsnud
@@ -828,7 +833,7 @@
             this.sumtotalsnud.DecimalPlaces = 2;
             this.sumtotalsnud.Enabled = false;
             this.sumtotalsnud.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.sumtotalsnud.Location = new System.Drawing.Point(618, 6);
+            this.sumtotalsnud.Location = new System.Drawing.Point(655, 6);
             this.sumtotalsnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -845,7 +850,7 @@
             this.totalnud.DecimalPlaces = 2;
             this.totalnud.Enabled = false;
             this.totalnud.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.totalnud.Location = new System.Drawing.Point(157, 6);
+            this.totalnud.Location = new System.Drawing.Point(194, 6);
             this.totalnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -861,7 +866,7 @@
             this.discountnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.discountnud.DecimalPlaces = 2;
             this.discountnud.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.discountnud.Location = new System.Drawing.Point(419, 6);
+            this.discountnud.Location = new System.Drawing.Point(456, 6);
             this.discountnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -878,33 +883,35 @@
             this.dgvtotal.AllowUserToOrderColumns = true;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvtotal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvtotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvtotal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvtotal.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvtotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvtotal.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgvtotal.Location = new System.Drawing.Point(275, 338);
+            this.dgvtotal.Location = new System.Drawing.Point(238, 338);
             this.dgvtotal.MultiSelect = false;
             this.dgvtotal.Name = "dgvtotal";
             this.dgvtotal.ReadOnly = true;
             this.dgvtotal.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvtotal.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.dgvtotal.RowTemplate.Height = 30;
-            this.dgvtotal.Size = new System.Drawing.Size(827, 57);
+            this.dgvtotal.Size = new System.Drawing.Size(864, 57);
             this.dgvtotal.TabIndex = 14;
             this.dgvtotal.VirtualMode = true;
             this.dgvtotal.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             // 
             // panel5
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.Controls.Add(this.totaldicardamountnud);
             this.panel5.Controls.Add(label3);
             this.panel5.Controls.Add(this.totalsoldamountnud);
             this.panel5.Controls.Add(label6);
-            this.panel5.Location = new System.Drawing.Point(275, 445);
+            this.panel5.Location = new System.Drawing.Point(238, 445);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(827, 37);
+            this.panel5.Size = new System.Drawing.Size(864, 37);
             this.panel5.TabIndex = 50;
             // 
             // totaldicardamountnud
@@ -913,7 +920,7 @@
             this.totaldicardamountnud.DecimalPlaces = 2;
             this.totaldicardamountnud.Enabled = false;
             this.totaldicardamountnud.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.totaldicardamountnud.Location = new System.Drawing.Point(456, 6);
+            this.totaldicardamountnud.Location = new System.Drawing.Point(493, 6);
             this.totaldicardamountnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -930,7 +937,7 @@
             this.totalsoldamountnud.DecimalPlaces = 2;
             this.totalsoldamountnud.Enabled = false;
             this.totalsoldamountnud.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.totalsoldamountnud.Location = new System.Drawing.Point(16, 6);
+            this.totalsoldamountnud.Location = new System.Drawing.Point(53, 6);
             this.totalsoldamountnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
