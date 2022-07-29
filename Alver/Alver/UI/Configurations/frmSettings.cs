@@ -1,6 +1,7 @@
 ﻿using Alver.DAL;
 using Alver.MISC;
 using Alver.Properties;
+using Alver.UI.Setup;
 using Alver.UI.Utilities;
 using System;
 using System.Linq;
@@ -32,6 +33,14 @@ namespace Alver.UI.Configuration
         {
             //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
+            User _user = Properties.Settings.Default.LoggedInUser;
+            if (_user != null)
+            {
+                if (_user.Role.RoleTitle=="SA")
+                {
+                    btncurrencies.Enabled = true;
+                }
+            }
             LoadData();
             LoadPrinters();
             LoadUserSettings();
@@ -83,9 +92,17 @@ namespace Alver.UI.Configuration
                         managerphonetb.Text = _company.ManagerPhone;
                         accountantlbl.Text = _company.Accountant;
                         accountantphonetb.Text = _company.AccountantPhone;
-                        addresslbl.Text = _company.Address;
+                        addresstb.Text = _company.Address;
                         emailaddresstb.Text = _company.EmailAddress;
-                        logopb.Image = ControlsExtensions.byteArrayToImage(db.Images.Find(_company.LogoId.Value).ImageData);
+                        if (_company.LogoId != null)
+                            if (db.Images.Find(_company.LogoId.Value).ImageData != null)
+                                logopb.Image = ControlsExtensions.byteArrayToImage(db.Images.Find(_company.LogoId.Value).ImageData);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No comapnies yet");
+                        (new frmCompanies()).ShowDialog();
+                        frmSettings_Load(null, EventArgs.Empty);
                     }
                 }
             }
@@ -110,12 +127,13 @@ namespace Alver.UI.Configuration
                         _company.Accountant = accountantlbl.Text;
                         _company.ManagerPhone = managerphonetb.Text;
                         _company.AccountantPhone = accountantphonetb.Text;
-                        _company.Address = addresslbl.Text;
+                        _company.Address = addresstb.Text;
                         _company.EmailAddress = emailaddresstb.Text;
                         System.Drawing.Image _img = logopb.Image;
                         if (db.Images.Count() <= 0)
                             AddImage(_img);
-                        db.Images.Find(_company.LogoId).ImageData = _img.imageToByteArray();
+                        if (_company.LogoId != null)
+                            db.Images.Find(_company.LogoId).ImageData = _img.imageToByteArray();
                         db.SaveChanges();
                         string _printerName = printercb.Text.Trim();
                         Settings.Default.BillPrinter = _printerName;
@@ -166,7 +184,7 @@ namespace Alver.UI.Configuration
             {
                 // get the image returned by OpenFileDialog
                 logopb.Image = System.Drawing.Image.FromFile(opf.FileName);
-                addresslbl.Text = logopb.Image.imageToByteArray().ToString();
+                //addresstb.Text = logopb.Image.imageToByteArray().ToString();
             }
         }
 
@@ -254,6 +272,11 @@ namespace Alver.UI.Configuration
         private void generalsettingsbtn_Click(object sender, EventArgs e)
         {
             CompanyTablControl.SelectedTab = generalsettingstabpage;
+        }
+
+        private void btncurrencies_Click(object sender, EventArgs e)
+        {
+            (new frmCurrencies()).ShowDialog();
         }
     }
 }

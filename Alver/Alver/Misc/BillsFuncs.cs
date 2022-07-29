@@ -65,9 +65,7 @@ namespace Alver.MISC
                 }
                 MessageBox.Show("تم حذف العملية بنجاح");
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء حذف الفاتورة ،لم يتم الحذف بنجاح", "حذف فاتورة", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -140,6 +138,66 @@ namespace Alver.MISC
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حصل خطأ أثناء حذف الفواتير ،لم يتم الحذف بنجاح", "حذف فاتورة", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private static void InitTransactions(int _accId, int _currencyId, decimal _amount, string _declaration,DateTime _date,Guid _guid)
+        {
+                TransactionsFuncs.InsertClientTransaction(_accId, _currencyId, _amount, TransactionsFuncs.TT.PAY, _date, _guid, _declaration);
+                TransactionsFuncs.InsertFundTransaction(_currencyId, _amount, TransactionsFuncs.TT.PYI, _date, _guid, _declaration);
+        }
+        public static void CashoutBill(int _billId)
+        {
+            try
+            {
+                using (dbEntities db = new dbEntities(0))
+                {
+                    Bill _bill = db.Bills.Find(_billId);
+                    _bill.Cashout= true;
+                    _bill.CheckedOut = true;
+                    if (_bill != null && _bill.Id != 0)
+                    {
+                        int _accountId = _bill.AccountId.Value;
+                        string _account = db.Accounts.Find(_accountId).FullName;
+                        int _currencyId = _bill.CurrencyId.Value;
+                        decimal _billTotalAmount = _bill.TotalAmount.Value;
+                        bool _payed = true;
+                        bool _locked = false;
+                        Guid _guid = Guid.NewGuid();
+                        
+                        Payment _payment = new Payment()
+                        {
+                            PaymentType = MISC.Utilities.PaymentType.دفعة_من_وكيل.ToString(),
+                            PaymentDate = DateTime.Now,
+                            CurrencyId = _currencyId,
+                            Amount = _billTotalAmount,
+                            Declaration = "",
+                            AccountId = _accountId,
+                            Locked = _locked,
+                            LUD = DateTime.Now,
+                            Payed = _payed,
+                            UserId = Properties.Settings.Default.LoggedInUser.Id,
+                            Flag = string.Empty,
+                            Hidden = false,
+                            GUID = _guid,
+                            PROTECTED = false
+                        };
+                        db.Set<Payment>().Add(_payment);
+                        db.SaveChanges();
+
+                        string _declaration = "دفعة لقاء فاتورة آجلة رقم الفاتورة: " + _billId.ToString() + " - " + string.Format("{0} الوكيل: {1} {2}",
+                            _payment.PaymentType.ToString(),
+                            _account,
+                            _payment.Declaration);
+                        _payment.Declaration = _declaration;
+                        db.SaveChanges();
+                        InitTransactions(_accountId, _currencyId, _billTotalAmount, _declaration, DateTime.Now, _guid);
+                        MessageBox.Show("تم الحفظ بنجاح");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MSGs.ErrorMessage(ex);
             }
         }
     }

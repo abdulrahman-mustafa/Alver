@@ -31,16 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemUnit));
             this.payments_ExpenseCategoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.symbolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.addbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.deletebtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,12 +43,20 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.symbolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.declarationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.addbtn = new System.Windows.Forms.ToolStripButton();
+            this.deletebtn = new System.Windows.Forms.ToolStripButton();
             this.savebtn = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // payments_ExpenseCategoryDataGridView
@@ -78,46 +78,10 @@
             this.payments_ExpenseCategoryDataGridView.GridColor = System.Drawing.SystemColors.Control;
             this.payments_ExpenseCategoryDataGridView.Location = new System.Drawing.Point(0, 27);
             this.payments_ExpenseCategoryDataGridView.Name = "payments_ExpenseCategoryDataGridView";
+            this.payments_ExpenseCategoryDataGridView.RowHeadersWidth = 51;
             this.payments_ExpenseCategoryDataGridView.Size = new System.Drawing.Size(680, 390);
             this.payments_ExpenseCategoryDataGridView.TabIndex = 1;
             this.payments_ExpenseCategoryDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.payments_ExpenseCategoryDataGridView_DataError);
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "الاسم";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            // 
-            // symbolDataGridViewTextBoxColumn
-            // 
-            this.symbolDataGridViewTextBoxColumn.DataPropertyName = "Symbol";
-            this.symbolDataGridViewTextBoxColumn.HeaderText = "الرمز";
-            this.symbolDataGridViewTextBoxColumn.Name = "symbolDataGridViewTextBoxColumn";
-            // 
-            // declarationDataGridViewTextBoxColumn
-            // 
-            this.declarationDataGridViewTextBoxColumn.DataPropertyName = "Declaration";
-            this.declarationDataGridViewTextBoxColumn.HeaderText = "البيان";
-            this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
-            // 
-            // userIdDataGridViewTextBoxColumn
-            // 
-            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
-            this.userIdDataGridViewTextBoxColumn.DataSource = this.userBindingSource;
-            this.userIdDataGridViewTextBoxColumn.DisplayMember = "FullName";
-            this.userIdDataGridViewTextBoxColumn.HeaderText = "المستخدم";
-            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
-            this.userIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.userIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.userIdDataGridViewTextBoxColumn.ValueMember = "Id";
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(Alver.DAL.User);
-            // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(Alver.DAL.Unit);
             // 
             // bindingNavigator1
             // 
@@ -153,36 +117,20 @@
             this.bindingNavigator1.Size = new System.Drawing.Size(680, 27);
             this.bindingNavigator1.TabIndex = 34;
             // 
-            // addbtn
-            // 
-            this.addbtn.Image = global::Alver.Properties.Resources.addrow;
-            this.addbtn.Name = "addbtn";
-            this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(61, 24);
-            this.addbtn.Text = "إضافة";
-            // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(66, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(86, 24);
             this.toolStripLabel1.Text = "من أصل {0}";
             this.toolStripLabel1.ToolTipText = "Total number of items";
-            // 
-            // deletebtn
-            // 
-            this.deletebtn.Image = global::Alver.Properties.Resources.deleterow;
-            this.deletebtn.Name = "deletebtn";
-            this.deletebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebtn.Size = new System.Drawing.Size(56, 24);
-            this.deletebtn.Text = "حذف";
             // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton1.Text = "Move first";
             // 
             // toolStripButton2
@@ -190,7 +138,7 @@
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton2.Text = "Move previous";
             // 
             // toolStripSeparator1
@@ -218,7 +166,7 @@
             this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 24);
+            this.toolStripButton3.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton3.Text = "Move next";
             // 
             // toolStripButton4
@@ -226,7 +174,7 @@
             this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 24);
+            this.toolStripButton4.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton4.Text = "Move last";
             // 
             // toolStripSeparator3
@@ -244,18 +192,75 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
             // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "الاسم";
+            this.titleDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            // 
+            // symbolDataGridViewTextBoxColumn
+            // 
+            this.symbolDataGridViewTextBoxColumn.DataPropertyName = "Symbol";
+            this.symbolDataGridViewTextBoxColumn.HeaderText = "الرمز";
+            this.symbolDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.symbolDataGridViewTextBoxColumn.Name = "symbolDataGridViewTextBoxColumn";
+            // 
+            // declarationDataGridViewTextBoxColumn
+            // 
+            this.declarationDataGridViewTextBoxColumn.DataPropertyName = "Declaration";
+            this.declarationDataGridViewTextBoxColumn.HeaderText = "البيان";
+            this.declarationDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.declarationDataGridViewTextBoxColumn.Name = "declarationDataGridViewTextBoxColumn";
+            // 
+            // userIdDataGridViewTextBoxColumn
+            // 
+            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
+            this.userIdDataGridViewTextBoxColumn.DataSource = this.userBindingSource;
+            this.userIdDataGridViewTextBoxColumn.DisplayMember = "FullName";
+            this.userIdDataGridViewTextBoxColumn.HeaderText = "المستخدم";
+            this.userIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
+            this.userIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.userIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.userIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(Alver.DAL.User);
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(Alver.DAL.Unit);
+            // 
+            // addbtn
+            // 
+            this.addbtn.Image = global::Alver.Properties.Resources.addrow;
+            this.addbtn.Name = "addbtn";
+            this.addbtn.RightToLeftAutoMirrorImage = true;
+            this.addbtn.Size = new System.Drawing.Size(72, 24);
+            this.addbtn.Text = "إضافة";
+            // 
+            // deletebtn
+            // 
+            this.deletebtn.Image = global::Alver.Properties.Resources.deleterow;
+            this.deletebtn.Name = "deletebtn";
+            this.deletebtn.RightToLeftAutoMirrorImage = true;
+            this.deletebtn.Size = new System.Drawing.Size(65, 24);
+            this.deletebtn.Text = "حذف";
+            // 
             // savebtn
             // 
             this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(103, 24);
+            this.savebtn.Size = new System.Drawing.Size(126, 24);
             this.savebtn.Text = "حفظ التعديلات";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
             // frmItemUnit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 417);
             this.Controls.Add(this.payments_ExpenseCategoryDataGridView);
@@ -269,11 +274,11 @@
             this.Text = "الواحدات";
             this.Load += new System.EventHandler(this.frmExpensessCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.payments_ExpenseCategoryDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

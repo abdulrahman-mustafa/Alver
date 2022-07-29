@@ -363,6 +363,16 @@ namespace Alver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_control_panel_25px2 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_control_panel_25px2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_crowdfunding_25px {
             get {
                 object obj = ResourceManager.GetObject("icons8_crowdfunding_25px", resourceCulture);
@@ -376,6 +386,16 @@ namespace Alver.Properties {
         internal static System.Drawing.Bitmap icons8_currency_exchange_25px {
             get {
                 object obj = ResourceManager.GetObject("icons8_currency_exchange_25px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_database_administrator_25px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_database_administrator_25px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -486,6 +506,16 @@ namespace Alver.Properties {
         internal static System.Drawing.Bitmap icons8_guardian_25px {
             get {
                 object obj = ResourceManager.GetObject("icons8_guardian_25px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_info_25px_1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_info_25px_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -713,6 +743,16 @@ namespace Alver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LOGO {
+            get {
+                object obj = ResourceManager.GetObject("LOGO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pdf {
             get {
                 object obj = ResourceManager.GetObject("pdf", resourceCulture);
@@ -826,6 +866,16 @@ namespace Alver.Properties {
         internal static System.Drawing.Bitmap xls {
             get {
                 object obj = ResourceManager.GetObject("xls", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap بدون_عنوان {
+            get {
+                object obj = ResourceManager.GetObject("بدون عنوان", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

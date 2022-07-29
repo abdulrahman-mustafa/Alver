@@ -14,7 +14,7 @@ namespace Alver.UI.Bills.BillReports
         //dbEntities db;
         private bool _exchanged = false;
 
-        private string _accountName = "", _billAmount = "0", _billType = "", _billFooter = "",_companyName="";
+        private string _accountName = "", _billAmount = "0", _billType = "", _billFooter = "", _companyName = "";
         private DateTime _billDate = DateTime.Now;
         private int _billId = 0, _userId = 0, _currencyId = 0, _billLinesCount = 0;
         private bool _silentPrinting = false;
@@ -82,12 +82,12 @@ namespace Alver.UI.Bills.BillReports
         {
             using (dbEntities db = new dbEntities(0))
             {
-                db.Currencies.Load();
+                //db.Currencies.Load();
 
                 BillSlip_ResultBindingSource.DataSource = db.BillSlip(_billId).ToList();
                 //CurrencyBindingSource.DataSource = db.Currencies.FirstOrDefault(x => x.Id == _currencyId);
                 //this.reportViewer1.LocalReport.ReportEmbeddedResource = @"Alver.UI.Bills.BillReports.BillSlip.rdlc";
-                ReportParameter[] parameters = new ReportParameter[7];
+                ReportParameter[] parameters = new ReportParameter[8];
                 //parameters[0] = new ReportParameter("AccountName", _accountName);
                 parameters[0] = new ReportParameter("BillId", _billId.ToString());
                 parameters[1] = new ReportParameter("BillDate", _billDate.ToString());
@@ -96,6 +96,7 @@ namespace Alver.UI.Bills.BillReports
                 parameters[4] = new ReportParameter("Exchanged", _exchanged.ToString());
                 parameters[5] = new ReportParameter("CompanyName", _companyName);
                 parameters[6] = new ReportParameter("BillFooter", _billFooter);
+                parameters[7] = new ReportParameter("LinesCount", _billLinesCount.ToString());
                 this.reportViewer1.LocalReport.SetParameters(parameters);
                 this.reportViewer1.RefreshReport();
                 if (_silentPrinting)

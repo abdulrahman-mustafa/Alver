@@ -1,4 +1,4 @@
-﻿using Alver.Forms;
+﻿using Alver.UI;
 using Alver.MISC;
 using Alver.Properties;
 using Alver.UI.Utilities;
@@ -78,25 +78,40 @@ namespace Alver
             //    Settings.Default.Activated = false;
             //    Settings.Default.RunsLimit = 20;
             //    Settings.Default.RunTimes = 0;
-            //Settings.Default.FirstRun = false;
-            //Settings.Default.Save();
+
             //    MessageBox.Show("تم الاستعادة بنجاح");
             //}
             //catch (Exception ex)
             //{
             //    MSGs.ErrorMessage(ex);
             //}
+
+            //Settings.Default.FirstRun = false;
+            //Settings.Default.Save();
+
             if (Settings.Default.FirstRun)
             {
                 if (!DatabaseFuncs.CheckDatabaseExists(Settings.Default.InitialCatalog))
                 {
                     if (DatabaseFuncs.CreateDatabase())
                     {
-                        Settings.Default.FirstRun = false;
-                        Settings.Default.Save();
+                        Application.Restart();
+                    }
+                }
+                else
+                {
+                    frmLogin login_form = new frmLogin();
+                    if (login_form.ShowDialog() == DialogResult.OK)
+                    {
+                        Application.Run(new frmMain());
+                    }
+                    else
+                    {
                         Application.Exit();
                     }
                 }
+                Settings.Default.FirstRun = false;
+                Settings.Default.Save();
             }
             else if (DatabaseFuncs.CheckDatabaseExists(Settings.Default.InitialCatalog))
             {

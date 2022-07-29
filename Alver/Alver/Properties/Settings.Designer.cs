@@ -8,85 +8,69 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alver.Properties
-{
-
-
+namespace Alver.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Activated
-        {
-            get
-            {
+        public bool Activated {
+            get {
                 return ((bool)(this["Activated"]));
             }
-            set
-            {
+            set {
                 this["Activated"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int RunTimes
-        {
-            get
-            {
+        public int RunTimes {
+            get {
                 return ((int)(this["RunTimes"]));
             }
-            set
-            {
+            set {
                 this["RunTimes"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public int RunsLimit
-        {
-            get
-            {
+        public int RunsLimit {
+            get {
                 return ((int)(this["RunsLimit"]));
             }
-            set
-            {
+            set {
                 this["RunsLimit"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool TrialActivated
-        {
-            get
-            {
+        public bool TrialActivated {
+            get {
                 return ((bool)(this["TrialActivated"]));
             }
-            set
-            {
+            set {
                 this["TrialActivated"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -105,104 +89,83 @@ namespace Alver.Properties
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string BillPrinter
-        {
-            get
-            {
+        public string BillPrinter {
+            get {
                 return ((string)(this["BillPrinter"]));
             }
-            set
-            {
+            set {
                 this["BillPrinter"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool FirstRun
-        {
-            get
-            {
+        public bool FirstRun {
+            get {
                 return ((bool)(this["FirstRun"]));
             }
-            set
-            {
+            set {
                 this["FirstRun"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AskForBKUP
-        {
-            get
-            {
+        public bool AskForBKUP {
+            get {
                 return ((bool)(this["AskForBKUP"]));
             }
-            set
-            {
+            set {
                 this["AskForBKUP"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("sa")]
-        public string UserId
-        {
-            get
-            {
+        public string UserId {
+            get {
                 return ((string)(this["UserId"]));
             }
-            set
-            {
+            set {
                 this["UserId"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("11")]
-        public string SQLPassword
-        {
-            get
-            {
+        public string SQLPassword {
+            get {
                 return ((string)(this["SQLPassword"]));
             }
-            set
-            {
+            set {
                 this["SQLPassword"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Alver")]
-        public string InitialCatalog
-        {
-            get
-            {
+        public string InitialCatalog {
+            get {
                 return ((string)(this["InitialCatalog"]));
             }
-            set
-            {
+            set {
                 this["InitialCatalog"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ConnectionStringValue
-        {
-            get
-            {
+        public string ConnectionStringValue {
+            get {
                 return ((string)(this["ConnectionStringValue"]));
             }
-            set
-            {
+            set {
                 this["ConnectionStringValue"] = value;
             }
         }

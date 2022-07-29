@@ -32,7 +32,7 @@ namespace Alver.UI.Items
                 db.ItemCategories.Load();
                 unitBindingSource.DataSource = db.Units.ToList();
                 itemCategoryBindingSource.DataSource = db.ItemCategories.ToList();
-                currencyBindingSource.DataSource = db.Currencies.ToList();
+                currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1||x.Id==2).ToList();
                 itemBindingSource.DataSource = db.Items.Local;
             }
             catch (Exception ex)
@@ -45,20 +45,10 @@ namespace Alver.UI.Items
         {
             try
             {
-                //if (!CheckValues())
-                //    return;
-                ////PrepareItem();
-                ////db.Entry(_client).State = EntityState.Modified;
-                //PrepareFund();
-                //Save();
-                //MessageBox.Show("تم الحفظ بنجاح");
-                //this.Close();
                 db.SaveChanges();
                 MessageBox.Show("تم الحفظ بنجاح");
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void frmClient_KeyDown(object sender, KeyEventArgs e)

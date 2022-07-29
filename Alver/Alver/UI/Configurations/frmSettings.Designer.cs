@@ -59,7 +59,7 @@
             this.managerlbl = new System.Windows.Forms.TextBox();
             this.accountantlbl = new System.Windows.Forms.TextBox();
             this.managerphonetb = new System.Windows.Forms.TextBox();
-            this.addresslbl = new System.Windows.Forms.TextBox();
+            this.addresstb = new System.Windows.Forms.TextBox();
             this.printertabpage = new System.Windows.Forms.TabPage();
             this.printernamelbl = new System.Windows.Forms.Label();
             this.printercb = new System.Windows.Forms.ComboBox();
@@ -72,6 +72,7 @@
             this.defaultsettingdtabpage = new System.Windows.Forms.TabPage();
             this.restoredefaultsbtn = new System.Windows.Forms.Button();
             this.generalsettingstabpage = new System.Windows.Forms.TabPage();
+            this.btncurrencies = new System.Windows.Forms.Button();
             this.connectionstringtb = new System.Windows.Forms.TextBox();
             this.bkupaskchkbox = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -108,81 +109,81 @@
             // accountantLabel
             // 
             accountantLabel.AutoSize = true;
-            accountantLabel.Location = new System.Drawing.Point(546, 22);
+            accountantLabel.Location = new System.Drawing.Point(606, 22);
             accountantLabel.Name = "accountantLabel";
-            accountantLabel.Size = new System.Drawing.Size(65, 15);
+            accountantLabel.Size = new System.Drawing.Size(83, 20);
             accountantLabel.TabIndex = 0;
             accountantLabel.Text = "اسم الشركة:";
             // 
             // addressLabel
             // 
             addressLabel.AutoSize = true;
-            addressLabel.Location = new System.Drawing.Point(546, 55);
+            addressLabel.Location = new System.Drawing.Point(606, 55);
             addressLabel.Name = "addressLabel";
-            addressLabel.Size = new System.Drawing.Size(70, 15);
+            addressLabel.Size = new System.Drawing.Size(89, 20);
             addressLabel.TabIndex = 2;
             addressLabel.Text = "شعار الشركة:";
             // 
             // helperLabel
             // 
             helperLabel.AutoSize = true;
-            helperLabel.Location = new System.Drawing.Point(546, 85);
+            helperLabel.Location = new System.Drawing.Point(606, 85);
             helperLabel.Name = "helperLabel";
-            helperLabel.Size = new System.Drawing.Size(90, 15);
+            helperLabel.Size = new System.Drawing.Size(115, 20);
             helperLabel.TabIndex = 4;
             helperLabel.Text = "اسم مدير الشركة:";
             // 
             // logoIdLabel
             // 
             logoIdLabel.AutoSize = true;
-            logoIdLabel.Location = new System.Drawing.Point(44, 17);
+            logoIdLabel.Location = new System.Drawing.Point(104, 17);
             logoIdLabel.Name = "logoIdLabel";
-            logoIdLabel.Size = new System.Drawing.Size(68, 15);
+            logoIdLabel.Size = new System.Drawing.Size(87, 20);
             logoIdLabel.TabIndex = 6;
             logoIdLabel.Text = "لوغو الشركة:";
             // 
             // managerLabel
             // 
             managerLabel.AutoSize = true;
-            managerLabel.Location = new System.Drawing.Point(546, 114);
+            managerLabel.Location = new System.Drawing.Point(606, 114);
             managerLabel.Name = "managerLabel";
-            managerLabel.Size = new System.Drawing.Size(78, 15);
+            managerLabel.Size = new System.Drawing.Size(100, 20);
             managerLabel.TabIndex = 8;
             managerLabel.Text = "اسم المحاسب:";
             // 
             // phoneLabel
             // 
             phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(334, 85);
+            phoneLabel.Location = new System.Drawing.Point(394, 85);
             phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(42, 15);
+            phoneLabel.Size = new System.Drawing.Size(53, 20);
             phoneLabel.TabIndex = 14;
             phoneLabel.Text = "الهاتف:";
             // 
             // titleLabel
             // 
             titleLabel.AutoSize = true;
-            titleLabel.Location = new System.Drawing.Point(546, 143);
+            titleLabel.Location = new System.Drawing.Point(606, 143);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new System.Drawing.Size(73, 15);
+            titleLabel.Size = new System.Drawing.Size(93, 20);
             titleLabel.TabIndex = 16;
             titleLabel.Text = "عنوان الشركة:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(334, 114);
+            label1.Location = new System.Drawing.Point(394, 114);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(42, 15);
+            label1.Size = new System.Drawing.Size(53, 20);
             label1.TabIndex = 20;
             label1.Text = "الهاتف:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(546, 172);
+            label2.Location = new System.Drawing.Point(606, 172);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(88, 15);
+            label2.Size = new System.Drawing.Size(112, 20);
             label2.TabIndex = 22;
             label2.Text = "البريد الالكتروني:";
             // 
@@ -191,7 +192,7 @@
             label3.AutoSize = true;
             label3.Location = new System.Drawing.Point(568, 64);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(69, 15);
+            label3.Size = new System.Drawing.Size(88, 20);
             label3.TabIndex = 2;
             label3.Text = "اختر الطابعة:";
             // 
@@ -200,7 +201,7 @@
             label4.AutoSize = true;
             label4.Location = new System.Drawing.Point(568, 20);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(70, 15);
+            label4.Size = new System.Drawing.Size(90, 20);
             label4.TabIndex = 4;
             label4.Text = "اسم الطابعة:";
             // 
@@ -210,7 +211,7 @@
             label5.ForeColor = System.Drawing.Color.WhiteSmoke;
             label5.Location = new System.Drawing.Point(412, 21);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(232, 15);
+            label5.Size = new System.Drawing.Size(300, 20);
             label5.TabIndex = 5;
             label5.Text = "السؤال لاخذ نسخة احتياطية عند إغلاق البرنامج؟";
             // 
@@ -219,7 +220,7 @@
             label6.AutoSize = true;
             label6.Location = new System.Drawing.Point(579, 62);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(70, 15);
+            label6.Size = new System.Drawing.Size(88, 20);
             label6.TabIndex = 7;
             label6.Text = "نص الاتصال:";
             // 
@@ -245,8 +246,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.CompanyTablControl);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainer1.Size = new System.Drawing.Size(860, 343);
-            this.splitContainer1.SplitterDistance = 182;
+            this.splitContainer1.Size = new System.Drawing.Size(858, 335);
+            this.splitContainer1.SplitterDistance = 181;
             this.splitContainer1.SplitterWidth = 20;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -350,7 +351,7 @@
             this.CompanyTablControl.RightToLeftLayout = true;
             this.CompanyTablControl.SelectedIndex = 0;
             this.CompanyTablControl.ShowToolTips = true;
-            this.CompanyTablControl.Size = new System.Drawing.Size(658, 293);
+            this.CompanyTablControl.Size = new System.Drawing.Size(657, 285);
             this.CompanyTablControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.CompanyTablControl.TabIndex = 0;
             // 
@@ -375,27 +376,27 @@
             this.companytabpage.Controls.Add(phoneLabel);
             this.companytabpage.Controls.Add(this.managerphonetb);
             this.companytabpage.Controls.Add(titleLabel);
-            this.companytabpage.Controls.Add(this.addresslbl);
+            this.companytabpage.Controls.Add(this.addresstb);
             this.companytabpage.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.companytabpage.Location = new System.Drawing.Point(4, 64);
             this.companytabpage.Name = "companytabpage";
             this.companytabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.companytabpage.Size = new System.Drawing.Size(650, 225);
+            this.companytabpage.Size = new System.Drawing.Size(649, 217);
             this.companytabpage.TabIndex = 0;
             this.companytabpage.Text = "بيانات الشركة";
             // 
             // emailaddresstb
             // 
-            this.emailaddresstb.Location = new System.Drawing.Point(173, 169);
+            this.emailaddresstb.Location = new System.Drawing.Point(233, 169);
             this.emailaddresstb.Name = "emailaddresstb";
-            this.emailaddresstb.Size = new System.Drawing.Size(367, 23);
+            this.emailaddresstb.Size = new System.Drawing.Size(367, 27);
             this.emailaddresstb.TabIndex = 23;
             // 
             // accountantphonetb
             // 
-            this.accountantphonetb.Location = new System.Drawing.Point(173, 111);
+            this.accountantphonetb.Location = new System.Drawing.Point(233, 111);
             this.accountantphonetb.Name = "accountantphonetb";
-            this.accountantphonetb.Size = new System.Drawing.Size(155, 23);
+            this.accountantphonetb.Size = new System.Drawing.Size(155, 27);
             this.accountantphonetb.TabIndex = 21;
             this.accountantphonetb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -403,7 +404,7 @@
             // 
             this.logopb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.logopb.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logopb.Location = new System.Drawing.Point(8, 35);
+            this.logopb.Location = new System.Drawing.Point(68, 35);
             this.logopb.Name = "logopb";
             this.logopb.Size = new System.Drawing.Size(158, 157);
             this.logopb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -413,50 +414,50 @@
             // 
             // titlelbl
             // 
-            this.titlelbl.Location = new System.Drawing.Point(385, 19);
+            this.titlelbl.Location = new System.Drawing.Point(445, 19);
             this.titlelbl.Name = "titlelbl";
-            this.titlelbl.Size = new System.Drawing.Size(155, 23);
+            this.titlelbl.Size = new System.Drawing.Size(155, 27);
             this.titlelbl.TabIndex = 1;
             this.titlelbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // mottolbl
             // 
-            this.mottolbl.Location = new System.Drawing.Point(385, 52);
+            this.mottolbl.Location = new System.Drawing.Point(445, 52);
             this.mottolbl.Name = "mottolbl";
-            this.mottolbl.Size = new System.Drawing.Size(155, 23);
+            this.mottolbl.Size = new System.Drawing.Size(155, 27);
             this.mottolbl.TabIndex = 3;
             this.mottolbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // managerlbl
             // 
-            this.managerlbl.Location = new System.Drawing.Point(385, 82);
+            this.managerlbl.Location = new System.Drawing.Point(445, 82);
             this.managerlbl.Name = "managerlbl";
-            this.managerlbl.Size = new System.Drawing.Size(155, 23);
+            this.managerlbl.Size = new System.Drawing.Size(155, 27);
             this.managerlbl.TabIndex = 5;
             this.managerlbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // accountantlbl
             // 
-            this.accountantlbl.Location = new System.Drawing.Point(385, 111);
+            this.accountantlbl.Location = new System.Drawing.Point(445, 111);
             this.accountantlbl.Name = "accountantlbl";
-            this.accountantlbl.Size = new System.Drawing.Size(155, 23);
+            this.accountantlbl.Size = new System.Drawing.Size(155, 27);
             this.accountantlbl.TabIndex = 9;
             this.accountantlbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // managerphonetb
             // 
-            this.managerphonetb.Location = new System.Drawing.Point(173, 82);
+            this.managerphonetb.Location = new System.Drawing.Point(233, 82);
             this.managerphonetb.Name = "managerphonetb";
-            this.managerphonetb.Size = new System.Drawing.Size(155, 23);
+            this.managerphonetb.Size = new System.Drawing.Size(155, 27);
             this.managerphonetb.TabIndex = 15;
             this.managerphonetb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // addresslbl
+            // addresstb
             // 
-            this.addresslbl.Location = new System.Drawing.Point(173, 140);
-            this.addresslbl.Name = "addresslbl";
-            this.addresslbl.Size = new System.Drawing.Size(367, 23);
-            this.addresslbl.TabIndex = 17;
+            this.addresstb.Location = new System.Drawing.Point(233, 140);
+            this.addresstb.Name = "addresstb";
+            this.addresstb.Size = new System.Drawing.Size(367, 27);
+            this.addresstb.TabIndex = 17;
             // 
             // printertabpage
             // 
@@ -470,7 +471,7 @@
             this.printertabpage.Location = new System.Drawing.Point(4, 64);
             this.printertabpage.Name = "printertabpage";
             this.printertabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.printertabpage.Size = new System.Drawing.Size(650, 225);
+            this.printertabpage.Size = new System.Drawing.Size(649, 217);
             this.printertabpage.TabIndex = 1;
             this.printertabpage.Text = "إعدادات الطابعة";
             // 
@@ -479,7 +480,7 @@
             this.printernamelbl.AutoSize = true;
             this.printernamelbl.Location = new System.Drawing.Point(316, 20);
             this.printernamelbl.Name = "printernamelbl";
-            this.printernamelbl.Size = new System.Drawing.Size(12, 15);
+            this.printernamelbl.Size = new System.Drawing.Size(15, 20);
             this.printernamelbl.TabIndex = 5;
             this.printernamelbl.Text = "-";
             // 
@@ -490,7 +491,7 @@
             this.printercb.FormattingEnabled = true;
             this.printercb.Location = new System.Drawing.Point(208, 61);
             this.printercb.Name = "printercb";
-            this.printercb.Size = new System.Drawing.Size(354, 23);
+            this.printercb.Size = new System.Drawing.Size(354, 28);
             this.printercb.TabIndex = 3;
             // 
             // refreshprinterslistbtn
@@ -521,7 +522,7 @@
             this.deletedatatabpage.Location = new System.Drawing.Point(4, 64);
             this.deletedatatabpage.Name = "deletedatatabpage";
             this.deletedatatabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.deletedatatabpage.Size = new System.Drawing.Size(650, 225);
+            this.deletedatatabpage.Size = new System.Drawing.Size(649, 217);
             this.deletedatatabpage.TabIndex = 2;
             this.deletedatatabpage.Text = "حذف البيانات";
             // 
@@ -602,7 +603,7 @@
             this.defaultsettingdtabpage.Location = new System.Drawing.Point(4, 64);
             this.defaultsettingdtabpage.Name = "defaultsettingdtabpage";
             this.defaultsettingdtabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.defaultsettingdtabpage.Size = new System.Drawing.Size(650, 225);
+            this.defaultsettingdtabpage.Size = new System.Drawing.Size(649, 217);
             this.defaultsettingdtabpage.TabIndex = 3;
             this.defaultsettingdtabpage.Text = "استعادة الاعدادات";
             // 
@@ -627,6 +628,7 @@
             // generalsettingstabpage
             // 
             this.generalsettingstabpage.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.generalsettingstabpage.Controls.Add(this.btncurrencies);
             this.generalsettingstabpage.Controls.Add(label6);
             this.generalsettingstabpage.Controls.Add(this.connectionstringtb);
             this.generalsettingstabpage.Controls.Add(this.bkupaskchkbox);
@@ -635,9 +637,24 @@
             this.generalsettingstabpage.Location = new System.Drawing.Point(4, 64);
             this.generalsettingstabpage.Name = "generalsettingstabpage";
             this.generalsettingstabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.generalsettingstabpage.Size = new System.Drawing.Size(650, 225);
+            this.generalsettingstabpage.Size = new System.Drawing.Size(649, 217);
             this.generalsettingstabpage.TabIndex = 4;
             this.generalsettingstabpage.Text = "الاعدادات العامة";
+            // 
+            // btncurrencies
+            // 
+            this.btncurrencies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btncurrencies.BackColor = System.Drawing.Color.Gray;
+            this.btncurrencies.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btncurrencies.Enabled = false;
+            this.btncurrencies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncurrencies.Location = new System.Drawing.Point(412, 154);
+            this.btncurrencies.Name = "btncurrencies";
+            this.btncurrencies.Size = new System.Drawing.Size(161, 41);
+            this.btncurrencies.TabIndex = 20;
+            this.btncurrencies.Text = "عملات البرنامج";
+            this.btncurrencies.UseVisualStyleBackColor = false;
+            this.btncurrencies.Click += new System.EventHandler(this.btncurrencies_Click);
             // 
             // connectionstringtb
             // 
@@ -664,9 +681,9 @@
             this.panel1.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.panel1.Controls.Add(this.button2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 293);
+            this.panel1.Location = new System.Drawing.Point(0, 285);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(658, 50);
+            this.panel1.Size = new System.Drawing.Size(657, 50);
             this.panel1.TabIndex = 1;
             // 
             // button2
@@ -689,10 +706,10 @@
             // 
             // frmSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(860, 343);
+            this.ClientSize = new System.Drawing.Size(858, 335);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -738,7 +755,7 @@
         private System.Windows.Forms.TextBox managerlbl;
         private System.Windows.Forms.TextBox accountantlbl;
         private System.Windows.Forms.TextBox managerphonetb;
-        private System.Windows.Forms.TextBox addresslbl;
+        private System.Windows.Forms.TextBox addresstb;
         private System.Windows.Forms.BindingSource companyBindingSource;
         private System.Windows.Forms.PictureBox logopb;
         private System.Windows.Forms.Button button2;
@@ -764,5 +781,6 @@
         private System.Windows.Forms.TabPage generalsettingstabpage;
         private System.Windows.Forms.CheckBox bkupaskchkbox;
         private System.Windows.Forms.TextBox connectionstringtb;
+        private System.Windows.Forms.Button btncurrencies;
     }
 }

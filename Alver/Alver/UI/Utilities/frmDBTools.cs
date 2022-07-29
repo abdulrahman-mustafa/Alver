@@ -4,6 +4,7 @@ using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.EntityClient;
@@ -193,6 +194,14 @@ namespace Alver.UI.Utilities
                 //ConnectionStrings["dbEntities"].ConnectionString;
                 //connectionstringtb.Text = connection.ToString();// _connectionString;
                 //connectionstringtb.Text += Environment.NewLine + Environment.NewLine;
+
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
+                connectionStringsSection.ConnectionStrings["dbEntities"].ConnectionString = _entityConnectionString;
+                config.Save();
+                ConfigurationManager.RefreshSection("connectionStrings");
+
+
                 connectionstringtb.Text = _entityConnectionString;
             }
 #pragma warning disable CS0168 // The variable 'ex' is declared but never used

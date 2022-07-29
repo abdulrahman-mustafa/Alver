@@ -61,6 +61,8 @@ namespace Alver.DAL
         public virtual DbSet<V_STOCK> V_STOCK { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<CurrencyBulletin> CurrencyBulletins { get; set; }
+        public virtual DbSet<ItemUnit> ItemUnits { get; set; }
+        public virtual DbSet<Price> Prices { get; set; }
     
         public virtual int CreateClientFunds(Nullable<int> clientId)
         {

@@ -31,10 +31,11 @@ namespace Alver.UI.Items
 
         private void LoadData()
         {
-            db.Units.AsNoTracking().AsQueryable().Load();
-            db.ItemCategories.AsNoTracking().AsQueryable().Load();
+            //db.Units.AsNoTracking().AsQueryable().Load();
+            //db.ItemCategories.AsNoTracking().AsQueryable().Load();
             itemCategoryBindingSource.DataSource = db.ItemCategories.AsNoTracking().AsQueryable().ToList();
             unitBindingSource.DataSource = db.Units.AsNoTracking().AsQueryable().ToList();
+            currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==2||x.Id==1).AsNoTracking().AsQueryable().ToList();
             MISC.Utilities.SearchableComboBox(itemcb);
         }
 
@@ -51,6 +52,9 @@ namespace Alver.UI.Items
         {
             itemcb.Text = string.Empty;
             barcodecb.Text = string.Empty;
+            salepricenud.Value = 0;
+            purchasepricenud.Value = 0;
+            fundBalancenud.Value = 0;
             declarationcb.Text = string.Empty;
         }
 
@@ -60,6 +64,7 @@ namespace Alver.UI.Items
             {
                 int _categoryId = 0;
                 int _unitId = 0;
+                int _currencyId = 0;
                 using (dbEntities db = new dbEntities(0))
                 {
                     if (itemCategorycb.SelectedValue != null)
@@ -69,6 +74,10 @@ namespace Alver.UI.Items
                     if (unitcb.SelectedValue != null)
                     {
                         _unitId = (int)unitcb.SelectedValue;
+                    }
+                    if (currencycb.SelectedValue != null)
+                    {
+                        _currencyId = (int)currencycb.SelectedValue;
                     }
                     _category = db.ItemCategories.Find(_categoryId);
                     _unit = db.Units.Find(_unitId);
@@ -82,7 +91,7 @@ namespace Alver.UI.Items
                         //Navigation properties
                         CategoryId = _categoryId,
                         UnitId = _unitId,
-                        CurrencyId = 1,
+                        CurrencyId = _currencyId,
                         PurchasePrice = purchasepricenud.Value,
                         SalePrice = salepricenud.Value,
                         ItemCategory = _category,
@@ -137,6 +146,12 @@ namespace Alver.UI.Items
                     itemcb.Focus();
                     _result = false;
                 }
+                else if (db.Items.Any(x => x.Barcode.ToLower().Trim() == barcodecb.Text.ToLower().Trim()))
+                {
+                    MessageBox.Show("الباركود مستخدم من قبل، يرجى التأكد من الباركود");
+                    barcodecb.Focus();
+                    _result = false;
+                }
             }
 #pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
@@ -155,9 +170,7 @@ namespace Alver.UI.Items
                 Save();
                 ControlsEnable(false);
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void Save()
@@ -205,9 +218,7 @@ namespace Alver.UI.Items
                     scope.Complete();
                 }
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }

@@ -111,6 +111,13 @@
         <AssociationConnector Association="AlverModel.FK_Payment_User" />
         <EntityTypeShape EntityType="AlverModel.CurrencyBulletin" Width="1.5" PointX="7.5" PointY="65.125" />
         <AssociationConnector Association="AlverModel.FK_CurrencyBulletin_Currency" />
+        <EntityTypeShape EntityType="AlverModel.ItemUnit" Width="1.5" PointX="18.75" PointY="40.375" />
+        <EntityTypeShape EntityType="AlverModel.Price" Width="1.5" PointX="24" PointY="51.375" />
+        <AssociationConnector Association="AlverModel.FK_Price_Currency" />
+        <AssociationConnector Association="AlverModel.FK_ItemUnit_Item" />
+        <AssociationConnector Association="AlverModel.FK_ItemUnit_Unit" />
+        <AssociationConnector Association="AlverModel.FK_ItemUnit_Unit1" />
+        <AssociationConnector Association="AlverModel.FK_Price_ItemUnit" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

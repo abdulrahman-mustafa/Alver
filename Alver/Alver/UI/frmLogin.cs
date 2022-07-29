@@ -12,11 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Alver.Forms
+namespace Alver.UI
 {
     public partial class frmLogin : Form
     {
         private dbEntities db;
+        bool IsLoaded = false;
 
         public frmLogin()
         {
@@ -38,7 +39,8 @@ namespace Alver.Forms
             try
             {
                 db = new dbEntities(0);
-                db.Configuration.ProxyCreationEnabled = false;
+                //db.Database.Connection.Open();
+                //db.Configuration.ProxyCreationEnabled = false;
                 //db.Database.EnsureCreatedAsync();
                 db.Users.Load();
                 bool _fullActivation = Settings.Default.Activated;
@@ -49,14 +51,15 @@ namespace Alver.Forms
                 Settings.Default.Save();
                 //_runTimes = 0;
                 //_runTimes = CheckActivation(_fullActivation, _trialActivation, _runTimes, _runsLimit);
+                IsLoaded = true;
             }
 #pragma warning disable CS0168 // The variable 'EX' is declared but never used
             catch (Exception EX)
 #pragma warning restore CS0168 // The variable 'EX' is declared but never used
             {
-                //string _errorMsg = EX.Message;
-                //_errorMsg += "    " + EX.InnerException;
-                //MessageBox.Show(_errorMsg);
+                string _errorMsg = EX.Message;
+                _errorMsg += "    " + EX.InnerException;
+                MessageBox.Show(_errorMsg);
                 DialogResult _dialog = MessageBox.Show("لا يمكن الاتصال بقاعدة البيانات يرجى التأكد من وجود قاعدة البيانات وانها في حالة فعالة" + Environment.NewLine + "هل تريد فتح نافذة اعداد قاعدة البيانات؟؟؟؟", "خطأ في قاعدة البيانات", MessageBoxButtons.YesNo);// + Environment.NewLine + EX.Source);
                                                                                                                                                                                                                                                                         //MessageBox.Show(db.Database.Connection.ConnectionString);
                                                                                                                                                                                                                                                                         //Application.Exit();
@@ -152,29 +155,37 @@ namespace Alver.Forms
         {
             try
             {
-                string userid = usernametb.Text.Trim();
-                string password = passwordtb.Text.Trim();
-                var _user = db.Users.FirstOrDefault(u => u.UserName == userid
-                           && u.Password == password);
-                if (_user != null)
+                if (IsLoaded)
                 {
-                    Settings.Default.LoggedInUser = _user;
-                    _user.LLD = DateTime.Now;
-                    db.Entry(_user).State = EntityState.Modified;
-                    db.SaveChanges();
-                    MessageBox.Show("مرحباً " + _user.FullName, "تسجيل الدخول", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
+                    string userid = usernametb.Text.Trim();
+                    string password = passwordtb.Text.Trim();
+                    var _user = db.Users.FirstOrDefault(u => u.UserName == userid
+                               && u.Password == password);
+                    if (_user != null)
+                    {
+                        Settings.Default.LoggedInUser = _user;
+                        _user.LLD = DateTime.Now;
+                        db.Entry(_user).State = EntityState.Modified;
+                        db.SaveChanges();
+                        MessageBox.Show("مرحباً " + _user.FullName, "تسجيل الدخول", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("البيانات خاطئة", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("البيانات خاطئة", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    frmLogin_Load(null, EventArgs.Empty);
+                    //MessageBox.Show("لم يتم تحميل البيانات من قاعدة البيانات");
                 }
             }
 #pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
-                MessageBox.Show("حدث خطأ داخلي", "تنبيه");
+                MessageBox.Show("حدث خطأ داخلي"+Environment.NewLine+ex.Message+Environment.NewLine+ex.InnerException, "تنبيه");
             }
         }
     }

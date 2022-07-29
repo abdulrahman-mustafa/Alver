@@ -36,7 +36,7 @@ namespace Alver.UI.Funds.Transactions
         {
             using (dbEntities db = new dbEntities(0))
             {
-                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
+                currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1||x.Id==2).AsNoTracking().ToList().AsQueryable();
             }
             MISC.Utilities.SearchableComboBox(currencycomboBox);
             _toggles.Add(onlypayments);

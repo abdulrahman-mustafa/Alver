@@ -45,7 +45,60 @@ namespace Alver.MISC
             }
             return _action;
         }
+        public static void BKDB(string UID= "sa", string PW="11",bool IntegratedS=false)
+        {
+            try
+            {
+                //LoadData();
+                if (!BackupBrowse()) return;
+                //db = new dbEntities(0);
+                if (_path == string.Empty)
+                {
+                    MessageBox.Show("اختر مسار صحيح لحفظ النسخة الاحتياطية");
+                }
+                else
+                {
+                    string DatabaseName, ServerName, UserId, Password, conn;
+                    using (dbEntities db = new DAL.dbEntities())
+                    {
+                        conn = db.Database.Connection.ConnectionString;
+                        DatabaseName = db.Database.Connection.Database;
+                        ServerName = db.Database.Connection.DataSource;
+                        UserId = UID;
+                        Password = PW;
+                    }
+                    SqlConnection con = new SqlConnection();
+                    SqlCommand sqlcmd = new SqlCommand();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    DataTable dt = new DataTable();
 
+                    if (IntegratedS)
+                        con.ConnectionString = "Data Source=" + ServerName + ";" +
+                                                "Initial Catalog=" + DatabaseName + ";" +
+                                                "Integrated Security=true";
+                    else
+                        con.ConnectionString = "Data Source=" + ServerName + ";" +
+                                                "Initial Catalog=" + DatabaseName + ";" +
+                                                "User id=" + UserId + ";" +
+                                                "Password=" + Password + ";";
+                    con.Open();
+                    string tSQL = @"backup database " + DatabaseName + " to disk='" + _path + "' with init";
+                    sqlcmd = new SqlCommand(tSQL, con);
+                    sqlcmd.CommandTimeout = 0;
+                    sqlcmd.ExecuteNonQuery();
+                    //Application.DoEvents();
+                    con.Close();
+                    MessageBox.Show("تم أخذ نسخة احتياطية بنجاح", "نسخة احتياطية", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("خطأ في أخذ النسخة الاحتياطية", "نسخة احتياطية", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MSGs.ErrorMessage(ex);
+            }
+
+            
+        }
         public static void BackupDatabase()
         {
             try
@@ -384,7 +437,7 @@ namespace Alver.MISC
 
             try
             {
-                tmpConn = new SqlConnection("server=.;Integrated Security=True;");
+                tmpConn = new SqlConnection(@"server=.\sqlexpress;Integrated Security=True;");
 
                 sqlCreateDBQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", databaseName);
 

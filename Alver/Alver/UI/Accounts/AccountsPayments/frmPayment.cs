@@ -88,9 +88,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                     scope.Complete();
                 }
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }
@@ -231,9 +229,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 Save();
                 ControlsEnable(false);
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }

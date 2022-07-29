@@ -67,7 +67,7 @@
             this.serverscb.FormattingEnabled = true;
             this.serverscb.Location = new System.Drawing.Point(75, 16);
             this.serverscb.Name = "serverscb";
-            this.serverscb.Size = new System.Drawing.Size(121, 23);
+            this.serverscb.Size = new System.Drawing.Size(121, 28);
             this.serverscb.TabIndex = 0;
             // 
             // label1
@@ -75,7 +75,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 15);
+            this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Server:";
             // 
@@ -94,7 +94,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.Size = new System.Drawing.Size(81, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Databases:";
             // 
@@ -103,7 +103,7 @@
             this.databasescb.FormattingEnabled = true;
             this.databasescb.Location = new System.Drawing.Point(75, 45);
             this.databasescb.Name = "databasescb";
-            this.databasescb.Size = new System.Drawing.Size(121, 23);
+            this.databasescb.Size = new System.Drawing.Size(121, 28);
             this.databasescb.TabIndex = 3;
             // 
             // button1
@@ -121,7 +121,7 @@
             this.useridtb.Location = new System.Drawing.Point(75, 124);
             this.useridtb.Name = "useridtb";
             this.useridtb.ReadOnly = true;
-            this.useridtb.Size = new System.Drawing.Size(121, 23);
+            this.useridtb.Size = new System.Drawing.Size(121, 27);
             this.useridtb.TabIndex = 6;
             // 
             // label3
@@ -129,7 +129,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 127);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 15);
+            this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "User Id:";
             // 
@@ -138,7 +138,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 156);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 15);
+            this.label4.Size = new System.Drawing.Size(73, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "Password:";
             // 
@@ -148,7 +148,7 @@
             this.passwordtb.Name = "passwordtb";
             this.passwordtb.PasswordChar = '*';
             this.passwordtb.ReadOnly = true;
-            this.passwordtb.Size = new System.Drawing.Size(121, 23);
+            this.passwordtb.Size = new System.Drawing.Size(121, 27);
             this.passwordtb.TabIndex = 8;
             // 
             // sqlauthenticationrb
@@ -156,7 +156,7 @@
             this.sqlauthenticationrb.AutoSize = true;
             this.sqlauthenticationrb.Location = new System.Drawing.Point(75, 99);
             this.sqlauthenticationrb.Name = "sqlauthenticationrb";
-            this.sqlauthenticationrb.Size = new System.Drawing.Size(163, 19);
+            this.sqlauthenticationrb.Size = new System.Drawing.Size(202, 24);
             this.sqlauthenticationrb.TabIndex = 10;
             this.sqlauthenticationrb.Text = "SQL Server Authentication";
             this.sqlauthenticationrb.UseVisualStyleBackColor = true;
@@ -168,7 +168,7 @@
             this.windowsauthenticationrb.Checked = true;
             this.windowsauthenticationrb.Location = new System.Drawing.Point(75, 74);
             this.windowsauthenticationrb.Name = "windowsauthenticationrb";
-            this.windowsauthenticationrb.Size = new System.Drawing.Size(156, 19);
+            this.windowsauthenticationrb.Size = new System.Drawing.Size(192, 24);
             this.windowsauthenticationrb.TabIndex = 11;
             this.windowsauthenticationrb.TabStop = true;
             this.windowsauthenticationrb.Text = "Windows Authentication";
@@ -199,7 +199,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(9, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 15);
+            this.label5.Size = new System.Drawing.Size(119, 20);
             this.label5.TabIndex = 14;
             this.label5.Text = "Database Name:";
             // 
@@ -207,7 +207,7 @@
             // 
             this.databasenametb.Location = new System.Drawing.Point(108, 22);
             this.databasenametb.Name = "databasenametb";
-            this.databasenametb.Size = new System.Drawing.Size(185, 23);
+            this.databasenametb.Size = new System.Drawing.Size(185, 27);
             this.databasenametb.TabIndex = 13;
             // 
             // groupBox1
@@ -260,7 +260,7 @@
             // 
             this.pathtb.Location = new System.Drawing.Point(82, 22);
             this.pathtb.Name = "pathtb";
-            this.pathtb.Size = new System.Drawing.Size(174, 23);
+            this.pathtb.Size = new System.Drawing.Size(174, 27);
             this.pathtb.TabIndex = 13;
             // 
             // execscriptbtn
@@ -278,7 +278,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(9, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 15);
+            this.label6.Size = new System.Drawing.Size(82, 20);
             this.label6.TabIndex = 14;
             this.label6.Text = "Script Path:";
             // 
@@ -320,7 +320,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox4.Location = new System.Drawing.Point(0, 403);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(353, 110);
+            this.groupBox4.Size = new System.Drawing.Size(351, 110);
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Connection string";
@@ -328,18 +328,18 @@
             // connectionstringtb
             // 
             this.connectionstringtb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.connectionstringtb.Location = new System.Drawing.Point(3, 19);
+            this.connectionstringtb.Location = new System.Drawing.Point(3, 23);
             this.connectionstringtb.Name = "connectionstringtb";
             this.connectionstringtb.ReadOnly = true;
-            this.connectionstringtb.Size = new System.Drawing.Size(347, 88);
+            this.connectionstringtb.Size = new System.Drawing.Size(345, 84);
             this.connectionstringtb.TabIndex = 17;
             this.connectionstringtb.Text = "";
             // 
             // frmDBTools
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 513);
+            this.ClientSize = new System.Drawing.Size(351, 513);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -352,6 +352,7 @@
             this.Name = "frmDBTools";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SQL SERVER DATABASE TOOls";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

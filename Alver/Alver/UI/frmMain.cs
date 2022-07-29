@@ -21,7 +21,7 @@ using Alver.UI.Utilities;
 using System;
 using System.Windows.Forms;
 
-namespace Alver.Forms
+namespace Alver.UI
 {
     public partial class frmMain : Form
     {
@@ -38,10 +38,21 @@ namespace Alver.Forms
                 usernameLabel.Text = _user.FullName;
             }
             databasenamelbl.Text = (new dbEntities(0)).Database.Connection.Database;
-            companytitlelbl.Text = (new dbEntities(0)).Companies.Find(1).Title;
-            addresslbl.Text = (new dbEntities(0)).Companies.Find(1).Address;
-            phonelbl.Text = (new dbEntities(0)).Companies.Find(1).ManagerPhone;
-            runtimeslbl.Text = Settings.Default.RunTimes.ToString();
+            if (new dbEntities(0).Companies.Find(1) != null)
+            {
+                companytitlelbl.Text = (new dbEntities(0)).Companies.Find(1).Title;
+                addresslbl.Text = (new dbEntities(0)).Companies.Find(1).Address;
+                phonelbl.Text = (new dbEntities(0)).Companies.Find(1).ManagerPhone;
+                runtimeslbl.Text = Settings.Default.RunTimes.ToString();
+            }
+            else
+            {
+                timer1.Stop();
+                MessageBox.Show("يجب اضافة شركة قبل البدء بالعمل ");
+                (new frmSettings()).ShowDialog();
+                timer1.Start();
+                InitInfo();
+            }
             clocklbl.Text = DateTime.Now.ToLongTimeString();
         }
 
@@ -202,7 +213,7 @@ namespace Alver.Forms
         private void إضافةمادةToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmItem frm = new frmItem();
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void الواحداتToolStripMenuItem_Click(object sender, EventArgs e)
@@ -256,7 +267,8 @@ namespace Alver.Forms
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                DatabaseFuncs.BackupDatabase();
+                DatabaseFuncs.BKDB();
+                //DatabaseFuncs.BackupDatabase();
                 this.Cursor = Cursors.Default;
             }
             catch (Exception ex)
@@ -288,7 +300,8 @@ namespace Alver.Forms
 
         private void buybillbtn_Click(object sender, EventArgs e)
         {
-            frmPurchase frm = new frmPurchase();
+            //frmPurchase frm = new frmPurchase();
+            Sell frm = new Sell();
             frm.Show();
         }
 
@@ -396,8 +409,14 @@ namespace Alver.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            pos frm = new pos();
+            POS frm = new POS();
             frm.Show();
+        }
+
+        private void حولToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout frm = new frmAbout();
+            frm.ShowDialog();
         }
     }
 }

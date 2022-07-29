@@ -37,12 +37,15 @@
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label7;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItem));
             this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
             this.addbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.savebtn = new System.Windows.Forms.ToolStripButton();
             this.infogroupBox = new System.Windows.Forms.GroupBox();
+            this.currencycb = new System.Windows.Forms.ComboBox();
+            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.salepricenud = new System.Windows.Forms.NumericUpDown();
             this.purchasepricenud = new System.Windows.Forms.NumericUpDown();
@@ -62,9 +65,11 @@
             label1 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
             this.infogroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salepricenud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchasepricenud)).BeginInit();
@@ -127,7 +132,7 @@
             // 
             label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(272, 230);
+            label1.Location = new System.Drawing.Point(272, 259);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(73, 15);
             label1.TabIndex = 48;
@@ -138,23 +143,31 @@
             // 
             label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(272, 175);
+            label3.Location = new System.Drawing.Point(272, 204);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(63, 15);
             label3.TabIndex = 50;
             label3.Text = "سعر الشراء:";
-            label3.Visible = false;
             // 
             // label4
             // 
             label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(272, 204);
+            label4.Location = new System.Drawing.Point(272, 233);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(64, 15);
             label4.TabIndex = 52;
             label4.Text = "سعر المبيع:";
-            label4.Visible = false;
+            // 
+            // label7
+            // 
+            label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(272, 175);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(41, 15);
+            label7.TabIndex = 58;
+            label7.Text = "العملة:";
             // 
             // bindingNavigator2
             // 
@@ -169,7 +182,7 @@
             this.addbtn,
             this.toolStripSeparator3,
             this.savebtn});
-            this.bindingNavigator2.Location = new System.Drawing.Point(0, 271);
+            this.bindingNavigator2.Location = new System.Drawing.Point(0, 328);
             this.bindingNavigator2.MoveFirstItem = null;
             this.bindingNavigator2.MoveLastItem = null;
             this.bindingNavigator2.MoveNextItem = null;
@@ -205,6 +218,8 @@
             // 
             // infogroupBox
             // 
+            this.infogroupBox.Controls.Add(label7);
+            this.infogroupBox.Controls.Add(this.currencycb);
             this.infogroupBox.Controls.Add(this.pictureBox1);
             this.infogroupBox.Controls.Add(this.salepricenud);
             this.infogroupBox.Controls.Add(label4);
@@ -227,10 +242,26 @@
             this.infogroupBox.Location = new System.Drawing.Point(0, 0);
             this.infogroupBox.Name = "infogroupBox";
             this.infogroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.infogroupBox.Size = new System.Drawing.Size(358, 265);
+            this.infogroupBox.Size = new System.Drawing.Size(358, 325);
             this.infogroupBox.TabIndex = 0;
             this.infogroupBox.TabStop = false;
             this.infogroupBox.Text = "بيانات المادة";
+            // 
+            // currencycb
+            // 
+            this.currencycb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.currencycb.DataSource = this.currencyBindingSource;
+            this.currencycb.DisplayMember = "CurrencyName";
+            this.currencycb.FormattingEnabled = true;
+            this.currencycb.Location = new System.Drawing.Point(12, 172);
+            this.currencycb.Name = "currencycb";
+            this.currencycb.Size = new System.Drawing.Size(254, 23);
+            this.currencycb.TabIndex = 57;
+            this.currencycb.ValueMember = "Id";
+            // 
+            // currencyBindingSource
+            // 
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
             // 
             // pictureBox1
             // 
@@ -244,57 +275,33 @@
             // salepricenud
             // 
             this.salepricenud.DecimalPlaces = 2;
-            this.salepricenud.Enabled = false;
-            this.salepricenud.Location = new System.Drawing.Point(12, 201);
+            this.salepricenud.Location = new System.Drawing.Point(13, 230);
             this.salepricenud.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
-            this.salepricenud.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.salepricenud.Name = "salepricenud";
-            this.salepricenud.Size = new System.Drawing.Size(254, 23);
+            this.salepricenud.Size = new System.Drawing.Size(253, 23);
             this.salepricenud.TabIndex = 6;
-            this.salepricenud.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.salepricenud.Visible = false;
             // 
             // purchasepricenud
             // 
             this.purchasepricenud.DecimalPlaces = 2;
-            this.purchasepricenud.Enabled = false;
-            this.purchasepricenud.Location = new System.Drawing.Point(12, 172);
+            this.purchasepricenud.Location = new System.Drawing.Point(13, 201);
             this.purchasepricenud.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
-            this.purchasepricenud.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.purchasepricenud.Name = "purchasepricenud";
-            this.purchasepricenud.Size = new System.Drawing.Size(254, 23);
+            this.purchasepricenud.Size = new System.Drawing.Size(253, 23);
             this.purchasepricenud.TabIndex = 5;
-            this.purchasepricenud.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.purchasepricenud.Visible = false;
             // 
             // fundBalancenud
             // 
             this.fundBalancenud.DecimalPlaces = 2;
-            this.fundBalancenud.Location = new System.Drawing.Point(12, 227);
+            this.fundBalancenud.Location = new System.Drawing.Point(12, 256);
             this.fundBalancenud.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -369,7 +376,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(358, 298);
+            this.ClientSize = new System.Drawing.Size(358, 355);
             this.Controls.Add(this.infogroupBox);
             this.Controls.Add(this.bindingNavigator2);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -388,6 +395,7 @@
             this.bindingNavigator2.PerformLayout();
             this.infogroupBox.ResumeLayout(false);
             this.infogroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salepricenud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchasepricenud)).EndInit();
@@ -416,5 +424,7 @@
         private System.Windows.Forms.NumericUpDown salepricenud;
         private System.Windows.Forms.NumericUpDown purchasepricenud;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox currencycb;
+        private System.Windows.Forms.BindingSource currencyBindingSource;
     }
 }

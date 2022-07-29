@@ -1,6 +1,6 @@
 ﻿namespace Alver.UI.Bills
 {
-    partial class pos
+    partial class POS
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@
             System.Windows.Forms.Label label6;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(POS));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.idclm = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,9 +83,9 @@
             this.itemBS = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.susspendbillbtn = new System.Windows.Forms.Button();
-            this.cashoutprintbtn = new System.Windows.Forms.Button();
+            this.printbillchkbox = new System.Windows.Forms.CheckBox();
             this.cashoutbillbtn = new System.Windows.Forms.Button();
+            this.susspendbillbtn = new System.Windows.Forms.Button();
             this.clearbilllinesbtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.sumtotalsnud = new System.Windows.Forms.NumericUpDown();
@@ -95,6 +95,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.totaldicardamountnud = new System.Windows.Forms.NumericUpDown();
             this.totalsoldamountnud = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             exchangeDateLabel = new System.Windows.Forms.Label();
             declarationLabel = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -738,74 +739,67 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.susspendbillbtn);
-            this.panel3.Controls.Add(this.cashoutprintbtn);
+            this.panel3.Controls.Add(this.printbillchkbox);
             this.panel3.Controls.Add(this.cashoutbillbtn);
+            this.panel3.Controls.Add(this.susspendbillbtn);
             this.panel3.Controls.Add(this.clearbilllinesbtn);
             this.panel3.Location = new System.Drawing.Point(12, 135);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(196, 304);
+            this.panel3.Size = new System.Drawing.Size(217, 260);
             this.panel3.TabIndex = 2;
             // 
-            // susspendbillbtn
+            // printbillchkbox
             // 
-            this.susspendbillbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.susspendbillbtn.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.susspendbillbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.susspendbillbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.susspendbillbtn.Location = new System.Drawing.Point(1, 44);
-            this.susspendbillbtn.Name = "susspendbillbtn";
-            this.susspendbillbtn.Size = new System.Drawing.Size(194, 34);
-            this.susspendbillbtn.TabIndex = 1;
-            this.susspendbillbtn.Text = "حفظ وتعليق الفاتورة";
-            this.susspendbillbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.susspendbillbtn.UseVisualStyleBackColor = false;
-            this.susspendbillbtn.Visible = false;
-            // 
-            // cashoutprintbtn
-            // 
-            this.cashoutprintbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cashoutprintbtn.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.cashoutprintbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cashoutprintbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cashoutprintbtn.Location = new System.Drawing.Point(1, 266);
-            this.cashoutprintbtn.Name = "cashoutprintbtn";
-            this.cashoutprintbtn.Size = new System.Drawing.Size(194, 34);
-            this.cashoutprintbtn.TabIndex = 3;
-            this.cashoutprintbtn.Text = "ترحيل وطباعة الفاتورة";
-            this.cashoutprintbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cashoutprintbtn.UseVisualStyleBackColor = false;
-            this.cashoutprintbtn.Click += new System.EventHandler(this.cashoutprintbtn_Click);
+            this.printbillchkbox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.printbillchkbox.Image = global::Alver.Properties.Resources.print;
+            this.printbillchkbox.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.printbillchkbox.Location = new System.Drawing.Point(0, 149);
+            this.printbillchkbox.Name = "printbillchkbox";
+            this.printbillchkbox.Size = new System.Drawing.Size(217, 55);
+            this.printbillchkbox.TabIndex = 3;
+            this.printbillchkbox.Text = "طباعة الفاتورة بعد الحفظ";
+            this.printbillchkbox.UseVisualStyleBackColor = true;
             // 
             // cashoutbillbtn
             // 
-            this.cashoutbillbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cashoutbillbtn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.cashoutbillbtn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cashoutbillbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cashoutbillbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cashoutbillbtn.Location = new System.Drawing.Point(1, 226);
+            this.cashoutbillbtn.Location = new System.Drawing.Point(0, 204);
             this.cashoutbillbtn.Name = "cashoutbillbtn";
-            this.cashoutbillbtn.Size = new System.Drawing.Size(194, 34);
+            this.cashoutbillbtn.Size = new System.Drawing.Size(217, 56);
             this.cashoutbillbtn.TabIndex = 2;
             this.cashoutbillbtn.Text = "حفظ وترحيل الفاتورة";
             this.cashoutbillbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cashoutbillbtn.UseVisualStyleBackColor = false;
             this.cashoutbillbtn.Click += new System.EventHandler(this.cashoutbillbtn_Click);
             // 
+            // susspendbillbtn
+            // 
+            this.susspendbillbtn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.susspendbillbtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.susspendbillbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.susspendbillbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.susspendbillbtn.Location = new System.Drawing.Point(0, 48);
+            this.susspendbillbtn.Name = "susspendbillbtn";
+            this.susspendbillbtn.Size = new System.Drawing.Size(217, 48);
+            this.susspendbillbtn.TabIndex = 1;
+            this.susspendbillbtn.Text = "حفظ وتعليق الفاتورة";
+            this.susspendbillbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.susspendbillbtn.UseVisualStyleBackColor = false;
+            this.susspendbillbtn.Visible = false;
+            // 
             // clearbilllinesbtn
             // 
-            this.clearbilllinesbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.clearbilllinesbtn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.clearbilllinesbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.clearbilllinesbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearbilllinesbtn.Image = global::Alver.Properties.Resources.trash;
             this.clearbilllinesbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.clearbilllinesbtn.Location = new System.Drawing.Point(1, 3);
+            this.clearbilllinesbtn.Location = new System.Drawing.Point(0, 0);
             this.clearbilllinesbtn.Name = "clearbilllinesbtn";
-            this.clearbilllinesbtn.Size = new System.Drawing.Size(194, 34);
+            this.clearbilllinesbtn.Size = new System.Drawing.Size(217, 48);
             this.clearbilllinesbtn.TabIndex = 0;
             this.clearbilllinesbtn.Text = "تفريغ الفاتورة";
             this.clearbilllinesbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -948,12 +942,23 @@
             this.totalsoldamountnud.TabIndex = 45;
             this.totalsoldamountnud.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Image = global::Alver.Properties.Resources.icons8_control_panel_25px2;
+            this.button1.Location = new System.Drawing.Point(79, 401);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 81);
+            this.button1.TabIndex = 51;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // pos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1114, 492);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.dgvtotal);
             this.Controls.Add(this.panel4);
@@ -1026,7 +1031,6 @@
         private System.Windows.Forms.NumericUpDown discountnud;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown ratenud;
-        private System.Windows.Forms.Button cashoutprintbtn;
         private System.Windows.Forms.Button cashoutbillbtn;
         private System.Windows.Forms.BindingSource itemBS;
         private System.Windows.Forms.DataGridView dgvtotal;
@@ -1057,5 +1061,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn priceclm;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalclm;
         private System.Windows.Forms.DataGridViewImageColumn deleteclm;
+        private System.Windows.Forms.CheckBox printbillchkbox;
+        private System.Windows.Forms.Button button1;
     }
 }

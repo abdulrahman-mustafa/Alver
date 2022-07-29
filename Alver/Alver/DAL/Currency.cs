@@ -35,6 +35,7 @@ namespace Alver.DAL
             this.Withdraws = new ObservableListSource<Withdraw>();
             this.Payments = new ObservableListSource<Payment>();
             this.CurrencyBulletins = new ObservableListSource<CurrencyBulletin>();
+            this.Prices = new ObservableListSource<Price>();
         }
     
         public int Id { get; set; }
@@ -88,5 +89,7 @@ namespace Alver.DAL
         public virtual ObservableListSource<Payment> Payments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<CurrencyBulletin> CurrencyBulletins { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<Price> Prices { get; set; }
     }
 }

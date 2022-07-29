@@ -33,9 +33,9 @@ namespace Alver.UI.Items
             {
                 using (dbEntities db = new dbEntities(0))
                 {
-                    db.Units.AsNoTracking().Load();
-                    db.Currencies.AsNoTracking().Load();
-                    db.ItemCategories.AsNoTracking().Load();
+                    //db.Units.AsNoTracking().Load();
+                    //db.Currencies.AsNoTracking().Load();
+                    //db.ItemCategories.AsNoTracking().Load();
                     //db.ItemFunds.AsNoTracking().Load();
                     unitBindingSource.DataSource = db.Units.AsNoTracking().ToList().AsQueryable();
                     itemCategoryBindingSource.DataSource = db.ItemCategories.AsNoTracking().ToList().AsQueryable();
@@ -88,11 +88,15 @@ namespace Alver.UI.Items
                         itemcb.Focus();
                         _result = false;
                     }
+                    //else if (db.Items.Any(x => x.Barcode.ToLower().Trim() == barcodecb.Text.ToLower().Trim()))
+                    //{
+                    //    MessageBox.Show("الباركود مستخدم من قبل، يرجى التأكد من الباركود");
+                    //    barcodecb.Focus();
+                    //    _result = false;
+                    //}
                 }
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             return _result;
         }
 
@@ -104,14 +108,12 @@ namespace Alver.UI.Items
                     return;
                 //PrepareItem();
                 //db.Entry(_client).State = EntityState.Modified;
-                PrepareFund();
+                //PrepareFund();
                 Save();
                 MessageBox.Show("تم الحفظ بنجاح");
                 this.Close();
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex) { }
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
         }
 
         private void Save()
@@ -169,9 +171,7 @@ namespace Alver.UI.Items
                     scope.Complete();
                 }
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }

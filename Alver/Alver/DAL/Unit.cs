@@ -22,6 +22,8 @@ namespace Alver.DAL
             this.ItemFunds = new ObservableListSource<ItemFund>();
             this.ItemTransactions = new ObservableListSource<ItemTransaction>();
             this.ReceiptLines = new ObservableListSource<ReceiptLine>();
+            this.ItemUnits = new ObservableListSource<ItemUnit>();
+            this.ItemUnits1 = new ObservableListSource<ItemUnit>();
         }
     
         public int Id { get; set; }
@@ -47,5 +49,9 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableListSource<ReceiptLine> ReceiptLines { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<ItemUnit> ItemUnits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ObservableListSource<ItemUnit> ItemUnits1 { get; set; }
     }
 }

@@ -36,6 +36,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBillMangement));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.currencygb = new System.Windows.Forms.GroupBox();
+            this.currencycb = new System.Windows.Forms.ComboBox();
+            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.currencychkbox = new System.Windows.Forms.CheckBox();
             this.Accountgb = new System.Windows.Forms.GroupBox();
             this.accountcb = new System.Windows.Forms.ComboBox();
             this.accountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -52,6 +56,7 @@
             this.nonetcheckedoutbillchkbox = new System.Windows.Forms.CheckBox();
             this.billcheckedoutchkbox = new System.Windows.Forms.CheckBox();
             this.billtypegb = new System.Windows.Forms.GroupBox();
+            this.discardbillchkbox = new System.Windows.Forms.CheckBox();
             this.purchasebillchkbox = new System.Windows.Forms.CheckBox();
             this.sellbillchkbox = new System.Windows.Forms.CheckBox();
             this.dategb = new System.Windows.Forms.GroupBox();
@@ -103,6 +108,7 @@
             this.deletebillbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.printbillslipbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.printbillbtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.billlinesdgv = new System.Windows.Forms.DataGridView();
@@ -159,6 +165,8 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.currencygb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
             this.Accountgb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).BeginInit();
             this.itemgb.SuspendLayout();
@@ -209,6 +217,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.splitContainer1.Panel1.Controls.Add(this.currencygb);
             this.splitContainer1.Panel1.Controls.Add(this.Accountgb);
             this.splitContainer1.Panel1.Controls.Add(this.itemgb);
             this.splitContainer1.Panel1.Controls.Add(this.billIdgb);
@@ -227,12 +236,56 @@
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 5;
             // 
+            // currencygb
+            // 
+            this.currencygb.Controls.Add(this.currencycb);
+            this.currencygb.Controls.Add(this.currencychkbox);
+            this.currencygb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.currencygb.Location = new System.Drawing.Point(0, 519);
+            this.currencygb.Name = "currencygb";
+            this.currencygb.Size = new System.Drawing.Size(190, 69);
+            this.currencygb.TabIndex = 58;
+            this.currencygb.TabStop = false;
+            this.currencygb.Text = "العملة";
+            // 
+            // currencycb
+            // 
+            this.currencycb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.currencycb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.currencycb.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.currencycb.DataSource = this.currencyBindingSource;
+            this.currencycb.DisplayMember = "CurrencyName";
+            this.currencycb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.currencycb.Enabled = false;
+            this.currencycb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.currencycb.FormattingEnabled = true;
+            this.currencycb.Location = new System.Drawing.Point(3, 39);
+            this.currencycb.Name = "currencycb";
+            this.currencycb.Size = new System.Drawing.Size(184, 23);
+            this.currencycb.TabIndex = 31;
+            this.currencycb.ValueMember = "Id";
+            // 
+            // currencyBindingSource
+            // 
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
+            // 
+            // currencychkbox
+            // 
+            this.currencychkbox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.currencychkbox.Location = new System.Drawing.Point(3, 19);
+            this.currencychkbox.Name = "currencychkbox";
+            this.currencychkbox.Size = new System.Drawing.Size(184, 20);
+            this.currencychkbox.TabIndex = 38;
+            this.currencychkbox.Text = "البحث بالعملة";
+            this.currencychkbox.UseVisualStyleBackColor = true;
+            this.currencychkbox.CheckedChanged += new System.EventHandler(this.currencychkbox_CheckedChanged);
+            // 
             // Accountgb
             // 
             this.Accountgb.Controls.Add(this.accountcb);
             this.Accountgb.Controls.Add(this.accountchkbox);
             this.Accountgb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Accountgb.Location = new System.Drawing.Point(0, 407);
+            this.Accountgb.Location = new System.Drawing.Point(0, 450);
             this.Accountgb.Name = "Accountgb";
             this.Accountgb.Size = new System.Drawing.Size(190, 69);
             this.Accountgb.TabIndex = 57;
@@ -276,7 +329,7 @@
             this.itemgb.Controls.Add(this.itemcb);
             this.itemgb.Controls.Add(this.itemchkbox);
             this.itemgb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.itemgb.Location = new System.Drawing.Point(0, 338);
+            this.itemgb.Location = new System.Drawing.Point(0, 381);
             this.itemgb.Name = "itemgb";
             this.itemgb.Size = new System.Drawing.Size(190, 69);
             this.itemgb.TabIndex = 56;
@@ -320,7 +373,7 @@
             this.billIdgb.Controls.Add(this.billidcb);
             this.billIdgb.Controls.Add(this.billidchkbox);
             this.billIdgb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.billIdgb.Location = new System.Drawing.Point(0, 268);
+            this.billIdgb.Location = new System.Drawing.Point(0, 311);
             this.billIdgb.Name = "billIdgb";
             this.billIdgb.Size = new System.Drawing.Size(190, 70);
             this.billIdgb.TabIndex = 55;
@@ -364,7 +417,7 @@
             this.billcheckedouttypegb.Controls.Add(this.nonetcheckedoutbillchkbox);
             this.billcheckedouttypegb.Controls.Add(this.billcheckedoutchkbox);
             this.billcheckedouttypegb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.billcheckedouttypegb.Location = new System.Drawing.Point(0, 183);
+            this.billcheckedouttypegb.Location = new System.Drawing.Point(0, 226);
             this.billcheckedouttypegb.Name = "billcheckedouttypegb";
             this.billcheckedouttypegb.Size = new System.Drawing.Size(190, 85);
             this.billcheckedouttypegb.TabIndex = 47;
@@ -380,7 +433,7 @@
             this.nonetcheckedoutbillchkbox.Name = "nonetcheckedoutbillchkbox";
             this.nonetcheckedoutbillchkbox.Size = new System.Drawing.Size(184, 30);
             this.nonetcheckedoutbillchkbox.TabIndex = 41;
-            this.nonetcheckedoutbillchkbox.Text = "فاتورة غير مرحلة";
+            this.nonetcheckedoutbillchkbox.Text = "فاتورة غير مرحلة(غير مدفوعة)";
             this.nonetcheckedoutbillchkbox.UseVisualStyleBackColor = true;
             this.nonetcheckedoutbillchkbox.CheckedChanged += new System.EventHandler(this.notcheckedoutbillchkbox_CheckedChanged);
             // 
@@ -393,21 +446,35 @@
             this.billcheckedoutchkbox.Name = "billcheckedoutchkbox";
             this.billcheckedoutchkbox.Size = new System.Drawing.Size(184, 30);
             this.billcheckedoutchkbox.TabIndex = 40;
-            this.billcheckedoutchkbox.Text = "فاتورة مرحلة";
+            this.billcheckedoutchkbox.Text = "فاتورة مرحلة(مدفوعة)";
             this.billcheckedoutchkbox.UseVisualStyleBackColor = true;
             this.billcheckedoutchkbox.CheckedChanged += new System.EventHandler(this.billcheckedoutchkbox_CheckedChanged);
             // 
             // billtypegb
             // 
+            this.billtypegb.Controls.Add(this.discardbillchkbox);
             this.billtypegb.Controls.Add(this.purchasebillchkbox);
             this.billtypegb.Controls.Add(this.sellbillchkbox);
             this.billtypegb.Dock = System.Windows.Forms.DockStyle.Top;
             this.billtypegb.Location = new System.Drawing.Point(0, 101);
             this.billtypegb.Name = "billtypegb";
-            this.billtypegb.Size = new System.Drawing.Size(190, 82);
+            this.billtypegb.Size = new System.Drawing.Size(190, 125);
             this.billtypegb.TabIndex = 4;
             this.billtypegb.TabStop = false;
             this.billtypegb.Text = "نوع الفاتورة";
+            // 
+            // discardbillchkbox
+            // 
+            this.discardbillchkbox.Checked = true;
+            this.discardbillchkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.discardbillchkbox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.discardbillchkbox.Location = new System.Drawing.Point(3, 82);
+            this.discardbillchkbox.Name = "discardbillchkbox";
+            this.discardbillchkbox.Size = new System.Drawing.Size(184, 33);
+            this.discardbillchkbox.TabIndex = 36;
+            this.discardbillchkbox.Text = "فاتورة مرتجع";
+            this.discardbillchkbox.UseVisualStyleBackColor = true;
+            this.discardbillchkbox.CheckedChanged += new System.EventHandler(this.discardbillchkbox_CheckedChanged);
             // 
             // purchasebillchkbox
             // 
@@ -416,7 +483,7 @@
             this.purchasebillchkbox.Dock = System.Windows.Forms.DockStyle.Top;
             this.purchasebillchkbox.Location = new System.Drawing.Point(3, 49);
             this.purchasebillchkbox.Name = "purchasebillchkbox";
-            this.purchasebillchkbox.Size = new System.Drawing.Size(184, 30);
+            this.purchasebillchkbox.Size = new System.Drawing.Size(184, 33);
             this.purchasebillchkbox.TabIndex = 34;
             this.purchasebillchkbox.Text = "فاتورة شراء";
             this.purchasebillchkbox.UseVisualStyleBackColor = true;
@@ -670,12 +737,12 @@
             // cashoutDataGridViewTextBoxColumn
             // 
             this.cashoutDataGridViewTextBoxColumn.DataPropertyName = "Cashout";
-            this.cashoutDataGridViewTextBoxColumn.HeaderText = "نقدي/آجل";
+            this.cashoutDataGridViewTextBoxColumn.HeaderText = "نقدي";
             this.cashoutDataGridViewTextBoxColumn.Name = "cashoutDataGridViewTextBoxColumn";
             this.cashoutDataGridViewTextBoxColumn.ReadOnly = true;
             this.cashoutDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cashoutDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cashoutDataGridViewTextBoxColumn.Width = 80;
+            this.cashoutDataGridViewTextBoxColumn.Width = 57;
             // 
             // currencyIdDataGridViewTextBoxColumn
             // 
@@ -905,7 +972,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -946,7 +1012,8 @@
             this.editbillbtn,
             this.deletebillbtn,
             this.printbillslipbtn,
-            this.printbillbtn});
+            this.printbillbtn,
+            this.ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem});
             this.BillFuncs.Image = global::Alver.Properties.Resources.itemsettings;
             this.BillFuncs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BillFuncs.Name = "BillFuncs";
@@ -957,22 +1024,23 @@
             // 
             this.addbillbtn.Image = global::Alver.Properties.Resources.addbill;
             this.addbillbtn.Name = "addbillbtn";
-            this.addbillbtn.Size = new System.Drawing.Size(174, 22);
+            this.addbillbtn.Size = new System.Drawing.Size(236, 22);
             this.addbillbtn.Text = "إضافة فاتورة";
             // 
             // editbillbtn
             // 
             this.editbillbtn.Image = global::Alver.Properties.Resources.edit;
             this.editbillbtn.Name = "editbillbtn";
-            this.editbillbtn.Size = new System.Drawing.Size(174, 22);
+            this.editbillbtn.Size = new System.Drawing.Size(236, 22);
             this.editbillbtn.Text = "تعديل الفاتورة";
+            this.editbillbtn.Visible = false;
             this.editbillbtn.Click += new System.EventHandler(this.editbillbtn_Click);
             // 
             // deletebillbtn
             // 
             this.deletebillbtn.Image = global::Alver.Properties.Resources.deletebill;
             this.deletebillbtn.Name = "deletebillbtn";
-            this.deletebillbtn.Size = new System.Drawing.Size(174, 22);
+            this.deletebillbtn.Size = new System.Drawing.Size(236, 22);
             this.deletebillbtn.Text = "حذف الفاتورة";
             this.deletebillbtn.Click += new System.EventHandler(this.deletebillbtn_Click);
             // 
@@ -980,7 +1048,7 @@
             // 
             this.printbillslipbtn.Image = global::Alver.Properties.Resources.print;
             this.printbillslipbtn.Name = "printbillslipbtn";
-            this.printbillslipbtn.Size = new System.Drawing.Size(174, 22);
+            this.printbillslipbtn.Size = new System.Drawing.Size(236, 22);
             this.printbillslipbtn.Text = "طباعة إشعار الفاتورة";
             this.printbillslipbtn.Click += new System.EventHandler(this.printbillslipbtn_Click);
             // 
@@ -988,9 +1056,16 @@
             // 
             this.printbillbtn.Image = global::Alver.Properties.Resources.print;
             this.printbillbtn.Name = "printbillbtn";
-            this.printbillbtn.Size = new System.Drawing.Size(174, 22);
+            this.printbillbtn.Size = new System.Drawing.Size(236, 22);
             this.printbillbtn.Text = "طباعة الفاتورة";
             this.printbillbtn.Click += new System.EventHandler(this.printbillbtn_Click);
+            // 
+            // ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem
+            // 
+            this.ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem.Name = "ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem";
+            this.ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem.Text = "ترحيل الفاتورة (دفع قيمة الفاتورة)";
+            this.ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem.Click += new System.EventHandler(this.ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem_Click);
             // 
             // tabControl2
             // 
@@ -1294,7 +1369,6 @@
             // 
             this.bindingNavigatorPositionItem1.AccessibleName = "Position";
             this.bindingNavigatorPositionItem1.AutoSize = false;
-            this.bindingNavigatorPositionItem1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem1.Name = "bindingNavigatorPositionItem1";
             this.bindingNavigatorPositionItem1.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem1.Text = "0";
@@ -1536,6 +1610,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.currencygb.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
             this.Accountgb.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).EndInit();
             this.itemgb.ResumeLayout(false);
@@ -1739,11 +1815,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn exchangedAmountDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn exchangedTotalAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn userIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource accountBindingSource;
+        private System.Windows.Forms.GroupBox Accountgb;
+        private System.Windows.Forms.ComboBox accountcb;
+        private System.Windows.Forms.CheckBox accountchkbox;
+        private System.Windows.Forms.BindingSource accountBindingSource1;
+        private System.Windows.Forms.GroupBox currencygb;
+        private System.Windows.Forms.ComboBox currencycb;
+        private System.Windows.Forms.BindingSource currencyBindingSource;
+        private System.Windows.Forms.CheckBox currencychkbox;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkedOutDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn billTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn accountIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource accountBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn billDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cashoutDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn currencyIdDataGridViewTextBoxColumn;
@@ -1756,9 +1840,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn exchangedAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn declarationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn userIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.GroupBox Accountgb;
-        private System.Windows.Forms.ComboBox accountcb;
-        private System.Windows.Forms.CheckBox accountchkbox;
-        private System.Windows.Forms.BindingSource accountBindingSource1;
+        private System.Windows.Forms.ToolStripMenuItem ترحيلالفاتورةدفعقيمةالفاتورةToolStripMenuItem;
+        private System.Windows.Forms.CheckBox discardbillchkbox;
     }
 }
