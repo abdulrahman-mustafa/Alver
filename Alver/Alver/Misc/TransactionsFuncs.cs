@@ -164,7 +164,7 @@ namespace Alver.MISC
         //CLIENT TRANACTIONS OPERATIONS
         public static void DeleteAllClientTransactions(int _clientId, TT _TT = TT.FOO)
         {
-            using (dbEntities db = new DAL.dbEntities())
+            using (dbEntities db = new DAL.dbEntities(0))
             {
                 Guid _guid = new Guid();
                 List<Transaction> _transactions = db.Transactions.Where(x => x.AccountId == _clientId).ToList();
@@ -182,7 +182,7 @@ namespace Alver.MISC
 
         public static void InsertClientTransaction(int accountId, int currencyId, decimal amount, TT OperationType, DateTime OperationDate, Guid OperationGUID, string _declaration, int ForeignCurrency = 0)
         {
-            using (dbEntities db = new DAL.dbEntities())
+            using (dbEntities db = new DAL.dbEntities(0))
             {
                 List<Transaction> _transactions = db.Transactions.Where(x =>
                                                                           x.AccountId == accountId &&
@@ -324,7 +324,7 @@ namespace Alver.MISC
         //FUND TRANACTIONS OPERATIONS
         public static void DeleteAllFundTransactions(int _fundId, TT _TT = TT.FOO)
         {
-            using (dbEntities db = new DAL.dbEntities())
+            using (dbEntities db = new DAL.dbEntities(0))
             {
                 db.FundTransactions.RemoveRange((db.FundTransactions.Where(x => x.FundId == _fundId)));
                 db.SaveChanges();
@@ -333,7 +333,7 @@ namespace Alver.MISC
 
         public static void InsertFundOpeningBalance(Fund _fund, string _declaration)
         {
-            using (dbEntities db = new DAL.dbEntities())
+            using (dbEntities db = new DAL.dbEntities(0))
             {
                 int _sign = 1;
                 if (_fund.BalanceDirection == "لكم")
@@ -362,7 +362,7 @@ namespace Alver.MISC
             if (OperationType != TT.CED)
                 amount = Math.Abs(amount);
 
-            using (dbEntities db = new DAL.dbEntities())
+            using (dbEntities db = new DAL.dbEntities(0))
             {
                 switch (OperationType)
                 {
@@ -435,7 +435,7 @@ namespace Alver.MISC
 
         public static void UpdateFundOpeningBalance(Fund _fund, decimal _amount)
         {
-            using (dbEntities db = new DAL.dbEntities())
+            using (dbEntities db = new DAL.dbEntities(0))
             {
                 Transaction _transaction = db.Transactions.FirstOrDefault(x => x.GUID.Value == _fund.GUID.Value && x.TT == TT.OPN.ToString());
                 int _sign = 1;
@@ -470,7 +470,7 @@ namespace Alver.MISC
         //ITEM TRANACTIONS OPERATIONS
         public static void DeleteAllItemTransactions(int _itemId, TT _TT = TT.FOO)
         {
-            using (dbEntities db = new DAL.dbEntities())
+            using (dbEntities db = new DAL.dbEntities(0))
             {
                 Guid _guid = new Guid();
                 List<ItemTransaction> _transactions = db.ItemTransactions.Where(x => x.ItemId == _itemId).ToList();
@@ -494,7 +494,7 @@ namespace Alver.MISC
             Guid OperationGUID,
             string Declaration)
         {
-            using (dbEntities db = new DAL.dbEntities())
+            using (dbEntities db = new DAL.dbEntities(0))
             {
                 List<ItemTransaction> _transactions = db.ItemTransactions.Where(x =>
                                                                           x.ItemId == ItemId &&

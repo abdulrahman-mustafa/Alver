@@ -37,7 +37,7 @@ namespace Alver.UI.Accounts.Transfers
             accountsInfoBindingSource2.DataSource = db.Accounts.Where(x => x.Deactivated == false).ToList();
             accountsFundBindingSource.DataSource = accountsInfoBindingSource;
             accountsFundBindingSource1.DataSource = accountsInfoBindingSource1;
-            currencyBindingSource.DataSource = db.Currencies.ToList();
+            currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1).ToList();
             MISC.Utilities.SearchableComboBox(clientComboBox);
         }
 

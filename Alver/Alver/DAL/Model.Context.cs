@@ -18,7 +18,7 @@ namespace Alver.DAL
     public partial class dbEntities : DbContext
     {
         public dbEntities()
-            : base("name=dbEntities")
+            : base(GetConnectionString())
         {
         }
     
@@ -27,30 +27,34 @@ namespace Alver.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<AccountFund> AccountFunds { get; set; }
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Album> Albums { get; set; }
         public virtual DbSet<AppSetting> AppSettings { get; set; }
-        public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<BillLine> BillLines { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
-        public virtual DbSet<CurrencyExchange> CurrencyExchanges { get; set; }
+        public virtual DbSet<CurrencyBulletin> CurrencyBulletins { get; set; }
         public virtual DbSet<CurrencyExchangeOperation> CurrencyExchangeOperations { get; set; }
-        public virtual DbSet<Exchange> Exchanges { get; set; }
+        public virtual DbSet<CurrencyExchanx> CurrencyExchanges { get; set; }
         public virtual DbSet<ExchangeFund> ExchangeFunds { get; set; }
-        public virtual DbSet<Expense> Expenses { get; set; }
+        public virtual DbSet<Exchanx> Exchanges { get; set; }
         public virtual DbSet<ExpenseCategory> ExpenseCategories { get; set; }
+        public virtual DbSet<Expens> Expenses { get; set; }
         public virtual DbSet<Fund> Funds { get; set; }
         public virtual DbSet<FundTransaction> FundTransactions { get; set; }
         public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemCategory> ItemCategories { get; set; }
         public virtual DbSet<ItemFund> ItemFunds { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemTransaction> ItemTransactions { get; set; }
-        public virtual DbSet<Receipt> Receipts { get; set; }
+        public virtual DbSet<ItemUnit> ItemUnits { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<Price> Prices { get; set; }
         public virtual DbSet<ReceiptLine> ReceiptLines { get; set; }
+        public virtual DbSet<Receipt> Receipts { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<Transfer> Transfers { get; set; }
@@ -59,10 +63,24 @@ namespace Alver.DAL
         public virtual DbSet<Withdraw> Withdraws { get; set; }
         public virtual DbSet<V_CLIENTS> V_CLIENTS { get; set; }
         public virtual DbSet<V_STOCK> V_STOCK { get; set; }
-        public virtual DbSet<Payment> Payments { get; set; }
-        public virtual DbSet<CurrencyBulletin> CurrencyBulletins { get; set; }
-        public virtual DbSet<ItemUnit> ItemUnits { get; set; }
-        public virtual DbSet<Price> Prices { get; set; }
+    
+        public virtual ObjectResult<f11111BillSlip_Result> f11111BillSlip(Nullable<int> billId)
+        {
+            var billIdParameter = billId.HasValue ?
+                new ObjectParameter("BillId", billId) :
+                new ObjectParameter("BillId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f11111BillSlip_Result>("f11111BillSlip", billIdParameter);
+        }
+    
+        public virtual ObjectResult<BillSlip_Result> BillSlip(Nullable<int> billId)
+        {
+            var billIdParameter = billId.HasValue ?
+                new ObjectParameter("BillId", billId) :
+                new ObjectParameter("BillId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BillSlip_Result>("BillSlip", billIdParameter);
+        }
     
         public virtual int CreateClientFunds(Nullable<int> clientId)
         {
@@ -73,31 +91,26 @@ namespace Alver.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateClientFunds", clientIdParameter);
         }
     
-        public virtual ObjectResult<SP_ClientGrand_Result> SP_ClientGrand(Nullable<int> clientId)
+        public virtual ObjectResult<Nullable<decimal>> DailyBillAmount(Nullable<int> currencyId, Nullable<System.DateTime> date, string billType)
         {
-            var clientIdParameter = clientId.HasValue ?
-                new ObjectParameter("ClientId", clientId) :
-                new ObjectParameter("ClientId", typeof(int));
+            var currencyIdParameter = currencyId.HasValue ?
+                new ObjectParameter("CurrencyId", currencyId) :
+                new ObjectParameter("CurrencyId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ClientGrand_Result>("SP_ClientGrand", clientIdParameter);
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var billTypeParameter = billType != null ?
+                new ObjectParameter("BillType", billType) :
+                new ObjectParameter("BillType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyBillAmount", currencyIdParameter, dateParameter, billTypeParameter);
         }
     
-        public virtual ObjectResult<SP_ItemGrand_Result> SP_ItemGrand(Nullable<int> itemId)
+        public virtual int DeleteAllData()
         {
-            var itemIdParameter = itemId.HasValue ?
-                new ObjectParameter("ItemId", itemId) :
-                new ObjectParameter("ItemId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ItemGrand_Result>("SP_ItemGrand", itemIdParameter);
-        }
-    
-        public virtual ObjectResult<BillSlip_Result> BillSlip(Nullable<int> billId)
-        {
-            var billIdParameter = billId.HasValue ?
-                new ObjectParameter("BillId", billId) :
-                new ObjectParameter("BillId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BillSlip_Result>("BillSlip", billIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAllData");
         }
     
         public virtual ObjectResult<ItemAvgPurchasePrice_Result> ItemAvgPurchasePrice(Nullable<int> itemId, Nullable<int> unitId)
@@ -126,9 +139,23 @@ namespace Alver.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemAvgSalePrice_Result>("ItemAvgSalePrice", itemIdParameter, unitIdParameter);
         }
     
-        public virtual int DeleteAllData()
+        public virtual ObjectResult<SP_ClientGrand_Result> SP_ClientGrand(Nullable<int> clientId)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAllData");
+            var clientIdParameter = clientId.HasValue ?
+                new ObjectParameter("ClientId", clientId) :
+                new ObjectParameter("ClientId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ClientGrand_Result>("SP_ClientGrand", clientIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_ClientsGrand_Result> SP_ClientsGrand()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ClientsGrand_Result>("SP_ClientsGrand");
+        }
+    
+        public virtual ObjectResult<SP_FundsGrand_Result> SP_FundsGrand()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_FundsGrand_Result>("SP_FundsGrand");
         }
     
         public virtual ObjectResult<SP_FundsMovements_Result> SP_FundsMovements()
@@ -136,21 +163,18 @@ namespace Alver.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_FundsMovements_Result>("SP_FundsMovements");
         }
     
-        public virtual ObjectResult<Nullable<decimal>> DailyBillAmount(Nullable<int> currencyId, Nullable<System.DateTime> date, string billType)
+        public virtual ObjectResult<SP_ItemGrand_Result> SP_ItemGrand(Nullable<int> itemId)
         {
-            var currencyIdParameter = currencyId.HasValue ?
-                new ObjectParameter("CurrencyId", currencyId) :
-                new ObjectParameter("CurrencyId", typeof(int));
+            var itemIdParameter = itemId.HasValue ?
+                new ObjectParameter("ItemId", itemId) :
+                new ObjectParameter("ItemId", typeof(int));
     
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("Date", date) :
-                new ObjectParameter("Date", typeof(System.DateTime));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ItemGrand_Result>("SP_ItemGrand", itemIdParameter);
+        }
     
-            var billTypeParameter = billType != null ?
-                new ObjectParameter("BillType", billType) :
-                new ObjectParameter("BillType", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DailyBillAmount", currencyIdParameter, dateParameter, billTypeParameter);
+        public virtual ObjectResult<SP_ItemsGrand_Result> SP_ItemsGrand()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ItemsGrand_Result>("SP_ItemsGrand");
         }
     }
 }

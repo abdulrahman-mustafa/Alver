@@ -13,7 +13,7 @@ namespace DAL.Classes
 {
     public static class CurrencyExchangeFuncs
     {
-        public static void InsertExchangeOperation(CurrencyExchange _ex,
+        public static void InsertExchangeOperation(CurrencyExchanx _ex,
             CurrencyExchangeOperation _exo,
             string direction,
             decimal rate,
@@ -71,7 +71,7 @@ namespace DAL.Classes
                         _exo.UserId = userid;
                         _exo.ExchangeId = _ex.Id;
                         //Navigation Properties
-                        _exo.CurrencyExchange = _ex;
+                        _exo.CurrencyExchanx = _ex;
                         //db.CurrencyExchangeOperations.Attach(_exo);
                         db.Set<CurrencyExchangeOperation>().Add(_exo);
                         db.Entry(_baseCurrency).State = EntityState.Detached;

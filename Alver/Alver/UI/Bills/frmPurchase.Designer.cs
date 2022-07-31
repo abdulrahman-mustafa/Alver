@@ -29,1190 +29,400 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label declarationLabel;
             System.Windows.Forms.Label exchangeDateLabel;
-            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label declarationLabel;
+            System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label amountLabel;
-            System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label11;
-            System.Windows.Forms.Label label12;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label label6;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchase));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.billLinesDgv = new System.Windows.Forms.DataGridView();
-            this.itemIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgv = new System.Windows.Forms.DataGridView();
+            this.idclm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billidclm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemidclm = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.unitIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitidclm = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currencyIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.priceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExchangedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalpriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExchangedTotalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.billLinesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.BillBS = new System.Windows.Forms.BindingSource(this.components);
-            this.BillLineBN = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.deletebilllinebtn = new System.Windows.Forms.ToolStripButton();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.quantityclm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyidclm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceclm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalclm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteclm = new System.Windows.Forms.DataGridViewImageColumn();
+            this.billLineBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.exchangedpricenud = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
-            this.remainedquantitylbl = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.barcodecb = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.currencycb = new System.Windows.Forms.ComboBox();
-            this.currencyBS = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.addbilllinebtn = new System.Windows.Forms.Button();
-            this.pricenud = new System.Windows.Forms.NumericUpDown();
-            this.quantitynud = new System.Windows.Forms.NumericUpDown();
-            this.unitcb = new System.Windows.Forms.ComboBox();
-            this.unitBS = new System.Windows.Forms.BindingSource(this.components);
-            this.itemcb = new System.Windows.Forms.ComboBox();
-            this.itemBS = new System.Windows.Forms.BindingSource(this.components);
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.billIdcb = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.payedchkbox = new System.Windows.Forms.CheckBox();
             this.accountcb = new System.Windows.Forms.ComboBox();
             this.accountBS = new System.Windows.Forms.BindingSource(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.purchasetypecb = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ratenud = new System.Windows.Forms.NumericUpDown();
+            this.currencycb = new System.Windows.Forms.ComboBox();
+            this.currencyBS = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.billdatedtp = new System.Windows.Forms.DateTimePicker();
             this.declarationtb = new System.Windows.Forms.TextBox();
-            this.BillBN = new System.Windows.Forms.BindingNavigator(this.components);
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.addbillbtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.deletebillbtn = new System.Windows.Forms.ToolStripButton();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.exchangebillchkbox = new System.Windows.Forms.CheckBox();
-            this.syrTotalnud = new System.Windows.Forms.NumericUpDown();
-            this.ratenud = new System.Windows.Forms.NumericUpDown();
+            this.billtypecb = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pricesypnud = new System.Windows.Forms.NumericUpDown();
+            this.priceusdnud = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.newQuantitynud = new System.Windows.Forms.NumericUpDown();
+            this.remainedquantitynud = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.barcodecb = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.itemcb = new System.Windows.Forms.ComboBox();
+            this.itemBS = new System.Windows.Forms.BindingSource(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.printbillchkbox = new System.Windows.Forms.CheckBox();
+            this.cashoutbillbtn = new System.Windows.Forms.Button();
+            this.susspendbillbtn = new System.Windows.Forms.Button();
+            this.clearbilllinesbtn = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.sumtotalsnud = new System.Windows.Forms.NumericUpDown();
             this.totalnud = new System.Windows.Forms.NumericUpDown();
             this.discountnud = new System.Windows.Forms.NumericUpDown();
-            this.bindingNavigator2 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.checkbillbtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.chechprintbillbtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.editbillbtn = new System.Windows.Forms.ToolStripButton();
-            this.totallinesyplbl = new System.Windows.Forms.Label();
-            this.totallineudslbl = new System.Windows.Forms.Label();
-            declarationLabel = new System.Windows.Forms.Label();
+            this.dgvtotal = new System.Windows.Forms.DataGridView();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.totalpurchaseamountnud = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             exchangeDateLabel = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
+            declarationLabel = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             amountLabel = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
-            label12 = new System.Windows.Forms.Label();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.billLinesDgv)).BeginInit();
+            label6 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.billLinesBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillLineBN)).BeginInit();
-            this.BillLineBN.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.billLineBS)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exchangedpricenud)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pricenud)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quantitynud)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBS)).BeginInit();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillBN)).BeginInit();
-            this.BillBN.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.syrTotalnud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ratenud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBS)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pricesypnud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceusdnud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newQuantitynud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.remainedquantitynud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBS)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sumtotalsnud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.totalnud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.discountnud)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
-            this.bindingNavigator2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvtotal)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.totalpurchaseamountnud)).BeginInit();
             this.SuspendLayout();
-            // 
-            // declarationLabel
-            // 
-            declarationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            declarationLabel.AutoSize = true;
-            declarationLabel.Location = new System.Drawing.Point(443, 3);
-            declarationLabel.Name = "declarationLabel";
-            declarationLabel.Size = new System.Drawing.Size(62, 15);
-            declarationLabel.TabIndex = 4;
-            declarationLabel.Text = "الملاحظات:";
             // 
             // exchangeDateLabel
             // 
             exchangeDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             exchangeDateLabel.AutoSize = true;
-            exchangeDateLabel.Location = new System.Drawing.Point(565, 3);
+            exchangeDateLabel.Location = new System.Drawing.Point(799, 8);
             exchangeDateLabel.Name = "exchangeDateLabel";
-            exchangeDateLabel.Size = new System.Drawing.Size(41, 15);
-            exchangeDateLabel.TabIndex = 5;
+            exchangeDateLabel.Size = new System.Drawing.Size(50, 19);
+            exchangeDateLabel.TabIndex = 54;
             exchangeDateLabel.Text = "التاريخ:";
             // 
-            // label3
+            // declarationLabel
             // 
-            label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(-328, 36);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(39, 15);
-            label3.TabIndex = 42;
-            label3.Text = "المبلع:";
-            // 
-            // label9
-            // 
-            label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(908, 22);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(63, 15);
-            label9.TabIndex = 39;
-            label9.Text = "الإجمالي $ :";
-            // 
-            // amountLabel
-            // 
-            amountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            amountLabel.AutoSize = true;
-            amountLabel.Location = new System.Drawing.Point(792, 22);
-            amountLabel.Name = "amountLabel";
-            amountLabel.Size = new System.Drawing.Size(53, 15);
-            amountLabel.TabIndex = 9;
-            amountLabel.Text = "الحسم $ :";
+            declarationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            declarationLabel.AutoSize = true;
+            declarationLabel.Location = new System.Drawing.Point(612, 40);
+            declarationLabel.Name = "declarationLabel";
+            declarationLabel.Size = new System.Drawing.Size(44, 19);
+            declarationLabel.TabIndex = 53;
+            declarationLabel.Text = "البيان:";
             // 
             // label4
             // 
             label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(615, 22);
+            label4.Location = new System.Drawing.Point(327, 9);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(104, 15);
-            label4.TabIndex = 41;
-            label4.Text = "الإجمالي الصافي $ :";
+            label4.Size = new System.Drawing.Size(116, 19);
+            label4.TabIndex = 48;
+            label4.Text = "الإجمالي الصافي :";
+            // 
+            // label9
+            // 
+            label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(788, 9);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(66, 19);
+            label9.TabIndex = 47;
+            label9.Text = "الإجمالي :";
+            // 
+            // amountLabel
+            // 
+            amountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            amountLabel.AutoSize = true;
+            amountLabel.Location = new System.Drawing.Point(589, 9);
+            amountLabel.Name = "amountLabel";
+            amountLabel.Size = new System.Drawing.Size(53, 19);
+            amountLabel.TabIndex = 44;
+            amountLabel.Text = "الحسم :";
             // 
             // label11
             // 
+            label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(245, 22);
+            label11.Location = new System.Drawing.Point(799, 40);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(69, 15);
-            label11.TabIndex = 45;
+            label11.Size = new System.Drawing.Size(83, 19);
+            label11.TabIndex = 60;
             label11.Text = "سعر الصرف:";
             // 
-            // label12
+            // label6
             // 
-            label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(60, 22);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(128, 15);
-            label12.TabIndex = 47;
-            label12.Text = "الإجمالي الصافي (ل.س):";
+            label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(623, 9);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(137, 19);
+            label6.TabIndex = 47;
+            label6.Text = "إجمالي الشراء اليومي:";
             // 
-            // tabPage1
+            // dgv
             // 
-            this.tabPage1.AutoScroll = true;
-            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.billLinesDgv);
-            this.tabPage1.Controls.Add(this.BillLineBN);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(982, 152);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "الاقلام";
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToOrderColumns = true;
+            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv.AutoGenerateColumns = false;
+            this.dgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idclm,
+            this.billidclm,
+            this.itemidclm,
+            this.unitidclm,
+            this.quantityclm,
+            this.currencyidclm,
+            this.priceclm,
+            this.totalclm,
+            this.deleteclm});
+            this.dgv.DataSource = this.billLineBS;
+            this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgv.Location = new System.Drawing.Point(238, 134);
+            this.dgv.MultiSelect = false;
+            this.dgv.Name = "dgv";
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgv.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgv.RowTemplate.Height = 30;
+            this.dgv.Size = new System.Drawing.Size(864, 201);
+            this.dgv.TabIndex = 9;
+            this.dgv.VirtualMode = true;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
+            this.dgv.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellValueChanged);
+            this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
+            this.dgv.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyUp);
             // 
-            // billLinesDgv
+            // idclm
             // 
-            this.billLinesDgv.AllowUserToAddRows = false;
-            this.billLinesDgv.AllowUserToDeleteRows = false;
-            this.billLinesDgv.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.billLinesDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.billLinesDgv.AutoGenerateColumns = false;
-            this.billLinesDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.billLinesDgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.billLinesDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.billLinesDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.itemIdDataGridViewTextBoxColumn,
-            this.unitIdDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn,
-            this.currencyIdColumn,
-            this.priceColumn,
-            this.ExchangedAmount,
-            this.totalpriceColumn,
-            this.ExchangedTotalAmount,
-            this.userIdDataGridViewTextBoxColumn});
-            this.billLinesDgv.DataSource = this.billLinesBS;
-            this.billLinesDgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.billLinesDgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.billLinesDgv.Location = new System.Drawing.Point(3, 30);
-            this.billLinesDgv.MultiSelect = false;
-            this.billLinesDgv.Name = "billLinesDgv";
-            this.billLinesDgv.ReadOnly = true;
-            this.billLinesDgv.Size = new System.Drawing.Size(976, 119);
-            this.billLinesDgv.TabIndex = 8;
-            this.billLinesDgv.VirtualMode = true;
-            this.billLinesDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.adddgv_DataBindingComplete);
-            this.billLinesDgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.currencyExchangeDataGridView_DataError);
+            this.idclm.DataPropertyName = "Id";
+            this.idclm.HeaderText = "Id";
+            this.idclm.Name = "idclm";
+            this.idclm.ReadOnly = true;
+            this.idclm.Visible = false;
             // 
-            // itemIdDataGridViewTextBoxColumn
+            // billidclm
             // 
-            this.itemIdDataGridViewTextBoxColumn.DataPropertyName = "ItemId";
-            this.itemIdDataGridViewTextBoxColumn.DataSource = this.itemBindingSource;
-            this.itemIdDataGridViewTextBoxColumn.DisplayMember = "ItemName";
-            this.itemIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.itemIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.itemIdDataGridViewTextBoxColumn.HeaderText = "المادة";
-            this.itemIdDataGridViewTextBoxColumn.Name = "itemIdDataGridViewTextBoxColumn";
-            this.itemIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.itemIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.itemIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            this.billidclm.DataPropertyName = "BillId";
+            this.billidclm.HeaderText = "BillId";
+            this.billidclm.Name = "billidclm";
+            this.billidclm.ReadOnly = true;
+            this.billidclm.Visible = false;
+            // 
+            // itemidclm
+            // 
+            this.itemidclm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.itemidclm.DataPropertyName = "ItemId";
+            this.itemidclm.DataSource = this.itemBindingSource;
+            this.itemidclm.DisplayMember = "ItemName";
+            this.itemidclm.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.itemidclm.DisplayStyleForCurrentCellOnly = true;
+            this.itemidclm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemidclm.HeaderText = "المادة";
+            this.itemidclm.Name = "itemidclm";
+            this.itemidclm.ReadOnly = true;
+            this.itemidclm.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemidclm.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.itemidclm.ValueMember = "Id";
             // 
             // itemBindingSource
             // 
             this.itemBindingSource.DataSource = typeof(Alver.DAL.Item);
             // 
-            // unitIdDataGridViewTextBoxColumn
+            // unitidclm
             // 
-            this.unitIdDataGridViewTextBoxColumn.DataPropertyName = "UnitId";
-            this.unitIdDataGridViewTextBoxColumn.DataSource = this.unitBindingSource;
-            this.unitIdDataGridViewTextBoxColumn.DisplayMember = "Title";
-            this.unitIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.unitIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.unitIdDataGridViewTextBoxColumn.HeaderText = "الواحدة";
-            this.unitIdDataGridViewTextBoxColumn.Name = "unitIdDataGridViewTextBoxColumn";
-            this.unitIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.unitIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unitIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.unitIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            this.unitidclm.DataPropertyName = "UnitId";
+            this.unitidclm.DataSource = this.unitBindingSource;
+            this.unitidclm.DisplayMember = "Title";
+            this.unitidclm.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.unitidclm.DisplayStyleForCurrentCellOnly = true;
+            this.unitidclm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.unitidclm.HeaderText = "الواحدة";
+            this.unitidclm.Name = "unitidclm";
+            this.unitidclm.ReadOnly = true;
+            this.unitidclm.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitidclm.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.unitidclm.ValueMember = "Id";
+            this.unitidclm.Width = 130;
             // 
             // unitBindingSource
             // 
             this.unitBindingSource.DataSource = typeof(Alver.DAL.Unit);
             // 
-            // quantityDataGridViewTextBoxColumn
+            // quantityclm
             // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "الكمية";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.quantityclm.DataPropertyName = "Quantity";
+            this.quantityclm.HeaderText = "الكمية";
+            this.quantityclm.Name = "quantityclm";
+            this.quantityclm.Width = 129;
             // 
-            // currencyIdColumn
+            // currencyidclm
             // 
-            this.currencyIdColumn.DataPropertyName = "CurrencyId";
-            this.currencyIdColumn.DataSource = this.currencyBindingSource;
-            this.currencyIdColumn.DisplayMember = "CurrencyName";
-            this.currencyIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.currencyIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.currencyIdColumn.HeaderText = "العملة";
-            this.currencyIdColumn.Name = "currencyIdColumn";
-            this.currencyIdColumn.ReadOnly = true;
-            this.currencyIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.currencyIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.currencyIdColumn.ValueMember = "Id";
+            this.currencyidclm.DataPropertyName = "CurrencyId";
+            this.currencyidclm.HeaderText = "العملة";
+            this.currencyidclm.Name = "currencyidclm";
+            this.currencyidclm.ReadOnly = true;
+            this.currencyidclm.Visible = false;
             // 
-            // currencyBindingSource
+            // priceclm
             // 
-            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
+            this.priceclm.DataPropertyName = "Price";
+            this.priceclm.HeaderText = "السعر الافرادي";
+            this.priceclm.Name = "priceclm";
+            this.priceclm.Width = 129;
             // 
-            // priceColumn
+            // totalclm
             // 
-            this.priceColumn.DataPropertyName = "Price";
-            this.priceColumn.HeaderText = "سعر الواحدة - $";
-            this.priceColumn.Name = "priceColumn";
-            this.priceColumn.ReadOnly = true;
+            this.totalclm.DataPropertyName = "TotalPrice";
+            this.totalclm.HeaderText = "الاجمالي";
+            this.totalclm.Name = "totalclm";
+            this.totalclm.ReadOnly = true;
+            this.totalclm.Width = 130;
             // 
-            // ExchangedAmount
+            // deleteclm
             // 
-            this.ExchangedAmount.DataPropertyName = "ExchangedAmount";
-            this.ExchangedAmount.HeaderText = "سعر الواحدة - ل.س";
-            this.ExchangedAmount.Name = "ExchangedAmount";
-            this.ExchangedAmount.ReadOnly = true;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle7.NullValue")));
+            this.deleteclm.DefaultCellStyle = dataGridViewCellStyle7;
+            this.deleteclm.HeaderText = "حذف";
+            this.deleteclm.Image = global::Alver.Properties.Resources.trash;
+            this.deleteclm.Name = "deleteclm";
+            this.deleteclm.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.deleteclm.Width = 50;
             // 
-            // totalpriceColumn
+            // billLineBS
             // 
-            this.totalpriceColumn.DataPropertyName = "TotalPrice";
-            this.totalpriceColumn.HeaderText = "السعر الاجمالي - $";
-            this.totalpriceColumn.Name = "totalpriceColumn";
-            this.totalpriceColumn.ReadOnly = true;
-            // 
-            // ExchangedTotalAmount
-            // 
-            this.ExchangedTotalAmount.DataPropertyName = "ExchangedTotalAmount";
-            this.ExchangedTotalAmount.HeaderText = "السعر الاجمالي- ل.س";
-            this.ExchangedTotalAmount.Name = "ExchangedTotalAmount";
-            this.ExchangedTotalAmount.ReadOnly = true;
-            // 
-            // userIdDataGridViewTextBoxColumn
-            // 
-            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
-            this.userIdDataGridViewTextBoxColumn.DataSource = this.userBindingSource;
-            this.userIdDataGridViewTextBoxColumn.DisplayMember = "FullName";
-            this.userIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.userIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userIdDataGridViewTextBoxColumn.HeaderText = "المستخدم";
-            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
-            this.userIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.userIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.userIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.userIdDataGridViewTextBoxColumn.ValueMember = "Id";
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(Alver.DAL.User);
-            // 
-            // billLinesBS
-            // 
-            this.billLinesBS.DataMember = "BillLines";
-            this.billLinesBS.DataSource = this.BillBS;
-            this.billLinesBS.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.billLinesBS_ListChanged);
-            // 
-            // BillBS
-            // 
-            this.BillBS.DataSource = typeof(Alver.DAL.Bill);
-            this.BillBS.CurrentChanged += new System.EventHandler(this.BillBS_CurrentChanged);
-            // 
-            // BillLineBN
-            // 
-            this.BillLineBN.AddNewItem = null;
-            this.BillLineBN.BindingSource = this.billLinesBS;
-            this.BillLineBN.CountItem = this.bindingNavigatorCountItem;
-            this.BillLineBN.CountItemFormat = "من أصل {0}";
-            this.BillLineBN.DeleteItem = null;
-            this.BillLineBN.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.BillLineBN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.toolStripSeparator5,
-            this.deletebilllinebtn});
-            this.BillLineBN.Location = new System.Drawing.Point(3, 3);
-            this.BillLineBN.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.BillLineBN.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.BillLineBN.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.BillLineBN.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.BillLineBN.Name = "BillLineBN";
-            this.BillLineBN.PositionItem = this.bindingNavigatorPositionItem;
-            this.BillLineBN.Size = new System.Drawing.Size(976, 27);
-            this.BillLineBN.TabIndex = 2;
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(65, 24);
-            this.bindingNavigatorCountItem.Text = "من أصل {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(24, 24);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(24, 24);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 27);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(24, 24);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(24, 24);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
-            // 
-            // deletebilllinebtn
-            // 
-            this.deletebilllinebtn.Image = global::Alver.Properties.Resources.deleterow;
-            this.deletebilllinebtn.Name = "deletebilllinebtn";
-            this.deletebilllinebtn.RightToLeftAutoMirrorImage = true;
-            this.deletebilllinebtn.Size = new System.Drawing.Size(89, 24);
-            this.deletebilllinebtn.Text = "حذف الحركة";
-            this.deletebilllinebtn.Click += new System.EventHandler(this.dceobtn_Click);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.ItemSize = new System.Drawing.Size(257, 25);
-            this.tabControl1.Location = new System.Drawing.Point(0, 191);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.RightToLeftLayout = true;
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(990, 185);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 2;
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl2.ItemSize = new System.Drawing.Size(257, 25);
-            this.tabControl2.Location = new System.Drawing.Point(0, 0);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.RightToLeftLayout = true;
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(990, 191);
-            this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl2.TabIndex = 4;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.AutoScroll = true;
-            this.tabPage2.Controls.Add(this.panel1);
-            this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Controls.Add(this.BillBN);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(982, 158);
-            this.tabPage2.TabIndex = 0;
-            this.tabPage2.Text = "فواتير الشراء";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.billLineBS.DataSource = typeof(Alver.DAL.BillLine);
+            this.billLineBS.CurrentChanged += new System.EventHandler(this.billLineBS_CurrentChanged);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 81);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.Controls.Add(this.accountcb);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.purchasetypecb);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(label11);
+            this.panel1.Controls.Add(this.ratenud);
+            this.panel1.Controls.Add(this.currencycb);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.billdatedtp);
+            this.panel1.Controls.Add(exchangeDateLabel);
+            this.panel1.Controls.Add(declarationLabel);
+            this.panel1.Controls.Add(this.declarationtb);
+            this.panel1.Controls.Add(this.billtypecb);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(12, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(976, 77);
-            this.panel1.TabIndex = 7;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Controls.Add(this.totallinesyplbl);
-            this.panel3.Controls.Add(this.totallineudslbl);
-            this.panel3.Controls.Add(this.exchangedpricenud);
-            this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.remainedquantitylbl);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.barcodecb);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.currencycb);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.addbilllinebtn);
-            this.panel3.Controls.Add(this.pricenud);
-            this.panel3.Controls.Add(this.quantitynud);
-            this.panel3.Controls.Add(this.unitcb);
-            this.panel3.Controls.Add(this.itemcb);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(976, 77);
-            this.panel3.TabIndex = 41;
-            // 
-            // exchangedpricenud
-            // 
-            this.exchangedpricenud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exchangedpricenud.DecimalPlaces = 2;
-            this.exchangedpricenud.Location = new System.Drawing.Point(123, 26);
-            this.exchangedpricenud.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.exchangedpricenud.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.exchangedpricenud.Name = "exchangedpricenud";
-            this.exchangedpricenud.Size = new System.Drawing.Size(100, 23);
-            this.exchangedpricenud.TabIndex = 58;
-            this.exchangedpricenud.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(96, 8);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(127, 15);
-            this.label14.TabIndex = 57;
-            this.label14.Text = "سعر شراء الواحدة(ل.س):";
-            // 
-            // remainedquantitylbl
-            // 
-            this.remainedquantitylbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.remainedquantitylbl.AutoSize = true;
-            this.remainedquantitylbl.Location = new System.Drawing.Point(660, 50);
-            this.remainedquantitylbl.Name = "remainedquantitylbl";
-            this.remainedquantitylbl.Size = new System.Drawing.Size(13, 15);
-            this.remainedquantitylbl.TabIndex = 56;
-            this.remainedquantitylbl.Text = "0";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(729, 50);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 15);
-            this.label13.TabIndex = 55;
-            this.label13.Text = "الكمية المتبقية:";
-            // 
-            // barcodecb
-            // 
-            this.barcodecb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.barcodecb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.barcodecb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.barcodecb.BackColor = System.Drawing.Color.LemonChiffon;
-            this.barcodecb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.barcodecb.FormattingEnabled = true;
-            this.barcodecb.Location = new System.Drawing.Point(818, 24);
-            this.barcodecb.Name = "barcodecb";
-            this.barcodecb.Size = new System.Drawing.Size(150, 23);
-            this.barcodecb.TabIndex = 52;
-            this.barcodecb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.barcodecb_KeyDown);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(922, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 15);
-            this.label10.TabIndex = 51;
-            this.label10.Text = "الباركود:";
-            // 
-            // currencycb
-            // 
-            this.currencycb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.currencycb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.currencycb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.currencycb.BackColor = System.Drawing.Color.LemonChiffon;
-            this.currencycb.DataSource = this.currencyBS;
-            this.currencycb.DisplayMember = "CurrencyName";
-            this.currencycb.Enabled = false;
-            this.currencycb.FormattingEnabled = true;
-            this.currencycb.Location = new System.Drawing.Point(342, 25);
-            this.currencycb.Name = "currencycb";
-            this.currencycb.Size = new System.Drawing.Size(100, 23);
-            this.currencycb.TabIndex = 50;
-            this.currencycb.ValueMember = "Id";
-            // 
-            // currencyBS
-            // 
-            this.currencyBS.DataSource = typeof(Alver.DAL.Currency);
-            this.currencyBS.CurrentChanged += new System.EventHandler(this.currencyBindingSource_CurrentChanged);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(401, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 15);
-            this.label1.TabIndex = 49;
-            this.label1.Text = "العملة:";
-            // 
-            // addbilllinebtn
-            // 
-            this.addbilllinebtn.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.addbilllinebtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.addbilllinebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addbilllinebtn.Image = global::Alver.Properties.Resources.addrow;
-            this.addbilllinebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addbilllinebtn.Location = new System.Drawing.Point(0, 0);
-            this.addbilllinebtn.Name = "addbilllinebtn";
-            this.addbilllinebtn.Size = new System.Drawing.Size(84, 77);
-            this.addbilllinebtn.TabIndex = 48;
-            this.addbilllinebtn.Text = "إضافة";
-            this.addbilllinebtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addbilllinebtn.UseVisualStyleBackColor = false;
-            this.addbilllinebtn.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // pricenud
-            // 
-            this.pricenud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pricenud.DecimalPlaces = 2;
-            this.pricenud.Location = new System.Drawing.Point(236, 26);
-            this.pricenud.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.pricenud.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.pricenud.Name = "pricenud";
-            this.pricenud.Size = new System.Drawing.Size(100, 23);
-            this.pricenud.TabIndex = 47;
-            this.pricenud.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.pricenud.ValueChanged += new System.EventHandler(this.pricenud_ValueChanged);
-            // 
-            // quantitynud
-            // 
-            this.quantitynud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.quantitynud.DecimalPlaces = 2;
-            this.quantitynud.Location = new System.Drawing.Point(448, 25);
-            this.quantitynud.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.quantitynud.Name = "quantitynud";
-            this.quantitynud.Size = new System.Drawing.Size(100, 23);
-            this.quantitynud.TabIndex = 46;
-            this.quantitynud.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.quantitynud.ValueChanged += new System.EventHandler(this.quantitynud_ValueChanged);
-            // 
-            // unitcb
-            // 
-            this.unitcb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.unitcb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.unitcb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.unitcb.BackColor = System.Drawing.Color.LemonChiffon;
-            this.unitcb.DataSource = this.unitBS;
-            this.unitcb.DisplayMember = "Title";
-            this.unitcb.FormattingEnabled = true;
-            this.unitcb.Location = new System.Drawing.Point(554, 24);
-            this.unitcb.Name = "unitcb";
-            this.unitcb.Size = new System.Drawing.Size(100, 23);
-            this.unitcb.TabIndex = 45;
-            this.unitcb.ValueMember = "Id";
-            this.unitcb.SelectedValueChanged += new System.EventHandler(this.unitcb_SelectedValueChanged);
-            // 
-            // unitBS
-            // 
-            this.unitBS.DataSource = typeof(Alver.DAL.Unit);
-            // 
-            // itemcb
-            // 
-            this.itemcb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemcb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.itemcb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.itemcb.BackColor = System.Drawing.Color.LemonChiffon;
-            this.itemcb.DataSource = this.itemBS;
-            this.itemcb.DisplayMember = "ItemName";
-            this.itemcb.FormattingEnabled = true;
-            this.itemcb.Location = new System.Drawing.Point(660, 24);
-            this.itemcb.Name = "itemcb";
-            this.itemcb.Size = new System.Drawing.Size(150, 23);
-            this.itemcb.TabIndex = 44;
-            this.itemcb.ValueMember = "Id";
-            this.itemcb.SelectedValueChanged += new System.EventHandler(this.itemcb_SelectedValueChanged);
-            // 
-            // itemBS
-            // 
-            this.itemBS.DataSource = typeof(Alver.DAL.Item);
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(225, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 15);
-            this.label8.TabIndex = 43;
-            this.label8.Text = "سعر شراء الواحدة ($):";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(508, 7);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 15);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "الكمية:";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(609, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 15);
-            this.label6.TabIndex = 41;
-            this.label6.Text = "الواحدة:";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(771, 6);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 15);
-            this.label5.TabIndex = 40;
-            this.label5.Text = "المادة:";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel2.Controls.Add(this.billIdcb);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.payedchkbox);
-            this.panel2.Controls.Add(this.accountcb);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.billdatedtp);
-            this.panel2.Controls.Add(exchangeDateLabel);
-            this.panel2.Controls.Add(declarationLabel);
-            this.panel2.Controls.Add(this.declarationtb);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 30);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(976, 51);
-            this.panel2.TabIndex = 9;
-            // 
-            // billIdcb
-            // 
-            this.billIdcb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.billIdcb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.billIdcb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.billIdcb.BackColor = System.Drawing.Color.LemonChiffon;
-            this.billIdcb.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.billIdcb.DataSource = this.BillBS;
-            this.billIdcb.DisplayMember = "Id";
-            this.billIdcb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.billIdcb.FormattingEnabled = true;
-            this.billIdcb.Location = new System.Drawing.Point(772, 21);
-            this.billIdcb.Name = "billIdcb";
-            this.billIdcb.Size = new System.Drawing.Size(138, 23);
-            this.billIdcb.TabIndex = 52;
-            this.billIdcb.ValueMember = "Id";
-            this.billIdcb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.billIdcb_KeyDown);
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(844, 3);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(66, 15);
-            this.label15.TabIndex = 51;
-            this.label15.Text = "رقم الفاتورة:";
-            // 
-            // payedchkbox
-            // 
-            this.payedchkbox.AutoSize = true;
-            this.payedchkbox.BackColor = System.Drawing.Color.Aquamarine;
-            this.payedchkbox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.payedchkbox.Checked = true;
-            this.payedchkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.payedchkbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.BillBS, "Cashout", true));
-            this.payedchkbox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.payedchkbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.payedchkbox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.payedchkbox.Location = new System.Drawing.Point(916, 0);
-            this.payedchkbox.Name = "payedchkbox";
-            this.payedchkbox.Size = new System.Drawing.Size(60, 51);
-            this.payedchkbox.TabIndex = 48;
-            this.payedchkbox.Text = "شراء نقدي";
-            this.payedchkbox.UseVisualStyleBackColor = false;
-            this.payedchkbox.CheckedChanged += new System.EventHandler(this.payedchkbox_CheckedChanged);
+            this.panel1.Size = new System.Drawing.Size(1090, 71);
+            this.panel1.TabIndex = 1;
             // 
             // accountcb
             // 
             this.accountcb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.accountcb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.accountcb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.accountcb.BackColor = System.Drawing.Color.LemonChiffon;
-            this.accountcb.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.BillBS, "AccountId", true));
+            this.accountcb.BackColor = System.Drawing.Color.LightCyan;
             this.accountcb.DataSource = this.accountBS;
             this.accountcb.DisplayMember = "FullName";
+            this.accountcb.Enabled = false;
+            this.accountcb.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.accountcb.FormattingEnabled = true;
-            this.accountcb.Location = new System.Drawing.Point(609, 21);
+            this.accountcb.Location = new System.Drawing.Point(239, 5);
             this.accountcb.Name = "accountcb";
-            this.accountcb.Size = new System.Drawing.Size(157, 23);
-            this.accountcb.TabIndex = 46;
+            this.accountcb.Size = new System.Drawing.Size(169, 25);
+            this.accountcb.TabIndex = 3;
             this.accountcb.ValueMember = "Id";
             // 
             // accountBS
             // 
             this.accountBS.DataSource = typeof(Alver.DAL.Account);
             // 
-            // label2
+            // label8
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(722, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 15);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "المورد:";
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(413, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 19);
+            this.label8.TabIndex = 63;
+            this.label8.Text = "الزبون:";
             // 
-            // billdatedtp
+            // purchasetypecb
             // 
-            this.billdatedtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.billdatedtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "BillDate", true));
-            this.billdatedtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.billdatedtp.Location = new System.Drawing.Point(511, 21);
-            this.billdatedtp.Name = "billdatedtp";
-            this.billdatedtp.RightToLeftLayout = true;
-            this.billdatedtp.Size = new System.Drawing.Size(92, 23);
-            this.billdatedtp.TabIndex = 6;
+            this.purchasetypecb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.purchasetypecb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.purchasetypecb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.purchasetypecb.BackColor = System.Drawing.Color.LightCyan;
+            this.purchasetypecb.DisplayMember = "CurrencyName";
+            this.purchasetypecb.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.purchasetypecb.FormattingEnabled = true;
+            this.purchasetypecb.Items.AddRange(new object[] {
+            "نقدي",
+            "آجل"});
+            this.purchasetypecb.Location = new System.Drawing.Point(489, 5);
+            this.purchasetypecb.Name = "purchasetypecb";
+            this.purchasetypecb.Size = new System.Drawing.Size(115, 25);
+            this.purchasetypecb.TabIndex = 2;
+            this.purchasetypecb.ValueMember = "Id";
+            this.purchasetypecb.SelectedValueChanged += new System.EventHandler(this.selltypecb_SelectedValueChanged);
             // 
-            // declarationtb
+            // label7
             // 
-            this.declarationtb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.declarationtb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BillBS, "Declaration", true));
-            this.declarationtb.Location = new System.Drawing.Point(5, 21);
-            this.declarationtb.Name = "declarationtb";
-            this.declarationtb.Size = new System.Drawing.Size(500, 23);
-            this.declarationtb.TabIndex = 5;
-            // 
-            // BillBN
-            // 
-            this.BillBN.AddNewItem = null;
-            this.BillBN.BindingSource = this.BillBS;
-            this.BillBN.CountItem = this.toolStripLabel1;
-            this.BillBN.CountItemFormat = "من أصل {0}";
-            this.BillBN.DeleteItem = null;
-            this.BillBN.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.BillBN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton4,
-            this.toolStripButton5,
-            this.toolStripSeparator1,
-            this.toolStripTextBox1,
-            this.toolStripLabel1,
-            this.toolStripSeparator2,
-            this.toolStripButton6,
-            this.toolStripButton7,
-            this.toolStripSeparator3,
-            this.toolStripSeparator8,
-            this.addbillbtn,
-            this.toolStripSeparator4,
-            this.deletebillbtn});
-            this.BillBN.Location = new System.Drawing.Point(3, 3);
-            this.BillBN.MoveFirstItem = this.toolStripButton4;
-            this.BillBN.MoveLastItem = this.toolStripButton7;
-            this.BillBN.MoveNextItem = this.toolStripButton6;
-            this.BillBN.MovePreviousItem = this.toolStripButton5;
-            this.BillBN.Name = "BillBN";
-            this.BillBN.PositionItem = this.toolStripTextBox1;
-            this.BillBN.Size = new System.Drawing.Size(976, 27);
-            this.BillBN.TabIndex = 4;
-            this.BillBN.Text = "bindingNavigator1";
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(65, 24);
-            this.toolStripLabel1.Text = "من أصل {0}";
-            this.toolStripLabel1.ToolTipText = "Total number of items";
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton4.Text = "Move first";
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton5.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton5.Text = "Move previous";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.AccessibleName = "Position";
-            this.toolStripTextBox1.AutoSize = false;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(50, 23);
-            this.toolStripTextBox1.Text = "0";
-            this.toolStripTextBox1.ToolTipText = "Current position";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton6.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton6.Text = "Move next";
-            // 
-            // toolStripButton7
-            // 
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton7.Text = "Move last";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 27);
-            // 
-            // addbillbtn
-            // 
-            this.addbillbtn.Image = global::Alver.Properties.Resources.addbill;
-            this.addbillbtn.Name = "addbillbtn";
-            this.addbillbtn.RightToLeftAutoMirrorImage = true;
-            this.addbillbtn.Size = new System.Drawing.Size(125, 24);
-            this.addbillbtn.Text = "إضافة فاتورة جديدة";
-            this.addbillbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addbillbtn.Click += new System.EventHandler(this.addcebtn_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
-            // 
-            // deletebillbtn
-            // 
-            this.deletebillbtn.Image = global::Alver.Properties.Resources.deletebill;
-            this.deletebillbtn.Name = "deletebillbtn";
-            this.deletebillbtn.RightToLeftAutoMirrorImage = true;
-            this.deletebillbtn.Size = new System.Drawing.Size(223, 24);
-            this.deletebillbtn.Text = "حذف الفاتورة مع جميع الاقلام التابعة لها";
-            this.deletebillbtn.Click += new System.EventHandler(this.dcebtn_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "OpreationDate";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn1.HeaderText = "التاريخ";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 109;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "BaseAmount";
-            this.dataGridViewTextBoxColumn2.HeaderText = "المبلغ";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 106;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Rate";
-            this.dataGridViewTextBoxColumn3.HeaderText = "سعر الصرف";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "SubAmount";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Gold;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn4.HeaderText = "المبلغ الناتج";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "المبلغ المقرب";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 122;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.exchangebillchkbox);
-            this.groupBox1.Controls.Add(label12);
-            this.groupBox1.Controls.Add(this.syrTotalnud);
-            this.groupBox1.Controls.Add(label11);
-            this.groupBox1.Controls.Add(this.ratenud);
-            this.groupBox1.Controls.Add(this.sumtotalsnud);
-            this.groupBox1.Controls.Add(label3);
-            this.groupBox1.Controls.Add(label4);
-            this.groupBox1.Controls.Add(this.totalnud);
-            this.groupBox1.Controls.Add(label9);
-            this.groupBox1.Controls.Add(this.discountnud);
-            this.groupBox1.Controls.Add(amountLabel);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 376);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(990, 70);
-            this.groupBox1.TabIndex = 40;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "الإجماليات";
-            // 
-            // exchangebillchkbox
-            // 
-            this.exchangebillchkbox.BackColor = System.Drawing.Color.Aquamarine;
-            this.exchangebillchkbox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.exchangebillchkbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.BillBS, "Exchanged", true));
-            this.exchangebillchkbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exchangebillchkbox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.exchangebillchkbox.Location = new System.Drawing.Point(342, 22);
-            this.exchangebillchkbox.Name = "exchangebillchkbox";
-            this.exchangebillchkbox.Size = new System.Drawing.Size(97, 42);
-            this.exchangebillchkbox.TabIndex = 49;
-            this.exchangebillchkbox.Text = "تصريف الفاتورة";
-            this.exchangebillchkbox.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.exchangebillchkbox.UseVisualStyleBackColor = false;
-            this.exchangebillchkbox.CheckedChanged += new System.EventHandler(this.exchangebillchkbox_CheckedChanged);
-            // 
-            // syrTotalnud
-            // 
-            this.syrTotalnud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "ExchangedAmount", true));
-            this.syrTotalnud.DecimalPlaces = 3;
-            this.syrTotalnud.Location = new System.Drawing.Point(12, 41);
-            this.syrTotalnud.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            0});
-            this.syrTotalnud.Name = "syrTotalnud";
-            this.syrTotalnud.ReadOnly = true;
-            this.syrTotalnud.Size = new System.Drawing.Size(176, 23);
-            this.syrTotalnud.TabIndex = 46;
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(612, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 19);
+            this.label7.TabIndex = 61;
+            this.label7.Text = "طريقة الشراء:";
             // 
             // ratenud
             // 
-            this.ratenud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "Rate", true));
+            this.ratenud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ratenud.DecimalPlaces = 3;
-            this.ratenud.Location = new System.Drawing.Point(194, 41);
+            this.ratenud.Location = new System.Drawing.Point(701, 37);
             this.ratenud.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -1224,331 +434,598 @@
             0,
             0});
             this.ratenud.Name = "ratenud";
-            this.ratenud.Size = new System.Drawing.Size(120, 23);
-            this.ratenud.TabIndex = 44;
+            this.ratenud.ReadOnly = true;
+            this.ratenud.Size = new System.Drawing.Size(92, 25);
+            this.ratenud.TabIndex = 59;
+            this.ratenud.TabStop = false;
+            this.ratenud.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ratenud.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.ratenud.ValueChanged += new System.EventHandler(this.ratenud_ValueChanged);
+            // 
+            // currencycb
+            // 
+            this.currencycb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.currencycb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.currencycb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.currencycb.BackColor = System.Drawing.Color.LightCyan;
+            this.currencycb.DataSource = this.currencyBS;
+            this.currencycb.DisplayMember = "CurrencyName";
+            this.currencycb.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.currencycb.FormattingEnabled = true;
+            this.currencycb.Location = new System.Drawing.Point(892, 37);
+            this.currencycb.Name = "currencycb";
+            this.currencycb.Size = new System.Drawing.Size(115, 25);
+            this.currencycb.TabIndex = 4;
+            this.currencycb.ValueMember = "Id";
+            this.currencycb.SelectedValueChanged += new System.EventHandler(this.currencycb_SelectedValueChanged);
+            // 
+            // currencyBS
+            // 
+            this.currencyBS.DataSource = typeof(Alver.DAL.Currency);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1013, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 19);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "العملة:";
+            // 
+            // billdatedtp
+            // 
+            this.billdatedtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.billdatedtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.billdatedtp.Location = new System.Drawing.Point(701, 5);
+            this.billdatedtp.Name = "billdatedtp";
+            this.billdatedtp.RightToLeftLayout = true;
+            this.billdatedtp.Size = new System.Drawing.Size(92, 25);
+            this.billdatedtp.TabIndex = 1;
+            // 
+            // declarationtb
+            // 
+            this.declarationtb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.declarationtb.Location = new System.Drawing.Point(239, 37);
+            this.declarationtb.Name = "declarationtb";
+            this.declarationtb.Size = new System.Drawing.Size(365, 25);
+            this.declarationtb.TabIndex = 5;
+            // 
+            // billtypecb
+            // 
+            this.billtypecb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.billtypecb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.billtypecb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.billtypecb.BackColor = System.Drawing.Color.LightCyan;
+            this.billtypecb.DisplayMember = "CurrencyName";
+            this.billtypecb.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.billtypecb.FormattingEnabled = true;
+            this.billtypecb.Items.AddRange(new object[] {
+            "شراء"});
+            this.billtypecb.Location = new System.Drawing.Point(892, 5);
+            this.billtypecb.Name = "billtypecb";
+            this.billtypecb.Size = new System.Drawing.Size(115, 25);
+            this.billtypecb.TabIndex = 0;
+            this.billtypecb.ValueMember = "Id";
+            this.billtypecb.SelectedValueChanged += new System.EventHandler(this.billtypecb_SelectedValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1006, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 19);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "نوع الفاتورة";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.pricesypnud);
+            this.panel2.Controls.Add(this.priceusdnud);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.newQuantitynud);
+            this.panel2.Controls.Add(this.remainedquantitynud);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.barcodecb);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.itemcb);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Location = new System.Drawing.Point(12, 92);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1090, 35);
+            this.panel2.TabIndex = 0;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(9, 8);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 19);
+            this.label15.TabIndex = 67;
+            this.label15.Text = "ل.س";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(150, 8);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(17, 19);
+            this.label14.TabIndex = 66;
+            this.label14.Text = "$";
+            // 
+            // pricesypnud
+            // 
+            this.pricesypnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pricesypnud.Location = new System.Drawing.Point(47, 5);
+            this.pricesypnud.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.pricesypnud.Name = "pricesypnud";
+            this.pricesypnud.ReadOnly = true;
+            this.pricesypnud.Size = new System.Drawing.Size(92, 25);
+            this.pricesypnud.TabIndex = 65;
+            this.pricesypnud.TabStop = false;
+            this.pricesypnud.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.pricesypnud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // priceusdnud
+            // 
+            this.priceusdnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.priceusdnud.DecimalPlaces = 2;
+            this.priceusdnud.Location = new System.Drawing.Point(169, 5);
+            this.priceusdnud.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.priceusdnud.Name = "priceusdnud";
+            this.priceusdnud.ReadOnly = true;
+            this.priceusdnud.Size = new System.Drawing.Size(92, 25);
+            this.priceusdnud.TabIndex = 64;
+            this.priceusdnud.TabStop = false;
+            this.priceusdnud.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.priceusdnud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(267, 8);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 19);
+            this.label12.TabIndex = 63;
+            this.label12.Text = "السعر";
+            // 
+            // newQuantitynud
+            // 
+            this.newQuantitynud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.newQuantitynud.Location = new System.Drawing.Point(368, 5);
+            this.newQuantitynud.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.newQuantitynud.Name = "newQuantitynud";
+            this.newQuantitynud.ReadOnly = true;
+            this.newQuantitynud.Size = new System.Drawing.Size(92, 25);
+            this.newQuantitynud.TabIndex = 62;
+            this.newQuantitynud.TabStop = false;
+            this.newQuantitynud.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.newQuantitynud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // remainedquantitynud
+            // 
+            this.remainedquantitynud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.remainedquantitynud.Location = new System.Drawing.Point(464, 5);
+            this.remainedquantitynud.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.remainedquantitynud.Name = "remainedquantitynud";
+            this.remainedquantitynud.ReadOnly = true;
+            this.remainedquantitynud.Size = new System.Drawing.Size(92, 25);
+            this.remainedquantitynud.TabIndex = 61;
+            this.remainedquantitynud.TabStop = false;
+            this.remainedquantitynud.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.remainedquantitynud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(562, 8);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(98, 19);
+            this.label13.TabIndex = 57;
+            this.label13.Text = "الكمية المتبقية:";
+            // 
+            // barcodecb
+            // 
+            this.barcodecb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.barcodecb.BackColor = System.Drawing.Color.LightCyan;
+            this.barcodecb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.barcodecb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.barcodecb.FormattingEnabled = true;
+            this.barcodecb.Location = new System.Drawing.Point(873, 4);
+            this.barcodecb.Name = "barcodecb";
+            this.barcodecb.Size = new System.Drawing.Size(150, 26);
+            this.barcodecb.TabIndex = 0;
+            this.barcodecb.KeyUp += new System.Windows.Forms.KeyEventHandler(this.barcodecb_KeyUp);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1029, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 19);
+            this.label10.TabIndex = 55;
+            this.label10.Text = "الباركود:";
+            // 
+            // itemcb
+            // 
+            this.itemcb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemcb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.itemcb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.itemcb.BackColor = System.Drawing.Color.LightCyan;
+            this.itemcb.DataSource = this.itemBS;
+            this.itemcb.DisplayMember = "ItemName";
+            this.itemcb.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.itemcb.FormattingEnabled = true;
+            this.itemcb.Location = new System.Drawing.Point(665, 5);
+            this.itemcb.Name = "itemcb";
+            this.itemcb.Size = new System.Drawing.Size(150, 25);
+            this.itemcb.TabIndex = 1;
+            this.itemcb.ValueMember = "Id";
+            this.itemcb.KeyUp += new System.Windows.Forms.KeyEventHandler(this.itemcb_KeyUp);
+            // 
+            // itemBS
+            // 
+            this.itemBS.DataSource = typeof(Alver.DAL.Item);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(821, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 19);
+            this.label5.TabIndex = 53;
+            this.label5.Text = "المادة:";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.printbillchkbox);
+            this.panel3.Controls.Add(this.cashoutbillbtn);
+            this.panel3.Controls.Add(this.susspendbillbtn);
+            this.panel3.Controls.Add(this.clearbilllinesbtn);
+            this.panel3.Location = new System.Drawing.Point(12, 135);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(217, 260);
+            this.panel3.TabIndex = 2;
+            // 
+            // printbillchkbox
+            // 
+            this.printbillchkbox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.printbillchkbox.Image = global::Alver.Properties.Resources.print;
+            this.printbillchkbox.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.printbillchkbox.Location = new System.Drawing.Point(0, 149);
+            this.printbillchkbox.Name = "printbillchkbox";
+            this.printbillchkbox.Size = new System.Drawing.Size(217, 55);
+            this.printbillchkbox.TabIndex = 3;
+            this.printbillchkbox.Text = "طباعة الفاتورة بعد الحفظ";
+            this.printbillchkbox.UseVisualStyleBackColor = true;
+            // 
+            // cashoutbillbtn
+            // 
+            this.cashoutbillbtn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.cashoutbillbtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cashoutbillbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cashoutbillbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cashoutbillbtn.Location = new System.Drawing.Point(0, 204);
+            this.cashoutbillbtn.Name = "cashoutbillbtn";
+            this.cashoutbillbtn.Size = new System.Drawing.Size(217, 56);
+            this.cashoutbillbtn.TabIndex = 2;
+            this.cashoutbillbtn.Text = "حفظ وترحيل الفاتورة";
+            this.cashoutbillbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cashoutbillbtn.UseVisualStyleBackColor = false;
+            this.cashoutbillbtn.Click += new System.EventHandler(this.cashoutbillbtn_Click);
+            // 
+            // susspendbillbtn
+            // 
+            this.susspendbillbtn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.susspendbillbtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.susspendbillbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.susspendbillbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.susspendbillbtn.Location = new System.Drawing.Point(0, 48);
+            this.susspendbillbtn.Name = "susspendbillbtn";
+            this.susspendbillbtn.Size = new System.Drawing.Size(217, 48);
+            this.susspendbillbtn.TabIndex = 1;
+            this.susspendbillbtn.Text = "حفظ وتعليق الفاتورة";
+            this.susspendbillbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.susspendbillbtn.UseVisualStyleBackColor = false;
+            this.susspendbillbtn.Visible = false;
+            // 
+            // clearbilllinesbtn
+            // 
+            this.clearbilllinesbtn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.clearbilllinesbtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.clearbilllinesbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearbilllinesbtn.Image = global::Alver.Properties.Resources.trash;
+            this.clearbilllinesbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.clearbilllinesbtn.Location = new System.Drawing.Point(0, 0);
+            this.clearbilllinesbtn.Name = "clearbilllinesbtn";
+            this.clearbilllinesbtn.Size = new System.Drawing.Size(217, 48);
+            this.clearbilllinesbtn.TabIndex = 0;
+            this.clearbilllinesbtn.Text = "تفريغ الفاتورة";
+            this.clearbilllinesbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.clearbilllinesbtn.UseVisualStyleBackColor = false;
+            this.clearbilllinesbtn.Click += new System.EventHandler(this.clearbilllinesbtn_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.sumtotalsnud);
+            this.panel4.Controls.Add(label4);
+            this.panel4.Controls.Add(this.totalnud);
+            this.panel4.Controls.Add(label9);
+            this.panel4.Controls.Add(this.discountnud);
+            this.panel4.Controls.Add(amountLabel);
+            this.panel4.Location = new System.Drawing.Point(238, 401);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(864, 37);
+            this.panel4.TabIndex = 3;
             // 
             // sumtotalsnud
             // 
             this.sumtotalsnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sumtotalsnud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "BillAmount", true));
-            this.sumtotalsnud.DecimalPlaces = 3;
-            this.sumtotalsnud.Location = new System.Drawing.Point(851, 41);
+            this.sumtotalsnud.DecimalPlaces = 2;
+            this.sumtotalsnud.Enabled = false;
+            this.sumtotalsnud.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.sumtotalsnud.Location = new System.Drawing.Point(655, 6);
             this.sumtotalsnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             0});
             this.sumtotalsnud.Name = "sumtotalsnud";
-            this.sumtotalsnud.ReadOnly = true;
-            this.sumtotalsnud.Size = new System.Drawing.Size(120, 23);
-            this.sumtotalsnud.TabIndex = 43;
+            this.sumtotalsnud.Size = new System.Drawing.Size(120, 25);
+            this.sumtotalsnud.TabIndex = 49;
+            this.sumtotalsnud.TabStop = false;
             // 
             // totalnud
             // 
             this.totalnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalnud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "TotalAmount", true));
-            this.totalnud.DecimalPlaces = 3;
-            this.totalnud.Location = new System.Drawing.Point(599, 41);
+            this.totalnud.DecimalPlaces = 2;
+            this.totalnud.Enabled = false;
+            this.totalnud.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.totalnud.Location = new System.Drawing.Point(194, 6);
             this.totalnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             0});
             this.totalnud.Name = "totalnud";
-            this.totalnud.ReadOnly = true;
-            this.totalnud.Size = new System.Drawing.Size(120, 23);
-            this.totalnud.TabIndex = 10;
+            this.totalnud.Size = new System.Drawing.Size(120, 25);
+            this.totalnud.TabIndex = 45;
+            this.totalnud.TabStop = false;
             // 
             // discountnud
             // 
             this.discountnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.discountnud.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.BillBS, "DiscountAmount", true));
-            this.discountnud.DecimalPlaces = 3;
-            this.discountnud.Location = new System.Drawing.Point(725, 41);
+            this.discountnud.DecimalPlaces = 2;
+            this.discountnud.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.discountnud.Location = new System.Drawing.Point(456, 6);
             this.discountnud.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             0});
             this.discountnud.Name = "discountnud";
-            this.discountnud.Size = new System.Drawing.Size(120, 23);
-            this.discountnud.TabIndex = 10;
-            this.discountnud.ValueChanged += new System.EventHandler(this.discountnud_ValueChanged_1);
+            this.discountnud.Size = new System.Drawing.Size(120, 25);
+            this.discountnud.TabIndex = 0;
             // 
-            // bindingNavigator2
+            // dgvtotal
             // 
-            this.bindingNavigator2.AddNewItem = null;
-            this.bindingNavigator2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bindingNavigator2.CountItem = null;
-            this.bindingNavigator2.CountItemFormat = "من أصل {0}";
-            this.bindingNavigator2.DeleteItem = null;
-            this.bindingNavigator2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bindingNavigator2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.bindingNavigator2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator7,
-            this.toolStripSeparator9,
-            this.checkbillbtn,
-            this.toolStripSeparator6,
-            this.chechprintbillbtn,
-            this.toolStripSeparator10,
-            this.editbillbtn});
-            this.bindingNavigator2.Location = new System.Drawing.Point(0, 446);
-            this.bindingNavigator2.MoveFirstItem = null;
-            this.bindingNavigator2.MoveLastItem = null;
-            this.bindingNavigator2.MoveNextItem = null;
-            this.bindingNavigator2.MovePreviousItem = null;
-            this.bindingNavigator2.Name = "bindingNavigator2";
-            this.bindingNavigator2.PositionItem = null;
-            this.bindingNavigator2.Size = new System.Drawing.Size(990, 27);
-            this.bindingNavigator2.TabIndex = 41;
+            this.dgvtotal.AllowUserToAddRows = false;
+            this.dgvtotal.AllowUserToDeleteRows = false;
+            this.dgvtotal.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvtotal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvtotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvtotal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvtotal.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvtotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvtotal.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgvtotal.Location = new System.Drawing.Point(238, 338);
+            this.dgvtotal.MultiSelect = false;
+            this.dgvtotal.Name = "dgvtotal";
+            this.dgvtotal.ReadOnly = true;
+            this.dgvtotal.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.dgvtotal.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.dgvtotal.RowTemplate.Height = 30;
+            this.dgvtotal.Size = new System.Drawing.Size(864, 57);
+            this.dgvtotal.TabIndex = 14;
+            this.dgvtotal.VirtualMode = true;
+            this.dgvtotal.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             // 
-            // toolStripSeparator7
+            // panel5
             // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 27);
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.totalpurchaseamountnud);
+            this.panel5.Controls.Add(label6);
+            this.panel5.Location = new System.Drawing.Point(238, 445);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(864, 37);
+            this.panel5.TabIndex = 50;
             // 
-            // toolStripSeparator9
+            // totalpurchaseamountnud
             // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 27);
+            this.totalpurchaseamountnud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalpurchaseamountnud.DecimalPlaces = 2;
+            this.totalpurchaseamountnud.Enabled = false;
+            this.totalpurchaseamountnud.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.totalpurchaseamountnud.Location = new System.Drawing.Point(493, 6);
+            this.totalpurchaseamountnud.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.totalpurchaseamountnud.Name = "totalpurchaseamountnud";
+            this.totalpurchaseamountnud.Size = new System.Drawing.Size(120, 25);
+            this.totalpurchaseamountnud.TabIndex = 49;
+            this.totalpurchaseamountnud.TabStop = false;
             // 
-            // checkbillbtn
+            // button1
             // 
-            this.checkbillbtn.Image = global::Alver.Properties.Resources.savebill;
-            this.checkbillbtn.Name = "checkbillbtn";
-            this.checkbillbtn.RightToLeftAutoMirrorImage = true;
-            this.checkbillbtn.Size = new System.Drawing.Size(98, 24);
-            this.checkbillbtn.Text = "ترحيل الفاتورة";
-            this.checkbillbtn.Click += new System.EventHandler(this.checkbillbtn_Click);
+            this.button1.Image = global::Alver.Properties.Resources.icons8_control_panel_25px2;
+            this.button1.Location = new System.Drawing.Point(79, 401);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 81);
+            this.button1.TabIndex = 51;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // toolStripSeparator6
+            // Sell
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
-            // 
-            // chechprintbillbtn
-            // 
-            this.chechprintbillbtn.Image = global::Alver.Properties.Resources.saveandprintbill;
-            this.chechprintbillbtn.Name = "chechprintbillbtn";
-            this.chechprintbillbtn.RightToLeftAutoMirrorImage = true;
-            this.chechprintbillbtn.Size = new System.Drawing.Size(137, 24);
-            this.chechprintbillbtn.Text = "ترحيل وطباعة الفاتورة";
-            this.chechprintbillbtn.Click += new System.EventHandler(this.chechprintbillbtn_Click);
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 27);
-            // 
-            // editbillbtn
-            // 
-            this.editbillbtn.Image = global::Alver.Properties.Resources.print;
-            this.editbillbtn.Name = "editbillbtn";
-            this.editbillbtn.RightToLeftAutoMirrorImage = true;
-            this.editbillbtn.Size = new System.Drawing.Size(100, 24);
-            this.editbillbtn.Text = "طباعة الفاتورة";
-            this.editbillbtn.Click += new System.EventHandler(this.addbtn_Click);
-            // 
-            // totallinesyplbl
-            // 
-            this.totallinesyplbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.totallinesyplbl.AutoSize = true;
-            this.totallinesyplbl.Location = new System.Drawing.Point(127, 52);
-            this.totallinesyplbl.Name = "totallinesyplbl";
-            this.totallinesyplbl.Size = new System.Drawing.Size(13, 15);
-            this.totallinesyplbl.TabIndex = 60;
-            this.totallinesyplbl.Text = "0";
-            // 
-            // totallineudslbl
-            // 
-            this.totallineudslbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.totallineudslbl.AutoSize = true;
-            this.totallineudslbl.Location = new System.Drawing.Point(238, 52);
-            this.totallineudslbl.Name = "totallineudslbl";
-            this.totallineudslbl.Size = new System.Drawing.Size(13, 15);
-            this.totallineudslbl.TabIndex = 59;
-            this.totallineudslbl.Text = "0";
-            // 
-            // frmPurchase
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(990, 473);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.bindingNavigator2);
-            this.Controls.Add(this.tabControl2);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(1114, 492);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.dgvtotal);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dgv);
+            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmPurchase";
+            this.KeyPreview = true;
+            this.Name = "Sell";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "فواتير الشراء";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmExchange_FormClosing);
-            this.Load += new System.EventHandler(this.frmExchange_Load);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.billLinesDgv)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "فاتورة شراء";
+            this.Load += new System.EventHandler(this.pos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.billLinesBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillLineBN)).EndInit();
-            this.BillLineBN.ResumeLayout(false);
-            this.BillLineBN.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.billLineBS)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exchangedpricenud)).EndInit();
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ratenud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currencyBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pricenud)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quantitynud)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBS)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BillBN)).EndInit();
-            this.BillBN.ResumeLayout(false);
-            this.BillBN.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.syrTotalnud)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ratenud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pricesypnud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceusdnud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newQuantitynud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.remainedquantitynud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBS)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sumtotalsnud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.totalnud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.discountnud)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).EndInit();
-            this.bindingNavigator2.ResumeLayout(false);
-            this.bindingNavigator2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvtotal)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.totalpurchaseamountnud)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.BindingSource currencyBS;
-#pragma warning disable CS0169 // The field 'frmPurchase.fromAmountDataGridViewTextBoxColumn' is never used
-        private System.Windows.Forms.DataGridViewTextBoxColumn fromAmountDataGridViewTextBoxColumn;
-#pragma warning restore CS0169 // The field 'frmPurchase.fromAmountDataGridViewTextBoxColumn' is never used
-#pragma warning disable CS0169 // The field 'frmPurchase.toCurrencyIdDataGridViewTextBoxColumn' is never used
-        private System.Windows.Forms.DataGridViewComboBoxColumn toCurrencyIdDataGridViewTextBoxColumn;
-#pragma warning restore CS0169 // The field 'frmPurchase.toCurrencyIdDataGridViewTextBoxColumn' is never used
-#pragma warning disable CS0169 // The field 'frmPurchase.toAmountDataGridViewTextBoxColumn' is never used
-        private System.Windows.Forms.DataGridViewTextBoxColumn toAmountDataGridViewTextBoxColumn;
-#pragma warning restore CS0169 // The field 'frmPurchase.toAmountDataGridViewTextBoxColumn' is never used
-        private System.Windows.Forms.BindingNavigator BillLineBN;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.BindingSource BillBS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage2;
+
+        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox billtypecb;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker billdatedtp;
         private System.Windows.Forms.TextBox declarationtb;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView billLinesDgv;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.BindingSource billLinesBS;
-        private System.Windows.Forms.BindingNavigator BillBN;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private System.Windows.Forms.ToolStripButton toolStripButton7;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripButton addbillbtn;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton deletebillbtn;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox currencycb;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button addbilllinebtn;
-        private System.Windows.Forms.NumericUpDown pricenud;
-        private System.Windows.Forms.NumericUpDown quantitynud;
-        private System.Windows.Forms.ComboBox unitcb;
-        private System.Windows.Forms.ComboBox itemcb;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox accountcb;
+        private System.Windows.Forms.BindingSource currencyBS;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.BindingSource accountBS;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown sumtotalsnud;
-        private System.Windows.Forms.NumericUpDown discountnud;
-        private System.Windows.Forms.BindingSource unitBS;
-        private System.Windows.Forms.BindingSource itemBS;
-        private System.Windows.Forms.BindingSource itemBindingSource;
-        private System.Windows.Forms.BindingSource unitBindingSource;
-        private System.Windows.Forms.BindingSource currencyBindingSource;
-        private System.Windows.Forms.BindingSource userBindingSource;
-        private System.Windows.Forms.BindingNavigator bindingNavigator2;
-        private System.Windows.Forms.ToolStripButton editbillbtn;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripButton checkbillbtn;
-        private System.Windows.Forms.ToolStripButton chechprintbillbtn;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripButton deletebilllinebtn;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.BindingSource billLineBS;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox barcodecb;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown ratenud;
+        private System.Windows.Forms.ComboBox itemcb;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button clearbilllinesbtn;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.NumericUpDown sumtotalsnud;
         private System.Windows.Forms.NumericUpDown totalnud;
-        private System.Windows.Forms.NumericUpDown syrTotalnud;
-        private System.Windows.Forms.CheckBox payedchkbox;
-        private System.Windows.Forms.CheckBox exchangebillchkbox;
-        private System.Windows.Forms.Label remainedquantitylbl;
+        private System.Windows.Forms.NumericUpDown discountnud;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DataGridViewComboBoxColumn itemIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn unitIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn currencyIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExchangedAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalpriceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExchangedTotalAmount;
-        private System.Windows.Forms.DataGridViewComboBoxColumn userIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.NumericUpDown exchangedpricenud;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox billIdcb;
+        private System.Windows.Forms.NumericUpDown ratenud;
+        private System.Windows.Forms.Button cashoutbillbtn;
+        private System.Windows.Forms.BindingSource itemBS;
+        private System.Windows.Forms.DataGridView dgvtotal;
+        private System.Windows.Forms.BindingSource itemBindingSource;
+        private System.Windows.Forms.BindingSource unitBindingSource;
+        private System.Windows.Forms.NumericUpDown remainedquantitynud;
+        private System.Windows.Forms.NumericUpDown newQuantitynud;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.NumericUpDown totalpurchaseamountnud;
+        private System.Windows.Forms.Button susspendbillbtn;
+        private System.Windows.Forms.ComboBox accountcb;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox purchasetypecb;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label totallinesyplbl;
-        private System.Windows.Forms.Label totallineudslbl;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown pricesypnud;
+        private System.Windows.Forms.NumericUpDown priceusdnud;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.BindingSource accountBS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idclm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn billidclm;
+        private System.Windows.Forms.DataGridViewComboBoxColumn itemidclm;
+        private System.Windows.Forms.DataGridViewComboBoxColumn unitidclm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityclm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyidclm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceclm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalclm;
+        private System.Windows.Forms.DataGridViewImageColumn deleteclm;
+        private System.Windows.Forms.CheckBox printbillchkbox;
+        private System.Windows.Forms.Button button1;
     }
 }

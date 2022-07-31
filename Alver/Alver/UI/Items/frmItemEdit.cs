@@ -82,7 +82,7 @@ namespace Alver.UI.Items
                         itemcb.Focus();
                         _result = false;
                     }
-                    else if (db.Accounts.Any(x => x.FullName.ToLower().Trim() == itemcb.Text.ToLower().Trim()))
+                    else if (db.Items.Any(x => x.ItemName.ToLower().Trim() == itemcb.Text.ToLower().Trim()))
                     {
                         MessageBox.Show("اسم المادة موجود من قبل، يرجى اختيار اسم آخر");
                         itemcb.Focus();

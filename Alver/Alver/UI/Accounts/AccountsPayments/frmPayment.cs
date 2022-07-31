@@ -36,7 +36,7 @@ namespace Alver.UI.Accounts.AccountsPayments
                 db.Accounts.AsNoTracking().Load();
                 db.Currencies.AsNoTracking().Load();
                 accountsInfoBindingSource.DataSource = db.Accounts.AsNoTracking().Where(x => x.Deactivated == false && x.Hidden == false).ToList().AsQueryable();
-                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
+                currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1).AsNoTracking().ToList().AsQueryable();
             }
             MISC.Utilities.SearchableComboBox(clientComboBox);
         }

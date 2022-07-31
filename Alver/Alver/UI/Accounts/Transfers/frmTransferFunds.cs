@@ -47,7 +47,7 @@ namespace Alver.UI.Accounts.Transfers
                 db.Currencies.AsNoTracking().Load();
                 db.AccountFunds.AsNoTracking().Load();
                 db.Accounts.AsNoTracking().Load();
-                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
+                currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1).AsNoTracking().ToList().AsQueryable();
                 accountsInfoBindingSource.DataSource = db.Accounts.AsNoTracking().Where(x => x.Deactivated == false && x.Hidden == false).ToList().AsQueryable();
                 accountsInfoBindingSource1.DataSource = db.Accounts.AsNoTracking().Where(x => x.Deactivated == false && x.Hidden == false).ToList().AsQueryable();
             }

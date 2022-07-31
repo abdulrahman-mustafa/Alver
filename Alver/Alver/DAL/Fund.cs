@@ -17,7 +17,7 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Fund()
         {
-            this.FundTransactions = new ObservableListSource<FundTransaction>();
+            this.FundTransactions = new HashSet<FundTransaction>();
         }
     
         public int Id { get; set; }
@@ -36,6 +36,6 @@ namespace Alver.DAL
         public virtual Currency Currency { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<FundTransaction> FundTransactions { get; set; }
+        public virtual ICollection<FundTransaction> FundTransactions { get; set; }
     }
 }

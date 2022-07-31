@@ -39,7 +39,7 @@ namespace Alver.UI.Accounts.Withdraws
         {
             using (dbEntities db = new dbEntities(0))
             {
-                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
+                currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1).AsNoTracking().ToList().AsQueryable();
                 accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().ToList().AsQueryable();
             }
             MISC.Utilities.SearchableComboBox(accountcb);

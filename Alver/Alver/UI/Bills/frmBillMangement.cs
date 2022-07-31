@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using static Alver.MISC.Utilities;
+using static Alver.MISC.BillsFuncs;
 
 namespace Alver.UI.Bills
 {
@@ -34,6 +35,11 @@ namespace Alver.UI.Bills
 
         private void frmIncomes_Load(object sender, EventArgs e)
         {
+            if (BillsCount()<=0)
+            {
+                MessageBox.Show("لم يتم اضافة اي فاتورة بعد");
+                this.Close();
+            }
             //using (dbEntities db = new dbEntities(0))
             //{
             //    db.Bills.AsNoTracking().Load();
@@ -295,7 +301,7 @@ namespace Alver.UI.Bills
                         }
                         else if (_tempBill.BillType == BillType.شراء.ToString())
                         {
-                            (new frmPurchase(_billid)).ShowDialog();
+                            (new frmPurchase_NOTUSED(_billid)).ShowDialog();
                         }
                     }
                 }

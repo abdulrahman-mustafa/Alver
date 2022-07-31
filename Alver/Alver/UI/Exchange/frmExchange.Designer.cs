@@ -301,7 +301,7 @@
             // 
             // currencyExchangeBindingSource
             // 
-            this.currencyExchangeBindingSource.DataSource = typeof(Alver.DAL.CurrencyExchange);
+            this.currencyExchangeBindingSource.DataSource = typeof(Alver.DAL.CurrencyExchanx);
             this.currencyExchangeBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.currencyExchangeBindingSource_ListChanged);
             // 
             // currencyExchangeOperationBindingNavigator

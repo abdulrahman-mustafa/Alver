@@ -33,6 +33,7 @@ namespace Alver.DAL
         public dbEntities(int x)
             : base(GetConnectionString())
         {
+            Configuration.ProxyCreationEnabled = false;
         }
     }
 }

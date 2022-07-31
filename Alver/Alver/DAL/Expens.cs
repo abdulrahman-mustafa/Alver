@@ -12,27 +12,23 @@ namespace Alver.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class CurrencyExchange
+    public partial class Expens
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CurrencyExchange()
-        {
-            this.CurrencyExchangeOperations = new ObservableListSource<CurrencyExchangeOperation>();
-        }
-    
-        public long Id { get; set; }
-        public string ExchangeType { get; set; }
-        public Nullable<System.DateTime> ExchangeDate { get; set; }
+        public int Id { get; set; }
+        public Nullable<System.DateTime> ExpenseDate { get; set; }
+        public Nullable<int> CurrencyId { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public Nullable<int> CategoryId { get; set; }
         public string Declaration { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<System.Guid> GUID { get; set; }
-        public string Flag { get; set; }
         public Nullable<bool> Hidden { get; set; }
+        public string Flag { get; set; }
         public Nullable<System.DateTime> LUD { get; set; }
         public Nullable<bool> PROTECTED { get; set; }
     
+        public virtual Currency Currency { get; set; }
+        public virtual ExpenseCategory ExpenseCategory { get; set; }
         public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<CurrencyExchangeOperation> CurrencyExchangeOperations { get; set; }
     }
 }

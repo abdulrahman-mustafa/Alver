@@ -103,7 +103,7 @@
             // 
             // payments_ExpenseBindingSource
             // 
-            this.payments_ExpenseBindingSource.DataSource = typeof(Alver.DAL.Expense);
+            this.payments_ExpenseBindingSource.DataSource = typeof(Alver.DAL.Expens);
             this.payments_ExpenseBindingSource.CurrentChanged += new System.EventHandler(this.payments_ExpenseBindingSource_CurrentChanged);
             // 
             // paymentsExpenseCategoryBindingSource

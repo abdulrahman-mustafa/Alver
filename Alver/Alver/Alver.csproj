@@ -193,23 +193,26 @@
     <Compile Include="DAL\CurrencyBulletin.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\CurrencyExchange.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="DAL\CurrencyExchangeOperation.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\dbEntities.cs" />
-    <Compile Include="DAL\Exchange.cs">
+    <Compile Include="DAL\CurrencyExchanx.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\dbEntities.cs" />
     <Compile Include="DAL\ExchangeFund.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Expense.cs">
+    <Compile Include="DAL\Exchanx.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Expens.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\ExpenseCategory.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\f11111BillSlip_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Fund.cs">
@@ -275,10 +278,19 @@
     <Compile Include="DAL\SP_ClientGrand_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\SP_ClientsGrand_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SP_FundsGrand_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\SP_FundsMovements_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\SP_ItemGrand_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SP_ItemsGrand_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Transaction.cs">
@@ -310,6 +322,7 @@
     <Compile Include="Misc\DateTimeCompare.cs" />
     <Compile Include="Misc\Exporter.cs" />
     <Compile Include="Misc\Extensions.cs" />
+    <Compile Include="Misc\FundsFuncs.cs" />
     <Compile Include="Misc\ItemFuncs.cs" />
     <Compile Include="Misc\LocalReportExtensions.cs" />
     <Compile Include="Misc\MSGs.cs" />
@@ -419,11 +432,11 @@
     <Compile Include="UI\Bills\frmBillMangement.Designer.cs">
       <DependentUpon>frmBillMangement.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Bills\frmPurchase.cs">
+    <Compile Include="UI\Bills\frmPurchase-NOTUSED.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Bills\frmPurchase.Designer.cs">
-      <DependentUpon>frmPurchase.cs</DependentUpon>
+    <Compile Include="UI\Bills\frmPurchase-NOTUSED.Designer.cs">
+      <DependentUpon>frmPurchase-NOTUSED.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Bills\frmPOS.cs">
       <SubType>Form</SubType>
@@ -437,11 +450,11 @@
     <Compile Include="UI\Bills\frmSell.Designer.cs">
       <DependentUpon>frmSell.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Bills\Sell.cs">
+    <Compile Include="UI\Bills\frmPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Bills\Sell.Designer.cs">
-      <DependentUpon>Sell.cs</DependentUpon>
+    <Compile Include="UI\Bills\frmPurchase.Designer.cs">
+      <DependentUpon>frmPurchase.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Bills\POS.cs">
       <SubType>Form</SubType>
@@ -510,6 +523,12 @@
     </Compile>
     <Compile Include="UI\Funds\frmRefunds.Designer.cs">
       <DependentUpon>frmRefunds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Funds\frmFunds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Funds\frmFunds.Designer.cs">
+      <DependentUpon>frmFunds.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Funds\Transactions\frmFundTransaction.cs">
       <SubType>Form</SubType>
@@ -726,8 +745,8 @@
     <EmbeddedResource Include="UI\Bills\frmBillMangement.resx">
       <DependentUpon>frmBillMangement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Bills\frmPurchase.resx">
-      <DependentUpon>frmPurchase.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Bills\frmPurchase-NOTUSED.resx">
+      <DependentUpon>frmPurchase-NOTUSED.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Bills\frmPOS.resx">
       <DependentUpon>frmPOS.cs</DependentUpon>
@@ -735,8 +754,8 @@
     <EmbeddedResource Include="UI\Bills\frmSell.resx">
       <DependentUpon>frmSell.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Bills\Sell.resx">
-      <DependentUpon>Sell.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Bills\frmPurchase.resx">
+      <DependentUpon>frmPurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Bills\POS.resx">
       <DependentUpon>POS.cs</DependentUpon>
@@ -780,6 +799,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Funds\frmRefunds.resx">
       <DependentUpon>frmRefunds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Funds\frmFunds.resx">
+      <DependentUpon>frmFunds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Funds\Transactions\frmFundTransaction.resx">
       <DependentUpon>frmFundTransaction.cs</DependentUpon>
@@ -862,14 +884,14 @@
     <EmbeddedResource Include="UI\Utilities\frmDBTools.resx">
       <DependentUpon>frmDBTools.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="DAL\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include=".editorconfig" />
     <None Include="connections.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <EntityDeploy Include="DAL\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="DAL\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>

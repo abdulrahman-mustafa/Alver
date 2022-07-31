@@ -12,6 +12,7 @@ using JCS;
 using Alver.DAL;
 using Alver.MISC;
 using Alver.UI.Accounts.AccountReports;
+using static Alver.MISC.ItemFuncs;
 
 namespace Alver.UI.Items.Transactions
 {
@@ -38,17 +39,25 @@ namespace Alver.UI.Items.Transactions
 
         private void frmTransactions_Load(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities(0))
+            if (ItemsCount() > 0)
             {
-                unitBindingSource.DataSource = db.Units.AsNoTracking().ToList().AsQueryable();
-                unitBindingSource1.DataSource = db.Units.AsNoTracking().AsQueryable().ToList();
-                itemBindingSource.DataSource = db.Items.Where(x => x.Hidden == false).AsNoTracking().ToList().AsQueryable();
-                itemBindingSource1.DataSource = db.Items.Where(x => x.Hidden == false).AsNoTracking().ToList().AsQueryable();
+                using (dbEntities db = new dbEntities(0))
+                {
+                    unitBindingSource.DataSource = db.Units.AsNoTracking().ToList().AsQueryable();
+                    unitBindingSource1.DataSource = db.Units.AsNoTracking().AsQueryable().ToList();
+                    itemBindingSource.DataSource = db.Items.Where(x => x.Hidden == false).AsNoTracking().ToList().AsQueryable();
+                    itemBindingSource1.DataSource = db.Items.Where(x => x.Hidden == false).AsNoTracking().ToList().AsQueryable();
+                }
+                MISC.Utilities.SearchableComboBox(itemcb);
+                MISC.Utilities.SearchableComboBox(unitcb);
+                _toggles.Add(onlypurchases);
+                _toggles.Add(onlysales);
             }
-            MISC.Utilities.SearchableComboBox(itemcb);
-            MISC.Utilities.SearchableComboBox(unitcb);
-            _toggles.Add(onlypurchases);
-            _toggles.Add(onlysales);
+            else
+            {
+                this.Close();
+            }
+            
         }
 
         private void DGVTotals()

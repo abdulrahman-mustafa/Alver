@@ -33,10 +33,10 @@ namespace Alver.DAL
         public Nullable<System.DateTime> LUD { get; set; }
         public Nullable<bool> PROTECTED { get; set; }
     
-        public virtual Account Account { get; set; }
-        public virtual Account Account1 { get; set; }
         public virtual AccountFund AccountFund { get; set; }
         public virtual AccountFund AccountFund1 { get; set; }
+        public virtual Account Account { get; set; }
+        public virtual Account Account1 { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual User User { get; set; }
     }

@@ -28,8 +28,11 @@ namespace Alver.MISC
         public static void ErrorMessage(Exception Ex = null)
         {
             string _msg = "حدث خطأ داخلي";
+            var methodFullName = Ex.TargetSite.ReflectedType.FullName;
             if (Ex != null)
             {
+                _msg += Environment.NewLine;
+                _msg += "Method crashed: " + methodFullName;
                 _msg += Environment.NewLine;
                 _msg += Ex.Message;
             }

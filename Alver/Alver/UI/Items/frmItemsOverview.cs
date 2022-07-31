@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
+using static Alver.MISC.ItemFuncs;
 
 namespace Alver.UI.Items
 {
@@ -17,12 +18,20 @@ namespace Alver.UI.Items
 
         private void frmClientsOverview_Load(object sender, EventArgs e)
         {
-            sortcb.Checked = false;
-            using (dbEntities db = new dbEntities(0))
+            if (ItemsCount() > 0)
             {
-                db.Currencies.Load();
-                currencyBindingSource.DataSource = db.Currencies.ToList();
+                sortcb.Checked = false;
+                using (dbEntities db = new dbEntities(0))
+                {
+                    db.Currencies.Load();
+                    currencyBindingSource.DataSource = db.Currencies.ToList();
+                }
             }
+            else
+            {
+                this.Close();
+            }
+            
         }
 
         private void printbtn_Click(object sender, EventArgs e)

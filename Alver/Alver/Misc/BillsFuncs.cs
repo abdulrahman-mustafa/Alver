@@ -5,11 +5,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Alver.MISC.Utilities;
 
 namespace Alver.MISC
 {
-    public class BillsFuncs
+    public static class BillsFuncs
     {
+        public static int BillsCount()
+        {
+            int _result = 0;
+            _result = (new dbEntities(0)).Bills.Count();
+            return _result;
+        }
+        public static int PurchaseBillsCount()
+        {
+            int _result = 0;
+            _result = (new dbEntities(0)).Bills.Where(x => x.BillType == BillType.شراء.ToString()).Count();
+            return _result;
+        }
+            public static bool CheckRecords()
+        {
+            bool _result = true;
+            using (dbEntities db = new dbEntities(0))
+            {
+                if (db.Items.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة مواد بعد، لا يمكنك إضافة فاتورة");
+                    _result = false;
+                }
+                else if (db.Currencies.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة عملات بعد، لا يمكنك اضافة فاتورة");
+                    _result = false;
+                }
+                else if (db.Accounts.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة وكلاء او زبائن بعد، لا يمكنك إضافة فاتورة");
+                    _result = false;
+                }
+                else if (db.CurrencyBulletins.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة اسعار الصرف بعد، لا يمكنك إضافة فاتورة");
+                    _result = false;
+                }
+            }
+            return _result;
+        }
         public static void DeleteBillLine(Guid _guid)
         {
             try

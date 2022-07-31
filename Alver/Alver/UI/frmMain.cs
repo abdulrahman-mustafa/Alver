@@ -194,8 +194,10 @@ namespace Alver.UI
 
         private void floatingfundsbtn_Click(object sender, EventArgs e)
         {
-            frmFloatingFunds frm = new frmFloatingFunds();
-            frm.Show();
+            //frmFloatingFunds frm = new frmFloatingFunds();
+            //frm.Show();
+            frmFunds frm = new frmFunds();
+            frm.ShowDialog();
         }
 
         private void sellbillbtn_Click(object sender, EventArgs e)
@@ -301,7 +303,7 @@ namespace Alver.UI
         private void buybillbtn_Click(object sender, EventArgs e)
         {
             //frmPurchase frm = new frmPurchase();
-            Sell frm = new Sell();
+            frmPurchase frm = new frmPurchase();
             frm.Show();
         }
 
@@ -403,7 +405,8 @@ namespace Alver.UI
 
         private void POSbtn_Click_1(object sender, EventArgs e)
         {
-            frmPOS frm = new frmPOS();
+            //frmPOS frm = new frmPOS();
+            POS frm = new POS();
             frm.Show();
         }
 

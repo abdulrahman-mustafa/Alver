@@ -12,13 +12,18 @@ namespace Alver.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Expense
+    public partial class Exchanx
     {
-        public int Id { get; set; }
-        public Nullable<System.DateTime> ExpenseDate { get; set; }
-        public Nullable<int> CurrencyId { get; set; }
-        public Nullable<decimal> Amount { get; set; }
-        public Nullable<int> CategoryId { get; set; }
+        public long Id { get; set; }
+        public Nullable<System.DateTime> ExchangeDate { get; set; }
+        public string Direction { get; set; }
+        public Nullable<int> BaseCurrencyId { get; set; }
+        public Nullable<decimal> BaseAmount { get; set; }
+        public Nullable<int> SubCurrencyId { get; set; }
+        public string Factor { get; set; }
+        public Nullable<decimal> Rate { get; set; }
+        public Nullable<decimal> SubAmount { get; set; }
+        public Nullable<decimal> RoundAmount { get; set; }
         public string Declaration { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<System.Guid> GUID { get; set; }
@@ -28,7 +33,8 @@ namespace Alver.DAL
         public Nullable<bool> PROTECTED { get; set; }
     
         public virtual Currency Currency { get; set; }
-        public virtual ExpenseCategory ExpenseCategory { get; set; }
+        public virtual Currency Currency1 { get; set; }
         public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

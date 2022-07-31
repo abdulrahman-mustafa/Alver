@@ -3,11 +3,43 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Alver.MISC
 {
     public static class ItemFuncs
     {
+        public static int ItemsCount()
+        {
+            using (dbEntities db=new dbEntities(0))
+            {
+                int _count= db.Items.Count();
+                if (_count<1)
+                {
+                    MessageBox.Show("لم يتم اضافة مواد بعد لا يمكن فتح النافذة الا بعد اضافة المواد");
+                }
+                return _count;
+            }
+        }
+        public static bool CheckRecords()
+        {
+            bool _result = true;
+            using (dbEntities db = new dbEntities(0))
+            {
+                if (db.ItemCategories.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة تصنيفات المواد بعد، لا يمكنك إضافة مادة");
+                    _result = false;
+                }
+                else if (db.Units.Count() < 1)
+                {
+                    MessageBox.Show("لم يتم إضافة الوحدات بعد، لا يمكنك اضافة مادة");
+                    _result = false;
+                }
+                
+            }
+            return _result;
+        }
         public static decimal ItemQauantity(int ItemId)
         {
             decimal _quantity = 0;

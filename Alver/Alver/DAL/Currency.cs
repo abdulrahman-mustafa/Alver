@@ -17,25 +17,25 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Currency()
         {
-            this.AccountFunds = new ObservableListSource<AccountFund>();
-            this.Bills = new ObservableListSource<Bill>();
-            this.BillLines = new ObservableListSource<BillLine>();
-            this.BillLines1 = new ObservableListSource<BillLine>();
-            this.CurrencyExchangeOperations = new ObservableListSource<CurrencyExchangeOperation>();
-            this.CurrencyExchangeOperations1 = new ObservableListSource<CurrencyExchangeOperation>();
-            this.Exchanges = new ObservableListSource<Exchange>();
-            this.Exchanges1 = new ObservableListSource<Exchange>();
-            this.ExchangeFunds = new ObservableListSource<ExchangeFund>();
-            this.Expenses = new ObservableListSource<Expense>();
-            this.Funds = new ObservableListSource<Fund>();
-            this.FundTransactions = new ObservableListSource<FundTransaction>();
-            this.Items = new ObservableListSource<Item>();
-            this.Transactions = new ObservableListSource<Transaction>();
-            this.Transfers = new ObservableListSource<Transfer>();
-            this.Withdraws = new ObservableListSource<Withdraw>();
-            this.Payments = new ObservableListSource<Payment>();
-            this.CurrencyBulletins = new ObservableListSource<CurrencyBulletin>();
-            this.Prices = new ObservableListSource<Price>();
+            this.AccountFunds = new HashSet<AccountFund>();
+            this.BillLines = new HashSet<BillLine>();
+            this.BillLines1 = new HashSet<BillLine>();
+            this.Bills = new HashSet<Bill>();
+            this.CurrencyBulletins = new HashSet<CurrencyBulletin>();
+            this.CurrencyExchangeOperations = new HashSet<CurrencyExchangeOperation>();
+            this.CurrencyExchangeOperations1 = new HashSet<CurrencyExchangeOperation>();
+            this.Exchanges = new HashSet<Exchanx>();
+            this.Exchanges1 = new HashSet<Exchanx>();
+            this.ExchangeFunds = new HashSet<ExchangeFund>();
+            this.Expenses = new HashSet<Expens>();
+            this.Funds = new HashSet<Fund>();
+            this.FundTransactions = new HashSet<FundTransaction>();
+            this.Items = new HashSet<Item>();
+            this.Payments = new HashSet<Payment>();
+            this.Prices = new HashSet<Price>();
+            this.Transactions = new HashSet<Transaction>();
+            this.Transfers = new HashSet<Transfer>();
+            this.Withdraws = new HashSet<Withdraw>();
         }
     
         public int Id { get; set; }
@@ -53,43 +53,43 @@ namespace Alver.DAL
         public Nullable<bool> PROTECTED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<AccountFund> AccountFunds { get; set; }
+        public virtual ICollection<AccountFund> AccountFunds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Bill> Bills { get; set; }
+        public virtual ICollection<BillLine> BillLines { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<BillLine> BillLines { get; set; }
+        public virtual ICollection<BillLine> BillLines1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<BillLine> BillLines1 { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<CurrencyExchangeOperation> CurrencyExchangeOperations { get; set; }
+        public virtual ICollection<CurrencyBulletin> CurrencyBulletins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<CurrencyExchangeOperation> CurrencyExchangeOperations1 { get; set; }
+        public virtual ICollection<CurrencyExchangeOperation> CurrencyExchangeOperations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Exchange> Exchanges { get; set; }
+        public virtual ICollection<CurrencyExchangeOperation> CurrencyExchangeOperations1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Exchange> Exchanges1 { get; set; }
+        public virtual ICollection<Exchanx> Exchanges { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<ExchangeFund> ExchangeFunds { get; set; }
+        public virtual ICollection<Exchanx> Exchanges1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Expense> Expenses { get; set; }
+        public virtual ICollection<ExchangeFund> ExchangeFunds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Fund> Funds { get; set; }
+        public virtual ICollection<Expens> Expenses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<FundTransaction> FundTransactions { get; set; }
+        public virtual ICollection<Fund> Funds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Item> Items { get; set; }
+        public virtual ICollection<FundTransaction> FundTransactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Transaction> Transactions { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Transfer> Transfers { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Withdraw> Withdraws { get; set; }
+        public virtual ICollection<Price> Prices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Payment> Payments { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<CurrencyBulletin> CurrencyBulletins { get; set; }
+        public virtual ICollection<Transfer> Transfers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Price> Prices { get; set; }
+        public virtual ICollection<Withdraw> Withdraws { get; set; }
     }
 }

@@ -12,29 +12,27 @@ namespace Alver.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Exchange
+    public partial class CurrencyExchanx
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CurrencyExchanx()
+        {
+            this.CurrencyExchangeOperations = new HashSet<CurrencyExchangeOperation>();
+        }
+    
         public long Id { get; set; }
+        public string ExchangeType { get; set; }
         public Nullable<System.DateTime> ExchangeDate { get; set; }
-        public string Direction { get; set; }
-        public Nullable<int> BaseCurrencyId { get; set; }
-        public Nullable<decimal> BaseAmount { get; set; }
-        public Nullable<int> SubCurrencyId { get; set; }
-        public string Factor { get; set; }
-        public Nullable<decimal> Rate { get; set; }
-        public Nullable<decimal> SubAmount { get; set; }
-        public Nullable<decimal> RoundAmount { get; set; }
         public string Declaration { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<System.Guid> GUID { get; set; }
-        public Nullable<bool> Hidden { get; set; }
         public string Flag { get; set; }
+        public Nullable<bool> Hidden { get; set; }
         public Nullable<System.DateTime> LUD { get; set; }
         public Nullable<bool> PROTECTED { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual Currency Currency1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CurrencyExchangeOperation> CurrencyExchangeOperations { get; set; }
         public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
     }
 }

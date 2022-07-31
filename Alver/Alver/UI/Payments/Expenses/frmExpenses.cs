@@ -11,7 +11,7 @@ namespace Alver.UI.Payments.Expenses
     public partial class frmExpenses : Form
     {
         dbEntities db;
-        Expense _expensess;
+        Expens _expensess;
         public frmExpenses()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Alver.UI.Payments.Expenses
             db.Funds.Load();
             paymentsExpenseCategoryBindingSource1.DataSource = db.ExpenseCategories.ToList();
             paymentsExpenseCategoryBindingSource.DataSource = db.ExpenseCategories.ToList();
-            currencyBindingSource.DataSource = db.Currencies.ToList();
+            currencyBindingSource.DataSource = db.Currencies.Where(x => x.Id == 1).ToList();
             fundBindingSource.DataSource = db.Funds.ToList();
             MISC.Utilities.SearchableComboBox(expenseCategoryComboBox);
         }
@@ -48,7 +48,7 @@ namespace Alver.UI.Payments.Expenses
         }
         private void CheckChanges()
         {
-            foreach (Expense item in payments_ExpenseBindingSource.List)
+            foreach (Expens item in payments_ExpenseBindingSource.List)
             {
                 try
                 {
@@ -74,7 +74,7 @@ namespace Alver.UI.Payments.Expenses
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             }//END foreach
         }
-        private void ItemChanged(DbPropertyValues originalValues, DbPropertyValues currentValues, Expense item)
+        private void ItemChanged(DbPropertyValues originalValues, DbPropertyValues currentValues, Expens item)
         {
             foreach (string propertyName in originalValues.PropertyNames)
             {
@@ -123,7 +123,7 @@ namespace Alver.UI.Payments.Expenses
 
         private void payments_ExpenseBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-            _expensess = payments_ExpenseBindingSource.Current as Expense;
+            _expensess = payments_ExpenseBindingSource.Current as Expens;
             if (payments_ExpenseBindingSource.Count < 1)
             {
                 bindingNavigatorDeleteItem.Enabled = false;

@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using static Alver.MISC.Utilities;
+using static Alver.MISC.ItemFuncs;
 
 namespace Alver.UI.Items
 {
@@ -18,10 +19,17 @@ namespace Alver.UI.Items
 
         private void frmClientsOverview_Load(object sender, EventArgs e)
         {
-            using (dbEntities db = new dbEntities(0))
+            if (ItemsCount() > 0)
             {
-                db.Items.Load();
-                itemBindingSource.DataSource = db.Items.AsNoTracking().AsQueryable().ToList();
+                using (dbEntities db = new dbEntities(0))
+                {
+                    db.Items.Load();
+                    itemBindingSource.DataSource = db.Items.AsNoTracking().AsQueryable().ToList();
+                }
+            }
+            else
+            {
+                this.Close();
             }
         }
 

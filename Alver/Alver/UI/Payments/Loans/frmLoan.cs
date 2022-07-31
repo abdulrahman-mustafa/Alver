@@ -36,7 +36,7 @@ namespace Alver.UI.Payments.Loans
                 db.Accounts.AsNoTracking().Load();
                 db.Currencies.AsNoTracking().Load();
                 accountsInfoBindingSource.DataSource = db.Accounts.AsNoTracking().Where(x => x.Deactivated == false && x.Hidden == false).ToList().AsQueryable();
-                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
+                currencyBindingSource.DataSource = db.Currencies.Where(x => x.Id == 1).AsNoTracking().ToList().AsQueryable();
             }
             MISC.Utilities.SearchableComboBox(clientComboBox);
         }
@@ -86,7 +86,8 @@ namespace Alver.UI.Payments.Loans
             catch (Exception ex)
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
-                MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
+                MSGs.ErrorMessage(ex);
+                //MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }
         }
 

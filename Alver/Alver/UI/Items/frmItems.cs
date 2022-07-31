@@ -300,6 +300,7 @@ namespace Alver.UI.Accounts
                             {
                                 List<Bill> _bills = new List<Bill>();
                                 db.ItemFunds.RemoveRange(db.ItemFunds.Where(x => x.ItemId == _itemId));
+                                db.ItemTransactions.RemoveRange(db.ItemTransactions.Where(x => x.ItemId == _itemId));
                                 var _billLines = db.BillLines.Where(x => x.ItemId == _itemId).ToList();
                                 foreach (var _billLine in _billLines)
                                 {
@@ -333,7 +334,8 @@ namespace Alver.UI.Accounts
                     catch (Exception ex)
 #pragma warning restore CS0168 // The variable 'ex' is declared but never used
                     {
-                        MessageBox.Show("حصل خطأ أثناء حذف المادة ،لم يتم الحذف بنجاح", "حذف مادة", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MSGs.ErrorMessage(ex);
+                        //MessageBox.Show("حصل خطأ أثناء حذف المادة ،لم يتم الحذف بنجاح", "حذف مادة", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

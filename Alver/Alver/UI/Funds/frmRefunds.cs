@@ -34,8 +34,8 @@ namespace Alver.UI.Funds
             db.Funds.Load();
             usersUserBindingSource.DataSource = db.Users.ToList();
             fundBindingSource.DataSource = db.Funds.ToList();
-            currencyBindingSource.DataSource = db.Currencies.ToList();
-            currencyBindingSource1.DataSource = db.Currencies.ToList();
+            currencyBindingSource.DataSource = db.Currencies.Where(x => x.Id == 1).ToList();
+            currencyBindingSource1.DataSource = db.Currencies.Where(x => x.Id == 1).ToList();
             MISC.Utilities.SearchableComboBox(currencyComboBox);
         }
         private void payments_OperationBindingNavigatorSaveItem_Click(object sender, EventArgs e)

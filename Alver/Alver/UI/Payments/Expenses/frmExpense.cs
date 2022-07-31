@@ -11,20 +11,25 @@ namespace Alver.UI.Payments.Expenses
     public partial class frmExpense : Form
     {
         //dbEntities db;
-        private Expense _expensess;
+        private Expens _expensess;
 
         private Currency _currency;
         private ExpenseCategory _category;
 
         //Fund _fund;
-        public frmExpense(Expense Expensess)
+        public frmExpense(Expens Expensess)
         {
             InitializeComponent();
-            _expensess = Expensess == null ? (new Expense()) : Expensess;
+            _expensess = Expensess == null ? (new Expens()) : Expensess;
         }
 
         private void frmExpensess_Load(object sender, EventArgs e)
         {
+            if ((new dbEntities(0)).ExpenseCategories.ToList().Count<1)
+            {
+                MessageBox.Show("يجب اضافة تصنيفات المصاريف اولاً");
+                this.Close();
+            }
             //db = new dbEntities(0);
             //db.Configuration.ProxyCreationEnabled = false;
             LoadData();
@@ -38,7 +43,7 @@ namespace Alver.UI.Payments.Expenses
                 db.Currencies.AsNoTracking().Load();
                 db.ExpenseCategories.AsNoTracking().Load();
 
-                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
+                currencyBindingSource.DataSource = db.Currencies.Where(x => x.Id == 1).AsNoTracking().AsQueryable().ToList();
                 paymentsExpenseCategoryBindingSource.DataSource = db.ExpenseCategories.AsNoTracking().AsQueryable().ToList();
             }
             MISC.Utilities.SearchableComboBox(categoryComboBox);
@@ -78,7 +83,7 @@ namespace Alver.UI.Payments.Expenses
                         _expensess.Currency = _currency;
                         _expensess.ExpenseCategory = _category;
                         _expensess.User = _user;
-                        db.Set<Expense>().Add(_expensess);
+                        db.Set<Expens>().Add(_expensess);
                         // use the following statement so that Childs won't be inserted
                         //db.Entry(_fund).State = EntityState.Detached;
                         db.Entry(_category).State = EntityState.Detached;
@@ -115,7 +120,7 @@ namespace Alver.UI.Payments.Expenses
                     _currency = db.Currencies.FirstOrDefault(x => x.Id == _currencyId);
                     //_fund = db.Funds.FirstOrDefault(x => x.CurrencyId == _fundId);
                 }
-                _expensess = new Expense();
+                _expensess = new Expens();
 
                 _expensess.ExpenseDate = expenseDateDateTimePicker.Value;
                 //_expensess.FundId = _fund.Id;

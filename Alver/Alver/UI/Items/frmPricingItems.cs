@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
+using static Alver.MISC.ItemFuncs;
 
 namespace Alver.UI.Items
 {
@@ -21,24 +22,32 @@ namespace Alver.UI.Items
 
         private void frmOut_Load(object sender, EventArgs e)
         {
-            try
+            if (ItemsCount() > 0)
             {
-                db = new dbEntities(0);
-                db.Configuration.ProxyCreationEnabled = false;
+                try
+                {
+                    db = new dbEntities(0);
+                    db.Configuration.ProxyCreationEnabled = false;
 
-                db.Items.Load();
-                db.Units.Load();
-                db.Currencies.Load();
-                db.ItemCategories.Load();
-                unitBindingSource.DataSource = db.Units.ToList();
-                itemCategoryBindingSource.DataSource = db.ItemCategories.ToList();
-                currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1||x.Id==2).ToList();
-                itemBindingSource.DataSource = db.Items.Local;
+                    db.Items.Load();
+                    db.Units.Load();
+                    db.Currencies.Load();
+                    db.ItemCategories.Load();
+                    unitBindingSource.DataSource = db.Units.ToList();
+                    itemCategoryBindingSource.DataSource = db.ItemCategories.ToList();
+                    currencyBindingSource.DataSource = db.Currencies.Where(x => x.Id == 1 || x.Id == 2).ToList();
+                    itemBindingSource.DataSource = db.Items.Local;
+                }
+                catch (Exception ex)
+                {
+                    MSGs.ErrorMessage(ex);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MSGs.ErrorMessage(ex);
+                this.Close();
             }
+            
         }
 
         private void savebtn_Click(object sender, EventArgs e)

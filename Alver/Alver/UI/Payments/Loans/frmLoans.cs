@@ -32,7 +32,7 @@ namespace Alver.UI.Payments.Loans
             db.Currencies.Load();
             db.Accounts.Load();
             db.Payments.Load();
-            currencyBindingSource.DataSource = db.Currencies.ToList();
+            currencyBindingSource.DataSource = db.Currencies.Where(x => x.Id == 1).ToList();
             accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
             accountsInfoBindingSource1.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
             MISC.Utilities.SearchableComboBox(clientComboBox);

@@ -22,7 +22,7 @@ namespace Alver.UI.Funds.Transactions
             {
                 int _currencyId = _baseTransaction.CurrencyId.Value;
                 db.Currencies.AsNoTracking().Load();
-                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().ToList().AsQueryable();
+                currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1).AsNoTracking().ToList().AsQueryable();
                 accountlbl.Text = db.Funds.Find(_currencyId).FundTitle;
                 datelbl.Text = _baseTransaction.TTS.ToString();
                 amountLabel1.Text = _baseTransaction.Amount.ToString();

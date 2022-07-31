@@ -17,11 +17,11 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Item()
         {
-            this.BillLines = new ObservableListSource<BillLine>();
-            this.ItemFunds = new ObservableListSource<ItemFund>();
-            this.ItemTransactions = new ObservableListSource<ItemTransaction>();
-            this.ReceiptLines = new ObservableListSource<ReceiptLine>();
-            this.ItemUnits = new ObservableListSource<ItemUnit>();
+            this.BillLines = new HashSet<BillLine>();
+            this.ItemFunds = new HashSet<ItemFund>();
+            this.ItemTransactions = new HashSet<ItemTransaction>();
+            this.ItemUnits = new HashSet<ItemUnit>();
+            this.ReceiptLines = new HashSet<ReceiptLine>();
         }
     
         public int Id { get; set; }
@@ -41,18 +41,18 @@ namespace Alver.DAL
         public Nullable<bool> PROTECTED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<BillLine> BillLines { get; set; }
+        public virtual ICollection<BillLine> BillLines { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual ItemCategory ItemCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemFund> ItemFunds { get; set; }
         public virtual Unit Unit { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<ItemFund> ItemFunds { get; set; }
+        public virtual ICollection<ItemTransaction> ItemTransactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<ItemTransaction> ItemTransactions { get; set; }
+        public virtual ICollection<ItemUnit> ItemUnits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<ReceiptLine> ReceiptLines { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<ItemUnit> ItemUnits { get; set; }
+        public virtual ICollection<ReceiptLine> ReceiptLines { get; set; }
     }
 }

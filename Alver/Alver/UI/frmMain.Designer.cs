@@ -542,7 +542,7 @@
             // 
             this.إضافةحركةToolStripMenuItem1.Image = global::Alver.Properties.Resources.icons8_cash_in_hand_25px;
             this.إضافةحركةToolStripMenuItem1.Name = "إضافةحركةToolStripMenuItem1";
-            this.إضافةحركةToolStripMenuItem1.Size = new System.Drawing.Size(179, 26);
+            this.إضافةحركةToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.إضافةحركةToolStripMenuItem1.Text = "إضافة حركة";
             this.إضافةحركةToolStripMenuItem1.Click += new System.EventHandler(this.إضافةحركةToolStripMenuItem1_Click);
             // 
@@ -550,7 +550,7 @@
             // 
             this.عرضالحركاتToolStripMenuItem1.Image = global::Alver.Properties.Resources.icons8_list_25px;
             this.عرضالحركاتToolStripMenuItem1.Name = "عرضالحركاتToolStripMenuItem1";
-            this.عرضالحركاتToolStripMenuItem1.Size = new System.Drawing.Size(179, 26);
+            this.عرضالحركاتToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.عرضالحركاتToolStripMenuItem1.Text = "عرض الحركات";
             this.عرضالحركاتToolStripMenuItem1.Click += new System.EventHandler(this.عرضالحركاتToolStripMenuItem1_Click);
             // 

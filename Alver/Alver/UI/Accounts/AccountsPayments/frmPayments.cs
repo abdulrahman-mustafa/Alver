@@ -38,8 +38,8 @@ namespace Alver.UI.Accounts.AccountsPayments
                 db.Currencies.AsNoTracking().Load();
                 db.Accounts.AsNoTracking().Load();
                 db.Payments.AsNoTracking().Load();
-                currencyBindingSource.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
-                CurrencybindingSource1.DataSource = db.Currencies.AsNoTracking().AsQueryable().ToList();
+                currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1).AsNoTracking().AsQueryable().ToList();
+                CurrencybindingSource1.DataSource = db.Currencies.Where(x=>x.Id==1).AsNoTracking().AsQueryable().ToList();
                 usersUserBindingSource.DataSource = db.Users.AsNoTracking().AsQueryable().ToList();
                 accountsInfoBindingSource.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();
                 accountsInfoBindingSource1.DataSource = db.Accounts.Where(x => x.Deactivated == false && x.Hidden == false).AsNoTracking().AsQueryable().ToList();

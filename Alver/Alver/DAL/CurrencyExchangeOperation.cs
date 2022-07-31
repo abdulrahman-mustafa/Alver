@@ -35,7 +35,7 @@ namespace Alver.DAL
     
         public virtual Currency Currency { get; set; }
         public virtual Currency Currency1 { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual CurrencyExchanx CurrencyExchanx { get; set; }
         public virtual User User { get; set; }
     }
 }

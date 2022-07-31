@@ -17,10 +17,10 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AccountFund()
         {
-            this.ExchangeFunds = new ObservableListSource<ExchangeFund>();
-            this.ExchangeFunds1 = new ObservableListSource<ExchangeFund>();
-            this.Transfers = new ObservableListSource<Transfer>();
-            this.Transfers1 = new ObservableListSource<Transfer>();
+            this.ExchangeFunds = new HashSet<ExchangeFund>();
+            this.ExchangeFunds1 = new HashSet<ExchangeFund>();
+            this.Transfers = new HashSet<Transfer>();
+            this.Transfers1 = new HashSet<Transfer>();
         }
     
         public int Id { get; set; }
@@ -40,12 +40,12 @@ namespace Alver.DAL
         public virtual Account Account { get; set; }
         public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<ExchangeFund> ExchangeFunds { get; set; }
+        public virtual ICollection<ExchangeFund> ExchangeFunds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<ExchangeFund> ExchangeFunds1 { get; set; }
+        public virtual ICollection<ExchangeFund> ExchangeFunds1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Transfer> Transfers { get; set; }
+        public virtual ICollection<Transfer> Transfers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<Transfer> Transfers1 { get; set; }
+        public virtual ICollection<Transfer> Transfers1 { get; set; }
     }
 }

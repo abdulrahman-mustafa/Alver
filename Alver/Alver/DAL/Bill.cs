@@ -17,7 +17,7 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Bill()
         {
-            this.BillLines = new ObservableListSource<BillLine>();
+            this.BillLines = new HashSet<BillLine>();
         }
     
         public int Id { get; set; }
@@ -43,9 +43,9 @@ namespace Alver.DAL
         public Nullable<bool> PROTECTED { get; set; }
     
         public virtual Account Account { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BillLine> BillLines { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableListSource<BillLine> BillLines { get; set; }
     }
 }

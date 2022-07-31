@@ -62,7 +62,7 @@ namespace Alver.UI.Funds
             db.Currencies.Load();
             fundBindingSource.DataSource = db.Funds.ToList();
             //paymentsOperationBindingSource.DataSource = db.Payment.ToList();
-            currencyBindingSource.DataSource = db.Currencies.ToList();
+            currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1).ToList();
             MISC.Utilities.SearchableComboBox(fundComboBox);
         }
         private void button1_Click(object sender, EventArgs e)

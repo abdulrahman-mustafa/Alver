@@ -6,12 +6,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
-
+using static Alver.MISC.ItemFuncs;
 namespace Alver.UI.Items
 {
     public partial class frmItem : Form
     {
-        private dbEntities db;
+        //private dbEntities db;
         private Item _item;
         private ItemCategory _category = null;
         private Unit _unit = null;
@@ -23,20 +23,30 @@ namespace Alver.UI.Items
 
         private void frmOut_Load(object sender, EventArgs e)
         {
-            db = new dbEntities(0);
-            db.Configuration.ProxyCreationEnabled = false;
-            ControlsEnable(false);
-            barcodecb.Focus();
+            if (CheckRecords())
+            {
+                //db = new dbEntities(0);
+                //db.Configuration.ProxyCreationEnabled = false;
+                ControlsEnable(false);
+                barcodecb.Focus();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void LoadData()
         {
             //db.Units.AsNoTracking().AsQueryable().Load();
             //db.ItemCategories.AsNoTracking().AsQueryable().Load();
+            using (dbEntities db=new dbEntities(0))
+            {
             itemCategoryBindingSource.DataSource = db.ItemCategories.AsNoTracking().AsQueryable().ToList();
             unitBindingSource.DataSource = db.Units.AsNoTracking().AsQueryable().ToList();
-            currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==2||x.Id==1).AsNoTracking().AsQueryable().ToList();
+            currencyBindingSource.DataSource = db.Currencies.Where(x=>x.Id==1).AsNoTracking().AsQueryable().ToList();
             MISC.Utilities.SearchableComboBox(itemcb);
+            }
         }
 
         private void addNew()
@@ -140,13 +150,13 @@ namespace Alver.UI.Items
                     itemcb.Focus();
                     _result = false;
                 }
-                else if (db.Accounts.Any(x => x.FullName.ToLower().Trim() == itemcb.Text.ToLower().Trim()))
+                else if ((new dbEntities(0)).Items.Any(x => x.ItemName.ToLower().Trim() == itemcb.Text.ToLower().Trim()))
                 {
                     MessageBox.Show("اسم المادة موجود من قبل، يرجى اختيار اسم آخر");
                     itemcb.Focus();
                     _result = false;
                 }
-                else if (db.Items.Any(x => x.Barcode.ToLower().Trim() == barcodecb.Text.ToLower().Trim()))
+                else if (!string.IsNullOrWhiteSpace(barcodecb.Text) && (new dbEntities(0)).Items.Any(x => x.Barcode.ToLower().Trim() == barcodecb.Text.ToLower().Trim()))
                 {
                     MessageBox.Show("الباركود مستخدم من قبل، يرجى التأكد من الباركود");
                     barcodecb.Focus();
@@ -170,7 +180,10 @@ namespace Alver.UI.Items
                 Save();
                 ControlsEnable(false);
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+
+                MSGs.ErrorMessage(ex);
+            }
         }
 
         private void Save()
@@ -220,7 +233,8 @@ namespace Alver.UI.Items
             }
             catch (Exception ex)
             {
-                MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
+                MSGs.ErrorMessage(ex);
+                //MessageBox.Show("حدث خطأ داخلي، لم يتم الحفظ بنجاح");
             }
         }
 

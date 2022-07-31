@@ -107,7 +107,7 @@ namespace Alver.UI.Exchange
         {
             try
             {
-                CurrencyExchange _ex = currencyExchangeBindingSource.Current as CurrencyExchange;
+                CurrencyExchanx _ex = currencyExchangeBindingSource.Current as CurrencyExchanx;
                 CurrencyExchangeOperation _exo = new CurrencyExchangeOperation();
                 DateTime _exchangeDate = DateTime.Now;
                 decimal rate = 1, baseAmount = 0, subAmount = 0, roundAmount = 0;
@@ -174,7 +174,7 @@ namespace Alver.UI.Exchange
                     _exo.UserId = userid;
                     _exo.ExchangeId = _ex.Id;
                     //Navigation Properties
-                    _exo.CurrencyExchange = _ex;
+                    _exo.CurrencyExchanx = _ex;
                     //db.CurrencyExchangeOperations.Attach(_exo);
                     _ex.CurrencyExchangeOperations.Add(_exo);
                     db.Entry(_baseCurrency).State = EntityState.Unchanged;
@@ -295,7 +295,7 @@ namespace Alver.UI.Exchange
         {
             try
             {
-                CurrencyExchange _ex = currencyExchangeBindingSource.Current as CurrencyExchange;
+                CurrencyExchanx _ex = currencyExchangeBindingSource.Current as CurrencyExchanx;
                 if (_ex != null && _ex.Id != 0)
                 {
                     foreach (var item in _ex.CurrencyExchangeOperations)
@@ -374,7 +374,7 @@ namespace Alver.UI.Exchange
             try
             {
                 CurrencyExchangeOperation _operation = currencyExchangeOperationsBindingSource.Current as CurrencyExchangeOperation;
-                CurrencyExchange _ex = currencyExchangeBindingSource.Current as CurrencyExchange;
+                CurrencyExchanx _ex = currencyExchangeBindingSource.Current as CurrencyExchanx;
                 DeleteCurrencyExchangeOperation(_operation);
                 _ex.CurrencyExchangeOperations.Remove(_operation);
                 db.CurrencyExchangeOperations.Remove(_operation);
@@ -498,7 +498,7 @@ namespace Alver.UI.Exchange
         private void addcebtn_Click(object sender, EventArgs e)
         {
             int userid = Properties.Settings.Default.LoggedInUser.Id;
-            var _ex = (CurrencyExchange)currencyExchangeBindingSource.AddNew();
+            var _ex = (CurrencyExchanx)currencyExchangeBindingSource.AddNew();
             _ex.ExchangeDate = exchangeDateDateTimePicker.Value;
             _ex.Declaration = declarationTextBox.Text.Trim();
             _ex.Hidden = false;

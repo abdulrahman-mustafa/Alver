@@ -2,6 +2,7 @@
 using Alver.MISC;
 using Alver.Properties;
 using Alver.UI.Bills.BillReports;
+using Alver.UI.Exchange;
 using System;
 using System.Data;
 using System.Data.Entity;
@@ -9,13 +10,14 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using static Alver.MISC.Utilities;
+using static Alver.MISC.BillsFuncs;
 
 namespace Alver.UI.Bills
 {
     public partial class POS : Form
     {
         private System.Drawing.Image _trash = Resources.trash;
-
+        private bool _purchaseBills = false;
         #region Init
 
         public POS()
@@ -25,16 +27,29 @@ namespace Alver.UI.Bills
 
         private void pos_Load(object sender, EventArgs e)
         {
-            LoadData();
-            RetriveExchangeRate();
-            RetriveDailyBillAmount();
-            barcodecb.Focus();
+            if (PurchaseBillsCount() <= 0)
+            {
+                MessageBox.Show("لم يتم اضافة اي فاتورة شراء، لا يمكنك البيع لحين اضافة فاتورة شراء");
+                _purchaseBills = false;
+                this.Close();
+            }
+            if (BillsFuncs.CheckRecords())
+            {
+                LoadData();
+                RetriveExchangeRate();
+                RetriveDailyBillAmount();
+                barcodecb.Focus();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         #endregion Init
 
         #region Methods
-
+        
         private void BillLineChanged(int _rowIndex, int _columnIndex)
         {
             if (_columnIndex == priceclm.Index || _columnIndex == quantityclm.Index)
@@ -140,19 +155,22 @@ namespace Alver.UI.Bills
 
         private void RetriveDailyBillAmount()
         {
-            try
+            if (_purchaseBills)
             {
-                using (dbEntities db = new dbEntities(0))
+                try
                 {
-                    var _discard = db.DailyBillAmount((int)currencycb.SelectedValue, DateTime.Now, BillType.مرتجع.ToString()).ToList();
-                    totaldicardamountnud.Value = _discard.Count > 0 ? _discard[0].Value : 0;
-                    var _sold = db.DailyBillAmount((int)currencycb.SelectedValue, DateTime.Now, BillType.بيع.ToString()).ToList();
-                    totalsoldamountnud.Value = _sold.Count > 0 ? _sold[0].Value : 0;
+                    using (dbEntities db = new dbEntities(0))
+                    {
+                        var _discard = db.DailyBillAmount((int)currencycb.SelectedValue, DateTime.Now, BillType.مرتجع.ToString()).ToList();
+                        totaldicardamountnud.Value = _discard.Count > 0 && _discard[0] != null ? _discard[0].Value : 0;
+                        var _sold = db.DailyBillAmount((int)currencycb.SelectedValue, DateTime.Now, BillType.بيع.ToString()).ToList();
+                        totalsoldamountnud.Value = _sold.Count > 0 && _sold[0] != null ? _sold[0].Value : 0;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MSGs.ErrorMessage(ex);
+                catch (Exception ex)
+                {
+                    MSGs.ErrorMessage(ex);
+                }
             }
         }
 
@@ -169,6 +187,12 @@ namespace Alver.UI.Bills
                         .OrderByDescending(x => x.RateDate)
                         .First(x => x.CurrencyId == 2)
                         .Rate.Value;
+                    }
+                    else
+                    {
+                        MessageBox.Show("يجب اولاً ضبط نشرة اسعار الصرف لكل العملات");
+                        DialogResult res= (new frmCurrenciesBulletin()).ShowDialog();
+                        RetriveExchangeRate();
                     }
                 }
                 ratenud.Value = _SYP >= 1 ? _SYP : 1;
@@ -442,26 +466,38 @@ namespace Alver.UI.Bills
                     }
                     else if (_itemId != 0)
                     {
-                        _billLine.ItemId = _itemId;
-                        _billLine.UnitId = _unitId;
-                        _billLine.CurrencyId = _currencyId;
-                        _billLine.ForeginCurrencyId = _foreignCurrencyId;
-                        _billLine.Price = Math.Round(_price, 2);
-                        _billLine.Quantity = _quantity;
-                        _billLine.TotalPrice = _totalPrice;
-                        _billLine.Exchanged = _exchanged;
-                        _billLine.Rate = ratenud.Value;
-                        _billLine.ExchangedAmount = _exchangedPrice;
-                        _billLine.ExchangedTotalAmount = _totalExchangedPrice;
-                        _billLine.Hidden = false;
-                        _billLine.Flag = string.Empty;
-                        _billLine.LUD = DateTime.Now;
-                        _billLine.GUID = _guid;
-                        _billLine.UserId = userid;
-                        _billLine.PROTECTED = false;
-                        billLineBS.List.Add(_billLine);
-                        billLineBS.ResetBindings(false);
-                        _added = true;
+                        decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
+                        if (billtypecb.Text.Trim() == BillType.بيع.ToString())
+                        {
+                            if (_remainedQuantity - _quantity < 0)
+                            {
+                                MessageBox.Show("لقد تجاوزت الكمية المتاحة في المخزن لا يمكن إضافة القلم");
+                                _added = false;
+                            }
+                        }
+                        else
+                        {
+                            _billLine.ItemId = _itemId;
+                            _billLine.UnitId = _unitId;
+                            _billLine.CurrencyId = _currencyId;
+                            _billLine.ForeginCurrencyId = _foreignCurrencyId;
+                            _billLine.Price = Math.Round(_price, 2);
+                            _billLine.Quantity = _quantity;
+                            _billLine.TotalPrice = _totalPrice;
+                            _billLine.Exchanged = _exchanged;
+                            _billLine.Rate = ratenud.Value;
+                            _billLine.ExchangedAmount = _exchangedPrice;
+                            _billLine.ExchangedTotalAmount = _totalExchangedPrice;
+                            _billLine.Hidden = false;
+                            _billLine.Flag = string.Empty;
+                            _billLine.LUD = DateTime.Now;
+                            _billLine.GUID = _guid;
+                            _billLine.UserId = userid;
+                            _billLine.PROTECTED = false;
+                            billLineBS.List.Add(_billLine);
+                            billLineBS.ResetBindings(false);
+                            _added = true;
+                        }
                     }
                     else
                     {
@@ -479,6 +515,7 @@ namespace Alver.UI.Bills
             }
             catch (Exception ex)
             {
+                MSGs.ErrorMessage(ex);
                 //MessageBox.Show(ex.Message);
                 MessageBox.Show("الرجاء التأكد من القيم المدخلة ومن عدم إدخال  قيم فارغة");
             }
@@ -553,6 +590,7 @@ namespace Alver.UI.Bills
                 {
                     if (RetreiveItemById())
                     {
+                        
                         AddBillLine(true);
                         calcSumTotals();
                         barcodecb.Focus();

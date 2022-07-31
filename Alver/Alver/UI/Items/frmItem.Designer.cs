@@ -84,7 +84,7 @@
             idNumberLabel.AutoSize = true;
             idNumberLabel.Location = new System.Drawing.Point(272, 146);
             idNumberLabel.Name = "idNumberLabel";
-            idNumberLabel.Size = new System.Drawing.Size(36, 15);
+            idNumberLabel.Size = new System.Drawing.Size(45, 20);
             idNumberLabel.TabIndex = 42;
             idNumberLabel.Text = "البيان:";
             // 
@@ -94,7 +94,7 @@
             senderIdLabel.AutoSize = true;
             senderIdLabel.Location = new System.Drawing.Point(272, 54);
             senderIdLabel.Name = "senderIdLabel";
-            senderIdLabel.Size = new System.Drawing.Size(37, 15);
+            senderIdLabel.Size = new System.Drawing.Size(47, 20);
             senderIdLabel.TabIndex = 17;
             senderIdLabel.Text = "الاسم:";
             // 
@@ -104,7 +104,7 @@
             fatherLabel.AutoSize = true;
             fatherLabel.Location = new System.Drawing.Point(272, 117);
             fatherLabel.Name = "fatherLabel";
-            fatherLabel.Size = new System.Drawing.Size(45, 15);
+            fatherLabel.Size = new System.Drawing.Size(58, 20);
             fatherLabel.TabIndex = 38;
             fatherLabel.Text = "الواحدة:";
             // 
@@ -114,7 +114,7 @@
             motherLabel.AutoSize = true;
             motherLabel.Location = new System.Drawing.Point(272, 25);
             motherLabel.Name = "motherLabel";
-            motherLabel.Size = new System.Drawing.Size(46, 15);
+            motherLabel.Size = new System.Drawing.Size(59, 20);
             motherLabel.TabIndex = 39;
             motherLabel.Text = "الباركود:";
             // 
@@ -124,7 +124,7 @@
             label2.AutoSize = true;
             label2.Location = new System.Drawing.Point(272, 83);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(45, 15);
+            label2.Size = new System.Drawing.Size(56, 20);
             label2.TabIndex = 46;
             label2.Text = "الصنف:";
             // 
@@ -132,9 +132,10 @@
             // 
             label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label1.AutoSize = true;
+            label1.Enabled = false;
             label1.Location = new System.Drawing.Point(272, 259);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(73, 15);
+            label1.Size = new System.Drawing.Size(94, 20);
             label1.TabIndex = 48;
             label1.Text = "الكمية الاولية:";
             label1.Visible = false;
@@ -143,9 +144,10 @@
             // 
             label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label3.AutoSize = true;
+            label3.Enabled = false;
             label3.Location = new System.Drawing.Point(272, 204);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(63, 15);
+            label3.Size = new System.Drawing.Size(79, 20);
             label3.TabIndex = 50;
             label3.Text = "سعر الشراء:";
             // 
@@ -153,9 +155,10 @@
             // 
             label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label4.AutoSize = true;
+            label4.Enabled = false;
             label4.Location = new System.Drawing.Point(272, 233);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(64, 15);
+            label4.Size = new System.Drawing.Size(81, 20);
             label4.TabIndex = 52;
             label4.Text = "سعر المبيع:";
             // 
@@ -165,7 +168,7 @@
             label7.AutoSize = true;
             label7.Location = new System.Drawing.Point(272, 175);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(41, 15);
+            label7.Size = new System.Drawing.Size(52, 20);
             label7.TabIndex = 58;
             label7.Text = "العملة:";
             // 
@@ -197,7 +200,7 @@
             this.addbtn.Image = ((System.Drawing.Image)(resources.GetObject("addbtn.Image")));
             this.addbtn.Name = "addbtn";
             this.addbtn.RightToLeftAutoMirrorImage = true;
-            this.addbtn.Size = new System.Drawing.Size(61, 24);
+            this.addbtn.Size = new System.Drawing.Size(72, 24);
             this.addbtn.Text = "إضافة";
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
@@ -212,7 +215,7 @@
             this.savebtn.Image = global::Alver.Properties.Resources.save;
             this.savebtn.Name = "savebtn";
             this.savebtn.RightToLeftAutoMirrorImage = true;
-            this.savebtn.Size = new System.Drawing.Size(54, 24);
+            this.savebtn.Size = new System.Drawing.Size(63, 24);
             this.savebtn.Text = "حفظ";
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
@@ -252,10 +255,11 @@
             this.currencycb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.currencycb.DataSource = this.currencyBindingSource;
             this.currencycb.DisplayMember = "CurrencyName";
+            this.currencycb.Enabled = false;
             this.currencycb.FormattingEnabled = true;
             this.currencycb.Location = new System.Drawing.Point(12, 172);
             this.currencycb.Name = "currencycb";
-            this.currencycb.Size = new System.Drawing.Size(254, 23);
+            this.currencycb.Size = new System.Drawing.Size(254, 28);
             this.currencycb.TabIndex = 57;
             this.currencycb.ValueMember = "Id";
             // 
@@ -275,6 +279,7 @@
             // salepricenud
             // 
             this.salepricenud.DecimalPlaces = 2;
+            this.salepricenud.Enabled = false;
             this.salepricenud.Location = new System.Drawing.Point(13, 230);
             this.salepricenud.Maximum = new decimal(new int[] {
             9999999,
@@ -282,12 +287,13 @@
             0,
             0});
             this.salepricenud.Name = "salepricenud";
-            this.salepricenud.Size = new System.Drawing.Size(253, 23);
+            this.salepricenud.Size = new System.Drawing.Size(253, 27);
             this.salepricenud.TabIndex = 6;
             // 
             // purchasepricenud
             // 
             this.purchasepricenud.DecimalPlaces = 2;
+            this.purchasepricenud.Enabled = false;
             this.purchasepricenud.Location = new System.Drawing.Point(13, 201);
             this.purchasepricenud.Maximum = new decimal(new int[] {
             9999999,
@@ -295,12 +301,13 @@
             0,
             0});
             this.purchasepricenud.Name = "purchasepricenud";
-            this.purchasepricenud.Size = new System.Drawing.Size(253, 23);
+            this.purchasepricenud.Size = new System.Drawing.Size(253, 27);
             this.purchasepricenud.TabIndex = 5;
             // 
             // fundBalancenud
             // 
             this.fundBalancenud.DecimalPlaces = 2;
+            this.fundBalancenud.Enabled = false;
             this.fundBalancenud.Location = new System.Drawing.Point(12, 256);
             this.fundBalancenud.Maximum = new decimal(new int[] {
             9999999,
@@ -308,7 +315,7 @@
             0,
             0});
             this.fundBalancenud.Name = "fundBalancenud";
-            this.fundBalancenud.Size = new System.Drawing.Size(254, 23);
+            this.fundBalancenud.Size = new System.Drawing.Size(254, 27);
             this.fundBalancenud.TabIndex = 7;
             this.fundBalancenud.Visible = false;
             // 
@@ -320,7 +327,7 @@
             this.itemCategorycb.FormattingEnabled = true;
             this.itemCategorycb.Location = new System.Drawing.Point(12, 80);
             this.itemCategorycb.Name = "itemCategorycb";
-            this.itemCategorycb.Size = new System.Drawing.Size(254, 23);
+            this.itemCategorycb.Size = new System.Drawing.Size(254, 28);
             this.itemCategorycb.TabIndex = 2;
             this.itemCategorycb.ValueMember = "Id";
             // 
@@ -336,7 +343,7 @@
             this.itemcb.FormattingEnabled = true;
             this.itemcb.Location = new System.Drawing.Point(12, 51);
             this.itemcb.Name = "itemcb";
-            this.itemcb.Size = new System.Drawing.Size(254, 23);
+            this.itemcb.Size = new System.Drawing.Size(254, 28);
             this.itemcb.TabIndex = 1;
             // 
             // declarationcb
@@ -344,7 +351,7 @@
             this.declarationcb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.declarationcb.Location = new System.Drawing.Point(12, 143);
             this.declarationcb.Name = "declarationcb";
-            this.declarationcb.Size = new System.Drawing.Size(254, 23);
+            this.declarationcb.Size = new System.Drawing.Size(254, 27);
             this.declarationcb.TabIndex = 4;
             // 
             // barcodecb
@@ -352,7 +359,7 @@
             this.barcodecb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.barcodecb.Location = new System.Drawing.Point(42, 22);
             this.barcodecb.Name = "barcodecb";
-            this.barcodecb.Size = new System.Drawing.Size(224, 23);
+            this.barcodecb.Size = new System.Drawing.Size(224, 27);
             this.barcodecb.TabIndex = 0;
             // 
             // unitcb
@@ -363,7 +370,7 @@
             this.unitcb.FormattingEnabled = true;
             this.unitcb.Location = new System.Drawing.Point(12, 114);
             this.unitcb.Name = "unitcb";
-            this.unitcb.Size = new System.Drawing.Size(254, 23);
+            this.unitcb.Size = new System.Drawing.Size(254, 28);
             this.unitcb.TabIndex = 3;
             this.unitcb.ValueMember = "Id";
             // 
@@ -373,7 +380,7 @@
             // 
             // frmItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(358, 355);
