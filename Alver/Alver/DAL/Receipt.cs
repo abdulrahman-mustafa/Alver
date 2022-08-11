@@ -17,7 +17,7 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Receipt()
         {
-            this.ReceiptLines = new HashSet<ReceiptLine>();
+            this.ReceiptLines = new ObservableListSource<ReceiptLine>();
         }
     
         public int Id { get; set; }
@@ -36,7 +36,7 @@ namespace Alver.DAL
     
         public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReceiptLine> ReceiptLines { get; set; }
+        public virtual ObservableListSource<ReceiptLine> ReceiptLines { get; set; }
         public virtual User User { get; set; }
     }
 }

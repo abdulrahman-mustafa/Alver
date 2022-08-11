@@ -97,6 +97,7 @@ namespace Alver.UI.Funds
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "الارصدة";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmFunds_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Fundsdgv)).EndInit();
             this.ResumeLayout(false);

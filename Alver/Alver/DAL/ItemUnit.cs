@@ -17,7 +17,7 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ItemUnit()
         {
-            this.Prices = new HashSet<Price>();
+            this.Prices = new ObservableListSource<Price>();
         }
     
         public int Id { get; set; }
@@ -34,6 +34,6 @@ namespace Alver.DAL
         public virtual Unit Unit { get; set; }
         public virtual Unit Unit1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Price> Prices { get; set; }
+        public virtual ObservableListSource<Price> Prices { get; set; }
     }
 }

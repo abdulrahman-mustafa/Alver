@@ -1,0 +1,6 @@
+-- Start in master
+USE MASTER;
+
+-- Add users
+ALTER DATABASE [my_db] SET MULTI_USER
+GO

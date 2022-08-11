@@ -32,10 +32,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ProductName>Alver</ProductName>
+    <PublisherName>CODE inc</PublisherName>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -62,6 +65,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Alver.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>1AD2ABCEE095E48886868B0B1ED779439F3F1FEC</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Alver_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AnalogClockControl">
@@ -885,6 +900,7 @@
       <DependentUpon>frmDBTools.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".editorconfig" />
+    <None Include="Alver_TemporaryKey.pfx" />
     <None Include="connections.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -971,6 +987,11 @@
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
@@ -1038,6 +1059,7 @@
     <None Include="Media\Button Faces\MISC\icons8_job_25px.png" />
     <None Include="Media\Button Faces\Bills\icons8_barcode_reader_25px.png" />
     <None Include="Media\Button Faces\Database\icons8_database_administrator_25px.png" />
+    <Content Include="Media\Icons\main-bg.png" />
     <Content Include="packages\Microsoft.SqlServer.Types.11.0.1\nativeBinaries\x64\msvcr100.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1053,6 +1075,9 @@
     <None Include="Resources\BG %283%29.jpg" />
     <None Include="Resources\abstract-blue-background-wave-vector_1407-88.jpg" />
     <None Include="Resources\icons8_info_25px_1.png" />
+    <None Include="Resources\bill.png" />
+    <None Include="Resources\bill32.png" />
+    <None Include="Resources\clock.png" />
     <Content Include="Resources\Lizard Logo white.png" />
     <Content Include="Resources\Lizard Logo.png" />
     <None Include="Media\Button Faces\Accounts\icons8_admin_settings_male_25px.png" />

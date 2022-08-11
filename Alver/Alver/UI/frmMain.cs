@@ -197,7 +197,7 @@ namespace Alver.UI
             //frmFloatingFunds frm = new frmFloatingFunds();
             //frm.Show();
             frmFunds frm = new frmFunds();
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void sellbillbtn_Click(object sender, EventArgs e)
@@ -364,6 +364,7 @@ namespace Alver.UI
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            mainmenustrip.ForeColor = System.Drawing.Color.WhiteSmoke;
             timer1.Start();
         }
 
@@ -403,13 +404,6 @@ namespace Alver.UI
             }
         }
 
-        private void POSbtn_Click_1(object sender, EventArgs e)
-        {
-            //frmPOS frm = new frmPOS();
-            POS frm = new POS();
-            frm.Show();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             POS frm = new POS();
@@ -420,6 +414,11 @@ namespace Alver.UI
         {
             frmAbout frm = new frmAbout();
             frm.ShowDialog();
+        }
+
+        private void HeadersplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
         }
     }
 }

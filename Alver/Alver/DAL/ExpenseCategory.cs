@@ -17,7 +17,7 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ExpenseCategory()
         {
-            this.Expenses = new HashSet<Expens>();
+            this.Expenses = new ObservableListSource<Expens>();
         }
     
         public int Id { get; set; }
@@ -31,7 +31,7 @@ namespace Alver.DAL
         public Nullable<bool> PROTECTED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Expens> Expenses { get; set; }
+        public virtual ObservableListSource<Expens> Expenses { get; set; }
         public virtual User User { get; set; }
     }
 }

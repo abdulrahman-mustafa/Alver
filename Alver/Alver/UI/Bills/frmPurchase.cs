@@ -31,7 +31,7 @@ namespace Alver.UI.Bills
                 LoadData();
                 RetriveExchangeRate();
                 RetriveDailyBillAmount();
-                barcodecb.Focus();
+                itemcb.Focus();
             }
             else
             {
@@ -218,7 +218,7 @@ namespace Alver.UI.Bills
             sumtotalsnud.Value = 0;
             discountnud.Value = 0;
             totalnud.Value = 0;
-            barcodecb.Focus();
+            itemcb.Focus();
         }
 
         private void DeleteLine()
@@ -479,7 +479,7 @@ namespace Alver.UI.Bills
                     {
                         AddBillLine(true);
                         calcSumTotals();
-                        barcodecb.Focus();
+                        itemcb.Focus();
                         barcodecb.SelectAll();
                     }
                 }
@@ -499,7 +499,7 @@ namespace Alver.UI.Bills
                     {
                         AddBillLine(true);
                         calcSumTotals();
-                        barcodecb.Focus();
+                        itemcb.Focus();
                         barcodecb.SelectAll();
                     }
                 }
@@ -515,7 +515,12 @@ namespace Alver.UI.Bills
 
             try
             {
-                if (string.IsNullOrEmpty(purchasetypecb.Text.Trim()))
+                if (totalnud.Value <= 0)
+                {
+                    MessageBox.Show("لا يمكن اضافة فاتورة بقيمة صفرية");
+                    _result = false;
+                }
+                else if (string.IsNullOrEmpty(purchasetypecb.Text.Trim()))
                 {
                     MessageBox.Show("يرجى تعيين نوع الشراء أولاً");
                     purchasetypecb.Focus();
@@ -533,7 +538,7 @@ namespace Alver.UI.Bills
                 if (billLineBS.Count < 1)
                 {
                     MessageBox.Show("لا يمكن إضافة فاتورة بدون اقلام، الرجاء إضافة اقلام اولاً");
-                    barcodecb.Focus();
+                    itemcb.Focus();
                     _result = false;
                 }
             }
@@ -543,6 +548,7 @@ namespace Alver.UI.Bills
             }
             return _result;
         }
+
 
         //SaveBillLines
         //1- Add Bill Head
@@ -910,15 +916,17 @@ namespace Alver.UI.Bills
 
         private void cashoutbillbtn_Click(object sender, EventArgs e)
         {
-            if (CheckAttributes())
-            {
-                int billId = SaveBill();
-                RetriveDailyBillAmount();
-                if (printbillchkbox.Checked)
+            
+                if (CheckAttributes())
                 {
-                    PrintBillSlip(billId, true);
+                    int billId = SaveBill();
+                    RetriveDailyBillAmount();
+                    if (printbillchkbox.Checked)
+                    {
+                        PrintBillSlip(billId, true);
+                    }
                 }
-            }
+            
         }
 
         #endregion Events

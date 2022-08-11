@@ -28,7 +28,7 @@ namespace Alver.UI.Items
                 //db = new dbEntities(0);
                 //db.Configuration.ProxyCreationEnabled = false;
                 ControlsEnable(false);
-                barcodecb.Focus();
+                itemcb.Focus();
             }
             else
             {
@@ -159,7 +159,7 @@ namespace Alver.UI.Items
                 else if (!string.IsNullOrWhiteSpace(barcodecb.Text) && (new dbEntities(0)).Items.Any(x => x.Barcode.ToLower().Trim() == barcodecb.Text.ToLower().Trim()))
                 {
                     MessageBox.Show("الباركود مستخدم من قبل، يرجى التأكد من الباركود");
-                    barcodecb.Focus();
+                    itemcb.Focus();
                     _result = false;
                 }
             }

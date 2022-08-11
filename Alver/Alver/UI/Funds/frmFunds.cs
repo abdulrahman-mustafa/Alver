@@ -25,13 +25,15 @@ namespace Alver.UI.Funds
         private void dtInit()
         {
             dt.Columns.Add("الرصيد");
-            using (dbEntities db = new dbEntities(0))
-            {
-                foreach (var item in db.Currencies)
-                {
-                    dt.Columns.Add(item.CurrencySymbol);
-                }
-            }
+            dt.Columns.Add("$");
+            .Columns["YTD"].DefaultCellStyle.Format = "N2";
+            //using (dbEntities db = new dbEntities(0))
+            //{
+            //    foreach (var item in db.Currencies)
+            //    {
+            //        dt.Columns.Add(item.CurrencySymbol);
+            //    }
+            //}
         }
         //private void GetOfficeFunds()
         //{
@@ -75,14 +77,27 @@ namespace Alver.UI.Funds
             for (int i = 0; i < TotalFunds.Length; i++)
             {
                 TotalFunds[i] = OfficeFunds[i] + ClientsFunds[i] + ItemsFunds[i];
+
+                OfficeFunds[i]=decimal.Round(OfficeFunds[i], 2, MidpointRounding.AwayFromZero);
+                ClientsFunds[i]=decimal.Round(ClientsFunds[i], 2, MidpointRounding.AwayFromZero);
+                ItemsFunds[i]=decimal.Round(ItemsFunds[i], 2, MidpointRounding.AwayFromZero);
+                TotalFunds[i]=decimal.Round(TotalFunds[i], 2, MidpointRounding.AwayFromZero);
             }
 
-            dt.Rows.Add(new object[] { "الرصيد العام", TotalFunds[0], TotalFunds[1], TotalFunds[2], TotalFunds[3], TotalFunds[4] });
-            dt.Rows.Add(new object[] { "رصيد المكتب", OfficeFunds[0], OfficeFunds[1], OfficeFunds[2], OfficeFunds[3], OfficeFunds[4] });
-            dt.Rows.Add(new object[] { "رصيد الوكلاء", ClientsFunds[0], ClientsFunds[1], ClientsFunds[2], ClientsFunds[3], ClientsFunds[4] });
-            dt.Rows.Add(new object[] { "رصيد المواد", ItemsFunds[0], ItemsFunds[1], ItemsFunds[2], ItemsFunds[3], ItemsFunds[4] });
+            //dt.Rows.Add(new object[] { "الرصيد العام", TotalFunds[0], TotalFunds[1], TotalFunds[2], TotalFunds[3], TotalFunds[4] });
+            //dt.Rows.Add(new object[] { "رصيد المكتب", OfficeFunds[0], OfficeFunds[1], OfficeFunds[2], OfficeFunds[3], OfficeFunds[4] });
+            //dt.Rows.Add(new object[] { "رصيد الوكلاء", ClientsFunds[0], ClientsFunds[1], ClientsFunds[2], ClientsFunds[3], ClientsFunds[4] });
+            //dt.Rows.Add(new object[] { "رصيد المواد", ItemsFunds[0], ItemsFunds[1], ItemsFunds[2], ItemsFunds[3], ItemsFunds[4] });
+
+            dt.Rows.Add(new object[] { "الرصيد العام", TotalFunds[0]});
+            dt.Rows.Add(new object[] { "رصيد المكتب", OfficeFunds[0]});
+            dt.Rows.Add(new object[] { "رصيد الوكلاء", ClientsFunds[0]});
+            dt.Rows.Add(new object[] { "رصيد المواد", ItemsFunds[0]});
+
 
             Fundsdgv.DataSource = dt;
+            //Fundsdgv.Columns[1].DefaultCellStyle.Format = "N2";
+
 
             using (dbEntities db = new dbEntities(0))
             {

@@ -17,16 +17,16 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
-            this.AccountFunds = new HashSet<AccountFund>();
-            this.Bills = new HashSet<Bill>();
-            this.ExchangeFunds = new HashSet<ExchangeFund>();
-            this.ExchangeFunds1 = new HashSet<ExchangeFund>();
-            this.Payments = new HashSet<Payment>();
-            this.Receipts = new HashSet<Receipt>();
-            this.Transactions = new HashSet<Transaction>();
-            this.Transfers = new HashSet<Transfer>();
-            this.Transfers1 = new HashSet<Transfer>();
-            this.Withdraws = new HashSet<Withdraw>();
+            this.AccountFunds = new ObservableListSource<AccountFund>();
+            this.Bills = new ObservableListSource<Bill>();
+            this.ExchangeFunds = new ObservableListSource<ExchangeFund>();
+            this.ExchangeFunds1 = new ObservableListSource<ExchangeFund>();
+            this.Payments = new ObservableListSource<Payment>();
+            this.Receipts = new ObservableListSource<Receipt>();
+            this.Transactions = new ObservableListSource<Transaction>();
+            this.Transfers = new ObservableListSource<Transfer>();
+            this.Transfers1 = new ObservableListSource<Transfer>();
+            this.Withdraws = new ObservableListSource<Withdraw>();
         }
     
         public int Id { get; set; }
@@ -49,26 +49,26 @@ namespace Alver.DAL
         public Nullable<bool> PROTECTED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountFund> AccountFunds { get; set; }
+        public virtual ObservableListSource<AccountFund> AccountFunds { get; set; }
         public virtual AccountGroup AccountGroup { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ObservableListSource<Bill> Bills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExchangeFund> ExchangeFunds { get; set; }
+        public virtual ObservableListSource<ExchangeFund> ExchangeFunds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExchangeFund> ExchangeFunds1 { get; set; }
+        public virtual ObservableListSource<ExchangeFund> ExchangeFunds1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Payment> Payments { get; set; }
+        public virtual ObservableListSource<Payment> Payments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Receipt> Receipts { get; set; }
+        public virtual ObservableListSource<Receipt> Receipts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ObservableListSource<Transaction> Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transfer> Transfers { get; set; }
+        public virtual ObservableListSource<Transfer> Transfers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transfer> Transfers1 { get; set; }
+        public virtual ObservableListSource<Transfer> Transfers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Withdraw> Withdraws { get; set; }
+        public virtual ObservableListSource<Withdraw> Withdraws { get; set; }
     }
 }

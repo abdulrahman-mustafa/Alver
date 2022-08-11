@@ -43,12 +43,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.billLinesDgv = new System.Windows.Forms.DataGridView();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ExchangedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExchangedTotalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.billLinesBS = new System.Windows.Forms.BindingSource(this.components);
             this.BillBS = new System.Windows.Forms.BindingSource(this.components);
             this.BillLineBN = new System.Windows.Forms.BindingNavigator(this.components);
@@ -63,6 +57,10 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.deletebilllinebtn = new System.Windows.Forms.ToolStripButton();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -133,8 +131,14 @@
             this.chechprintbillbtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.editbillbtn = new System.Windows.Forms.ToolStripButton();
-            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isReadOnlyDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             declarationLabel = new System.Windows.Forms.Label();
             exchangeDateLabel = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -145,14 +149,14 @@
             label12 = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.billLinesDgv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.billLinesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillLineBN)).BeginInit();
             this.BillLineBN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -282,10 +286,14 @@
             this.billLinesDgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.billLinesDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.billLinesDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ExchangedAmount,
-            this.ExchangedTotalAmount,
-            this.countDataGridViewTextBoxColumn,
-            this.isReadOnlyDataGridViewCheckBoxColumn});
+            this.idDataGridViewTextBoxColumn,
+            this.billIdDataGridViewTextBoxColumn,
+            this.itemIdDataGridViewTextBoxColumn,
+            this.unitIdDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.currencyIdDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.totalPriceDataGridViewTextBoxColumn});
             this.billLinesDgv.DataSource = this.billLinesBS;
             this.billLinesDgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.billLinesDgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
@@ -299,38 +307,6 @@
             this.billLinesDgv.VirtualMode = true;
             this.billLinesDgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.adddgv_DataBindingComplete);
             this.billLinesDgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.currencyExchangeDataGridView_DataError);
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataSource = typeof(Alver.DAL.Item);
-            // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(Alver.DAL.Unit);
-            // 
-            // currencyBindingSource
-            // 
-            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
-            // 
-            // ExchangedAmount
-            // 
-            this.ExchangedAmount.DataPropertyName = "ExchangedAmount";
-            this.ExchangedAmount.HeaderText = "سعر الواحدة - ل.س";
-            this.ExchangedAmount.MinimumWidth = 6;
-            this.ExchangedAmount.Name = "ExchangedAmount";
-            this.ExchangedAmount.ReadOnly = true;
-            // 
-            // ExchangedTotalAmount
-            // 
-            this.ExchangedTotalAmount.DataPropertyName = "ExchangedTotalAmount";
-            this.ExchangedTotalAmount.HeaderText = "السعر الاجمالي- ل.س";
-            this.ExchangedTotalAmount.MinimumWidth = 6;
-            this.ExchangedTotalAmount.Name = "ExchangedTotalAmount";
-            this.ExchangedTotalAmount.ReadOnly = true;
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(Alver.DAL.User);
             // 
             // billLinesBS
             // 
@@ -454,6 +430,22 @@
             this.deletebilllinebtn.Size = new System.Drawing.Size(108, 24);
             this.deletebilllinebtn.Text = "حذف الحركة";
             this.deletebilllinebtn.Click += new System.EventHandler(this.dceobtn_Click);
+            // 
+            // itemBindingSource
+            // 
+            this.itemBindingSource.DataSource = typeof(Alver.DAL.Item);
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(Alver.DAL.Unit);
+            // 
+            // currencyBindingSource
+            // 
+            this.currencyBindingSource.DataSource = typeof(Alver.DAL.Currency);
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(Alver.DAL.User);
             // 
             // tabControl1
             // 
@@ -1296,21 +1288,86 @@
             this.editbillbtn.Text = "طباعة الفاتورة";
             this.editbillbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
-            // countDataGridViewTextBoxColumn
+            // idDataGridViewTextBoxColumn
             // 
-            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
-            this.countDataGridViewTextBoxColumn.HeaderText = "Count";
-            this.countDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
-            this.countDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
-            // isReadOnlyDataGridViewCheckBoxColumn
+            // billIdDataGridViewTextBoxColumn
             // 
-            this.isReadOnlyDataGridViewCheckBoxColumn.DataPropertyName = "IsReadOnly";
-            this.isReadOnlyDataGridViewCheckBoxColumn.HeaderText = "IsReadOnly";
-            this.isReadOnlyDataGridViewCheckBoxColumn.MinimumWidth = 6;
-            this.isReadOnlyDataGridViewCheckBoxColumn.Name = "isReadOnlyDataGridViewCheckBoxColumn";
-            this.isReadOnlyDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.billIdDataGridViewTextBoxColumn.DataPropertyName = "BillId";
+            this.billIdDataGridViewTextBoxColumn.HeaderText = "BillId";
+            this.billIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.billIdDataGridViewTextBoxColumn.Name = "billIdDataGridViewTextBoxColumn";
+            this.billIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.billIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // itemIdDataGridViewTextBoxColumn
+            // 
+            this.itemIdDataGridViewTextBoxColumn.DataPropertyName = "ItemId";
+            this.itemIdDataGridViewTextBoxColumn.DataSource = this.itemBS;
+            this.itemIdDataGridViewTextBoxColumn.DisplayMember = "ItemName";
+            this.itemIdDataGridViewTextBoxColumn.HeaderText = "المادة";
+            this.itemIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.itemIdDataGridViewTextBoxColumn.Name = "itemIdDataGridViewTextBoxColumn";
+            this.itemIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.itemIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.itemIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            // 
+            // unitIdDataGridViewTextBoxColumn
+            // 
+            this.unitIdDataGridViewTextBoxColumn.DataPropertyName = "UnitId";
+            this.unitIdDataGridViewTextBoxColumn.DataSource = this.unitBS;
+            this.unitIdDataGridViewTextBoxColumn.DisplayMember = "Title";
+            this.unitIdDataGridViewTextBoxColumn.HeaderText = "الواحدة";
+            this.unitIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.unitIdDataGridViewTextBoxColumn.Name = "unitIdDataGridViewTextBoxColumn";
+            this.unitIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unitIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.unitIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "الكمية";
+            this.quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currencyIdDataGridViewTextBoxColumn
+            // 
+            this.currencyIdDataGridViewTextBoxColumn.DataPropertyName = "CurrencyId";
+            this.currencyIdDataGridViewTextBoxColumn.DataSource = this.currencyBS;
+            this.currencyIdDataGridViewTextBoxColumn.DisplayMember = "CurrencyName";
+            this.currencyIdDataGridViewTextBoxColumn.HeaderText = "العملة";
+            this.currencyIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.currencyIdDataGridViewTextBoxColumn.Name = "currencyIdDataGridViewTextBoxColumn";
+            this.currencyIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.currencyIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.currencyIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.currencyIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "السعر";
+            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalPriceDataGridViewTextBoxColumn
+            // 
+            this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
+            this.totalPriceDataGridViewTextBoxColumn.HeaderText = "الاجمالي";
+            this.totalPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
+            this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // frmPurchase_NOTUSED
             // 
@@ -1335,15 +1392,15 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.billLinesDgv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.billLinesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BillLineBN)).EndInit();
             this.BillLineBN.ResumeLayout(false);
             this.BillLineBN.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -1472,15 +1529,9 @@
         private System.Windows.Forms.CheckBox exchangebillchkbox;
         private System.Windows.Forms.Label remainedquantitylbl;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DataGridViewComboBoxColumn itemIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn unitIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn currencyIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExchangedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalpriceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExchangedTotalAmount;
-        private System.Windows.Forms.DataGridViewComboBoxColumn userIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.NumericUpDown exchangedpricenud;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox billIdcb;
@@ -1489,5 +1540,13 @@
         private System.Windows.Forms.Label totallineudslbl;
         private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isReadOnlyDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn billIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn itemIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn unitIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn currencyIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
     }
 }

@@ -91,15 +91,18 @@ namespace Alver.MISC
                 using (dbEntities db = new dbEntities(0))
                 {
                     Bill _bill = db.Bills.Find(_billId);
+                   List< BillLine> _lines = db.BillLines.Where(x => x.BillId == _billId).ToList();
                     if (_bill != null && _bill.Id != 0)
                     {
-                        foreach (var item in _bill.BillLines)
+                        foreach (var line in _lines)
                         {
-                            DeleteBillLine(item);
+                            //Delete transactions
+                            DeleteBillLine(line.GUID.Value);
+                            db.BillLines.Remove(db.BillLines.FirstOrDefault(x => x.Id == line.Id));
                         }
                         TransactionsFuncs.DeleteTransactions(_bill.GUID.Value);
                         //_ex.CurrencyExchangeOperations.
-                        db.BillLines.RemoveRange(_bill.BillLines);
+                        //db.BillLines.RemoveRange(_bill.BillLines);
                         db.Bills.Remove(_bill);
                         db.SaveChanges();
                     }
@@ -108,6 +111,7 @@ namespace Alver.MISC
             }
             catch (Exception ex)
             {
+                MSGs.ErrorMessage(ex);
                 MessageBox.Show("حصل خطأ أثناء حذف الفاتورة ،لم يتم الحذف بنجاح", "حذف فاتورة", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

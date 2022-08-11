@@ -91,7 +91,7 @@ namespace Alver
 
             if (Settings.Default.FirstRun)
             {
-                if (!DatabaseFuncs.CheckDatabaseExists(Settings.Default.InitialCatalog))
+                if (!DatabaseFuncs.CheckDatabaseExists(Settings.Default.InitialCatalog, 0) || !DatabaseFuncs.CheckDatabaseExists(Settings.Default.InitialCatalog, 1))
                 {
                     if (DatabaseFuncs.CreateDatabase())
                     {
@@ -113,7 +113,7 @@ namespace Alver
                 Settings.Default.FirstRun = false;
                 Settings.Default.Save();
             }
-            else if (DatabaseFuncs.CheckDatabaseExists(Settings.Default.InitialCatalog))
+            else if (DatabaseFuncs.CheckDatabaseExists(Settings.Default.InitialCatalog,0) || DatabaseFuncs.CheckDatabaseExists(Settings.Default.InitialCatalog, 1))
             {
                 frmLogin login_form = new frmLogin();
                 if (login_form.ShowDialog() == DialogResult.OK)

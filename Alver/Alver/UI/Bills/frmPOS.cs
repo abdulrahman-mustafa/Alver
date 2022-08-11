@@ -31,7 +31,7 @@ namespace Alver.UI.Bills
             if (CheckRecords())
             {
                 LoadData();
-                barcodecb.Focus();
+                itemcb.Focus();
                 if (BILLID > 0)
                 {
                     Bill _tempBill = (new dbEntities(0)).Bills.Find(BILLID);
@@ -79,7 +79,7 @@ namespace Alver.UI.Bills
             billLinesDgv.Update();
             billLinesDgv.Refresh();
             //EnableControls();
-            barcodecb.Focus();
+            itemcb.Focus();
         }
 
         private void currencyExchangeDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -467,7 +467,7 @@ namespace Alver.UI.Bills
                 InsertBillLine(_barcodeRead);
                 calcSumTotals();
                 Reload();
-                barcodecb.Focus();
+                itemcb.Focus();
             }
             catch (Exception ex)
             {
@@ -821,7 +821,7 @@ namespace Alver.UI.Bills
                     }
                 }
                 discountnud.Value = 0;
-                barcodecb.Focus();
+                itemcb.Focus();
             }
             LoadData();
         }
@@ -930,7 +930,7 @@ namespace Alver.UI.Bills
                 RetriveExchangeRate();
                 payedchkbox.Checked = exchangebillchkbox.Checked = true;
                 billdatedtp.Value = DateTime.Now;
-                barcodecb.Focus();
+                itemcb.Focus();
             }
             catch (Exception ex)
             {
@@ -1138,7 +1138,7 @@ namespace Alver.UI.Bills
                         discountnud.Value = 0;
                         BillsFuncs.DeleteBill((BillBS.Current as Bill).Id);
                         Reload();
-                        barcodecb.Focus();
+                        itemcb.Focus();
                     }
                 }
                 catch (Exception ex)
@@ -1146,7 +1146,7 @@ namespace Alver.UI.Bills
                     MSGs.ErrorMessage(ex);
                 }
                 deletebillbtn.Enabled = true;
-                barcodecb.Focus();
+                itemcb.Focus();
             }
         }
 

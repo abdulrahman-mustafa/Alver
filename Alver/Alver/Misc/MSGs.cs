@@ -32,9 +32,14 @@ namespace Alver.MISC
             if (Ex != null)
             {
                 _msg += Environment.NewLine;
+                _msg += Environment.NewLine;
                 _msg += "Method crashed: " + methodFullName;
                 _msg += Environment.NewLine;
+                _msg += Environment.NewLine;
                 _msg += Ex.Message;
+                _msg += Environment.NewLine;
+                _msg += Environment.NewLine;
+                _msg += Ex.InnerException;
             }
             string _caption = "تنبيه";
             MessageBoxButtons _buttons = MessageBoxButtons.OK;

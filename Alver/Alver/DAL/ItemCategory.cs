@@ -17,7 +17,7 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ItemCategory()
         {
-            this.Items = new HashSet<Item>();
+            this.Items = new ObservableListSource<Item>();
         }
     
         public int Id { get; set; }
@@ -31,7 +31,7 @@ namespace Alver.DAL
         public Nullable<bool> PROTECTED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual ObservableListSource<Item> Items { get; set; }
         public virtual User User { get; set; }
     }
 }

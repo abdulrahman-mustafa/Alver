@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.HeadersplitContainer = new System.Windows.Forms.SplitContainer();
             this.mainmenustrip = new System.Windows.Forms.MenuStrip();
             this.ملفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.أخذنسخةاحتياطيةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +67,6 @@
             this.كمياتالموادToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.كشفحركةالمادةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.billsbtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.POSbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.buybillbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.sellbillbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.billmanagementbtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,11 +96,7 @@
             this.المستخدمونToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.إدارةالمستخدمينToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حولToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BodysplitContainer = new System.Windows.Forms.SplitContainer();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.clocklbl = new System.Windows.Forms.Label();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.phonelbl = new System.Windows.Forms.Label();
             this.addresslbl = new System.Windows.Forms.Label();
             this.companytitlelbl = new System.Windows.Forms.Label();
@@ -113,42 +107,21 @@
             this.databasenamelbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.runtimeslbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.HeadersplitContainer)).BeginInit();
-            this.HeadersplitContainer.Panel1.SuspendLayout();
-            this.HeadersplitContainer.Panel2.SuspendLayout();
-            this.HeadersplitContainer.SuspendLayout();
+            this.clocklbl = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.mainmenustrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BodysplitContainer)).BeginInit();
-            this.BodysplitContainer.Panel1.SuspendLayout();
-            this.BodysplitContainer.Panel2.SuspendLayout();
-            this.BodysplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mainstatusstrip.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // HeadersplitContainer
-            // 
-            this.HeadersplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HeadersplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.HeadersplitContainer.Name = "HeadersplitContainer";
-            this.HeadersplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // HeadersplitContainer.Panel1
-            // 
-            this.HeadersplitContainer.Panel1.Controls.Add(this.mainmenustrip);
-            this.HeadersplitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            // 
-            // HeadersplitContainer.Panel2
-            // 
-            this.HeadersplitContainer.Panel2.Controls.Add(this.BodysplitContainer);
-            this.HeadersplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.HeadersplitContainer.Size = new System.Drawing.Size(1111, 445);
-            this.HeadersplitContainer.SplitterDistance = 28;
-            this.HeadersplitContainer.SplitterWidth = 20;
-            this.HeadersplitContainer.TabIndex = 0;
             // 
             // mainmenustrip
             // 
+            this.mainmenustrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(22)))), ((int)(((byte)(39)))));
             this.mainmenustrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainmenustrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ملفToolStripMenuItem,
@@ -160,12 +133,12 @@
             this.المصاريفToolStripMenuItem,
             this.المدفوعاتوالمقبوضاتToolStripMenuItem,
             this.المستخدمونToolStripMenuItem,
-            this.حولToolStripMenuItem});
+            this.حولToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.mainmenustrip.Location = new System.Drawing.Point(0, 0);
             this.mainmenustrip.Name = "mainmenustrip";
             this.mainmenustrip.Size = new System.Drawing.Size(1111, 28);
             this.mainmenustrip.TabIndex = 0;
-            this.mainmenustrip.Text = "menuStrip1";
             // 
             // ملفToolStripMenuItem
             // 
@@ -473,7 +446,6 @@
             // billsbtn
             // 
             this.billsbtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.POSbtn,
             this.buybillbtn,
             this.sellbillbtn,
             this.billmanagementbtn});
@@ -482,19 +454,11 @@
             this.billsbtn.Size = new System.Drawing.Size(88, 24);
             this.billsbtn.Text = "الفواتير";
             // 
-            // POSbtn
-            // 
-            this.POSbtn.Image = global::Alver.Properties.Resources.icons8_barcode_reader_25px;
-            this.POSbtn.Name = "POSbtn";
-            this.POSbtn.Size = new System.Drawing.Size(174, 26);
-            this.POSbtn.Text = "نقطة البيع";
-            this.POSbtn.Click += new System.EventHandler(this.POSbtn_Click_1);
-            // 
             // buybillbtn
             // 
             this.buybillbtn.Image = global::Alver.Properties.Resources.icons8_purchase_order_25px;
             this.buybillbtn.Name = "buybillbtn";
-            this.buybillbtn.Size = new System.Drawing.Size(174, 26);
+            this.buybillbtn.Size = new System.Drawing.Size(224, 26);
             this.buybillbtn.Text = "فاتورة شراء";
             this.buybillbtn.Click += new System.EventHandler(this.buybillbtn_Click);
             // 
@@ -502,7 +466,7 @@
             // 
             this.sellbillbtn.Image = global::Alver.Properties.Resources.icons8_invoice_25px;
             this.sellbillbtn.Name = "sellbillbtn";
-            this.sellbillbtn.Size = new System.Drawing.Size(174, 26);
+            this.sellbillbtn.Size = new System.Drawing.Size(224, 26);
             this.sellbillbtn.Text = "فاتورة بيع";
             this.sellbillbtn.Visible = false;
             this.sellbillbtn.Click += new System.EventHandler(this.sellbillbtn_Click);
@@ -511,7 +475,7 @@
             // 
             this.billmanagementbtn.Image = global::Alver.Properties.Resources.itemsettings;
             this.billmanagementbtn.Name = "billmanagementbtn";
-            this.billmanagementbtn.Size = new System.Drawing.Size(174, 26);
+            this.billmanagementbtn.Size = new System.Drawing.Size(224, 26);
             this.billmanagementbtn.Text = "إداراة الفواتير";
             this.billmanagementbtn.Click += new System.EventHandler(this.billmanagementbtn_Click);
             // 
@@ -542,7 +506,7 @@
             // 
             this.إضافةحركةToolStripMenuItem1.Image = global::Alver.Properties.Resources.icons8_cash_in_hand_25px;
             this.إضافةحركةToolStripMenuItem1.Name = "إضافةحركةToolStripMenuItem1";
-            this.إضافةحركةToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.إضافةحركةToolStripMenuItem1.Size = new System.Drawing.Size(179, 26);
             this.إضافةحركةToolStripMenuItem1.Text = "إضافة حركة";
             this.إضافةحركةToolStripMenuItem1.Click += new System.EventHandler(this.إضافةحركةToolStripMenuItem1_Click);
             // 
@@ -550,7 +514,7 @@
             // 
             this.عرضالحركاتToolStripMenuItem1.Image = global::Alver.Properties.Resources.icons8_list_25px;
             this.عرضالحركاتToolStripMenuItem1.Name = "عرضالحركاتToolStripMenuItem1";
-            this.عرضالحركاتToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.عرضالحركاتToolStripMenuItem1.Size = new System.Drawing.Size(179, 26);
             this.عرضالحركاتToolStripMenuItem1.Text = "عرض الحركات";
             this.عرضالحركاتToolStripMenuItem1.Click += new System.EventHandler(this.عرضالحركاتToolStripMenuItem1_Click);
             // 
@@ -734,105 +698,10 @@
             this.حولToolStripMenuItem.Text = "حول";
             this.حولToolStripMenuItem.Click += new System.EventHandler(this.حولToolStripMenuItem_Click);
             // 
-            // BodysplitContainer
+            // toolStripMenuItem1
             // 
-            this.BodysplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BodysplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.BodysplitContainer.Name = "BodysplitContainer";
-            // 
-            // BodysplitContainer.Panel1
-            // 
-            this.BodysplitContainer.Panel1.BackColor = System.Drawing.Color.White;
-            this.BodysplitContainer.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BodysplitContainer.Panel1.Controls.Add(this.button2);
-            this.BodysplitContainer.Panel1.Controls.Add(this.button1);
-            this.BodysplitContainer.Panel1.Controls.Add(this.pictureBox1);
-            this.BodysplitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            // 
-            // BodysplitContainer.Panel2
-            // 
-            this.BodysplitContainer.Panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BodysplitContainer.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BodysplitContainer.Panel2.Controls.Add(this.clocklbl);
-            this.BodysplitContainer.Panel2.Controls.Add(this.phonelbl);
-            this.BodysplitContainer.Panel2.Controls.Add(this.addresslbl);
-            this.BodysplitContainer.Panel2.Controls.Add(this.companytitlelbl);
-            this.BodysplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.BodysplitContainer.Size = new System.Drawing.Size(1111, 397);
-            this.BodysplitContainer.SplitterDistance = 927;
-            this.BodysplitContainer.SplitterWidth = 20;
-            this.BodysplitContainer.TabIndex = 0;
-            this.BodysplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.BodysplitContainer_SplitterMoved);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.button2.Image = global::Alver.Properties.Resources.icons8_barcode_reader_25px;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 76);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "نقطة البيع";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button2.UseCompatibleTextRendering = true;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.button1.Image = global::Alver.Properties.Resources.icons8_barcode_reader_25px;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(3, 347);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 50);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "نقطة البيع";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseCompatibleTextRendering = true;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.POSbtn_Click_1);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Alver.Properties.Resources.بدون_عنوان;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(927, 397);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // clocklbl
-            // 
-            this.clocklbl.BackColor = System.Drawing.Color.Transparent;
-            this.clocklbl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.clocklbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clocklbl.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.clocklbl.ForeColor = System.Drawing.Color.OrangeRed;
-            this.clocklbl.Location = new System.Drawing.Point(0, 352);
-            this.clocklbl.Name = "clocklbl";
-            this.clocklbl.Size = new System.Drawing.Size(164, 45);
-            this.clocklbl.TabIndex = 3;
-            this.clocklbl.Text = "0";
-            this.clocklbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.clocklbl.UseCompatibleTextRendering = true;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(14, 24);
             // 
             // phonelbl
             // 
@@ -843,7 +712,7 @@
             this.phonelbl.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.phonelbl.Location = new System.Drawing.Point(0, 90);
             this.phonelbl.Name = "phonelbl";
-            this.phonelbl.Size = new System.Drawing.Size(164, 45);
+            this.phonelbl.Size = new System.Drawing.Size(200, 45);
             this.phonelbl.TabIndex = 2;
             this.phonelbl.Text = "0";
             this.phonelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -858,8 +727,8 @@
             this.addresslbl.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.addresslbl.Location = new System.Drawing.Point(0, 45);
             this.addresslbl.Name = "addresslbl";
-            this.addresslbl.Size = new System.Drawing.Size(164, 45);
-            this.addresslbl.TabIndex = 1;
+            this.addresslbl.Size = new System.Drawing.Size(200, 45);
+            this.addresslbl.TabIndex = 5;
             this.addresslbl.Text = "0";
             this.addresslbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.addresslbl.UseCompatibleTextRendering = true;
@@ -873,7 +742,7 @@
             this.companytitlelbl.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.companytitlelbl.Location = new System.Drawing.Point(0, 0);
             this.companytitlelbl.Name = "companytitlelbl";
-            this.companytitlelbl.Size = new System.Drawing.Size(164, 45);
+            this.companytitlelbl.Size = new System.Drawing.Size(200, 45);
             this.companytitlelbl.TabIndex = 0;
             this.companytitlelbl.Text = "0";
             this.companytitlelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -881,7 +750,7 @@
             // 
             // mainstatusstrip
             // 
-            this.mainstatusstrip.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.mainstatusstrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(164)))), ((int)(((byte)(243)))));
             this.mainstatusstrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainstatusstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
@@ -939,14 +808,92 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // clocklbl
+            // 
+            this.clocklbl.BackColor = System.Drawing.Color.Transparent;
+            this.clocklbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.clocklbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clocklbl.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.clocklbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(102)))));
+            this.clocklbl.Image = global::Alver.Properties.Resources.clock;
+            this.clocklbl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.clocklbl.Location = new System.Drawing.Point(0, 372);
+            this.clocklbl.Name = "clocklbl";
+            this.clocklbl.Size = new System.Drawing.Size(200, 45);
+            this.clocklbl.TabIndex = 3;
+            this.clocklbl.Text = "0";
+            this.clocklbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.clocklbl.UseCompatibleTextRendering = true;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(248)))));
+            this.button2.Image = global::Alver.Properties.Resources.bill32;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(0, 372);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(200, 45);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "نقطة البيع";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseCompatibleTextRendering = true;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.phonelbl);
+            this.panel1.Controls.Add(this.clocklbl);
+            this.panel1.Controls.Add(this.addresslbl);
+            this.panel1.Controls.Add(this.companytitlelbl);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(911, 28);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 417);
+            this.panel1.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.ErrorImage = global::Alver.Properties.Resources.main_bg;
+            this.pictureBox1.Image = global::Alver.Properties.Resources.main_bg;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1111, 471);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 28);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 417);
+            this.panel2.TabIndex = 7;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(22)))), ((int)(((byte)(39)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1111, 471);
-            this.Controls.Add(this.HeadersplitContainer);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.mainmenustrip);
             this.Controls.Add(this.mainstatusstrip);
+            this.Controls.Add(this.pictureBox1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainmenustrip;
@@ -959,29 +906,19 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.HeadersplitContainer.Panel1.ResumeLayout(false);
-            this.HeadersplitContainer.Panel1.PerformLayout();
-            this.HeadersplitContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.HeadersplitContainer)).EndInit();
-            this.HeadersplitContainer.ResumeLayout(false);
             this.mainmenustrip.ResumeLayout(false);
             this.mainmenustrip.PerformLayout();
-            this.BodysplitContainer.Panel1.ResumeLayout(false);
-            this.BodysplitContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BodysplitContainer)).EndInit();
-            this.BodysplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.mainstatusstrip.ResumeLayout(false);
             this.mainstatusstrip.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.SplitContainer HeadersplitContainer;
-        private System.Windows.Forms.SplitContainer BodysplitContainer;
         private System.Windows.Forms.StatusStrip mainstatusstrip;
         private System.Windows.Forms.MenuStrip mainmenustrip;
         private System.Windows.Forms.ToolStripMenuItem ملفToolStripMenuItem;
@@ -1058,10 +995,11 @@
         private System.Windows.Forms.Label phonelbl;
         private System.Windows.Forms.Label clocklbl;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem POSbtn;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem حولToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

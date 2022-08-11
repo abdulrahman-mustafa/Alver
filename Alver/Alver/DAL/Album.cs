@@ -17,7 +17,7 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Album()
         {
-            this.Images = new HashSet<Image>();
+            this.Images = new ObservableListSource<Image>();
         }
     
         public int Id { get; set; }
@@ -31,6 +31,6 @@ namespace Alver.DAL
         public Nullable<bool> PROTECTED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Image> Images { get; set; }
+        public virtual ObservableListSource<Image> Images { get; set; }
     }
 }

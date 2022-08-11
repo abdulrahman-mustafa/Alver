@@ -38,7 +38,7 @@ namespace Alver.UI.Bills
                 LoadData();
                 RetriveExchangeRate();
                 RetriveDailyBillAmount();
-                barcodecb.Focus();
+                itemcb.Focus();
             }
             else
             {
@@ -245,7 +245,7 @@ namespace Alver.UI.Bills
             sumtotalsnud.Value = 0;
             discountnud.Value = 0;
             totalnud.Value = 0;
-            barcodecb.Focus();
+            itemcb.Focus();
         }
 
         private void DeleteLine()
@@ -467,13 +467,10 @@ namespace Alver.UI.Bills
                     else if (_itemId != 0)
                     {
                         decimal _remainedQuantity = ItemFuncs.ItemQauantity(_itemId, _unitId);
-                        if (billtypecb.Text.Trim() == BillType.بيع.ToString())
+                        if (billtypecb.Text.Trim() == BillType.بيع.ToString() && _remainedQuantity - _quantity < 0)
                         {
-                            if (_remainedQuantity - _quantity < 0)
-                            {
-                                MessageBox.Show("لقد تجاوزت الكمية المتاحة في المخزن لا يمكن إضافة القلم");
-                                _added = false;
-                            }
+                            MessageBox.Show("لقد تجاوزت الكمية المتاحة في المخزن لا يمكن إضافة القلم");
+                            _added = false;
                         }
                         else
                         {
@@ -572,7 +569,7 @@ namespace Alver.UI.Bills
                     {
                         AddBillLine(true);
                         calcSumTotals();
-                        barcodecb.Focus();
+                        itemcb.Focus();
                         barcodecb.SelectAll();
                     }
                 }
@@ -593,7 +590,7 @@ namespace Alver.UI.Bills
                         
                         AddBillLine(true);
                         calcSumTotals();
-                        barcodecb.Focus();
+                        itemcb.Focus();
                         barcodecb.SelectAll();
                     }
                 }
@@ -627,7 +624,7 @@ namespace Alver.UI.Bills
                 if (billLineBS.Count < 1)
                 {
                     MessageBox.Show("لا يمكن إضافة فاتورة بدون اقلام، الرجاء إضافة اقلام اولاً");
-                    barcodecb.Focus();
+                    itemcb.Focus();
                     _result = false;
                 }
             }
@@ -675,7 +672,7 @@ namespace Alver.UI.Bills
             {
                 transactionType = TransactionsFuncs.TT.BLD;
             }
-            if (_account == "بيع نقدي")
+            if (_account == "نقدي")
             {
                 TransactionsFuncs.InsertFundTransaction(bill.CurrencyId.Value, bill.TotalAmount.Value, transactionType, bill.LUD.Value, _guid, _declaration);
             }
@@ -784,10 +781,10 @@ namespace Alver.UI.Bills
             {
                 decimal _price, _total, _exprice, _extotal;
 
-                _price = _billLine.Price.Value;
-                _total = _billLine.TotalPrice.Value;
-                _exprice = _billLine.ExchangedAmount.Value;
-                _extotal = _billLine.ExchangedTotalAmount.Value;
+                _price = -1 * _billLine.Price.Value;
+                _total = -1 * _billLine.TotalPrice.Value;
+                _exprice = -1 * _billLine.ExchangedAmount.Value;
+                _extotal = -1 * _billLine.ExchangedTotalAmount.Value;
 
                 _billLine.BillId = billId;
                 if ((int)currencycb.SelectedValue == 1)
@@ -795,17 +792,22 @@ namespace Alver.UI.Bills
                     _billLine.CurrencyId = 1;
                     _billLine.ForeginCurrencyId = 2;
                     _billLine.Exchanged = false;
+                    _billLine.Price = _price;
+                    _billLine.TotalPrice = _total;
+                    _billLine.ExchangedAmount = _exprice;
+                    _billLine.ExchangedTotalAmount = _extotal;
                 }
                 else if ((int)currencycb.SelectedValue == 2)
                 {
                     _billLine.CurrencyId = 2;
                     _billLine.ForeginCurrencyId = 1;
+                    _billLine.Exchanged = true;
                     _billLine.Price = _exprice;
                     _billLine.TotalPrice = _extotal;
                     _billLine.ExchangedAmount = _price;
                     _billLine.ExchangedTotalAmount = _total;
-                    _billLine.Exchanged = true;
                 }
+                
                 using (dbEntities db = new dbEntities(0))
                 {
                     db.Set<BillLine>().Add(_billLine);

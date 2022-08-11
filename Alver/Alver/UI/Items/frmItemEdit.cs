@@ -91,7 +91,7 @@ namespace Alver.UI.Items
                     //else if (db.Items.Any(x => x.Barcode.ToLower().Trim() == barcodecb.Text.ToLower().Trim()))
                     //{
                     //    MessageBox.Show("الباركود مستخدم من قبل، يرجى التأكد من الباركود");
-                    //    barcodecb.Focus();
+                    //    itemcb.Focus();
                     //    _result = false;
                     //}
                 }

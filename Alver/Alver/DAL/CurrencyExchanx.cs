@@ -17,7 +17,7 @@ namespace Alver.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CurrencyExchanx()
         {
-            this.CurrencyExchangeOperations = new HashSet<CurrencyExchangeOperation>();
+            this.CurrencyExchangeOperations = new ObservableListSource<CurrencyExchangeOperation>();
         }
     
         public long Id { get; set; }
@@ -32,7 +32,7 @@ namespace Alver.DAL
         public Nullable<bool> PROTECTED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CurrencyExchangeOperation> CurrencyExchangeOperations { get; set; }
+        public virtual ObservableListSource<CurrencyExchangeOperation> CurrencyExchangeOperations { get; set; }
         public virtual User User { get; set; }
     }
 }

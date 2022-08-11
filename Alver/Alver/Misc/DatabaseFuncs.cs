@@ -428,39 +428,67 @@ namespace Alver.MISC
 
             return result;
         }
-
-        public static bool CheckDatabaseExists(string databaseName)
+        //_sqlServer =0 then try to connect to SQL SERVER
+        //_sqlServer =1 then try to connect to SQL EXPRESS
+        public static bool CheckDatabaseExists(string databaseName, int _sqlServer = 0)
         {
-            SqlConnection tmpConn;
+            SqlConnection tmpConn, tmpConn_express;
             string sqlCreateDBQuery;
             bool result = false;
-
+            int dbID = 0, dbID_express = 0;
             try
             {
-                tmpConn = new SqlConnection(@"server=.\sqlexpress;Integrated Security=True;");
+                tmpConn = new SqlConnection(@"server=.;Integrated Security=True;");
+                tmpConn_express = new SqlConnection(@"server=.\sqlexpress;Integrated Security=True;");
 
                 sqlCreateDBQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", databaseName);
 
-                using (tmpConn)
+                if (_sqlServer==0)
                 {
-                    using (SqlCommand sqlCmd = new SqlCommand(sqlCreateDBQuery, tmpConn))
+                    using (tmpConn)
                     {
-                        tmpConn.Open();
-
-                        object resultObj = sqlCmd.ExecuteScalar();
-
-                        int databaseID = 0;
-
-                        if (resultObj != null)
+                        using (SqlCommand sqlCmd = new SqlCommand(sqlCreateDBQuery, tmpConn))
                         {
-                            int.TryParse(resultObj.ToString(), out databaseID);
+
+                            tmpConn.Open();
+
+                            object resultObj = sqlCmd.ExecuteScalar();
+
+                            int databaseID = 0;
+
+                            if (resultObj != null)
+                            {
+                                int.TryParse(resultObj.ToString(), out databaseID);
+                            }
+
+                            tmpConn.Close();
+                            result = databaseID > 0;
                         }
-
-                        tmpConn.Close();
-
-                        result = (databaseID > 0);
                     }
                 }
+                else
+                {
+                    using (tmpConn_express)
+                    {
+                        using (SqlCommand sqlCmd = new SqlCommand(sqlCreateDBQuery, tmpConn_express))
+                        {
+                            tmpConn_express.Open();
+
+                            object resultObj = sqlCmd.ExecuteScalar();
+
+                            int databaseID = 0;
+
+                            if (resultObj != null)
+                            {
+                                int.TryParse(resultObj.ToString(), out databaseID);
+                            }
+
+                            tmpConn_express.Close();
+                            result = databaseID>0;
+                        }
+                    }
+                }
+                return result;
             }
 #pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (Exception ex)
