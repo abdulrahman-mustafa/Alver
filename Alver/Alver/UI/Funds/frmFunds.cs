@@ -26,7 +26,6 @@ namespace Alver.UI.Funds
         {
             dt.Columns.Add("الرصيد");
             dt.Columns.Add("$");
-            .Columns["YTD"].DefaultCellStyle.Format = "N2";
             //using (dbEntities db = new dbEntities(0))
             //{
             //    foreach (var item in db.Currencies)
