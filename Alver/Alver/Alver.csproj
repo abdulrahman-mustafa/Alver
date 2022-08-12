@@ -36,7 +36,7 @@
     <UpdateUrl>https://github.com/abdulrahman-mustafa/Alver/blob/master/published/</UpdateUrl>
     <ProductName>Alver</ProductName>
     <PublisherName>CODE inc</PublisherName>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -63,7 +63,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ICON.ico</ApplicationIcon>
+    <ApplicationIcon>exchange-dollar_icon-icons.com_53141.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Alver.Program</StartupObject>
@@ -1012,6 +1012,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="exchange-dollar_icon-icons.com_53141.ico" />
     <Content Include="ICON.ico" />
     <Content Include="Logo.ico" />
     <None Include="Resources\بدون عنوان.png" />
